@@ -36,7 +36,7 @@ export default async function TedArticlePage({
     <section className="min-w-0 flex-1 pl-16 pr-[40px] py-12">
       <div className="mx-auto flex w-[960px] min-w-[960px] flex-none gap-6">
         {/* Article — 70% */}
-        <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-10">
+        <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-6">
           {/* Header */}
           <div className="flex items-start gap-6 pb-4">
             <span className="mt-2"><TedIcon /></span>
@@ -67,7 +67,7 @@ export default async function TedArticlePage({
               <div key={i} className="flex flex-col gap-4">
                 {/* English body — Inter / SF Pro Text */}
                 <p
-                  className="text-base leading-loose text-foreground"
+                  className="text-[1.0625rem] leading-loose text-foreground"
                   style={{ fontFamily: '"Inter", "SF Pro Text", system-ui, -apple-system, sans-serif' }}
                 >
                   {article.articleParagraphs[i]}
