@@ -393,7 +393,7 @@ export default function TopNav() {
     >
       <div className="flex h-full w-full items-center justify-between">
         <div className="flex items-center gap-6 pl-3">
-          <NavigationMenu>
+          <NavigationMenu style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", sans-serif' }}>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink
@@ -451,6 +451,15 @@ export default function TopNav() {
                     ))}
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  render={<Link href="/ted/ted-demo" />}
+                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
+                >
+                  TED
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
