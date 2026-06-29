@@ -68,7 +68,7 @@ export default async function TedArticlePage({
                 {/* English body — Inter / SF Pro Text */}
                 <p
                   className="text-[1.0625rem] leading-loose text-foreground"
-                  style={{ fontFamily: '"Inter", "SF Pro Text", system-ui, -apple-system, sans-serif' }}
+                  style={{ fontFamily: '"IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                 >
                   {article.articleParagraphs[i]}
                 </p>
