@@ -30,39 +30,52 @@ export default async function TedArticlePage({
     article.articleParagraphs.length,
     article.translationParagraphs.length,
   );
+  const hasTranslation = article.translationParagraphs.length > 0;
 
   return (
     <section className="min-w-0 flex-1 pl-16 pr-[40px] py-12">
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
-        {/* Header */}
-        <div className="flex items-start gap-3 pb-2">
-          <span className="mt-2"><TedIcon /></span>
-          <div className="flex flex-col gap-0.5 pt-0.5">
-            <h1 className="text-3xl font-semibold tracking-normal">
-              {article.title}
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              {article.subtitle}
-            </p>
-            <p className="text-sm text-muted-foreground/70">
-              {article.author}
-            </p>
-          </div>
-        </div>
-
-        {/* Paragraphs side by side */}
-        <div className="flex flex-col gap-6">
-          {Array.from({ length: maxLen }).map((_, i) => (
-            <div key={i} className="grid grid-cols-2 gap-8">
-              <p className="text-[1.05rem] leading-[1.9] text-foreground">
-                {article.articleParagraphs[i]}
+      <div className="mx-auto flex w-[960px] min-w-[960px] flex-none gap-6">
+        {/* Article — 70% */}
+        <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-8">
+          {/* Header */}
+          <div className="flex items-start gap-3 pb-2">
+            <span className="mt-2"><TedIcon /></span>
+            <div className="flex flex-col gap-0.5 pt-0.5">
+              <h1 className="text-2xl font-semibold tracking-normal">
+                {article.title}
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                {article.subtitle}
               </p>
-              <p className="text-[0.95rem] leading-[1.9] text-muted-foreground">
-                {article.translationParagraphs[i]}
+              <p className="text-sm text-muted-foreground/60">
+                {article.author}
               </p>
             </div>
-          ))}
-        </div>
+          </div>
+
+          {/* Article + Translation interleaved */}
+          <div className="flex flex-col gap-5">
+            {Array.from({ length: maxLen }).map((_, i) => (
+              <div key={i} className="flex flex-col gap-2">
+                <p className="text-base leading-relaxed text-foreground">
+                  {article.articleParagraphs[i]}
+                </p>
+                {article.translationParagraphs[i] && (
+                  <p className="text-[0.9rem] leading-relaxed text-muted-foreground">
+                    {article.translationParagraphs[i]}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Translation placeholder */}
+        <aside className="w-[281px] min-w-[281px] max-w-[281px] shrink-0 rounded-xl border-2 border-dashed border-border pt-24 px-4 pb-4">
+          <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground/50">
+            翻译
+          </h2>
+        </aside>
       </div>
     </section>
   );
