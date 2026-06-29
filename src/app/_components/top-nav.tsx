@@ -210,6 +210,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("demo scroll table 滚动 表格 bidirectional overflow"),
   },
   {
+    id: "demo-sidebar-resizable",
+    label: "Demo · Sidebar Resizable",
+    description: "Resizable panel sidebar",
+    href: "/demo/sidebar-resizable",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo sidebar resizable panel draggable"),
+  },
+  {
     id: "demo-elevated",
     label: "Demo · Elevated",
     description: "Surface elevation and shadow system",

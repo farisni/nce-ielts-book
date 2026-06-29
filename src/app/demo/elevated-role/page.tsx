@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Elevated } from "@/lib/elevated";
 
 const ROLES = [
@@ -49,7 +48,7 @@ export default function ElevatedRoleDemo() {
   const currentRole = ROLES.find((r) => r.value === role)!;
 
   return (
-    <section className="mx-auto max-w-lg px-6 py-8">
+    <section className="mx-auto max-w-lg rounded-xl border-2 border-dashed border-border px-6 py-16">
       <div className="mb-6">
         <h1 className="text-xl font-semibold tracking-tight">Elevated · Role Select</h1>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -60,7 +59,7 @@ export default function ElevatedRoleDemo() {
       <div className="flex items-center gap-3">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>
-            <Button variant="outline">打开 Dialog</Button>
+            <span className="inline-flex cursor-pointer items-center rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm transition-colors hover:bg-surface-3">打开 Dialog</span>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>

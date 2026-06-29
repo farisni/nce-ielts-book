@@ -33,7 +33,7 @@ function metric(r: number, c: number): string {
 
 export default function ScrollTableDemo() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-8">
+    <section className="mx-auto max-w-6xl rounded-xl border-2 border-dashed border-border px-6 py-16">
       <div className="mb-6">
         <h1 className="text-xl font-semibold tracking-tight">ScrollArea · Table</h1>
         <p className="mt-1 text-sm text-muted-foreground">

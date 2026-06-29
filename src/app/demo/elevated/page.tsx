@@ -50,10 +50,9 @@ function RoleSelectTrigger({ value }: { value: string }) {
 export default function ElevatedDemo() {
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState("member");
-  const [selectOpen, setSelectOpen] = useState(false);
 
   return (
-    <section className="mx-auto max-w-lg px-6 py-8">
+    <section className="mx-auto max-w-lg rounded-xl border-2 border-dashed border-border px-6 py-16">
       <div className="mb-6">
         <h1 className="text-xl font-semibold tracking-tight">Elevated · Surface</h1>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -63,9 +62,9 @@ export default function ElevatedDemo() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger>
-          <button className="rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm transition-colors hover:bg-surface-3">
+          <span className="inline-block cursor-pointer rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm transition-colors hover:bg-surface-3 select-none">
             打开 Dialog
-          </button>
+          </span>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
