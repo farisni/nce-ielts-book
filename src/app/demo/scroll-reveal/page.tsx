@@ -4,8 +4,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const images = [
-  { src: "/tokyo.jpg", title: "Tokyo Stock Exchange", desc: "東京証券取引所" },
-  { src: "/karen.jpg", title: "Kayan Lahwi", desc: "缅甸克扬族长颈族" },
+  { src: "/stock-exchange-tokyo-japan.jpg", title: "Tokyo Stock Exchange", desc: "東京証券取引所" },
+  { src: "/the-padaung.jpg", title: "Kayan Lahwi", desc: "缅甸克扬族长颈族" },
 ];
 
 export default function ScrollRevealDemo() {

@@ -14,7 +14,7 @@ import {
   Rows3,
   Sparkles,
   Table2,
-} from "lucide-react";
+  Play } from "lucide-react";
 import { Sidebar, SidebarBody, SidebarLink, useSidebar } from "@/components/ui/sidebar";
 import { motion } from "motion/react";
 
@@ -69,6 +69,15 @@ const nceWordItems = [
     label: "NCE4 单词",
     href: "/words/nce/nce4",
     icon: <Library className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
+];
+
+
+const tedItems = [
+  {
+    label: "TED · 学一门外语的秘密",
+    href: "/ted/ted-demo",
+    icon: <Play className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
 ];
 
@@ -238,6 +247,12 @@ export function AppSidebar() {
           <div className="scrollbar-ghost -mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1 pb-2">
             <SidebarSection title="Courses">
               {courseItems.map((item) => (
+                <SidebarLink key={item.href} link={item} />
+              ))}
+            </SidebarSection>
+
+            <SidebarSection title="TED">
+              {tedItems.map((item) => (
                 <SidebarLink key={item.href} link={item} />
               ))}
             </SidebarSection>

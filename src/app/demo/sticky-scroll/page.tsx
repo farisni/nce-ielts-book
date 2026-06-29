@@ -9,7 +9,7 @@ const content = [
       "東京証券取引所 — 日本最大的证券交易所，位于东京都中央区日本桥兜町。作为亚洲最重要的金融中心之一，东京证券交易所见证了日本经济的崛起与全球化进程。",
     content: (
       <img
-        src="/tokyo.jpg"
+        src="/stock-exchange-tokyo-japan.jpg"
         alt="Tokyo Stock Exchange"
         className="h-full w-full object-cover"
       />
@@ -21,7 +21,7 @@ const content = [
       "缅甸克扬族长颈族（Padaung / Kayan Lahwi）是克耶族的一支，生活在缅甸东部山区。女性自幼佩戴铜环，以长颈为美的传统延续数百年，成为独特的文化符号。",
     content: (
       <img
-        src="/karen.jpg"
+        src="/the-padaung.jpg"
         alt="Kayan Lahwi"
         className="h-full w-full object-cover"
       />

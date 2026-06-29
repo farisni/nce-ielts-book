@@ -407,7 +407,7 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                 >
                   {/* cover thumbnail — only for IELTS */}
                   {defaultLevel === "IELTS16" && (
-                    <img src={`${["/tokyo.jpg", "/karen.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover" />
+                    <img src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover" />
                   )}
                   <div className="min-w-0 flex flex-col gap-2.5">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -759,7 +759,7 @@ function ArticleReader({ article }: { article: Article }) {
                         >
                           {index === 0 && isIelts && (
                             <img
-                              src={`/${article.id === 'ielts-1' ? 'tokyo' : 'karen'}.jpg`}
+                              src={`/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg`}
                               alt=""
                               className="float-right ml-6 mb-4 mt-1 w-56 h-36 rounded-lg object-cover"
                             />

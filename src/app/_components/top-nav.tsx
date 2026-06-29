@@ -4,7 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, StarIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon } from "lucide-react";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles } from "@/app/mock";
@@ -128,6 +128,16 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <BookOpenIcon className="text-muted-foreground" />,
     keywords: toKeywords("ielts 雅思 文章 article reader 阅读"),
   },
+  {
+    id: "ted-demo",
+    label: "TED · 学一门外语的秘密",
+    description: "TED talk article reader",
+    href: "/ted/ted-demo",
+    group: "Navigate",
+    icon: <PlayIcon className="text-muted-foreground" />,
+    keywords: toKeywords("ted 演讲 language 语言 学习 外语 lidia"),
+  },
+
   {
     id: "demo-table",
     label: "Demo · Table",
