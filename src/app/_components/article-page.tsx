@@ -755,7 +755,8 @@ function ArticleReader({ article }: { article: Article }) {
                           ref={(element) => {
                             paragraphRefs.current[index] = element;
                           }}
-                          className="text-[1.15rem] leading-[2] text-foreground [text-indent:2em] article-text"
+                          className="text-lg leading-loose text-foreground [text-indent:2em] article-text"
+                          style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                         >
                           {index === 0 && isIelts && (
                             <img
@@ -920,6 +921,7 @@ function ArticleReader({ article }: { article: Article }) {
               {visibleActiveSideTab === "grammar" ? (
                 <div
                   ref={grammarSummaryRef}
+                  style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                   className="flex min-h-40 min-w-0 max-w-full flex-col overflow-hidden"
                 >
                   {grammarSummaryGroups.length > 0 ? (
@@ -971,7 +973,7 @@ function ArticleReader({ article }: { article: Article }) {
                                   className="flex min-w-0 flex-col gap-1 border-b border-border/60 py-[7px] last:border-b-0"
                                 >
                                   <span
-                                    className="max-w-full overflow-hidden rounded-md bg-[var(--grammar-title-bg)] px-1.5 py-px text-[0.95rem] font-normal leading-[1.45] text-foreground [display:-webkit-box] [overflow-wrap:anywhere] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                                    className="max-w-full overflow-hidden rounded-md bg-[var(--grammar-title-bg)] px-1.5 py-px text-[0.95rem] font-normal leading-[1.45] text-muted-foreground [display:-webkit-box] [overflow-wrap:anywhere] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
                                     title={note.title}
                                   >
                                     {note.title}
@@ -1055,7 +1057,7 @@ function ArticleReader({ article }: { article: Article }) {
           >
             <ShineBorder shineColor={["var(--tone-1-strong)", "var(--tone-3-strong)", "var(--tone-4-strong)"]} borderWidth={2} />
             <div className="relative flex h-full w-full items-center gap-1.5 rounded-full bg-popover px-2.5">
-            <Bot className="size-4 shrink-0 text-muted-foreground/70" aria-hidden="true" />
+            <Bot className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
             <div className="relative h-full min-w-0 flex-1">
               {!chatInput ? (
                 <ThinkingIndicator

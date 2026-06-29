@@ -67,7 +67,7 @@ export default async function TedArticlePage({
               <div key={i} className="flex flex-col gap-4">
                 {/* English body — Inter / SF Pro Text */}
                 <p
-                  className="text-[1.0625rem] leading-loose text-foreground"
+                  className="text-lg leading-loose text-foreground"
                   style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                 >
                   {article.articleParagraphs[i]}
