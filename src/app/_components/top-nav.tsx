@@ -200,6 +200,42 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo macos sidebar 侧边栏 animation motion"),
   },
+  {
+    id: "demo-scroll-table",
+    label: "Demo · Scroll Table",
+    description: "ScrollArea with bidirectional overflow",
+    href: "/demo/scroll-table",
+    group: "Demo",
+    icon: <TableIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo scroll table 滚动 表格 bidirectional overflow"),
+  },
+  {
+    id: "demo-elevated",
+    label: "Demo · Elevated",
+    description: "Surface elevation and shadow system",
+    href: "/demo/elevated",
+    group: "Demo",
+    icon: <BracesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo elevated surface shadow 分层 阴影"),
+  },
+  {
+    id: "demo-elevated-role",
+    label: "Demo · Elevated Role",
+    description: "Dialog role select with correct elevation",
+    href: "/demo/elevated-role",
+    group: "Demo",
+    icon: <BracesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo elevated role dialog shadow surface select"),
+  },
+  {
+    id: "demo-scroll-reveal",
+    label: "Demo · Scroll Reveal",
+    description: "Scroll-triggered reveal animation",
+    href: "/demo/scroll-reveal",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo scroll reveal animation motion framer"),
+  },
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {

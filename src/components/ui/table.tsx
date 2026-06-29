@@ -56,7 +56,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+function TableRow({ className, index: _index, ...props }: React.ComponentProps<"tr"> & { index?: number }) {
   return (
     <tr
       data-slot="table-row"

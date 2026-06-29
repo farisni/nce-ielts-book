@@ -113,6 +113,21 @@ const demoItems = [
     href: "/demo/macos-sidebar",
     icon: <PanelLeft className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
+  {
+    label: "Demo · Scroll Table",
+    href: "/demo/scroll-table",
+    icon: <Table2 className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
+  {
+    label: "Demo · Elevated",
+    href: "/demo/elevated",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
+  {
+    label: "Demo · Elevated Role",
+    href: "/demo/elevated-role",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
 ];
 
 function SidebarSection({ title, children }: { title: string; children: ReactNode }) {
