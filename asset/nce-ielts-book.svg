@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <filter id="hand-drawn">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <g filter="url(#hand-drawn)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 26,22 C 27,17 31,19 36,19 L 74,21 C 77,21 79,23 77,27 L 75,74 C 75,77 72,78 68,78 L 34,76 C 30,76 27,74 27,71 Z" stroke-width="3.5" />
+    
+    <path d="M 28,21 C 29,19 32,20 37,20 L 73,22 L 74,75 C 70,76 33,75 29,72" stroke-width="1" opacity="0.6" />
+
+    <path d="M 33,19 L 31,76" stroke-width="2.5" />
+    <path d="M 27,71 C 27,74 29,76 34,76" stroke-width="3" />
+    <path d="M 29,28 L 32,26 M 29,36 L 32,34 M 29,44 L 32,42 M 29,52 L 32,50 M 29,60 L 32,58" stroke-width="1.2" opacity="0.7" />
+
+    <path d="M 32,76 L 71,77 C 73,77 74,79 71,80 L 31,79" stroke-width="1.5" />
+    <path d="M 32,79 L 68,80 C 70,80 71,82 68,83 L 30,81" stroke-width="1" />
+
+    <path d="M 54,36 C 61,35 66,41 65,48 C 64,55 58,59 51,58 C 45,57 41,50 43,44 C 44,39 49,36 54,36 Z" stroke-width="2.5" />
+    <path d="M 54,37 L 57,46 L 54,48 L 51,46 Z" fill="currentColor" stroke-width="1" />
+    <path d="M 54,59 L 51,50 L 54,48 L 57,50 Z" stroke-width="1.5" />
+    <path d="M 43,48 L 51,46 L 54,48 L 51,50 Z" stroke-width="1.5" />
+    <path d="M 65,48 L 57,50 L 54,48 L 57,46 Z" fill="currentColor" stroke-width="1" />
+    
+    <circle cx="54" cy="48" r="1" fill="currentColor" />
+  </g>
+</svg>
