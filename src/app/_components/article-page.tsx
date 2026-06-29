@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
+import React, {
   Fragment,
   type CSSProperties,
   type FormEvent,
@@ -749,13 +749,21 @@ function ArticleReader({ article }: { article: Article }) {
                       const sentences = articleSentences[index] ?? [];
 
                       return (
-                      <div key={paragraphStarts[index]} className="flex flex-col gap-2">
+                      <React.Fragment key={paragraphStarts[index]}>
+                      <div className="flex flex-col gap-2">
                         <div
                           ref={(element) => {
                             paragraphRefs.current[index] = element;
                           }}
                           className="text-[1.15rem] leading-[2] text-foreground [text-indent:2em] article-text"
                         >
+                          {index === 0 && isIelts && (
+                            <img
+                              src={`/${article.id === 'ielts-1' ? 'tokyo' : 'karen'}.jpg`}
+                              alt=""
+                              className="float-right ml-6 mb-4 mt-1 w-56 h-36 rounded-lg object-cover"
+                            />
+                          )}
                           {sentences.map((sentence, sIdx) => {
                             const key = `${article.id}-p${index}-s${sIdx}`;
                             const hasPanelNotes = (sentence.panelNotes?.length ?? 0) > 0;
@@ -818,6 +826,7 @@ function ArticleReader({ article }: { article: Article }) {
                           </p>
                         ) : null}
                       </div>
+                      </React.Fragment>
                       );
                     })}
                     {!isIelts && article.notesOnText?.length ? (
