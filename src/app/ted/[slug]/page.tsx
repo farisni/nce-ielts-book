@@ -71,7 +71,7 @@ export default async function TedArticlePage({
         </section>
 
         {/* Translation placeholder */}
-        <aside className="w-[281px] min-w-[281px] max-w-[281px] shrink-0 rounded-xl border-2 border-dashed border-border pt-24 px-4 pb-4">
+        <aside className="w-[281px] min-w-[281px] max-w-[281px] shrink-0 rounded-xl border-2 border-dashed border-border mt-24 px-4 pb-4 self-start h-[500px]">
           <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground/50">
             翻译
           </h2>
