@@ -133,6 +133,16 @@ const demoItems = [
     href: "/demo/sidebar-resizable",
     icon: <PanelLeft className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
+  {
+    label: "Demo · Scroll Reveal",
+    href: "/demo/scroll-reveal",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
+  {
+    label: "Demo · Sticky Scroll",
+    href: "/demo/sticky-scroll",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
 ];
 
 function SidebarSection({ title, children }: { title: string; children: ReactNode }) {

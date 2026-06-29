@@ -245,6 +245,15 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo scroll reveal animation motion framer"),
   },
+  {
+    id: "demo-sticky-scroll",
+    label: "Demo · Sticky Scroll",
+    description: "Sticky scroll reveal with cards",
+    href: "/demo/sticky-scroll",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo sticky scroll reveal animation aceternity"),
+  },
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {
