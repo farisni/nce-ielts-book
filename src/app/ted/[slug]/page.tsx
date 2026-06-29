@@ -38,7 +38,7 @@ export default async function TedArticlePage({
         {/* Article — 70% */}
         <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-8">
           {/* Header */}
-          <div className="flex items-start gap-3 pb-2">
+          <div className="flex items-start gap-6 pb-2">
             <span className="mt-2"><TedIcon /></span>
             <div className="flex flex-col gap-0.5 pt-0.5">
               <h1 className="text-2xl font-semibold tracking-normal">
