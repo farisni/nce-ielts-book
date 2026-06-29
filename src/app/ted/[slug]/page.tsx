@@ -41,10 +41,10 @@ export default async function TedArticlePage({
           <div className="flex items-start gap-6 pb-4">
             <span className="mt-2"><TedIcon /></span>
             <div className="flex flex-col pt-0.5">
-              {/* Chinese title — 思源黑体 / PingFang SC Semibold */}
+              {/* Chinese title */}
               <h1
                 className="text-2xl font-semibold tracking-normal text-foreground"
-                style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", "LXGW WenKai Screen", sans-serif' }}
+                style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", sans-serif' }}
               >
                 {article.title}
               </h1>
@@ -72,12 +72,10 @@ export default async function TedArticlePage({
                 >
                   {article.articleParagraphs[i]}
                 </p>
-                {/* Chinese translation — PingFang SC Regular */}
+                {/* Chinese translation */}
                 {article.translationParagraphs[i] && (
                   <p
-                    className="border-l-2 border-border/40 pl-4 text-[0.9rem] leading-loose text-muted-foreground/80"
-                    style={{ fontFamily: '"PingFang SC", "LXGW WenKai Screen", sans-serif' }}
-                  >
+                    className="border-l-2 border-border/40 pl-4 text-[0.9rem] leading-loose text-muted-foreground/80">
                     {article.translationParagraphs[i]}
                   </p>
                 )}
