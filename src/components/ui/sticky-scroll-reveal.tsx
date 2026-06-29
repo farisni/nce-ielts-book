@@ -54,7 +54,7 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="relative flex h-[calc(100vh-140px)] justify-center space-x-10 overflow-y-auto rounded-md border border-border bg-background p-6 transition-colors"
+      className="relative flex h-[calc(100vh-140px)] justify-center space-x-10 overflow-y-auto rounded-md border border-border bg-background p-6 transition-colors [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-muted-foreground/10"
       ref={ref}
     >
       <div className="div relative flex items-start px-4">
