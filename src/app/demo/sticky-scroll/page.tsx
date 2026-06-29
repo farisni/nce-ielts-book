@@ -51,15 +51,8 @@ const content = [
 
 export default function StickyScrollDemo() {
   return (
-    <section className="mx-auto max-w-6xl rounded-xl border-2 border-dashed border-border px-6 py-16">
-      <div className="mb-6">
-        <h1 className="text-xl font-semibold tracking-tight">Sticky Scroll Reveal</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          滚动时左侧文字高亮切换，右侧卡片 sticky 吸附展示
-        </p>
-      </div>
-
+    <div className="mx-auto max-w-5xl">
       <StickyScroll content={content} />
-    </section>
+    </div>
   );
 }
