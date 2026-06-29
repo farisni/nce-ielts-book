@@ -30,7 +30,8 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Tooltip } from "@/components/ui/tooltip";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton";
 import { Button19 } from "@/components/ui/button-19";
 
 import {
@@ -402,8 +403,12 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                 )}
                 <Link
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
-                  className="group flex items-start justify-between gap-8 py-5 transition-colors hover:text-primary"
+                  className="group flex items-start gap-5 py-5 transition-colors hover:text-primary"
                 >
+                  {/* cover thumbnail — only for IELTS */}
+                  {defaultLevel === "IELTS16" && (
+                    <img src={`${["/tokyo.jpg", "/karen.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover" />
+                  )}
                   <div className="min-w-0 flex flex-col gap-2.5">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <h2 className="text-lg font-medium text-foreground group-hover:text-primary">
