@@ -36,32 +36,48 @@ export default async function TedArticlePage({
     <section className="min-w-0 flex-1 pl-16 pr-[40px] py-12">
       <div className="mx-auto flex w-[960px] min-w-[960px] flex-none gap-6">
         {/* Article — 70% */}
-        <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-8">
+        <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-10">
           {/* Header */}
-          <div className="flex items-start gap-6 pb-2">
+          <div className="flex items-start gap-6 pb-4">
             <span className="mt-2"><TedIcon /></span>
-            <div className="flex flex-col gap-0.5 pt-0.5">
-              <h1 className="text-2xl font-semibold tracking-normal">
+            <div className="flex flex-col pt-0.5">
+              {/* Chinese title — 思源黑体 / PingFang SC Semibold */}
+              <h1
+                className="text-2xl font-semibold tracking-normal text-foreground"
+                style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", "LXGW WenKai Screen", sans-serif' }}
+              >
                 {article.title}
               </h1>
-              <p className="text-lg text-muted-foreground">
+              {/* English subtitle — Inter / SF Pro Display */}
+              <p
+                className="mt-1.5 text-lg tracking-wide text-muted-foreground/80"
+                style={{ fontFamily: '"Inter", "SF Pro Display", system-ui, -apple-system, sans-serif' }}
+              >
                 {article.subtitle}
               </p>
-              <p className="text-sm text-muted-foreground/60">
+              <p className="mt-1 text-xs tracking-widest uppercase text-muted-foreground/50">
                 {article.author}
               </p>
             </div>
           </div>
 
-          {/* Article + Translation interleaved */}
-          <div className="flex flex-col gap-5">
+          {/* Article body */}
+          <div className="flex flex-col gap-8">
             {Array.from({ length: maxLen }).map((_, i) => (
-              <div key={i} className="flex flex-col gap-2">
-                <p className="text-base leading-relaxed text-foreground">
+              <div key={i} className="flex flex-col gap-4">
+                {/* English body — Inter / SF Pro Text */}
+                <p
+                  className="text-base leading-loose text-foreground"
+                  style={{ fontFamily: '"Inter", "SF Pro Text", system-ui, -apple-system, sans-serif' }}
+                >
                   {article.articleParagraphs[i]}
                 </p>
+                {/* Chinese translation — PingFang SC Regular */}
                 {article.translationParagraphs[i] && (
-                  <p className="text-[0.9rem] leading-relaxed text-muted-foreground">
+                  <p
+                    className="border-l-2 border-border/40 pl-4 text-[0.9rem] leading-loose text-muted-foreground/80"
+                    style={{ fontFamily: '"PingFang SC", "LXGW WenKai Screen", sans-serif' }}
+                  >
                     {article.translationParagraphs[i]}
                   </p>
                 )}
@@ -71,8 +87,7 @@ export default async function TedArticlePage({
         </section>
 
         {/* Translation placeholder */}
-        <aside className="w-[281px] min-w-[281px] max-w-[281px] shrink-0 rounded-xl border-2 border-dashed border-border mt-24 px-4 pb-4 self-start h-[500px]">
-        </aside>
+        <aside className="w-[281px] min-w-[281px] max-w-[281px] shrink-0 rounded-xl border-2 border-dashed border-border mt-24 px-4 pb-4 self-start h-[500px]" />
       </div>
     </section>
   );
