@@ -334,7 +334,7 @@ export default function TopNav() {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   render={<Link href="/" />}
-                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none" })}
+                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
                 >
                   首页
                 </NavigationMenuLink>

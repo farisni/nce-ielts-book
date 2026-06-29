@@ -202,7 +202,7 @@ export function AppSidebar() {
               href: "/",
               icon: <PanelLeft className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
             }}
-            className="font-medium"
+            className="font-semibold"
           />
 
           <div className="scrollbar-ghost -mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1 pb-2">
