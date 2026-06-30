@@ -417,12 +417,7 @@ export default function TopNav() {
                           {group.items.map((item) => (
                             <li key={item.href}>
                               <NavigationMenuLink render={<Link href={item.href} />}>
-                                <div className="flex flex-col gap-1 px-1">
-                                  <div className="font-medium text-foreground">{item.label}</div>
-                                  <div className="line-clamp-2 text-sm text-muted-foreground">
-                                    {item.description}
-                                  </div>
-                                </div>
+                                <div className="font-medium text-foreground px-1">{item.label}</div>
                               </NavigationMenuLink>
                             </li>
                           ))}
@@ -440,12 +435,7 @@ export default function TopNav() {
                     {IELTS_NAV_ITEMS.map((item) => (
                       <li key={item.href}>
                         <NavigationMenuLink render={<Link href={item.href} />}>
-                          <div className="flex flex-col gap-1 px-1">
-                            <div className="font-medium text-foreground">{item.label}</div>
-                            <div className="line-clamp-2 text-sm text-muted-foreground">
-                              {item.description}
-                            </div>
-                          </div>
+                          <div className="font-medium text-foreground px-1">{item.label}</div>
                         </NavigationMenuLink>
                       </li>
                     ))}
@@ -460,12 +450,7 @@ export default function TopNav() {
                     {pageSearchItems.filter((item) => item.group === "Demo").map((item) => (
                       <li key={item.href}>
                         <NavigationMenuLink render={<Link href={item.href} />}>
-                          <div className="flex flex-col gap-1 px-1">
-                            <div className="font-medium text-foreground">{item.label}</div>
-                            <div className="line-clamp-2 text-sm text-muted-foreground">
-                              {item.description}
-                            </div>
-                          </div>
+                          <div className="font-medium text-foreground px-1">{item.label}</div>
                         </NavigationMenuLink>
                       </li>
                     ))}
