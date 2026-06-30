@@ -65,6 +65,8 @@ import { useArticleSettings } from "@/stores/article-settings";
 import FlipClock from "@/components/8starlabs-ui/flip-clock";
 import { ThinkingIndicator } from "@/components/ui/thinking-indicator";
 import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
+import { useAudioSync } from "@/app/_components/use-audio-sync";
+import { Play, Pause } from "lucide-react";
 import { ShineBorder } from "@/components/ui/shine-border";
 
 const LEVEL_ROUTES: Record<string, string> = {
@@ -475,6 +477,64 @@ function ArticleReader({ article }: { article: Article }) {
   const [lastAction, setLastAction] = useState("No selection action yet.");
   const [activePanelKey, setActivePanelKey] = useState("");
   const [highlightsHidden, setHighlightsHidden] = useState(false);
+  /* ---- audio sync for NCE4 ---- */
+  const isNce4 = article.level === "NCE4";
+  const {
+    audioRef,
+    playing,
+    togglePlay,
+    currentMs,
+    duration,
+    activeSentenceIndex,
+    lrcLines,
+    seek,
+    hasLrc,
+    audioHandlers,
+  } = useAudioSync(isNce4 ? article.lesson : 0);
+
+  const allSentenceKeys = useMemo(() => {
+    const keys: string[] = [];
+    for (let pi = 0; pi < articleParagraphs.length; pi++) {
+      const sentences = article.original.paragraphs[pi] ?? [];
+      for (let si = 0; si < sentences.length; si++) {
+        keys.push(`${article.id}-p${pi}-s${si}`);
+      }
+    }
+    return keys;
+  }, [article.id, article.original.paragraphs, articleParagraphs]);
+
+  /* match LRC line text → article sentence, since LRC has leading meta lines */
+  const audioActiveKey = useMemo(() => {
+    if (!isNce4 || activeSentenceIndex < 0 || !lrcLines[activeSentenceIndex]) return null;
+    const lrcText = lrcLines[activeSentenceIndex].text.toLowerCase().replace(/[^a-z0-9]/g, '');
+    // too short = metadata line (title, "Lesson 1", etc.)
+    if (lrcText.length < 15) return null;
+    // find best matching article sentence by text similarity
+    for (const key of allSentenceKeys) {
+      const parts = key.split('-p').pop()?.split('-s');
+      if (!parts) continue;
+      const pi = parseInt(parts[0]);
+      const si = parseInt(parts[1]);
+      const sentence = article.original.paragraphs[pi]?.[si];
+      if (!sentence) continue;
+      const sText = sentence.text.toLowerCase().replace(/[^a-z0-9]/g, '');
+      // substring match (LRC may be a subset of the full sentence)
+      if (sText.includes(lrcText) || lrcText.includes(sText)) return key;
+    }
+    return null;
+  }, [isNce4, activeSentenceIndex, lrcLines, allSentenceKeys, article.original.paragraphs]);
+
+  /* auto-scroll to audio-active sentence */
+  const prevAudioKeyRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!audioActiveKey || audioActiveKey === prevAudioKeyRef.current) return;
+    prevAudioKeyRef.current = audioActiveKey;
+    const el = document.querySelector(`[data-sentence-key="${audioActiveKey}"]`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [audioActiveKey]);
+
 
   /* animate highlights on route jump or right-click highlight only */
   const prevArticleIdRef = useRef("");
@@ -677,6 +737,12 @@ function ArticleReader({ article }: { article: Article }) {
     setChatInput("");
   }
 
+  const formatAudioTime = useCallback((s: number) => {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  }, []);
+
   return (
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       
@@ -691,6 +757,35 @@ function ArticleReader({ article }: { article: Article }) {
                     {article.titleCn}
                   </span>
                 </h1>
+                                {/* audio player for NCE4 */}
+                {isNce4 && (
+                  <div className="flex items-center gap-2 ml-4">
+                    <button
+                      onClick={togglePlay}
+                      className="flex size-8 items-center justify-center rounded-full border border-border bg-surface-2 text-foreground transition-colors hover:bg-surface-3"
+                      aria-label={playing ? "Pause" : "Play"}
+                    >
+                      {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 ml-0.5" />}
+                    </button>
+                    <span className="text-xs tabular-nums text-muted-foreground w-16 text-right">
+                      {formatAudioTime(currentMs)} / {formatAudioTime(duration)}
+                    </span>
+                    <input
+                      type="range"
+                      min={0}
+                      max={duration || 1}
+                      step={0.1}
+                      value={currentMs}
+                      onChange={(e) => seek(parseFloat(e.target.value))}
+                      className="w-24 accent-foreground"
+                    />
+                    <audio
+                      ref={audioRef}
+                      src={`/audio/nce4/${article.lesson}.mp3`}
+                      {...audioHandlers}
+                    />
+                  </div>
+                )}
                 <div className="flex items-center ml-auto">
                   {previousArticle ? (
                     <Tooltip content="上一课">
@@ -732,6 +827,19 @@ function ArticleReader({ article }: { article: Article }) {
               )}
             </AnimatePresence>
 
+            {/* audio-playing focus overlay — full viewport dim */}
+            <AnimatePresence>
+              {isNce4 && playing && audioActiveKey && (
+                <motion.div
+                  className="fixed inset-0 z-20 bg-black/[0.12] pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              )}
+            </AnimatePresence>
+
             <ContextMenu>
               <ContextMenuTrigger
               className="select-auto"
@@ -768,15 +876,16 @@ function ArticleReader({ article }: { article: Article }) {
                           {sentences.map((sentence, sIdx) => {
                             const key = `${article.id}-p${index}-s${sIdx}`;
                             const hasPanelNotes = (sentence.panelNotes?.length ?? 0) > 0;
-                            const isActive = activePanelKey === key;
+                            const isActive = activePanelKey === key || audioActiveKey === key;
                             return (
-                              <span key={key} className={`sentence-inline ${isActive ? "relative z-[21] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
+                              <span key={key} data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[21] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
                                 {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current)}
                                 {hasPanelNotes && (
                                   <button
                                     type="button"
                                     onClick={() => togglePanel(key)}
-                                    className="inline-flex size-5 items-center justify-center rounded text-muted-foreground/50 hover:bg-muted hover:text-foreground transition-colors align-middle mx-0.5"
+                                    disabled={playing}
+                                    className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
                                   >
                                     <MoreHorizontal className="size-3.5" />
                                   </button>
