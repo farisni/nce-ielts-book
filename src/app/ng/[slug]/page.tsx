@@ -38,21 +38,21 @@ export default async function NgArticlePage({
         <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-6">
           {/* Header */}
           <div className="flex items-start gap-6 pb-4">
-            <span className="mt-2"><NgIcon /></span>
+            <span className="mt-1"><NgIcon /></span>
             <div className="flex flex-col pt-0.5">
-              {/* Chinese title */}
+              {/* English title — Inter / SF Pro Display */}
               <h1
-                className="text-2xl font-semibold tracking-normal text-foreground"
-                style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", sans-serif' }}
-              >
-                {article.title}
-              </h1>
-              {/* English subtitle — Inter / SF Pro Display */}
-              <p
-                className="mt-1.5 text-lg tracking-wide text-muted-foreground/80"
+                className="text-3xl font-semibold tracking-normal text-foreground"
                 style={{ fontFamily: '"Inter", "SF Pro Display", system-ui, -apple-system, sans-serif' }}
               >
                 {article.subtitle}
+              </h1>
+              {/* Chinese subtitle */}
+              <p
+                className="mt-1.5 text-base tracking-wide text-muted-foreground/80"
+                style={{ fontFamily: '"PingFang SC", "Source Han Sans SC", "Noto Sans SC", sans-serif' }}
+              >
+                {article.title}
               </p>
               <p className="mt-1 text-xs tracking-widest uppercase text-muted-foreground/50">
                 {article.author}
