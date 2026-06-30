@@ -405,7 +405,7 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                 )}
                 <Link
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
-                  className="group flex items-start gap-5 py-5 transition-colors"
+                  className="group flex items-center gap-5 py-5 transition-colors"
                 >
                   {/* cover thumbnail */}
                   {defaultLevel === "IELTS16" ? (
