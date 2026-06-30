@@ -562,3 +562,41 @@
 .prose blockquote p:last-of-type::after {
   content: none !important;
 }
+
+/* ─── Global thin scrollbar ──────────────────────────────────────── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(161, 161, 170, 0.25) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.25);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.4);
+}
+
+.dark html,
+html.dark {
+  scrollbar-color: rgba(161, 161, 170, 0.2) transparent;
+}
+
+.dark html::-webkit-scrollbar-thumb,
+html.dark::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.2);
+}
+
+.dark html::-webkit-scrollbar-thumb:hover,
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.35);
+}
