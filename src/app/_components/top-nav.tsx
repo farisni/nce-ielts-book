@@ -301,6 +301,15 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo springs animation framer motion bounce"),
   },
+  {
+    id: "demo-audio-word-highlight",
+    label: "Demo · Audio Word Highlight",
+    description: "Word-level audio transcript with spring animation",
+    href: "/demo/audio-word-highlight",
+    group: "Demo",
+    icon: <PlayIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo audio word highlight transcript subtitle animation"),
+  },
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {
