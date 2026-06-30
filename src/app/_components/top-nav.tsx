@@ -282,6 +282,16 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo data grid table sorting pagination tanstack"),
   },
+
+  {
+    id: "ng-demo",
+    label: "NG · Reading Explorer",
+    description: "National Geographic article reader",
+    href: "/ng/ng-demo",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("ng national geographic reading explorer 国家地理"),
+  },
   {
     id: "demo-springs",
     label: "Demo · Springs",
