@@ -152,6 +152,11 @@ const demoItems = [
     href: "/demo/sticky-scroll",
     icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
+  {
+    label: "Demo · React LRC",
+    href: "/demo/react-lrc",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
 ];
 
 function SidebarSection({ title, children }: { title: string; children: ReactNode }) {
