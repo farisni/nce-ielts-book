@@ -38,7 +38,7 @@ export default async function NgArticlePage({
         <section className="w-[655px] min-w-[655px] max-w-[655px] shrink-0 flex flex-col gap-6">
           {/* Header */}
           <div className="flex items-start gap-6 pb-4">
-            <span className="mt-1"><NgIcon /></span>
+            <span className="mt-[8px]"><NgIcon /></span>
             <div className="flex flex-col pt-0.5">
               {/* English title — Inter / SF Pro Display */}
               <h1
