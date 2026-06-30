@@ -57,7 +57,7 @@ export function ScrollProgress({ className, containerRef, inline }: ScrollProgre
 
   if (inline) {
     return (
-      <div className={cn("sticky top-0 z-10 h-1 w-full overflow-hidden rounded-t-lg bg-muted/50", className)}>
+      <div className={cn("sticky top-0 z-10 h-1 w-full overflow-hidden bg-muted/50", className)}>
         {bar}
       </div>
     );
