@@ -65,9 +65,9 @@ import { useArticleSettings } from "@/stores/article-settings";
 import FlipClock from "@/components/8starlabs-ui/flip-clock";
 import { ThinkingIndicator } from "@/components/ui/thinking-indicator";
 import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
+import { ShineBorder } from "@/components/ui/shine-border";
 import { useAudioSync } from "@/app/_components/use-audio-sync";
 import { Play, Pause } from "lucide-react";
-import { ShineBorder } from "@/components/ui/shine-border";
 
 const LEVEL_ROUTES: Record<string, string> = {
   NCE2: "/nec/nce2",
@@ -477,7 +477,7 @@ function ArticleReader({ article }: { article: Article }) {
   const [lastAction, setLastAction] = useState("No selection action yet.");
   const [activePanelKey, setActivePanelKey] = useState("");
   const [highlightsHidden, setHighlightsHidden] = useState(false);
-  /* ---- audio sync for NCE4 ---- */
+/* ---- audio sync for NCE4 ---- */
   const isNce4 = article.level === "NCE4";
   const {
     audioRef,
@@ -503,13 +503,11 @@ function ArticleReader({ article }: { article: Article }) {
     return keys;
   }, [article.id, article.original.paragraphs, articleParagraphs]);
 
-  /* match LRC line text → article sentence, since LRC has leading meta lines */
+  /* match LRC line text → article sentence */
   const audioActiveKey = useMemo(() => {
     if (!isNce4 || activeSentenceIndex < 0 || !lrcLines[activeSentenceIndex]) return null;
     const lrcText = lrcLines[activeSentenceIndex].text.toLowerCase().replace(/[^a-z0-9]/g, '');
-    // too short = metadata line (title, "Lesson 1", etc.)
     if (lrcText.length < 15) return null;
-    // find best matching article sentence by text similarity
     for (const key of allSentenceKeys) {
       const parts = key.split('-p').pop()?.split('-s');
       if (!parts) continue;
@@ -518,7 +516,6 @@ function ArticleReader({ article }: { article: Article }) {
       const sentence = article.original.paragraphs[pi]?.[si];
       if (!sentence) continue;
       const sText = sentence.text.toLowerCase().replace(/[^a-z0-9]/g, '');
-      // substring match (LRC may be a subset of the full sentence)
       if (sText.includes(lrcText) || lrcText.includes(sText)) return key;
     }
     return null;
@@ -534,7 +531,6 @@ function ArticleReader({ article }: { article: Article }) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [audioActiveKey]);
-
 
   /* animate highlights on route jump or right-click highlight only */
   const prevArticleIdRef = useRef("");
@@ -827,7 +823,7 @@ function ArticleReader({ article }: { article: Article }) {
               )}
             </AnimatePresence>
 
-            {/* audio-playing focus overlay — full viewport dim */}
+            {/* audio focus overlay */}
             <AnimatePresence>
               {isNce4 && playing && audioActiveKey && (
                 <motion.div
@@ -878,55 +874,52 @@ function ArticleReader({ article }: { article: Article }) {
                             const hasPanelNotes = (sentence.panelNotes?.length ?? 0) > 0;
                             const isActive = activePanelKey === key || audioActiveKey === key;
                             return (
-                              <span key={key} data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[21] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current)}
-                                {hasPanelNotes && (
-                                  <button
-                                    type="button"
-                                    onClick={() => togglePanel(key)}
-                                    disabled={playing}
-                                    className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
-                                  >
-                                    <MoreHorizontal className="size-3.5" />
-                                  </button>
-                                )}
-                                {" "}
-                              </span>
+                              <React.Fragment key={key}>
+                                <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[21] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
+                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current)}
+                                  {hasPanelNotes && (
+                                    <button
+                                      type="button"
+                                      onClick={() => togglePanel(key)}
+                                      disabled={playing}
+                                      className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
+                                    >
+                                      <MoreHorizontal className="size-3.5" />
+                                    </button>
+                                  )}
+                                  {" "}
+                                </span>
+                                <AnimatePresence>
+                                  {activePanelKey === key && sentence.panelNotes && sentence.panelNotes.length > 0 && (
+                                    <motion.div
+                                      key={key}
+                                      data-selection-offset-excluded="true"
+                                      className="rounded-lg px-4 py-3 relative z-[21]"
+                                      style={{ background: "#f2f7f2", minHeight: 200 }}
+                                      initial={{ opacity: 0, y: -6 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: -6 }}
+                                      transition={SPRING_PANEL}
+                                    >
+                                      <div className="flex flex-col gap-2">
+                                        {(sentence.panelNotes!).map((note, ni) => (
+                                          <div key={ni} className="flex items-start gap-3">
+                                            <span className="shrink-0 rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
+                                              style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
+                                            >
+                                              {note.title}
+                                            </span>
+                                            <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </React.Fragment>
                             );
                           })}
                         </div>
-                        <AnimatePresence>
-                          {sentences.some((s) => (s.panelNotes?.length ?? 0) > 0) && sentences.map((sentence, sIdx) => {
-                            const key = `${article.id}-p${index}-s${sIdx}`;
-                            const isActive = activePanelKey === key;
-                            if (!isActive || !sentence.panelNotes?.length) return null;
-                            return (
-                              <motion.div
-                                key={key}
-                                data-selection-offset-excluded="true"
-                                className="rounded-lg px-4 py-3 relative z-[21]"
-                                style={{ background: "#f2f7f2", minHeight: 200 }}
-                                initial={{ opacity: 0, y: -6 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -6 }}
-                                transition={SPRING_PANEL}
-                              >
-                                <div className="flex flex-col gap-2">
-                                  {sentence.panelNotes.map((note, ni) => (
-                                    <div key={ni} className="flex items-start gap-3">
-                                      <span className="shrink-0 rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
-                                        style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
-                                      >
-                                        {note.title}
-                                      </span>
-                                      <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            );
-                          })}
-                        </AnimatePresence>
                         {isIelts && articleParagraphTranslations[index] ? (
                           <p
                             data-selection-offset-excluded="true"

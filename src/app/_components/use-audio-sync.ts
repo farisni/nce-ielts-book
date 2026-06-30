@@ -61,7 +61,9 @@ export function useAudioSync(lesson: number) {
     const a = audioRef.current;
     if (!a) return;
     if (a.paused) {
-      a.play();
+      a.play().catch(() => {
+        // interrupted by pause or DOM removal — ignore
+      });
       setPlaying(true);
     } else {
       a.pause();
