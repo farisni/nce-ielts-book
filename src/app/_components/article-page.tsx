@@ -401,19 +401,19 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
             {articles.map((article, index) => (
               <Fragment key={article.id}>
                 {index > 0 && (
-                  <Separator className="my-0.5 bg-zinc-200 dark:bg-zinc-700" />
+                  <Separator className="my-0 bg-zinc-200 dark:bg-zinc-700" />
                 )}
                 <Link
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
-                  className="group flex items-start gap-5 py-5 transition-colors hover:text-primary"
+                  className="group flex items-start gap-5 py-5 transition-colors"
                 >
                   {/* cover thumbnail — only for IELTS */}
                   {defaultLevel === "IELTS16" && (
-                    <img src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover" />
+                    <img src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                   )}
                   <div className="min-w-0 flex flex-col gap-2.5">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <h2 className="text-lg font-medium text-foreground group-hover:text-primary">
+                      <h2 className="text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
                         {article.title}
                       </h2>
                       <span className="text-xs text-muted-foreground">
