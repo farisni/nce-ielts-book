@@ -401,7 +401,7 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
             {articles.map((article, index) => (
               <Fragment key={article.id}>
                 {index > 0 && (
-                  <Separator className="my-0 bg-zinc-200 dark:bg-zinc-700" />
+                  <Separator className="my-0 border-t border-dashed border-border" />
                 )}
                 <Link
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
