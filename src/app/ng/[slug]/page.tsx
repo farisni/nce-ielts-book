@@ -10,7 +10,7 @@ function NgIcon() {
   );
   return (
     <span
-      className="inline-flex shrink-0 h-10 w-auto [&_svg]:h-full [&_svg]:w-auto"
+      className="inline-flex shrink-0 h-12 w-auto [&_svg]:h-full [&_svg]:w-auto"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
