@@ -26,3 +26,8 @@ Flat UI / Minimalist SaaS — 扁平无渐变，靠间距层级区分内容。
 - **框架**: Next.js 16.2.9 (App Router) + Turbopack
 - **样式**: Tailwind CSS + shadcn/ui
 - **端口**: 3006
+
+## Turbopack 编译死循环处理
+- **现象**：`next-server` CPU 持续 300%+ 不回落，修改 `globals.css` 后触发
+- **原因**：`.next` 缓存损坏导致增量编译陷入循环
+- **解决**：`rm -rf .next && npm run dev` 清除缓存重启
