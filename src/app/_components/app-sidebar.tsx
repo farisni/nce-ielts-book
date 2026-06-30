@@ -236,6 +236,11 @@ function CollapsibleSidebarGroup({
 }
 
 export function AppSidebar() {
+  const flattenedItems = [
+    ...courseItems,
+    ...ieltsItems,
+  ];
+
   return (
     <Sidebar>
       <SidebarBody className="sticky top-0 h-svh overflow-hidden">
@@ -249,40 +254,10 @@ export function AppSidebar() {
             className="font-semibold"
           />
 
-          <div className="scrollbar-ghost -mx-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-1 pb-2">
-            <SidebarSection title="Courses">
-              {courseItems.map((item) => (
-                <SidebarLink key={item.href} link={item} />
-              ))}
-            </SidebarSection>
-
-            <SidebarSection title="TED">
-              {tedItems.map((item) => (
-                <SidebarLink key={item.href} link={item} />
-              ))}
-            </SidebarSection>
-
-            <SidebarSection title="IELTS">
-              {ieltsItems.map((item) => (
-                <SidebarLink key={item.href} link={item} />
-              ))}
-            </SidebarSection>
-
-            <SidebarSection title="Words">
-              <CollapsibleSidebarGroup
-                label="NCE"
-                icon={<BookOpen className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />}
-                items={nceWordItems}
-              />
-            </SidebarSection>
-
-            <SidebarSection title="Demo">
-              <CollapsibleSidebarGroup
-                label="Demo pages"
-                icon={<PanelLeft className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />}
-                items={demoItems}
-              />
-            </SidebarSection>
+          <div className="scrollbar-ghost -mx-1 flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-1 pb-2">
+            {flattenedItems.map((item) => (
+              <SidebarLink key={item.href} link={item} />
+            ))}
           </div>
         </div>
       </SidebarBody>

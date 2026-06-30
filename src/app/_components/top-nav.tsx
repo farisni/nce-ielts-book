@@ -133,7 +133,7 @@ const pageSearchItems: PageSearchItem[] = [
     label: "TED · 学一门外语的秘密",
     description: "TED talk article reader",
     href: "/ted/ted-demo",
-    group: "Navigate",
+    group: "Demo",
     icon: <PlayIcon className="text-muted-foreground" />,
     keywords: toKeywords("ted 演讲 language 语言 学习 外语 lidia"),
   },
@@ -454,12 +454,23 @@ export default function TopNav() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink
-                  render={<Link href="/ted/ted-demo" />}
-                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
-                >
-                  TED
-                </NavigationMenuLink>
+                <NavigationMenuTrigger>Demo</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-72 list-none grid-cols-1 gap-1 p-0">
+                    {pageSearchItems.filter((item) => item.group === "Demo").map((item) => (
+                      <li key={item.href}>
+                        <NavigationMenuLink render={<Link href={item.href} />}>
+                          <div className="flex flex-col gap-1 px-1">
+                            <div className="font-medium text-foreground">{item.label}</div>
+                            <div className="line-clamp-2 text-sm text-muted-foreground">
+                              {item.description}
+                            </div>
+                          </div>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
