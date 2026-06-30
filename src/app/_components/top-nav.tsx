@@ -264,6 +264,33 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo sticky scroll reveal animation aceternity"),
   },
+  {
+    id: "demo-sortable",
+    label: "Demo · Sortable",
+    description: "Drag-and-drop sortable list",
+    href: "/demo/sortable",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo sortable drag drop 拖拽 排序 list"),
+  },
+  {
+    id: "demo-data-grid",
+    label: "Demo · Data Grid",
+    description: "Advanced data grid with sorting and pagination",
+    href: "/demo/data-grid",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo data grid table sorting pagination tanstack"),
+  },
+  {
+    id: "demo-springs",
+    label: "Demo · Springs",
+    description: "Framer-motion spring animation presets",
+    href: "/demo/springs",
+    group: "Demo",
+    icon: <CommandIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo springs animation framer motion bounce"),
+  },
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {

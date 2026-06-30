@@ -4,6 +4,7 @@ import TopNav from "@/app/_components/top-nav";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import { FloatAction } from "@/app/_components/float-action";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function RootLayout({
           </div>
 
           <FloatAction />
-        </ThemeProvider>
+          <Toaster richColors />        </ThemeProvider>
       </body>
     </html>
   );
