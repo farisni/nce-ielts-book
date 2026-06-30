@@ -28,6 +28,7 @@
     "@blocks-so": "https://blocks.so/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}",
     "@uitripled": "https://ui.tripled.work/r/{name}.json",
-    "@pulkitxm": "https://pulkitxm.com/components/{name}.json"
+    "@pulkitxm": "https://pulkitxm.com/components/{name}.json",
+    "@reui": "https://reui.io/r/{style}/{name}.json"
   }
 }

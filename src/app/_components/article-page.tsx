@@ -407,9 +407,11 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
                   className="group flex items-start gap-5 py-5 transition-colors"
                 >
-                  {/* cover thumbnail — only for IELTS */}
-                  {defaultLevel === "IELTS16" && (
+                  {/* cover thumbnail */}
+                  {defaultLevel === "IELTS16" ? (
                     <img src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                  ) : (
+                    <Skeleton className="h-20 w-28 shrink-0 rounded-lg" />
                   )}
                   <div className="min-w-0 flex flex-col gap-2.5">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
