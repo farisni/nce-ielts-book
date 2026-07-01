@@ -910,9 +910,7 @@ function ArticleReader({ article }: { article: Article }) {
                                       <div className="flex flex-col gap-2 text-left">
                                         {(sentence.panelNotes!).map((note, ni) => (
                                           <div key={ni} className="flex items-start gap-3">
-                                            <span className="shrink-0 rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
-                                              style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
-                                            >
+                                            <span className="shrink-0 text-sm font-semibold text-foreground/80">
                                               {note.title}
                                             </span>
                                             <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
