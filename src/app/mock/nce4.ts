@@ -78,7 +78,7 @@ const articleNce4L1: Article = {
             },
             { title: "考研英语（英译汉）", body: "" },
             {
-              title: "the Near East 近东", body: "", table: [
+              title: "the Near East", body: " 近东", table: [
                 { main: "the Middle East", explain: "中东", enExample: "Oil is a major export product of the Middle East.", zhExample: "石油是中东的主要出口产品。" },
                 { main: "the Far East", explain: "远东", enExample: "Many Western companies have expanded into the Far East.", zhExample: "许多西方公司已扩展到远东市场。" }
               ]
@@ -94,8 +94,8 @@ const articleNce4L1: Article = {
             {
               title: "状语从句 ⇒ 定语从句练习", body: "", table: [
                 { main: "", explain: "状语从句", enExample: "定语从句", zhExample: "" },
-                { main: "I have to be very careful not to offend the boss, because he could fire me at any time.", explain: "", enExample: "I have to be very careful not to offend the boss, who could fire me at any time.", zhExample: "" },
-                { main: "The action, although it has aroused universal disapproval, is nevertheless the only solution.", explain: "", enExample: "The action, which has aroused universal disapproval, is nevertheless the only solution.", zhExample: "" }
+                { main: "I have to be very careful not to offend the boss, because he could fire me at any time.", explain: "", enExample: "", zhExample: "" },
+                { main: "The action, although it has aroused universal disapproval, is nevertheless the only solution.", explain: "", enExample: "", zhExample: "" }
               ]
             }
           ]
@@ -103,7 +103,7 @@ const articleNce4L1: Article = {
         {
           text: "But there are some parts of the world where even now people cannot write.", translation: "但直到现在,世界上有些地方，人们还不会书写。", predicates: ["are"], clauseIntroducers: [], auxiliaries: [], rubyNotes: [], structureNotes: undefined, panelNotes: [
             {
-              title: "there be 存在某物、某人", body: "", table: [
+              title: "there be", body: "存在某物、某人", table: [
                 { main: "", explain: "", enExample: "There seem to be more opportunities now.", zhExample: "现在好像有更多的机会。" },
                 { main: "", explain: "", enExample: "There appear to be some changes.", zhExample: "好像有一些变化。" },
                 { main: "", explain: "", enExample: "There seem / appear to be a misunderstanding.", zhExample: "好像有一个误会。" },
