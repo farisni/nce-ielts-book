@@ -20,7 +20,7 @@ const articleNce4L1: Article = {
   attribution: "ROBIN PLACE（罗宾·普莱斯）《Finding fossil man》",
   notesOnText: [
     { title: "hand down", body: "把...传下去。例句：Many old legends were handed down from generation by mouth. 许多古老的传说都是一代一代口传下来了。" },
-    { title: "read of", body: "读到，和 read about 是相同的意思。谈到：speak of，talk of；了解到：know of；听到：hear of。\n\n例句：\nI had read of such hideous incarnate demons. 我读过关于这类可怕的化身鬼怪的书。\nI read of the traffic accident in yesterday\'s paper. 我在昨天的报纸上知道了这起交通事故。" },
+    { title: "read of", body: "读到，和 read about 是相同的意思。谈到：speak of，talk of；了解到：know of；听到：hear of。" },
     { title: "the first people", body: "原始人。people+s 表示民族。" },
     { title: "if they had any", body: "即便是有，表假设。例句：His relatives, if he had any, never went to visit him when he was hospitalized. 他的亲戚，即便他还有的话，在他住院时也从来不去看他。" },
     { title: "when even the bones...", body: "这个以when引导的状语从句表示让步的意思，而when可以译成\u201c虽然\u201d，\u201c尽管\u201d。" }
@@ -30,7 +30,7 @@ const articleNce4L1: Article = {
     paragraphs: [
       [
         {
-          text: "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.", translation: "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。", predicates: ["can read of"], clauseIntroducers: ["that"], rubyNotes: [{ "title": "read of", "body": "读到" }],
+          text: "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.", translation: "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。", predicates: ["can read of"], clauseIntroducers: ["that"], rubyNotes: [{ "title": "read of", "body": "读到" }], structureNotes: [{ title: "read of", body: "读到，和 read about 是相同的意思。\n\n例句：\nI had read of such hideous incarnate demons. 我读过关于这类可怕的化身鬼怪的书。\nI read of the traffic accident in yesterday's paper. 我在昨天的报纸上知道了这起交通事故。" }],
           panelNotes: [{ title: "hand downhand", body: "把...传下去 例句：Many old legends were handed down from generation by mouth. 许多古老的传说都是一代一代口传下来了。" },
           { title: "read of 动+介", body: "读到，同 read about。talk about  短语动词 (Phrasal Verbs) " },]
         },
