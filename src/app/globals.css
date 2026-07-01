@@ -446,7 +446,7 @@
   font-weight: 400;
   color: #37352f;
   border-radius: 6px;
-  margin-right: 8px;
+  margin-right: 0;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "LXGW WenKai Screen", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .note-body {

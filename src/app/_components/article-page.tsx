@@ -978,13 +978,21 @@ function ArticleReader({ article }: { article: Article }) {
                     {!isIelts && article.notesOnText?.length ? (
                       <div className="article-notes">
                         <h2 className="section-title">课文注释</h2>
-                        {article.notesOnText.map((note, i) => (
-                          <div key={i} className="note-item">
-                            <span className="note-index">{i + 1}.</span>
-                            <span className="note-label">{note.title}</span>
-                            <span className="note-body">{note.body}</span>
-                          </div>
-                        ))}
+                        <table className="w-full border-separate border-spacing-y-2">
+                          <tbody>
+                            {article.notesOnText.map((note, i) => (
+                              <tr key={i} className="note-item align-top">
+                                <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
+                                <td className="align-top pt-0.5">
+                                  <div className="flex items-start gap-1.5">
+                                    <span className="note-label shrink-0">{note.title}</span>
+                                    <span className="note-body">{note.body}</span>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
                     ) : null}
                     {!isIelts && articleParagraphTranslations.some(Boolean) && (
