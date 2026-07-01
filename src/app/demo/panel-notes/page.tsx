@@ -1,7 +1,14 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import {
+  Timeline,
+  TimelineContent,
+  TimelineHeader,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineTitle,
+} from "@/components/reui/timeline";
 
 interface TableRow {
   main: string;
@@ -15,8 +22,6 @@ interface Note {
   body: string;
   table?: TableRow[];
 }
-
-const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
 
 const sampleNotes: Note[] = [
   {
@@ -39,73 +44,59 @@ const sampleNotes: Note[] = [
   { title: "offering 'get-rich-quick' opportunities", body: "提供，现在分词做后置定语" },
 ];
 
+const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
+const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
+
 export default function PanelNotesDemo() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="mx-auto w-[1022px] min-w-[1022px] flex-none rounded-xl border-2 border-dashed border-border p-10">
-      <h2 className="text-lg font-semibold mb-6">行间笔记面板 · 排版预览</h2>
+    <div className="mx-auto max-w-[720px] rounded-xl border-2 border-dashed border-border p-10 mt-10">
+      <h2 className="text-lg font-medium mb-8">行间笔记 · Timeline</h2>
 
-      <div className="flex flex-col gap-6">
-        <div className="text-lg leading-loose text-foreground [text-indent:2em]">
-          This is a sentence with some inline notes.
-          <button
-            onClick={() => setOpen(!open)}
-            className="inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 text-muted-foreground/50 hover:bg-muted hover:text-foreground"
+      <Timeline className="mt-1 w-full" defaultValue={sampleNotes.length}>
+        {sampleNotes.map((note, ni) => (
+          <TimelineItem
+            key={ni}
+            step={ni + 1}
+            className="group-data-[orientation=vertical]/timeline:ms-14"
           >
-            ···
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              key="panel-demo"
-              data-selection-offset-excluded="true"
-              className="rounded-lg px-4 py-3 relative z-[21] [text-indent:0]"
-              style={{ background: "#f2f7f2" }}
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex flex-col gap-2 text-left">
-                {sampleNotes.map((note, ni) => (
-                  <div key={ni}>
-                    <div className="flex items-start gap-3">
-                      <span
-                        className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
-                        style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
-                      >
-                        {note.title}
-                      </span>
-                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{note.body}</p>
-                    </div>
-                    {note.table && (
-                      <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
-                        {note.table.map((row, ri) => (
-                          <li key={ri} className="flex items-start gap-2.5">
-                            <span
-                              className="mt-[0.4rem] size-1.5 rounded-full shrink-0"
-                              style={{ background: dotColors[ni % dotColors.length] }}
-                            />
-                            <div className="min-w-0">
-                              <span className="font-medium text-foreground/65">{row.main}</span>
-                              <span className="ml-1 text-xs font-normal">{row.explain}</span>
-                              <div className="mt-0.5">{row.enExample}</div>
-                              <div className="text-xs mt-0.5">{row.zhExample}</div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            <TimelineHeader>
+              <TimelineSeparator className="!bg-border/70 !w-0.5" />
+              <TimelineIndicator
+                className="flex items-center justify-center border-0"
+                style={{ background: dotColors[ni % dotColors.length] + "1a" }}
+              >
+                <span
+                  className="size-1.5 rounded-full"
+                  style={{ background: dotColors[ni % dotColors.length] }}
+                />
+              </TimelineIndicator>
+              <TimelineTitle className="flex items-start gap-2">
+                <span
+                  className="shrink-0 inline-flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
+                  style={{ background: pillBg[ni % pillBg.length] }}
+                >
+                  {note.title}
+                </span>
+                <span className="text-[13px] text-muted-foreground">{note.body}</span>
+              </TimelineTitle>
+            </TimelineHeader>
+            <TimelineContent>
+              {note.table && note.table.length > 0 && (
+                <ul className="space-y-2 text-[13px] text-muted-foreground">
+                  {note.table.map((row, ri) => (
+                    <li key={ri} className={ri === 0 ? "min-w-0 mt-1" : "min-w-0"}>
+                      <span className="font-medium text-foreground/65">{row.main}</span>
+                      <span className="ml-1 text-[11px]">{row.explain}</span>
+                      <div className="mt-0.5">{row.enExample}</div>
+                      <div className="text-[11px] mt-0.5">{row.zhExample}</div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </TimelineContent>
+          </TimelineItem>
+        ))}
+      </Timeline>
     </div>
   );
 }
