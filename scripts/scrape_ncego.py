@@ -313,6 +313,14 @@ def main():
     with urlopen(req) as resp:
         html = resp.read().decode('utf-8')
     
+    # Save original HTML for debugging
+    lesson_id = re.search(r'/lessons/(\d+)', args.url).group(1)
+    cache_dir = os.path.join(os.path.dirname(__file__), 'html_cache')
+    os.makedirs(cache_dir, exist_ok=True)
+    with open(os.path.join(cache_dir, f'lesson-{lesson_id}.html'), 'w', encoding='utf-8') as f:
+        f.write(html)
+    print(f'Cached: scripts/html_cache/lesson-{lesson_id}.html')
+    
     print('Parsing...')
     data = parse_html(html)
     
