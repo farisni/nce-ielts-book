@@ -68,6 +68,15 @@ import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { useAudioSync } from "@/app/_components/use-audio-sync";
 import { Play, Pause } from "lucide-react";
+import {
+  Timeline,
+  TimelineContent,
+  TimelineHeader,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineTitle,
+} from "@/components/reui/timeline";
 
 const LEVEL_ROUTES: Record<string, string> = {
   NCE2: "/nec/nce2",
@@ -361,6 +370,9 @@ type ArticlePageProps = {
   defaultLevel: string;
   searchParams: Promise<{ article?: string | string[] }>;
 };
+
+const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
+const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
 
 export function ArticlePage({ defaultLevel, searchParams }: ArticlePageProps) {
   const query = use(searchParams);
@@ -919,17 +931,47 @@ function ArticleReader({ article }: { article: Article }) {
                                       exit={{ opacity: 0, y: -4 }}
                                       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                                     >
-                                      <div className="flex flex-col gap-2 text-left">
+                                      <Timeline className="mt-1 w-full" defaultValue={sentence.panelNotes!.length}>
                                         {(sentence.panelNotes!).map((note, ni) => (
-                                          <div key={ni} className="flex items-start gap-3">
-                                            <span className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
-                                            >
-                                              {note.title.trim()}
-                                            </span>
-                                            <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
-                                          </div>
+                                          <TimelineItem key={ni} step={ni + 1} className="group-data-[orientation=vertical]/timeline:ms-14">
+                                            <TimelineHeader>
+                                              <TimelineSeparator className="!bg-border/70 !w-0.5" />
+                                              <TimelineIndicator
+                                                className="flex items-center justify-center border-0"
+                                                style={{ background: dotColors[ni % dotColors.length] + "1a" }}
+                                              >
+                                                <span
+                                                  className="size-1.5 rounded-full"
+                                                  style={{ background: dotColors[ni % dotColors.length] }}
+                                                />
+                                              </TimelineIndicator>
+                                              <TimelineTitle className="flex items-start gap-2">
+                                                <span
+                                                  className="shrink-0 inline-flex items-center rounded px-2 py-0.5 text-sm font-medium text-foreground/85"
+                                                  style={{ background: pillBg[ni % pillBg.length] }}
+                                                >
+                                                  {note.title.trim()}
+                                                </span>
+                                                <span className="text-[13px] text-muted-foreground">{note.body}</span>
+                                              </TimelineTitle>
+                                            </TimelineHeader>
+                                            {note.table && note.table.length > 0 && (
+                                              <TimelineContent>
+                                                <ul className="space-y-2 text-[13px] text-muted-foreground ml-1">
+                                                  {note.table.map((row, ri) => (
+                                                    <li key={ri} className={ri === 0 ? "min-w-0 mt-1" : "min-w-0"}>
+                                                      <span className="font-medium text-foreground/85">{row.main}</span>
+                                                      <span className="ml-1 text-[11px]">{row.explain}</span>
+                                                      <div className="mt-0.5">{row.enExample}</div>
+                                                      <div className="text-[11px] mt-0.5">{row.zhExample}</div>
+                                                    </li>
+                                                  ))}
+                                                </ul>
+                                              </TimelineContent>
+                                            )}
+                                          </TimelineItem>
                                         ))}
-                                      </div>
+                                      </Timeline>
                                     </motion.div>
                                   )}
                                 </AnimatePresence>

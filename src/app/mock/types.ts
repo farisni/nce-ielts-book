@@ -8,6 +8,12 @@ export interface VocabItem {
 export interface SentenceNote {
   title: string
   body: string
+  table?: {
+    main: string
+    explain: string
+    enExample: string
+    zhExample: string
+  }[]
 }
 
 export interface SentenceData {
