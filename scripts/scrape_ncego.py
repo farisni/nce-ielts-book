@@ -3,14 +3,139 @@
 ncego.com 课程抓取器 → Article TS 数据结构
 用法: python3 scripts/scrape_ncego.py <URL> [--preview]
 
-依赖: /Users/faris/Desktop/nce-export/scripts/parse_lesson.py
+依赖: 无（自包含）
 """
 import re, sys, os, argparse
 from urllib.request import urlopen, Request
 
-# Import parse_html from the nce-export project
-sys.path.insert(0, '/Users/faris/Desktop/nce-export/scripts')
-from parse_lesson import parse_html
+# ── parse_html (from nce-export) ──
+from html import unescape
+
+def _clean(t):
+    if not t: return ''
+    t = unescape(t); t = t.replace('\u00a0',' '); t = re.sub(r'\s+',' ',t)
+    return t.strip()
+
+def parse_html(content):
+    """从 HTML 提取结构化数据"""
+    title_m = re.search(r'<title>(.*?)</title>', content)
+    title_full = title_m.group(1) if title_m else ''
+    en_cn = re.match(r'Lesson (\d+) (.+?) (.+?) ', title_full)
+    lesson_no = int(en_cn.group(1)) if en_cn else 1
+    title_en = en_cn.group(2) if en_cn else ''
+    title_cn = en_cn.group(3) if en_cn else ''
+    update_m = re.search(r'更新于:(\d{4}-\d{2}-\d{2})', content)
+    updated = update_m.group(1) if update_m else ''
+
+    metadata = {
+        'book': '新概念英语第四册', 'lesson_no': lesson_no,
+        'title_en': title_en, 'title_cn': title_cn, 'updated': updated
+    }
+
+    wl_m = re.search(r'<div class="word_list.*?</div>\s*</div>\s*</div>', content, re.DOTALL)
+    vocabulary = []
+    if wl_m:
+        for w in re.findall(r'<h4[^>]*>(.*?)</h4>\s*(<small[^>]*>.*?</small>)?\s*(<small[^>]*>.*?</small>)?', wl_m.group(), re.DOTALL):
+            vocabulary.append({
+                'word': _clean(re.sub(r'<[^>]+>','',w[0])),
+                'phonetic': _clean(re.sub(r'<[^>]+>','',w[1] or '')),
+                'pos': _clean(re.sub(r'<[^>]+>','',w[2] or ''))
+            })
+
+    lc_m = re.search(r'<div[^>]*class="[^"]*lesson-content[^"]*"[^>]*>(.*?)<div id="exercises"', content, re.DOTALL)
+    body = lc_m.group(1) if lc_m else ''
+
+    parts = re.split(r'<h3[^>]*>(.*?)</h3>', body)
+    sections = []
+
+    i = 1
+    while i < len(parts) - 1:
+        h3_html = parts[i]; h3_body = parts[i+1]
+        h3_text = _clean(re.sub(r'<[^>]+>','',h3_html))
+        if not h3_text or '单词列表' in h3_text: i += 2; continue
+
+        predicates = [_clean(re.sub(r'<[^>]+>','',m.group(1))) for m in re.finditer(r'<span style="color: #ba372a;">(.*?)</span>', h3_html)]
+        predicates = [p for p in predicates if p]
+        auxiliaries = [_clean(re.sub(r'<[^>]+>','',m.group(1))) for m in re.finditer(r'<span style="color: #843fa1;">(.*?)</span>', h3_html)]
+        auxiliaries = [a for a in auxiliaries if a]
+
+        annotations = []
+        for m in re.finditer(r'<abbr[^>]*title="([^"]+)"[^>]*>(.*?)</abbr>', h3_html):
+            annotations.append({'text': _clean(re.sub(r'<[^>]+>','',m.group(2))), 'tip': unescape(m.group(1)).strip()})
+
+        bg_quotes = []
+        for bgm in re.finditer(r'background-color: #ecf0f1', h3_html):
+            span_start = h3_html.rfind('<span', 0, bgm.start())
+            depth = 0; span_end = span_start
+            for j in range(span_start, len(h3_html)):
+                if h3_html[j:j+5]=='<span': depth += 1
+                elif h3_html[j:j+7]=='</span>':
+                    depth -= 1
+                    if depth==0: span_end=j+7; break
+            bg_text = _clean(re.sub(r'<[^>]+>','',h3_html[span_start:span_end]))
+            if bg_text and bg_text not in bg_quotes: bg_quotes.append(bg_text)
+
+        h4_parts = re.split(r'<h4[^>]*>(.*?)</h4>', h3_body)
+        preamble = _clean(re.sub(r'<[^>]+>','',h4_parts[0])) if h4_parts else None
+
+        details = []
+        j = 1
+        while j < len(h4_parts) - 1:
+            h4_title = _clean(re.sub(r'<[^>]+>','',h4_parts[j]))
+            h4_body_text = h4_parts[j+1]
+
+            examples = []
+            for li in re.findall(r'<li[^>]*>(.*?)</li>', h4_body_text, re.DOTALL):
+                en = _clean(re.sub(r'<[^>]+>','',re.sub(r'<sup>.*?</sup>','',li)))
+                cn_m = re.search(r'<sup>(.*?)</sup>', li)
+                cn = _clean(unescape(cn_m.group(1))) if cn_m else ''
+                if en: examples.append({'en':en,'cn':cn})
+
+            tables = []
+            for tm in re.finditer(r'<table[^>]*>(.*?)</table>', h4_body_text, re.DOTALL):
+                tb = tm.group(1)
+                trs = re.findall(r'<tr[^>]*>(.*?)</tr>', tb, re.DOTALL)
+                if not trs: continue
+                first_tds = re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', trs[0], re.DOTALL)
+                if len(first_tds)==2 and re.search(r'<strong>', first_tds[0]):
+                    rows = []
+                    for tr in trs:
+                        tds = re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', tr, re.DOTALL)
+                        if len(tds)>=2:
+                            main = _clean(re.sub(r'<[^>]+>','',re.sub(r'<sup>.*?</sup>','',tds[0])))
+                            sup_m = re.search(r'<sup>(.*?)</sup>', tds[0])
+                            sup = _clean(unescape(sup_m.group(1))) if sup_m else ''
+                            ct = _clean(unescape(re.sub(r'<[^>]+>','',tds[1])))
+                            if main: rows.append({'main':main,'sup':sup,'content':ct})
+                    if rows: tables.append(rows)
+                else:
+                    rows = [[_clean(unescape(re.sub(r'<[^>]+>','',td))) for td in re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', tr, re.DOTALL)] for tr in trs]
+                    if rows: tables.append(rows)
+
+            if h4_title:
+                detail = {'title':h4_title, 'examples':examples}
+                if tables: detail['tables'] = tables
+                details.append(detail)
+            j += 2
+
+        sections.append({
+            'sentence':h3_text, 'predicates':predicates, 'auxiliaries':auxiliaries,
+            'background_quotes':bg_quotes, 'annotations':annotations,
+            'preamble':preamble, 'details':details
+        })
+        i += 2
+
+    ex_m = re.search(r'<div id="exercises"[^>]*>(.*?)</section>', content, re.DOTALL)
+    questions, answers = [], []
+    if ex_m:
+        ex_body = ex_m.group(1)
+        for q in re.findall(r'<h6[^>]*>(.*?)</h6>', ex_body, re.DOTALL):
+            questions.append(_clean(re.sub(r'<sup>.*?</sup>','',q)))
+        for a in re.findall(r'<div class="([^"]*answer[^"]*)">(.*?)</div>', ex_body, re.DOTALL):
+            answers.append({'text':_clean(re.sub(r'<[^>]+>','',a[1])), 'correct':'is_answer' in a[0]})
+
+    exercises = {'questions':questions, 'answers':answers}
+    return {'metadata':metadata, 'content':{'vocabulary':vocabulary,'sections':sections,'exercises':exercises}}
 
 def esc(s):
     if not s: return ''
