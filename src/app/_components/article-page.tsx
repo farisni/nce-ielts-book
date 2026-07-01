@@ -924,7 +924,7 @@ function ArticleReader({ article }: { article: Article }) {
                                     <motion.div
                                       key={key}
                                       data-selection-offset-excluded="true"
-                                      className="rounded-lg px-4 py-3 relative z-[21] [text-indent:0]"
+                                      className="rounded-lg px-4 py-3 relative z-[21] [text-indent:0] font-sans"
                                       style={{ background: "#f2f7f2" }}
                                       initial={{ opacity: 0, y: -4 }}
                                       animate={{ opacity: 1, y: 0 }}
@@ -945,7 +945,7 @@ function ArticleReader({ article }: { article: Article }) {
                                                   style={{ background: dotColors[ni % dotColors.length] }}
                                                 />
                                               </TimelineIndicator>
-                                              <TimelineTitle className="flex items-start gap-2">
+                                              <TimelineTitle className="flex items-center gap-2">
                                                 <span
                                                   className="shrink-0 inline-flex items-center rounded px-2 py-0.5 text-sm font-medium text-foreground/85"
                                                   style={{ background: pillBg[ni % pillBg.length] }}
