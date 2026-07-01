@@ -1043,9 +1043,13 @@ function ArticleReader({ article }: { article: Article }) {
                                                       <tbody>
                                                         {synonymRows.map((row, ri) => (
                                                           <tr key={ri} className="align-top">
-                                                            <td className="w-[1%] whitespace-nowrap pr-3 py-0.5 ">
-                                                              <span className="font-medium text-foreground/85">{highlightInText(row.main, note.title)}</span>
-                                                              <span className="ml-1.5 text-[11px]">{row.explain}</span>
+                                                            <td className="w-[1%] pr-3 py-0.5 max-w-[320px]">
+                                                              <Tooltip content={<span>{row.main} {row.explain}</span>}>
+                                                                <span className="truncate block font-medium text-foreground/85">
+                                                                  {highlightInText(row.main, note.title)}
+                                                                  <span className="ml-1.5 text-[11px] font-normal">{row.explain}</span>
+                                                                </span>
+                                                              </Tooltip>
                                                             </td>
                                                             <td className="py-0.5 ">
                                                               <Tooltip content={row.zhExample}>
