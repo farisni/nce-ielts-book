@@ -44,11 +44,12 @@ def parse_html(html):
         word = _clean(h4.text) if h4 else ''
         phonetic = _clean(smalls[0].text) if len(smalls) > 0 else ''
         pos_text = _clean(smalls[1].text) if len(smalls) > 1 else ''
-        if ' / ' in pos_text:
-            parts = pos_text.split(' / ', 1)
-            pos, meaning = parts[0], parts[1]
-        else:
+        # Split pos+meaning (e.g. "n. 化石人" → "n.", "化石人")
+        pos, meaning = split_cn(pos_text) if pos_text else ('', '')
+        if not meaning:
             pos, meaning = pos_text, ''
+        else:
+            pos = pos.rstrip('.') + '.' if pos else ''
         vocabulary.append({'word': word, 'phonetic': phonetic, 'pos': pos, 'meaning': meaning})
     
     # Sentences + details
