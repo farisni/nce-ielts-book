@@ -3,10 +3,17 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
+interface TableRow {
+  main: string;
+  explain: string;
+  enExample: string;
+  zhExample: string;
+}
+
 interface Note {
   title: string;
   body: string;
-  table?: [string, string][];
+  table?: TableRow[];
 }
 
 const sampleNotes: Note[] = [
@@ -14,9 +21,9 @@ const sampleNotes: Note[] = [
     title: "read of",
     body: "读到",
     table: [
-      ["speak of / talk of 谈到", "When she spoke of her childhood, her eyes lit up. 她一谈到童年，眼睛就发亮。"],
-      ["hear of 听说", "I've never heard of that place before. 我以前从未听说过那个地方。"],
-      ["know of 知道有", "Do you know of any good restaurants nearby? 你知道附近有什么好餐馆吗？"],
+      { main: "speak of / talk of", explain: "谈到", enExample: "When she spoke of her childhood, her eyes lit up.", zhExample: "她一谈到童年，眼睛就发亮。" },
+      { main: "hear of", explain: "听说", enExample: "I've never heard of that place before.", zhExample: "我以前从未听说过那个地方。" },
+      { main: "know of", explain: "知道有", enExample: "Do you know of any good restaurants nearby?", zhExample: "你知道附近有什么好餐馆吗？" },
     ],
   },
   { title: "no shortage of", body: "双重否定，不缺，翻译时常当作动词处理" },
@@ -69,8 +76,14 @@ export default function PanelNotesDemo() {
                           <tbody>
                             {note.table.map((row, ri) => (
                               <tr key={ri} className="border-b border-border/40 last:border-0">
-                                <td className="pr-4 py-1.5 font-medium text-foreground/65 whitespace-nowrap align-top">{row[0]}</td>
-                                <td className="py-1.5 leading-relaxed">{row[1]}</td>
+                                <td className="pr-4 py-1.5 whitespace-nowrap align-top">
+                                  <span className="font-medium text-foreground/65">{row.main}</span>
+                                  <span className="ml-1 text-xs font-normal">{row.explain}</span>
+                                </td>
+                                <td className="py-1.5 leading-relaxed">
+                                  <span>{row.enExample}</span>
+                                  <span className="ml-1 text-xs">{row.zhExample}</span>
+                                </td>
                               </tr>
                             ))}
                           </tbody>
