@@ -1205,6 +1205,26 @@ function ArticleReader({ article }: { article: Article }) {
                         ))}
                       </div>
                     )}
+                    {!isIelts && article.pendingNotes?.length ? (
+                      <div className="pt-6">
+                        <h2 className="mb-4 text-lg font-semibold text-foreground">其他笔记</h2>
+                        <table className="w-full border-separate border-spacing-y-2">
+                          <tbody>
+                            {article.pendingNotes.map((note, i) => (
+                              <tr key={i} className="note-item align-top">
+                                <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
+                                <td className="align-top pt-0.5">
+                                  <div className="flex items-start gap-1.5">
+                                    <span className="note-label shrink-0">{note.label}</span>
+                                    <span className="note-body">{note.description}</span>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : null}
                   </div>
                 </article>
               }

@@ -19,15 +19,18 @@ const articleNce4L1: Article = {
 
   attribution: "ROBIN PLACE（罗宾·普莱斯）《Finding fossil man》",
   notesOnText: [
-    { label: "英语标题的特点", description: "英语的标题通常不会用完整的句子，尽量追去简洁，一般使用音节比较少的词，避免使用大词，使用简洁且能鲜明的表达中心思想为宜。" },
-    { label: "find = discover", description: "发现。例句：discover fossil man、ancient man、prehistoric man。" },
-    { label: "标题词常用简洁的单词", description: "拼写与发音更容易的词。encourage → spur 激励；prohibit / forbid → ban 禁止；compete → vie 竞争；nominate → name 提名。" },
-    { label: "alliteration 头韵", description: "叮当、咔嚓、哗啦、呱唧。例句：Spare that spider；Matterhorn man；The sporting spirit；Pride and Prejudice（傲慢与偏见）；Prince and Pauper（王子与乞丐）；World Wide Watch（世界观察）；A Delicious Dish A Day（甜甜饮食）；Beauty and Beast（美女与野兽）；WWW = The World Wide Web。" },
     { label: "hand down", description: "把...传下去。例句：Many old legends were handed down from generation by mouth. 许多古老的传说都是一代一代口传下来了。" },
     { label: "read of", description: "读到，和 read about 是相同的意思。谈到：speak of，talk of；了解到：know of；听到：hear of。" },
     { label: "the first people", description: "原始人。people+s 表示民族。" },
     { label: "if they had any", description: "即便是有，表假设。例句：His relatives, if he had any, never went to visit him when he was hospitalized. 他的亲戚，即便他还有的话，在他住院时也从来不去看他。" },
     { label: "when even the bones...", description: "这个以when引导的状语从句表示让步的意思，而when可以译成\u201c虽然\u201d，\u201c尽管\u201d。" }
+  ],
+
+  pendingNotes: [
+    { label: "英语标题的特点", description: "英语的标题通常不会用完整的句子，尽量追去简洁，一般使用音节比较少的词，避免使用大词，使用简洁且能鲜明的表达中心思想为宜。" },
+    { label: "find = discover", description: "发现。例句：discover fossil man、ancient man、prehistoric man。" },
+    { label: "标题词常用简洁的单词", description: "拼写与发音更容易的词。encourage → spur 激励；prohibit / forbid → ban 禁止；compete → vie 竞争；nominate → name 提名。" },
+    { label: "alliteration 头韵", description: "叮当、咔嚓、哗啦、呱唧。例句：Spare that spider；Matterhorn man；The sporting spirit；Pride and Prejudice（傲慢与偏见）；Prince and Pauper（王子与乞丐）；World Wide Watch（世界观察）；A Delicious Dish A Day（甜甜饮食）；Beauty and Beast（美女与野兽）；WWW = The World Wide Web。" },
   ],
 
   original: {
