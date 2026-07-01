@@ -112,7 +112,7 @@ function Tooltip({
               side={side}
               sideOffset={sideOffset}
               forceMount
-              className="z-50"
+              className="z-[80]"
             >
               <motion.div
                 className={cn(

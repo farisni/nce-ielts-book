@@ -78,8 +78,8 @@ export function useAudioSync(lesson: number) {
   }, []);
 
   const onPlay = useCallback(() => setPlaying(true), []);
-  const onPause = useCallback(() => setPlaying(false), []);
-  const onEnded = useCallback(() => setPlaying(false), []);
+  const onPause = useCallback(() => { setPlaying(false); setActiveSentenceIndex(-1); }, []);
+  const onEnded = useCallback(() => { setPlaying(false); setActiveSentenceIndex(-1); }, []);
   const onLoadedMetadata = useCallback(() => {
     const a = audioRef.current;
     if (a) setDuration(a.duration);
