@@ -961,7 +961,7 @@ function ArticleReader({ article }: { article: Article }) {
                                                     <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
                                                       {exampleRows.map((row, ri) => (
                                                         <li key={ri} className="min-w-0">
-                                                          <div>{highlightInText(row.enExample, row.main)}</div>
+                                                          <div>{highlightInText(row.enExample, note.title)}</div>
                                                           <div className="text-[11px] mt-0.5">{row.zhExample}</div>
                                                         </li>
                                                       ))}
