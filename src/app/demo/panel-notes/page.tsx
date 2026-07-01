@@ -86,7 +86,7 @@ export default function PanelNotesDemo() {
                         <tbody>
                           {note.table.map((row, ri) => (
                             <tr key={ri}>
-                              <td className="relative pl-4 pr-1 py-1.5 whitespace-nowrap align-middle">
+                              <td className="relative pl-4 pr-1 py-1.5 align-middle w-32">
                                 <span className="absolute left-0 top-1/2 -translate-y-1/2 size-1 rounded-full" style={{ background: dotColors[ni % dotColors.length] }} />
                                 {ri < note.table.length - 1 && (
                                   <span className="absolute left-[0.09375rem] top-[calc(50%+0.125rem)] bottom-0 w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
