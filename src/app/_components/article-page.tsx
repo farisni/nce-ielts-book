@@ -321,7 +321,8 @@ function renderHighlightedText(
   predicates?: string[],
   auxiliaries?: string[],
   clauseIntroducers?: string[],
-  showGrammarHighlights?: boolean,) {
+  showGrammarHighlights?: boolean,
+  rubyNotes?: SentenceData["rubyNotes"],) {
   const paragraphEnd = paragraphStart + text.length;
   const relevantHighlights = highlights.filter(
     (highlight) => highlight.start < paragraphEnd && highlight.end > paragraphStart,
@@ -352,6 +353,32 @@ function renderHighlightedText(
 
   // Sort by position
   grammarMatches.sort((a, b) => a.start - b.start);
+
+  // Ruby notes: find positions + tips
+  type RubyRange = { start: number; end: number; title: string; body: string };
+  const rubyRanges: RubyRange[] = [];
+  if (rubyNotes && rubyNotes.length > 0 && showGrammarHighlights !== false) {
+    for (const note of rubyNotes) {
+      if (!note.title) continue;
+      const escaped = note.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(escaped, 'gi');
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        rubyRanges.push({ start: match.index, end: match.index + match[0].length, title: note.title, body: note.body });
+      }
+    }
+    rubyRanges.sort((a, b) => a.start - b.start);
+    // Remove exact duplicates
+    const deduped: RubyRange[] = [];
+    for (const r of rubyRanges) {
+      const last = deduped[deduped.length - 1];
+      if (!last || r.start !== last.start || r.end !== last.end) {
+        deduped.push(r);
+      }
+    }
+    rubyRanges.length = 0;
+    rubyRanges.push(...deduped);
+  }
 
   // Remove overlapping grammar matches (keep first)
   const filteredGrammar: GrammarMatch[] = [];
@@ -400,13 +427,59 @@ function renderHighlightedText(
     }
   }
 
-  if (final.length === 0) return text;
+  if (final.length === 0 && rubyRanges.length === 0) return text;
+
+  // Split segments at ruby note boundaries
+  type FinalSegment = { start: number; end: number; color?: string; isUser?: boolean; ruby?: { title: string; body: string } };
+  let finalSegments: FinalSegment[] = final.map(s => ({ ...s }));
+
+  // First, add ruby-only segments for ranges that don't overlap any existing segment
+  for (const rr of rubyRanges) {
+    let overlaps = false;
+    for (const seg of finalSegments) {
+      if (!(rr.end <= seg.start || rr.start >= seg.end)) {
+        overlaps = true;
+        break;
+      }
+    }
+    if (!overlaps) {
+      finalSegments.push({ start: rr.start, end: rr.end, ruby: { title: rr.title, body: rr.body } });
+    }
+  }
+  finalSegments.sort((a, b) => a.start - b.start);
+
+  // Then split overlapping segments at ruby boundaries
+  for (const rr of rubyRanges) {
+    const next: FinalSegment[] = [];
+    for (const seg of finalSegments) {
+      if (rr.end <= seg.start || rr.start >= seg.end) {
+        // No overlap
+        next.push(seg);
+      } else {
+        // Overlap — split into before, overlap, after
+        if (seg.start < rr.start) {
+          next.push({ start: seg.start, end: rr.start, color: seg.color, isUser: seg.isUser });
+        }
+        const overlapStart = Math.max(seg.start, rr.start);
+        const overlapEnd = Math.min(seg.end, rr.end);
+        // Only set ruby on the first matching range for each overlap
+        const existingRuby = (seg as FinalSegment).ruby;
+        next.push({ start: overlapStart, end: overlapEnd, color: seg.color, isUser: seg.isUser, ruby: existingRuby || { title: rr.title, body: rr.body } });
+        if (seg.end > rr.end) {
+          next.push({ start: rr.end, end: seg.end, color: seg.color, isUser: seg.isUser });
+        }
+      }
+    }
+    finalSegments = next;
+  }
+
+  if (finalSegments.length === 0) return text;
 
   const parts: React.ReactNode[] = [];
   let cursor = 0;
   let idx = 0;
 
-  for (const seg of final) {
+  for (const seg of finalSegments) {
     if (seg.start > cursor) {
       parts.push(
         <Fragment key={`tx-${paragraphStart}-${idx}`}>
@@ -419,11 +492,23 @@ function renderHighlightedText(
       ? { trigger: 'always' as const, color: seg.color, animate }
       : { style: { color: seg.color, fontWeight: 600 } as React.CSSProperties };
 
-    parts.push(
+    const innerContent = (
       <Wrapper key={`hl-${paragraphStart}-${idx}`} {...wrapperProps}>
         {text.slice(seg.start, seg.end)}
-      </Wrapper>,
+      </Wrapper>
     );
+
+    if (seg.ruby) {
+      parts.push(
+        <Tooltip key={`ruby-${paragraphStart}-${idx}`} content={seg.ruby.body} delayDuration={300}>
+          <span className="cursor-help underline decoration-violet-500/50 decoration-dotted underline-offset-[6px]">
+            {innerContent}
+          </span>
+        </Tooltip>
+      );
+    } else {
+      parts.push(innerContent);
+    }
     cursor = seg.end;
     idx++;
   }
@@ -988,7 +1073,7 @@ function ArticleReader({ article }: { article: Article }) {
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights)}
+                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.rubyNotes)}
                                   {hasPanelNotes && (
                                     <button
                                       type="button"
