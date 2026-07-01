@@ -66,7 +66,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "英语语序", body: "", table: [
+              title: "英语语序 事件+地点+时间", body: "", table: [
                 { main: "", explain: "", enExample: "I saw him at the party yesterday.", zhExample: "事件+地点+时间" },
                 { main: "", explain: "", enExample: "Several cases have been reported in Russia recently of people who can read and detect colors with their fingers, and even see through solid doors and walls.", zhExample: "（Several cases of people）" },
                 { main: "", explain: "", enExample: "He maybe conceited, ill-mannered, presumptuous or fatuous, but I do not turn for protection to dreary clichés about respect of elders — as if mere age were a reason for respect.", zhExample: "" },
