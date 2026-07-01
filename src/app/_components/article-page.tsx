@@ -108,8 +108,8 @@ const LEVEL_DEFAULT_ARTICLE: Record<string, string> = {
 
 type GrammarSummaryNote = {
   key: string;
-  title: string;
-  body: string;
+  label: string;
+  description: string;
   relatedExamples?: GrammarRelatedExample[];
 };
 
@@ -219,11 +219,11 @@ function getGrammarSummaryGroups(article: Article): GrammarSummaryGroup[] {
       paragraphIndex,
       tone: 1 as GrammarSummaryGroup["tone"],
       notes: paragraph.flatMap((sentence, sentenceIndex) =>
-        (sentence.structureNotes ?? []).map((note, noteIndex) => ({
+        (sentence.grammarNotes ?? []).map((note, noteIndex) => ({
           key: `${article.id}-${paragraphIndex}-${sentenceIndex}-${noteIndex}`,
-          title: note.title,
-          body: note.body,
-          relatedExamples: getRelatedExamplesForGrammar(note.body),
+          label: note.label,
+          description: note.description,
+          relatedExamples: getRelatedExamplesForGrammar(note.description),
         })),
       ),
     }))
@@ -322,7 +322,7 @@ function renderHighlightedText(
   auxiliaries?: string[],
   clauseIntroducers?: string[],
   showGrammarHighlights?: boolean,
-  rubyNotes?: SentenceData["rubyNotes"],) {
+  inlineAnnotations?: SentenceData["inlineAnnotations"],) {
   const paragraphEnd = paragraphStart + text.length;
   const relevantHighlights = highlights.filter(
     (highlight) => highlight.start < paragraphEnd && highlight.end > paragraphStart,
@@ -355,16 +355,16 @@ function renderHighlightedText(
   grammarMatches.sort((a, b) => a.start - b.start);
 
   // Ruby notes: find positions + tips
-  type RubyRange = { start: number; end: number; title: string; body: string };
+  type RubyRange = { start: number; end: number; label: string; description: string };
   const rubyRanges: RubyRange[] = [];
-  if (rubyNotes && rubyNotes.length > 0 && showGrammarHighlights !== false) {
-    for (const note of rubyNotes) {
-      if (!note.title) continue;
-      const escaped = note.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  if (inlineAnnotations && inlineAnnotations.length > 0 && showGrammarHighlights !== false) {
+    for (const note of inlineAnnotations) {
+      if (!note.label) continue;
+      const escaped = note.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(escaped, 'gi');
       let match;
       while ((match = regex.exec(text)) !== null) {
-        rubyRanges.push({ start: match.index, end: match.index + match[0].length, title: note.title, body: note.body });
+        rubyRanges.push({ start: match.index, end: match.index + match[0].length, label: note.label, description: note.description });
       }
     }
     rubyRanges.sort((a, b) => a.start - b.start);
@@ -430,7 +430,7 @@ function renderHighlightedText(
   if (final.length === 0 && rubyRanges.length === 0) return text;
 
   // Split segments at ruby note boundaries
-  type FinalSegment = { start: number; end: number; color?: string; isUser?: boolean; ruby?: { title: string; body: string } };
+  type FinalSegment = { start: number; end: number; color?: string; isUser?: boolean; ruby?: { label: string; description: string } };
   let finalSegments: FinalSegment[] = final.map(s => ({ ...s }));
 
   // First, add ruby-only segments for ranges that don't overlap any existing segment
@@ -443,7 +443,7 @@ function renderHighlightedText(
       }
     }
     if (!overlaps) {
-      finalSegments.push({ start: rr.start, end: rr.end, ruby: { title: rr.title, body: rr.body } });
+      finalSegments.push({ start: rr.start, end: rr.end, ruby: { label: rr.label, description: rr.description } });
     }
   }
   finalSegments.sort((a, b) => a.start - b.start);
@@ -464,7 +464,7 @@ function renderHighlightedText(
         const overlapEnd = Math.min(seg.end, rr.end);
         // Only set ruby on the first matching range for each overlap
         const existingRuby = (seg as FinalSegment).ruby;
-        next.push({ start: overlapStart, end: overlapEnd, color: seg.color, isUser: seg.isUser, ruby: existingRuby || { title: rr.title, body: rr.body } });
+        next.push({ start: overlapStart, end: overlapEnd, color: seg.color, isUser: seg.isUser, ruby: existingRuby || { label: rr.label, description: rr.description } });
         if (seg.end > rr.end) {
           next.push({ start: rr.end, end: seg.end, color: seg.color, isUser: seg.isUser });
         }
@@ -501,7 +501,7 @@ function renderHighlightedText(
     if (seg.ruby) {
       const hasGrammarColor = !!seg.color;
       parts.push(
-        <Tooltip key={`ruby-${paragraphStart}-${idx}`} content={seg.ruby.body} delayDuration={300}>
+        <Tooltip key={`ruby-${paragraphStart}-${idx}`} content={seg.ruby.description} delayDuration={300}>
           <span className={hasGrammarColor ? "cursor-help" : "cursor-help underline decoration-violet-500/50 decoration-dotted underline-offset-[6px]"}>
             {innerContent}
           </span>
@@ -1069,12 +1069,12 @@ function ArticleReader({ article }: { article: Article }) {
                           )}
                           {sentences.map((sentence, sIdx) => {
                             const key = `${article.id}-p${index}-s${sIdx}`;
-                            const hasPanelNotes = (sentence.panelNotes?.length ?? 0) > 0;
+                            const hasPanelNotes = (sentence.expansionNotes?.length ?? 0) > 0;
                             const isActive = activePanelKey === key || audioActiveKey === key;
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.rubyNotes)}
+                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.inlineAnnotations)}
                                   {hasPanelNotes && (
                                     <button
                                       type="button"
@@ -1088,7 +1088,7 @@ function ArticleReader({ article }: { article: Article }) {
                                   {" "}
                                 </span>
                                 <AnimatePresence>
-                                  {activePanelKey === key && sentence.panelNotes && sentence.panelNotes.length > 0 && (
+                                  {activePanelKey === key && sentence.expansionNotes && sentence.expansionNotes.length > 0 && (
                                     <motion.div
                                       key={key}
                                       data-selection-offset-excluded="true"
@@ -1100,25 +1100,25 @@ function ArticleReader({ article }: { article: Article }) {
                                       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                                     >
                                       <div className="flex flex-col gap-2 text-left">
-                                        {(sentence.panelNotes!).map((note, ni) => (
+                                        {(sentence.expansionNotes!).map((note, ni) => (
                                           <div key={ni}>
                                             <div className="flex items-start gap-3">
                                               <span className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}
                                               >
-                                                {note.title.trim()}
+                                                {note.label.trim()}
                                               </span>
-                                              <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
+                                              <span className="text-sm text-muted-foreground leading-relaxed">{note.description}</span>
                                             </div>
-                                            {note.table && note.table.length > 0 && (() => {
-                                              const synonymRows = note.table.filter(r => r.main);
-                                              const exampleRows = note.table.filter(r => !r.main);
+                                            {note.examples && note.examples.length > 0 && (() => {
+                                              const synonymRows = note.examples.filter(r => r.word);
+                                              const exampleRows = note.examples.filter(r => !r.word);
                                               return (
                                                 <>
                                                   {exampleRows.length > 0 && (
                                                     <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
                                                       {exampleRows.map((row, ri) => (
                                                         <li key={ri} className="min-w-0">
-                                                          <div>{highlightInText(row.enExample, note.title)}</div>
+                                                          <div>{highlightInText(row.enExample, note.label)}</div>
                                                           <div className="text-[11px] mt-0.5">{row.zhExample}</div>
                                                         </li>
                                                       ))}
@@ -1130,16 +1130,16 @@ function ArticleReader({ article }: { article: Article }) {
                                                         {synonymRows.map((row, ri) => (
                                                           <tr key={ri} className="align-top">
                                                             <td className="w-[1%] pr-3 py-0.5 max-w-[320px]">
-                                                              <Tooltip content={<span>{row.main} {row.explain}</span>}>
+                                                              <Tooltip content={<span>{row.word} {row.meaning}</span>}>
                                                                 <span className="truncate block font-medium text-foreground/85">
-                                                                  {highlightInText(row.main, note.title)}
-                                                                  <span className="ml-1.5 text-[11px] font-normal">{row.explain}</span>
+                                                                  {highlightInText(row.word, note.label)}
+                                                                  <span className="ml-1.5 text-[11px] font-normal">{row.meaning}</span>
                                                                 </span>
                                                               </Tooltip>
                                                             </td>
                                                             <td className="py-0.5 ">
                                                               <Tooltip content={row.zhExample}>
-                                                                <span className="cursor-help">{highlightInText(row.enExample, row.main)}</span>
+                                                                <span className="cursor-help">{highlightInText(row.enExample, row.word)}</span>
                                                               </Tooltip>
                                                             </td>
                                                           </tr>
@@ -1182,8 +1182,8 @@ function ArticleReader({ article }: { article: Article }) {
                                 <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
                                 <td className="align-top pt-0.5">
                                   <div className="flex items-start gap-1.5">
-                                    <span className="note-label shrink-0">{note.title}</span>
-                                    <span className="note-body">{note.body}</span>
+                                    <span className="note-label shrink-0">{note.label}</span>
+                                    <span className="note-body">{note.description}</span>
                                   </div>
                                 </td>
                               </tr>
@@ -1324,12 +1324,12 @@ function ArticleReader({ article }: { article: Article }) {
                                 >
                                   <span
                                     className="max-w-full overflow-hidden rounded-md bg-[var(--grammar-title-bg)] px-1.5 py-px text-[0.95rem] font-normal leading-[1.45] text-muted-foreground [display:-webkit-box] [overflow-wrap:anywhere] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
-                                    title={note.title}
+                                    title={note.label}
                                   >
-                                    {note.title}
+                                    {note.label}
                                   </span>
                                   <p className="max-w-full whitespace-normal text-[0.82rem] leading-[1.65] text-muted-foreground [overflow-wrap:anywhere]">
-                                    {note.body}
+                                    {note.description}
                                     {hasRelatedExamples ? (
                                       <CollapsibleTrigger asChild>
                                         <button

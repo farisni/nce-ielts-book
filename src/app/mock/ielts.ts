@@ -49,7 +49,7 @@ function buildSentenceItems(text: string, translations: string[] = []): Sentence
     translation: translations[index] ?? '',
     predicates: [],
     clauseIntroducers: [],
-    rubyNotes: [],
+    inlineAnnotations: [],
   }))
 }
 
@@ -276,19 +276,19 @@ const futureOfWorkVocabulary: VocabItem[] = [
 
 const futureOfWorkArticle = buildArticle('ielts-3', 'The future of work', '未来的工作', 3, futureOfWorkParagraphs, futureOfWorkVocabulary, futureOfWorkParagraphTranslations)
 
-// Add panelNotes to selected sentences
+// Add expansionNotes to selected sentences
 const fow = futureOfWorkArticle.original.paragraphs
-fow[0][1].panelNotes = [{ title: "embodied AI", body: "具身化人工智能，指具有物理载体（如机器人）的AI系统，与运行在服务器中的纯软件算法相对。" }]
-fow[0][2].panelNotes = [{ title: "disembodied AI", body: "非实体化AI，指不具有物理形态的算法系统，如手机中的推荐算法、语音助手等。" }]
-fow[1][0].panelNotes = [{ title: "algorithmication", body: "算法化。将传统上需要人类判断与决策的工作交给算法处理的过程，是知识经济的核心特征之一。" }]
-fow[1][0].panelNotes!.push({ title: "knowledge economy", body: "知识经济。以知识密集型产业为主导的经济形态，核心竞争力来源于知识和信息的创造、传播和应用。" })
-fow[1][1].panelNotes = [{ title: "undertake tasks that previously needed human judgement", body: "算法接管了曾经只有人类大脑才能完成的判断型任务，例如法律合同审查、医学影像分析等。" }]
-fow[2][3].panelNotes = [{ title: "legitimate peripheral participation", body: "合法的边缘参与。由Lave和Wenger在1991年提出的学习理论：新手通过参与实践社区的边缘活动，逐步观察、模仿、内化，最终成为专家。" }]
-fow[4][0].panelNotes = [{ title: "the keeper of knowledge", body: "知识的掌管者。本由人类专家掌控的专业知识，现在被封装在算法中，员工只能依赖算法给出的指令行事。" }]
-fow[4][1].panelNotes = [{ title: "a short-sighted view", body: "短视的工作观。员工通过算法视角学习，机械依赖指令，失去了独立判断和创造性探索能力。" }]
-fow[7][0].panelNotes = [{ title: "a fallacy", body: "谬误。Low教授认为失业预测建立在'岗位数量固定'的错误前提之上。实际上技术会创造新岗位。" }]
-fow[9][0].panelNotes = [{ title: "apocalyptic views", body: "末日式观点。指那种认为AI和自动化将导致大规模失业的悲观预测。" }]
-fow[10][2].panelNotes = [{ title: "a call to arms", body: "战斗号召 / 行动呼吁。一种强有力的修辞表达，敦促政府、企业和银行采取大胆的新政策。" }]
+fow[0][1].expansionNotes = [{ label: "embodied AI", description: "具身化人工智能，指具有物理载体（如机器人）的AI系统，与运行在服务器中的纯软件算法相对。" }]
+fow[0][2].expansionNotes = [{ label: "disembodied AI", description: "非实体化AI，指不具有物理形态的算法系统，如手机中的推荐算法、语音助手等。" }]
+fow[1][0].expansionNotes = [{ label: "algorithmication", description: "算法化。将传统上需要人类判断与决策的工作交给算法处理的过程，是知识经济的核心特征之一。" }]
+fow[1][0].expansionNotes!.push({ label: "knowledge economy", description: "知识经济。以知识密集型产业为主导的经济形态，核心竞争力来源于知识和信息的创造、传播和应用。" })
+fow[1][1].expansionNotes = [{ label: "undertake tasks that previously needed human judgement", description: "算法接管了曾经只有人类大脑才能完成的判断型任务，例如法律合同审查、医学影像分析等。" }]
+fow[2][3].expansionNotes = [{ label: "legitimate peripheral participation", description: "合法的边缘参与。由Lave和Wenger在1991年提出的学习理论：新手通过参与实践社区的边缘活动，逐步观察、模仿、内化，最终成为专家。" }]
+fow[4][0].expansionNotes = [{ label: "the keeper of knowledge", description: "知识的掌管者。本由人类专家掌控的专业知识，现在被封装在算法中，员工只能依赖算法给出的指令行事。" }]
+fow[4][1].expansionNotes = [{ label: "a short-sighted view", description: "短视的工作观。员工通过算法视角学习，机械依赖指令，失去了独立判断和创造性探索能力。" }]
+fow[7][0].expansionNotes = [{ label: "a fallacy", description: "谬误。Low教授认为失业预测建立在'岗位数量固定'的错误前提之上。实际上技术会创造新岗位。" }]
+fow[9][0].expansionNotes = [{ label: "apocalyptic views", description: "末日式观点。指那种认为AI和自动化将导致大规模失业的悲观预测。" }]
+fow[10][2].expansionNotes = [{ label: "a call to arms", description: "战斗号召 / 行动呼吁。一种强有力的修辞表达，敦促政府、企业和银行采取大胆的新政策。" }]
 
 assignPredicates(polarBearsArticle, [
   [
@@ -410,29 +410,29 @@ assignPredicates(futureOfWorkArticle, [
     ['are', 'pre-empt', 'guarantee'],
   ],
 ])
-futureOfWorkArticle.original.paragraphs[0][0].structureNotes = [
-  { title: 'as their occupations evolve alongside increasingly capable machines', body: 'as 引导伴随状语。' },
+futureOfWorkArticle.original.paragraphs[0][0].grammarNotes = [
+  { label: 'as their occupations evolve alongside increasingly capable machines', description: 'as 引导伴随状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[0][2].rubyNotes = [
-  { title: 'Disembodied', body: '非实体化的' },
+futureOfWorkArticle.original.paragraphs[0][2].inlineAnnotations = [
+  { label: 'Disembodied', description: '非实体化的' },
 ]
-futureOfWorkArticle.original.paragraphs[1][0].structureNotes = [
-  { title: 'as a result of the algorithmication of jobs', body: 'as 引导原因状语。' },
+futureOfWorkArticle.original.paragraphs[1][0].grammarNotes = [
+  { label: 'as a result of the algorithmication of jobs', description: 'as 引导原因状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[1][1].structureNotes = [
-  { title: 'to undertake tasks', body: 'to do 目的状语，去承担任务。' },
+futureOfWorkArticle.original.paragraphs[1][1].grammarNotes = [
+  { label: 'to undertake tasks', description: 'to do 目的状语，去承担任务。' },
 ]
-futureOfWorkArticle.original.paragraphs[2][0].rubyNotes = [
-  { title: 'outperform', body: '胜过' },
+futureOfWorkArticle.original.paragraphs[2][0].inlineAnnotations = [
+  { label: 'outperform', description: '胜过' },
 ]
-futureOfWorkArticle.original.paragraphs[2][3].rubyNotes = [
-  { title: 'cognitive', body: '认知的' },
+futureOfWorkArticle.original.paragraphs[2][3].inlineAnnotations = [
+  { label: 'cognitive', description: '认知的' },
 ]
-futureOfWorkArticle.original.paragraphs[2][4].rubyNotes = [
-  { title: 'legitimate', body: '合法的' },
-  { title: 'peripheral', body: '外围的' },
-  { title: 'participation', body: '参与' },
-  { title: 'novice', body: '新手' },
+futureOfWorkArticle.original.paragraphs[2][4].inlineAnnotations = [
+  { label: 'legitimate', description: '合法的' },
+  { label: 'peripheral', description: '外围的' },
+  { label: 'participation', description: '参与' },
+  { label: 'novice', description: '新手' },
 ]
 
 export const articlesIelts: Record<string, Article> = {

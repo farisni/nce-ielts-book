@@ -6,11 +6,11 @@ export interface VocabItem {
 }
 
 export interface SentenceNote {
-  title: string
-  body: string
-  table?: {
-    main: string
-    explain: string
+  label: string
+  description: string
+  examples?: {
+    word: string
+    meaning: string
     enExample: string
     zhExample: string
   }[]
@@ -22,9 +22,9 @@ export interface SentenceData {
   predicates: string[]
   clauseIntroducers: string[]
   auxiliaries: string[]
-  rubyNotes: SentenceNote[]
-  structureNotes?: SentenceNote[]
-  panelNotes?: SentenceNote[]
+  inlineAnnotations: SentenceNote[]
+  grammarNotes?: SentenceNote[]
+  expansionNotes?: SentenceNote[]
 }
 
 export interface Article {

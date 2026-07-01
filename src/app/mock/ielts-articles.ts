@@ -49,7 +49,7 @@ function buildSentenceItems(text: string, translations: string[] = []): Sentence
     translation: translations[index] ?? '',
     predicates: [],
     clauseIntroducers: [],
-    rubyNotes: [],
+    inlineAnnotations: [],
   }))
 }
 
@@ -395,29 +395,29 @@ assignPredicates(futureOfWorkArticle, [
     ['are', 'pre-empt', 'guarantee'],
   ],
 ])
-futureOfWorkArticle.original.paragraphs[0][0].structureNotes = [
-  { title: 'as their occupations evolve alongside increasingly capable machines', body: 'as 引导伴随状语。' },
+futureOfWorkArticle.original.paragraphs[0][0].grammarNotes = [
+  { label: 'as their occupations evolve alongside increasingly capable machines', description: 'as 引导伴随状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[0][2].rubyNotes = [
-  { title: 'Disembodied', body: '非实体化的' },
+futureOfWorkArticle.original.paragraphs[0][2].inlineAnnotations = [
+  { label: 'Disembodied', description: '非实体化的' },
 ]
-futureOfWorkArticle.original.paragraphs[1][0].structureNotes = [
-  { title: 'as a result of the algorithmication of jobs', body: 'as 引导原因状语。' },
+futureOfWorkArticle.original.paragraphs[1][0].grammarNotes = [
+  { label: 'as a result of the algorithmication of jobs', description: 'as 引导原因状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[1][1].structureNotes = [
-  { title: 'to undertake tasks', body: 'to do 目的状语，去承担任务。' },
+futureOfWorkArticle.original.paragraphs[1][1].grammarNotes = [
+  { label: 'to undertake tasks', description: 'to do 目的状语，去承担任务。' },
 ]
-futureOfWorkArticle.original.paragraphs[2][0].rubyNotes = [
-  { title: 'outperform', body: '胜过' },
+futureOfWorkArticle.original.paragraphs[2][0].inlineAnnotations = [
+  { label: 'outperform', description: '胜过' },
 ]
-futureOfWorkArticle.original.paragraphs[2][3].rubyNotes = [
-  { title: 'cognitive', body: '认知的' },
+futureOfWorkArticle.original.paragraphs[2][3].inlineAnnotations = [
+  { label: 'cognitive', description: '认知的' },
 ]
-futureOfWorkArticle.original.paragraphs[2][4].rubyNotes = [
-  { title: 'legitimate', body: '合法的' },
-  { title: 'peripheral', body: '外围的' },
-  { title: 'participation', body: '参与' },
-  { title: 'novice', body: '新手' },
+futureOfWorkArticle.original.paragraphs[2][4].inlineAnnotations = [
+  { label: 'legitimate', description: '合法的' },
+  { label: 'peripheral', description: '外围的' },
+  { label: 'participation', description: '参与' },
+  { label: 'novice', description: '新手' },
 ]
 
 export const articlesIelts: Record<string, Article> = {

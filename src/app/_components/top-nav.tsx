@@ -335,8 +335,8 @@ const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((
   const paragraphKeywords = article.original.paragraphs
     .flatMap((paragraph) =>
       paragraph.map((sentence) =>
-        `${sentence.text} ${sentence.translation ?? ""} ${(sentence.structureNotes ?? [])
-          .map((note) => `${note.title} ${note.body}`)
+        `${sentence.text} ${sentence.translation ?? ""} ${(sentence.grammarNotes ?? [])
+          .map((note) => `${note.label} ${note.description}`)
           .join(" ")}`,
       ),
     )
