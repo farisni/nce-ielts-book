@@ -87,10 +87,13 @@ export default function PanelNotesDemo() {
                           {note.table.map((row, ri) => (
                             <tr key={ri}>
                               <td className="relative pl-4 pr-1 py-1.5 whitespace-nowrap align-middle">
-                                {ri < note.table.length - 1 && (
-                                  <span className="absolute left-[0.09375rem] top-0 bottom-0 w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
-                                )}
                                 <span className="absolute left-0 top-1/2 -translate-y-1/2 size-1 rounded-full" style={{ background: dotColors[ni % dotColors.length] }} />
+                                {ri < note.table.length - 1 && (
+                                  <span className="absolute left-[0.09375rem] top-[calc(50%+0.125rem)] bottom-0 w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
+                                )}
+                                {ri > 0 && (
+                                  <span className="absolute left-[0.09375rem] top-0 bottom-[calc(50%+0.125rem)] w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
+                                )}
                                 <span className="font-medium text-foreground/65">{row.main}</span>
                                 <span className="ml-1 text-xs font-normal">{row.explain}</span>
                               </td>
