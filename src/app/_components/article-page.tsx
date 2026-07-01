@@ -572,7 +572,6 @@ function ArticleReader({ article }: { article: Article }) {
   const addHighlight = useArticleSettings((s) => s.addHighlight);
   const clearHighlights = useArticleSettings((s) => s.clearHighlights);
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
-  const toggleGrammarHighlights = useArticleSettings((s) => s.toggleGrammarHighlights);
 
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
@@ -863,13 +862,6 @@ function ArticleReader({ article }: { article: Article }) {
                   </span>
                 </h1>
                                 {/* audio player for NCE4 */}
-                <button
-                  onClick={toggleGrammarHighlights}
-                  className="flex size-8 items-center justify-center rounded-full border border-border bg-surface-2 transition-colors hover:bg-surface-3"
-                  aria-label={showGrammarHighlights ? "Hide grammar colors" : "Show grammar colors"}
-                >
-                  <Highlighter className={showGrammarHighlights ? "size-3.5 text-[#c2410c]" : "size-3.5 text-muted-foreground/40"} />
-                </button>
                 {isNce4 && (
                   <div className="flex items-center gap-2 ml-4">
                     <button
