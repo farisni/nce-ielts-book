@@ -21,6 +21,7 @@ export interface SentenceData {
   translation: string
   predicates: string[]
   clauseIntroducers: string[]
+  auxiliaries: string[]
   rubyNotes: SentenceNote[]
   structureNotes?: SentenceNote[]
   panelNotes?: SentenceNote[]

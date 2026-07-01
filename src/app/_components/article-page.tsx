@@ -318,49 +318,116 @@ function renderHighlightedText(
   highlights: HighlightRange[],
   disableHighlights?: boolean,
   animate?: boolean,
+  predicates?: string[],
+  auxiliaries?: string[],
+  clauseIntroducers?: string[],
 ) {
-  if (disableHighlights) return text;
-
   const paragraphEnd = paragraphStart + text.length;
   const relevantHighlights = highlights.filter(
     (highlight) => highlight.start < paragraphEnd && highlight.end > paragraphStart,
   );
 
-  if (relevantHighlights.length === 0) {
-    return text;
+  // Collect grammar-level matches: { start, end, color, type }
+  type GrammarMatch = { start: number; end: number; color: string };
+  const grammarMatches: GrammarMatch[] = [];
+
+  function findWords(words: string[], color: string) {
+    if (!words || words.length === 0) return;
+    for (const word of words) {
+      if (!word) continue;
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b${escaped}\\b`, 'gi');
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        grammarMatches.push({ start: match.index, end: match.index + match[0].length, color });
+      }
+    }
   }
+
+  findWords(predicates ?? [], '#c2410c');      // rust for predicates
+  findWords(auxiliaries ?? [], '#d97706');      // amber for auxiliaries (nearby rust)
+  findWords(clauseIntroducers ?? [], '#418faf'); // teal for clause introducers
+
+  // Sort by position
+  grammarMatches.sort((a, b) => a.start - b.start);
+
+  // Remove overlapping grammar matches (keep first)
+  const filteredGrammar: GrammarMatch[] = [];
+  for (const gm of grammarMatches) {
+    const last = filteredGrammar[filteredGrammar.length - 1];
+    if (!last || gm.start >= last.end) {
+      filteredGrammar.push(gm);
+    }
+  }
+
+  // If nothing to highlight, return plain text
+  if (disableHighlights && filteredGrammar.length === 0) return text;
+  if (relevantHighlights.length === 0 && filteredGrammar.length === 0) return text;
+
+  // Merge user highlights and grammar matches, splitting text into segments
+  interface Segment { start: number; end: number; color?: string; isUser?: boolean }
+  const segments: Segment[] = [];
+
+  // Add grammar segments
+  for (const gm of filteredGrammar) {
+    segments.push({ start: gm.start, end: gm.end, color: gm.color });
+  }
+
+  // Add user highlight segments
+  if (!disableHighlights) {
+    for (const hl of relevantHighlights) {
+      const s = Math.max(hl.start - paragraphStart, 0);
+      const e = Math.min(hl.end - paragraphStart, text.length);
+      if (s < e) {
+        segments.push({ start: s, end: e, color: '#fde68a', isUser: true });
+      }
+    }
+  }
+
+  // Sort, grammar wins over user on overlap
+  segments.sort((a, b) => a.start - b.start);
+
+  // Build non-overlapping segments
+  const final: { start: number; end: number; color?: string }[] = [];
+  for (const seg of segments) {
+    const last = final[final.length - 1];
+    if (!last || seg.start >= last.end) {
+      final.push(seg);
+    } else if (seg.end > last.end) {
+      last.end = seg.end;
+    }
+  }
+
+  if (final.length === 0) return text;
 
   const parts: React.ReactNode[] = [];
   let cursor = 0;
+  let idx = 0;
 
-  relevantHighlights.forEach((highlight, index) => {
-    const start = Math.max(highlight.start - paragraphStart, 0);
-    const end = Math.min(highlight.end - paragraphStart, text.length);
-
-    if (start > cursor) {
+  for (const seg of final) {
+    if (seg.start > cursor) {
       parts.push(
-        <Fragment key={`text-${paragraphStart}-${index}`}>
-          {text.slice(cursor, start)}
+        <Fragment key={`tx-${paragraphStart}-${idx}`}>
+          {text.slice(cursor, seg.start)}
         </Fragment>,
       );
     }
+    const Wrapper = seg.color === '#fde68a' ? RoughHighlight : 'span';
+    const wrapperProps = seg.color === '#fde68a'
+      ? { trigger: 'always' as const, color: seg.color, animate }
+      : { style: { color: seg.color, fontWeight: 600 } as React.CSSProperties };
 
     parts.push(
-      <RoughHighlight
-        key={`mark-${paragraphStart}-${index}`}
-        trigger="always"
-        color="#fde68a"
-        animate={animate}
-      >
-        {text.slice(start, end)}
-      </RoughHighlight>,
+      <Wrapper key={`hl-${paragraphStart}-${idx}`} {...wrapperProps}>
+        {text.slice(seg.start, seg.end)}
+      </Wrapper>,
     );
-
-    cursor = end;
-  });
+    cursor = seg.end;
+    idx++;
+  }
 
   if (cursor < text.length) {
-    parts.push(<Fragment key={`text-${paragraphStart}-tail`}>{text.slice(cursor)}</Fragment>);
+    parts.push(<Fragment key={`tx-${paragraphStart}-tail`}>{text.slice(cursor)}</Fragment>);
   }
 
   return parts;
@@ -917,7 +984,7 @@ function ArticleReader({ article }: { article: Article }) {
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current)}
+                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers)}
                                   {hasPanelNotes && (
                                     <button
                                       type="button"
