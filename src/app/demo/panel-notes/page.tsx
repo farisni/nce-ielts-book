@@ -26,7 +26,14 @@ const sampleNotes: Note[] = [
       { main: "know of", explain: "知道有", enExample: "Do you know of any good restaurants nearby?", zhExample: "你知道附近有什么好餐馆吗？" },
     ],
   },
-  { title: "no shortage of", body: "双重否定，不缺，翻译时常当作动词处理" },
+  {
+    title: "no shortage of",
+    body: "双重否定，不缺，翻译时常当作动词处理",
+    table: [
+      { main: "a lack of", explain: "缺乏", enExample: "There is a lack of evidence to support this claim.", zhExample: "缺乏证据支持这一说法。" },
+      { main: "plenty of", explain: "大量", enExample: "There are plenty of reasons to be optimistic.", zhExample: "有很多理由保持乐观。" },
+    ],
+  },
   { title: "offering 'get-rich-quick' opportunities", body: "提供，现在分词做后置定语" },
 ];
 
@@ -62,34 +69,34 @@ export default function PanelNotesDemo() {
             >
               <div className="flex flex-col gap-2 text-left">
                 {sampleNotes.map((note, ni) => (
-                  <div key={ni} className="flex items-start gap-3">
-                    <span
-                      className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
-                      style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
-                    >
-                      {note.title}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line mb-1.5">{note.body}</p>
-                      {note.table && (
-                        <table className="text-sm text-muted-foreground border-collapse w-full">
-                          <tbody>
-                            {note.table.map((row, ri) => (
-                              <tr key={ri} className="border-b border-border/40 last:border-0">
-                                <td className="pr-4 py-1.5 whitespace-nowrap align-top">
-                                  <span className="font-medium text-foreground/65">{row.main}</span>
-                                  <span className="ml-1 text-xs font-normal">{row.explain}</span>
-                                </td>
-                                <td className="py-1.5 leading-relaxed">
-                                  <span>{row.enExample}</span>
-                                  <span className="ml-1 text-xs">{row.zhExample}</span>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      )}
+                  <div key={ni}>
+                    <div className="flex items-start gap-3">
+                      <span
+                        className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
+                        style={{ background: ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"][ni % 5] }}
+                      >
+                        {note.title}
+                      </span>
+                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{note.body}</p>
                     </div>
+                    {note.table && (
+                      <table className="mt-2 text-sm text-muted-foreground border-collapse w-full">
+                        <tbody>
+                          {note.table.map((row, ri) => (
+                            <tr key={ri} className="border-b border-border/40 last:border-0">
+                              <td className="pr-1 py-1.5 whitespace-nowrap align-middle">
+                                <span className="font-medium text-foreground/65">{row.main}</span>
+                                <span className="ml-1 text-xs font-normal">{row.explain}</span>
+                              </td>
+                              <td className="pl-0 py-1.5 leading-relaxed align-middle">
+                                <div>{row.enExample}</div>
+                                <div className="text-xs">{row.zhExample}</div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
                   </div>
                 ))}
               </div>
