@@ -901,11 +901,11 @@ function ArticleReader({ article }: { article: Article }) {
                                       key={key}
                                       data-selection-offset-excluded="true"
                                       className="rounded-lg px-4 py-3 relative z-[21] [text-indent:0]"
-                                      style={{ background: "#f2f7f2", minHeight: 200 }}
-                                      initial={{ opacity: 0, y: -6 }}
+                                      style={{ background: "#f2f7f2" }}
+                                      initial={{ opacity: 0, y: -4 }}
                                       animate={{ opacity: 1, y: 0 }}
-                                      exit={{ opacity: 0, y: -6 }}
-                                      transition={SPRING_PANEL}
+                                      exit={{ opacity: 0, y: -4 }}
+                                      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                                     >
                                       <div className="flex flex-col gap-2 text-left">
                                         {(sentence.panelNotes!).map((note, ni) => (

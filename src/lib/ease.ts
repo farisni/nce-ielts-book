@@ -24,9 +24,9 @@ export const SPRING_SWAP = {
 /** Overlay panel entrances — modals and sheets summoned by pointer. */
 export const SPRING_PANEL = {
   type: "spring",
-  stiffness: 420,
-  damping: 40,
-  mass: 0.5,
+  stiffness: 350,
+  damping: 32,
+  mass: 0.55,
 } as const;
 
 /** Shared-layout glides — pills, indicators and panels morphing between positions. */
