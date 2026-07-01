@@ -860,7 +860,7 @@ function ArticleReader({ article }: { article: Article }) {
 
                       return (
                       <React.Fragment key={paragraphStarts[index]}>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 text-left">
                         <div
                           ref={(element) => {
                             paragraphRefs.current[index] = element;
@@ -907,7 +907,7 @@ function ArticleReader({ article }: { article: Article }) {
                                       exit={{ opacity: 0, y: -6 }}
                                       transition={SPRING_PANEL}
                                     >
-                                      <div className="flex flex-col gap-2">
+                                      <div className="flex flex-col gap-2 text-left">
                                         {(sentence.panelNotes!).map((note, ni) => (
                                           <div key={ni} className="flex items-start gap-3">
                                             <span className="shrink-0 rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
