@@ -233,7 +233,7 @@ const articleNce4L1: Article = {
           ]
         },
         {
-          text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u201c现代人\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u201d是从哪里来的。", predicates: ["have", "came"], clauseIntroducers: [], auxiliaries: [], rubyNotes: [], structureNotes: undefined, panelNotes: [
+          text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。", predicates: ["have", "came"], clauseIntroducers: [], auxiliaries: [], rubyNotes: [], structureNotes: undefined, panelNotes: [
             {
               title: "neither...nor...", body: "既不…也不…", table: [
                 { main: "", explain: "", enExample: "Neither the teacher nor the students were in the classroom.", zhExample: "老师和学生都不在教室" },
