@@ -499,9 +499,10 @@ function renderHighlightedText(
     );
 
     if (seg.ruby) {
+      const hasGrammarColor = !!seg.color;
       parts.push(
         <Tooltip key={`ruby-${paragraphStart}-${idx}`} content={seg.ruby.body} delayDuration={300}>
-          <span className="cursor-help underline decoration-violet-500/50 decoration-dotted underline-offset-[6px]">
+          <span className={hasGrammarColor ? "cursor-help" : "cursor-help underline decoration-violet-500/50 decoration-dotted underline-offset-[6px]"}>
             {innerContent}
           </span>
         </Tooltip>
