@@ -29,44 +29,258 @@ const articleNce4L1: Article = {
   original: {
     paragraphs: [
       [
-        {
-          text: "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.", translation: "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。", predicates: ["can read of"], clauseIntroducers: ["that"], rubyNotes: [{ "title": "read of", "body": "读到" }], structureNotes: [{ title: "read of", body: "读到，和 read about 是相同的意思。\n\n例句：\nI had read of such hideous incarnate demons. 我读过关于这类可怕的化身鬼怪的书。\nI read of the traffic accident in yesterday's paper. 我在昨天的报纸上知道了这起交通事故。" }],
-          panelNotes: [{
-            title: "read of",
-            body: "读到",
-            table: [
-              { main: "", explain: "", enExample: "I had read of such hideous incarnate demons.", zhExample: "我读过关于这类可怕的化身鬼怪的书。" },
-              { main: "", explain: "", enExample: "I read of the traffic accident in yesterday's paper.", zhExample: "我在昨天的报纸上知道了这起交通事故。" },
-              { main: "speak of / talk of", explain: "谈到", enExample: "When she spoke of her childhood, her eyes lit up.", zhExample: "她一谈到童年，眼睛就发亮。" },
-              { main: "hear of", explain: "听说", enExample: "I've never heard of that place before.", zhExample: "我以前从未听说过那个地方。" },
-              { main: "know of", explain: "知道有", enExample: "Do you know of any good restaurants nearby?", zhExample: "你知道附近有什么好餐馆吗？" },
-            ]
-          }, {
-            title: "no shortage of",
-            body: "双重否定，不缺，翻译时常当作动词处理",
-            table: [
-              { main: "a lack of", explain: "缺乏", enExample: "There is a lack of evidence to support this claim.", zhExample: "缺乏证据支持这一说法。" },
-              { main: "plenty of", explain: "大量", enExample: "There are plenty of reasons to be optimistic.", zhExample: "有很多理由保持乐观。" },
-            ]
-          }, {
-            title: "offering \'get-rich-quick\' opportunities",
-            body: "提供，现在分词做后置定语",
-          }]
-        },
-        { text: "But there are some parts of the world where even now people cannot write.", translation: "但直到现在,世界上有些地方，人们还不会书写。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "The only way that they can preserve their history is to recount it as sagas — legends handed down from one generation of story tellers to another.", translation: "他们保存历史的唯一办法是将历史当作传说讲述，由讲述人一代接一代地将史实描述为传奇故事口传下来。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "These legends are useful because they can tell us something about migrations of people who lived long ago, but none could write down what they did.", translation: "这些传说是有用的，因为他们讲述了很久以前有关迁居的事情。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "Anthropologists wondered where the remote ancestors of the Polynesian peoples now living in the Pacific Islands came from.", translation: "人类学家过去不清楚如今生活在太平洋诸岛上的波利尼西亚人的祖先来自何方，", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "The sagas of these people explain that some of them came from Indonesia about 2,000 years ago.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。 然而， 幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。 他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。 石头是不会腐烂的。 因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。", predicates: [], clauseIntroducers: [], rubyNotes: [] }
+{
+          text: "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.", translation: "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。", predicates: ["read", "happened", "learned"], clauseIntroducers: ["that", "where"], rubyNotes: [
+{ title: "that", body: "引导定语从句，修饰Things" },
+{ title: "5,000 years ago", body: "时间状语" },
+{ title: "in the Near East", body: "地点状语" },
+{ title: "where", body: "非限定性定语从句，修饰Near East" }
+              ], structureNotes: null, panelNotes: [
+{ title: "read of 读到", body: "", table: [
+                  { main: "", explain: "", enExample: "I had read of such hideous incarnate demons.", zhExample: "我读过关于这类可怕的化身鬼怪的书。" },
+                  { main: "", explain: "", enExample: "I read of the traffic accident in yesterday's paper.", zhExample: "我在昨天的报纸上知道了这起交通事故。" },
+                  { main: "", explain: "", enExample: "Ye are our epistle written in our hearts, known and read of all men.", zhExample: "你们就是我们的荐信，写在我们心里，被众人所知道所念诵的。" },
+                  { main: "speak of / talk of", explain: "谈到", enExample: "When she spoke of her childhood, her eyes lit up. 她一谈到童年，眼睛就发亮。", zhExample: "" },
+                  { main: "hear of", explain: "听说", enExample: "Have you ever heard of this author? 你听说过这个作家吗？", zhExample: "" },
+                  { main: "learn of", explain: "得知", enExample: "I just learned of his promotion yesterday. 我昨天才得知他升职了。", zhExample: "" },
+                  { main: "know of", explain: "听说过 / 知道", enExample: "I know of a good restaurant nearby. 我知道附近有一家不错的餐厅。", zhExample: "" },
+                  { main: "think of", explain: "想到", enExample: "I can't think of a better idea. 我想不到更好的主意了。", zhExample: "" },
+                  { main: "dream of", explain: "梦到 / 渴望", enExample: "She dreams of becoming a famous singer. 她梦想成为一名著名歌手。", zhExample: "" }
+                ] },
+{ title: "of … 关于（相当于about）", body: "", table: [
+                  { main: "", explain: "", enExample: "This book is of great importance to scholars.", zhExample: "这本书对学者来说具有重要意义。" },
+                  { main: "", explain: "", enExample: "It is a subject of study by many forgers.", zhExample: "这是许多伪造者研究的课题。" },
+                  { main: "", explain: "", enExample: "The pursuit of sport is for national pride.", zhExample: "对体育的追求关系到国家荣誉。" },
+                  { main: "Of Truth 关于真理", explain: "", enExample: "Francis Bacon wrote an essay titled Of Truth. 弗朗西斯·培根写过一篇题为《论真理》的文章。", zhExample: "" },
+                  { main: "Of Death 关于死亡", explain: "", enExample: "In his essay Of Death, Bacon explores human fear of dying. 在他的《论死亡》一文中，培根探讨了人类对死亡的恐惧。", zhExample: "" },
+                  { main: "Of Love 关于爱情", explain: "", enExample: "The essay Of Love reveals the conflicts love can bring. 《论爱情》这篇文章揭示了爱情可能带来的冲突。", zhExample: "" },
+                  { main: "Of Envy 关于嫉妒", explain: "", enExample: "He analyzed human behavior in Of Envy. 他在《论嫉妒》中分析了人类的行为。", zhExample: "" },
+                  { main: "Of Human Bondage 关于人性的枷锁", explain: "", enExample: "Of Human Bondage is a novel by W. Somerset Maugham. 《人性的枷锁》是W·萨默塞特·毛姆的一部小说。", zhExample: "" }
+                ] },
+{ title: "英语语序", body: "", table: [
+                  { main: "", explain: "", enExample: "I saw him at the party yesterday.", zhExample: "事件+地点+时间" },
+                  { main: "", explain: "", enExample: "Several cases have been reported in Russia recently of people who can read and detect colors with their fingers, and even see through solid doors and walls.", zhExample: "（Several cases of people）" },
+                  { main: "", explain: "", enExample: "He maybe conceited, ill-mannered, presumptuous or fatuous, but I do not turn for protection to dreary clichés about respect of elders — as if mere age were a reason for respect.", zhExample: "" },
+                  { main: "", explain: "", enExample: "Among them will be Debbie's mother, who swam the Channel herself when she was a girl.", zhExample: "" },
+                  { main: "", explain: "", enExample: "If we glimpse the unutterable, it is unwise to try to utter it, nor should we seek to invest with significance that which we cannot grasp.", zhExample: "(invest A with B)" },
+                  { main: "We can read of things that happened", explain: "5,000 years ago", enExample: "in the Near East, where people first learn to write.", zhExample: "" },
+                  { main: "事件", explain: "时间(礼让弱小)", enExample: "地点（为了句式平衡，避免头重脚轻，改变了正常语序）", zhExample: "" }
+                ] },
+{ title: "考研英语（英译汉）", body: "" },
+{ title: "the Near East 近东", body: "", table: [
+                  { main: "the Middle East 中东", explain: "", enExample: "Oil is a major export product of the Middle East. 石油是中东的主要出口产品。", zhExample: "" },
+                  { main: "the Far East 远东", explain: "", enExample: "Many Western companies have expanded into the Far East. 许多西方公司已扩展到远东市场。", zhExample: "" }
+                ] },
+{ title: "定语从句充当原因状语(下面都是不够简洁改变了原句语法的句子)", body: "", table: [
+                  { main: "", explain: "", enExample: "We can read of things that happened 5,000 years ago in the Near East, because people first learned to write there.", zhExample: "" },
+                  { main: "", explain: "", enExample: "We endeavour to avoid the old, romantic idea of a gusher, because it wastes oil and gas.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The small ship, Elkor, after she had been searching the Barents Sea for weeks, was on its way home.", zhExample: "" },
+                  { main: "", explain: "", enExample: "Much to the aristocrat's amusement, the gaoler returned a few moments later with a pair of glasses and the usual copy of the letter and he proceeded to read it to the prisoner.", zhExample: "" }
+                ] },
+{ title: "状语从句 ⇒ 定语从句练习", body: "", table: [
+                  { main: "状语从句", explain: "", enExample: "定语从句", zhExample: "" },
+                  { main: "I have to be very careful not to offend the boss, because he could fire me at any time.", explain: "", enExample: "I have to be very careful not to offend the boss, who could fire me at any time.", zhExample: "" },
+                  { main: "The action, although it has aroused universal disapproval, is nevertheless the only solution.", explain: "", enExample: "The action, which has aroused universal disapproval, is nevertheless the only solution.", zhExample: "" }
+                ] }
+              ] },
+{
+          text: "But there are some parts of the world where even now people cannot write.", translation: "但直到现在,世界上有些地方，人们还不会书写。", predicates: ["are"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [
+{ title: "there be 存在某物、某人", body: "", table: [
+                  { main: "", explain: "", enExample: "There seem to be more opportunities now.", zhExample: "现在好像有更多的机会。" },
+                  { main: "", explain: "", enExample: "There appear to be some changes.", zhExample: "好像有一些变化。" },
+                  { main: "", explain: "", enExample: "There seem / appear to be a misunderstanding.", zhExample: "好像有一个误会。" },
+                  { main: "", explain: "", enExample: "There used to be a cinema here.", zhExample: "这里以前有一个电影院。" },
+                  { main: "", explain: "", enExample: "There used to be fewer cars on the road.", zhExample: "路上以前车比较少。" },
+                  { main: "", explain: "", enExample: "There used to be a different atmosphere.", zhExample: "以前有一种不同的氛围。" },
+                  { main: "", explain: "", enExample: "There happen to be some extra chairs.", zhExample: "碰巧有一些额外的椅子。" },
+                  { main: "", explain: "", enExample: "There happen to be a few solutions.", zhExample: "碰巧有几种解决方案。" },
+                  { main: "", explain: "", enExample: "There happen to be someone who knows.", zhExample: "碰巧有人知道。" },
+                  { main: "", explain: "", enExample: "There is going to be a party tonight.", zhExample: "今晚将有一个聚会。" },
+                  { main: "", explain: "", enExample: "There are going to be some announcements.", zhExample: "将有一些公告。" },
+                  { main: "", explain: "", enExample: "There is / are going to be a big change.", zhExample: "将有一个很大的变化。" },
+                  { main: "There seem / appear 似乎有...", explain: "", enExample: "There seem to be more opportunities now. 现在好像有更多的机会。There appear to be some changes. 好像有一些变化。There seem / appear to be a misunderstanding. 好像有一个误会。", zhExample: "" },
+                  { main: "There used to be 以前有...", explain: "", enExample: "There used to be a cinema here. 这里以前有一个电影院。There used to be fewer cars on the road. 路上以前车比较少。There used to be a different atmosphere. 以前有一种不同的氛围。", zhExample: "" },
+                  { main: "There happen to be 碰巧有...", explain: "", enExample: "There happen to be some extra chairs. 碰巧有一些额外的椅子。There happen to be a few solutions. 碰巧有几种解决方案。There happen to be someone who knows. 碰巧有人知道。", zhExample: "" },
+                  { main: "There is going to be 即将有...", explain: "", enExample: "There is going to be a party tonight. 今晚将有一个聚会。There are going to be some announcements. 将有一些公告。There is / are going to be a big change. 将有一个很大的变化。", zhExample: "" }
+                ] }
+              ] },
+{
+          text: "The only way that they can preserve their history is to recount it as sagas — legends handed down from one generation of story tellers to another.", translation: "他们保存历史的唯一办法是将历史当作传说讲述，由讲述人一代接一代地将史实描述为传奇故事口传下来。", predicates: ["preserve", "is"], clauseIntroducers: [], rubyNotes: [
+{ title: "to recount it as sagas", body: "to do 不定式做表语(主+系+表)" },
+{ title: "handed", body: "非谓语动词做后置定语" }
+              ], structureNotes: null, panelNotes: [
+{ title: "preserve 保存、保护（状态）", body: "", table: [
+                  { main: "", explain: "", enExample: "The only way that they can preserve their history is to recount it as sagas. 他们保存历史的唯一方法是将历史像传说一样讲述。", zhExample: "" },
+                  { main: "", explain: "", enExample: "The museum works diligently to preserve historical records from the Civil War era, ensuring future generations can learn from primary sources.", zhExample: "博物馆努力保存南北战争时期的历史记录，确保后代能够从原始资料中学习。" },
+                  { main: "", explain: "", enExample: "In rural communities, many families still preserve food through traditional methods like pickling and canning to enjoy seasonal produce year-round.", zhExample: "在农村社区，许多家庭仍然通过腌制和罐装等传统方法保存食物，以便全年享用季节性农产品。" },
+                  { main: "", explain: "", enExample: "Doctors recommend regular breaks from screen time to preserve one's eyesight, especially for those who work with computers all day.", zhExample: "医生建议定期从屏幕前休息以保护视力，尤其是对那些整天使用电脑工作的人。" },
+                  { main: "conserve 保存、保护（强调数量）", explain: "", enExample: "We should conserve natural resources. 我们应该保护自然资源。", zhExample: "" },
+                  { main: "reserve 保存、保护（强调为了将来使用）", explain: "", enExample: "I reserve the right to disagree. 我保留不同意的权利。", zhExample: "" }
+                ] },
+{ title: "To do 做表语时, 若前面出现了实义动词 “do”，则常去掉 “to”", body: "", table: [
+                  { main: "", explain: "", enExample: "All I have to do is （to）dream.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The best thing you can do now is （to）write her an apology.", zhExample: "" },
+                  { main: "", explain: "", enExample: "All I wanted was to help him.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The only thing to do was ask them to come half an hour later than the other guests. Then they arrived just when we wanted them.", zhExample: "" }
+                ] },
+{ title: "动词不定式做“except / but”的宾语时 § 表示“除了…之外”，若前面出现了实义动词 “do”, 则常去掉“to”", body: "", table: [
+                  { main: "", explain: "", enExample: "We have nothing to do but（to） wait here.", zhExample: "" },
+                  { main: "", explain: "", enExample: "They did nothing but / except（to） complain.", zhExample: "" },
+                  { main: "", explain: "", enExample: "I’ve done everything you wanted but / except （to）make the beds.", zhExample: "" },
+                  { main: "如果前面实义动词do，后面的to省略", explain: "", enExample: "We have nothing to do but（to） wait here. They did nothing but / except（to） complain.I’ve done everything you wanted but / except （to）make the beds.", zhExample: "" },
+                  { main: "如果前面没有实义动词 do，后面必须是to do", explain: "", enExample: "We have no choice but / except to wait here.", zhExample: "" }
+                ] },
+{ title: "hand sth. down pass sth. from older people to younger ones 传下来", body: "", table: [
+                  { main: "", explain: "", enExample: "The recipe was handed down from an ancestor of the family.", zhExample: "" },
+                  { main: "", explain: "", enExample: "This ring was handed down from my aunt.", zhExample: "这只戒指是我姑母传下来的。" },
+                  { main: "", explain: "", enExample: "The verdict was handed down at the end of June.", zhExample: "法庭裁决于六月底下来了。" },
+                  { main: "", explain: "", enExample: "This blood feud was handed down from generation to generation.", zhExample: "这血海深仇传了一代又一代。" }
+                ] },
+{ title: "xxx-teller 讲…的人", body: "", table: [
+                  { main: "", explain: "", enExample: "story-teller = tell stories", zhExample: "讲故事的人" },
+                  { main: "", explain: "", enExample: "fortune-teller = tell one’s fortune", zhExample: "算命" }
+                ] }
+              ] },
+{
+          text: "These legends are useful because they can tell us something about migrations of people who lived long ago, but none could write down what they did.", translation: "这些传说是有用的，因为他们讲述了很久以前有关迁居的事情。", predicates: ["are", "tell", "lived", "write", "did"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [] },
+{
+          text: "Anthropologists wondered where the remote ancestors of the Polynesian peoples now living in the Pacific Islands came from.", translation: "人类学家过去不清楚如今生活在太平洋诸岛上的波利尼西亚人的祖先来自何方，", predicates: ["wondered", "came"], clauseIntroducers: [], rubyNotes: [
+{ title: "now living in the Pacific Islands", body: "后置定语修饰前面的 peoples 民族" }
+              ], structureNotes: null, panelNotes: [
+{ title: "remote ancestors 远祖", body: "", table: [
+                  { main: "", explain: "", enExample: "Anthropologists studied the origins of their remote ancestors.", zhExample: "人类学家研究了他们远祖的起源。" },
+                  { main: "", explain: "", enExample: "The traditions were passed down from their remote ancestors.", zhExample: "这些传统是从他们的远祖那里传下来的。" },
+                  { main: "", explain: "", enExample: "Understanding our remote ancestors helps us understand ourselves.", zhExample: "了解我们的远祖有助于我们了解自己。" },
+                  { main: "", explain: "", enExample: "He met a distant relative at the family reunion.", zhExample: "他在家庭聚会上遇到了一位远亲。" },
+                  { main: "", explain: "", enExample: "I received a letter from a distant relative living abroad.", zhExample: "我收到了一封来自居住在国外的远亲的信。" },
+                  { main: "", explain: "", enExample: "She didn't recognize a distant relative at first.", zhExample: "她起初没有认出一位远亲。" },
+                  { main: "", explain: "", enExample: "She is a close relative of mine.", zhExample: "她是我的一个近亲。" },
+                  { main: "", explain: "", enExample: "We visited a near relative in the hospital.", zhExample: "我们去医院看望了一位近亲。" },
+                  { main: "", explain: "", enExample: "The funeral was attended by many close relatives.", zhExample: "许多近亲参加了葬礼。" },
+                  { main: "a distant relative 远亲", explain: "", enExample: "He met a distant relative at the family reunion. 他在家庭聚会上遇到了一位远亲。I received a letter from a distant relative living abroad. 我收到了一封来自居住在国外的远亲的信。She didn't recognize a distant relative at first. 她起初没有认出一位远亲。", zhExample: "" },
+                  { main: "a close / near relative 近亲", explain: "", enExample: "She is a close relative of mine. 她是我的一个近亲。We visited a near relative in the hospital. 我们去医院看望了一位近亲。The funeral was attended by many close relatives. 许多近亲参加了葬礼。", zhExample: "" }
+                ] }
+              ] },
+{
+          text: "The sagas of these people explain that some of them came from Indonesia about 2,000 years ago.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。 然而， 幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。 他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。 石头是不会腐烂的。 因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。", predicates: ["explain", "came"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [] }
       ],
       [
-        { text: "But the first people who were like ourselves lived so long ago that even their sagas, if they had any, are forgotten.", translation: "但是，和我们相似的原始人生活的年代太久远了，因此，有关他们的传说既使有如今也失传了。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的\u201c现代人\u201d是从哪里来的。", predicates: [], clauseIntroducers: [], rubyNotes: [] }
+{
+          text: "But the first people who were like ourselves lived so long ago that even their sagas, if they had any, are forgotten.", translation: "但是，和我们相似的原始人生活的年代太久远了，因此，有关他们的传说既使有如今也失传了。", predicates: ["were", "lived", "had", "are"], clauseIntroducers: ["that"], rubyNotes: [
+{ title: "so long ago", body: "结果状语" },
+{ title: "that", body: "结果状语" }
+              ], structureNotes: null, panelNotes: [
+{ title: "the first people who were like ourselves 远古人类 = fossil man（替换）", body: "", table: [
+                  { main: "", explain: "", enExample: "Scientists discovered a skull of a fossil man.", zhExample: "科学家发现了一块化石人类的头骨" },
+                  { main: "", explain: "", enExample: "We know little about the people who lived long ago.", zhExample: "我们对远古人类了解甚少" },
+                  { main: "", explain: "", enExample: "The first 'modern men' appeared in Africa.", zhExample: "最早的现代人出现在非洲" },
+                  { main: "", explain: "", enExample: "Some tools used by ancient men were found in the cave.", zhExample: "在洞穴中发现了一些古代人类使用的工具" }
+                ] },
+{ title: "first people who were like ourselves 定语从句 = first people like ourselves 后置定语", body: "", table: [
+                  { main: "", explain: "", enExample: "... asked to see a dress that was in the window. = ... asked to see a dress in the window.", zhExample: "" },
+                  { main: "be similar to … 和…很类似", explain: "… the first people who were similar to ourselves …", enExample: "… the first people similar to ourselves", zhExample: "" },
+                  { main: "resemble 类似", explain: "... the first people who resembled ourselves …", enExample: "... the first people resembling ourselves …", zhExample: "" },
+                  { main: "bear a resemblance to 与...有相似之处", explain: "... the first people who bore a resemblance to ourselves ...", enExample: "... the first people bearing a resemblance to ourselves ...", zhExample: "" }
+                ] },
+{ title: "if + 从句（让步用法） 即使", body: "", table: [
+                  { main: "", explain: "", enExample: "God’s reasons, if He has any, are opaque to us.", zhExample: "上帝的理由，<strong>即使</strong>他有，也是难以理解的" },
+                  { main: "", explain: "", enExample: "There is every likelihood that the costs will outweigh revenue, if there is any.", zhExample: "成本极可能超过收入，<strong>即使</strong>收入存在" },
+                  { main: "", explain: "", enExample: "His descendants, if any, never left the island.", zhExample: "他的后代，<strong>即使有</strong>，也从未离开这座岛屿" },
+                  { main: "", explain: "", enExample: "He is seldom, if ever, absent from work.", zhExample: "" }
+                ] }
+              ] },
+{
+          text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的\\u201c现代人\\u201d是从哪里来的。", predicates: ["have", "came"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [
+{ title: "neither...nor... 既不…也不…", body: "", table: [
+                  { main: "", explain: "", enExample: "Neither the teacher nor the students were in the classroom.", zhExample: "老师和学生都不在教室" },
+                  { main: "", explain: "", enExample: "Neither the evidence nor the witnesses support his claim.", zhExample: "既没有证据也没有证人支持他的说法" },
+                  { main: "", explain: "", enExample: "Neither John nor Mary likes sushi.", zhExample: "约翰和玛丽都不喜欢寿司" }
+                ] },
+{ title: "find out 查明；弄清楚", body: "", table: [
+                  { main: "", explain: "", enExample: "Scientists are working hard to find out the cause of the disease.", zhExample: "科学家正努力查明这种疾病的原因" },
+                  { main: "", explain: "", enExample: "She called the company to find out more information.", zhExample: "她打电话给公司了解更多信息" },
+                  { main: "", explain: "", enExample: "We need to find out what happened last night.", zhExample: "我们需要弄清楚昨晚发生了什么" }
+                ] }
+              ] }
       ],
       [
-        { text: "Fortunately, however, ancient men made tools of stone, especially flint, because this is easier to shape than other kinds.", translation: "然而，幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "They may also have used wood and skins, but these have rotted away.", translation: "他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。", predicates: [], clauseIntroducers: [], rubyNotes: [] },
-        { text: "Stone does not decay, and so the tools of long ago have remained when even the bones of the men who made them have disappeared without trace.", translation: "石头是不会腐烂的。因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。", predicates: [], clauseIntroducers: [], rubyNotes: [] }
+{
+          text: "Fortunately, however, ancient men made tools of stone, especially flint, because this is easier to shape than other kinds.", translation: "然而，幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。", predicates: ["made", "is"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [
+{ title: "shape 使成形", body: "", table: [
+                  { main: "", explain: "", enExample: "He shaped the clay into a vase.", zhExample: "" },
+                  { main: "", explain: "", enExample: "Like it or not, our experiences shape our personalities.", zhExample: "" },
+                  { main: "", explain: "", enExample: "He shaped the clay into a bowl.", zhExample: "他把黏土捏成一个碗。" },
+                  { main: "", explain: "", enExample: "Experiences can shape a person's character.", zhExample: "经历可以塑造一个人的性格。" },
+                  { main: "", explain: "", enExample: "The sculptor carefully shaped the marble.", zhExample: "雕塑家仔细地塑造着大理石。" },
+                  { main: "", explain: "", enExample: "He thundered at the door.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The street was veiled in darkness.", zhExample: "" },
+                  { main: "", explain: "", enExample: "A gust of wind whipped the dust along the road.", zhExample: "" },
+                  { main: "", explain: "", enExample: "Honey, I forgot to duck.", zhExample: "（里根）" },
+                  { main: "", explain: "", enExample: "It rained cats and dogs.", zhExample: "下了倾盆大雨。（cats and dogs名词作副词）" },
+                  { main: "", explain: "", enExample: "The wind whipped through the trees.", zhExample: "风呼啸着穿过树林。（whipped名词作动词）" },
+                  { main: "", explain: "", enExample: "The city lights up at night.", zhExample: "夜晚城市灯火通明。（lights名词作动词）" },
+                  { main: "名词动用", explain: "", enExample: "He thundered at the door.The street was veiled in darkness.A gust of wind whipped the dust along the road.Honey, I forgot to duck. （里根）It rained cats and dogs. 下了倾盆大雨。（cats and dogs名词作副词）The wind whipped through the trees. 风呼啸着穿过树林。（whipped名词作动词）The city lights up at night. 夜晚城市灯火通明。（lights名词作动词）", zhExample: "" }
+                ] },
+{ title: "… this is easier to shape… 形容词 + to do 形容词后加动词不定式作补语，用主动表被动的含义", body: "", table: [
+                  { main: "", explain: "", enExample: "He is easy to fool.", zhExample: "" },
+                  { main: "", explain: "", enExample: "She is extremely difficult to please.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The machine is awkward to handle.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The man is hard to work with.", zhExample: "" },
+                  { main: "", explain: "", enExample: "This book is easy to read.", zhExample: "这本书很容易读。" },
+                  { main: "", explain: "", enExample: "The problem is difficult to solve.", zhExample: "这个问题很难解决。" },
+                  { main: "", explain: "", enExample: "That song is lovely to listen to.", zhExample: "那首歌听起来很动听。" }
+                ] }
+              ] },
+{
+          text: "They may also have used wood and skins, but these have rotted away.", translation: "他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。", predicates: ["have used", "have rotted"], clauseIntroducers: [], rubyNotes: [], structureNotes: null, panelNotes: [
+{ title: "情态动词 + have done 对过去肯定/否定的推测", body: "", table: [
+                  { main: "", explain: "", enExample: "He must have left already.", zhExample: "他肯定已经离开了。" },
+                  { main: "", explain: "", enExample: "She might have forgotten about the meeting.", zhExample: "她可能忘记了会议。" },
+                  { main: "", explain: "", enExample: "They couldn't have known the answer.", zhExample: "他们不可能知道答案。" },
+                  { main: "may / might have done 可能已经做了某事", explain: "", enExample: "She may have forgotten our meeting. 她可能忘记了我们的会议。", zhExample: "" },
+                  { main: "must have done 一定已经做了某事", explain: "", enExample: "He must have left early to catch the train. 他一定是早早离开去赶火车了。", zhExample: "" },
+                  { main: "can not / could not have done 不可能已经做了某事", explain: "", enExample: "She can’t have seen him there — he was abroad. 她不可能在那里见过他——他当时在国外。", zhExample: "" },
+                  { main: "should / ought to have done 本应该做某事（责备语气）", explain: "", enExample: "You should have told me the truth. 你本应该告诉我真相。", zhExample: "" },
+                  { main: "should not / ought not to have done 本不该做某事（责备语气）", explain: "", enExample: "He ought not to have said that in public. 他本不该在公众场合那样说。", zhExample: "" }
+                ] },
+{ title: "skin/hide/fur/feather 表达“皮”", body: "", table: [
+                  { main: "", explain: "", enExample: "fur and feather", zhExample: "飞禽走兽（借代）" },
+                  { main: "", explain: "", enExample: "fin, fur and feather", zhExample: "各种各样的动物（借代）" },
+                  { main: "skin 皮肤/兽皮", explain: "", enExample: "The hunter wore animal skins. 猎人穿着兽皮。", zhExample: "" },
+                  { main: "hide 兽皮（尤指大型动物的）", explain: "", enExample: "They used buffalo hides to make tents. 他们用野牛皮做帐篷。", zhExample: "" },
+                  { main: "fur 裘皮", explain: "", enExample: "She wore a coat with a fur collar. 她穿了一件带裘皮领子的外套。", zhExample: "" },
+                  { main: "feather 羽毛", explain: "", enExample: "Birds are covered in feathers. 鸟类身上覆盖着羽毛。", zhExample: "" }
+                ] },
+{ title: "metonymy 借代", body: "", table: [
+                  { main: "", explain: "", enExample: "A bald slipped out of the house.", zhExample: "" },
+                  { main: "", explain: "", enExample: "He has been messing around with several skirts（裙子，借代女性） of his class.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The crown should not yield to the cross.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The pen is mightier than the sword.", zhExample: "笔比剑更有力。（pen借代文字，sword借代武力）" },
+                  { main: "", explain: "", enExample: "We need more hands on deck.", zhExample: "我们需要更多的人手。（hands借代工人）" },
+                  { main: "", explain: "", enExample: "The White House announced a new policy.", zhExample: "白宫宣布了一项新政策。（White House借代美国政府）" }
+                ] }
+              ] },
+{
+          text: "Stone does not decay, and so the tools of long ago have remained when even the bones of the men who made them have disappeared without trace.", translation: "石头是不会腐烂的。因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。", predicates: ["does not decay", "have remained", "made", "have disappeared"], clauseIntroducers: ["so", "when", "who"], rubyNotes: [
+{ title: "so", body: "so在这里是一个副词，and so是一个固定搭配，相当于 and therefore" },
+{ title: "when", body: "引导让步状语从句" },
+{ title: "who", body: "引导定语从句，修饰bones" },
+{ title: "without trace", body: "方式状语" }
+              ], structureNotes: null, panelNotes: [
+{ title: "when 尽管,引导让步状语:一般放在主句之后", body: "", table: [
+                  { main: "", explain: "", enExample: "He walks when he might take a taxi.", zhExample: "" },
+                  { main: "", explain: "", enExample: "Why do you walk when you have a car?", zhExample: "" },
+                  { main: "", explain: "", enExample: "He smiled when he was feeling sad.", zhExample: "他尽管感到悲伤，还是笑了。" },
+                  { main: "", explain: "", enExample: "She helped others when she herself was in need.", zhExample: "她尽管自己也需要帮助，还是帮助了别人。" },
+                  { main: "", explain: "", enExample: "They continued to work when it started to rain.", zhExample: "尽管开始下雨，他们仍然继续工作。" }
+                ] },
+{ title: "disappear / vanish without trace 消失得无影无踪", body: "", table: [
+                  { main: "", explain: "", enExample: "The burglar slipped out of the house and then disappeared / vanished without trace.", zhExample: "" },
+                  { main: "", explain: "", enExample: "The magician made the rabbit disappear without trace.", zhExample: "魔术师使兔子消失得无影无踪。" },
+                  { main: "", explain: "", enExample: "After the heavy fog lifted, the ship had vanished without trace.", zhExample: "大雾散去后，那艘船已经消失得无影无踪。" },
+                  { main: "", explain: "", enExample: "The missing documents seemed to have disappeared without trace from the office.", zhExample: "失踪的文件似乎已经从办公室消失得无影无踪。" }
+                ] }
+              ] }
       ]
     ],
   },
@@ -86,6 +300,7 @@ const articleNce4L1: Article = {
     { word: "rot", pos: "v.", meaning: "烂掉", phonetic: "/rɔt/" }
   ],
 }
+
 const articleNce4L2: Article = {
 
   id: "nce4-l2",
