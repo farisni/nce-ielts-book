@@ -17,10 +17,13 @@ def esc(s):
     return s.replace('\\', '\\\\').replace('"', '\\"')
 
 def split_cn(s):
-    """Split 'English term Chinese meaning' → (english, chinese)"""
-    m = re.match(r'^([\x00-\x7f\s/()\-]+?)\s*([\u4e00-\u9fff].*)$', s)
-    if m:
-        return m.group(1).strip(), m.group(2).strip()
+    """Split at first CJK character: 'term meaning' → (term, meaning)"""
+    if not s: return '', ''
+    for i, c in enumerate(s):
+        if '\u4e00' <= c <= '\u9fff' or '\uff00' <= c <= '\uffef' or '\u3000' <= c <= '\u303f':
+            if i > 0:
+                return s[:i].rstrip(), s[i:].lstrip()
+            break
     return s.strip(), ''
 
 def detail_to_panel(d):
@@ -28,10 +31,18 @@ def detail_to_panel(d):
     for ex in d.get('examples', []):
         en = esc(ex.get('en', ''))
         cn = esc(ex.get('cn', ''))
-        rows.append(f'{{ word: "", meaning: "", enExample: "{en}", zhExample: "{cn}" }}')
+        if not cn and re.search(r'[\u4e00-\u9fff]', en):
+            en_split, cn_split = split_cn(en)
+            rows.append(f'{{ word: "", meaning: "", enExample: "{esc(en_split)}", zhExample: "{esc(cn_split)}" }}')
+        else:
+            rows.append(f'{{ word: "", meaning: "", enExample: "{en}", zhExample: "{cn}" }}')
     for tbl in d.get('tables', []):
         for row in tbl:
-            if isinstance(row, list) and len(row) >= 2:
+            if isinstance(row, dict):
+                w, m = split_cn(row.get('main', ''))
+                en, zh = split_cn(row.get('content', ''))
+                rows.append(f'{{ word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
+            elif isinstance(row, list) and len(row) >= 2:
                 w, m = split_cn(str(row[0]))
                 en, zh = split_cn(str(row[1]))
                 rows.append(f'{{ word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
