@@ -162,6 +162,11 @@ const demoItems = [
     href: "/demo/audio-word-highlight",
     icon: <Play className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
+  {
+    label: "Demo · Timeline Notes",
+    href: "/demo/timeline",
+    icon: <Braces className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
 ];
 
 function SidebarSection({ title, children }: { title: string; children: ReactNode }) {

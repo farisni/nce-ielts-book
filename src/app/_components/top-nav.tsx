@@ -319,6 +319,15 @@ const pageSearchItems: PageSearchItem[] = [
     icon: <PlayIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo audio word highlight transcript subtitle animation"),
   },
+  {
+    id: "demo-timeline",
+    label: "Demo · Timeline Notes",
+    description: "Reading notes timeline with stagger animation",
+    href: "/demo/timeline",
+    group: "Demo",
+    icon: <BracesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo timeline notes reading annotation"),
+  },
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {

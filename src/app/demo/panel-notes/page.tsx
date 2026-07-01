@@ -82,29 +82,22 @@ export default function PanelNotesDemo() {
                       <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{note.body}</p>
                     </div>
                     {note.table && (
-                      <table className="mt-2 text-sm text-muted-foreground border-collapse w-full">
-                        <tbody>
-                          {note.table.map((row, ri) => (
-                            <tr key={ri}>
-                              <td className="relative pl-4 pr-1 py-1.5 align-middle w-32">
-                                <span className="absolute left-0 top-1/2 -translate-y-1/2 size-1 rounded-full" style={{ background: dotColors[ni % dotColors.length] }} />
-                                {ri < note.table.length - 1 && (
-                                  <span className="absolute left-[0.09375rem] top-[calc(50%+0.125rem)] bottom-0 w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
-                                )}
-                                {ri > 0 && (
-                                  <span className="absolute left-[0.09375rem] top-0 bottom-[calc(50%+0.125rem)] w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
-                                )}
-                                <span className="font-medium text-foreground/65">{row.main}</span>
-                                <span className="ml-1 text-xs font-normal">{row.explain}</span>
-                              </td>
-                              <td className="py-1.5 leading-relaxed align-middle">
-                                <div>{row.enExample}</div>
-                                <div className="text-xs">{row.zhExample}</div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                      <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                        {note.table.map((row, ri) => (
+                          <li key={ri} className="flex items-start gap-2.5">
+                            <span
+                              className="mt-[0.4rem] size-1.5 rounded-full shrink-0"
+                              style={{ background: dotColors[ni % dotColors.length] }}
+                            />
+                            <div className="min-w-0">
+                              <span className="font-medium text-foreground/65">{row.main}</span>
+                              <span className="ml-1 text-xs font-normal">{row.explain}</span>
+                              <div className="mt-0.5">{row.enExample}</div>
+                              <div className="text-xs mt-0.5">{row.zhExample}</div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
                     )}
                   </div>
                 ))}
