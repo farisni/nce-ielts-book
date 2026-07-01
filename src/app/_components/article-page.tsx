@@ -409,7 +409,15 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                 >
                   {/* cover thumbnail */}
                   {defaultLevel === "IELTS16" ? (
-                    <img src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`} alt="" className="h-20 w-28 shrink-0 rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                    <span className="relative h-20 w-28 shrink-0 block">
+                      <Skeleton className="absolute inset-0 rounded-lg" />
+                      <img
+                        src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`}
+                        alt=""
+                        className="relative h-20 w-28 rounded-lg object-cover opacity-0 transition-all duration-300 group-hover:scale-[1.03]"
+                        onLoad={(e) => { e.currentTarget.classList.remove('opacity-0'); }}
+                      />
+                    </span>
                   ) : (
                     <div className="h-20 w-28 shrink-0 rounded-lg bg-muted flex items-center justify-center">
                       <svg className="h-8 w-8 text-muted-foreground/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
@@ -869,11 +877,15 @@ function ArticleReader({ article }: { article: Article }) {
                           style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                         >
                           {index === 0 && isIelts && (
-                            <img
-                              src={`/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg`}
-                              alt=""
-                              className="float-right ml-6 mb-4 mt-1 w-56 h-36 rounded-lg object-cover"
-                            />
+                            <span className="float-right relative ml-6 mb-4 mt-1 block w-56 h-36">
+                              <Skeleton className="absolute inset-0 rounded-lg" />
+                              <img
+                                src={`/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg`}
+                                alt=""
+                                className="relative w-full h-full rounded-lg object-cover opacity-0 transition-opacity duration-300"
+                                onLoad={(e) => { e.currentTarget.classList.remove('opacity-0'); }}
+                              />
+                            </span>
                           )}
                           {sentences.map((sentence, sIdx) => {
                             const key = `${article.id}-p${index}-s${sIdx}`;

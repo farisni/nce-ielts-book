@@ -300,7 +300,16 @@ const pageSearchItems: PageSearchItem[] = [
     group: "Demo",
     icon: <CommandIcon className="text-muted-foreground" />,
     keywords: toKeywords("demo springs animation framer motion bounce"),
+  },  {
+    id: "demo-panel-notes",
+    label: "Demo · Panel Notes",
+    description: "行间笔记面板排版与动画预览",
+    href: "/demo/panel-notes",
+    group: "Demo",
+    icon: <BracesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo panel notes 行间笔记 面板 排版 animation"),
   },
+
   {
     id: "demo-audio-word-highlight",
     label: "Demo · Audio Word Highlight",
