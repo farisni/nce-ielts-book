@@ -16,6 +16,8 @@ interface Note {
   table?: TableRow[];
 }
 
+const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
+
 const sampleNotes: Note[] = [
   {
     title: "read of",
@@ -83,12 +85,16 @@ export default function PanelNotesDemo() {
                       <table className="mt-2 text-sm text-muted-foreground border-collapse w-full">
                         <tbody>
                           {note.table.map((row, ri) => (
-                            <tr key={ri} className="border-b border-border/40 last:border-0">
-                              <td className="pr-1 py-1.5 whitespace-nowrap align-middle">
+                            <tr key={ri}>
+                              <td className="relative pl-4 pr-1 py-1.5 whitespace-nowrap align-middle">
+                                {ri < note.table.length - 1 && (
+                                  <span className="absolute left-[0.09375rem] top-0 bottom-0 w-px opacity-20" style={{ background: dotColors[ni % dotColors.length] }} />
+                                )}
+                                <span className="absolute left-0 top-1/2 -translate-y-1/2 size-1 rounded-full" style={{ background: dotColors[ni % dotColors.length] }} />
                                 <span className="font-medium text-foreground/65">{row.main}</span>
                                 <span className="ml-1 text-xs font-normal">{row.explain}</span>
                               </td>
-                              <td className="pl-0 py-1.5 leading-relaxed align-middle">
+                              <td className="py-1.5 leading-relaxed align-middle">
                                 <div>{row.enExample}</div>
                                 <div className="text-xs">{row.zhExample}</div>
                               </td>
