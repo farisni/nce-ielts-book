@@ -49,7 +49,7 @@ function buildSentenceItems(text: string, translations: string[] = []): Sentence
     translation: translations[index] ?? '',
     predicates: [],
     clauseIntroducers: [],
-    inlineAnnotations: [],
+    auxiliaries: [], inlineAnnotations: [],
   }))
 }
 
