@@ -20,7 +20,7 @@ const articleNce4L1: Article = {
   attribution: "ROBIN PLACE（罗宾·普莱斯）《Finding fossil man》",
   notesOnText: [
     { title: "hand down", body: "把...传下去。例句：Many old legends were handed down from generation by mouth. 许多古老的传说都是一代一代口传下来了。" },
-    { title: "read of", body: "读到，和 read about 是相同的意思。谈到：speak of，talk of；了解到：know of；听到：hear of。" },
+    { title: "read of", body: "读到，和 read about 是相同的意思。谈到：speak of，talk of；了解到：know of；听到：hear of。\n\n例句：\nI had read of such hideous incarnate demons. 我读过关于这类可怕的化身鬼怪的书。\nI read of the traffic accident in yesterday\'s paper. 我在昨天的报纸上知道了这起交通事故。" },
     { title: "the first people", body: "原始人。people+s 表示民族。" },
     { title: "if they had any", body: "即便是有，表假设。例句：His relatives, if he had any, never went to visit him when he was hospitalized. 他的亲戚，即便他还有的话，在他住院时也从来不去看他。" },
     { title: "when even the bones...", body: "这个以when引导的状语从句表示让步的意思，而when可以译成\u201c虽然\u201d，\u201c尽管\u201d。" }
