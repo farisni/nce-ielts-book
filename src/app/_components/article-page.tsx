@@ -461,6 +461,17 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
 }
 
 function ArticleReader({ article }: { article: Article }) {
+
+  const highlightInText = (text: string, keyword: string) => {
+    if (!keyword || !text) return text;
+    const escaped = keyword.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
+    return parts.map((part, i) =>
+      part.toLowerCase() === keyword.trim().toLowerCase()
+        ? <span key={i} className="text-amber-600/80">{part}</span>
+        : part
+    );
+  };
   const isIelts = article.level === "IELTS16";
   const levelRoute = LEVEL_ROUTES[article.level] ?? "/ielts";
   const articleList = LEVEL_LISTS[article.level] ?? [];
@@ -950,7 +961,7 @@ function ArticleReader({ article }: { article: Article }) {
                                                     <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
                                                       {exampleRows.map((row, ri) => (
                                                         <li key={ri} className="min-w-0">
-                                                          <div>{row.enExample}</div>
+                                                          <div>{highlightInText(row.enExample, row.main)}</div>
                                                           <div className="text-[11px] mt-0.5">{row.zhExample}</div>
                                                         </li>
                                                       ))}
@@ -962,12 +973,12 @@ function ArticleReader({ article }: { article: Article }) {
                                                         {synonymRows.map((row, ri) => (
                                                           <tr key={ri} className="align-top">
                                                             <td className="w-[1%] whitespace-nowrap pr-3 py-0.5 ">
-                                                              <span className="font-medium text-foreground/85">{row.main}</span>
+                                                              <span className="font-medium text-foreground/85">{highlightInText(row.main, note.title)}</span>
                                                               <span className="ml-1.5 text-[11px]">{row.explain}</span>
                                                             </td>
                                                             <td className="py-0.5 ">
                                                               <Tooltip content={row.zhExample}>
-                                                                <span className="cursor-help border-b border-dotted border-muted-foreground/30">{row.enExample}</span>
+                                                                <span className="cursor-help">{highlightInText(row.enExample, row.main)}</span>
                                                               </Tooltip>
                                                             </td>
                                                           </tr>
