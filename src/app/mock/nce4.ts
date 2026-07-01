@@ -148,7 +148,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "动词不定式做“except / but”的宾语时 § 表示“除了…之外”，若前面出现了实义动词 “do”, 则常去掉“to”", body: "", table: [
+              title: "动词不定式做“except / but”的宾语时", body: "表示“除了…之外”，若前面出现了实义动词 “do”, 则常去掉“to”", table: [
                 { main: "", explain: "", enExample: "We have nothing to do but（to） wait here.", zhExample: "" },
                 { main: "", explain: "", enExample: "They did nothing but / except（to） complain.", zhExample: "" },
                 { main: "", explain: "", enExample: "I’ve done everything you wanted but / except （to）make the beds.", zhExample: "" },
@@ -157,7 +157,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "hand sth. down pass sth. from older people to younger ones 传下来", body: "", table: [
+              title: "hand sth. down pass sth. from older people to younger ones", body: "传下来", table: [
                 { main: "", explain: "", enExample: "The recipe was handed down from an ancestor of the family.", zhExample: "" },
                 { main: "", explain: "", enExample: "This ring was handed down from my aunt.", zhExample: "这只戒指是我姑母传下来的。" },
                 { main: "", explain: "", enExample: "The verdict was handed down at the end of June.", zhExample: "法庭裁决于六月底下来了。" },
@@ -165,7 +165,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "xxx-teller 讲…的人", body: "", table: [
+              title: "xxx-teller", body: " 讲…的人", table: [
                 { main: "", explain: "", enExample: "story-teller = tell stories", zhExample: "讲故事的人" },
                 { main: "", explain: "", enExample: "fortune-teller = tell one’s fortune", zhExample: "算命" }
               ]
@@ -180,7 +180,7 @@ const articleNce4L1: Article = {
             { title: "now living in the Pacific Islands", body: "后置定语修饰前面的 peoples 民族" }
           ], structureNotes: undefined, panelNotes: [
             {
-              title: "remote ancestors", body: " 远祖", table: [
+              title: "remote ancestors", body: "远祖", table: [
                 { main: "", explain: "", enExample: "Anthropologists studied the origins of their remote ancestors.", zhExample: "人类学家研究了他们远祖的起源。" },
                 { main: "", explain: "", enExample: "The traditions were passed down from their remote ancestors.", zhExample: "这些传统是从他们的远祖那里传下来的。" },
                 { main: "", explain: "", enExample: "Understanding our remote ancestors helps us understand ourselves.", zhExample: "了解我们的远祖有助于我们了解自己。" },
