@@ -850,7 +850,7 @@ function ArticleReader({ article }: { article: Article }) {
             <AnimatePresence>
               {activePanelKey && (
                 <motion.div
-                  className="fixed inset-0 z-20 bg-black/35"
+                  className="fixed inset-0 z-[60] bg-black/35"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -916,7 +916,7 @@ function ArticleReader({ article }: { article: Article }) {
                             const isActive = activePanelKey === key || audioActiveKey === key;
                             return (
                               <React.Fragment key={key}>
-                                <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[21] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
+                                <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[70] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
                                   {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current)}
                                   {hasPanelNotes && (
                                     <button
@@ -935,7 +935,7 @@ function ArticleReader({ article }: { article: Article }) {
                                     <motion.div
                                       key={key}
                                       data-selection-offset-excluded="true"
-                                      className="rounded-lg px-4 py-3 relative z-[21] [text-indent:0] font-sans"
+                                      className="rounded-lg px-4 py-3 relative z-[70] [text-indent:0] font-sans"
                                       style={{ background: "#f2f7f2" }}
                                       initial={{ opacity: 0, y: -4 }}
                                       animate={{ opacity: 1, y: 0 }}
