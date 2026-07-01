@@ -130,7 +130,7 @@ const articleNce4L1: Article = {
             { title: "handed", body: "非谓语动词做后置定语" }
           ], structureNotes: undefined, panelNotes: [
             {
-              title: "preserve 保存、保护（状态）", body: "", table: [
+              title: "preserve", body: "保存、保护（状态）", table: [
                 { main: "", explain: "", enExample: "The only way that they can preserve their history is to recount it as sagas.", zhExample: "他们保存历史的唯一方法是将历史像传说一样讲述。" },
                 { main: "", explain: "", enExample: "The museum works diligently to preserve historical records from the Civil War era, ensuring future generations can learn from primary sources.", zhExample: "博物馆努力保存南北战争时期的历史记录，确保后代能够从原始资料中学习。" },
                 { main: "", explain: "", enExample: "In rural communities, many families still preserve food through traditional methods like pickling and canning to enjoy seasonal produce year-round.", zhExample: "在农村社区，许多家庭仍然通过腌制和罐装等传统方法保存食物，以便全年享用季节性农产品。" },
@@ -140,7 +140,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "To do 做表语时, 若前面出现了实义动词 “do”，则常去掉 “to”", body: "", table: [
+              title: "To do", body: "做表语时, 若前面出现了实义动词 “do”，则常去掉 “to”", table: [
                 { main: "", explain: "", enExample: "All I have to do is （to）dream.", zhExample: "" },
                 { main: "", explain: "", enExample: "The best thing you can do now is （to）write her an apology.", zhExample: "" },
                 { main: "", explain: "", enExample: "All I wanted was to help him.", zhExample: "" },
@@ -180,7 +180,7 @@ const articleNce4L1: Article = {
             { title: "now living in the Pacific Islands", body: "后置定语修饰前面的 peoples 民族" }
           ], structureNotes: undefined, panelNotes: [
             {
-              title: "remote ancestors 远祖", body: "", table: [
+              title: "remote ancestors", body: " 远祖", table: [
                 { main: "", explain: "", enExample: "Anthropologists studied the origins of their remote ancestors.", zhExample: "人类学家研究了他们远祖的起源。" },
                 { main: "", explain: "", enExample: "The traditions were passed down from their remote ancestors.", zhExample: "这些传统是从他们的远祖那里传下来的。" },
                 { main: "", explain: "", enExample: "Understanding our remote ancestors helps us understand ourselves.", zhExample: "了解我们的远祖有助于我们了解自己。" },
@@ -235,14 +235,14 @@ const articleNce4L1: Article = {
         {
           text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u201c现代人\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u201d是从哪里来的。", predicates: ["have", "came"], clauseIntroducers: [], auxiliaries: [], rubyNotes: [], structureNotes: undefined, panelNotes: [
             {
-              title: "neither...nor... 既不…也不…", body: "", table: [
+              title: "neither...nor...", body: "既不…也不…", table: [
                 { main: "", explain: "", enExample: "Neither the teacher nor the students were in the classroom.", zhExample: "老师和学生都不在教室" },
                 { main: "", explain: "", enExample: "Neither the evidence nor the witnesses support his claim.", zhExample: "既没有证据也没有证人支持他的说法" },
                 { main: "", explain: "", enExample: "Neither John nor Mary likes sushi.", zhExample: "约翰和玛丽都不喜欢寿司" }
               ]
             },
             {
-              title: "find out 查明；弄清楚", body: "", table: [
+              title: "find out", body: "查明；弄清楚", table: [
                 { main: "", explain: "", enExample: "Scientists are working hard to find out the cause of the disease.", zhExample: "科学家正努力查明这种疾病的原因" },
                 { main: "", explain: "", enExample: "She called the company to find out more information.", zhExample: "她打电话给公司了解更多信息" },
                 { main: "", explain: "", enExample: "We need to find out what happened last night.", zhExample: "我们需要弄清楚昨晚发生了什么" }
@@ -255,7 +255,7 @@ const articleNce4L1: Article = {
         {
           text: "Fortunately, however, ancient men made tools of stone, especially flint, because this is easier to shape than other kinds.", translation: "然而，幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。", predicates: ["made", "is"], clauseIntroducers: [], auxiliaries: [], rubyNotes: [], structureNotes: undefined, panelNotes: [
             {
-              title: "shape 使成形", body: "", table: [
+              title: "shape", body: "使成形", table: [
                 { main: "", explain: "", enExample: "He shaped the clay into a vase.", zhExample: "" },
                 { main: "", explain: "", enExample: "Like it or not, our experiences shape our personalities.", zhExample: "" },
                 { main: "", explain: "", enExample: "He shaped the clay into a bowl.", zhExample: "他把黏土捏成一个碗。" },
@@ -272,7 +272,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "… this is easier to shape… 形容词 + to do 形容词后加动词不定式作补语，用主动表被动的含义", body: "", table: [
+              title: "… this is easier to shape…", body: "形容词 + to do 形容词后加动词不定式作补语，用主动表被动的含义", table: [
                 { main: "", explain: "", enExample: "He is easy to fool.", zhExample: "" },
                 { main: "", explain: "", enExample: "She is extremely difficult to please.", zhExample: "" },
                 { main: "", explain: "", enExample: "The machine is awkward to handle.", zhExample: "" },
@@ -287,7 +287,7 @@ const articleNce4L1: Article = {
         {
           text: "They may also have used wood and skins, but these have rotted away.", translation: "他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。", predicates: ["have used", "have rotted"], clauseIntroducers: [], auxiliaries: ["may"], rubyNotes: [], structureNotes: undefined, panelNotes: [
             {
-              title: "情态动词 + have done 对过去肯定/否定的推测", body: "", table: [
+              title: "情态动词 + have done", body: "对过去肯定/否定的推测", table: [
                 { main: "", explain: "", enExample: "He must have left already.", zhExample: "他肯定已经离开了。" },
                 { main: "", explain: "", enExample: "She might have forgotten about the meeting.", zhExample: "她可能忘记了会议。" },
                 { main: "", explain: "", enExample: "They couldn't have known the answer.", zhExample: "他们不可能知道答案。" },
@@ -299,7 +299,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "skin/hide/fur/feather 表达“皮”", body: "", table: [
+              title: "skin/hide/fur/feather", body: "表达“皮”", table: [
                 { main: "", explain: "", enExample: "fur and feather", zhExample: "飞禽走兽（借代）" },
                 { main: "", explain: "", enExample: "fin, fur and feather", zhExample: "各种各样的动物（借代）" },
                 { main: "skin", explain: "皮肤/兽皮", enExample: "The hunter wore animal skins.", zhExample: "猎人穿着兽皮。" },
@@ -309,7 +309,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "metonymy 借代", body: "", table: [
+              title: "metonymy", body: "借代", table: [
                 { main: "", explain: "", enExample: "A bald slipped out of the house.", zhExample: "" },
                 { main: "", explain: "", enExample: "He has been messing around with several skirts（裙子，借代女性） of his class.", zhExample: "" },
                 { main: "", explain: "", enExample: "The crown should not yield to the cross.", zhExample: "" },
@@ -328,7 +328,7 @@ const articleNce4L1: Article = {
             { title: "without trace", body: "方式状语" }
           ], structureNotes: undefined, panelNotes: [
             {
-              title: "when 尽管,引导让步状语:一般放在主句之后", body: "", table: [
+              title: "when", body: " 尽管,引导让步状语:一般放在主句之后", table: [
                 { main: "", explain: "", enExample: "He walks when he might take a taxi.", zhExample: "" },
                 { main: "", explain: "", enExample: "Why do you walk when you have a car?", zhExample: "" },
                 { main: "", explain: "", enExample: "He smiled when he was feeling sad.", zhExample: "他尽管感到悲伤，还是笑了。" },
@@ -337,7 +337,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "disappear / vanish without trace 消失得无影无踪", body: "", table: [
+              title: "disappear / vanish without trace ", body: "消失得无影无踪", table: [
                 { main: "", explain: "", enExample: "The burglar slipped out of the house and then disappeared / vanished without trace.", zhExample: "" },
                 { main: "", explain: "", enExample: "The magician made the rabbit disappear without trace.", zhExample: "魔术师使兔子消失得无影无踪。" },
                 { main: "", explain: "", enExample: "After the heavy fog lifted, the ship had vanished without trace.", zhExample: "大雾散去后，那艘船已经消失得无影无踪。" },
