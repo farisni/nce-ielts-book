@@ -321,7 +321,7 @@ function renderHighlightedText(
   predicates?: string[],
   auxiliaries?: string[],
   clauseIntroducers?: string[],
-) {
+  showGrammarHighlights?: boolean,) {
   const paragraphEnd = paragraphStart + text.length;
   const relevantHighlights = highlights.filter(
     (highlight) => highlight.start < paragraphEnd && highlight.end > paragraphStart,
@@ -344,9 +344,11 @@ function renderHighlightedText(
     }
   }
 
-  findWords(predicates ?? [], '#c2410c');      // rust for predicates
+  if (showGrammarHighlights !== false) {
+    findWords(predicates ?? [], '#c2410c');      // rust for predicates
   findWords(auxiliaries ?? [], '#d97706');      // amber for auxiliaries (nearby rust)
-  findWords(clauseIntroducers ?? [], '#418faf'); // teal for clause introducers
+    findWords(clauseIntroducers ?? [], '#418faf'); // teal for clause introducers
+  }
 
   // Sort by position
   grammarMatches.sort((a, b) => a.start - b.start);
@@ -569,6 +571,9 @@ function ArticleReader({ article }: { article: Article }) {
   const highlightsByArticleId = useArticleSettings((s) => s.highlightsByArticleId);
   const addHighlight = useArticleSettings((s) => s.addHighlight);
   const clearHighlights = useArticleSettings((s) => s.clearHighlights);
+  const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
+  const toggleGrammarHighlights = useArticleSettings((s) => s.toggleGrammarHighlights);
+
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
   const [chatContext, setChatContext] = useState("");
@@ -858,6 +863,13 @@ function ArticleReader({ article }: { article: Article }) {
                   </span>
                 </h1>
                                 {/* audio player for NCE4 */}
+                <button
+                  onClick={toggleGrammarHighlights}
+                  className="flex size-8 items-center justify-center rounded-full border border-border bg-surface-2 transition-colors hover:bg-surface-3"
+                  aria-label={showGrammarHighlights ? "Hide grammar colors" : "Show grammar colors"}
+                >
+                  <Highlighter className={showGrammarHighlights ? "size-3.5 text-[#c2410c]" : "size-3.5 text-muted-foreground/40"} />
+                </button>
                 {isNce4 && (
                   <div className="flex items-center gap-2 ml-4">
                     <button
@@ -984,7 +996,7 @@ function ArticleReader({ article }: { article: Article }) {
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers)}
+                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights)}
                                   {hasPanelNotes && (
                                     <button
                                       type="button"

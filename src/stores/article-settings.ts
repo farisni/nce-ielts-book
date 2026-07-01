@@ -11,14 +11,14 @@ type HighlightRange = {
 interface ArticleSettingsState {
   highlightsByArticleId: Record<string, HighlightRange[]>;
   showNotes: boolean;
-  citationStyle: string;
+  showGrammarHighlights: boolean;  citationStyle: string;
 
   addHighlight: (articleId: string, range: HighlightRange) => void;
   removeHighlight: (articleId: string, range: HighlightRange) => void;
   clearHighlights: (articleId: string) => void;
   setShowNotes: (show: boolean) => void;
   setCitationStyle: (style: string) => void;
-}
+  toggleGrammarHighlights: () => void;}
 
 function mergeHighlights(highlights: HighlightRange[]) {
   return highlights
@@ -40,7 +40,7 @@ export const useArticleSettings = create<ArticleSettingsState>()(
     (set) => ({
       highlightsByArticleId: {},
       showNotes: true,
-      citationStyle: "mla",
+      showGrammarHighlights: true,      citationStyle: "mla",
 
       addHighlight: (articleId, range) =>
         set((state) => ({
@@ -73,7 +73,8 @@ export const useArticleSettings = create<ArticleSettingsState>()(
 
       setShowNotes: (show) => set({ showNotes: show }),
       setCitationStyle: (style) => set({ citationStyle: style }),
-    }),
+
+      toggleGrammarHighlights: () => set((state) => ({ showGrammarHighlights: !state.showGrammarHighlights })),    }),
     {
       name: "nce-article-settings",
     }
