@@ -35,6 +35,8 @@ const articleNce4L1: Article = {
             title: "read of",
             body: "读到",
             table: [
+              { main: "", explain: "", enExample: "I had read of such hideous incarnate demons.", zhExample: "我读过关于这类可怕的化身鬼怪的书。" },
+              { main: "", explain: "", enExample: "I read of the traffic accident in yesterday's paper.", zhExample: "我在昨天的报纸上知道了这起交通事故。" },
               { main: "speak of / talk of", explain: "谈到", enExample: "When she spoke of her childhood, her eyes lit up.", zhExample: "她一谈到童年，眼睛就发亮。" },
               { main: "hear of", explain: "听说", enExample: "I've never heard of that place before.", zhExample: "我以前从未听说过那个地方。" },
               { main: "know of", explain: "知道有", enExample: "Do you know of any good restaurants nearby?", zhExample: "你知道附近有什么好餐馆吗？" },

@@ -941,18 +941,43 @@ function ArticleReader({ article }: { article: Article }) {
                                               </span>
                                               <span className="text-sm text-muted-foreground leading-relaxed">{note.body}</span>
                                             </div>
-                                            {note.table && note.table.length > 0 && (
-                                              <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
-                                                {note.table.map((row, ri) => (
-                                                  <li key={ri} className="min-w-0">
-                                                    <span className="font-medium text-foreground/85">{row.main}</span>
-                                                    <span className="ml-1 text-[11px]">{row.explain}</span>
-                                                    <div className="mt-0.5">{row.enExample}</div>
-                                                    <div className="text-[11px] mt-0.5">{row.zhExample}</div>
-                                                  </li>
-                                                ))}
-                                              </ul>
-                                            )}
+                                            {note.table && note.table.length > 0 && (() => {
+                                              const synonymRows = note.table.filter(r => r.main);
+                                              const exampleRows = note.table.filter(r => !r.main);
+                                              return (
+                                                <>
+                                                  {exampleRows.length > 0 && (
+                                                    <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
+                                                      {exampleRows.map((row, ri) => (
+                                                        <li key={ri} className="min-w-0">
+                                                          <div>{row.enExample}</div>
+                                                          <div className="text-[11px] mt-0.5">{row.zhExample}</div>
+                                                        </li>
+                                                      ))}
+                                                    </ul>
+                                                  )}
+                                                  {synonymRows.length > 0 && (
+                                                    <table className="mt-2 w-full text-[13px] text-muted-foreground border-collapse">
+                                                      <tbody>
+                                                        {synonymRows.map((row, ri) => (
+                                                          <tr key={ri} className="align-top">
+                                                            <td className="w-[1%] whitespace-nowrap pr-3 py-0.5 ">
+                                                              <span className="font-medium text-foreground/85">{row.main}</span>
+                                                              <span className="ml-1.5 text-[11px]">{row.explain}</span>
+                                                            </td>
+                                                            <td className="py-0.5 ">
+                                                              <Tooltip content={row.zhExample}>
+                                                                <span className="cursor-help border-b border-dotted border-muted-foreground/30">{row.enExample}</span>
+                                                              </Tooltip>
+                                                            </td>
+                                                          </tr>
+                                                        ))}
+                                                      </tbody>
+                                                    </table>
+                                                  )}
+                                                </>
+                                              );
+                                            })()}
                                           </div>
                                         ))}
                                       </div>
