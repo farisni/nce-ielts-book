@@ -100,8 +100,8 @@ export function RootAffixSections({
               </span>
             </button>
             <div className="ml-1 pl-3 border-l border-border/70 mt-2 space-y-1">
-              {section.words.slice(0, 8).map((entry) => (
-                <p key={entry.word} className="text-sm leading-snug">
+              {section.words.slice(0, 8).map((entry, i) => (
+                <p key={`${entry.word}-${i}`} className="text-sm leading-snug">
                   <span className="font-normal text-foreground/70">
                     {entry.word}
                   </span>
