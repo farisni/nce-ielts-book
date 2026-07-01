@@ -94,8 +94,8 @@ const articleNce4L1: Article = {
             {
               title: "状语从句 ⇒ 定语从句练习", body: "", table: [
                 { main: "", explain: "状语从句", enExample: "定语从句", zhExample: "" },
-                { main: "I have to be very careful not to offend the boss, because he could fire me at any time.", explain: "", enExample: "", zhExample: "" },
-                { main: "The action, although it has aroused universal disapproval, is nevertheless the only solution.", explain: "", enExample: "", zhExample: "" }
+                { main: "I have to be very careful not to offend the boss, because he could fire me at any time.", explain: "", enExample: "I have to be very careful not to offend the boss, who could fire me at any time.", zhExample: "" },
+                { main: "The action, although it has aroused universal disapproval, is nevertheless the only solution.", explain: "", enExample: "The action, which has aroused universal disapproval, is nevertheless the only solution.", zhExample: "" }
               ]
             }
           ]
@@ -224,9 +224,9 @@ const articleNce4L1: Article = {
             },
             {
               title: "if + 从句（让步用法） 即使", body: "", table: [
-                { main: "", explain: "", enExample: "God’s reasons, if He has any, are opaque to us.", zhExample: "上帝的理由，<strong>即使</strong>他有，也是难以理解的" },
-                { main: "", explain: "", enExample: "There is every likelihood that the costs will outweigh revenue, if there is any.", zhExample: "成本极可能超过收入，<strong>即使</strong>收入存在" },
-                { main: "", explain: "", enExample: "His descendants, if any, never left the island.", zhExample: "他的后代，<strong>即使有</strong>，也从未离开这座岛屿" },
+                { main: "", explain: "", enExample: "God’s reasons, if He has any, are opaque to us.", zhExample: "上帝的理由，即使他有，也是难以理解的" },
+                { main: "", explain: "", enExample: "There is every likelihood that the costs will outweigh revenue, if there is any.", zhExample: "成本极可能超过收入，即使收入存在" },
+                { main: "", explain: "", enExample: "His descendants, if any, never left the island.", zhExample: "他的后代，即使有，也从未离开这座岛屿" },
                 { main: "", explain: "", enExample: "He is seldom, if ever, absent from work.", zhExample: "" }
               ]
             }
@@ -272,7 +272,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              title: "… this is easier to shape…", body: "形容词 + to do 形容词后加动词不定式作补语，用主动表被动的含义", table: [
+              title: "… this is easier to shape… 形容词 + to do ", body: "形容词后加动词不定式作补语，用主动表被动的含义", table: [
                 { main: "", explain: "", enExample: "He is easy to fool.", zhExample: "" },
                 { main: "", explain: "", enExample: "She is extremely difficult to please.", zhExample: "" },
                 { main: "", explain: "", enExample: "The machine is awkward to handle.", zhExample: "" },
