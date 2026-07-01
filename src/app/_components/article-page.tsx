@@ -864,7 +864,7 @@ function ArticleReader({ article }: { article: Article }) {
             <AnimatePresence>
               {isNce4 && playing && audioActiveKey && (
                 <motion.div
-                  className="fixed inset-0 z-20 bg-black/[0.12] pointer-events-none"
+                  className="fixed inset-0 z-[60] bg-black/[0.12] pointer-events-none"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
