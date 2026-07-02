@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import { AnimatePresence, motion } from "motion/react";
@@ -24,9 +24,13 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
   const notesPanelRef = useRef<ImperativePanelHandle>(null);
+  const [transitioning, setTransitioning] = useState(false);
 
   useEffect(() => {
+    setTransitioning(true);
     notesPanelRef.current?.resize(isPanelOpen ? 30 : 0);
+    const t = setTimeout(() => setTransitioning(false), 350);
+    return () => clearTimeout(t);
   }, [isPanelOpen]);
 
   return (
@@ -53,6 +57,7 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
             defaultSize={0}
             minSize={0}
             maxSize={40}
+            className={transitioning ? "transition-[flex] duration-300 ease-out" : ""}
           >
             <AnimatePresence>
               {isPanelOpen && (
