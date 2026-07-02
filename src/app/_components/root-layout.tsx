@@ -47,7 +47,16 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
       const hasTarget = useReaderStore.getState().openedByBlockId;
       if (hasTarget) return;  // 句子按钮打开的，由 notebook-tab 负责滚动
       if (lastActiveBlockRef.current) {
-        useReaderStore.setState({ openedByBlockId: lastActiveBlockRef.current });
+        // 仅滚动到上次 block，不设 openedBy，避免连带改变 active
+        const el = document.getElementById('nb-' + lastActiveBlockRef.current);
+        if (el) {
+          const viewport = el.closest('[data-slot="scroll-area-viewport"]');
+          if (viewport instanceof HTMLElement) {
+            const rect = el.getBoundingClientRect();
+            const vRect = viewport.getBoundingClientRect();
+            viewport.scrollBy({ top: rect.top - vRect.top - 60, behavior: 'smooth' });
+          }
+        }
       }
     }, 100);
     return () => clearTimeout(timer);
