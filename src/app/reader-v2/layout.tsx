@@ -1,6 +1,7 @@
 "use client";
 
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { AppSidebar } from "@/app/_components/app-sidebar";
 
 const pillHandle =
   "relative flex items-center justify-center bg-transparent cursor-col-resize flex-shrink-0 " +
@@ -13,26 +14,21 @@ const pillHandle =
 
 export default function ReaderV2Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-screen w-full overflow-hidden">
-      <PanelGroup direction="horizontal" className="h-full w-full">
-        <Panel defaultSize={20} minSize={10}>
-          <aside className="h-full overflow-y-auto border-r border-border bg-muted/20 px-4 py-6">
-            <h2 className="text-sm font-semibold mb-4">课文导航</h2>
-            <p className="text-xs text-muted-foreground">加载中…</p>
-          </aside>
-        </Panel>
+    <div className="h-screen w-full overflow-hidden flex">
+      <AppSidebar />
 
-        <PanelResizeHandle className={pillHandle} />
-
-        <Panel defaultSize={50} minSize={20}>
-          <main className="h-full overflow-y-auto">
-            {children}
+      <PanelGroup direction="horizontal" className="h-full flex-1">
+        <Panel defaultSize={60} minSize={30}>
+          <main className="h-full overflow-y-auto p-6">
+            <div className="h-full border border-dashed border-border rounded-xl p-6">
+              {children}
+            </div>
           </main>
         </Panel>
 
         <PanelResizeHandle className={pillHandle} />
 
-        <Panel defaultSize={30} minSize={15} maxSize={60}>
+        <Panel defaultSize={40} minSize={20} maxSize={60}>
           <aside className="h-full overflow-y-auto bg-background p-4">
             <h2 className="text-sm font-semibold mb-4">笔记</h2>
             <p className="text-xs text-muted-foreground">加载中…</p>
