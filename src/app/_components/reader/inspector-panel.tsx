@@ -33,12 +33,12 @@ export function InspectorPanel({ article, onScrollToBlock }: Props) {
 
         <div className="flex-1 min-h-0">
           <TabsContent value="info" className="h-full m-0">
-            <ScrollArea className="h-full">
+            <ScrollArea className="h-full" chevron={false} scrollFade={false}>
               <InfoTab article={article} />
             </ScrollArea>
           </TabsContent>
           <TabsContent value="notebook" className="h-full m-0">
-            <ScrollArea className="h-full">
+            <ScrollArea className="h-full" chevron={false} scrollFade={false}>
               <NotebookTab article={article} onScrollToBlock={onScrollToBlock} />
             </ScrollArea>
           </TabsContent>

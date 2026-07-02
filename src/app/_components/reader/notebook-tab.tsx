@@ -38,7 +38,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
         const rect = el.getBoundingClientRect();
         const vRect = viewport.getBoundingClientRect();
         viewport.scrollBy({
-          top: rect.top - vRect.top - vRect.height / 3,
+          top: rect.top - vRect.top,
           behavior: "smooth",
         });
       }
