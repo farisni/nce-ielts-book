@@ -168,7 +168,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const highlightClass = (blockId: string) => {
     const isHighlighted = activeBlockId === blockId;
     return isHighlighted
-      ? "border-l-2 border-[#93c5fd]"
+      ? "border-l-2 border-[#80b0eb]"
       : "";
   };
 
