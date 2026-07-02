@@ -160,11 +160,11 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 <div
                   key={`exp-${blockId}`}
                   id={`nb-${blockId}`}
-                  className={`${highlightClass(blockId)}`}
+                  className={`${highlightClass(blockId)} px-3`}
                 >
                   <button
                     onClick={() => onScrollToBlock(blockId)}
-                    className="w-full text-left p-3 pb-1.5"
+                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: pillBg[parseInt(blockId.split("-")[0]) % pillBg.length] }}
                   >
                     <p className="text-base leading-relaxed">
                       {first.sentenceText}
@@ -239,11 +239,11 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 <div
                   key={`ann-${blockId}`}
                   id={`nb-${blockId}`}
-                  className={`${highlightClass(blockId)}`}
+                  className={`${highlightClass(blockId)} px-3`}
                 >
                   <button
                     onClick={() => onScrollToBlock(blockId)}
-                    className="w-full text-left p-3 pb-1.5"
+                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: pillBg[parseInt(blockId.split("-")[0]) % pillBg.length] }}
                   >
                     <p className="text-base leading-relaxed">
                       {first.sentenceText}
