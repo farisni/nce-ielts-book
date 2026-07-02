@@ -2,7 +2,6 @@
 
 import React, { Fragment } from "react";
 import { Tooltip } from "@/components/ui/tooltip";
-import { RoughHighlight } from "@/components/rough-annotate";
 import type { SentenceData } from "@/app/mock";
 
 type HighlightRange = {
@@ -185,9 +184,9 @@ export function renderHighlightedText(
         </Fragment>,
       );
     }
-    const Wrapper = seg.color === '#fde68a' ? RoughHighlight : 'span';
+    const Wrapper = "span";
     const wrapperProps = seg.color === '#fde68a'
-      ? { trigger: 'always' as const, color: seg.color, animate }
+      ? { style: { backgroundColor: seg.color, borderRadius: '2px', padding: '0 2px' } as React.CSSProperties }
       : { style: { color: seg.color, fontWeight: 600 } as React.CSSProperties };
 
     const innerContent = (

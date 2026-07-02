@@ -867,8 +867,10 @@ function ArticleReader({ article }: { article: Article }) {
                             const isActive = activePanelKey === key || audioActiveKey === key;
                             return (
                               <React.Fragment key={key}>
-                                <span data-sentence-key={key} className={`sentence-inline ${isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}`}>
-                                  {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.inlineAnnotations)}
+                                <span data-sentence-key={key} className="sentence-inline">
+                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}>
+                                    {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.inlineAnnotations)}
+                                  </span>
                                   {hasPanelNotes && (
                                     <button
                                       type="button"
