@@ -42,58 +42,71 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const scrollOffsetsRef = useRef<Map<string, number>>(new Map());
   const ratiosRef = useRef<Map<string, number>>(new Map());
 
-  // 保存当前激活 block 相对视口顶部的偏移量，同时更新 openedByBlockId
-  const saveOffset = useCallback(() => {
+  // 面板关闭时保存 viewport.scrollTop + 当前 activeBlockId
+  const saveScrollState = useCallback(() => {
     const store = useReaderStore.getState();
-    // 优先取 Observer 追踪到的 activeBlockId（用户实际在看的位置），兜底 openedByBlockId
     const id = store.activeBlockId || store.openedByBlockId;
     if (!id) return;
     const el = document.getElementById(`nb-${id}`);
     if (!el) return;
     const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
     if (!viewport) return;
-    const elTop = el.getBoundingClientRect().top;
-    const vpTop = viewport.getBoundingClientRect().top;
-    scrollOffsetsRef.current.set(id, elTop - vpTop);
+    scrollOffsetsRef.current.set(id, viewport.scrollTop);
     useReaderStore.setState({
-      panelScrollTop: elTop - vpTop,
-      // 同步 openedByBlockId，确保重开时定位到用户实际在看的 block
+      panelScrollTop: viewport.scrollTop,
       openedByBlockId: id,
     });
   }, []);
 
-  // 面板关闭时保存偏移量
+  // 面板关闭时保存滚动状态
   useEffect(() => {
     if (isPanelOpen) return;
-    saveOffset();
-  }, [isPanelOpen, saveOffset]);
+    saveScrollState();
+  }, [isPanelOpen, saveScrollState]);
 
   // Auto-scroll right panel when panel opens or openedByBlockId changes
   useEffect(() => {
     if (!isPanelOpen || !openedByBlockId) return;
 
-    const isSameBlock = openedByBlockId === prevOpenedRef.current;
+    // 面板关闭期间用户通过句末按钮切换了句子 → 更新 openedByBlockId
+    const store = useReaderStore.getState();
+    if (store.activeBlockId && openedByBlockId !== store.activeBlockId) {
+      useReaderStore.setState({ openedByBlockId: store.activeBlockId });
+      return;
+    }
+
+    const sameBlock = openedByBlockId === prevOpenedRef.current;
     prevOpenedRef.current = openedByBlockId;
     setActiveBlockId(openedByBlockId);
     skipObserverRef.current = true;
 
-    // 有保存的偏移量就用它（精确恢复位置），否则默认 60px
-    const savedOffset = scrollOffsetsRef.current.get(openedByBlockId);
-    const targetOffset = savedOffset ?? 60;
+    if (sameBlock) {
+      // 同一 block：恢复 viewport.scrollTop，不滚动
+      const id = setTimeout(() => {
+        const viewport = document.querySelector('.notes-panel-viewport') as HTMLElement | null;
+        const saved = scrollOffsetsRef.current.get(openedByBlockId);
+        if (viewport && saved !== undefined) {
+          viewport.scrollTop = saved;
+        }
+        skipObserverRef.current = false;
+      }, 400);
+      return () => { clearTimeout(id); skipObserverRef.current = false; };
+    }
 
+    // 不同 block：滚动到默认位置（60px 距顶部）
     const id = setTimeout(() => {
       const el = document.getElementById(`nb-${openedByBlockId}`);
       if (!el) { skipObserverRef.current = false; return; }
       const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
       if (!viewport) { skipObserverRef.current = false; return; }
-      const currentOffset = el.getBoundingClientRect().top - viewport.getBoundingClientRect().top;
+      const elTop = el.getBoundingClientRect().top;
+      const vpTop = viewport.getBoundingClientRect().top;
       viewport.scrollBy({
-        top: currentOffset - targetOffset,
+        top: elTop - vpTop - 60,
         behavior: "instant" as ScrollBehavior,
       });
       skipObserverRef.current = false;
     }, 400);
-
     return () => { clearTimeout(id); skipObserverRef.current = false; };
   }, [isPanelOpen, openedByBlockId, setActiveBlockId]);
 

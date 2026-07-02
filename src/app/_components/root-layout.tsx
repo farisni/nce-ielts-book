@@ -44,10 +44,10 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isPanelOpen) return;
     const timer = setTimeout(() => {
-      const hasTarget = useReaderStore.getState().openedByBlockId;
-      if (hasTarget) return;  // 已有关联 block（面板关闭时保留的），notebook-tab 负责恢复
+      const store = useReaderStore.getState();
+      if (store.openedByBlockId) return;  // 已有关联 block（面板关闭时保留的），notebook-tab 负责恢复
       // 首次打开：优先面板内上次激活的 block，兜底语法高亮选中的句子
-      const blockId = lastActiveBlockRef.current || useReaderStore.getState().activeBlockId;
+      const blockId = lastActiveBlockRef.current || store.activeBlockId;
       if (blockId) {
         useReaderStore.setState({ openedByBlockId: blockId });
       }
