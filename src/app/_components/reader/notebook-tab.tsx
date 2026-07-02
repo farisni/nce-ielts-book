@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Highlighter, MessageSquareText, Bookmark, BookOpen } from "lucide-react";
+import { Highlighter, MessageSquareText } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
+
+const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
 
 type Props = {
   article: Article;
@@ -162,9 +164,10 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     {entries.map(({ note }, ni) => (
                       <div key={ni} className="text-xs">
                         <div className="flex items-start gap-1.5">
-                          <BookOpen className="size-3 shrink-0 mt-0.5 text-emerald-500" />
                           <span>
-                            <strong className="text-foreground">{note.label}</strong>
+                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
+                              {note.label}
+                            </span>
                             {note.description && (
                               <span className="text-muted-foreground">
                                 {" — "}{note.description}
@@ -175,7 +178,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                         {note.examples && note.examples.length > 0 && (
                           <div className="mt-1.5 ml-4.5 space-y-1.5">
                             {note.examples.map((ex, i) => (
-                              <div key={i} className="text-[11px] text-muted-foreground bg-muted/40 rounded px-2 py-1">
+                              <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
                                 {ex.word && <span className="font-medium text-foreground">{ex.word}</span>}
                                 {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
                                 {ex.enExample && <div className="mt-0.5">{ex.enExample}</div>}
@@ -227,9 +230,10 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     {entries.map(({ note }, ni) => (
                       <div key={ni} className="text-xs">
                         <div className="flex items-start gap-1.5">
-                          <Bookmark className="size-3 shrink-0 mt-0.5 text-violet-500" />
                           <span>
-                            <strong className="text-foreground">{note.label}</strong>
+                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
+                              {note.label}
+                            </span>
                             {note.description && (
                               <span className="text-muted-foreground">
                                 {" — "}{note.description}

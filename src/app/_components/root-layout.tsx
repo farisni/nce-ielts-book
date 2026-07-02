@@ -100,7 +100,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="h-full bg-background border-l border-border"
+                  className="h-full bg-neutral-100 dark:bg-neutral-800 border-l border-border"
                 >
                   <ScrollArea className="h-full" chevron={false} scrollFade={false}>
                     {article ? (
