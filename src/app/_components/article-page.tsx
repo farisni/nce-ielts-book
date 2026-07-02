@@ -924,9 +924,13 @@ function ArticleReader({ article }: { article: Article }) {
                                     <button
                                       type="button"
                                       onClick={() => {
-                                        togglePanel(key);
-                                        readerStore.openPanel();
-                                        readerStore.setSelectedBlockId(blockId);
+                                        const isSameBlock = readerStore.selectedBlockId === blockId && readerStore.isPanelOpen;
+                                        if (isSameBlock) {
+                                          readerStore.togglePanel();
+                                        } else {
+                                          readerStore.openPanel();
+                                          readerStore.setSelectedBlockId(blockId);
+                                        }
                                       }}
                                       disabled={playing}
                                       className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}

@@ -7,6 +7,7 @@ interface ReaderState {
   setSelectedBlockId: (id: string | null) => void;
   isPanelOpen: boolean;
   togglePanel: () => void;
+  openPanel: () => void;
   setActiveBlockId: (id: string | null) => void;
   notesByBlockId: Record<string, string>;
   addNote: (blockId: string, note: string) => void;
