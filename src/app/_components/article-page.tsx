@@ -63,6 +63,29 @@ import { motion, AnimatePresence } from "motion/react";
 import { SPRING_PANEL } from "@/lib/ease";
 import { useArticleSettings } from "@/stores/article-settings";
 import { useReaderStore } from "@/stores/reader-store";
+
+function DebugInfo() {
+  const isOpen = useReaderStore((s) => s.isPanelOpen);
+  const opened = useReaderStore((s) => s.openedByBlockId);
+  const active = useReaderStore((s) => s.activeBlockId);
+  const [scrollTop, setScrollTop] = React.useState(0);
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      const vp = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+      if (vp) setScrollTop(vp.scrollTop);
+    }, 300);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div className="text-[10px] font-mono text-muted-foreground/70 mb-1 space-x-4">
+      <span>panel: {isOpen ? "开" : "关"}</span>
+      <span>openedBy: {opened ?? "-"}</span>
+      <span>active: {active ?? "-"}</span>
+      <span>scrollTop: {Math.round(scrollTop)}</span>
+    </div>
+  );
+}
+
 import FlipClock from "@/components/8starlabs-ui/flip-clock";
 import { ThinkingIndicator } from "@/components/ui/thinking-indicator";
 import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
@@ -772,6 +795,7 @@ function ArticleReader({ article }: { article: Article }) {
                     {article.titleCn}
                   </span>
                 </h1>
+                <DebugInfo />
                 {isNce4 && (
                   <div className="flex items-center gap-1.5 shrink-0 mt-1.5">
                     <Button
