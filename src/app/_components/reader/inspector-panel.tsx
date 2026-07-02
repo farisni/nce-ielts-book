@@ -16,7 +16,7 @@ type Props = {
 export function InspectorPanel({ article, onScrollToBlock }: Props) {
   return (
     <div className="flex flex-col h-full border-l border-border bg-background">
-      <Tabs defaultValue="info" className="flex flex-col h-full">
+      <Tabs defaultValue="notebook" className="flex flex-col h-full">
         <div className="px-3 pt-3 pb-0">
           <TabsList className="w-full">
             <TabsTrigger value="info" className="flex-1 gap-1.5 text-xs">
