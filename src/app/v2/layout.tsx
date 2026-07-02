@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import TopNav from "@/app/_components/top-nav";
 import { NotebookTab } from "@/app/_components/reader/notebook-tab";
+import { FloatAction } from "@/app/_components/float-action";
 import { useReaderStore } from "@/stores/reader-store";
 
 const pillHandle =
@@ -41,13 +42,14 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
       <div className="flex-1 min-w-0">
         <PanelGroup direction="horizontal" className="h-full">
           <Panel defaultSize={70} minSize={40}>
-            <div className="h-full flex flex-col">
+            <div className="h-full flex flex-col relative">
               <TopNav />
               <main data-scroll-container className="flex-1 overflow-y-auto p-6">
                 <div className="border border-dashed border-border rounded-xl p-6 min-h-full">
                   {children}
                 </div>
               </main>
+              <FloatAction className="absolute bottom-4 right-4 z-10" />
             </div>
           </Panel>
 

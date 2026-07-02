@@ -2,6 +2,7 @@
 
 import { use, useEffect, useState, useRef } from "react";
 import { MoreHorizontal } from "lucide-react";
+import { GrammarToggleButton } from "@/app/_components/float-action";
 import { allArticles } from "@/app/mock";
 import type { Article, SentenceData } from "@/app/mock";
 import { useReaderStore } from "@/stores/reader-store";
@@ -99,9 +100,9 @@ export default function Page({
 
   return (
     <div ref={containerRef} className="max-w-[750px] mx-auto">
-      <h1 className="text-2xl font-bold tracking-tight mb-2">
+      <div className="flex items-center gap-2 mb-2"><h1 className="text-3xl font-bold tracking-tight">
         {article.title}
-      </h1>
+      </h1><GrammarToggleButton className="shrink-0" /></div>
       {article.titleCn && (
         <p className="text-muted-foreground mb-8">{article.titleCn}</p>
       )}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/_components/theme-provider";
 import { RootShell } from "@/app/_components/root-shell";
-import { FloatAction } from "@/app/_components/float-action";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -20,7 +19,6 @@ export default function RootLayout({
       <body className="antialiased min-h-svh min-w-[1440px] bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <RootShell>{children}</RootShell>
-          <FloatAction />
           <Toaster richColors />
         </ThemeProvider>
       </body>

@@ -7,7 +7,7 @@ export function RootShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   // reader-v2 路由使用独立布局，不包裹 AppShell
-  if (pathname.startsWith("/reader-v2")) {
+  if (pathname.startsWith("/v2")) {
     return <>{children}</>;
   }
 
