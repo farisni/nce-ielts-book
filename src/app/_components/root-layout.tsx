@@ -104,7 +104,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
                   {children}
                 </div>
               </main>
-              <FloatAction className="absolute bottom-4 right-4 z-10" />
+              <FloatAction className="absolute bottom-4 right-4 z-50" />
             </div>
           </Panel>
 
