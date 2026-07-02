@@ -18,9 +18,9 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
       <AppSidebar />
 
       <PanelGroup direction="horizontal" className="h-full flex-1">
-        <Panel defaultSize={60} minSize={30}>
+        <Panel defaultSize={70} minSize={60}>
           <main className="h-full overflow-y-auto p-6">
-            <div className="h-full border border-dashed border-border rounded-xl p-6">
+            <div className="max-w-[750px] mx-auto border border-dashed border-border rounded-xl p-6">
               {children}
             </div>
           </main>
@@ -28,7 +28,7 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
 
         <PanelResizeHandle className={pillHandle} />
 
-        <Panel defaultSize={40} minSize={20} maxSize={60}>
+        <Panel defaultSize={30} minSize={15} maxSize={40}>
           <aside className="h-full overflow-y-auto bg-background p-4">
             <h2 className="text-sm font-semibold mb-4">笔记</h2>
             <p className="text-xs text-muted-foreground">加载中…</p>
