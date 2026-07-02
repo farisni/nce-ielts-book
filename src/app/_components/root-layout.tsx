@@ -20,7 +20,7 @@ const pillHandle =
   "hover:before:h-10 hover:before:bg-muted-foreground/40 " +
   "active:before:h-12 active:before:w-1.5 active:before:bg-primary";
 
-export default function ReaderV2Layout({ children }: { children: React.ReactNode }) {
+export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);

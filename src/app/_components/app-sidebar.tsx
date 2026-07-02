@@ -21,17 +21,17 @@ import { motion } from "motion/react";
 const courseItems = [
   {
     label: "NCE2",
-    href: "/nec/nce2",
+    href: "/v2/nce2",
     icon: <BookOpen className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
   {
     label: "NCE3",
-    href: "/nec/nce3",
+    href: "/v2/nce3",
     icon: <BookMarked className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
   {
     label: "NCE4",
-    href: "/nec/nce4",
+    href: "/v2/nce4",
     icon: <Library className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
 ];
@@ -39,7 +39,7 @@ const courseItems = [
 const ieltsItems = [
   {
     label: "IELTS 16",
-    href: "/ielts",
+    href: "/v2/ielts",
     icon: <Globe className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
   },
   {

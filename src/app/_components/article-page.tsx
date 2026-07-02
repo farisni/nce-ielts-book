@@ -80,10 +80,10 @@ import {
 } from "@/components/reui/timeline";
 
 const LEVEL_ROUTES: Record<string, string> = {
-  NCE2: "/nec/nce2",
-  NCE3: "/nec/nce3",
-  NCE4: "/nec/nce4",
-  IELTS16: "/ielts",
+  NCE2: "/v2/nce2",
+  NCE3: "/v2/nce3",
+  NCE4: "/v2/nce4",
+  IELTS16: "/v2/ielts",
 };
 
 const LEVEL_LABELS: Record<string, string> = {

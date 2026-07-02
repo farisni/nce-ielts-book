@@ -35,28 +35,28 @@ const NCE_NAV_GROUPS = [
   {
     label: "NCE2",
     items: [
-      { label: "文章", description: "New Concept English 2", href: "/nec/nce2" },
+      { label: "文章", description: "New Concept English 2", href: "/v2/nce2" },
       { label: "单词", description: "NCE2 vocabulary table", href: "/words/nce/nce2" },
     ],
   },
   {
     label: "NCE3",
     items: [
-      { label: "文章", description: "New Concept English 3", href: "/nec/nce3" },
+      { label: "文章", description: "New Concept English 3", href: "/v2/nce3" },
       { label: "单词", description: "NCE3 vocabulary table", href: "/words/nce/nce3" },
     ],
   },
   {
     label: "NCE4",
     items: [
-      { label: "文章", description: "New Concept English 4", href: "/nec/nce4" },
+      { label: "文章", description: "New Concept English 4", href: "/v2/nce4" },
       { label: "单词", description: "NCE4 vocabulary table", href: "/words/nce/nce4" },
     ],
   },
 ];
 
 const IELTS_NAV_ITEMS = [
-  { label: "IELTS 16 文章", description: "IELTS article reader", href: "/ielts" },
+  { label: "IELTS 16 文章", description: "IELTS article reader", href: "/v2/ielts" },
   { label: "雅思词汇真经", description: "IELTS vocabulary chapters", href: "/words/ielts-all" },
   { label: "538 考点词", description: "IELTS keyword vocabulary", href: "/words/ielts-538" },
 ];
@@ -90,10 +90,10 @@ type ArticleSearchItem = {
 };
 
 const ARTICLE_LEVEL_ROUTES: Record<string, string> = {
-  IELTS16: "/ielts",
-  NCE2: "/nec/nce2",
-  NCE3: "/nec/nce3",
-  NCE4: "/nec/nce4",
+  IELTS16: "/v2/ielts",
+  NCE2: "/v2/nce2",
+  NCE3: "/v2/nce3",
+  NCE4: "/v2/nce4",
 };
 
 function toKeywords(value: string) {
@@ -124,7 +124,7 @@ const pageSearchItems: PageSearchItem[] = [
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
-    href: "/ielts",
+    href: "/v2/ielts",
     group: "Navigate",
     icon: <BookOpenIcon className="text-muted-foreground" />,
     keywords: toKeywords("ielts 雅思 文章 article reader 阅读"),
@@ -332,7 +332,7 @@ const pageSearchItems: PageSearchItem[] = [
 ];
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {
-  const levelRoute = ARTICLE_LEVEL_ROUTES[article.level] ?? "/ielts";
+  const levelRoute = ARTICLE_LEVEL_ROUTES[article.level] ?? "/v2/ielts";
   const paragraphKeywords = article.original.paragraphs
     .flatMap((paragraph) =>
       paragraph.map((sentence) =>
@@ -384,7 +384,7 @@ const wordSearchItems: WordSearchItem[] = [
   ),
   ...Object.values(allArticles).flatMap((article) =>
     article.vocabulary.map((item, wordIndex) => {
-      const levelRoute = ARTICLE_LEVEL_ROUTES[article.level] ?? "/ielts";
+      const levelRoute = ARTICLE_LEVEL_ROUTES[article.level] ?? "/v2/ielts";
 
       return {
         id: `article-${article.id}-${wordIndex}`,

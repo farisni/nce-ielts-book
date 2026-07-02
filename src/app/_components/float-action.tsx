@@ -24,8 +24,18 @@ export function GrammarToggleButton({ className }: { className?: string }) {
 }
 
 export function FloatAction({ className }: { className?: string }) {
+  const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
+  const toggleGrammarHighlights = useArticleSettings((s) => s.toggleGrammarHighlights);
+
   return (
     <div className={cn("flex flex-col items-center gap-3", className)}>
+      <button
+        onClick={toggleGrammarHighlights}
+        className="flex size-7 items-center justify-center rounded-full border border-border bg-background shadow-sm transition-colors hover:bg-muted cursor-pointer"
+        aria-label={showGrammarHighlights ? "Hide grammar colors" : "Show grammar colors"}
+      >
+        <Highlighter className={showGrammarHighlights ? "size-4 text-[#c2410c]" : "size-4 text-muted-foreground/40"} />
+      </button>
       <FloatingDisclosure items={items} />
     </div>
   );
