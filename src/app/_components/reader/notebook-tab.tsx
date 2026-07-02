@@ -180,7 +180,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                               {note.label}
                             </span>
                             {note.description && (
-                              <span className="text-muted-foreground">
+                              <span className="text-foreground font-medium">
                                 {" — "}{note.description}
                               </span>
                             )}
@@ -256,7 +256,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                               {note.label}
                             </span>
                             {note.description && (
-                              <span className="text-muted-foreground">
+                              <span className="text-foreground font-medium">
                                 {" — "}{note.description}
                               </span>
                             )}
