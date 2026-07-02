@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import { AnimatePresence, motion } from "motion/react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import TopNav from "@/app/_components/top-nav";
 import { NotebookTab } from "@/app/_components/reader/notebook-tab";
@@ -66,13 +67,15 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="h-full overflow-y-auto bg-background border-l border-border"
+                  className="h-full bg-background border-l border-border"
                 >
-                  {article ? (
-                    <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
-                  ) : (
-                    <div className="p-4 text-xs text-muted-foreground">加载中…</div>
-                  )}
+                  <ScrollArea className="h-full" chevron={false} scrollFade={false}>
+                    {article ? (
+                      <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
+                    ) : (
+                      <div className="p-4 text-xs text-muted-foreground">加载中…</div>
+                    )}
+                  </ScrollArea>
                 </motion.aside>
               )}
             </AnimatePresence>
