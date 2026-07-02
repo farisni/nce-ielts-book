@@ -21,13 +21,13 @@ export function ReaderPage({ article }: Props) {
   return (
     <div className="h-[calc(100vh-7rem)] w-full">
       <ResizablePanelGroup orientation="horizontal" className="h-full rounded-lg border border-border">
-        <ResizablePanel defaultSize={60} minSize={35}>
+        <ResizablePanel defaultSize={70} minSize={35}>
           <ArticleReader article={article} />
         </ResizablePanel>
 
         <ResizableHandle withHandle />
 
-        <ResizablePanel defaultSize={40} minSize={25}>
+        <ResizablePanel defaultSize={30} minSize={25}>
           <InspectorPanel article={article} onScrollToBlock={scrollToBlock} />
         </ResizablePanel>
       </ResizablePanelGroup>

@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { Info, BookOpen, MessageCircle } from "lucide-react";
+import { Info, BookOpen } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { InfoTab } from "./info-tab";
 import { NotebookTab } from "./notebook-tab";
-import { ChatTab } from "./chat-tab";
 import type { Article } from "@/app/mock";
 
 type Props = {
@@ -28,10 +27,7 @@ export function InspectorPanel({ article, onScrollToBlock }: Props) {
               <BookOpen className="size-3.5" />
               Notes
             </TabsTrigger>
-            <TabsTrigger value="chat" className="flex-1 gap-1.5 text-xs">
-              <MessageCircle className="size-3.5" />
-              Chat
-            </TabsTrigger>
+
           </TabsList>
         </div>
 
@@ -46,9 +42,7 @@ export function InspectorPanel({ article, onScrollToBlock }: Props) {
               <NotebookTab article={article} onScrollToBlock={onScrollToBlock} />
             </ScrollArea>
           </TabsContent>
-          <TabsContent value="chat" className="h-full m-0">
-            <ChatTab />
-          </TabsContent>
+
         </div>
       </Tabs>
     </div>
