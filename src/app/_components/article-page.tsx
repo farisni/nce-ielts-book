@@ -730,10 +730,10 @@ function ArticleReader({ article }: { article: Article }) {
   return (
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       
-          <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-1">
+          <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
             <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-3">
               <div className="flex items-center gap-2">
-                <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-3xl font-semibold tracking-normal text-balance">
+                <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-4xl font-semibold tracking-normal text-balance">
                   <RoughUnderline trigger="always" color="#fbb150">
                     {article.title}
                   </RoughUnderline>
