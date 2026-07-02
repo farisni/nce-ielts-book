@@ -557,7 +557,10 @@ export default function TopNav() {
 
           {isReaderPage && (
             <button
-              onClick={togglePanel}
+              onClick={() => {
+                useReaderStore.setState({ openedByBlockId: null });
+                togglePanel();
+              }}
               title={isPanelOpen ? "收起笔记面板" : "展开笔记面板"}
               className="flex items-center justify-center size-9 rounded-md transition-colors hover:bg-muted"
             >

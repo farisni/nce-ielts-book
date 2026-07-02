@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import type { Article } from "@/app/mock";
 
 interface ReaderState {
@@ -16,7 +17,9 @@ interface ReaderState {
   openedByBlockId: string | null;
 }
 
-export const useReaderStore = create<ReaderState>()((set) => ({
+export const useReaderStore = create<ReaderState>()(
+  persist(
+    (set) => ({
   activeBlockId: null,
   isPanelOpen: false,
   togglePanel: () => set((s) => ({ isPanelOpen: !s.isPanelOpen })),
@@ -63,4 +66,15 @@ export const useReaderStore = create<ReaderState>()((set) => ({
   setArticle: (article) => set({ article }),
 
   openedByBlockId: null,
-}));
+    }),
+    {
+      name: "reader-store",
+      partialize: (state) => ({
+        activeBlockId: state.activeBlockId,
+        isPanelOpen: state.isPanelOpen,
+        openedByBlockId: state.openedByBlockId,
+        notesByBlockId: state.notesByBlockId,
+      }),
+    }
+  )
+);

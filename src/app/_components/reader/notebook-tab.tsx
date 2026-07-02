@@ -59,7 +59,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
       } else {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-    }, 500);
+    }, 400);
     return () => clearTimeout(id);
   }, [isPanelOpen, openedByBlockId]);
 

@@ -46,7 +46,6 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     const timer = setTimeout(() => {
       const hasTarget = useReaderStore.getState().openedByBlockId;
       if (hasTarget) return;  // 句子按钮打开的，由 notebook-tab 负责滚动
-      // Tab+Q 或 top-nav 打开的，导航到上次激活的 block
       if (lastActiveBlockRef.current) {
         useReaderStore.setState({ openedByBlockId: lastActiveBlockRef.current });
       }
@@ -73,6 +72,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
       }
       if (tabHeld.current && (e.key === 'q' || e.key === 'Q')) {
         e.preventDefault();
+        useReaderStore.setState({ openedByBlockId: null });
         togglePanel();
       }
     };
