@@ -38,6 +38,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
   const prevOpenedRef = useRef<string | null>(null);
+  const closedBlockRef = useRef<string | null>(null);
   const skipObserverRef = useRef(false);
   const scrollOffsetsRef = useRef<Map<string, number>>(new Map());
   const ratiosRef = useRef<Map<string, number>>(new Map());
@@ -52,6 +53,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
     if (!viewport) return;
     scrollOffsetsRef.current.set(id, viewport.scrollTop);
+    closedBlockRef.current = id;
     useReaderStore.setState({
       panelScrollTop: viewport.scrollTop,
       openedByBlockId: id,
@@ -75,7 +77,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
       return;
     }
 
-    const sameBlock = openedByBlockId === prevOpenedRef.current;
+    const sameBlock = openedByBlockId === closedBlockRef.current;
+    closedBlockRef.current = openedByBlockId;
     prevOpenedRef.current = openedByBlockId;
     setActiveBlockId(openedByBlockId);
     skipObserverRef.current = true;
