@@ -7,6 +7,17 @@ import type { Article } from "@/app/mock";
 
 const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
 
+const highlightInText = (text: string, keyword: string) => {
+  if (!keyword || !text) return text;
+  const escaped = keyword.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
+  return parts.map((part, i) =>
+    part.toLowerCase() === keyword.trim().toLowerCase()
+      ? React.createElement('span', { key: i, className: 'text-amber-600/80' }, part)
+      : part
+  );
+};
+
 type Props = {
   article: Article;
   onScrollToBlock: (blockId: string) => void;
@@ -175,18 +186,28 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                             )}
                           </span>
                         </div>
-                        {note.examples && note.examples.length > 0 && (
-                          <div className="mt-1.5 ml-4.5 space-y-1.5">
-                            {note.examples.map((ex, i) => (
-                              <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
-                                {ex.word && <span className="font-medium text-foreground">{ex.word}</span>}
-                                {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
-                                {ex.enExample && <div className="mt-0.5">{ex.enExample}</div>}
-                                {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+                        {note.examples && note.examples.length > 0 && (() => {
+                            const synonymRows = note.examples.filter(r => r.word);
+                            const exampleRows = note.examples.filter(r => !r.word);
+                            return (
+                              <div className="mt-1.5 ml-4.5 space-y-1.5">
+                                {exampleRows.map((ex, i) => (
+                                  <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
+                                    <span>{highlightInText(ex.enExample, note.label)}</span>
+                                    {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+                                  </div>
+                                ))}
+                                {synonymRows.map((ex, i) => (
+                                  <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
+                                    <span className="font-medium text-foreground">{ex.word}</span>
+                                    {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
+                                    {ex.enExample && <div className="mt-0.5">{highlightInText(ex.enExample, ex.word)}</div>}
+                                    {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+                                  </div>
+                                ))}
                               </div>
-                            ))}
-                          </div>
-                        )}
+                            );
+                          })()}
                       </div>
                     ))}
                   </div>

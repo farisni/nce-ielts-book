@@ -44,7 +44,7 @@ const articleNce4L1: Article = {
             { label: "where", description: "非限定性定语从句，修饰Near East" }
           ], grammarNotes: undefined, expansionNotes: [
             {
-              label: "read of 读到", description: "", examples: [
+              label: "read of", description: "读到", examples: [
                 { word: "", meaning: "", enExample: "I had read of such hideous incarnate demons.", zhExample: "我读过关于这类可怕的化身鬼怪的书。" },
                 { word: "", meaning: "", enExample: "I read of the traffic accident in yesterday's paper.", zhExample: "我在昨天的报纸上知道了这起交通事故。" },
                 { word: "", meaning: "", enExample: "Ye are our epistle written in our hearts, known and read of all men.", zhExample: "你们就是我们的荐信，写在我们心里，被众人所知道所念诵的。" },
@@ -57,7 +57,7 @@ const articleNce4L1: Article = {
               ]
             },
             {
-              label: "of … 关于（相当于about）", description: "", examples: [
+              label: "of …", description: "关于（相当于about）", examples: [
                 { word: "", meaning: "", enExample: "This book is of great importance to scholars.", zhExample: "这本书对学者来说具有重要意义。" },
                 { word: "", meaning: "", enExample: "It is a subject of study by many forgers.", zhExample: "这是许多伪造者研究的课题。" },
                 { word: "", meaning: "", enExample: "The pursuit of sport is for national pride.", zhExample: "对体育的追求关系到国家荣誉。" },
