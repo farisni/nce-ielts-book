@@ -9,6 +9,7 @@ export interface SentenceNote {
   label: string
   description: string
   examples?: {
+    kind?: "example" | "synonym"
     word: string
     meaning: string
     enExample: string

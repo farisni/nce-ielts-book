@@ -959,8 +959,8 @@ function ArticleReader({ article }: { article: Article }) {
                                               <span className="text-sm text-muted-foreground leading-relaxed">{note.description}</span>
                                             </div>
                                             {note.examples && note.examples.length > 0 && (() => {
-                                              const synonymRows = note.examples.filter(r => r.word);
-                                              const exampleRows = note.examples.filter(r => !r.word);
+                                              const synonymRows = note.examples.filter(r => r.kind === "synonym" || (!r.kind && r.word));
+                                              const exampleRows = note.examples.filter(r => r.kind === "example" || (!r.kind && !r.word));
                                               return (
                                                 <>
                                                   {exampleRows.length > 0 && (
@@ -972,6 +972,9 @@ function ArticleReader({ article }: { article: Article }) {
                                                         </li>
                                                       ))}
                                                     </ul>
+                                                  )}
+                                                  {exampleRows.length > 0 && synonymRows.length > 0 && (
+                                                    <div className="my-2 ml-4 mr-4 border-t border-border" />
                                                   )}
                                                   {synonymRows.length > 0 && (
                                                     <table className="mt-2 w-full text-[13px] text-muted-foreground border-collapse">

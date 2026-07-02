@@ -32,7 +32,7 @@ type AnnotationEntry = {
 type ExpansionEntry = {
   blockId: string;
   sentenceText: string;
-  note: { label: string; description: string; examples?: { word: string; meaning: string; enExample: string; zhExample: string }[] };
+  note: { label: string; description: string; examples?: { kind?: "example" | "synonym"; word: string; meaning: string; enExample: string; zhExample: string }[] };
 };
 
 export function NotebookTab({ article, onScrollToBlock }: Props) {
@@ -187,8 +187,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                           </span>
                         </div>
                         {note.examples && note.examples.length > 0 && (() => {
-                            const synonymRows = note.examples.filter(r => r.word);
-                            const exampleRows = note.examples.filter(r => !r.word);
+                            const synonymRows = note.examples.filter(r => r.kind === "synonym" || (!r.kind && r.word));
+                            const exampleRows = note.examples.filter(r => r.kind === "example" || (!r.kind && !r.word));
                             return (
                               <div className="mt-1.5 ml-4.5 space-y-1.5">
                                 {exampleRows.map((ex, i) => (
@@ -197,6 +197,9 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                                     {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
                                   </div>
                                 ))}
+                                {exampleRows.length > 0 && synonymRows.length > 0 && (
+                                  <div className="border-t border-border my-1 w-3/4" />
+                                )}
                                 {synonymRows.map((ex, i) => (
                                   <div key={i} className="text-sm text-muted-foreground rounded px-2 py-1">
                                     <span className="font-medium text-foreground">{ex.word}</span>
