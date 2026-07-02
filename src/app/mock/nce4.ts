@@ -107,22 +107,38 @@ const articleNce4L1: Article = {
           text: "But there are some parts of the world where even now people cannot write.", translation: "但直到现在,世界上有些地方，人们还不会书写。", predicates: ["are"], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [], grammarNotes: undefined, expansionNotes: [
             {
               label: "there be", description: "存在某物、某人", examples: [
-                { kind: "example", word: "", meaning: "", enExample: "There seem to be more opportunities now.", zhExample: "现在好像有更多的机会。" },
-                { kind: "example", word: "", meaning: "", enExample: "There appear to be some changes.", zhExample: "好像有一些变化。" },
-                { kind: "example", word: "", meaning: "", enExample: "There seem / appear to be a misunderstanding.", zhExample: "好像有一个误会。" },
-                { kind: "example", word: "", meaning: "", enExample: "There used to be a cinema here.", zhExample: "这里以前有一个电影院。" },
-                { kind: "example", word: "", meaning: "", enExample: "There used to be fewer cars on the road.", zhExample: "路上以前车比较少。" },
-                { kind: "example", word: "", meaning: "", enExample: "There used to be a different atmosphere.", zhExample: "以前有一种不同的氛围。" },
-                { kind: "example", word: "", meaning: "", enExample: "There happen to be some extra chairs.", zhExample: "碰巧有一些额外的椅子。" },
-                { kind: "example", word: "", meaning: "", enExample: "There happen to be a few solutions.", zhExample: "碰巧有几种解决方案。" },
-                { kind: "example", word: "", meaning: "", enExample: "There happen to be someone who knows.", zhExample: "碰巧有人知道。" },
-                { kind: "example", word: "", meaning: "", enExample: "There is going to be a party tonight.", zhExample: "今晚将有一个聚会。" },
-                { kind: "example", word: "", meaning: "", enExample: "There are going to be some announcements.", zhExample: "将有一些公告。" },
-                { kind: "example", word: "", meaning: "", enExample: "There is / are going to be a big change.", zhExample: "将有一个很大的变化。" },
-                { kind: "synonym", word: "There seem / appear", meaning: "似乎有...", enExample: "There seem to be more opportunities now.", zhExample: "现在好像有更多的机会。There appear to be some changes. 好像有一些变化。There seem / appear to be a misunderstanding. 好像有一个误会。" },
-                { kind: "synonym", word: "There used to be", meaning: "以前有...", enExample: "There used to be a cinema here.", zhExample: "这里以前有一个电影院。There used to be fewer cars on the road. 路上以前车比较少。There used to be a different atmosphere. 以前有一种不同的氛围。" },
-                { kind: "synonym", word: "There happen to be", meaning: "碰巧有...", enExample: "There happen to be some extra chairs.", zhExample: "碰巧有一些额外的椅子。There happen to be a few solutions. 碰巧有几种解决方案。There happen to be someone who knows. 碰巧有人知道。" },
-                { kind: "synonym", word: "There is going to be", meaning: "即将有...", enExample: "There is going to be a party tonight.", zhExample: "今晚将有一个聚会。There are going to be some announcements. 将有一些公告。There is / are going to be a big change. 将有一个很大的变化。" }
+                { kind: "example", word: "", meaning: "", enExample: "There is growing interest in English.", zhExample: "人们对英语越来越感兴趣。" },
+                { kind: "example", word: "", meaning: "", enExample: "there was a great deal of excitement just before it began.", zhExample: "无灵主语 / 物称主语" },
+                { kind: "example", word: "", meaning: "", enExample: "There is general agreement that women should enjoy full equality with men.", zhExample: "人们普遍同意妇女应该享有和男人完全的平等。" },
+                { kind: "example", word: "", meaning: "", enExample: "But there are some parts of China where even now people cannot satisfy their hunger.", zhExample: "但是现在在中国依然有部分地区人们还吃不饱肚子。" }
+              ]
+            },
+            {
+              label: "There seem / appear", description: "似乎有...", examples: [
+                { kind: "synonym", word: "There seem / appear", meaning: "似乎有...", enExample: "There seem to be more opportunities now.", zhExample: "现在好像有更多的机会。" },
+                { kind: "synonym", word: "There appear", meaning: "似乎有...", enExample: "There appear to be some changes.", zhExample: "好像有一些变化。" },
+                { kind: "synonym", word: "There seem / appear", meaning: "似乎有...", enExample: "There seem / appear to be a misunderstanding.", zhExample: "好像有一个误会。" }
+              ]
+            },
+            {
+              label: "There used to be", description: "以前有...", examples: [
+                { kind: "synonym", word: "There used to be", meaning: "以前有...", enExample: "There used to be a cinema here.", zhExample: "这里以前有一个电影院。" },
+                { kind: "synonym", word: "There used to be", meaning: "以前有...", enExample: "There used to be fewer cars on the road.", zhExample: "路上以前车比较少。" },
+                { kind: "synonym", word: "There used to be", meaning: "以前有...", enExample: "There used to be a different atmosphere.", zhExample: "以前有一种不同的氛围。" }
+              ]
+            },
+            {
+              label: "There happen to be", description: "碰巧有...", examples: [
+                { kind: "synonym", word: "There happen to be", meaning: "碰巧有...", enExample: "There happen to be some extra chairs.", zhExample: "碰巧有一些额外的椅子。" },
+                { kind: "synonym", word: "There happen to be", meaning: "碰巧有...", enExample: "There happen to be a few solutions.", zhExample: "碰巧有几种解决方案。" },
+                { kind: "synonym", word: "There happen to be", meaning: "碰巧有...", enExample: "There happen to be someone who knows.", zhExample: "碰巧有人知道。" }
+              ]
+            },
+            {
+              label: "There is going to be", description: "即将有...", examples: [
+                { kind: "synonym", word: "There is going to be", meaning: "即将有...", enExample: "There is going to be a party tonight.", zhExample: "今晚将有一个聚会。" },
+                { kind: "synonym", word: "There are going to be", meaning: "即将有...", enExample: "There are going to be some announcements.", zhExample: "将有一些公告。" },
+                { kind: "synonym", word: "There is / are going to be", meaning: "即将有...", enExample: "There is / are going to be a big change.", zhExample: "将有一个很大的变化。" }
               ]
             }
           ]
