@@ -68,6 +68,7 @@ import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
 import { renderHighlightedText } from "@/lib/render-highlighted-text";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { useAudioSync } from "@/app/_components/use-audio-sync";
+import { GrammarToggleButton } from "@/app/_components/float-action";
 import { Play, Pause } from "lucide-react";
 import {
   Timeline,
@@ -467,6 +468,23 @@ function ArticleReader({ article }: { article: Article }) {
   const [highlightsHidden, setHighlightsHidden] = useState(false);
 /* ---- audio sync for NCE4 ---- */
   const isNce4 = article.level === "NCE4";
+
+  const sentenceCount = useMemo(() => {
+    let count = 0;
+    for (const p of article.original.paragraphs) count += p.length;
+    return count;
+  }, [article.original.paragraphs]);
+
+  const readingTime = useMemo(() => {
+    let words = 0;
+    for (const p of article.original.paragraphs) {
+      for (const s of p) {
+        words += s.text.split(/\s+/).filter(Boolean).length;
+      }
+    }
+    return Math.max(1, Math.ceil(words / 200)); // 200 wpm
+  }, [article.original.paragraphs]);
+
   const {
     audioRef,
     playing,
@@ -731,8 +749,10 @@ function ArticleReader({ article }: { article: Article }) {
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       
           <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
-            <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-3">
-              <div className="flex items-center gap-2">
+            <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-4">
+              
+              {/* Title Header */}
+              <div className="flex items-start justify-between gap-4">
                 <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-4xl font-semibold tracking-normal text-balance">
                   <RoughUnderline trigger="always" color="#fbb150">
                     {article.title}
@@ -741,17 +761,16 @@ function ArticleReader({ article }: { article: Article }) {
                     {article.titleCn}
                   </span>
                 </h1>
-                                {/* audio player for NCE4 */}
                 {isNce4 && (
-                  <div className="flex items-center gap-2 ml-4">
+                  <div className="flex items-center gap-1.5 shrink-0 mt-1.5">
                     <button
                       onClick={togglePlay}
-                      className="flex size-8 items-center justify-center rounded-full border border-border bg-surface-2 text-foreground transition-colors hover:bg-surface-3"
-                      aria-label={playing ? "Pause" : "Play"}
+                      className="flex size-7 items-center justify-center rounded-full border border-border bg-surface-2 text-foreground transition-colors hover:bg-surface-3"
+                      aria-label={playing ? "Pause" : "Listen"}
                     >
-                      {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 ml-0.5" />}
+                      {playing ? <Pause className="size-3" /> : <Play className="size-3 ml-0.5" />}
                     </button>
-                    <span className="text-xs tabular-nums text-muted-foreground w-16 text-right">
+                    <span className="text-[11px] tabular-nums text-muted-foreground min-w-[56px] text-right">
                       {formatAudioTime(currentMs)} / {formatAudioTime(duration)}
                     </span>
                     <input
@@ -761,7 +780,7 @@ function ArticleReader({ article }: { article: Article }) {
                       step={0.1}
                       value={currentMs}
                       onChange={(e) => seek(parseFloat(e.target.value))}
-                      className="w-24 accent-foreground"
+                      className="w-20 accent-foreground"
                     />
                     <audio
                       ref={audioRef}
@@ -770,31 +789,46 @@ function ArticleReader({ article }: { article: Article }) {
                     />
                   </div>
                 )}
-                <div className="flex items-center ml-auto">
+              </div>
+
+              {/* Meta Bar */}
+              <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground/70">
+                <span className="inline-flex items-center rounded-full bg-surface-2 px-2.5 py-0.5 font-medium text-foreground/70">{article.level}</span>
+                <span className="text-border">·</span>
+                <span>Lesson {article.lesson}</span>
+                <span className="text-border">·</span>
+                <span>{sentenceCount} sentences</span>
+                <span className="text-border">·</span>
+                <span>~{readingTime} min read</span>
+                <span className="text-border">·</span>
+                <GrammarToggleButton className="inline-flex" />
+                <div className="ml-auto flex items-center">
                   {previousArticle ? (
                     <Tooltip content="上一课">
                       <Link href={`${levelRoute}?article=${previousArticle.id}`}>
-                        <span><Button variant="ghost" size="icon-lg" className="rounded-full hover:bg-[#f0f0f0]"><ArrowLeft /></Button></span>
+                        <span><Button variant="ghost" size="icon-sm" className="rounded-full hover:bg-[#f0f0f0]"><ArrowLeft className="size-4" /></Button></span>
                       </Link>
                     </Tooltip>
                   ) : (
                     <Tooltip content="已经是第一课">
-                      <span><Button variant="ghost" size="icon-lg" disabled><ArrowLeft /></Button></span>
+                      <span><Button variant="ghost" size="icon-sm" disabled><ArrowLeft className="size-4" /></Button></span>
                     </Tooltip>
                   )}
                   {nextArticle ? (
                     <Tooltip content="下一课">
                       <Link href={`${levelRoute}?article=${nextArticle.id}`}>
-                        <span><Button variant="ghost" size="icon-lg" className="rounded-full hover:bg-[#f0f0f0]"><ArrowRight /></Button></span>
+                        <span><Button variant="ghost" size="icon-sm" className="rounded-full hover:bg-[#f0f0f0]"><ArrowRight className="size-4" /></Button></span>
                       </Link>
                     </Tooltip>
                   ) : (
                     <Tooltip content="已经是最后一课">
-                      <span><Button variant="ghost" size="icon-lg" disabled><ArrowRight /></Button></span>
+                      <span><Button variant="ghost" size="icon-sm" disabled><ArrowRight className="size-4" /></Button></span>
                     </Tooltip>
                   )}
                 </div>
+
               </div>
+
             </header>
 
             {/* Spotlight overlay — outside article to avoid re-render issues */}
