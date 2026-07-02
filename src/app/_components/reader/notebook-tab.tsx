@@ -37,14 +37,30 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const openedByBlockId = useReaderStore((s) => s.openedByBlockId);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const prevOpenedRef = useRef<string | null>(null);
-
+  const skipObserverRef = useRef(false);
+  const savedScrollTopRef = useRef(0);
   // Auto-scroll right panel when panel opens or openedByBlockId changes
-  // Same block reopen → no scroll; different block → scroll
+  // Same block reopen → restore saved position (no scroll); different block → scroll
   useEffect(() => {
     if (!isPanelOpen || !openedByBlockId) return;
-    if (openedByBlockId === prevOpenedRef.current) return;
+
+    if (openedByBlockId === prevOpenedRef.current) {
+      // 同一 block 重新打开，锁住 Observer + 恢复滚动位置
+      setActiveBlockId(openedByBlockId);
+      skipObserverRef.current = true;
+      const restoreId = setTimeout(() => {
+        const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+        if (viewport && savedScrollTopRef.current > 0) {
+          viewport.scrollTop = savedScrollTopRef.current;
+        }
+        skipObserverRef.current = false;
+      }, 500);
+      return () => { clearTimeout(restoreId); skipObserverRef.current = false; };
+    }
+
     prevOpenedRef.current = openedByBlockId;
     const targetId = openedByBlockId;
+    setActiveBlockId(targetId);  // 同步文章高亮
     const id = setTimeout(() => {
       const el = document.getElementById(`nb-${targetId}`);
       if (!el) return;
@@ -65,6 +81,15 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
 
   const ratiosRef = useRef<Map<string, number>>(new Map());
+  // 面板关闭时保存滚动位置，同一 block 重新打开时恢复
+  useEffect(() => {
+    if (isPanelOpen) return;
+    const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+    if (viewport) {
+      savedScrollTopRef.current = viewport.scrollTop;
+    }
+  }, [isPanelOpen]);
+
   // Notebook scroll sync: update activeBlockId as notebook scrolls
   const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
   useEffect(() => {
@@ -90,7 +115,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
             bestId = id;
           }
         }
-        if (bestId) setActiveBlockId(bestId);
+        if (bestId && !skipObserverRef.current) setActiveBlockId(bestId);
       },
       {
         root,

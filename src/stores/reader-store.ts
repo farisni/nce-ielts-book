@@ -70,9 +70,6 @@ export const useReaderStore = create<ReaderState>()(
     {
       name: "reader-store",
       partialize: (state) => ({
-        activeBlockId: state.activeBlockId,
-        isPanelOpen: state.isPanelOpen,
-        openedByBlockId: state.openedByBlockId,
         notesByBlockId: state.notesByBlockId,
       }),
     }
