@@ -105,7 +105,7 @@ export function renderHighlightedText(
       const s = Math.max(hl.start - paragraphStart, 0);
       const e = Math.min(hl.end - paragraphStart, text.length);
       if (s < e) {
-        segments.push({ start: s, end: e, color: '#fde68a', isUser: true });
+        segments.push({ start: s, end: e, color: '#fef9e0', isUser: true });
       }
     }
   }
@@ -185,8 +185,8 @@ export function renderHighlightedText(
       );
     }
     const Wrapper = "span";
-    const wrapperProps = seg.color === '#fde68a'
-      ? { style: { backgroundColor: seg.color, borderRadius: '2px', padding: '0 2px' } as React.CSSProperties }
+    const wrapperProps = seg.isUser
+      ? { style: { backgroundColor: seg.color, paddingTop: '2px', paddingBottom: '1px', borderBottom: '2px solid #fad730' } as React.CSSProperties }
       : { style: { color: seg.color, fontWeight: 600 } as React.CSSProperties };
 
     const innerContent = (

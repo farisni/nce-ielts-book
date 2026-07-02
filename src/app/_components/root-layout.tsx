@@ -100,7 +100,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
               <main ref={mainRef} data-scroll-container data-section="main-content" className="relative flex-1 overflow-y-auto p-6">
-                <div className="border border-dashed border-border rounded-xl p-6 min-h-full">
+                <div className="p-6 min-h-full">
                   {children}
                 </div>
               </main>
