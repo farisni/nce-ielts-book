@@ -920,7 +920,7 @@ function ArticleReader({ article }: { article: Article }) {
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} data-block-id={blockId} className="sentence-inline">
-                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : isButtonActive ? "bg-sky-50/60 dark:bg-sky-950/30 rounded-sm px-0.5 -mx-0.5" : ""}>
+                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : isButtonActive ? "bg-[#e8f1ff] dark:bg-[#1a2744] rounded-sm px-0.5 py-0.5 -mx-0.5 -my-0.5" : ""}>
                                     {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammar, sentence.inlineAnnotations)}
                                   </span>
                                   {hasPanelNotes && (
