@@ -11,12 +11,14 @@ type Props = {
   onScrollToBlock: (blockId: string) => void;
 };
 
+const NO_HIGHLIGHTS: never[] = [];
+
 export function NotebookTab({ article, onScrollToBlock }: Props) {
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
   const notesByBlockId = useReaderStore((s) => s.notesByBlockId);
   const highlights = useArticleSettings(
-    (s) => s.highlightsByArticleId[article.id] ?? []
-  );
+    (s) => s.highlightsByArticleId[article.id]
+  ) ?? NO_HIGHLIGHTS;
 
   // Build block entries from the article
   const entries: { blockId: string; text: string }[] = [];
