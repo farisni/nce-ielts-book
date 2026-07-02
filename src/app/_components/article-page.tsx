@@ -927,11 +927,17 @@ function ArticleReader({ article }: { article: Article }) {
                                     <button
                                       type="button"
                                       onClick={() => {
-                                        if (!readerStore.isPanelOpen) return;
-                                        useReaderStore.setState({
-                                          openedByBlockId: blockId,
-                                          activeBlockId: blockId,
-                                        });
+                                        if (readerStore.isPanelOpen) {
+                                          useReaderStore.setState({
+                                            openedByBlockId: blockId,
+                                            activeBlockId: blockId,
+                                          });
+                                        } else {
+                                          const cur = useReaderStore.getState().activeBlockId;
+                                          useReaderStore.setState({
+                                            activeBlockId: cur === blockId ? null : blockId,
+                                          });
+                                        }
                                       }}
                                       disabled={playing}
                                       className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : isButtonActive ? "bg-muted text-foreground" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
