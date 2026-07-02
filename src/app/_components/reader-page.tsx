@@ -17,19 +17,28 @@ type Props = {
 
 export function ReaderPage({ article }: Props) {
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
 
   return (
     <div className="-mx-6 -mb-6 h-full">
-      <ResizablePanelGroup orientation="horizontal" className="h-full">
-        <ResizablePanel defaultSize={70} minSize={35}>
+      <ResizablePanelGroup
+        key={isPanelOpen ? "open" : "closed"}
+        orientation="horizontal"
+        className="h-full"
+      >
+        <ResizablePanel defaultSize={isPanelOpen ? 70 : 100} minSize={35}>
           <ArticleReader article={article} />
         </ResizablePanel>
 
-        <ResizableHandle withHandle />
+        {isPanelOpen ? (
+          <ResizableHandle withHandle />
+        ) : null}
 
-        <ResizablePanel defaultSize={30} minSize={25}>
-          <InspectorPanel article={article} onScrollToBlock={scrollToBlock} />
-        </ResizablePanel>
+        {isPanelOpen ? (
+          <ResizablePanel defaultSize={30} minSize={25}>
+            <InspectorPanel article={article} onScrollToBlock={scrollToBlock} />
+          </ResizablePanel>
+        ) : null}
       </ResizablePanelGroup>
     </div>
   );

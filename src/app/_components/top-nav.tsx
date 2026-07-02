@@ -3,11 +3,12 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon, PanelRight } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles } from "@/app/mock";
+import { useReaderStore } from "@/stores/reader-store";
 import { keywordCategories } from "@/app/mock/ielts-538-vocabulary";
 import { vocabChapters } from "@/app/mock/ielts-vocabulary";
 import {
@@ -400,6 +401,10 @@ const wordSearchItems: WordSearchItem[] = [
 
 export default function TopNav() {
   const router = useRouter();
+  const pathname = usePathname();
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const togglePanel = useReaderStore((s) => s.togglePanel);
+  const isReaderPage = pathname.startsWith("/reader/");
   const { scrollY } = useScroll();
   const shadowOpacity = useTransform(scrollY, [0, 40], [0, 0.05]);
   const [cmdOpen, setCmdOpen] = useState(false);
@@ -540,6 +545,16 @@ export default function TopNav() {
               <CommandIcon className="size-2.5" />K
             </kbd>
           </MagneticButton>
+
+          {isReaderPage && (
+            <button
+              onClick={togglePanel}
+              title={isPanelOpen ? "收起笔记面板" : "展开笔记面板"}
+              className="flex items-center justify-center size-9 rounded-md transition-colors hover:bg-muted"
+            >
+              <PanelRight className={`size-4 transition-colors ${isPanelOpen ? "text-foreground" : "text-muted-foreground/50"}`} />
+            </button>
+          )}
 
           <div className="flex items-center justify-center rounded-md px-2.5 py-1.5">
             <ThemeToggle

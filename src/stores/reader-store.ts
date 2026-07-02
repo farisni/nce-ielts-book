@@ -4,6 +4,8 @@ interface ReaderState {
   activeBlockId: string | null;
   selectedBlockId: string | null;
   setSelectedBlockId: (id: string | null) => void;
+  isPanelOpen: boolean;
+  togglePanel: () => void;
   setActiveBlockId: (id: string | null) => void;
   notesByBlockId: Record<string, string>;
   addNote: (blockId: string, note: string) => void;
@@ -15,6 +17,8 @@ export const useReaderStore = create<ReaderState>()((set) => ({
   activeBlockId: null,
   selectedBlockId: null,
   setSelectedBlockId: (id) => set({ selectedBlockId: id }),
+  isPanelOpen: true,
+  togglePanel: () => set((s) => ({ isPanelOpen: !s.isPanelOpen })),
   setActiveBlockId: (id) => set({ activeBlockId: id }),
 
   notesByBlockId: {},
