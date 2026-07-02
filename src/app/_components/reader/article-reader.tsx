@@ -64,6 +64,7 @@ export function ArticleReader({ article }: Props) {
                   setOpenPanelId((prev) => (prev === id ? null : id))
                 }
                 isPanelOpen={openPanelId === blockId}
+                hideInlineAnnotations
               />
               <AnimatePresence>
                 {openPanelId === blockId &&

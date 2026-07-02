@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { Highlighter, MessageSquareText } from "lucide-react";
+import { Highlighter, MessageSquareText, Bookmark } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
-import { useArticleSettings } from "@/stores/article-settings";
 import type { Article } from "@/app/mock";
 
 type Props = {
@@ -11,67 +10,136 @@ type Props = {
   onScrollToBlock: (blockId: string) => void;
 };
 
-const NO_HIGHLIGHTS: never[] = [];
+type AnnotationEntry = {
+  blockId: string;
+  sentenceText: string;
+  note: { label: string; description: string };
+};
 
 export function NotebookTab({ article, onScrollToBlock }: Props) {
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
   const notesByBlockId = useReaderStore((s) => s.notesByBlockId);
-  const highlights = useArticleSettings(
-    (s) => s.highlightsByArticleId[article.id]
-  ) ?? NO_HIGHLIGHTS;
 
-  // Build block entries from the article
-  const entries: { blockId: string; text: string }[] = [];
+  // Collect all inlineAnnotations from the article
+  const annotationEntries: AnnotationEntry[] = [];
   for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
     const paragraph = article.original.paragraphs[pi];
     for (let si = 0; si < paragraph.length; si++) {
+      const sentence = paragraph[si];
       const blockId = `${pi}-${si}`;
-      entries.push({ blockId, text: paragraph[si].text });
+      for (const ann of sentence.inlineAnnotations ?? []) {
+        if (ann.label && ann.description) {
+          annotationEntries.push({
+            blockId,
+            sentenceText: sentence.text,
+            note: { label: ann.label, description: ann.description },
+          });
+        }
+      }
     }
   }
 
-  // Filter to blocks that have highlights or notes
-  const activeEntries = entries.filter(
-    (e) => notesByBlockId[e.blockId]
-  );
+  // Also collect custom notes
+  const noteEntries = Object.entries(notesByBlockId).map(([blockId, note]) => {
+    // Find sentence text for this block
+    let sentenceText = "";
+    for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
+      const paragraph = article.original.paragraphs[pi];
+      for (let si = 0; si < paragraph.length; si++) {
+        if (`${pi}-${si}` === blockId) {
+          sentenceText = paragraph[si].text;
+          break;
+        }
+      }
+    }
+    return { blockId, sentenceText, note };
+  });
 
-  if (activeEntries.length === 0) {
+  const hasAnnotations = annotationEntries.length > 0;
+  const hasNotes = noteEntries.length > 0;
+
+  if (!hasAnnotations && !hasNotes) {
     return (
       <div className="p-6 text-center text-sm text-muted-foreground">
         <Highlighter className="size-8 mx-auto mb-2 opacity-30" />
         <p>还没有笔记</p>
-        <p className="mt-1 text-xs">在文章中选择文字添加高亮或笔记</p>
+        <p className="mt-1 text-xs">行间笔记将在此处显示</p>
       </div>
     );
   }
 
   return (
     <div className="divide-y divide-border">
-      {activeEntries.map(({ blockId, text }) => {
-        const isActive = activeBlockId === blockId;
-        const note = notesByBlockId[blockId];
+      {/* Inline Annotations Section */}
+      {hasAnnotations && (
+        <div className="py-1">
+          <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            行间笔记
+          </p>
+          {annotationEntries.map(({ blockId, sentenceText, note }) => {
+            const isActive = activeBlockId === blockId;
+            return (
+              <button
+                key={`${blockId}-${note.label}`}
+                onClick={() => onScrollToBlock(blockId)}
+                className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${
+                  isActive ? "bg-primary/5 border-l-2 border-primary" : ""
+                }`}
+              >
+                <p className="text-xs text-muted-foreground mb-0.5 font-mono">
+                  block {blockId}
+                </p>
+                <p className="text-sm line-clamp-2 leading-relaxed">
+                  {sentenceText}
+                </p>
+                <div className="mt-1.5 flex items-start gap-1.5 text-xs">
+                  <Bookmark className="size-3 shrink-0 mt-0.5 text-violet-500" />
+                  <span>
+                    <strong className="text-foreground">{note.label}</strong>
+                    {note.description && (
+                      <span className="text-muted-foreground">
+                        {" — "}{note.description}
+                      </span>
+                    )}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
-        return (
-          <button
-            key={blockId}
-            onClick={() => onScrollToBlock(blockId)}
-            className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${
-              isActive ? "bg-primary/5 border-l-2 border-primary" : ""
-            }`}
-          >
-            <p className="text-xs text-muted-foreground mb-1 font-mono">
-              block {blockId}
-            </p>
-            <p className="text-sm line-clamp-2 leading-relaxed">{text}</p>
-            {note && (
-              <div className="mt-2 flex items-start gap-1.5 text-xs text-muted-foreground">
-                <MessageSquareText className="size-3 shrink-0 mt-0.5" />
-                <span className="line-clamp-2">{note}</span>
-              </div>
-            )}
-          </button>
-        );
-      })}
+      {/* Custom Notes Section */}
+      {hasNotes && (
+        <div className="py-1">
+          <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            我的笔记
+          </p>
+          {noteEntries.map(({ blockId, sentenceText, note }) => {
+            const isActive = activeBlockId === blockId;
+            return (
+              <button
+                key={`note-${blockId}`}
+                onClick={() => onScrollToBlock(blockId)}
+                className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${
+                  isActive ? "bg-primary/5 border-l-2 border-primary" : ""
+                }`}
+              >
+                <p className="text-xs text-muted-foreground mb-0.5 font-mono">
+                  block {blockId}
+                </p>
+                <p className="text-sm line-clamp-2 leading-relaxed">
+                  {sentenceText}
+                </p>
+                <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
+                  <MessageSquareText className="size-3 shrink-0 mt-0.5" />
+                  <span className="line-clamp-2">{note}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

@@ -15,6 +15,7 @@ type Props = {
   isActive: boolean;
   onTogglePanel?: (blockId: string) => void;
   isPanelOpen?: boolean;
+  hideInlineAnnotations?: boolean;
 };
 
 const EMPTY_HIGHLIGHTS: never[] = [];
@@ -27,6 +28,7 @@ export function ArticleBlock({
   isActive,
   onTogglePanel,
   isPanelOpen,
+  hideInlineAnnotations,
 }: Props) {
   const highlights = useArticleSettings((s) => s.highlightsByArticleId[articleId]) ?? EMPTY_HIGHLIGHTS;
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
@@ -51,7 +53,7 @@ export function ArticleBlock({
         sentence.auxiliaries,
         sentence.clauseIntroducers,
         showGrammarHighlights,
-        sentence.inlineAnnotations
+        hideInlineAnnotations ? undefined : sentence.inlineAnnotations
       )}
       {hasPanelNotes && onTogglePanel && (
         <button
