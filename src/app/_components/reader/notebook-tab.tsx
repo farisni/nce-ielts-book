@@ -61,6 +61,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     prevOpenedRef.current = openedByBlockId;
     const targetId = openedByBlockId;
     setActiveBlockId(targetId);  // 同步文章高亮
+    skipObserverRef.current = true;
     const id = setTimeout(() => {
       const el = document.getElementById(`nb-${targetId}`);
       if (!el) return;
@@ -76,7 +77,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }, 400);
-    return () => clearTimeout(id);
+    const unlockId = setTimeout(() => { skipObserverRef.current = false; }, 1000);
+    return () => { clearTimeout(id); clearTimeout(unlockId); };
   }, [isPanelOpen, openedByBlockId]);
 
 

@@ -927,17 +927,11 @@ function ArticleReader({ article }: { article: Article }) {
                                     <button
                                       type="button"
                                       onClick={() => {
-                                        const isSame = readerStore.openedByBlockId === blockId && readerStore.isPanelOpen;
-                                        if (isSame) {
-                                          readerStore.togglePanel();
-                                          useReaderStore.setState({ activeBlockId: null });
-                                        } else {
-                                          useReaderStore.setState({
-                                            isPanelOpen: true,
-                                            openedByBlockId: blockId,
-                                            activeBlockId: blockId,
-                                          });
-                                        }
+                                        if (!readerStore.isPanelOpen) return;
+                                        useReaderStore.setState({
+                                          openedByBlockId: blockId,
+                                          activeBlockId: blockId,
+                                        });
                                       }}
                                       disabled={playing}
                                       className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : isButtonActive ? "bg-muted text-foreground" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
