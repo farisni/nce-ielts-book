@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Highlighter, MessageSquareText, Bookmark, BookOpen } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
@@ -26,6 +26,25 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
   const selectedBlockId = useReaderStore((s) => s.selectedBlockId);
   const notesByBlockId = useReaderStore((s) => s.notesByBlockId);
+
+  // Auto-scroll right panel to the selected block's entry
+  useEffect(() => {
+    if (!selectedBlockId) return;
+    const id = setTimeout(() => {
+      const el = document.getElementById(`nb-${selectedBlockId}`);
+      if (!el) return;
+      const viewport = el.closest("[data-slot=\"scroll-area-viewport\"]");
+      if (viewport instanceof HTMLElement) {
+        const rect = el.getBoundingClientRect();
+        const vRect = viewport.getBoundingClientRect();
+        viewport.scrollBy({
+          top: rect.top - vRect.top - vRect.height / 3,
+          behavior: "smooth",
+        });
+      }
+    }, 150);
+    return () => clearTimeout(id);
+  }, [selectedBlockId]);
 
   // Collect all inlineAnnotations from the article
   const annotationEntries: AnnotationEntry[] = [];
@@ -101,18 +120,23 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
       : "";
   };
 
+  // Track seen blockIds to only add id to first entry per block
+  const seenBlocks = new Set<string>();
+
   return (
     <div className="divide-y divide-border">
-      {/* Expansion Notes Section */}
       {hasExpansions && (
         <div className="py-1">
           <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             扩展笔记
           </p>
           {expansionEntries.map(({ blockId, sentenceText, note }) => {
+            const isFirst = !seenBlocks.has(blockId);
+            if (isFirst) seenBlocks.add(blockId);
             return (
               <button
                 key={`exp-${blockId}-${note.label}`}
+                id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
               >
@@ -151,16 +175,18 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
         </div>
       )}
 
-      {/* Inline Annotations Section */}
       {hasAnnotations && (
         <div className="py-1">
           <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             行间笔记
           </p>
           {annotationEntries.map(({ blockId, sentenceText, note }) => {
+            const isFirst = !seenBlocks.has(blockId);
+            if (isFirst) seenBlocks.add(blockId);
             return (
               <button
                 key={`${blockId}-${note.label}`}
+                id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
               >
@@ -187,16 +213,18 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
         </div>
       )}
 
-      {/* Custom Notes Section */}
       {hasNotes && (
         <div className="py-1">
           <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             我的笔记
           </p>
           {noteEntries.map(({ blockId, sentenceText, note }) => {
+            const isFirst = !seenBlocks.has(blockId);
+            if (isFirst) seenBlocks.add(blockId);
             return (
               <button
                 key={`note-${blockId}`}
+                id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
               >
