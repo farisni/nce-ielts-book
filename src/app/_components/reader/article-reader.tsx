@@ -38,6 +38,7 @@ export function ArticleReader({ article }: Props) {
   const handleTogglePanel = (blockId: string) => {
     if (selectedBlockId === blockId) {
       setSelectedBlockId(null);
+      if (isPanelOpen) togglePanel();
     } else {
       setSelectedBlockId(blockId);
       scrollToBlock(blockId);
