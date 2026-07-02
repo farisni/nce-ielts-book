@@ -3,8 +3,6 @@ import type { Article } from "@/app/mock";
 
 interface ReaderState {
   activeBlockId: string | null;
-  selectedBlockId: string | null;
-  setSelectedBlockId: (id: string | null) => void;
   isPanelOpen: boolean;
   togglePanel: () => void;
   openPanel: () => void;
@@ -15,14 +13,11 @@ interface ReaderState {
   scrollToBlock: (blockId: string) => void;
   article: Article | null;
   setArticle: (article: Article | null) => void;
-  notebookScrollTop: number;
-  setNotebookScrollTop: (top: number) => void;
+  openedByBlockId: string | null;
 }
 
 export const useReaderStore = create<ReaderState>()((set) => ({
   activeBlockId: null,
-  selectedBlockId: null,
-  setSelectedBlockId: (id) => set({ selectedBlockId: id }),
   isPanelOpen: false,
   togglePanel: () => set((s) => ({ isPanelOpen: !s.isPanelOpen })),
   openPanel: () => set({ isPanelOpen: true }),
@@ -67,6 +62,5 @@ export const useReaderStore = create<ReaderState>()((set) => ({
   article: null,
   setArticle: (article) => set({ article }),
 
-  notebookScrollTop: 0,
-  setNotebookScrollTop: (top) => set({ notebookScrollTop: top }),
+  openedByBlockId: null,
 }));

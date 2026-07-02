@@ -33,37 +33,35 @@ type ExpansionEntry = {
 
 export function NotebookTab({ article, onScrollToBlock }: Props) {
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
-  const selectedBlockId = useReaderStore((s) => s.selectedBlockId);
   const notesByBlockId = useReaderStore((s) => s.notesByBlockId);
+  const openedByBlockId = useReaderStore((s) => s.openedByBlockId);
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const prevOpenedRef = useRef<string | null>(null);
 
-  // Auto-scroll right panel to the selected block's entry
+  // Auto-scroll right panel when panel opens or openedByBlockId changes
+  // Same block reopen → no scroll; different block → scroll
   useEffect(() => {
-    if (!selectedBlockId) return;
-
-    let cancelled = false;
-    const tryScroll = () => {
-      if (cancelled) return;
-      const el = document.getElementById(`nb-${selectedBlockId}`);
+    if (!isPanelOpen || !openedByBlockId) return;
+    if (openedByBlockId === prevOpenedRef.current) return;
+    prevOpenedRef.current = openedByBlockId;
+    const targetId = openedByBlockId;
+    const id = setTimeout(() => {
+      const el = document.getElementById(`nb-${targetId}`);
       if (!el) return;
       const viewport = el.closest("[data-slot=\"scroll-area-viewport\"]");
-      if (!(viewport instanceof HTMLElement)) return;
-      // Wait until viewport has meaningful width (panel fully open)
-      if (viewport.clientWidth < 100) {
-        requestAnimationFrame(tryScroll);
-        return;
+      if (viewport instanceof HTMLElement) {
+        const rect = el.getBoundingClientRect();
+        const vRect = viewport.getBoundingClientRect();
+        viewport.scrollBy({
+          top: rect.top - vRect.top - 60,
+          behavior: "smooth",
+        });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-      const rect = el.getBoundingClientRect();
-      const vRect = viewport.getBoundingClientRect();
-      viewport.scrollBy({
-        top: rect.top - vRect.top,
-        behavior: "smooth",
-      });
-    };
-
-    // Start after a short paint delay
-    const id = setTimeout(tryScroll, 50);
-    return () => { cancelled = true; clearTimeout(id); };
-  }, [selectedBlockId]);
+    }, 500);
+    return () => clearTimeout(id);
+  }, [isPanelOpen, openedByBlockId]);
 
 
   const ratiosRef = useRef<Map<string, number>>(new Map());
@@ -181,7 +179,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     <div className="divide-y divide-border">
       {hasExpansions && (
         <div className="py-1">
-          <p className="px-3 py-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="sticky top-0 z-10 flex items-center h-14 px-3 text-sm font-medium text-muted-foreground uppercase tracking-wider bg-sidebar border-b border-border/50">
             扩展笔记
           </p>
           {(() => {

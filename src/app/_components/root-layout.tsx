@@ -31,7 +31,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const notesPanelRef = useRef<ImperativePanelHandle>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const [transitioning, setTransitioning] = useState(false);
-  const savedNotebookTop = useRef(0);
+  const lastActiveBlockRef = useRef<string | null>(null);
 
   useEffect(() => {
     setTransitioning(true);
@@ -40,27 +40,27 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     return () => clearTimeout(t);
   }, [isPanelOpen]);
 
-  // 笔记面板滚动位置记忆：关闭前保存，展开后恢复
+  // 笔记面板：Tab+Q / top-nav 打开时，滚动到上次激活的 block
   useEffect(() => {
     if (!isPanelOpen) return;
-
-    // 展开后恢复滚动位置
     const timer = setTimeout(() => {
-      const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
-      if (viewport && savedNotebookTop.current > 0) {
-        viewport.scrollTop = savedNotebookTop.current;
+      const hasTarget = useReaderStore.getState().openedByBlockId;
+      if (hasTarget) return;  // 句子按钮打开的，由 notebook-tab 负责滚动
+      // Tab+Q 或 top-nav 打开的，导航到上次激活的 block
+      if (lastActiveBlockRef.current) {
+        useReaderStore.setState({ openedByBlockId: lastActiveBlockRef.current });
       }
-    }, 400);
-
-    return () => {
-      clearTimeout(timer);
-      // 关闭前保存滚动位置（cleanup 在 isPanelOpen 从 true → false 时执行）
-      const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
-      if (viewport) {
-        savedNotebookTop.current = viewport.scrollTop;
-      }
-    };
+    }, 100);
+    return () => clearTimeout(timer);
   }, [isPanelOpen]);
+
+  // 跟踪上次激活的 block
+  useEffect(() => {
+    const unsub = useReaderStore.subscribe((state) => {
+      if (state.activeBlockId) lastActiveBlockRef.current = state.activeBlockId;
+    });
+    return unsub;
+  }, []);
 
   // Tab+Q 快捷键切换笔记面板
   const tabHeld = useRef(false);

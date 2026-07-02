@@ -517,56 +517,6 @@ function ArticleReader({ article }: { article: Article }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
 
-  // Article scroll sync: update activeBlockId as article scrolls
-  const articleRatiosRef = useRef<Map<string, number>>(new Map());
-  const observerIgnoreUntil = useRef(0);
-  useEffect(() => {
-    const root = document.querySelector('[data-scroll-container]') as HTMLElement | null;
-    if (!root) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const id = (entry.target as HTMLElement).dataset.blockId;
-          if (!id) continue;
-          if (entry.intersectionRatio > 0) {
-            articleRatiosRef.current.set(id, entry.intersectionRatio);
-          } else {
-            articleRatiosRef.current.delete(id);
-          }
-        }
-        let bestId: string | null = null;
-        let bestRatio = 0;
-        for (const [id, ratio] of articleRatiosRef.current) {
-          if (ratio > bestRatio) {
-            bestRatio = ratio;
-            bestId = id;
-          }
-        }
-        if (bestId && Date.now() > observerIgnoreUntil.current) readerStore.setActiveBlockId(bestId);
-      },
-      {
-        root,
-        rootMargin: "-10% 0px -60% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
-
-    const observeAll = () => {
-      root.querySelectorAll('[data-block-id]').forEach((el) => observer.observe(el));
-    };
-    observeAll();
-
-    const mutationObs = new MutationObserver(() => observeAll());
-    mutationObs.observe(root, { childList: true, subtree: true });
-
-    return () => {
-      observer.disconnect();
-      mutationObs.disconnect();
-      articleRatiosRef.current.clear();
-    };
-  }, []);
-
 
 
   /* match LRC line text → article sentence */
@@ -894,11 +844,6 @@ function ArticleReader({ article }: { article: Article }) {
 
             </header>
 
-              <div className="mx-auto w-full max-w-[680px] mb-2 text-xs text-muted-foreground font-mono">
-                active: {readerStore.activeBlockId ?? "—"}
-              </div>
-
-            {/* Spotlight overlay — outside article to avoid re-render issues */}
             
 
             {/* Spotlight overlay */}
@@ -982,15 +927,16 @@ function ArticleReader({ article }: { article: Article }) {
                                     <button
                                       type="button"
                                       onClick={() => {
-                                        const isSameBlock = readerStore.selectedBlockId === blockId && readerStore.isPanelOpen;
-                                        if (isSameBlock) {
+                                        const isSame = readerStore.openedByBlockId === blockId && readerStore.isPanelOpen;
+                                        if (isSame) {
                                           readerStore.togglePanel();
-                                          readerStore.setActiveBlockId(null);
+                                          useReaderStore.setState({ activeBlockId: null });
                                         } else {
-                                          readerStore.openPanel();
-                                          readerStore.setSelectedBlockId(blockId);
-                                          readerStore.setActiveBlockId(blockId);
-                                          observerIgnoreUntil.current = Date.now() + 800;
+                                          useReaderStore.setState({
+                                            isPanelOpen: true,
+                                            openedByBlockId: blockId,
+                                            activeBlockId: blockId,
+                                          });
                                         }
                                       }}
                                       disabled={playing}
