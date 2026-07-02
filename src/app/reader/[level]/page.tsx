@@ -4,6 +4,7 @@ import { use, useEffect, useState } from "react";
 import { ReaderPage } from "@/app/_components/reader-page";
 import { allArticles } from "@/app/mock";
 import type { Article } from "@/app/mock";
+import { useReaderStore } from "@/stores/reader-store";
 
 const LEVEL_PREFIXES: Record<string, string> = {
   nce2: "nce2",
@@ -23,6 +24,7 @@ export default function Page({
   const prefix = LEVEL_PREFIXES[level] || "nce4";
   const [article, setArticle] = useState<Article | null>(null);
   const [sp, setSp] = useState<{ article?: string | string[] }>({});
+  const setStoreArticle = useReaderStore((s) => s.setArticle);
 
   useEffect(() => {
     searchParams.then(setSp);
@@ -34,6 +36,11 @@ export default function Page({
     const found = allArticles[key] || Object.values(allArticles).find((a) => a.id === key);
     setArticle(found || null);
   }, [sp.article]);
+
+  useEffect(() => {
+    setStoreArticle(article);
+    return () => { setStoreArticle(null); };
+  }, [article, setStoreArticle]);
 
   if (!article) {
     return (

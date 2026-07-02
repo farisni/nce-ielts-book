@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import type { Article } from "@/app/mock";
 
 interface ReaderState {
   activeBlockId: string | null;
@@ -11,6 +12,8 @@ interface ReaderState {
   addNote: (blockId: string, note: string) => void;
   removeNote: (blockId: string) => void;
   scrollToBlock: (blockId: string) => void;
+  article: Article | null;
+  setArticle: (article: Article | null) => void;
 }
 
 export const useReaderStore = create<ReaderState>()((set) => ({
@@ -34,10 +37,24 @@ export const useReaderStore = create<ReaderState>()((set) => ({
     }),
 
   scrollToBlock: (blockId: string) => {
-    const el = document.querySelector(`[data-block-id="${blockId}"]`);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      set({ activeBlockId: blockId });
-    }
+    const block = document.querySelector(`[data-block-id="${blockId}"]`);
+    if (!block) return;
+
+    const viewport = block.closest("[data-slot=\"scroll-area-viewport\"]");
+    if (!(viewport instanceof HTMLElement)) return;
+
+    const blockRect = block.getBoundingClientRect();
+    const viewportRect = viewport.getBoundingClientRect();
+    const contentTop = viewport.scrollTop + (blockRect.top - viewportRect.top);
+
+    viewport.scrollTo({
+      top: contentTop - viewport.clientHeight / 2,
+      behavior: "smooth",
+    });
+
+    set({ activeBlockId: blockId });
   },
+
+  article: null,
+  setArticle: (article) => set({ article }),
 }));
