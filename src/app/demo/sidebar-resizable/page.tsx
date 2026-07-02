@@ -17,7 +17,7 @@ export default function SidebarResizableDemo() {
       </div>
 
       <ResizablePanelGroup
-        orientation="horizontal"
+        direction="horizontal"
         className="min-h-[600px] w-full rounded-lg border border-border"
       >
         <ResizablePanel defaultSize={25}>
@@ -27,7 +27,7 @@ export default function SidebarResizableDemo() {
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={75}>
-          <ResizablePanelGroup orientation="vertical">
+          <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={35}>
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold text-sm">Header</span>
