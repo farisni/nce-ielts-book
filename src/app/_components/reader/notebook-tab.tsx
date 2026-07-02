@@ -120,10 +120,10 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
   if (!hasAnnotations && !hasExpansions && !hasNotes) {
     return (
-      <div className="p-6 text-center text-sm text-muted-foreground">
+      <div className="p-6 text-center text-base text-muted-foreground">
         <Highlighter className="size-8 mx-auto mb-2 opacity-30" />
         <p>还没有笔记</p>
-        <p className="mt-1 text-xs">点击左侧句子的 ··· 按钮可在此查看</p>
+        <p className="mt-1 text-sm">点击左侧句子的 ··· 按钮可在此查看</p>
       </div>
     );
   }
@@ -142,7 +142,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     <div className="divide-y divide-border">
       {hasExpansions && (
         <div className="py-1">
-          <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="px-3 py-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
             扩展笔记
           </p>
           {(() => {
@@ -166,17 +166,17 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     onClick={() => onScrollToBlock(blockId)}
                     className="w-full text-left p-3 pb-1.5"
                   >
-                    <p className="text-sm leading-relaxed">
+                    <p className="text-base leading-relaxed">
                       {first.sentenceText}
-                      <span className="text-[10px] text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
+                      <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
                     </p>
                   </button>
                   <div className="px-3 pb-3 space-y-2">
                     {entries.map(({ note }, ni) => (
-                      <div key={ni} className="text-xs">
+                      <div key={ni} className="text-sm">
                         <div className="flex items-start gap-1.5">
                           <span>
-                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
+                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
                               {note.label}
                             </span>
                             {note.description && (
@@ -192,13 +192,13 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                             return (
                               <div className="mt-1.5 ml-4.5 space-y-1.5">
                                 {exampleRows.map((ex, i) => (
-                                  <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
+                                  <div key={i} className="text-sm text-muted-foreground rounded px-2 py-1">
                                     <span>{highlightInText(ex.enExample, note.label)}</span>
                                     {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
                                   </div>
                                 ))}
                                 {synonymRows.map((ex, i) => (
-                                  <div key={i} className="text-[11px] text-muted-foreground rounded px-2 py-1">
+                                  <div key={i} className="text-sm text-muted-foreground rounded px-2 py-1">
                                     <span className="font-medium text-foreground">{ex.word}</span>
                                     {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
                                     {ex.enExample && <div className="mt-0.5">{highlightInText(ex.enExample, ex.word)}</div>}
@@ -220,7 +220,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
       {hasAnnotations && (
         <div className="py-1">
-          <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="px-3 py-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
             行间笔记
           </p>
           {(() => {
@@ -242,17 +242,17 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     onClick={() => onScrollToBlock(blockId)}
                     className="w-full text-left p-3 pb-1.5"
                   >
-                    <p className="text-sm leading-relaxed">
+                    <p className="text-base leading-relaxed">
                       {first.sentenceText}
-                      <span className="text-[10px] text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
+                      <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
                     </p>
                   </button>
                   <div className="px-3 pb-3 space-y-2">
                     {entries.map(({ note }, ni) => (
-                      <div key={ni} className="text-xs">
+                      <div key={ni} className="text-sm">
                         <div className="flex items-start gap-1.5">
                           <span>
-                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-xs font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
+                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
                               {note.label}
                             </span>
                             {note.description && (
@@ -274,7 +274,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
       {hasNotes && (
         <div className="py-1">
-          <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+          <p className="px-3 py-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
             我的笔记
           </p>
           {noteEntries.map(({ blockId, sentenceText, note }) => {
@@ -287,13 +287,13 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 ${highlightClass(blockId)}`}
               >
-                <p className="text-xs text-muted-foreground mb-0.5 font-mono">
+                <p className="text-sm text-muted-foreground mb-0.5 font-mono">
                   block {blockId}
                 </p>
-                <p className="text-sm line-clamp-2 leading-relaxed">
+                <p className="text-base line-clamp-2 leading-relaxed">
                   {sentenceText}
                 </p>
-                <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
+                <div className="mt-1.5 flex items-start gap-1.5 text-sm text-muted-foreground">
                   <MessageSquareText className="size-3 shrink-0 mt-0.5" />
                   <span className="line-clamp-2">{note}</span>
                 </div>
