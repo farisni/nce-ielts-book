@@ -455,6 +455,7 @@ function ArticleReader({ article }: { article: Article }) {
   const clearHighlights = useArticleSettings((s) => s.clearHighlights);
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
 
+  const [grammarBlock, setGrammarBlock] = useState<string | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
   const [chatContext, setChatContext] = useState("");
@@ -914,11 +915,12 @@ function ArticleReader({ article }: { article: Article }) {
                             const key = `${article.id}-p${index}-s${sIdx}`;
                             const hasPanelNotes = (sentence.expansionNotes?.length ?? 0) > 0;
                             const isActive = audioActiveKey === key;
+                            const showGrammar = showGrammarHighlights || grammarBlock === blockId;
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} data-block-id={blockId} className="sentence-inline">
                                   <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}>
-                                    {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.inlineAnnotations)}
+                                    {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammar, sentence.inlineAnnotations)}
                                   </span>
                                   {hasPanelNotes && (
                                     <button
@@ -927,9 +929,11 @@ function ArticleReader({ article }: { article: Article }) {
                                         const isSameBlock = readerStore.selectedBlockId === blockId && readerStore.isPanelOpen;
                                         if (isSameBlock) {
                                           readerStore.togglePanel();
+                                          setGrammarBlock(null);
                                         } else {
                                           readerStore.openPanel();
                                           readerStore.setSelectedBlockId(blockId);
+                                          setGrammarBlock(blockId);
                                         }
                                       }}
                                       disabled={playing}
