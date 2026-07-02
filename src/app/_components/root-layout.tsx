@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import type { ImperativePanelHandle } from "react-resizable-panels";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import TopNav from "@/app/_components/top-nav";
@@ -11,6 +11,7 @@ import { NotebookTab } from "@/app/_components/reader/notebook-tab";
 import { FloatAction } from "@/app/_components/float-action";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { useReaderStore } from "@/stores/reader-store";
+import { useCallback } from "react";
 
 const pillHandle =
   "relative flex items-center justify-center bg-transparent cursor-col-resize flex-shrink-0 " +
@@ -30,12 +31,35 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const notesPanelRef = useRef<ImperativePanelHandle>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const [transitioning, setTransitioning] = useState(false);
+  const savedNotebookTop = useRef(0);
 
   useEffect(() => {
     setTransitioning(true);
     notesPanelRef.current?.resize(isPanelOpen ? 30 : 0);
     const t = setTimeout(() => setTransitioning(false), 350);
     return () => clearTimeout(t);
+  }, [isPanelOpen]);
+
+  // 笔记面板滚动位置记忆：关闭前保存，展开后恢复
+  useEffect(() => {
+    if (!isPanelOpen) return;
+
+    // 展开后恢复滚动位置
+    const timer = setTimeout(() => {
+      const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+      if (viewport && savedNotebookTop.current > 0) {
+        viewport.scrollTop = savedNotebookTop.current;
+      }
+    }, 400);
+
+    return () => {
+      clearTimeout(timer);
+      // 关闭前保存滚动位置（cleanup 在 isPanelOpen 从 true → false 时执行）
+      const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+      if (viewport) {
+        savedNotebookTop.current = viewport.scrollTop;
+      }
+    };
   }, [isPanelOpen]);
 
   // Tab+Q 快捷键切换笔记面板
@@ -84,7 +108,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             </div>
           </Panel>
 
-          {isPanelOpen && <PanelResizeHandle className={pillHandle} />}
+          <PanelResizeHandle className={isPanelOpen ? pillHandle : "hidden"} />
 
           <Panel
             ref={notesPanelRef}
@@ -93,25 +117,20 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             maxSize={40}
             className={transitioning ? "transition-[flex] duration-300 ease-out" : ""}
           >
-            <AnimatePresence>
-              {isPanelOpen && (
-                <motion.aside
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="h-full bg-neutral-100 dark:bg-neutral-800 border-l border-border"
-                >
-                  <ScrollArea className="h-full" chevron={false} scrollFade={false}>
-                    {article ? (
-                      <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
-                    ) : (
-                      <div className="p-4 text-xs text-muted-foreground">加载中…</div>
-                    )}
-                  </ScrollArea>
-                </motion.aside>
-              )}
-            </AnimatePresence>
+            <motion.aside
+              initial={false}
+              animate={{ opacity: isPanelOpen ? 1 : 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="h-full bg-sidebar border-l border-border"
+            >
+              <ScrollArea className="h-full" chevron={false} scrollFade={false}>
+                {article ? (
+                  <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
+                ) : (
+                  <div className="p-4 text-xs text-muted-foreground">加载中…</div>
+                )}
+              </ScrollArea>
+            </motion.aside>
           </Panel>
         </PanelGroup>
       </div>

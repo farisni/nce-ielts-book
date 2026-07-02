@@ -14,6 +14,8 @@ interface ReaderState {
   scrollToBlock: (blockId: string) => void;
   article: Article | null;
   setArticle: (article: Article | null) => void;
+  notebookScrollTop: number;
+  setNotebookScrollTop: (top: number) => void;
 }
 
 export const useReaderStore = create<ReaderState>()((set) => ({
@@ -63,4 +65,7 @@ export const useReaderStore = create<ReaderState>()((set) => ({
 
   article: null,
   setArticle: (article) => set({ article }),
+
+  notebookScrollTop: 0,
+  setNotebookScrollTop: (top) => set({ notebookScrollTop: top }),
 }));
