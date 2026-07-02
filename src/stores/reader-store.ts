@@ -20,7 +20,7 @@ export const useReaderStore = create<ReaderState>()((set) => ({
   activeBlockId: null,
   selectedBlockId: null,
   setSelectedBlockId: (id) => set({ selectedBlockId: id }),
-  isPanelOpen: true,
+  isPanelOpen: false,
   togglePanel: () => set((s) => ({ isPanelOpen: !s.isPanelOpen })),
   setActiveBlockId: (id) => set({ activeBlockId: id }),
 
