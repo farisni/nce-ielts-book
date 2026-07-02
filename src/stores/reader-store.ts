@@ -40,15 +40,20 @@ export const useReaderStore = create<ReaderState>()((set) => ({
     const block = document.querySelector(`[data-block-id="${blockId}"]`);
     if (!block) return;
 
-    const viewport = block.closest("[data-slot=\"scroll-area-viewport\"]");
-    if (!(viewport instanceof HTMLElement)) return;
+    // Try ScrollArea viewport first (old reader page)
+    let container: HTMLElement | null = block.closest("[data-slot=\"scroll-area-viewport\"]");
+    // Fallback to data-scroll-container (reader-v2 layout)
+    if (!container) {
+      container = block.closest("[data-scroll-container]");
+    }
+    if (!(container instanceof HTMLElement)) return;
 
     const blockRect = block.getBoundingClientRect();
-    const viewportRect = viewport.getBoundingClientRect();
-    const contentTop = viewport.scrollTop + (blockRect.top - viewportRect.top);
+    const containerRect = container.getBoundingClientRect();
+    const contentTop = container.scrollTop + (blockRect.top - containerRect.top);
 
-    viewport.scrollTo({
-      top: contentTop - viewport.clientHeight / 2,
+    container.scrollTo({
+      top: contentTop - container.clientHeight / 2,
       behavior: "smooth",
     });
 

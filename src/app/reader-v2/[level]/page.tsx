@@ -1,14 +1,27 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useState, useRef } from "react";
+import { MoreHorizontal } from "lucide-react";
 import { allArticles } from "@/app/mock";
-import type { Article } from "@/app/mock";
+import type { Article, SentenceData } from "@/app/mock";
+import { useReaderStore } from "@/stores/reader-store";
+import { useScrollSync } from "@/hooks/use-scroll-sync";
+import { renderHighlightedText } from "@/lib/render-highlighted-text";
+import { useArticleSettings } from "@/stores/article-settings";
 
 const LEVEL_PREFIXES: Record<string, string> = {
   nce2: "nce2",
   nce3: "nce3",
   nce4: "nce4",
   ielts: "ielts",
+};
+
+const EMPTY_HIGHLIGHTS: never[] = [];
+
+type Block = {
+  blockId: string;
+  sentence: SentenceData;
+  start: number;
 };
 
 export default function Page({
@@ -21,6 +34,20 @@ export default function Page({
   const { level } = use(params);
   const [article, setArticle] = useState<Article | null>(null);
   const [sp, setSp] = useState<{ article?: string | string[] }>({});
+  const setStoreArticle = useReaderStore((s) => s.setArticle);
+  const activeBlockId = useReaderStore((s) => s.activeBlockId);
+  const selectedBlockId = useReaderStore((s) => s.selectedBlockId);
+  const setSelectedBlockId = useReaderStore((s) => s.setSelectedBlockId);
+  const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const togglePanel = useReaderStore((s) => s.togglePanel);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { observeBlock } = useScrollSync(containerRef);
+  const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
+  const highlights = useArticleSettings((s) =>
+    (s.highlightsByArticleId[article?.id ?? ''] ?? EMPTY_HIGHLIGHTS)
+  );
 
   useEffect(() => {
     searchParams.then(setSp);
@@ -33,6 +60,11 @@ export default function Page({
     setArticle(found || null);
   }, [sp.article]);
 
+  useEffect(() => {
+    setStoreArticle(article);
+    return () => { setStoreArticle(null); };
+  }, [article, setStoreArticle]);
+
   if (!article) {
     return (
       <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
@@ -41,40 +73,92 @@ export default function Page({
     );
   }
 
-  const sentences = article.original.paragraphs.flatMap((p, pi) =>
-    p.map((s, si) => ({ ...s, blockId: `${pi}-${si}` }))
-  );
+  // Flatten paragraphs into blocks
+  let globalOffset = 0;
+  const blocks: Block[] = [];
+  for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
+    const paragraph = article.original.paragraphs[pi];
+    for (let si = 0; si < paragraph.length; si++) {
+      const sentence = paragraph[si];
+      const blockId = `${pi}-${si}`;
+      blocks.push({ blockId, sentence, start: globalOffset });
+      globalOffset += sentence.text.length + 1;
+    }
+  }
+
+  const handleTogglePanel = (blockId: string) => {
+    if (selectedBlockId === blockId) {
+      setSelectedBlockId(null);
+      if (isPanelOpen) togglePanel();
+    } else {
+      setSelectedBlockId(blockId);
+      scrollToBlock(blockId);
+      if (!isPanelOpen) togglePanel();
+    }
+  };
 
   return (
-    <div className="h-full overflow-y-auto px-6 py-8">
-      <h1 className="text-2xl font-bold mb-1">{article.title}</h1>
+    <div ref={containerRef} className="max-w-[750px] mx-auto">
+      <h1 className="text-2xl font-bold tracking-tight mb-2">
+        {article.title}
+      </h1>
+      {article.titleCn && (
+        <p className="text-muted-foreground mb-8">{article.titleCn}</p>
+      )}
 
-      {article.original.paragraphs.map((p, pi) => (
-        <div key={pi} className="mb-6">
-          {p.map((s, si) => (
-            <p
-              key={`${pi}-${si}`}
-              data-block-id={`${pi}-${si}`}
-              className="text-base leading-relaxed mb-2"
+      <div
+        className="text-lg leading-loose text-foreground [text-indent:2em]"
+        style={{
+          fontFamily:
+            '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif',
+        }}
+      >
+        {blocks.map(({ blockId, sentence, start }) => {
+          const isActive = activeBlockId === blockId;
+          const isOpen = selectedBlockId === blockId;
+          const hasPanelNotes = (sentence.expansionNotes?.length ?? 0) > 0;
+
+          return (
+            <span
+              key={blockId}
+              data-block-id={blockId}
+              ref={observeBlock}
+              className={`sentence-inline transition-colors duration-200 ${
+                isActive
+                  ? "bg-sky-100 dark:bg-sky-900/30 rounded-md px-1.5 py-0.5 -mx-1.5"
+                  : ""
+              }`}
             >
-              {s.text}
-            </p>
-          ))}
-        </div>
-      ))}
-
-      <hr className="my-8 border-border" />
-
-      <h2 className="text-lg font-semibold mb-4">参考译文</h2>
-      {article.original.paragraphs.map((p, pi) => (
-        <div key={pi} className="mb-4">
-          {p.map((s, si) => (
-            <p key={`${pi}-${si}`} className="text-sm text-muted-foreground leading-relaxed mb-1">
-              {s.translation}
-            </p>
-          ))}
-        </div>
-      ))}
+              {renderHighlightedText(
+                sentence.text,
+                start,
+                highlights,
+                false,
+                false,
+                sentence.predicates,
+                sentence.auxiliaries,
+                sentence.clauseIntroducers,
+                showGrammarHighlights,
+                sentence.inlineAnnotations
+              )}
+              {hasPanelNotes && (
+                <button
+                  type="button"
+                  onClick={() => handleTogglePanel(blockId)}
+                  className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${
+                    isOpen
+                      ? "text-foreground bg-muted"
+                      : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  <MoreHorizontal className="size-3.5" />
+                </button>
+              )}
+              {" "}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 "use client";
 
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { AnimatePresence, motion } from "motion/react";
 import { AppSidebar } from "@/app/_components/app-sidebar";
+import { NotebookTab } from "@/app/_components/reader/notebook-tab";
+import { useReaderStore } from "@/stores/reader-store";
 
 const pillHandle =
   "relative flex items-center justify-center bg-transparent cursor-col-resize flex-shrink-0 " +
@@ -13,26 +16,43 @@ const pillHandle =
   "active:before:h-12 active:before:w-1.5 active:before:bg-primary";
 
 export default function ReaderV2Layout({ children }: { children: React.ReactNode }) {
+  const article = useReaderStore((s) => s.article);
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
+
   return (
     <div className="h-screen w-full overflow-hidden flex">
       <AppSidebar />
 
       <PanelGroup direction="horizontal" className="h-full flex-1">
         <Panel defaultSize={70} minSize={60}>
-          <main className="h-full overflow-y-auto p-6">
-            <div className="max-w-[750px] mx-auto border border-dashed border-border rounded-xl p-6">
+          <main data-scroll-container className="h-full overflow-y-auto p-6">
+            <div className="border border-dashed border-border rounded-xl p-6 min-h-full">
               {children}
             </div>
           </main>
         </Panel>
 
-        <PanelResizeHandle className={pillHandle} />
+        {isPanelOpen && <PanelResizeHandle className={pillHandle} />}
 
-        <Panel defaultSize={30} minSize={15} maxSize={40}>
-          <aside className="h-full overflow-y-auto bg-background p-4">
-            <h2 className="text-sm font-semibold mb-4">笔记</h2>
-            <p className="text-xs text-muted-foreground">加载中…</p>
-          </aside>
+        <Panel defaultSize={isPanelOpen ? 30 : 0} minSize={0} maxSize={isPanelOpen ? 40 : 0}>
+          <AnimatePresence>
+            {isPanelOpen && (
+              <motion.aside
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: "100%", opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                className="h-full overflow-y-auto bg-background"
+              >
+                {article ? (
+                  <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
+                ) : (
+                  <div className="p-4 text-xs text-muted-foreground">加载中…</div>
+                )}
+              </motion.aside>
+            )}
+          </AnimatePresence>
         </Panel>
       </PanelGroup>
     </div>

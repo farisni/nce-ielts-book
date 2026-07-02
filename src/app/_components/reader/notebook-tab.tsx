@@ -41,6 +41,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
           top: rect.top - vRect.top,
           behavior: "smooth",
         });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }, 150);
     return () => clearTimeout(id);
