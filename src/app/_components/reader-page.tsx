@@ -19,8 +19,8 @@ export function ReaderPage({ article }: Props) {
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
   return (
-    <div className="h-[calc(100vh-7rem)] w-full">
-      <ResizablePanelGroup orientation="horizontal" className="h-full rounded-lg border border-border">
+    <div className="-mx-6 -mb-6 h-full">
+      <ResizablePanelGroup orientation="horizontal" className="h-full">
         <ResizablePanel defaultSize={70} minSize={35}>
           <ArticleReader article={article} />
         </ResizablePanel>
