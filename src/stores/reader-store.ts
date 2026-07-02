@@ -2,6 +2,8 @@ import { create } from "zustand";
 
 interface ReaderState {
   activeBlockId: string | null;
+  selectedBlockId: string | null;
+  setSelectedBlockId: (id: string | null) => void;
   setActiveBlockId: (id: string | null) => void;
   notesByBlockId: Record<string, string>;
   addNote: (blockId: string, note: string) => void;
@@ -11,6 +13,8 @@ interface ReaderState {
 
 export const useReaderStore = create<ReaderState>()((set) => ({
   activeBlockId: null,
+  selectedBlockId: null,
+  setSelectedBlockId: (id) => set({ selectedBlockId: id }),
   setActiveBlockId: (id) => set({ activeBlockId: id }),
 
   notesByBlockId: {},

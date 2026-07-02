@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { SPRING_PANEL } from "@/lib/ease";
+import React, { useRef } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArticleBlock } from "./article-block";
 import { useScrollSync } from "@/hooks/use-scroll-sync";
@@ -17,7 +15,9 @@ export function ArticleReader({ article }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { observeBlock } = useScrollSync(containerRef);
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
-  const [openPanelId, setOpenPanelId] = useState<string | null>(null);
+  const selectedBlockId = useReaderStore((s) => s.selectedBlockId);
+  const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
+  const setSelectedBlockId = useReaderStore((s) => s.setSelectedBlockId);
 
   // Flatten all paragraphs into blocks with position tracking
   let globalOffset = 0;
@@ -32,6 +32,15 @@ export function ArticleReader({ article }: Props) {
       globalOffset += sentence.text.length + 1; // +1 for trailing space
     }
   }
+
+  const handleTogglePanel = (blockId: string) => {
+    if (selectedBlockId === blockId) {
+      setSelectedBlockId(null);
+    } else {
+      setSelectedBlockId(blockId);
+      scrollToBlock(blockId);
+    }
+  };
 
   return (
     <ScrollArea className="h-full">
@@ -53,52 +62,17 @@ export function ArticleReader({ article }: Props) {
           }}
         >
           {blocks.map(({ blockId, sentence, start }) => (
-            <React.Fragment key={blockId}>
-              <ArticleBlock
-                blockId={blockId}
-                sentence={sentence}
-                sentenceStart={start}
-                articleId={article.id}
-                isActive={activeBlockId === blockId}
-                onTogglePanel={(id) =>
-                  setOpenPanelId((prev) => (prev === id ? null : id))
-                }
-                isPanelOpen={openPanelId === blockId}
-                hideInlineAnnotations
-              />
-              <AnimatePresence>
-                {openPanelId === blockId &&
-                  sentence.expansionNotes &&
-                  sentence.expansionNotes.length > 0 && (
-                    <motion.div
-                      key={`panel-${blockId}`}
-                      data-selection-offset-excluded="true"
-                      className="rounded-lg px-4 py-3 relative z-[52] [text-indent:0] font-sans"
-                      style={{ background: "#f2f7f2" }}
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      transition={SPRING_PANEL}
-                    >
-                      {sentence.expansionNotes.map((note, i) => (
-                        <div
-                          key={i}
-                          className="text-sm text-foreground/80 leading-relaxed"
-                        >
-                          <span className="font-semibold text-foreground">
-                            {note.label}
-                          </span>
-                          {note.description && (
-                            <span className="text-muted-foreground ml-2">
-                              {note.description}
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                    </motion.div>
-                  )}
-              </AnimatePresence>
-            </React.Fragment>
+            <ArticleBlock
+              key={blockId}
+              blockId={blockId}
+              sentence={sentence}
+              sentenceStart={start}
+              articleId={article.id}
+              isActive={activeBlockId === blockId}
+              onTogglePanel={handleTogglePanel}
+              isPanelOpen={selectedBlockId === blockId}
+              hideInlineAnnotations
+            />
           ))}
         </div>
       </div>
