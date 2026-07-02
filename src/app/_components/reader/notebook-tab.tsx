@@ -167,7 +167,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     onClick={() => onScrollToBlock(blockId)}
                     className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: anchorBg }}
                   >
-                    <p className="text-base leading-relaxed">
+                    <p className="text-base leading-relaxed text-foreground" style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}>
                       {first.sentenceText}
                       <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
                     </p>
@@ -246,7 +246,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                     onClick={() => onScrollToBlock(blockId)}
                     className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: anchorBg }}
                   >
-                    <p className="text-base leading-relaxed">
+                    <p className="text-base leading-relaxed text-foreground" style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}>
                       {first.sentenceText}
                       <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
                     </p>
