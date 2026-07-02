@@ -45,27 +45,20 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     if (!isPanelOpen) return;
     const timer = setTimeout(() => {
       const hasTarget = useReaderStore.getState().openedByBlockId;
-      if (hasTarget) return;  // 句子按钮打开的，由 notebook-tab 负责滚动
-      if (lastActiveBlockRef.current) {
-        // 仅滚动到上次 block，不设 openedBy，避免连带改变 active
-        const el = document.getElementById('nb-' + lastActiveBlockRef.current);
-        if (el) {
-          const viewport = el.closest('[data-slot="scroll-area-viewport"]');
-          if (viewport instanceof HTMLElement) {
-            const rect = el.getBoundingClientRect();
-            const vRect = viewport.getBoundingClientRect();
-            viewport.scrollBy({ top: rect.top - vRect.top - 60, behavior: 'smooth' });
-          }
-        }
+      if (hasTarget) return;  // 已有关联 block（面板关闭时保留的），notebook-tab 负责恢复
+      // 首次打开：优先面板内上次激活的 block，兜底语法高亮选中的句子
+      const blockId = lastActiveBlockRef.current || useReaderStore.getState().activeBlockId;
+      if (blockId) {
+        useReaderStore.setState({ openedByBlockId: blockId });
       }
     }, 100);
     return () => clearTimeout(timer);
   }, [isPanelOpen]);
 
-  // 跟踪上次激活的 block
+  // 跟踪上次激活的 block（仅在面板打开时记录，避免面板关闭时语法高亮切换污染）
   useEffect(() => {
     const unsub = useReaderStore.subscribe((state) => {
-      if (state.activeBlockId) lastActiveBlockRef.current = state.activeBlockId;
+      if (state.activeBlockId && state.isPanelOpen) lastActiveBlockRef.current = state.activeBlockId;
     });
     return unsub;
   }, []);
@@ -81,7 +74,6 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
       }
       if (tabHeld.current && (e.key === 'q' || e.key === 'Q')) {
         e.preventDefault();
-        useReaderStore.setState({ openedByBlockId: null });
         togglePanel();
       }
     };
@@ -132,7 +124,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="h-full bg-sidebar border-l border-border"
             >
-              <ScrollArea className="h-full" chevron={false} scrollFade={false}>
+              <ScrollArea className="h-full" chevron={false} scrollFade={false} viewportClassName="notes-panel-viewport">
                 {article ? (
                   <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
                 ) : (

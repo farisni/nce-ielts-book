@@ -558,7 +558,6 @@ export default function TopNav() {
           {isReaderPage && (
             <button
               onClick={() => {
-                useReaderStore.setState({ openedByBlockId: null });
                 togglePanel();
               }}
               title={isPanelOpen ? "收起笔记面板" : "展开笔记面板"}

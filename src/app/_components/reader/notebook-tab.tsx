@@ -36,67 +36,70 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const notesByBlockId = useReaderStore((s) => s.notesByBlockId);
   const openedByBlockId = useReaderStore((s) => s.openedByBlockId);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
   const prevOpenedRef = useRef<string | null>(null);
   const skipObserverRef = useRef(false);
-  const savedScrollTopRef = useRef(0);
+  const scrollOffsetsRef = useRef<Map<string, number>>(new Map());
+  const ratiosRef = useRef<Map<string, number>>(new Map());
+
+  // 保存当前激活 block 相对视口顶部的偏移量，同时更新 openedByBlockId
+  const saveOffset = useCallback(() => {
+    const store = useReaderStore.getState();
+    // 优先取 Observer 追踪到的 activeBlockId（用户实际在看的位置），兜底 openedByBlockId
+    const id = store.activeBlockId || store.openedByBlockId;
+    if (!id) return;
+    const el = document.getElementById(`nb-${id}`);
+    if (!el) return;
+    const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+    if (!viewport) return;
+    const elTop = el.getBoundingClientRect().top;
+    const vpTop = viewport.getBoundingClientRect().top;
+    scrollOffsetsRef.current.set(id, elTop - vpTop);
+    useReaderStore.setState({
+      panelScrollTop: elTop - vpTop,
+      // 同步 openedByBlockId，确保重开时定位到用户实际在看的 block
+      openedByBlockId: id,
+    });
+  }, []);
+
+  // 面板关闭时保存偏移量
+  useEffect(() => {
+    if (isPanelOpen) return;
+    saveOffset();
+  }, [isPanelOpen, saveOffset]);
+
   // Auto-scroll right panel when panel opens or openedByBlockId changes
-  // Same block reopen → restore saved position (no scroll); different block → scroll
   useEffect(() => {
     if (!isPanelOpen || !openedByBlockId) return;
 
-    if (openedByBlockId === prevOpenedRef.current) {
-      // 同一 block 重新打开，锁住 Observer + 恢复滚动位置
-      setActiveBlockId(openedByBlockId);
-      skipObserverRef.current = true;
-      const restoreId = setTimeout(() => {
-        const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
-        if (viewport && savedScrollTopRef.current > 0) {
-          viewport.scrollTop = savedScrollTopRef.current;
-        }
-        skipObserverRef.current = false;
-      }, 500);
-      return () => { clearTimeout(restoreId); skipObserverRef.current = false; };
-    }
-
+    const isSameBlock = openedByBlockId === prevOpenedRef.current;
     prevOpenedRef.current = openedByBlockId;
-    const targetId = openedByBlockId;
-    setActiveBlockId(targetId);  // 同步文章高亮
+    setActiveBlockId(openedByBlockId);
     skipObserverRef.current = true;
+
+    // 有保存的偏移量就用它（精确恢复位置），否则默认 60px
+    const savedOffset = scrollOffsetsRef.current.get(openedByBlockId);
+    const targetOffset = savedOffset ?? 60;
+
     const id = setTimeout(() => {
-      const el = document.getElementById(`nb-${targetId}`);
-      if (!el) return;
-      const viewport = el.closest("[data-slot=\"scroll-area-viewport\"]");
-      if (viewport instanceof HTMLElement) {
-        const rect = el.getBoundingClientRect();
-        const vRect = viewport.getBoundingClientRect();
-        viewport.scrollBy({
-          top: rect.top - vRect.top - 60,
-          behavior: "smooth",
-        });
-      } else {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      const el = document.getElementById(`nb-${openedByBlockId}`);
+      if (!el) { skipObserverRef.current = false; return; }
+      const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+      if (!viewport) { skipObserverRef.current = false; return; }
+      const currentOffset = el.getBoundingClientRect().top - viewport.getBoundingClientRect().top;
+      viewport.scrollBy({
+        top: currentOffset - targetOffset,
+        behavior: "instant" as ScrollBehavior,
+      });
+      skipObserverRef.current = false;
     }, 400);
-    const unlockId = setTimeout(() => { skipObserverRef.current = false; }, 1000);
-    return () => { clearTimeout(id); clearTimeout(unlockId); };
-  }, [isPanelOpen, openedByBlockId]);
 
-
-  const ratiosRef = useRef<Map<string, number>>(new Map());
-  // 面板关闭时保存滚动位置，同一 block 重新打开时恢复
-  useEffect(() => {
-    if (isPanelOpen) return;
-    const viewport = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
-    if (viewport) {
-      savedScrollTopRef.current = viewport.scrollTop;
-    }
-  }, [isPanelOpen]);
+    return () => { clearTimeout(id); skipObserverRef.current = false; };
+  }, [isPanelOpen, openedByBlockId, setActiveBlockId]);
 
   // Notebook scroll sync: update activeBlockId as notebook scrolls
-  const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
   useEffect(() => {
-    // Find the ScrollArea viewport as the observer root
-    const root = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+    const root = document.querySelector('.notes-panel-viewport') as HTMLElement | null;
     if (!root) return;
 
     const observer = new IntersectionObserver(

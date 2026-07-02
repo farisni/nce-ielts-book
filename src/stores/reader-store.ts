@@ -15,6 +15,7 @@ interface ReaderState {
   article: Article | null;
   setArticle: (article: Article | null) => void;
   openedByBlockId: string | null;
+  panelScrollTop: number;
 }
 
 export const useReaderStore = create<ReaderState>()(
@@ -66,6 +67,7 @@ export const useReaderStore = create<ReaderState>()(
   setArticle: (article) => set({ article }),
 
   openedByBlockId: null,
+  panelScrollTop: 0,
     }),
     {
       name: "reader-store",

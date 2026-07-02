@@ -68,6 +68,7 @@ function DebugInfo() {
   const isOpen = useReaderStore((s) => s.isPanelOpen);
   const opened = useReaderStore((s) => s.openedByBlockId);
   const active = useReaderStore((s) => s.activeBlockId);
+  const savedScroll = useReaderStore((s) => s.panelScrollTop);
   const [scrollTop, setScrollTop] = React.useState(0);
   React.useEffect(() => {
     const id = setInterval(() => {
@@ -82,6 +83,7 @@ function DebugInfo() {
       <span>openedBy: {opened ?? "-"}</span>
       <span>active: {active ?? "-"}</span>
       <span>scrollTop: {Math.round(scrollTop)}</span>
+      <span>savedScroll: {Math.round(savedScroll)}</span>
     </div>
   );
 }
