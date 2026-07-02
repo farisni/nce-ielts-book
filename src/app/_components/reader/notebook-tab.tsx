@@ -116,7 +116,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const highlightClass = (blockId: string) => {
     const isHighlighted = selectedBlockId === blockId || activeBlockId === blockId;
     return isHighlighted
-      ? "bg-sky-100 dark:bg-sky-900/30 border-l-2 border-sky-500"
+      ? "border-l-2 border-sky-500"
       : "";
   };
 
@@ -138,7 +138,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 key={`exp-${blockId}-${note.label}`}
                 id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
-                className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
+                className={`w-full text-left p-3 ${highlightClass(blockId)}`}
               >
                 <p className="text-xs text-muted-foreground mb-0.5 font-mono">
                   block {blockId}
@@ -188,7 +188,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 key={`${blockId}-${note.label}`}
                 id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
-                className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
+                className={`w-full text-left p-3 ${highlightClass(blockId)}`}
               >
                 <p className="text-xs text-muted-foreground mb-0.5 font-mono">
                   block {blockId}
@@ -226,7 +226,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 key={`note-${blockId}`}
                 id={isFirst ? `nb-${blockId}` : undefined}
                 onClick={() => onScrollToBlock(blockId)}
-                className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${highlightClass(blockId)}`}
+                className={`w-full text-left p-3 ${highlightClass(blockId)}`}
               >
                 <p className="text-xs text-muted-foreground mb-0.5 font-mono">
                   block {blockId}
