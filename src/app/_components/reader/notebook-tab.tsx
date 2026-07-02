@@ -6,6 +6,7 @@ import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
 
 const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
+const anchorBg = "#eef2f5";  // 句子描点统一色
 
 const highlightInText = (text: string, keyword: string) => {
   if (!keyword || !text) return text;
@@ -164,7 +165,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 >
                   <button
                     onClick={() => onScrollToBlock(blockId)}
-                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: pillBg[parseInt(blockId.split("-")[0]) % pillBg.length] }}
+                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: anchorBg }}
                   >
                     <p className="text-base leading-relaxed">
                       {first.sentenceText}
@@ -243,7 +244,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 >
                   <button
                     onClick={() => onScrollToBlock(blockId)}
-                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: pillBg[parseInt(blockId.split("-")[0]) % pillBg.length] }}
+                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: anchorBg }}
                   >
                     <p className="text-base leading-relaxed">
                       {first.sentenceText}
