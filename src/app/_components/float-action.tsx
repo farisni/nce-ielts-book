@@ -2,6 +2,7 @@
 
 import { Highlighter } from "lucide-react";
 import { FloatingDisclosure, items } from "@/components/ui/floating-disclosure";
+import { Button } from "@/components/ui/button";
 import { useArticleSettings } from "@/stores/article-settings";
 import { cn } from "@/lib/utils";
 
@@ -10,16 +11,15 @@ export function GrammarToggleButton({ className }: { className?: string }) {
   const toggleGrammarHighlights = useArticleSettings((s) => s.toggleGrammarHighlights);
 
   return (
-    <button
+    <Button
+      variant="ghost"
+      size="icon"
       onClick={toggleGrammarHighlights}
-      className={cn(
-        "flex size-7 items-center justify-center rounded-full border border-border bg-background shadow-sm transition-colors hover:bg-muted cursor-pointer",
-        className
-      )}
+      className={cn("rounded-full hover:bg-[#f0f0f0]", className)}
       aria-label={showGrammarHighlights ? "Hide grammar colors" : "Show grammar colors"}
     >
-      <Highlighter className={showGrammarHighlights ? "size-4 text-[#c2410c]" : "size-4 text-muted-foreground/40"} />
-    </button>
+      <Highlighter className={showGrammarHighlights ? "size-4 text-[#c2410c]" : "size-4 text-muted-foreground/40 group-hover/button:text-[#c2410c]"} />
+    </Button>
   );
 }
 
@@ -29,13 +29,15 @@ export function FloatAction({ className }: { className?: string }) {
 
   return (
     <div className={cn("flex flex-col items-center gap-3", className)}>
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         onClick={toggleGrammarHighlights}
-        className="flex size-7 items-center justify-center rounded-full border border-border bg-background shadow-sm transition-colors hover:bg-muted cursor-pointer"
+        className="rounded-full hover:bg-[#f0f0f0]"
         aria-label={showGrammarHighlights ? "Hide grammar colors" : "Show grammar colors"}
       >
-        <Highlighter className={showGrammarHighlights ? "size-4 text-[#c2410c]" : "size-4 text-muted-foreground/40"} />
-      </button>
+        <Highlighter className={showGrammarHighlights ? "size-4 text-[#c2410c]" : "size-4 text-muted-foreground/40 group-hover/button:text-[#c2410c]"} />
+      </Button>
       <FloatingDisclosure items={items} />
     </div>
   );

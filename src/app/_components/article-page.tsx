@@ -763,13 +763,15 @@ function ArticleReader({ article }: { article: Article }) {
                 </h1>
                 {isNce4 && (
                   <div className="flex items-center gap-1.5 shrink-0 mt-1.5">
-                    <button
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={togglePlay}
-                      className="flex size-7 items-center justify-center rounded-full border border-border bg-surface-2 text-foreground transition-colors hover:bg-surface-3"
+                      className="rounded-full hover:bg-[#f0f0f0]"
                       aria-label={playing ? "Pause" : "Listen"}
                     >
-                      {playing ? <Pause className="size-3" /> : <Play className="size-3 ml-0.5" />}
-                    </button>
+                      {playing ? <Pause className="size-3.5" /> : <Play className="size-3.5 ml-0.5" />}
+                    </Button>
                     <span className="text-[11px] tabular-nums text-muted-foreground min-w-[56px] text-right">
                       {formatAudioTime(currentMs)} / {formatAudioTime(duration)}
                     </span>
