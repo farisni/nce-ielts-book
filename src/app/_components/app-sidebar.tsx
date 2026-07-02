@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import {
   BookMarked,
   BookOpen,
@@ -244,6 +244,7 @@ function CollapsibleSidebarGroup({
     </div>
   );
 }
+
 
 export function AppSidebar() {
   const flattenedItems = [

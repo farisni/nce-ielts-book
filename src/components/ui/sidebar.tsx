@@ -53,13 +53,18 @@ export const SidebarProvider = ({
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   animate?: boolean;
 }) => {
-  const [openState, setOpenState] = useState(true);
+  const [openState, setOpenState] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const open = openProp !== undefined ? openProp : openState;
   const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
 
   return (
-    <SidebarContext.Provider value={{ open, setOpen, animate: animate }}>
+    <SidebarContext.Provider value={{ open, setOpen, animate: mounted && animate }}>
       {children}
     </SidebarContext.Provider>
   );
@@ -122,11 +127,12 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] shrink-0",
+          "h-full px-4 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 shrink-0",
           className,
         )}
+        style={{ width: open ? 300 : 60 }}
         animate={{
-          width: animate ? (open ? "300px" : "60px") : "300px",
+          width: open ? "300px" : "60px",
         }}
         transition={{ duration: 0.28, ease: "easeInOut" }}
         onMouseEnter={() => setOpen(true)}
@@ -210,9 +216,13 @@ export const SidebarLink = ({
       {link.icon}
 
       <motion.span
+        style={{
+          display: open ? "inline-block" : "none",
+          opacity: open ? 1 : 0,
+        }}
         animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
-          opacity: animate ? (open ? 1 : 0) : 1,
+          display: animate ? (open ? "inline-block" : "none") : (open ? "inline-block" : "none"),
+          opacity: animate ? (open ? 1 : 0) : (open ? 1 : 0),
         }}
         className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >

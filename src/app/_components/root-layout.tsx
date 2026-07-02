@@ -24,6 +24,7 @@ const pillHandle =
 export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const togglePanel = useReaderStore((s) => s.togglePanel);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
   const notesPanelRef = useRef<ImperativePanelHandle>(null);
@@ -36,6 +37,33 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     const t = setTimeout(() => setTransitioning(false), 350);
     return () => clearTimeout(t);
   }, [isPanelOpen]);
+
+  // Tab+Q 快捷键切换笔记面板
+  const tabHeld = useRef(false);
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        tabHeld.current = true;
+        return;
+      }
+      if (tabHeld.current && (e.key === 'q' || e.key === 'Q')) {
+        e.preventDefault();
+        togglePanel();
+      }
+    };
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        tabHeld.current = false;
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+    };
+  }, [togglePanel]);
 
   return (
     <div className="h-screen w-full overflow-hidden flex">
