@@ -62,6 +62,7 @@ import { InputGroup, InputField } from "@/components/ui/input-group";
 import { motion, AnimatePresence } from "motion/react";
 import { SPRING_PANEL } from "@/lib/ease";
 import { useArticleSettings } from "@/stores/article-settings";
+import { useReaderStore } from "@/stores/reader-store";
 import FlipClock from "@/components/8starlabs-ui/flip-clock";
 import { ThinkingIndicator } from "@/components/ui/thinking-indicator";
 import { RoughHighlight, RoughUnderline } from "@/components/rough-annotate";
@@ -458,16 +459,17 @@ function ArticleReader({ article }: { article: Article }) {
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
   const [chatContext, setChatContext] = useState("");
   const [chatInput, setChatInput] = useState("");
+  const [activePanelKey, setActivePanelKey] = useState("");
   const [activeSideTab, setActiveSideTab] = useState<"grammar" | "vocabulary">("grammar");
   const [activeGrammarMoreKey, setActiveGrammarMoreKey] = useState("");
   const [grammarSummaryBlockMetrics, setGrammarSummaryBlockMetrics] = useState<
     Record<number, GrammarSummaryBlockMetric>
   >({});
   const [lastAction, setLastAction] = useState("No selection action yet.");
-  const [activePanelKey, setActivePanelKey] = useState("");
   const [highlightsHidden, setHighlightsHidden] = useState(false);
 /* ---- audio sync for NCE4 ---- */
   const isNce4 = article.level === "NCE4";
+  const readerStore = useReaderStore();
 
   const sentenceCount = useMemo(() => {
     let count = 0;
@@ -508,6 +510,12 @@ function ArticleReader({ article }: { article: Article }) {
     }
     return keys;
   }, [article.id, article.original.paragraphs, articleParagraphs]);
+
+  // Sync article to reader store for notebook panel
+  useEffect(() => {
+    readerStore.setArticle(article);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [article]);
 
   /* match LRC line text → article sentence */
   const audioActiveKey = useMemo(() => {
@@ -551,18 +559,6 @@ function ArticleReader({ article }: { article: Article }) {
 
   /* hide highlights immediately when panel opens; delay re-show until
      AnimatePresence exit animation finishes so text is back in place */
-  const activePanelKeyRef = useRef(activePanelKey);
-  useEffect(() => {
-    const prev = activePanelKeyRef.current;
-    activePanelKeyRef.current = activePanelKey;
-    if (prev === activePanelKey) return; // skip initial mount
-    if (activePanelKey) {
-      setHighlightsHidden(true);
-    } else {
-      const t = setTimeout(() => setHighlightsHidden(false), 300);
-      return () => clearTimeout(t);
-    }
-  }, [activePanelKey]);
 
   const togglePanel = useCallback((key: string) => {
     setActivePanelKey((prev) => prev === key ? "" : key);
@@ -595,6 +591,19 @@ function ArticleReader({ article }: { article: Article }) {
       ? `${selection.text.slice(0, 72)}...`
       : selection.text
     : "No text selected";
+
+  const activePanelKeyRef = useRef(activePanelKey);
+  useEffect(() => {
+    const prev = activePanelKeyRef.current;
+    activePanelKeyRef.current = activePanelKey;
+    if (prev === activePanelKey) return;
+    if (activePanelKey) {
+      setHighlightsHidden(true);
+    } else {
+      const t = setTimeout(() => setHighlightsHidden(false), 300);
+      return () => clearTimeout(t);
+    }
+  }, [activePanelKey]);
 
   const syncGrammarSummaryLayout = useCallback(() => {
     const summaryElement = grammarSummaryRef.current;
@@ -834,6 +843,9 @@ function ArticleReader({ article }: { article: Article }) {
             </header>
 
             {/* Spotlight overlay — outside article to avoid re-render issues */}
+            
+
+            {/* Spotlight overlay */}
             <AnimatePresence>
               {activePanelKey && (
                 <motion.div
@@ -898,19 +910,24 @@ function ArticleReader({ article }: { article: Article }) {
                             </span>
                           )}
                           {sentences.map((sentence, sIdx) => {
+                            const blockId = `${index}-${sIdx}`;
                             const key = `${article.id}-p${index}-s${sIdx}`;
                             const hasPanelNotes = (sentence.expansionNotes?.length ?? 0) > 0;
-                            const isActive = activePanelKey === key || audioActiveKey === key;
+                            const isActive = audioActiveKey === key;
                             return (
                               <React.Fragment key={key}>
-                                <span data-sentence-key={key} className="sentence-inline">
+                                <span data-sentence-key={key} data-block-id={blockId} className="sentence-inline">
                                   <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}>
                                     {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammarHighlights, sentence.inlineAnnotations)}
                                   </span>
                                   {hasPanelNotes && (
                                     <button
                                       type="button"
-                                      onClick={() => togglePanel(key)}
+                                      onClick={() => {
+                                        togglePanel(key);
+                                        readerStore.openPanel();
+                                        readerStore.setSelectedBlockId(blockId);
+                                      }}
                                       disabled={playing}
                                       className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
                                     >

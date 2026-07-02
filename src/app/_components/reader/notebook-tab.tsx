@@ -132,48 +132,65 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
           <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             扩展笔记
           </p>
-          {expansionEntries.map(({ blockId, sentenceText, note }) => {
-            const isFirst = !seenBlocks.has(blockId);
-            if (isFirst) seenBlocks.add(blockId);
-            return (
-              <button
-                key={`exp-${blockId}-${note.label}`}
-                id={isFirst ? `nb-${blockId}` : undefined}
-                onClick={() => onScrollToBlock(blockId)}
-                className={`w-full text-left p-3 ${highlightClass(blockId)}`}
-              >
-                <p className="text-xs text-muted-foreground mb-0.5 font-mono">
-                  block {blockId}
-                </p>
-                <p className="text-sm line-clamp-2 leading-relaxed">
-                  {sentenceText}
-                </p>
-                <div className="mt-1.5 flex items-start gap-1.5 text-xs">
-                  <BookOpen className="size-3 shrink-0 mt-0.5 text-emerald-500" />
-                  <span>
-                    <strong className="text-foreground">{note.label}</strong>
-                    {note.description && (
-                      <span className="text-muted-foreground">
-                        {" — "}{note.description}
-                      </span>
-                    )}
-                  </span>
-                </div>
-                {note.examples && note.examples.length > 0 && (
-                  <div className="mt-2 space-y-1.5">
-                    {note.examples.map((ex, i) => (
-                      <div key={i} className="text-[11px] text-muted-foreground bg-muted/40 rounded px-2 py-1">
-                        {ex.word && <span className="font-medium text-foreground">{ex.word}</span>}
-                        {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
-                        {ex.enExample && <div className="mt-0.5">{ex.enExample}</div>}
-                        {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+          {(() => {
+            // Group by blockId so sentence text appears only once per block
+            const grouped = new Map<string, typeof expansionEntries>();
+            for (const entry of expansionEntries) {
+              const list = grouped.get(entry.blockId) || [];
+              list.push(entry);
+              grouped.set(entry.blockId, list);
+            }
+            return Array.from(grouped.entries()).map(([blockId, entries]) => {
+              const first = entries[0];
+              seenBlocks.add(blockId);
+              return (
+                <div
+                  key={`exp-${blockId}`}
+                  id={`nb-${blockId}`}
+                  className={`${highlightClass(blockId)}`}
+                >
+                  <button
+                    onClick={() => onScrollToBlock(blockId)}
+                    className="w-full text-left p-3 pb-1.5"
+                  >
+                    <p className="text-sm leading-relaxed">
+                      {first.sentenceText}
+                      <span className="text-[10px] text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
+                    </p>
+                  </button>
+                  <div className="px-3 pb-3 space-y-2">
+                    {entries.map(({ note }, ni) => (
+                      <div key={ni} className="text-xs">
+                        <div className="flex items-start gap-1.5">
+                          <BookOpen className="size-3 shrink-0 mt-0.5 text-emerald-500" />
+                          <span>
+                            <strong className="text-foreground">{note.label}</strong>
+                            {note.description && (
+                              <span className="text-muted-foreground">
+                                {" — "}{note.description}
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                        {note.examples && note.examples.length > 0 && (
+                          <div className="mt-1.5 ml-4.5 space-y-1.5">
+                            {note.examples.map((ex, i) => (
+                              <div key={i} className="text-[11px] text-muted-foreground bg-muted/40 rounded px-2 py-1">
+                                {ex.word && <span className="font-medium text-foreground">{ex.word}</span>}
+                                {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
+                                {ex.enExample && <div className="mt-0.5">{ex.enExample}</div>}
+                                {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
-                )}
-              </button>
-            );
-          })}
+                </div>
+              );
+            });
+          })()}
         </div>
       )}
 
@@ -182,36 +199,51 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
           <p className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             行间笔记
           </p>
-          {annotationEntries.map(({ blockId, sentenceText, note }) => {
-            const isFirst = !seenBlocks.has(blockId);
-            if (isFirst) seenBlocks.add(blockId);
-            return (
-              <button
-                key={`${blockId}-${note.label}`}
-                id={isFirst ? `nb-${blockId}` : undefined}
-                onClick={() => onScrollToBlock(blockId)}
-                className={`w-full text-left p-3 ${highlightClass(blockId)}`}
-              >
-                <p className="text-xs text-muted-foreground mb-0.5 font-mono">
-                  block {blockId}
-                </p>
-                <p className="text-sm line-clamp-2 leading-relaxed">
-                  {sentenceText}
-                </p>
-                <div className="mt-1.5 flex items-start gap-1.5 text-xs">
-                  <Bookmark className="size-3 shrink-0 mt-0.5 text-violet-500" />
-                  <span>
-                    <strong className="text-foreground">{note.label}</strong>
-                    {note.description && (
-                      <span className="text-muted-foreground">
-                        {" — "}{note.description}
-                      </span>
-                    )}
-                  </span>
+          {(() => {
+            const grouped = new Map<string, typeof annotationEntries>();
+            for (const entry of annotationEntries) {
+              const list = grouped.get(entry.blockId) || [];
+              list.push(entry);
+              grouped.set(entry.blockId, list);
+            }
+            return Array.from(grouped.entries()).map(([blockId, entries]) => {
+              const first = entries[0];
+              return (
+                <div
+                  key={`ann-${blockId}`}
+                  id={`nb-${blockId}`}
+                  className={`${highlightClass(blockId)}`}
+                >
+                  <button
+                    onClick={() => onScrollToBlock(blockId)}
+                    className="w-full text-left p-3 pb-1.5"
+                  >
+                    <p className="text-sm leading-relaxed">
+                      {first.sentenceText}
+                      <span className="text-[10px] text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
+                    </p>
+                  </button>
+                  <div className="px-3 pb-3 space-y-2">
+                    {entries.map(({ note }, ni) => (
+                      <div key={ni} className="text-xs">
+                        <div className="flex items-start gap-1.5">
+                          <Bookmark className="size-3 shrink-0 mt-0.5 text-violet-500" />
+                          <span>
+                            <strong className="text-foreground">{note.label}</strong>
+                            {note.description && (
+                              <span className="text-muted-foreground">
+                                {" — "}{note.description}
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </button>
-            );
-          })}
+              );
+            });
+          })()}
         </div>
       )}
 
