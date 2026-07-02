@@ -83,7 +83,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 key={`${blockId}-${note.label}`}
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${
-                  isActive ? "bg-primary/5 border-l-2 border-primary" : ""
+                  isActive ? "bg-sky-100 dark:bg-sky-900/30 border-l-2 border-sky-500" : ""
                 }`}
               >
                 <p className="text-xs text-muted-foreground mb-0.5 font-mono">
@@ -122,7 +122,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                 key={`note-${blockId}`}
                 onClick={() => onScrollToBlock(blockId)}
                 className={`w-full text-left p-3 transition-colors hover:bg-muted/50 ${
-                  isActive ? "bg-primary/5 border-l-2 border-primary" : ""
+                  isActive ? "bg-sky-100 dark:bg-sky-900/30 border-l-2 border-sky-500" : ""
                 }`}
               >
                 <p className="text-xs text-muted-foreground mb-0.5 font-mono">

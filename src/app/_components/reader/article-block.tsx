@@ -39,7 +39,7 @@ export function ArticleBlock({
       data-block-id={blockId}
       className={`sentence-inline transition-colors duration-200 ${
         isActive
-          ? "bg-primary/5 rounded-md px-1.5 py-0.5 -mx-1.5"
+          ? "bg-sky-100 dark:bg-sky-900/30 rounded-md px-1.5 py-0.5 -mx-1.5"
           : ""
       }`}
     >
