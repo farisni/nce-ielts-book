@@ -17,6 +17,8 @@ export function ArticleReader({ article }: Props) {
   const activeBlockId = useReaderStore((s) => s.activeBlockId);
   const selectedBlockId = useReaderStore((s) => s.selectedBlockId);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
+  const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const togglePanel = useReaderStore((s) => s.togglePanel);
   const setSelectedBlockId = useReaderStore((s) => s.setSelectedBlockId);
 
   // Flatten all paragraphs into blocks with position tracking
@@ -39,6 +41,7 @@ export function ArticleReader({ article }: Props) {
     } else {
       setSelectedBlockId(blockId);
       scrollToBlock(blockId);
+      if (!isPanelOpen) togglePanel();
     }
   };
 
