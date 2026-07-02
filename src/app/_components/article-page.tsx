@@ -518,6 +518,7 @@ function ArticleReader({ article }: { article: Article }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
 
+
   /* match LRC line text → article sentence */
   const audioActiveKey = useMemo(() => {
     if (!isNce4 || activeSentenceIndex < 0 || !lrcLines[activeSentenceIndex]) return null;

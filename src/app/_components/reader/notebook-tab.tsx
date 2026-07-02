@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { Highlighter, MessageSquareText } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
@@ -64,6 +64,62 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
   // Collect all inlineAnnotations from the article
   const annotationEntries: AnnotationEntry[] = [];
+
+
+  const ratiosRef = useRef<Map<string, number>>(new Map());
+  // Notebook scroll sync: update activeBlockId as notebook scrolls
+  const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
+  useEffect(() => {
+    // Find the ScrollArea viewport as the observer root
+    const root = document.querySelector('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = (entry.target as HTMLElement).id.replace(/^nb-/, '');
+          if (entry.intersectionRatio > 0) {
+            ratiosRef.current.set(id, entry.intersectionRatio);
+          } else {
+            ratiosRef.current.delete(id);
+          }
+        }
+        let bestId: string | null = null;
+        let bestRatio = 0;
+        for (const [id, ratio] of ratiosRef.current) {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        }
+        if (bestId) setActiveBlockId(bestId);
+      },
+      {
+        root,
+        rootMargin: "0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    // Observe all existing nb-* elements
+    const observeAll = () => {
+      root.querySelectorAll('[id^="nb-"]').forEach((el) => observer.observe(el));
+    };
+
+    // Initial observe
+    observeAll();
+
+    // Also watch for new nb-* elements being added
+    const mutationObs = new MutationObserver(() => observeAll());
+    mutationObs.observe(root, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObs.disconnect();
+      ratiosRef.current.clear();
+    };
+  }, [setActiveBlockId]);
+
   for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
     const paragraph = article.original.paragraphs[pi];
     for (let si = 0; si < paragraph.length; si++) {
@@ -130,7 +186,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   }
 
   const highlightClass = (blockId: string) => {
-    const isHighlighted = selectedBlockId === blockId || activeBlockId === blockId;
+    const isHighlighted = activeBlockId === blockId;
     return isHighlighted
       ? "border-l-2 border-sky-500"
       : "";
