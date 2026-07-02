@@ -4,7 +4,6 @@ import { useRef, useEffect } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import { AnimatePresence, motion } from "motion/react";
-import { PanelRightOpen, PanelRightClose } from "lucide-react";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import TopNav from "@/app/_components/top-nav";
 import { NotebookTab } from "@/app/_components/reader/notebook-tab";
@@ -22,8 +21,6 @@ const pillHandle =
 export default function ReaderV2Layout({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
-  const togglePanel = useReaderStore((s) => s.togglePanel);
-  const setSelectedBlockId = useReaderStore((s) => s.setSelectedBlockId);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
   const notesPanelRef = useRef<ImperativePanelHandle>(null);
@@ -31,11 +28,6 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
   useEffect(() => {
     notesPanelRef.current?.resize(isPanelOpen ? 30 : 0);
   }, [isPanelOpen]);
-
-  const handleToggle = () => {
-    if (isPanelOpen) setSelectedBlockId(null);
-    togglePanel();
-  };
 
   return (
     <div className="h-screen w-full overflow-hidden flex">
@@ -45,23 +37,7 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
         <PanelGroup direction="horizontal" className="h-full">
           <Panel defaultSize={70} minSize={40}>
             <div className="h-full flex flex-col">
-              <div className="flex items-center shrink-0">
-                <div className="flex-1 min-w-0">
-                  <TopNav />
-                </div>
-                <button
-                  type="button"
-                  onClick={handleToggle}
-                  className="size-8 flex items-center justify-center rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors mr-2"
-                  title={isPanelOpen ? "收起笔记" : "展开笔记"}
-                >
-                  {isPanelOpen ? (
-                    <PanelRightClose className="size-4" />
-                  ) : (
-                    <PanelRightOpen className="size-4" />
-                  )}
-                </button>
-              </div>
+              <TopNav />
               <main data-scroll-container className="flex-1 overflow-y-auto p-6">
                 <div className="border border-dashed border-border rounded-xl p-6 min-h-full">
                   {children}
@@ -77,7 +53,6 @@ export default function ReaderV2Layout({ children }: { children: React.ReactNode
             defaultSize={0}
             minSize={0}
             maxSize={40}
-            className="transition-[flex] duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
           >
             <AnimatePresence>
               {isPanelOpen && (

@@ -404,7 +404,7 @@ export default function TopNav() {
   const pathname = usePathname();
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const togglePanel = useReaderStore((s) => s.togglePanel);
-  const isReaderPage = pathname.startsWith("/reader/");
+  const isReaderPage = pathname.startsWith("/reader/") || pathname.startsWith("/reader-v2/");
   const { scrollY } = useScroll();
   const shadowOpacity = useTransform(scrollY, [0, 40], [0, 0.05]);
   const [cmdOpen, setCmdOpen] = useState(false);
@@ -546,6 +546,15 @@ export default function TopNav() {
             </kbd>
           </MagneticButton>
 
+          <div className="flex items-center justify-center rounded-md px-2.5 py-1.5">
+            <ThemeToggle
+              variant="rectangle"
+              start="bottom-up"
+              className="size-[18px]"
+              iconClassName="size-[18px]"
+            />
+          </div>
+
           {isReaderPage && (
             <button
               onClick={togglePanel}
@@ -555,15 +564,6 @@ export default function TopNav() {
               <PanelRight className={`size-4 transition-colors ${isPanelOpen ? "text-foreground" : "text-muted-foreground/50"}`} />
             </button>
           )}
-
-          <div className="flex items-center justify-center rounded-md px-2.5 py-1.5">
-            <ThemeToggle
-              variant="rectangle"
-              start="bottom-up"
-              className="size-[18px]"
-              iconClassName="size-[18px]"
-            />
-          </div>
         </div>
       </div>
 
