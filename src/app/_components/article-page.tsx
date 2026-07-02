@@ -455,7 +455,6 @@ function ArticleReader({ article }: { article: Article }) {
   const clearHighlights = useArticleSettings((s) => s.clearHighlights);
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
 
-  const [grammarBlock, setGrammarBlock] = useState<string | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
   const [chatContext, setChatContext] = useState("");
@@ -517,6 +516,57 @@ function ArticleReader({ article }: { article: Article }) {
     readerStore.setArticle(article);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article]);
+
+  // Article scroll sync: update activeBlockId as article scrolls
+  const articleRatiosRef = useRef<Map<string, number>>(new Map());
+  const observerIgnoreUntil = useRef(0);
+  useEffect(() => {
+    const root = document.querySelector('[data-scroll-container]') as HTMLElement | null;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = (entry.target as HTMLElement).dataset.blockId;
+          if (!id) continue;
+          if (entry.intersectionRatio > 0) {
+            articleRatiosRef.current.set(id, entry.intersectionRatio);
+          } else {
+            articleRatiosRef.current.delete(id);
+          }
+        }
+        let bestId: string | null = null;
+        let bestRatio = 0;
+        for (const [id, ratio] of articleRatiosRef.current) {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        }
+        if (bestId && Date.now() > observerIgnoreUntil.current) readerStore.setActiveBlockId(bestId);
+      },
+      {
+        root,
+        rootMargin: "-10% 0px -60% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    const observeAll = () => {
+      root.querySelectorAll('[data-block-id]').forEach((el) => observer.observe(el));
+    };
+    observeAll();
+
+    const mutationObs = new MutationObserver(() => observeAll());
+    mutationObs.observe(root, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObs.disconnect();
+      articleRatiosRef.current.clear();
+    };
+  }, []);
+
 
 
   /* match LRC line text → article sentence */
@@ -844,6 +894,10 @@ function ArticleReader({ article }: { article: Article }) {
 
             </header>
 
+              <div className="mx-auto w-full max-w-[680px] mb-2 text-xs text-muted-foreground font-mono">
+                active: {readerStore.activeBlockId ?? "—"}
+              </div>
+
             {/* Spotlight overlay — outside article to avoid re-render issues */}
             
 
@@ -916,11 +970,12 @@ function ArticleReader({ article }: { article: Article }) {
                             const key = `${article.id}-p${index}-s${sIdx}`;
                             const hasPanelNotes = (sentence.expansionNotes?.length ?? 0) > 0;
                             const isActive = audioActiveKey === key;
-                            const showGrammar = showGrammarHighlights || grammarBlock === blockId;
+                            const showGrammar = showGrammarHighlights || readerStore.activeBlockId === blockId;
+                            const isButtonActive = readerStore.activeBlockId === blockId;
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} data-block-id={blockId} className="sentence-inline">
-                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}>
+                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : isButtonActive ? "bg-sky-50/60 dark:bg-sky-950/30 rounded-sm px-0.5 -mx-0.5" : ""}>
                                     {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammar, sentence.inlineAnnotations)}
                                   </span>
                                   {hasPanelNotes && (
@@ -930,15 +985,16 @@ function ArticleReader({ article }: { article: Article }) {
                                         const isSameBlock = readerStore.selectedBlockId === blockId && readerStore.isPanelOpen;
                                         if (isSameBlock) {
                                           readerStore.togglePanel();
-                                          setGrammarBlock(null);
+                                          readerStore.setActiveBlockId(null);
                                         } else {
                                           readerStore.openPanel();
                                           readerStore.setSelectedBlockId(blockId);
-                                          setGrammarBlock(blockId);
+                                          readerStore.setActiveBlockId(blockId);
+                                          observerIgnoreUntil.current = Date.now() + 800;
                                         }
                                       }}
                                       disabled={playing}
-                                      className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
+                                      className={`inline-flex size-5 items-center justify-center rounded transition-colors align-middle mx-0.5 ${playing ? "text-muted-foreground/25 cursor-not-allowed" : isButtonActive ? "bg-muted text-foreground" : "text-muted-foreground/50 hover:bg-muted hover:text-foreground"}`}
                                     >
                                       <MoreHorizontal className="size-3.5" />
                                     </button>

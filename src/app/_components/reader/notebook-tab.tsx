@@ -24,11 +24,6 @@ type Props = {
   onScrollToBlock: (blockId: string) => void;
 };
 
-type AnnotationEntry = {
-  blockId: string;
-  sentenceText: string;
-  note: { label: string; description: string };
-};
 
 type ExpansionEntry = {
   blockId: string;
@@ -44,26 +39,31 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   // Auto-scroll right panel to the selected block's entry
   useEffect(() => {
     if (!selectedBlockId) return;
-    const id = setTimeout(() => {
+
+    let cancelled = false;
+    const tryScroll = () => {
+      if (cancelled) return;
       const el = document.getElementById(`nb-${selectedBlockId}`);
       if (!el) return;
       const viewport = el.closest("[data-slot=\"scroll-area-viewport\"]");
-      if (viewport instanceof HTMLElement) {
-        const rect = el.getBoundingClientRect();
-        const vRect = viewport.getBoundingClientRect();
-        viewport.scrollBy({
-          top: rect.top - vRect.top,
-          behavior: "smooth",
-        });
-      } else {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (!(viewport instanceof HTMLElement)) return;
+      // Wait until viewport has meaningful width (panel fully open)
+      if (viewport.clientWidth < 100) {
+        requestAnimationFrame(tryScroll);
+        return;
       }
-    }, 150);
-    return () => clearTimeout(id);
-  }, [selectedBlockId]);
+      const rect = el.getBoundingClientRect();
+      const vRect = viewport.getBoundingClientRect();
+      viewport.scrollBy({
+        top: rect.top - vRect.top,
+        behavior: "smooth",
+      });
+    };
 
-  // Collect all inlineAnnotations from the article
-  const annotationEntries: AnnotationEntry[] = [];
+    // Start after a short paint delay
+    const id = setTimeout(tryScroll, 50);
+    return () => { cancelled = true; clearTimeout(id); };
+  }, [selectedBlockId]);
 
 
   const ratiosRef = useRef<Map<string, number>>(new Map());
@@ -120,23 +120,6 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     };
   }, [setActiveBlockId]);
 
-  for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
-    const paragraph = article.original.paragraphs[pi];
-    for (let si = 0; si < paragraph.length; si++) {
-      const sentence = paragraph[si];
-      const blockId = `${pi}-${si}`;
-      for (const ann of sentence.inlineAnnotations ?? []) {
-        if (ann.label && ann.description) {
-          annotationEntries.push({
-            blockId,
-            sentenceText: sentence.text,
-            note: { label: ann.label, description: ann.description },
-          });
-        }
-      }
-    }
-  }
-
   // Collect all expansionNotes
   const expansionEntries: ExpansionEntry[] = [];
   for (let pi = 0; pi < article.original.paragraphs.length; pi++) {
@@ -171,11 +154,10 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     return { blockId, sentenceText, note };
   });
 
-  const hasAnnotations = annotationEntries.length > 0;
   const hasExpansions = expansionEntries.length > 0;
   const hasNotes = noteEntries.length > 0;
 
-  if (!hasAnnotations && !hasExpansions && !hasNotes) {
+  if (!hasExpansions && !hasNotes) {
     return (
       <div className="p-6 text-center text-base text-muted-foreground">
         <Highlighter className="size-8 mx-auto mb-2 opacity-30" />
@@ -268,60 +250,6 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                               </div>
                             );
                           })()}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            });
-          })()}
-        </div>
-      )}
-
-      {hasAnnotations && (
-        <div className="py-1">
-          <p className="px-3 py-2 text-sm font-medium text-muted-foreground uppercase tracking-wider">
-            行间笔记
-          </p>
-          {(() => {
-            const grouped = new Map<string, typeof annotationEntries>();
-            for (const entry of annotationEntries) {
-              const list = grouped.get(entry.blockId) || [];
-              list.push(entry);
-              grouped.set(entry.blockId, list);
-            }
-            return Array.from(grouped.entries()).map(([blockId, entries]) => {
-              const first = entries[0];
-              return (
-                <div
-                  key={`ann-${blockId}`}
-                  id={`nb-${blockId}`}
-                  className={`${highlightClass(blockId)} px-3`}
-                >
-                  <button
-                    onClick={() => onScrollToBlock(blockId)}
-                    className="block text-left px-4 py-3 pb-1.5 rounded-md mx-3 my-2" style={{ background: anchorBg }}
-                  >
-                    <p className="text-base leading-relaxed text-foreground" style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}>
-                      {first.sentenceText}
-                      <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
-                    </p>
-                  </button>
-                  <div className="px-3 pb-3 space-y-2">
-                    {entries.map(({ note }, ni) => (
-                      <div key={ni} className="text-sm">
-                        <div className="flex items-start gap-1.5">
-                          <span>
-                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
-                              {note.label}
-                            </span>
-                            {note.description && (
-                              <span className="text-foreground font-medium">
-                                {" — "}{note.description}
-                              </span>
-                            )}
-                          </span>
-                        </div>
                       </div>
                     ))}
                   </div>
