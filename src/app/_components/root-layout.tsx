@@ -44,7 +44,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
           <Panel defaultSize={70} minSize={40}>
             <div className="h-full flex flex-col relative">
               <TopNav />
-              <main data-scroll-container className="flex-1 overflow-y-auto p-6">
+              <main data-scroll-container data-section="main-content" className="relative flex-1 overflow-y-auto p-6">
                 <div className="border border-dashed border-border rounded-xl p-6 min-h-full">
                   {children}
                 </div>

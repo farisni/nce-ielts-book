@@ -404,7 +404,7 @@ export default function TopNav() {
   const pathname = usePathname();
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const togglePanel = useReaderStore((s) => s.togglePanel);
-  const isReaderPage = pathname.startsWith("/reader/") || pathname.startsWith("/v2/");
+  const isReaderPage = true;
   const { scrollY } = useScroll();
   const shadowOpacity = useTransform(scrollY, [0, 40], [0, 0.05]);
   const [cmdOpen, setCmdOpen] = useState(false);
