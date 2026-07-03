@@ -1,0 +1,30 @@
+import type { ArticleOriginalContent } from "../types";
+
+const nce4L38: ArticleOriginalContent = {
+    paragraphs: [
+      [
+{ text: "Contamination of water supplies is usually due to poor sanitation close to water sources, sewage disposal into the sources themselves, leakage of sewage into distribution systems or contamination with industrial or farm waste.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Even if a piped water supply is safe at its source, it is not always safe by the time it reaches the tap.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Intermittent tap-water supplies should be regarded as particularly suspect.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Travellers on short trips to areas with water supplies of uncertain quality should avoid drinking tap-water, or untreated water from any other source.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is best to keep to hot drinks, bottled or canned drinks of well-known brand names — international standards of water treatment are usually followed at bottling plants.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Carbonated drinks are acidic, and slightly safer.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Make sure that all bottles are opened in your presence, and that their rims are clean and dry.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Boiling is always a good way of treating water.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Some hotels supply boiled water on request and this can be used for drinking, or for brushing teeth.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Portable boiling elements that can boil small quantities of water are useful when the right voltage of electricity is available.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Refuse politely any cold drink from an unknown source.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Ice is only as safe as the water from which it is made, and should not be put in drinks unless it is known to be safe.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Drinks can be cooled by placing them on ice rather than adding ice to them.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Alcohol may be a medical disinfectant, but should not be relied upon to sterilize water.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Ethanol is more effective at a concentration of 50-70 per cent;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "below 20 per cent, its bactericidal action is negligible.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Spirits labelled 95 proof contain only about 47 per cent alcohol.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Beware of methylated alcohol, which is very poisonous, and should never be added to drinking water.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "If no other safe water supply can be obtained, tap water that is too hot to touch can be left to cool and is generally safe to drink.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Those planning a trip to remote areas, or intending to live in countries where drinking water is not readily available, should know about the various possible methods for making water safe.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
+      ]
+    ],
+  };
+
+export default nce4L38;

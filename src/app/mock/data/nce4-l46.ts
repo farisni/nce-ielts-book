@@ -1,0 +1,45 @@
+import type { ArticleOriginalContent } from "../types";
+
+const nce4L46: ArticleOriginalContent = {
+    paragraphs: [
+      [
+{ text: "A gifted American psychologist has said, 'Worry is a spasm of the emotion;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "the mind catches hold of something and will not let it go.'", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is useless to argue with the mind in this condition.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The stronger the will, the more futile the task.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "One can only gently insinuate something else into its convulsive grasp.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "And if this something else is rightly chosen, if it is really attended by the illumination of another field of interest, gradually, and often quite swiftly, the old undue grip relaxes and the process of recuperation and repair begins.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The cultivation of a hobby and new forms of interest is therefore a policy of the first importance to a public man.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "But this is not a business that can be undertaken in a day or swiftly improvised by a mere command of the will.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The growth of alternative mental interests is a long process.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The seeds must be carefully chosen;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "they must fall on good ground;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "they must be sedulously tended, if the vivifying fruits are to be at hand when needed.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "To be really happy and really safe, one ought to have at least two or three hobbies, and they must all be real.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is no use starting late in life to say: 'I will take an interest in this or that.'", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Such an attempt only aggravates the strain of mental effort.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "A man may acquire great knowledge of topics unconnected with his daily work, and yet get hardly any benefit or relief.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is no use doing what you like;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "you have got to like what you do.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Broadly speaking, human beings may be divided into three classes: those who are toiled to death, those who are worried to death, and those who are bored to death.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is no use offering the manual labourer, tired out with a hard week's sweat and effort, the chance of playing a game of football or baseball on Saturday afternoon.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is no use inviting the politician or the professional or business man, who has been working or worrying about serious things for six days, to work or worry about trifling things at the weekend.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "As for the unfortunate people who can command everything they want, who can gratify every caprice and lay their hands on almost every object of desire — for them a new pleasure, a new excitement is only an additional satiation.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "In vain they rush frantically round from place to place, trying to escape from avenging boredom by mere clatter and motion.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "For them discipline in one form or another is the most hopeful path.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It may also be said that rational, industrious, useful human beings are divided into two classes: first,those whose work is work and whose pleasure is pleasure;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "and secondly those whose work and pleasure are one.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Of these the former are the majority.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "They have their compensations.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The long hours in the office or the factory bring with them as their reward, not only the means of sustenance, but a keen appetite for pleasure even in its simplest and most modest forms.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "But Fortune's favoured children belong to the second class.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Their life is a natural harmony.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "For them the working hours are never long enough.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Each day is a holiday, and ordinary holidays, when they come, are grudged as enforced interruptions in an absorbing vocation.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Yet to both classes, the need of an alternative outlook, of a change of atmosphere, of a diversion of effort, is essential.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Indeed, it may well be that those whose work is their pleasure are those who most need the means of banishing it at intervals from their minds.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
+      ]
+    ],
+  };
+
+export default nce4L46;

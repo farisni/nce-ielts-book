@@ -1,0 +1,28 @@
+import type { ArticleOriginalContent } from "../types";
+
+const nce4L18: ArticleOriginalContent = {
+    paragraphs: [
+      [
+{ text: "There has long been a superstition among mariners that porpoises will save drowning men by pushing them to the surface, or protect them from sharks by surrounding them in defensive formation.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Marine Studio biologists have pointed out that, however intelligent they may be, it is probably a mistake to credit dolphins with any motive of lifesaving.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "On the occasions when they have pushed to shore an unconscious human being they have much more likely done it out of curiosity or for sport, as in riding the bow waves of a ship.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "In 1928 some porpoises were photographed working like beavers to push ashore a waterlogged mattress.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "If, as has been reported, they have protected humans from sharks, it may have been because curiosity attracted them and because the scent of a possible meal attracted the sharks.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Porpoises and sharks are natural enemies.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It is possible that upon such an occasion a battle ensued, with the sharks being driven away or killed.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Whether it be bird, fish or beast, the porpoise is intrigued with anything that is alive.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "They are constantly after the turtles, who peacefully submit to all sorts of indignities.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "One young calf especially enjoyed raising a turtle to the surface with his snout and then shoving him across the tank like an aquaplane.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Almost any day a young porpoise may be seen trying to turn a 300-pound sea turtle over by sticking his snout under the edge of his shell and pushing up for dear life.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "This is not easy, and may require two porpoises working together.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "In another game, as the turtle swims across the oceanarium, the first porpoise swoops down from above and butts his shell with his belly.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "This knocks the turtle down several feet.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "He no sooner recovers his equilibrium than the next porpoise comes along and hits him another crack.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Eventually the turtle has been butted all the way down to the floor of the tank.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "He is now satisfied merely to try to stand up, but as soon as he does so a porpoise knocks him flat.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The turtle at last gives up by pulling his feet under his shell and the game is over.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
+      ]
+    ],
+  };
+
+export default nce4L18;

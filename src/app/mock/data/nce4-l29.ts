@@ -1,0 +1,26 @@
+import type { ArticleOriginalContent } from "../types";
+
+const nce4L29: ArticleOriginalContent = {
+    paragraphs: [
+      [
+{ text: "Many strange new means of transport have been developed in our century, the strangest of them being perhaps the hovercraft.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "In 1953, a former electronics engineer in his fifties, Christopher Cockerell, who had turned to boat-building on the Norfolk Broads, suggested an idea on which he had been working for many years to the British Government and industrial circles.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It was the idea of supporting a craft on a 'pad', or cushion, of low-pressure air, ringed with a curtain of higher pressure air.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Ever since, people have had difficulty in deciding whether the craft should be ranged among ships, planes, or land vehicles — for it is something in between a boat and an aircraft.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "As a shipbuilder, Cockerell was trying to find a solution to the problem of the wave resistance which wastes a good deal of a surface ship's power and limits its speed.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "His answer was to lift the vessel out of the water by making it ride on a cushion of air, no more than one or two feet thick.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "This is done by a great number of ring-shaped air jets on the bottom of the craft.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "It 'flies', therefore, but it cannot fly higher — its action depends on the surface, water or ground, over which it rides.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The first tests on the Solent in 1959 caused a sensation.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The hovercraft travelled first over the water, then mounted the beach, climbed up the dunes, and sat down on a road.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Later it crossed the Channel, riding smoothly over the waves, which presented no problem.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "Since that time, various types of hovercraft have appeared and taken up regular service.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "The hovercraft is particularly useful in large areas with poor communications such as Africa or Australia;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "it can become a 'flying fruit-bowl', carrying bananas from the plantations to the ports;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "giant hovercraft liners could span the Atlantic;", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
+{ text: "and the railway of the future may well be the 'hovertrain', riding on its air cushion over a single rail, which it never touches, at speeds up to 300 m.p.h. — the possibilities appear unlimited.", translation: "", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
+      ]
+    ],
+  };
+
+export default nce4L29;
