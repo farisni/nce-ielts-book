@@ -3,6 +3,7 @@ import type { Article } from "./types";
 const articleNce4L1: Article = {
 
   id: "nce4-l1",
+  originalId: "nce4-l1",
   lesson: 1,
   tag: "C1",
   title: "Finding fossil man",
@@ -36,7 +37,17 @@ const articleNce4L1: Article = {
     original: {
     paragraphs: [
       [
-
+        { text: "We can read of things that happened 5,000 years ago in the Near East, where people first learned to write.", translation: "我们从书籍中可读到5,000 年前近东发生的事情，那里的人最早学会了写字。" },
+        { text: "But there are some parts of the world where even now people cannot write.", translation: "但直到现在,世界上有些地方，人们还不会书写。" },
+        { text: "The only way that they can preserve their history is to recount it as sagas — legends handed down from one generation of story tellers to another.", translation: "他们保存历史的唯一办法是将历史当作传说讲述，由讲述人一代接一代地将史实描述为传奇故事口传下来。" },
+        { text: "These legends are useful because they can tell us something about migrations of people who lived long ago, but none could write down what they did.", translation: "这些传说是有用的，因为他们讲述了很久以前有关迁居的事情。" },
+        { text: "Anthropologists wondered where the remote ancestors of the Polynesian peoples now living in the Pacific Islands came from.", translation: "人类学家过去不清楚如今生活在太平洋诸岛上的波利尼西亚人的祖先来自何方，" },
+        { text: "The sagas of these people explain that some of them came from Indonesia about 2,000 years ago.", translation: "当地人的传说却告诉人们：其中一部分是约在2,000年前从印度尼西亚迁来的。" },
+        { text: "But the first people who were like ourselves lived so long ago that even their sagas, if they had any, are forgotten.", translation: "但是，和我们相似的原始人生活的年代太久远了，因此，有关他们的传说既使有如今也失传了。" },
+        { text: "So archaeologists have neither history nor legends to help them to find out where the first 'modern men' came from.", translation: "于是，考古学家们既缺乏历史记载，又无口头传说来帮助他们弄清最早的“现代人”是从哪里来的。" },
+        { text: "Fortunately, however, ancient men made tools of stone, especially flint, because this is easier to shape than other kinds.", translation: "然而，幸运的是，远古人用石头制作了工具，特别是用燧石，因为燧石较之其他石头更容易成形。" },
+        { text: "They may also have used wood and skins, but these have rotted away.", translation: "他们也可能用过木头和兽皮，但这类东西早已腐烂殆尽。" },
+        { text: "Stone does not decay, and so the tools of long ago have remained when even the bones of the men who made them have disappeared without trace.", translation: "石头是不会腐烂的。因此，尽管制造这些工具的人的骨头早已荡然无存，但远古时代的石头工具却保存了下来。" }
       ]
     ],
   },
@@ -60,6 +71,7 @@ const articleNce4L1: Article = {
 const articleNce4L2: Article = {
 
   id: "nce4-l2",
+  originalId: "nce4-l2",
   lesson: 2,
   tag: "C2",
   title: "Spare that spider",
@@ -116,6 +128,7 @@ const articleNce4L2: Article = {
 const articleNce4L3: Article = {
 
   id: "nce4-l3",
+  originalId: "nce4-l3",
   lesson: 3,
   tag: "C3",
   title: "Matterhorn man",
@@ -181,6 +194,7 @@ const articleNce4L3: Article = {
 const articleNce4L4: Article = {
 
   id: "nce4-l4",
+  originalId: "nce4-l4",
   lesson: 4,
   tag: "C4",
   title: "Seeing hands",
@@ -238,6 +252,7 @@ const articleNce4L4: Article = {
 const articleNce4L6: Article = {
 
   id: "nce4-l6",
+  originalId: "nce4-l6",
   lesson: 6,
   tag: "C7",
   title: "The sports spirit",
@@ -297,6 +312,7 @@ const articleNce4L6: Article = {
 const articleNce4L7: Article = {
 
   id: "nce4-l7",
+  originalId: "nce4-l7",
   lesson: 7,
   tag: "C9",
   title: "Bats",
@@ -360,6 +376,7 @@ const articleNce4L7: Article = {
 const articleNce4L8: Article = {
 
   id: "nce4-l8",
+  originalId: "nce4-l8",
   lesson: 8,
   title: "Trading Standards",
   titleCn: "贸易标准",
@@ -419,6 +436,7 @@ const articleNce4L8: Article = {
 const articleNce4L11: Article = {
 
   id: "nce4-l11",
+  originalId: "nce4-l11",
   lesson: 11,
   tag: "C14",
   title: "How to grow old",
@@ -480,6 +498,7 @@ const articleNce4L11: Article = {
 const articleNce4L13: Article = {
 
   id: "nce4-l13",
+  originalId: "nce4-l13",
   lesson: 13,
   title: "The search for oil",
   titleCn: "探寻石油",
@@ -548,6 +567,7 @@ const articleNce4L13: Article = {
 const articleNce4L15: Article = {
 
   id: "nce4-l15",
+  originalId: "nce4-l15",
   lesson: 15,
   tag: "C18",
   title: "Secrecy in industry",
@@ -601,6 +621,7 @@ const articleNce4L15: Article = {
 const articleNce4L16: Article = {
 
   id: "nce4-l16",
+  originalId: "nce4-l16",
   lesson: 16,
   tag: "C20",
   title: "The modern city",
@@ -658,6 +679,7 @@ const articleNce4L16: Article = {
 const articleNce4L18: Article = {
 
   id: "nce4-l18",
+  originalId: "nce4-l18",
   lesson: 18,
   tag: "C22",
   title: "Porpoises",
@@ -735,6 +757,7 @@ const articleNce4L18: Article = {
 const articleNce4L21: Article = {
 
   id: "nce4-l21",
+  originalId: "nce4-l21",
   lesson: 21,
   title: "William S. Hart and the Early \"Western\" Film",
   titleCn: "威廉·S·哈特与早期的西部片",
@@ -802,6 +825,7 @@ const articleNce4L21: Article = {
 const articleNce4L22: Article = {
 
   id: "nce4-l22",
+  originalId: "nce4-l22",
   lesson: 22,
   tag: "C27",
   title: "Knowledge and progress",
@@ -869,6 +893,7 @@ const articleNce4L22: Article = {
 const articleNce4L24: Article = {
 
   id: "nce4-l24",
+  originalId: "nce4-l24",
   lesson: 24,
   tag: "C29",
   title: "Beauty",
@@ -926,6 +951,7 @@ const articleNce4L24: Article = {
 const articleNce4L28: Article = {
 
   id: "nce4-l28",
+  originalId: "nce4-l28",
   lesson: 28,
   tag: "C34",
   title: "Patients and doctors",
@@ -987,6 +1013,7 @@ const articleNce4L28: Article = {
 const articleNce4L30: Article = {
 
   id: "nce4-l30",
+  originalId: "nce4-l30",
   lesson: 30,
   tag: "C36",
   title: "Exploring the sea-floor",
@@ -1050,6 +1077,7 @@ const articleNce4L30: Article = {
 const articleNce4L32: Article = {
 
   id: "nce4-l32",
+  originalId: "nce4-l32",
   lesson: 32,
   tag: "C39",
   title: "Galileo reborn",
@@ -1123,6 +1151,7 @@ const articleNce4L32: Article = {
 const articleNce4L33: Article = {
 
   id: "nce4-l33",
+  originalId: "nce4-l33",
   lesson: 33,
   tag: "C41",
   title: "Education",
@@ -1194,6 +1223,7 @@ const articleNce4L33: Article = {
 const articleNce4L34: Article = {
 
   id: "nce4-l34",
+  originalId: "nce4-l34",
   lesson: 34,
   tag: "C42",
   title: "Adolescence",
@@ -1258,6 +1288,7 @@ const articleNce4L34: Article = {
 const articleNce4L37: Article = {
 
   id: "nce4-l37",
+  originalId: "nce4-l37",
   lesson: 37,
   tag: "C45",
   title: "The process of ageing",
@@ -1335,6 +1366,7 @@ const articleNce4L37: Article = {
 const articleNce4L44: Article = {
 
   id: "nce4-l44",
+  originalId: "nce4-l44",
   lesson: 44,
   tag: "C55",
   title: "Patterns of culture",
@@ -1412,6 +1444,7 @@ const articleNce4L44: Article = {
 const articleNce4L46: Article = {
 
   id: "nce4-l46",
+  originalId: "nce4-l46",
   lesson: 46,
   tag: "C58",
   title: "Hobbies",
@@ -1507,6 +1540,7 @@ const articleNce4L46: Article = {
 const articleNce4L48: Article = {
 
   id: "nce4-l48",
+  originalId: "nce4-l48",
   lesson: 48,
   title: "Planning a share portfolio",
   titleCn: "规划股票投资组合",
@@ -1573,6 +1607,7 @@ const articleNce4L48: Article = {
 const articleNce4L5: Article = {
 
   id: "nce4-l5",
+  originalId: "nce4-l5",
   lesson: 5,
   tag: "C6",
   title: "The Problem of Youth",
@@ -1639,6 +1674,7 @@ const articleNce4L5: Article = {
 
 const articleNce4L9: Article = {
   id: "nce4-l9",
+  originalId: "nce4-l9",
   lesson: 9,
   tag: "C9",
   title: "Royal espionage",
@@ -1706,6 +1742,7 @@ const articleNce4L9: Article = {
 }
 const articleNce4L10: Article = {
   id: "nce4-l10",
+  originalId: "nce4-l10",
   lesson: 10,
   tag: "C10",
   title: "Silicon valley",
@@ -1773,6 +1810,7 @@ const articleNce4L10: Article = {
 }
 const articleNce4L12: Article = {
   id: "nce4-l12",
+  originalId: "nce4-l12",
   lesson: 12,
   tag: "C12",
   title: "Banks and their customers",
@@ -1830,6 +1868,7 @@ const articleNce4L12: Article = {
 }
 const articleNce4L14: Article = {
   id: "nce4-l14",
+  originalId: "nce4-l14",
   lesson: 14,
   tag: "C14",
   title: "The Butterfly Effect",
@@ -1892,6 +1931,7 @@ const articleNce4L14: Article = {
 }
 const articleNce4L17: Article = {
   id: "nce4-l17",
+  originalId: "nce4-l17",
   lesson: 17,
   tag: "C17",
   title: "A man-made disease",
@@ -1958,6 +1998,7 @@ const articleNce4L17: Article = {
 }
 const articleNce4L19: Article = {
   id: "nce4-l19",
+  originalId: "nce4-l19",
   lesson: 19,
   tag: "C19",
   title: "The stuff of dreams",
@@ -2025,6 +2066,7 @@ const articleNce4L19: Article = {
 }
 const articleNce4L20: Article = {
   id: "nce4-l20",
+  originalId: "nce4-l20",
   lesson: 20,
   tag: "C20",
   title: "Snake poison",
@@ -2101,6 +2143,7 @@ const articleNce4L20: Article = {
 }
 const articleNce4L23: Article = {
   id: "nce4-l23",
+  originalId: "nce4-l23",
   lesson: 23,
   tag: "C23",
   title: "Bird flight",
@@ -2161,6 +2204,7 @@ const articleNce4L23: Article = {
 }
 const articleNce4L25: Article = {
   id: "nce4-l25",
+  originalId: "nce4-l25",
   lesson: 25,
   tag: "C25",
   title: "Non-auditory effects of noise",
@@ -2217,6 +2261,7 @@ const articleNce4L25: Article = {
 }
 const articleNce4L26: Article = {
   id: "nce4-l26",
+  originalId: "nce4-l26",
   lesson: 26,
   tag: "C26",
   title: "The past life of the earth",
@@ -2276,6 +2321,7 @@ const articleNce4L26: Article = {
 }
 const articleNce4L27: Article = {
   id: "nce4-l27",
+  originalId: "nce4-l27",
   lesson: 27,
   tag: "C27",
   title: "The 'Vasa' ＂",
@@ -2349,6 +2395,7 @@ const articleNce4L27: Article = {
 }
 const articleNce4L29: Article = {
   id: "nce4-l29",
+  originalId: "nce4-l29",
   lesson: 29,
   tag: "C29",
   title: "The hovercraft",
@@ -2405,6 +2452,7 @@ const articleNce4L29: Article = {
 }
 const articleNce4L31: Article = {
   id: "nce4-l31",
+  originalId: "nce4-l31",
   lesson: 31,
   tag: "C31",
   title: "The sculptor speaks",
@@ -2470,6 +2518,7 @@ const articleNce4L31: Article = {
 }
 const articleNce4L35: Article = {
   id: "nce4-l35",
+  originalId: "nce4-l35",
   lesson: 35,
   tag: "C35",
   title: "Space odyssey",
@@ -2530,6 +2579,7 @@ const articleNce4L35: Article = {
 }
 const articleNce4L36: Article = {
   id: "nce4-l36",
+  originalId: "nce4-l36",
   lesson: 36,
   tag: "C36",
   title: "The cost of government",
@@ -2598,6 +2648,7 @@ const articleNce4L36: Article = {
 }
 const articleNce4L38: Article = {
   id: "nce4-l38",
+  originalId: "nce4-l38",
   lesson: 38,
   tag: "C38",
   title: "Water and the traveller",
@@ -2662,6 +2713,7 @@ const articleNce4L38: Article = {
 }
 const articleNce4L39: Article = {
   id: "nce4-l39",
+  originalId: "nce4-l39",
   lesson: 39,
   tag: "C39",
   title: "What every writer wants",
@@ -2733,6 +2785,7 @@ const articleNce4L39: Article = {
 }
 const articleNce4L40: Article = {
   id: "nce4-l40",
+  originalId: "nce4-l40",
   lesson: 40,
   tag: "C40",
   title: "Waves",
@@ -2798,6 +2851,7 @@ const articleNce4L40: Article = {
 }
 const articleNce4L41: Article = {
   id: "nce4-l41",
+  originalId: "nce4-l41",
   lesson: 41,
   tag: "C41",
   title: "Training elephants",
@@ -2870,6 +2924,7 @@ const articleNce4L41: Article = {
 }
 const articleNce4L42: Article = {
   id: "nce4-l42",
+  originalId: "nce4-l42",
   lesson: 42,
   tag: "C42",
   title: "Recording and earthquake",
@@ -2952,6 +3007,7 @@ const articleNce4L42: Article = {
 }
 const articleNce4L43: Article = {
   id: "nce4-l43",
+  originalId: "nce4-l43",
   lesson: 43,
   tag: "C43",
   title: "Are there strangers in space?",
@@ -3015,6 +3071,7 @@ const articleNce4L43: Article = {
 }
 const articleNce4L45: Article = {
   id: "nce4-l45",
+  originalId: "nce4-l45",
   lesson: 45,
   tag: "C45",
   title: "Of men and galaxies",
@@ -3080,6 +3137,7 @@ const articleNce4L45: Article = {
 }
 const articleNce4L47: Article = {
   id: "nce4-l47",
+  originalId: "nce4-l47",
   lesson: 47,
   tag: "C47",
   title: "The great escape",
