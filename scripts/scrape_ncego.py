@@ -60,6 +60,13 @@ def parse_html(html):
         
         sentence_h3s = []
         for h3 in h3s:
+            # Remove <sup> tags from sentence text and capture as annotations
+            h3_sups = []
+            for sup in h3.find_all('sup'):
+                sup_text = _clean(sup.get_text())
+                if sup_text:
+                    h3_sups.append(sup_text)
+                sup.decompose()  # remove from tree
             text = _clean(h3.get_text())
             if not text or not re.search(r'[A-Za-z]{3,}', text):
                 continue  # skip Chinese-only headings
@@ -74,6 +81,11 @@ def parse_html(html):
                 annotations.append({
                     'text': _clean(abbr.text),
                     'tip': abbr.get('title', '').strip()
+                })
+            for sup_text in h3_sups:
+                annotations.append({
+                    'text': sup_text,
+                    'tip': ''
                 })
             
             bg_quotes = [_clean(s.text) for s in h3.find_all('span', style=re.compile(r'ecf0f1'))]
@@ -165,19 +177,19 @@ def detail_to_panel(d):
         cn = esc(ex.get('cn', ''))
         if not cn and re.search(r'[\u4e00-\u9fff]', en):
             en_split, cn_split = split_cn(en)
-            rows.append(f'{{ word: "", meaning: "", enExample: "{esc(en_split)}", zhExample: "{esc(cn_split)}" }}')
+            rows.append(f'{{ kind: "example", word: "", meaning: "", enExample: "{esc(en_split)}", zhExample: "{esc(cn_split)}" }}')
         else:
-            rows.append(f'{{ word: "", meaning: "", enExample: "{en}", zhExample: "{cn}" }}')
+            rows.append(f'{{ kind: "example", word: "", meaning: "", enExample: "{en}", zhExample: "{cn}" }}')
     for tbl in d.get('tables', []):
         for row in tbl:
             if isinstance(row, dict):
                 w, m = split_cn(row.get('main', ''))
                 en, zh = split_cn(row.get('content', ''))
-                rows.append(f'{{ word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
+                rows.append(f'{{ kind: "example", word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
             elif isinstance(row, list) and len(row) >= 2:
                 w, m = split_cn(str(row[0]))
                 en, zh = split_cn(str(row[1]))
-                rows.append(f'{{ word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
+                rows.append(f'{{ kind: "example", word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
     if not rows:
         return None
     return f'{{ label: "{esc(d["title"])}", description: "", examples: [{", ".join(rows)}] }}' 
@@ -238,9 +250,7 @@ def generate_article(data):
         ep = '[' + ', '.join(all_ep) + ']' if all_ep else '[]'
         
         sentences.append(
-            f'        {{ text: "{esc(msent)}", translation: "", '
-            f'predicates: {ps}, clauseIntroducers: [], auxiliaries: {ax}, '
-            f'inlineAnnotations: {il}, expansionNotes: {ep} }}'
+            f'        {{ text: "{esc(msent)}", translation: "", predicates: {ps}, clauseIntroducers: [], auxiliaries: {ax}, inlineAnnotations: {il}, grammarNotes: undefined, expansionNotes: {ep} }}'
         )
         idx += 1
     
@@ -257,7 +267,8 @@ def generate_article(data):
     cn = esc(m['title_cn'])
     
     nl = '\n'
-    out = f'''const articleNce4L{ln}: Article = {{
+    # --- Article stub (paste into nce4.ts) ---
+    article_stub = f'''const articleNce4L{ln}: Article = {{
 
   id: "nce4-l{ln}",
   lesson: {ln},
@@ -277,23 +288,44 @@ def generate_article(data):
   notesOnText: [],
 '''
     if pending_entries:
-        out += f'\n  pendingNotes: [\n    {",".join([nl + "    " + e for e in pending_entries]).lstrip(",")}\n  ],\n'
+        article_stub += f'\n  pendingNotes: [\n    {",".join([nl + "    " + e for e in pending_entries]).lstrip(",")}\n  ],\n'
     
-    out += f'''
-  original: {{
-    paragraphs: [
-      [
-'''
-    out += ',\n'.join(sentences)
-    out += f'''
-      ]
-    ],
-  }},
+
+    article_stub += f'''
+  originalId: "nce4-l{ln}",
 
   vocabulary: [
     {", ".join(vocab)}
   ],
 }};
+'''
+
+    # --- registerOriginals entry (paste into article-notes.ts) ---
+    reg_paragraphs = ',\n'.join(sentences)
+    reg_entry = f'''registerOriginals({{
+  "nce4-l{ln}": {{
+    paragraphs: [
+      [
+{reg_paragraphs}
+      ]
+    ],
+  }},
+}});
+'''
+
+    out = f'''/* ================================================================ */
+/*  ⚠️  抓取数据仅供参考，请手动合并，不要直接覆盖原有内容！            */
+/*  - 参考译文 (translation) 留空，请务必保留已有译文                 */
+/*  - 词汇 (vocabulary) 仅作参考，请核对已有释义                      */
+/*  - 课文注释 (notesOnText) 留空，请保留已有注释                     */
+/*  - annotations / expansionNotes 仅作参考                           */
+/* ================================================================ */
+
+/* === nce4.ts === */
+{article_stub}
+
+/* === article-notes.ts === */
+{reg_entry}
 '''
     return out
 

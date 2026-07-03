@@ -46,6 +46,9 @@ export interface Article {
   tag?: string
   vocabulary: VocabItem[]
   notesOnText?: SentenceNote[]
+  original?: {
+    paragraphs: { text: string; translation: string }[][]
+  }
 }
 
 export interface GrammarRelatedExample {

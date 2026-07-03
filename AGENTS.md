@@ -31,3 +31,9 @@ Flat UI / Minimalist SaaS — 扁平无渐变，靠间距层级区分内容。
 - **现象**：`next-server` CPU 持续 300%+ 不回落，修改 `globals.css` 后触发
 - **原因**：`.next` 缓存损坏导致增量编译陷入循环
 - **解决**：`rm -rf .next && npm run dev` 清除缓存重启
+
+## 项目 Skill
+
+本项目包含项目级 skill，Codex 应在处理相关任务时主动读取对应的 SKILL.md：
+
+- `.github/skills/nce-scraper/SKILL.md` — NCE 课文抓取与安全合并。触发：爬取 ncego.com、更新课文注释、合并 paragraphs 数据。工作流：`scrape_ncego.py` → `merge_paragraphs.py`，自动保留已有译文。
