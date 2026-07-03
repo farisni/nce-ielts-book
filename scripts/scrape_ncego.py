@@ -109,8 +109,10 @@ def parse_html(html):
             while next_el and next_el.name != 'h4':
                 for li in next_el.find_all('li'):
                     sup = li.find('sup')
+                    cn = _clean(sup.text) if sup else ""
+                    if sup:
+                        sup.extract()
                     en = _clean(li.get_text())
-                    cn = _clean(sup.text) if sup else ''
                     if en: examples.append({'en': en, 'cn': cn})
                 
                 for tbl in next_el.find_all('table'):
