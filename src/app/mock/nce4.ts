@@ -24,16 +24,2133 @@ const articleNce4L1: Article = {
     { label: "the first people", description: "原始人。people+s 表示民族。" },
     { label: "if they had any", description: "即便是有，表假设。例句：His relatives, if he had any, never went to visit him when he was hospitalized. 他的亲戚，即便他还有的话，在他住院时也从来不去看他。" },
     { label: "when even the bones...", description: "这个以when引导的状语从句表示让步的意思，而when可以译成\u201c虽然\u201d，\u201c尽管\u201d。" }
+  ],  originalId: "nce4-l1",
+
+  vocabulary: [
+    { word: "fossil (man)", pos: "adj.", meaning: "化石(人)", phonetic: "/英[ˈfɒsl/" },
+    { word: "recount", pos: "v.", meaning: "叙述", phonetic: "/ri'kaunt/" },
+    { word: "saga", pos: "n.", meaning: "英雄故事", phonetic: "/'sa:gə/" },
+    { word: "legend", pos: "n.", meaning: "传说，传奇", phonetic: "/'ledʒənd/" },
+    { word: "migration", pos: "n.", meaning: "迁移，移居", phonetic: "/mai'greiʃən/" },
+    { word: "anthropologist", pos: "n.", meaning: "人类学家", phonetic: "/ænθrə'pɔlədʒist/" },
+    { word: "archaeologist", pos: "n.", meaning: "考古学家", phonetic: "/'a:kiə'lɔdʒist/" },
+    { word: "ancestor", pos: "n.", meaning: "祖先", phonetic: "/'ænsistə/" },
+    { word: "Polynesian", pos: "adj.", meaning: "波利尼西亚(中太平洋之一群岛)的", phonetic: "/pɔli'ni:zjən/" },
+    { word: "Indonesia", pos: "n.", meaning: "印度尼西亚", phonetic: "/'indəu'ni:zjə/" },
+    { word: "flint", pos: "n.", meaning: "燧石", phonetic: "/flint/" },
+    { word: "rot", pos: "v.", meaning: "烂掉", phonetic: "/rɔt/" }
+  ],
+}
+
+const articleNce4L2: Article = {
+
+  id: "nce4-l2",
+  lesson: 2,
+  tag: "C2",
+  title: "Spare that spider",
+  titleCn: "不要伤害蜘蛛",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ],
 
-  pendingNotes: [
-    { label: "英语标题的特点", description: "英语的标题通常不会用完整的句子，尽量追去简洁，一般使用音节比较少的词，避免使用大词，使用简洁且能鲜明的表达中心思想为宜。" },
-    { label: "find = discover", description: "发现。例句：discover fossil man、ancient man、prehistoric man。" },
-    { label: "标题词常用简洁的单词", description: "拼写与发音更容易的词。encourage → spur 激励；prohibit / forbid → ban 禁止；compete → vie 竞争；nominate → name 提名。" },
-    { label: "alliteration 头韵", description: "叮当、咔嚓、哗啦、呱唧。例句：Spare that spider；Matterhorn man；The sporting spirit；Pride and Prejudice（傲慢与偏见）；Prince and Pauper（王子与乞丐）；World Wide Watch（世界观察）；A Delicious Dish A Day（甜甜饮食）；Beauty and Beast（美女与野兽）；WWW = The World Wide Web。" },
+
+  attribution: "T.H.GILLESPIE（T.H.吉莱斯皮）《Spare that spider》from《The Listener》",
+  notesOnText: [
+    { label: "if it were not for the protection we get from inscet-eating animals 这是一个非真实条件状语从句", description: "were表示虚拟语气。" }
+  ],  originalId: "nce4-l2",
+
+  vocabulary: [
+    { word: "beast", pos: "n.", meaning: "野兽", phonetic: "/bi:st/" },
+    { word: "census", pos: "n.", meaning: "统计数字", phonetic: "/'sensəs/" },
+    { word: "acre", pos: "n.", meaning: "英亩", phonetic: "/'eikə/" },
+    { word: "content", pos: "adj.", meaning: "满足的", phonetic: "/'kɔntent, kən'tent/" }
+  ],
+}
+const articleNce4L3: Article = {
+
+  id: "nce4-l3",
+  lesson: 3,
+  tag: "C3",
+  title: "Matterhorn man",
+  titleCn: "马特霍恩山区人",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ],
 
-  original: {
+
+  attribution: "WALTER UNSWORTH（沃尔特·昂斯沃思）《Matterhorn Man》",
+  notesOnText: [
+    { label: "in the pioneering days", description: "在初创时期，这里指登山运动的初创期。" },
+    { label: "equipped in a manner which would make a modern climber shudder at the thought", description: "他们的装备如此简陋，足以使现代登山者一想起来就胆战心惊。at the thought,一想到（他们的装备），英文中省略了 of the manner." },
+    { label: "go out of one's way 特地", description: "不怕麻烦" },
+    { label: "such inns as there were 那里有的小客栈", description: "as there were 用来修饰inns,作定语。" },
+    { label: "the food simply local cheese", description: "在food 后面省略了was。" }
+  ],
+
+  originalId: "nce4-l3",
+
+  vocabulary: [
+    { word: "Matterhorn", pos: "n.", meaning: "马特霍恩峰(阿尔卑斯山峰之一)", phonetic: "/'mætəhɔ:n/" },
+    { word: "alpinist", pos: "n.", meaning: "登山运动员", phonetic: "/'ælpinist/" },
+    { word: "pioneer", pos: "v./n.", meaning: "开辟，倡导;先锋，开辟者", phonetic: "/'paiə'niə/" },
+    { word: "summit", pos: "n.", meaning: "顶峰", phonetic: "/'sʌmit/" },
+    { word: "attain", pos: "v.", meaning: "到达", phonetic: "/ə'tein/" },
+    { word: "perilous", pos: "adj.", meaning: "危险的", phonetic: "/'periləs/" },
+    { word: "shudder", pos: "v.", meaning: "不寒而栗", phonetic: "/'ʃʌdə/" },
+    { word: "court", pos: "v.", meaning: "追求", phonetic: "/kɔ:t/" },
+    { word: "solitary", pos: "adj.", meaning: "唯一的", phonetic: "/'sɔlitəri/" },
+    { word: "impoverish", pos: "v.", meaning: "使贫困", phonetic: "/im'pɔvəriʃ/" },
+    { word: "Alpine", pos: "adj.", meaning: "阿尔卑斯山的", phonetic: "/'ælpain/" },
+    { word: "flea-ridden", pos: "adj.", meaning: "布满跳蚤的", phonetic: "//" },
+    { word: "coarse", pos: "adj.", meaning: "粗劣的", phonetic: "/kɔ:s/" },
+    { word: "boast", pos: "v.", meaning: "自恃有", phonetic: "/bəust/" },
+    { word: "parishioner", pos: "n.", meaning: "教区居民", phonetic: "/pə'riʃənə/" },
+    { word: "shepherd", pos: "n.", meaning: "牧羊人", phonetic: "/'ʃepəd/" },
+    { word: "linen", pos: "n.", meaning: "亚麻布", phonetic: "/'linin/" },
+    { word: "the Alps", pos: "n.", meaning: "阿尔卑斯山脉", phonetic: "//" }
+  ],
+}
+const articleNce4L4: Article = {
+
+  id: "nce4-l4",
+  lesson: 4,
+  tag: "C4",
+  title: "Seeing hands",
+  titleCn: "能看见东西的手",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "ERIC DE MAUNY（埃里克·德莫尼）《Seeing hands》from《The Listener》",
+  notesOnText: [
+    { label: "of people who can read...", description: "这个定语从句用来修饰主语cases,由于太长，因此被移至谓语之后。" },
+    { label: "through solid walls与 with different parts of her skin并列", description: "作perceive的状语。" },
+    { label: "lock something away", description: "把...锁藏起来。" },
+    { label: "do up", description: "引起捆，包" },
+    { label: "bring...to the notice of", description: "引起某人注意。" },
+    { label: "except when blindfold", description: "其中when之后省略了she was。" },
+    { label: "the moment her hands were wet", description: "这是一个时间状语从句,the moment 有\"一....就....\"的意思。" }
+  ],
+
+  originalId: "nce4-l4",
+
+  vocabulary: [
+    { word: "solid", pos: "adj.", meaning: "坚实的", phonetic: "/'sɔlid/" },
+    { word: "safe", pos: "n.", meaning: "保险柜", phonetic: "/seif/" },
+    { word: "Ulyanovsk", pos: "n.", meaning: "乌里扬诺夫斯克", phonetic: "/u:'lja:nɔfsk/" },
+    { word: "commission", pos: "n.", meaning: "委员会", phonetic: "/kə'miʃən/" },
+    { word: "opaque", pos: "adj.", meaning: "不透明的", phonetic: "/əu'peik/" },
+    { word: "lotto", pos: "n.", meaning: "一种有编号的纸牌", phonetic: "/'lɔtou/" },
+    { word: "slipper", pos: "n.", meaning: "拖鞋", phonetic: "/'slipə/" },
+    { word: "blindfold", pos: "a./ad.", meaning: "被蒙上眼睛的", phonetic: "/'blaindfəuld/" }
+  ],
+}
+const articleNce4L6: Article = {
+
+  id: "nce4-l6",
+  lesson: 6,
+  tag: "C7",
+  title: "The sports spirit",
+  titleCn: "体育精神",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "GEORGE ORWELL（乔治·奥威尔）《The sporting spirit》",
+  notesOnText: [
+    { label: "if only the common peoples of the world...", description: "这里 if only 引导的一个非真实条件句，if only作“只要”讲。" },
+    { label: "have no inclination to do", description: "无意做.....,不想做.....。" },
+    { label: "You play to win. 句中的you 是泛指人", description: "可译作“人们”。" },
+    { label: "pick up", description: "随意挑选。" },
+    { label: "and", description: "behind the spectators,of the nations,在of the nations前面省略了the attitude。" }
+  ],
+
+  originalId: "nce4-l6",
+
+  vocabulary: [
+    { word: "goodwill", pos: "n.", meaning: "友好", phonetic: "//" },
+    { word: "cricket", pos: "n.", meaning: "板球", phonetic: "/'krikit/" },
+    { word: "inclination", pos: "n.", meaning: "意愿", phonetic: "/'inkli'neiʃən/" },
+    { word: "contest", pos: "n.", meaning: "比赛", phonetic: "/kən'test, 'kɔntest/" },
+    { word: "orgy", pos: "n.", meaning: "无节制，放荡", phonetic: "/'ɔ:dʒi/" },
+    { word: "deduce", pos: "v.", meaning: "推断", phonetic: "/di'dju:s/" },
+    { word: "competitive", pos: "adj.", meaning: "竞争性的", phonetic: "/kəm'petitiv/" },
+    { word: "patriotism", pos: "n.", meaning: "地方观念，爱国主义", phonetic: "/'pætriətizm/" },
+    { word: "disgrace", pos: "v.", meaning: "使丢脸", phonetic: "/dis'greis/" },
+    { word: "savage", pos: "adj.", meaning: "野性的", phonetic: "/'sævidʒ/" },
+    { word: "combative", pos: "adj.", meaning: "好斗的", phonetic: "/'kɔmbətiv/" },
+    { word: "mimic warfare", pos: "n.", meaning: "模拟战争", phonetic: "//" },
+    { word: "behaviour", pos: "n.", meaning: "行动，举止", phonetic: "/bi'heivjə/" },
+    { word: "absurd", pos: "adj.", meaning: "荒唐的", phonetic: "/əb'sə:d/" }
+  ],
+}
+const articleNce4L7: Article = {
+
+  id: "nce4-l7",
+  lesson: 7,
+  tag: "C9",
+  title: "Bats",
+  titleCn: "蝙蝠",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "MAURICE BURTON（莫里斯·伯顿）《Curiosities of animal life》",
+  notesOnText: [
+    { label: "Not all sounds made by animals serve as language", description: "动物发出的声音不全是作语言交际。此句采用了部分否定，即不是否定所有的动物，而只是一部分。serve as,作...之用。" },
+    { label: "turn to", description: "求助于。" },
+    { label: "play a role in", description: "在...方面起作用。" },
+    { label: "in the vicinity of", description: "在...的附近。" },
+    { label: "So was born the echo-sounding apparatus", description: "这样就诞生了回声探测仪。这是一个倒装句，主要是为了避免因主语过长而使全句失去平衡，同时也为了使apparatus的定语now in general use in ships紧挨着名词。in general use,普遍使用。" },
+    { label: "steer clear of", description: "避开。" }
+  ],
+
+  originalId: "nce4-l7",
+
+  vocabulary: [
+    { word: "bat", pos: "n.", meaning: "蝙蝠", phonetic: "/bæt/" },
+    { word: "strictly", pos: "adv.", meaning: "明确地", phonetic: "/'striktli/" },
+    { word: "utilitarian", pos: "adj.", meaning: "实用的", phonetic: "/'ju:tili'tєəriən/" },
+    { word: "appreciation", pos: "n.", meaning: "理解", phonetic: "/ə'pri:ʃi'eiʃən/" },
+    { word: "obstruction", pos: "n.", meaning: "障碍物", phonetic: "/əb'strʌkʃən/" },
+    { word: "elapse", pos: "v.", meaning: "消逝", phonetic: "/i'læps/" },
+    { word: "hull", pos: "n.", meaning: "船体", phonetic: "/hʌl/" },
+    { word: "interval", pos: "n.", meaning: "间隔", phonetic: "/'intəvəl/" },
+    { word: "receipt", pos: "n.", meaning: "收到", phonetic: "/ri'si:t/" },
+    { word: "apparatus", pos: "n.", meaning: "仪器", phonetic: "/,æpə'reitəs/" },
+    { word: "shoal", pos: "n.", meaning: "鱼群", phonetic: "/ʃəul/" },
+    { word: "herring", pos: "n.", meaning: "鲱鱼", phonetic: "/'heriŋ/" },
+    { word: "cod", pos: "n.", meaning: "鳕鱼", phonetic: "/kɔd/" },
+    { word: "squeak", pos: "n.", meaning: "尖叫声", phonetic: "/skwi:k/" }
+  ],
+}
+const articleNce4L8: Article = {
+
+  id: "nce4-l8",
+  lesson: 8,
+  title: "Trading Standards",
+  titleCn: "贸易标准",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "from《The Economist》, 1997",
+  notesOnText: [
+    { label: "Chickens slaughtered in ... to grace European tables.在这句话中引用了布鲁塞尔官员的评论", description: "却没有放在引号之中。这种方式常用于报刊文章，对读者的直接影响更大。在claim officials in Brussels中，动词claim置于名词之前。" },
+    { label: "it is differences in national regulations .. between rich countries.是各国管理条例上的差异", description: "而不是关税阻碍了发达国家之间的贸易。这是一个it 引导的强调句。put sand in the wheels of,阻碍，阻挠。" },
+    { label: "So", description: "ask businesses on both sides of the Atlantic,why have two lots of tests where one would do?这是另一个没有引号的直接引语的例子。注意why have two...do 中的语序，这是非常口语化的直接引语的语序。" }
+  ],
+
+  originalId: "nce4-l8",
+
+  vocabulary: [
+    { word: "slaughter", pos: "v.", meaning: "屠宰", phonetic: "/'slɔ:tə/" },
+    { word: "fit", pos: "adj.", meaning: "适合", phonetic: "/fit/" },
+    { word: "grace", pos: "v.", meaning: "给…增光", phonetic: "/greis/" },
+    { word: "tariff", pos: "n.", meaning: "关税", phonetic: "/'tærif/" },
+    { word: "standard", pos: "n.", meaning: "标准", phonetic: "/'stændəd/" },
+    { word: "dialysis", pos: "n.", meaning: "分离，分解；透析，渗析", phonetic: "/dai'ælisis/" },
+    { word: "electrocute", pos: "v.", meaning: "使触电身亡", phonetic: "/i'lektrəkjut/" },
+    { word: "eliminate", pos: "v.", meaning: "消灭", phonetic: "/i'limineit/" },
+    { word: "accord", pos: "n.", meaning: "协议", phonetic: "/ə'kɔ:d/" },
+    { word: "device", pos: "n.", meaning: "仪器，器械", phonetic: "/di'vais/" },
+    { word: "hammer out", pos: "v.", meaning: "推敲", phonetic: "//" },
+    { word: "pact", pos: "n.", meaning: "合同，条约，公约", phonetic: "/pækt/" }
+  ],
+}
+const articleNce4L11: Article = {
+
+  id: "nce4-l11",
+  lesson: 11,
+  tag: "C14",
+  title: "How to grow old",
+  titleCn: "如何安度晚年",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "BERTRAND RUSSELL（伯特兰·罗素）《How to grow old》from《Portraits from Memory》",
+  notesOnText: [
+    { label: "in the young", description: "在年轻人身上。" },
+    { label: "Young men who have reason...that life has to offer.这个句子较长", description: "其中有3个that。第1个that引导一个宾语从句that...battle,是fear的宾语。第2个that引导一个同位语从句that they...to offer,说明thought的内容。第2个that引导一个定语从句that life has to offer,修饰things。" },
+    { label: "cheat of...", description: "从...那里骗取....。" },
+    { label: "whatever work it was in him to do", description: "他所能做的任何工作。" },
+    { label: "so at least it seems to me", description: "这里一个插入语，用了倒装语序，自然的语序是at least it seems so to me。" },
+    { label: "bit by bit", description: "一点一点地。" }
+  ],
+
+  originalId: "nce4-l11",
+
+  vocabulary: [
+    { word: "oppress", pos: "v.", meaning: "忧郁，压抑", phonetic: "/ə'pres/" },
+    { word: "justification", pos: "n.", meaning: "正当理由", phonetic: "/'dʒʌstifi'keiʃən/" },
+    { word: "justifiably", pos: "adv.", meaning: "无可非议地", phonetic: "/-faiəbli/" },
+    { word: "cheat", pos: "v.", meaning: "欺骗", phonetic: "/tʃi:t/" },
+    { word: "abject", pos: "adj.", meaning: "可怜的", phonetic: "/'æbdʒekt/" },
+    { word: "ignoble", pos: "adj.", meaning: "不体面的，可耻的", phonetic: "/ig'nəubl/" },
+    { word: "impersonal", pos: "adj.", meaning: "超脱个人感情影响的", phonetic: "/im'pə:sənl/" },
+    { word: "ego", pos: "n.", meaning: "自我", phonetic: "/'egəu/" },
+    { word: "recede", pos: "v.", meaning: "退去", phonetic: "/ri'si:d/" },
+    { word: "increasingly", pos: "adv.", meaning: "日益，不断", phonetic: "/in'kri:siŋli/" },
+    { word: "passionately", pos: "adv.", meaning: "激昂地", phonetic: "//" },
+    { word: "painlessly", pos: "adv.", meaning: "毫无痛苦地", phonetic: "//" },
+    { word: "vitality", pos: "n.", meaning: "精力", phonetic: "/vai'tæliti/" },
+    { word: "weariness", pos: "n.", meaning: "疲惫感", phonetic: "/wiərinis/" }
+  ],
+}
+const articleNce4L13: Article = {
+
+  id: "nce4-l13",
+  lesson: 13,
+  title: "The search for oil",
+  titleCn: "探寻石油",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "T. F. GASKELL（T. F. 加斯克尔）《The Search for the Earth's Minerals》from《Discovery》",
+  notesOnText: [
+    { label: "they go down to as much as 25", description: "0000 feet，as much as意为“多达”，“达到（量）”。" },
+    { label: "as+形容词+as表示“……达”", description: "例如：as long as长达……，as tall as高达……，as expensive as贵至……。" },
+    { label: "as we must with other mineral deposits", description: "must后面省去了与上句中相同的部分send men down。" },
+    { label: "a foot in diameter", description: "直径一英尺。" },
+    { label: "every so often", description: "时常。" },
+    { label: "我不再经常看见约翰了", description: "但他偶尔还到我办公室来。" },
+    { label: "obtain a sample", description: "取样。" },
+    { label: "To obtain something means to get it or achieve it. (FORMAL)获得", description: "取得某物。" },
+    { label: "形容词形式为obtainable：If something is obtainable", description: "it is possible to get or achieve it." },
+    { label: "by means of", description: "用……，靠……手段。" },
+    { label: "endeavour to", description: "努力去，尽力去。" },
+    { label: "If you endeavour to do something", description: "you try very hard to do it. 同义词组喂strive to。" },
+    { label: "他们尽量使她快乐", description: "却徒劳无功。" }
+  ],
+
+  originalId: "nce4-l13",
+
+  vocabulary: [
+    { word: "mineral", pos: "adj.", meaning: "矿物的", phonetic: "/'minərəl/" },
+    { word: "boring", pos: "n.", meaning: "钻孔", phonetic: "/'bɔ:riŋ/" },
+    { word: "derrick", pos: "n.", meaning: "井架", phonetic: "/'derik/" },
+    { word: "block and tackle", pos: "n.", meaning: "滑轮组", phonetic: "//" },
+    { word: "haul", pos: "v.", meaning: "拖，拉", phonetic: "/hɔ:l/" },
+    { word: "rotate", pos: "v.", meaning: "使转动", phonetic: "/rəu'teit/" },
+    { word: "cutting bit", pos: "n.", meaning: "钻头", phonetic: "//" },
+    { word: "geologist", pos: "n.", meaning: "地质学家", phonetic: "/dʒi'ɔlədʒist/" },
+    { word: "coring bit", pos: "n.", meaning: "取芯钻头", phonetic: "//" },
+    { word: "cylinder", pos: "n.", meaning: "圆柱体", phonetic: "/'silində/" },
+    { word: "strata", pos: "n.", meaning: "岩层［复］(［单］stratum)", phonetic: "/'streitə/" },
+    { word: "circulate", pos: "v.", meaning: "注入，环流", phonetic: "/'sə:kjuleit/" },
+    { word: "gusher", pos: "n.", meaning: "喷油井", phonetic: "//" }
+  ],
+}
+const articleNce4L15: Article = {
+
+  id: "nce4-l15",
+  lesson: 15,
+  tag: "C18",
+  title: "Secrecy in industry",
+  titleCn: "工业中的秘密",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "W. J. READER（W. J. 里德）from《The Observer》, 1964",
+  notesOnText: [
+    { label: "weigh against", description: "不利于....。" },
+    { label: "in so far as...", description: "就...而言。" },
+    { label: "which are of such general and fundamental nature", description: "其中to be of 有“具有”的意思。" },
+    { label: "are sought for with complete secrecy", description: "极端秘密地探索。" },
+    { label: "such and such a book", description: "某一本书。" }
+  ],
+
+  originalId: "nce4-l15",
+
+  vocabulary: [
+    { word: "secrecy", pos: "n.", meaning: "秘密", phonetic: "//" },
+    { word: "effectiveness", pos: "n.", meaning: "成效，效力", phonetic: "/i'fektivnis/" },
+    { word: "inquiry", pos: "n.", meaning: "调查研究", phonetic: "/in'kwaiəri/" },
+    { word: "positive", pos: "adj.", meaning: "确实的", phonetic: "/'pɔzətiv/" },
+    { word: "process", pos: "n.", meaning: "过程", phonetic: "/'prəuses/" },
+    { word: "patent", pos: "n./v.", meaning: "专利；得到专利权", phonetic: "/'peitənt/" },
+    { word: "agent", pos: "n.", meaning: "情报人员", phonetic: "/'eidʒənt/" }
+  ],
+}
+const articleNce4L16: Article = {
+
+  id: "nce4-l16",
+  lesson: 16,
+  tag: "C20",
+  title: "The modern city",
+  titleCn: "现代城市",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "ALEXIS CARREL（亚历克西斯·卡雷尔）《Man, the Unknown》",
+  originalId: "nce4-l16",
+
+  vocabulary: [
+    { word: "physiological", pos: "adj.", meaning: "生理的", phonetic: "/'fiziə'lɔdʒikəl/" },
+    { word: "maximum", pos: "adj.", meaning: "最大限度的", phonetic: "/'mæksiməm/" },
+    { word: "consideration", pos: "n.", meaning: "考虑", phonetic: "/kən'sidə'reiʃən/" },
+    { word: "descendant", pos: "n.", meaning: "子孙，后代", phonetic: "/di'sendənt/" },
+    { word: "artificial", pos: "adj.", meaning: "人工的", phonetic: "/'a:ti'fiʃəl/" },
+    { word: "impose", pos: "v.", meaning: "强加", phonetic: "/im'pəuz/" },
+    { word: "dimension", pos: "n.", meaning: "直径", phonetic: "/di'menʃən/" },
+    { word: "skyscraper", pos: "n.", meaning: "摩天大楼", phonetic: "/'skai'skreipə/" },
+    { word: "tenant", pos: "n.", meaning: "租户", phonetic: "/'tenənt/" },
+    { word: "civilized", pos: "adj.", meaning: "文明的", phonetic: "/'sivilaizd/" },
+    { word: "banal", pos: "adj.", meaning: "平庸的", phonetic: "/bə'na:l/" },
+    { word: "luxury", pos: "n.", meaning: "豪华", phonetic: "/'lʌkʃəri/" },
+    { word: "deprive", pos: "v.", meaning: "剥夺", phonetic: "/di'praiv/" },
+    { word: "monstrous", pos: "adj.", meaning: "畸形的", phonetic: "/'mɔnstrəs/" },
+    { word: "edifice", pos: "n.", meaning: "大厦", phonetic: "/'edifis/" },
+    { word: "toxic", pos: "adj.", meaning: "有毒的", phonetic: "/'tɔksik/" },
+    { word: "ceaselessly", pos: "adv.", meaning: "不停地", phonetic: "/'si:slisli/" },
+    { word: "throng", pos: "v.", meaning: "挤满，壅塞", phonetic: "/θrɔŋ/" }
+  ],
+}
+const articleNce4L18: Article = {
+
+  id: "nce4-l18",
+  lesson: 18,
+  tag: "C22",
+  title: "Porpoises",
+  titleCn: "海豚",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "RALPH NADING HILL（拉尔夫·纳丁·希尔）《Window in the Sea》",
+  notesOnText: [
+    { label: "however intelligent they may be", description: "不管它们有多聪明，这是一个让步状语从句。" },
+    { label: "as in riding the how waves of a ship", description: "就像它们追逐被船首犁开的浪花一样。" },
+    { label: "If as has been reported", description: "they have protected humans from sharks...," },
+    { label: "as 是关系代词", description: "代替they have protected humans from sharks." },
+    { label: "Whether it be bird", description: "fish or beast...,这是一个让步状语从句，用的是虚拟语气形式。" },
+    { label: "for dear life", description: "拼命地。" }
+  ],
+
+  originalId: "nce4-l18",
+
+  vocabulary: [
+    { word: "porpoise", pos: "n.", meaning: "海豚", phonetic: "//" },
+    { word: "mariner", pos: "n.", meaning: "水手", phonetic: "/'mærinə/" },
+    { word: "shark", pos: "n.", meaning: "鲨鱼", phonetic: "/ʃa:k/" },
+    { word: "formation", pos: "n.", meaning: "队形", phonetic: "/fɔ:'meiʃən/" },
+    { word: "dolphin", pos: "n.", meaning: "海豚科动物", phonetic: "/'dɔlfin/" },
+    { word: "unconscious", pos: "adj.", meaning: "不省人事的", phonetic: "/ʌn'kɔʃəs/" },
+    { word: "beaver", pos: "n.", meaning: "海狸", phonetic: "/'bi:və/" },
+    { word: "ashore", pos: "adv.", meaning: "上岸", phonetic: "/ə'ʃɔ:/" },
+    { word: "waterlogged", pos: "adj.", meaning: "浸满水的", phonetic: "//" },
+    { word: "scent", pos: "n.", meaning: "香味", phonetic: "/sent/" },
+    { word: "ensue", pos: "v.", meaning: "接着发生", phonetic: "/in'sju:/" },
+    { word: "intrigue", pos: "v.", meaning: "引起兴趣", phonetic: "/in'tri:g/" },
+    { word: "indignity", pos: "n.", meaning: "侮辱", phonetic: "/in'digniti/" },
+    { word: "snout", pos: "n.", meaning: "口鼻部", phonetic: "/snaut/" },
+    { word: "shove", pos: "v.", meaning: "硬推", phonetic: "/ʃʌv/" },
+    { word: "aquaplane", pos: "n.", meaning: "驾浪滑水板", phonetic: "/'ækwəplein/" },
+    { word: "oceanarium", pos: "n.", meaning: "水族馆", phonetic: "/'ouʃən'ʒəri-əm/" },
+    { word: "swoop", pos: "v.", meaning: "猛扑", phonetic: "/swu:p/" },
+    { word: "belly", pos: "n.", meaning: "腹部", phonetic: "/'beli/" },
+    { word: "equilibrium", pos: "n.", meaning: "平衡", phonetic: "/i:kwi'libriəm/" },
+    { word: "butt", pos: "v.", meaning: "碰撞", phonetic: "/bʌt/" },
+    { word: "crack", pos: "n.", meaning: "重击", phonetic: "/kræk/" }
+  ],
+}
+const articleNce4L21: Article = {
+
+  id: "nce4-l21",
+  lesson: 21,
+  title: "William S. Hart and the Early \"Western\" Film",
+  titleCn: "威廉·S·哈特与早期的西部片",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "CARL FOREMAN（卡尔·福尔曼）《Virtue and a Fast Gun》from《The Observer》",
+  notesOnText: [
+    { label: "nothing but", description: "仅仅，只是。" },
+    { label: "in short", description: "总而言之，一句话。" },
+    { label: "the old West", description: "指密西西比河以西地区。" },
+    { label: "be rooted in", description: "生根于。" },
+    { label: "join hands in", description: "携手联合。" },
+    { label: "live by", description: "靠...过活。" }
+  ],
+
+  originalId: "nce4-l21",
+
+  vocabulary: [
+    { word: "supreme", pos: "adj.", meaning: "首屈一指的", phonetic: "/sju:'pri:m/" },
+    { word: "protagonist", pos: "n.", meaning: "主角", phonetic: "/prəu'tægənist/" },
+    { word: "outlaw", pos: "n.", meaning: "逃犯，亡命之徒", phonetic: "/'autlɔ:/" },
+    { word: "framed", pos: "adj.", meaning: "遭到陷害的", phonetic: "//" },
+    { word: "vicious", pos: "adj.", meaning: "恶毒的", phonetic: "/'viʃəs/" },
+    { word: "mythology", pos: "n.", meaning: "神话", phonetic: "/mi'θɔlədʒi/" },
+    { word: "vanished", pos: "adj.", meaning: "消失了的", phonetic: "//" },
+    { word: "absurdly", pos: "adv.", meaning: "荒诞地", phonetic: "/əb'sə:dli/" },
+    { word: "arena", pos: "n.", meaning: "竞技场地", phonetic: "/ə'ri:nə/" },
+    { word: "encroaching", pos: "adj.", meaning: "渐渐渗入的", phonetic: "//" },
+    { word: "Indian", pos: "n.", meaning: "印第安人", phonetic: "/'indiən/" },
+    { word: "bewilder", pos: "v.", meaning: "使手足无措", phonetic: "/bi'wildə/" },
+    { word: "alien", pos: "adj.", meaning: "外来的", phonetic: "/'eiljən/" },
+    { word: "taboo", pos: "n.", meaning: "戒律", phonetic: "/tə'bu:/" },
+    { word: "disinherit", pos: "v.", meaning: "剥夺…继承权", phonetic: "/'disin'herit/" },
+    { word: "undeclared", pos: "adj.", meaning: "未经宣布的", phonetic: "/'ʌndi'klєəd/" },
+    { word: "hypocrisy", pos: "n.", meaning: "伪善", phonetic: "/hi'pɔkrəsi/" },
+    { word: "chicanery", pos: "n.", meaning: "诈骗", phonetic: "/ʃi'keinəri/" },
+    { word: "impending", pos: "adj.", meaning: "迫近的，迫在眉睫的", phonetic: "/im'pendiŋ/" },
+    { word: "immolation", pos: "n.", meaning: "杀戮", phonetic: "/iməu'leiʃən/" },
+    { word: "code", pos: "n.", meaning: "准则", phonetic: "/kəud/" }
+  ],
+}
+const articleNce4L22: Article = {
+
+  id: "nce4-l22",
+  lesson: 22,
+  tag: "C27",
+  title: "Knowledge and progress",
+  titleCn: "知识和进步",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "BERTRAND RUSSELL（伯特兰·罗素）《The Impact of Science on Society》, 1952",
+  notesOnText: [
+    { label: "with the invention of writing", description: "短语中的with 是“由于”的意思。" },
+    { label: "education in its turn added to libraries", description: "教育反过来也丰富了藏书。" },
+    { label: "a kind of compound interest law", description: "一种复利法则。compound interest law有时也被称作雪球法则，即利上滚利，增长很快。" },
+    { label: "turn... to account", description: "利用...。" },
+    { label: "Could any spectacle", description: "...to restore them?这句话从形式上是个疑问句，但实质上起一个加强语气的陈述句的作用，这种疑问句常被称为修辞疑问句。" }
+  ],
+
+  originalId: "nce4-l22",
+
+  vocabulary: [
+    { word: "loom", pos: "v.", meaning: "赫然耸起", phonetic: "/lu:m/" },
+    { word: "manifest", pos: "adj.", meaning: "明显的", phonetic: "/'mænifest/" },
+    { word: "morality", pos: "n.", meaning: "道德", phonetic: "/mə'ræliti/" },
+    { word: "communicate", pos: "v.", meaning: "交流，交际", phonetic: "/kə'mju:nikeit/" },
+    { word: "compound", pos: "adj.", meaning: "复合的", phonetic: "/'kɔmpaund, kəm'paund/" },
+    { word: "enhance", pos: "v.", meaning: "增进", phonetic: "/in'ha:ns/" },
+    { word: "tempo", pos: "n.", meaning: "速率", phonetic: "/'tempəu/" },
+    { word: "trickle", pos: "n.", meaning: "涓涓细流", phonetic: "/'trikl/" },
+    { word: "torrent", pos: "n.", meaning: "滔滔洪流", phonetic: "/'tɔrənt/" },
+    { word: "humanity", pos: "n.", meaning: "人类", phonetic: "/hju:'mæniti/" },
+    { word: "indifferently", pos: "adv.", meaning: "不在乎地", phonetic: "/in'difrəntli/" },
+    { word: "grimly", pos: "adv.", meaning: "可怖地", phonetic: "/'grimli/" },
+    { word: "whimsical", pos: "adj.", meaning: "怪诞的", phonetic: "/'wimzikl/" },
+    { word: "shatter", pos: "v.", meaning: "毁坏", phonetic: "/'ʃætə/" },
+    { word: "twofold", pos: "adj.", meaning: "双重的", phonetic: "/'tu:fəuld/" }
+  ],
+}
+const articleNce4L24: Article = {
+
+  id: "nce4-l24",
+  lesson: 24,
+  tag: "C29",
+  title: "Beauty",
+  titleCn: "美",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "C. E. M. JOAD（C. E. M. 乔德）《Pieces of mind》, 1961",
+  notesOnText: [
+    { label: "the same as theirs", description: "这里的theirs是指our forefathers'。" },
+    { label: "only too ready to provide", description: "非常乐意提供。在英语中too...to do...的结构通常表示否定，但如果在前面加上only,就有“非常...能做”的意思。" },
+    { label: "disposing of", description: "处理。" },
+    { label: "It is recounted of Thomas Carlyle...", description: "据说，托马斯.卡莱尔...（有下面这件）.托马斯.卡莱尔是十九世纪英国著名的散文作家和历史学家。" },
+    { label: "in all probability", description: "很可能。" },
+    { label: "put up with", description: "忍受。" }
+  ],
+
+  originalId: "nce4-l24",
+
+  vocabulary: [
+    { word: "intense", pos: "adj.", meaning: "强烈的", phonetic: "/in'tens/" },
+    { word: "aesthetic", pos: "adj.", meaning: "审美的", phonetic: "/i:s'θetik/" },
+    { word: "realm", pos: "n.", meaning: "世界", phonetic: "/'relm/" },
+    { word: "serenity", pos: "n.", meaning: "静谧", phonetic: "/si'reniti/" },
+    { word: "undeniable", pos: "adj.", meaning: "不可否认的", phonetic: "/'ʌndi'naiəbl/" },
+    { word: "indefinable", pos: "adj.", meaning: "模糊不清的", phonetic: "/'indi'fainəbl/" },
+    { word: "vulgar", pos: "adj.", meaning: "平庸的", phonetic: "/'vʌlgə/" },
+    { word: "radiance", pos: "n.", meaning: "发光", phonetic: "/'reidjəns/" },
+    { word: "intimation", pos: "n.", meaning: "暗示", phonetic: "/inti'meiʃən/" },
+    { word: "unutterable", pos: "adj.", meaning: "不可言传的", phonetic: "/ʌn'ʌtərəbl/" },
+    { word: "invest", pos: "v.", meaning: "赋予", phonetic: "/in'vest/" }
+  ],
+}
+const articleNce4L28: Article = {
+
+  id: "nce4-l28",
+  lesson: 28,
+  tag: "C34",
+  title: "Patients and doctors",
+  titleCn: "病人与医生",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "KENNETH WALKER（肯尼斯·沃克）《Patients and doctors》",
+  notesOnText: [
+    { label: "be confined to", description: "仅限于...。" },
+    { label: "shallow water", description: "浅水区。" },
+    { label: "open sea", description: "无办际的大海。" },
+    { label: "gave more than a passing thought to", description: "稍微想过。" },
+    { label: "at the disposal of", description: "交由...支配。" },
+    { label: "a relief map", description: "地形图。" },
+    { label: "with", description: "superimposed upon it,the continents,together with the islands and other features of the oceans,这是with引导的一个过去分词独立主格结构。因逻辑主语太长，所以使用了倒装语序。superimposed upon it是逻辑谓语部分。" },
+    { label: "continental shelf", description: "大陆架。" },
+    { label: "1 in 30", description: "1/30。" }
+  ],
+
+  originalId: "nce4-l28",
+
+  vocabulary: [
+    { word: "skeptical", pos: "adj.", meaning: "怀疑的", phonetic: "/'skeptikəl/" },
+    { word: "forefathers", pos: "n.", meaning: "祖先", phonetic: "//" },
+    { word: "fervently", pos: "adv.", meaning: "热情地", phonetic: "/'fə:vəntli/" },
+    { word: "curative", pos: "adj.", meaning: "治病的", phonetic: "/'kjuərətiv/" },
+    { word: "astronomical", pos: "adj.", meaning: "天文学的", phonetic: "/'æstrə'nɔmikəl/" },
+    { word: "tangible", pos: "adj.", meaning: "实实在在的", phonetic: "/tændʒəbl/" },
+    { word: "remedy", pos: "n.", meaning: "药物", phonetic: "/'remidi/" },
+    { word: "ointment", pos: "n.", meaning: "药膏", phonetic: "/'ɔintmənt/" },
+    { word: "prescribe", pos: "v.", meaning: "开药方", phonetic: "/pri'skraib/" },
+    { word: "indisposition", pos: "n.", meaning: "小病", phonetic: "/in'dispə'ziʃən/" },
+    { word: "disgusting", pos: "adj.", meaning: "令人讨厌的", phonetic: "//" },
+    { word: "inconvenience", pos: "n.", meaning: "不便", phonetic: "/'inkən'vi:njəns/" }
+  ],
+}
+const articleNce4L30: Article = {
+
+  id: "nce4-l30",
+  lesson: 30,
+  tag: "C36",
+  title: "Exploring the sea-floor",
+  titleCn: "海底勘探",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "H. H. HESS（H. H. 赫斯）from《Scientific American》, 1960",
+  notesOnText: [
+    { label: "something like", description: "多少，大约。" },
+    { label: "a problem child", description: "problem 作定语，修饰 child。这是一种比喻修辞法，意思是“新出现的问题”。" },
+    { label: "a man who... who... who... who...", description: "这里一连用了4个定语从句，均用who引导，构成了排比结构，起加强语气的作用。" },
+    { label: "at the time", description: "当时。" },
+    { label: "use a telescope at the limit of its power", description: "用望远镜的极限功率。" }
+  ],
+
+  originalId: "nce4-l30",
+
+  vocabulary: [
+    { word: "navigation", pos: "n.", meaning: "航海", phonetic: "/'nævi'geiʃən/" },
+    { word: "sounding", pos: "n.", meaning: "水深度", phonetic: "//" },
+    { word: "fathom", pos: "n.", meaning: "英寻（1寻等于1.8米）", phonetic: "/'fæðəm/" },
+    { word: "porcupine", pos: "n.", meaning: "箭猪", phonetic: "/'pɔ:kjupain/" },
+    { word: "dredge", pos: "v.", meaning: "挖掘", phonetic: "/dredʒ/" },
+    { word: "expedition", pos: "n.", meaning: "远征", phonetic: "/'ekspi'diʃən/" },
+    { word: "physicist", pos: "n.", meaning: "物理学家", phonetic: "/'fizisist/" },
+    { word: "magnitude", pos: "n.", meaning: "很多", phonetic: "/'mægnitju:d/" },
+    { word: "topography", pos: "n.", meaning: "地形", phonetic: "/tə'pɔgrəfi/" },
+    { word: "crust", pos: "n.", meaning: "地壳", phonetic: "/krʌst/" },
+    { word: "rugged", pos: "adj.", meaning: "崎岖不平的", phonetic: "/'rʌgid/" },
+    { word: "tableland", pos: "n.", meaning: "高地", phonetic: "//" },
+    { word: "sediment", pos: "n.", meaning: "沉淀物", phonetic: "/'sedimənt/" },
+    { word: "terrace", pos: "n.", meaning: "阶地", phonetic: "/'terəs/" },
+    { word: "erode", pos: "v.", meaning: "侵蚀", phonetic: "/i'rəud/" }
+  ],
+}
+const articleNce4L32: Article = {
+
+  id: "nce4-l32",
+  lesson: 32,
+  tag: "C39",
+  title: "Galileo reborn",
+  titleCn: "伽利略的复生",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "MICHAEL HOSKIN（迈克尔·霍斯金）《Galileo Reborn》from《The Listener》",
+  notesOnText: [
+    { label: "Education", description: "with its cycles...,punctuated by textbooks...,这句话中的主语 Education 与 punctuated 并不是一种主谓关系，因此，这句话在语法上被称作单元句" },
+    { label: "So much is certain", description: "有承上启下的作用:一方面回答了前一段最后一句的提问，另一方面开始列举没有教育将会给社会文明带来的影响。" },
+    { label: "be fashioned after", description: "按...做成。" },
+    { label: "without a script", description: "没有文字的。" }
+  ],
+
+  originalId: "nce4-l32",
+
+  vocabulary: [
+    { word: "controversy", pos: "n.", meaning: "争议，争论", phonetic: "/'kɔntrəvə:si/" },
+    { word: "dust", pos: "n.", meaning: "纠纷，骚动", phonetic: "/dʌst/" },
+    { word: "clash", pos: "n.", meaning: "冲突", phonetic: "/klæʃ/" },
+    { word: "Inquisition", pos: "n.", meaning: "(罗马天主教的)宗教法庭", phonetic: "/inkwi'ziʃən/" },
+    { word: "perspective", pos: "n.", meaning: "观点，看法", phonetic: "/pə:'spektiv/" },
+    { word: "despise", pos: "v.", meaning: "蔑视", phonetic: "/dis'paiz/" },
+    { word: "generalize", pos: "v.", meaning: "归纳", phonetic: "/'dʒenərəlaiz/" },
+    { word: "undercurrent", pos: "n.", meaning: "潜流", phonetic: "/'ʌndə'kʌrənt/" },
+    { word: "theoretical", pos: "adj.", meaning: "理论上的", phonetic: "/θiə'retikl/" },
+    { word: "potentiality", pos: "n.", meaning: "潜能", phonetic: "/pə'tenʃi'æliti/" },
+    { word: "intimate", pos: "adj.", meaning: "详尽的", phonetic: "/'intimit/" },
+    { word: "familiarity", pos: "n.", meaning: "熟悉", phonetic: "/fə'mili'æriti/" },
+    { word: "culpable", pos: "adj.", meaning: "应受谴责的", phonetic: "/'kʌlpəbl/" },
+    { word: "Aristotelian", pos: "n.", meaning: "亚里士多德学派的人", phonetic: "/æristə'ti:liən/" },
+    { word: "Aristotle", pos: "n.", meaning: "亚里士多德(古希腊哲学家)", phonetic: "/'æristɔtl/" },
+    { word: "Ptolemy", pos: "n.", meaning: "托勒密(公元-，古希腊天文学家)", phonetic: "//" },
+    { word: "Leaning Tower Pisa", pos: "n.", meaning: "比萨斜塔", phonetic: "//" },
+    { word: "spiral", pos: "adj.", meaning: "螺旋状的", phonetic: "/'spaiərəl/" },
+    { word: "nebula", pos: "n.", meaning: "星云", phonetic: "/'nebjulə/" },
+    { word: "scratch", pos: "n.", meaning: "擦痕", phonetic: "/skrætʃ/" },
+    { word: "contrivance", pos: "n.", meaning: "器械", phonetic: "/kən'traivəns/" },
+    { word: "distort", pos: "v.", meaning: "歪曲", phonetic: "/dis'tɔ:t/" }
+  ],
+}
+const articleNce4L33: Article = {
+
+  id: "nce4-l33",
+  lesson: 33,
+  tag: "C41",
+  title: "Education",
+  titleCn: "教育",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "JULIUS E. LIPS（朱利叶斯·E·利普斯）《The Origin of Things》",
+  notesOnText: [
+    { label: "on the part of", description: "在...一边。" },
+    { label: "they have brought this on themselves", description: "他们是咎由自取。" },
+    { label: "stand up to", description: "经得起。" },
+    { label: "face up to", description: "正视。" }
+  ],
+
+  originalId: "nce4-l33",
+
+  vocabulary: [
+    { word: "adverse", pos: "adj.", meaning: "逆的，相反的", phonetic: "/'ædvə:s/" },
+    { word: "purchasable", pos: "adj.", meaning: "可买到的", phonetic: "/'pə:tʃəsəbl/" },
+    { word: "preacher", pos: "n.", meaning: "传教士", phonetic: "/'pri:tʃə/" },
+    { word: "defendant", pos: "n.", meaning: "被告", phonetic: "/di'fendənt/" },
+    { word: "outlook", pos: "n.", meaning: "视野", phonetic: "/'aut-luk/" },
+    { word: "capacity", pos: "n.", meaning: "能力", phonetic: "/kə'pæsiti/" },
+    { word: "means", pos: "n.", meaning: "方法，手段，财产，资力", phonetic: "/mi:nz/" },
+    { word: "hamper", pos: "v.", meaning: "妨碍", phonetic: "/'hæmpə/" },
+    { word: "savannah", pos: "n.", meaning: "大草原", phonetic: "/sə'vænə/" },
+    { word: "democratic", pos: "adj.", meaning: "民主的", phonetic: "/'demə'krætik/" },
+    { word: "tribal", pos: "adj.", meaning: "部落的", phonetic: "/traibl/" },
+    { word: "tribe", pos: "n.", meaning: "部落", phonetic: "/traib/" },
+    { word: "illiterate", pos: "n.", meaning: "文盲", phonetic: "/i'litərit/" },
+    { word: "compulsory", pos: "adj.", meaning: "义务的", phonetic: "/kəm'pʌlsəri/" },
+    { word: "deem", pos: "v.", meaning: "认为", phonetic: "/di:m/" },
+    { word: "juvenile", pos: "adj.", meaning: "青少年的", phonetic: "/'dʒu:vinail/" },
+    { word: "delinquency", pos: "n.", meaning: "犯罪", phonetic: "/di'liŋkwənsi/" }
+  ],
+}
+const articleNce4L34: Article = {
+
+  id: "nce4-l34",
+  lesson: 34,
+  tag: "C42",
+  title: "Adolescence",
+  titleCn: "青春期",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "DOTID OFLUM（多蒂德·奥弗拉姆）《Journey Through Adolescence》",
+  notesOnText: [
+    { label: "at its most vigorous", description: "生命力最旺盛的时候。" },
+    { label: "with the passing of time", description: "随着时间的流失。" },
+    { label: "It is one of the most unpleasant discoveries...that...", description: "that...,and that..., 3个以that引导的从句是discoveries 的同位语。" },
+    { label: "a wound watch", description: "上紧了发条的表。" }
+  ],
+
+  originalId: "nce4-l34",
+
+  vocabulary: [
+    { word: "adolescence", pos: "n.", meaning: "青春期", phonetic: "/'ædəu'lesns/" },
+    { word: "slur", pos: "n.", meaning: "诋毁", phonetic: "/slə:/" },
+    { word: "adolescent", pos: "n.", meaning: "青少年(-岁)", phonetic: "/ædə'lesənt/" },
+    { word: "disloyalty", pos: "n.", meaning: "不忠实", phonetic: "/dis'lɔiəlti/" },
+    { word: "spiteful", pos: "adj.", meaning: "恶意的，怀恨的", phonetic: "/'spaitful/" },
+    { word: "disillusionment", pos: "n.", meaning: "幻灭感", phonetic: "/-mənt/" },
+    { word: "evaluation", pos: "n.", meaning: "评价", phonetic: "/i'vælju'eiʃən/" },
+    { word: "Infallibility", pos: "n.", meaning: "一贯正确", phonetic: "/in'fælə'biləti/" },
+    { word: "resent", pos: "v.", meaning: "怨恨", phonetic: "/ri'zent/" },
+    { word: "sincerity", pos: "n.", meaning: "诚挚", phonetic: "/sin'seriti/" },
+    { word: "victorian", pos: "adj.", meaning: "维多利亚式的", phonetic: "/vik'tɔ:riən/" },
+    { word: "retreat", pos: "v.", meaning: "后退", phonetic: "/ri'tri:t/" },
+    { word: "unreasoning", pos: "adj.", meaning: "不凭理智的", phonetic: "/ʌn'ri:zəniŋ/" },
+    { word: "authoritarian", pos: "adj.", meaning: "专制的", phonetic: "/ɔ:'θɔri'tєəriən/" },
+    { word: "cow", pos: "v.", meaning: "吓唬", phonetic: "/kau/" }
+  ],
+}
+const articleNce4L37: Article = {
+
+  id: "nce4-l37",
+  lesson: 37,
+  tag: "C45",
+  title: "The process of ageing",
+  titleCn: "衰老过程",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "ALEX COMPORT（亚历克斯·康福特）《The process of ageing》",
+  notesOnText: [
+    { label: "The inner workings of our own brains", description: "这一部分是feel的宾语，为了强调而把宾语提前了，to be uniquely worthy of investigation 是宾语补足语。" },
+    { label: "the other way around", description: "正好相反。" },
+    { label: "taken the world over", description: "是过去分词短语，作Traditional custom的定语，taken前省略了it is 意为：被全世界所接受的。" },
+    { label: "go behind these stereotypes", description: "摆脱这些旧框框。" },
+    { label: "his very concepts", description: "其中的very是形容词，用于加强语气。" },
+    { label: "have reference to", description: "参照...,与...有关。" },
+    { label: "be taken up into", description: "被接纳进。" },
+    { label: "first and foremost", description: "首先。" },
+    { label: "the thousandth part", description: "等于the thousandth part of the customs。" },
+    { label: "let us say", description: "譬如说。" }
+  ],
+
+  originalId: "nce4-l37",
+
+  vocabulary: [
+    { word: "likelihood", pos: "n.", meaning: "可能性", phonetic: "/'laiklihud/" },
+    { word: "infant", pos: "n.", meaning: "婴儿", phonetic: "/'infənt/" },
+    { word: "vulnerable", pos: "adj.", meaning: "脆弱的", phonetic: "/'vʌlnərəbl/" },
+    { word: "imperceptible", pos: "adj.", meaning: "感觉不到的", phonetic: "/'impə'septəbl/" },
+    { word: "robust", pos: "adj.", meaning: "强健的", phonetic: "/rəu'bʌst/" },
+    { word: "organism", pos: "n.", meaning: "有机体", phonetic: "/'ɔ:gənizəm/" },
+    { word: "thermodynamics", pos: "n.", meaning: "热力学", phonetic: "/'θə:məudai'næmiks/" },
+    { word: "steep", pos: "adj.", meaning: "急转直下的", phonetic: "/sti:p/" },
+    { word: "ageing", pos: "n.", meaning: "老化", phonetic: "//" },
+    { word: "odds", pos: "n.", meaning: "可能性", phonetic: "/ɔdz/" },
+    { word: "virtual", pos: "adj.", meaning: "实际上的", phonetic: "/'və:tjuəl/" },
+    { word: "moot", pos: "adj.", meaning: "争论未决的", phonetic: "/mu:t/" },
+    { word: "run-down", pos: "adj.", meaning: "破旧的", phonetic: "//" },
+    { word: "friction", pos: "n.", meaning: "摩擦", phonetic: "/'frikʃən/" }
+  ],
+}
+const articleNce4L44: Article = {
+
+  id: "nce4-l44",
+  lesson: 44,
+  tag: "C55",
+  title: "Patterns of culture",
+  titleCn: "文化的模式",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "RUTH BENEDICT（鲁思·本尼迪克特）《Patterns of Culture》",
+  originalId: "nce4-l44",
+
+  vocabulary: [
+    { word: "commonplace", pos: "adj.", meaning: "平凡的", phonetic: "/'kɔmənpleis/" },
+    { word: "aberrant", pos: "adj.", meaning: "脱离常轨的，异常的", phonetic: "/æ'berənt/" },
+    { word: "trivial", pos: "adj.", meaning: "微不足道的", phonetic: "/'triviəl/" },
+    { word: "predominant", pos: "adj.", meaning: "占优势的，起支配作用的", phonetic: "/pri'dɔminənt/" },
+    { word: "manifest", pos: "adj.", meaning: "明显的", phonetic: "/'mænifest/" },
+    { word: "pristine", pos: "adj.", meaning: "纯洁的，质朴的", phonetic: "/'pristain/" },
+    { word: "stereotype", pos: "n.", meaning: "陈规", phonetic: "/stiəriətaip/" },
+    { word: "vernacular", pos: "n.", meaning: "方言", phonetic: "/və'nækjulə/" },
+    { word: "accommodation", pos: "n.", meaning: "适应", phonetic: "/ə,kɔmə'deiʃən/" },
+    { word: "incumbent", pos: "adj.", meaning: "义不容辞的，有责任的", phonetic: "/in'kʌmbənt/" },
+    { word: "preliminary", pos: "adj.", meaning: "初步的", phonetic: "/pri'liminəri/" },
+    { word: "proposition", pos: "n.", meaning: "主张", phonetic: "/'prɔpə'ziʃən/" },
+    { word: "preferential", pos: "adj.", meaning: "优先的", phonetic: "/prefə'renʃəl/" },
+    { word: "controversial", pos: "adj.", meaning: "引起争论的", phonetic: "/'kɔntrə'və:ʃəl/" },
+    { word: "cactus", pos: "n.", meaning: "仙人掌", phonetic: "/'kæktəs/" },
+    { word: "termite", pos: "n.", meaning: "白蚁", phonetic: "/'tə:mait/" },
+    { word: "nebula", pos: "n.", meaning: "星云", phonetic: "/'nebjulə/" },
+    { word: "variant", pos: "adj.", meaning: "不同的", phonetic: "/'vєəriənt/" },
+    { word: "barbarian", pos: "n.", meaning: "野蛮人", phonetic: "/ba:'bєəriən/" },
+    { word: "pagan", pos: "n.", meaning: "异教徒", phonetic: "/'peigən/" },
+    { word: "sophistication", pos: "n.", meaning: "老练", phonetic: "/sə'fisti'keiʃən/" },
+    { word: "premise", pos: "n.", meaning: "前提", phonetic: "/'premis, pri'maiz/" },
+    { word: "supernatural", pos: "adj.", meaning: "超自然的", phonetic: "/'sju:pə'nætʃərəl/" }
+  ],
+}
+const articleNce4L46: Article = {
+
+  id: "nce4-l46",
+  lesson: 46,
+  tag: "C58",
+  title: "Hobbies",
+  titleCn: "业余爱好",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+
+  attribution: "WINSTON CHURCHILL（温斯顿·丘吉尔）《Painting as a Pastime》",
+  notesOnText: [
+    { label: "catch hold of", description: "抓住....,let ...go,放掉....。" },
+    { label: "lay one's hands on", description: "得到...,抓到....。" }
+  ],
+
+  originalId: "nce4-l46",
+
+  vocabulary: [
+    { word: "gifted", pos: "adj.", meaning: "有天才的", phonetic: "/'giftid/" },
+    { word: "psychologist", pos: "n.", meaning: "心理学家", phonetic: "/sai'kɔlədʒist/" },
+    { word: "spasm", pos: "n.", meaning: "一阵(感情)发作", phonetic: "/'spæzəm/" },
+    { word: "futile", pos: "adj.", meaning: "无用的", phonetic: "/'fju:tail/" },
+    { word: "insinuate", pos: "v.", meaning: "使潜入，暗示", phonetic: "/in'sinjueit/" },
+    { word: "convulsive", pos: "adj.", meaning: "起痉挛的", phonetic: "/kən'vʌlsiv/" },
+    { word: "illumination", pos: "n.", meaning: "启发，照明", phonetic: "/i'lju:mi'neiʃən/" },
+    { word: "undue", pos: "adj.", meaning: "不适当的", phonetic: "/'ʌn'dju:/" },
+    { word: "grip", pos: "n.", meaning: "紧张", phonetic: "/grip/" },
+    { word: "recuperation", pos: "n.", meaning: "休息", phonetic: "/ri'kju:pə'reiʃən/" },
+    { word: "improvise", pos: "v.", meaning: "临时作成", phonetic: "/'imprəvaiz/" },
+    { word: "sedulously", pos: "adv.", meaning: "孜孜不倦地", phonetic: "//" },
+    { word: "vivify", pos: "v.", meaning: "使生气勃勃", phonetic: "/'vivifai/" },
+    { word: "aggravate", pos: "v.", meaning: "加剧", phonetic: "/'ægrəveit/" },
+    { word: "trifling", pos: "adj.", meaning: "微小的", phonetic: "/'traifliŋ/" },
+    { word: "gratify", pos: "v.", meaning: "使满意", phonetic: "/'grætifai/" },
+    { word: "caprice", pos: "n.", meaning: "任性", phonetic: "/kə'pri:s/" },
+    { word: "satiation", pos: "n.", meaning: "满足", phonetic: "/'seiʃi'eiʃən/" },
+    { word: "frantically", pos: "adv.", meaning: "狂乱地", phonetic: "/'fræntikəli/" },
+    { word: "avenge", pos: "v.", meaning: "替…报复", phonetic: "/ə'vendʒ/" },
+    { word: "boredom", pos: "n.", meaning: "厌烦", phonetic: "/'bɔ:dəm/" },
+    { word: "clatter", pos: "n.", meaning: "喧闹的谈话", phonetic: "/'klætə/" },
+    { word: "sustenance", pos: "n.", meaning: "支撑力", phonetic: "/'sʌstənəns/" },
+    { word: "appetite", pos: "n.", meaning: "欲望", phonetic: "/'æpitait/" },
+    { word: "grudge", pos: "v.", meaning: "怨恨", phonetic: "/grʌdʒ/" },
+    { word: "absorbing", pos: "adj.", meaning: "引人入胜的", phonetic: "/əb'sɔ:biŋ/" },
+    { word: "banish", pos: "v.", meaning: "排除，放弃", phonetic: "/'bæniʃ/" }
+  ],
+}
+const articleNce4L48: Article = {
+
+  id: "nce4-l48",
+  lesson: 48,
+  title: "Planning a share portfolio",
+  titleCn: "规划股票投资组合",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  notesOnText: [
+    { label: "go about", description: "从事，做。" },
+    { label: "Periwigs", description: "是一个假想中公司的名字。" },
+    { label: "the basics", description: "这里指基本情况，基本要素。" },
+    { label: "If you recognize yourself in this description", description: "如果你觉得你的情况是这样的话。" }
+  ],
+
+  originalId: "nce4-l48",
+
+  vocabulary: [
+    { word: "portfolio", pos: "n.", meaning: "投资组合", phonetic: "/pɔ:t'fouljou/" },
+    { word: "tipster", pos: "n.", meaning: "(提供证券投机等消息为生的)情报贩子", phonetic: "/'tipstə/" },
+    { word: "Las Vegas", pos: "n.", meaning: "拉斯韦加斯", phonetic: "//" },
+    { word: "fritter", pos: "v.", meaning: "挥霍，浪费", phonetic: "/'fritə/" },
+    { word: "reputable", pos: "adj.", meaning: "享有声望的", phonetic: "/'repjutəbl/" },
+    { word: "broker", pos: "n.", meaning: "经纪人", phonetic: "/'brəukə/" },
+    { word: "finance", pos: "n.", meaning: "资金，财源", phonetic: "/fai'næns, fi-/" },
+    { word: "mortgage", pos: "n.", meaning: "抵押贷款", phonetic: "/'mɔ:gidʒ/" },
+    { word: "pension", pos: "n.", meaning: "养老金", phonetic: "/'penʃən/" },
+    { word: "priority", pos: "n.", meaning: "优先权", phonetic: "/prai'ɔriti/" },
+    { word: "gilt", pos: "n.", meaning: "金边证券(高度可靠的证券)", phonetic: "/gilt/" },
+    { word: "convertible", pos: "n.", meaning: "可换证券", phonetic: "/kən'və:təbl/" },
+    { word: "sanguine", pos: "adj.", meaning: "乐观的", phonetic: "/'sæŋgwin/" },
+    { word: "heady", pos: "adj.", meaning: "令人陶醉的", phonetic: "/'hedi/" },
+    { word: "alongside", pos: "prep.", meaning: "在…旁边，和…一起", phonetic: "/ə'lɔŋ'said/" },
+    { word: "pedestrian", pos: "adj.", meaning: "平淡无奇的，乏味的", phonetic: "/pi'destriən/" }
+  ],
+}
+
+const articleNce4L5: Article = {
+
+  id: "nce4-l5",
+  lesson: 5,
+  tag: "C6",
+  title: "The Problem of Youth",
+  titleCn: "青年",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 1, 2, 0, 1, 3, 2, 1, 0],
+    [1, 2, 0, 1, 0, 2, 4, 0, 1],
+    [0, 0, 1, 3, 2, 0, 1, 2, 0],
+    [2, 1, 0, 0, 1, 2, 3, 1, 2],
+  ],
+
+  attribution: "SAMUEL ULLMAN（塞缪尔·厄尔曼）《Youth》, 1917",
+  notesOnText: [
+    { label: "which I take leave to doubt", description: "这是一个插入成分，用两个破折号与句子的主要部分分工。take leave to do sth.是“擅自做”，“冒昧去做”的意思。" },
+    { label: "get down to", description: "认真处理，认真研究。" },
+    { label: "for one thing", description: "首先。" },
+    { label: "air of freedom", description: "无拘无束。" },
+    { label: "in some sense", description: "在某种意义上。" },
+    { label: "turn to...for ...", description: "为...而求助于....。" }
+  ],
+
+  originalId: "nce4-l5",
+  vocabulary: [
+    { word: "leave", pos: "n.", meaning: "允许", phonetic: "/li:v/" },
+    { word: "fundamentals", pos: "n.", meaning: "基本原则", phonetic: "//" },
+    { word: "glorious", pos: "adj.", meaning: "光辉灿烂的", phonetic: "/'glɔ:riəs/" },
+    { word: "splendid", pos: "adj.", meaning: "灿烂的", phonetic: "/'splendid/" },
+    { word: "rub", pos: "n.", meaning: "难题", phonetic: "/rʌb/" },
+    { word: "identity", pos: "n.", meaning: "身份", phonetic: "/ai'dentiti/" },
+    { word: "dreary", pos: "adj.", meaning: "沉郁的", phonetic: "/'driəri/" },
+    { word: "commitment", pos: "n.", meaning: "信奉", phonetic: "/kə'mitmənt/" },
+    { word: "mean", pos: "adj.", meaning: "吝啬，小气", phonetic: "/mi:n/" },
+    { word: "social climber", pos: "n.", meaning: "追求更高社会地位的人，向上爬的人", phonetic: "//" },
+    { word: "devotion", pos: "n.", meaning: "热爱", phonetic: "/di'vəuʃən/" },
+    { word: "cosmic", pos: "adj.", meaning: "宇宙的", phonetic: "/'kɔzmik/" },
+    { word: "suburban", pos: "adj.", meaning: "见识不广的，偏狭的", phonetic: "/sə'bə:bən/" },
+    { word: "conceited", pos: "adj.", meaning: "自高自大的", phonetic: "/kən'si:tid/" },
+    { word: "presumptuous", pos: "adj.", meaning: "自以为是的，放肆的", phonetic: "/pri'zʌmptjuəs/" },
+    { word: "fatuous", pos: "adj.", meaning: "愚蠢的", phonetic: "/'fætjuəs/" },
+    { word: "cliché", pos: "n.", meaning: "陈词滥调", phonetic: "/'kli:ʃei/" },
+  ],
+}
+
+const articleNce4L9: Article = {
+  id: "nce4-l9",
+  lesson: 9,
+  tag: "C9",
+  title: "Royal espionage",
+  titleCn: "王室谍报活动",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "BERNARD NEWMAN（伯纳德·纽曼）《Spies in Britain》",
+  notesOnText: [
+    { label: "settle down", description: "驻扎" },
+    { label: "They lived well", description: "on the proceeds of raids,他们的生活舒适，靠袭击（周围地区）掠夺得到的财物为生。live on ,靠为生。" },
+    { label: "be fit for", description: "适宜于.....。" }
+  ],
+
+  originalId: "nce4-l9",
+  vocabulary: [
+    { word: "espionage", pos: "n.", meaning: "间谍活动", phonetic: "/'espiənɑ:ʒ/" },
+    { word: "Alfred", pos: "n.", meaning: "阿尔弗雷德(公元871-899年间任英国国王)", phonetic: "/'ælfrid/" },
+    { word: "Danish", pos: "adj.", meaning: "丹麦的，丹麦人的，丹麦语的", phonetic: "/'deiniʃ/" },
+    { word: "minstrel", pos: "n.", meaning: "中世纪的吟游歌手", phonetic: "/'minstrəl/" },
+    { word: "wandering", pos: "adj.", meaning: "漫游的", phonetic: "/'wɔndəriŋ/" },
+    { word: "harp", pos: "n.", meaning: "竖琴", phonetic: "/hɑ:p/" },
+    { word: "ballad", pos: "n.", meaning: "民歌", phonetic: "/'bæləd/" },
+    { word: "acrobatic", pos: "adj.", meaning: "杂技的", phonetic: "/ækrə'bætik/" },
+    { word: "conjuring", pos: "n.", meaning: "魔术", phonetic: "/'kʌndʒəriŋ/" },
+    { word: "Athelney", pos: "n.", meaning: "阿塞尔纳（英国一个小岛）", phonetic: "/'æθəlni/" },
+    { word: "Chippenham", pos: "n.", meaning: "切本哈姆（英国一城市）", phonetic: "/'tʃipənəm/" },
+    { word: "thither", pos: "adv.", meaning: "向那里", phonetic: "/'ðiðə/" },
+    { word: "Dane", pos: "n.", meaning: "丹麦人", phonetic: "/dein/" },
+    { word: "slack", pos: "adj.", meaning: "涣散的", phonetic: "/slæk/" },
+    { word: "conqueror", pos: "n.", meaning: "征服者", phonetic: "/'kɔŋkərə/" },
+    { word: "casual", pos: "adj.", meaning: "马虎的，随便的", phonetic: "/'kæʒjuəl/" },
+    { word: "precaution", pos: "n.", meaning: "预防，警惕", phonetic: "/pri'kɔ:ʃən/" },
+    { word: "proceeds", pos: "n.", meaning: "所得", phonetic: "/'prəusi:dz/" },
+    { word: "assemble", pos: "v.", meaning: "集合", phonetic: "/ə'sembl/" }
+  ],
+}
+const articleNce4L10: Article = {
+  id: "nce4-l10",
+  lesson: 10,
+  tag: "C10",
+  title: "Silicon valley",
+  titleCn: "硅谷",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "《US NEWS AND WORLD REPORT》, October 2, 1989",
+  notesOnText: [
+    { label: "much the way an editor creates a newsletter", description: "就像一位编辑出一份时事通讯一样。" },
+    { label: "be free to", description: "可以做....。" },
+    { label: "in droves", description: "一批批，成群地。" },
+    { label: "draw on", description: "依靠，凭借。" }
+  ],
+
+  originalId: "nce4-l10",
+  vocabulary: [
+    { word: "silicon", pos: "n.", meaning: "硅", phonetic: "/'silikən/" },
+    { word: "integrated", pos: "adj.", meaning: "综合的", phonetic: "/'intigreitid/" },
+    { word: "circuit", pos: "n.", meaning: "线路，电路", phonetic: "/'sə:kit/" },
+    { word: "California", pos: "n.", meaning: "加利福尼亚（美国州名）", phonetic: "/kæli'fɔ:njə/" },
+    { word: "workstation", pos: "n.", meaning: "工作站", phonetic: "/'wə:ksteiʃən/" },
+    { word: "chip", pos: "n.", meaning: "芯片，集成电路片，集成块", phonetic: "/tʃip/" },
+    { word: "newsletter", pos: "n.", meaning: "时事通讯", phonetic: "/'nju:zletə/" },
+    { word: "Macintosh", pos: "n.", meaning: "苹果机，一种个人电脑", phonetic: "/'mækintɔʃ/" },
+    { word: "penalize", pos: "v.", meaning: "处罚，惩罚", phonetic: "/'pi:nəlaiz/" },
+    { word: "customize", pos: "v.", meaning: "按顾客具体需要制造", phonetic: "/'kʌstəmaiz/" },
+    { word: "spawn", pos: "v.", meaning: "引起，酿成", phonetic: "/spɔ:n/" },
+    { word: "thrive", pos: "v.", meaning: "兴旺，繁荣", phonetic: "/θraiv/" },
+    { word: "anarchy", pos: "n.", meaning: "无政府状态，混乱", phonetic: "/'ænəki/" },
+    { word: "oriental", pos: "n.", meaning: "东方人", phonetic: "/ɔ:ri'entl/" },
+    { word: "constitute", pos: "v.", meaning: "构成", phonetic: "/'kɔnstitju:t/" },
+    { word: "drove", pos: "n.", meaning: "群", phonetic: "/drəuv/" },
+    { word: "innovator", pos: "n.", meaning: "发明者", phonetic: "/'inəuveitə/" },
+    { word: "forge", pos: "v.", meaning: "发展", phonetic: "/fɔ:dʒ/" },
+    { word: "memory-chip", pos: "n.", meaning: "内存条", phonetic: "/'meməritʃip/" },
+    { word: "AT&T", pos: "n.", meaning: "美国电话电报公司", phonetic: "/'ei'ti:ænd'ti:/" },
+    { word: "Kansas", pos: "n.", meaning: "堪萨斯（美国州名）", phonetic: "/'kænzəs/" },
+    { word: "Missouri", pos: "n.", meaning: "密苏里（美国州名）", phonetic: "/mi'zuəri/" }
+  ],
+}
+const articleNce4L12: Article = {
+  id: "nce4-l12",
+  lesson: 12,
+  tag: "C12",
+  title: "Banks and their customers",
+  titleCn: "银行和顾客",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "GORDON BARRIE（戈登·巴里） and AUBREY L. DLAMOND《The Consumer Society and the Law》",
+  notesOnText: [
+    { label: "open a current account", description: "开一个活期账号" },
+    { label: "draw a cheque in favour of ...", description: "开一张以...为收款人的支票。" },
+    { label: "who is which depending on ...is overdrawn", description: "这是现在分词短语depending on ...is overdrawn的独立主格结构。who is which是分词短语意思上的主语，which代表debtor or creditor。" },
+    { label: "give rise to", description: "引起。" },
+    { label: "be loaded against...", description: "与...不利。" }
+  ],
+
+  originalId: "nce4-l12",
+  vocabulary: [
+    { word: "current", pos: "adj.", meaning: "通用的，流行的", phonetic: "/'kʌrənt/" },
+    { word: "account", pos: "n.", meaning: "账户", phonetic: "/ə'kaunt/" },
+    { word: "cash", pos: "n.", meaning: "现金", phonetic: "/kæʃ/" },
+    { word: "cheque", pos: "n.", meaning: "支票", phonetic: "/tʃek/" },
+    { word: "debtor", pos: "n.", meaning: "借方", phonetic: "/'detə/" },
+    { word: "creditor", pos: "n.", meaning: "贷方", phonetic: "/'kreditə/" },
+    { word: "obligation", pos: "n.", meaning: "义务", phonetic: "/ɔbli'geiʃən/" },
+    { word: "complication", pos: "n.", meaning: "纠纷", phonetic: "/kɔmpli'keiʃən/" },
+    { word: "debit", pos: "v.", meaning: "把...记入借方", phonetic: "/'debit/" },
+    { word: "specimen", pos: "n.", meaning: "样本", phonetic: "/'spesimin/" },
+    { word: "forge", pos: "v.", meaning: "伪造", phonetic: "/fɔ:dʒ/" },
+    { word: "forgery", pos: "n.", meaning: "伪造（文件，签名等）", phonetic: "/'fɔ:dʒəri/" },
+    { word: "adopt", pos: "v.", meaning: "采用", phonetic: "/ə'dɔpt/" },
+    { word: "facilitate", pos: "v.", meaning: "使便利", phonetic: "/fə'siliteit/" }
+  ],
+}
+const articleNce4L14: Article = {
+  id: "nce4-l14",
+  lesson: 14,
+  tag: "C14",
+  title: "The Butterfly Effect",
+  titleCn: "蝴蝶效应",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "JAMES GLEICK（詹姆斯·格莱克）《Chaos》",
+  notesOnText: [
+    { label: "so that it multiplied with that promiscuous abandon characteristic of rabbits", description: "这里so that引导的一个结果状语从句，可译成“因此便以兔子所特有的杂乱交配繁衍后代”。" },
+    { label: "be susceptible to ...", description: "易受...感染的，易受...影响的。" },
+    { label: "let loose", description: "让乱跑。" },
+    { label: "pass ... on to", description: "把...传给。" }
+  ],
+
+  originalId: "nce4-l14",
+  vocabulary: [
+    { word: "forecast", pos: "n.", meaning: "预报", phonetic: "/'fɔ:kɑ:st/" },
+    { word: "speculative", pos: "adj.", meaning: "推测的", phonetic: "/'spekjulətiv/" },
+    { word: "blizzard", pos: "n.", meaning: "暴风雪", phonetic: "/'blizəd/" },
+    { word: "deteriorate", pos: "v.", meaning: "变坏，恶化", phonetic: "/di'tiəriəreit/" },
+    { word: "multiply", pos: "v.", meaning: "增加", phonetic: "/'mʌltiplai/" },
+    { word: "cascade", pos: "v.", meaning: "瀑布似的落下", phonetic: "/kæs'keid/" },
+    { word: "turbulent", pos: "adj.", meaning: "狂暴的", phonetic: "/'tə:bjulənt/" },
+    { word: "dust devil", pos: "n.", meaning: "小尘暴，尘旋风", phonetic: "/'dʌst'devl/" },
+    { word: "squall", pos: "n.", meaning: "暴风", phonetic: "/skwɔ:l/" },
+    { word: "eddy", pos: "n.", meaning: "旋涡", phonetic: "/'edi/" },
+    { word: "grid", pos: "n.", meaning: "坐标方格", phonetic: "/grid/" },
+    { word: "sensor", pos: "n.", meaning: "传感器", phonetic: "/'sensə/" },
+    { word: "humidity", pos: "n.", meaning: "湿度", phonetic: "/hju:'miditi/" },
+    { word: "meteorologist", pos: "n.", meaning: "气象学家", phonetic: "/mi:tjə'rɔlədʒist/" },
+    { word: "Princeton", pos: "n.", meaning: "普林斯顿（美国城市）", phonetic: "/'prinstən/" },
+    { word: "New Jersey", pos: "n.", meaning: "新泽西（美国州名）", phonetic: "/nju:'dʒə:zi/" },
+    { word: "fluctuation", pos: "n.", meaning: "起伏，波动", phonetic: "/flʌktju'eiʃən/" },
+    { word: "deviation", pos: "n.", meaning: "偏差", phonetic: "/di:vi'eiʃən/" }
+  ],
+}
+const articleNce4L17: Article = {
+  id: "nce4-l17",
+  lesson: 17,
+  tag: "C17",
+  title: "A man-made disease",
+  titleCn: "人为的疾病",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "RITCHIE CALDER（里奇·考尔德）《Science Makes Sense》",
+  notesOnText: [
+    { label: "in terms of muscle relaxation and so on", description: "从使肌肉得到放松等方面来看。in terms of,从...方面看。" },
+    { label: "then perhaps it is the brain that need resting?这是个陈述句的语序", description: "但句尾加问号，表示说话人对这种观点有把握但需进一步证实。" },
+    { label: "were it not far two factors", description: "这是省略了if 的条件句，可译作“如果不是下面两个因素的话”。" },
+    { label: "servral nights on end", description: "一连几夜。" }
+  ],
+
+  originalId: "nce4-l17",
+  vocabulary: [
+    { word: "settlement", pos: "n.", meaning: "新拓居地", phonetic: "/'setlmənt/" },
+    { word: "enterprising", pos: "adj.", meaning: "有事业心的", phonetic: "/'entəpraiziŋ/" },
+    { word: "settler", pos: "n.", meaning: "移居者", phonetic: "/'setlə/" },
+    { word: "Antipodes", pos: "n.", meaning: "新西兰和澳大利亚（英）", phonetic: "/æn'tipədi:z/" },
+    { word: "promiscuous", pos: "adj.", meaning: "杂乱的", phonetic: "/prə'miskjuəs/" },
+    { word: "abandon", pos: "n.", meaning: "放任，纵情", phonetic: "/ə'bændən/" },
+    { word: "overrun", pos: "v.", meaning: "蔓延，泛滥", phonetic: "/əuvə'rʌn/" },
+    { word: "devastation", pos: "n.", meaning: "破坏，劫掠", phonetic: "/devəs'teiʃən/" },
+    { word: "burrow", pos: "v.", meaning: "挖、掘", phonetic: "/'bʌrəu/" },
+    { word: "susceptible", pos: "adj.", meaning: "易受感染的", phonetic: "/sə'septəbl/" },
+    { word: "virus", pos: "n.", meaning: "病毒", phonetic: "/'vaiərəs/" },
+    { word: "myxomatosis", pos: "n.", meaning: "多发性粘液瘤", phonetic: "/miksəmə'təusis/" },
+    { word: "infect", pos: "v.", meaning: "传染", phonetic: "/in'fekt/" },
+    { word: "epidemic", pos: "n.", meaning: "流行病", phonetic: "/epi'demik/" },
+    { word: "mosquito", pos: "n.", meaning: "蚊虫", phonetic: "/məs'ki:təu/" },
+    { word: "carrier", pos: "n.", meaning: "带菌者", phonetic: "/'kæriə/" },
+    { word: "exterminate", pos: "v.", meaning: "消灭", phonetic: "/eks'tə:mineit/" },
+    { word: "ironically", pos: "adv.", meaning: "具有讽刺意味的", phonetic: "/ai'rɔnikəli/" },
+    { word: "bequeath", pos: "v.", meaning: "把...传给", phonetic: "/bi'kwi:ð/" }
+  ],
+}
+const articleNce4L19: Article = {
+  id: "nce4-l19",
+  lesson: 19,
+  tag: "C19",
+  title: "The stuff of dreams",
+  titleCn: "话说梦的本质",
+  keyArticle: true,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "H. W. MAGOUN（H. W. 马贡）《The Story of Language》, 1955",
+  notesOnText: [
+    { label: "How it came about that snakes...a mystery", description: "这句话的主语是一个句子：How it came about that snakes manufactured poison,谓语部分是is a mystery.主语从句中的it是形式主语，真正主语是that snakes manufactured poison,因为主语太长，所以使用it作先生主语的结构。" },
+    { label: "over the periods", description: "经过很长时间。" },
+    { label: "live on", description: "靠...生活。" },
+    { label: "a two-edged weapon", description: "一把双刃刀，这里的意思是：如果食肉动物都有毒液，就会造成食肉动物之间的互相残杀。" },
+    { label: "act on", description: "对...起作用。" },
+    { label: "by far the more unpleasant", description: "更难受得多，by far是“...得多”的意思。" },
+    { label: "so to speak", description: "插入语，有“可以这样说”，“打个比方说”的意思。" },
+    { label: "Be that as it may", description: "这是一个倒装的站步状语从句，相当于however that may be,可译成“尽管如此”。" },
+    { label: "does its business with man", description: "在人的身上发挥作用，要人的命。" },
+    { label: "the effects on these of viperine poison", description: "these是指rats and mice,介词宾语结构of viperine poison是作effects 的定语。" }
+  ],
+
+  originalId: "nce4-l19",
+  vocabulary: [
+    { word: "speculation", pos: "n.", meaning: "推测", phonetic: "/,spekju'leiʃən/" },
+    { word: "literally", pos: "adv.", meaning: "确实", phonetic: "/'litərəli/" },
+    { word: "odd", pos: "adj.", meaning: "奇特的", phonetic: "/ɔd/" },
+    { word: "tissue", pos: "n.", meaning: "组织", phonetic: "/'tiʃu:/" },
+    { word: "plausible", pos: "adj.", meaning: "似乎有理的", phonetic: "/'plɔ:zəbl/" },
+    { word: "hypothesis", pos: "n.", meaning: "假说", phonetic: "/hai'pɔθisis/" },
+    { word: "electroencephalograph", pos: "n.", meaning: "脑电图仪", phonetic: "//" },
+    { word: "electrode", pos: "n.", meaning: "电极", phonetic: "/i'lektrəud/" },
+    { word: "scalp", pos: "n.", meaning: "头皮", phonetic: "/skælp/" },
+    { word: "psychiatrist", pos: "n.", meaning: "精神病学家", phonetic: "/sai'kaiətrist/" },
+    { word: "punctuate", pos: "v.", meaning: "不时介入", phonetic: "/'pʌŋktjueit/" },
+    { word: "jerky", pos: "adj.", meaning: "急动的", phonetic: "/'dʒə:ki/" },
+    { word: "disorder", pos: "n.", meaning: "失调", phonetic: "/dis'ɔ:də/" },
+    { word: "implication", pos: "n.", meaning: "表明", phonetic: "/,impli'keiʃən/" }
+  ],
+}
+const articleNce4L20: Article = {
+  id: "nce4-l20",
+  lesson: 20,
+  tag: "C20",
+  title: "Snake poison",
+  titleCn: "蛇",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "JOHN CROMPTON（约翰·克朗普顿）《The snake》",
+  notesOnText: [
+    { label: "keep company with", description: "陪伴着....。" },
+    { label: "The currents of air that the walls of the ship direct upwards", description: "沿着船体上升的气流。" },
+    { label: "steel-like muscles", description: "that are a good part of the weight of the bird,句中以that引导的从句是一个非限定性定语从句，修饰muscles,但用that引导非限定性定语从句是很罕见的。" },
+    { label: "in hghest measure", description: "最大程度的。" },
+    { label: "It tires no nor does it boast of its power", description: "but belongs to the air,travelling it may be .. adverse.句中的tires not 是古英语或诗歌中使用的句式。boast of 中的of = about;belong to the air的意思是：与天空融为一体。travelling it may be是倒装语序，这是为了强调travelling 的生动逼真，自然语离是it may be travelling...;nesting home.意为home for nesting,flown young中的flown意为已会飞的。a medium(媒介)指air." }
+  ],
+
+  originalId: "nce4-l20",
+  vocabulary: [
+    { word: "saliva", pos: "n.", meaning: "唾液", phonetic: "/saliva/" },
+    { word: "digestive", pos: "adj.", meaning: "助消化的", phonetic: "/digestive/" },
+    { word: "defy", pos: "v.", meaning: "使不可能", phonetic: "/defy/" },
+    { word: "analysis", pos: "n.", meaning: "分析", phonetic: "/analysis/" },
+    { word: "prey", pos: "n.", meaning: "被捕食的动物", phonetic: "/prey/" },
+    { word: "fierce", pos: "adj.", meaning: "凶猛的", phonetic: "/fierce/" },
+    { word: "tussle", pos: "n.", meaning: "扭打", phonetic: "/tussle/" },
+    { word: "carnivore", pos: "n.", meaning: "食肉动物", phonetic: "/carnivore/" },
+    { word: "vertebrate", pos: "n.", meaning: "脊椎动物", phonetic: "/vertebrate/" },
+    { word: "lizard", pos: "n.", meaning: "蜥蜴", phonetic: "/lizard/" },
+    { word: "concoct", pos: "v.", meaning: "调制", phonetic: "/concoct/" },
+    { word: "potency", pos: "n.", meaning: "效力", phonetic: "/potency/" },
+    { word: "conversion", pos: "n.", meaning: "转变", phonetic: "/conversion/" },
+    { word: "arsenic", pos: "n.", meaning: "砒霜", phonetic: "/arsenic/" },
+    { word: "strychnine", pos: "n.", meaning: "马钱子碱", phonetic: "/strychnine/" },
+    { word: "mamba", pos: "n.", meaning: "树眼镜蛇", phonetic: "/mamba/" },
+    { word: "cobra", pos: "n.", meaning: "眼镜蛇", phonetic: "/cobra/" },
+    { word: "venom", pos: "n.", meaning: "毒液", phonetic: "/venom/" },
+    { word: "neurotoxic", pos: "adj.", meaning: "毒害神经的", phonetic: "/neurotoxic/" },
+    { word: "viper", pos: "n.", meaning: "蝰蛇", phonetic: "/viper/" },
+    { word: "adder", pos: "n.", meaning: "蝮蛇", phonetic: "/adder/" },
+    { word: "rattlesnake", pos: "n.", meaning: "响尾蛇", phonetic: "/rattlesnake/" },
+    { word: "haemolytic", pos: "adj.", meaning: "溶血性的", phonetic: "/haemolytic/" },
+    { word: "viperine", pos: "adj.", meaning: "毒蛇", phonetic: "/viperine/" }
+  ],
+}
+const articleNce4L23: Article = {
+  id: "nce4-l23",
+  lesson: 23,
+  tag: "C23",
+  title: "Bird flight",
+  titleCn: "鸟的飞行方法",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "WILLIAM BEACH THOMAS（威廉·比奇·托马斯）《A Countryman's Creed》",
+  notesOnText: [
+    { label: "the Services", description: "军队" },
+    { label: "On turning eagerly to the text", description: "one learns that..." },
+    { label: "句中 on 的意思是 on the occasion of", description: "directly after(当时，随后)。" },
+    { label: "aircraft carrier", description: "航空母舰。" },
+    { label: "That does not prove that it does no exist;but it does mean that...句中出现的3个does的语法功能并不相同", description: "前两个does是一般现在时的否定式使用的助动词，第3个does则是强调用法，有强化句意的作用。" }
+  ],
+
+  originalId: "nce4-l23",
+
+  vocabulary: [
+    { word: "albatross", pos: "n.", meaning: "信天翁", phonetic: "/albatross/" },
+    { word: "sustenance", pos: "n.", meaning: "支撑力", phonetic: "/sustenance/" },
+    { word: "glider", pos: "n.", meaning: "滑翔者", phonetic: "/glider/" },
+    { word: "harness", pos: "v.", meaning: "利用", phonetic: "/harness/" },
+    { word: "endow", pos: "v.", meaning: "赋有", phonetic: "/endow/" },
+    { word: "ply", pos: "v.", meaning: "不断地供给", phonetic: "/ply/" },
+    { word: "gale", pos: "n.", meaning: "大风", phonetic: "/gale/" },
+    { word: "partridge", pos: "n.", meaning: "鹧鸪", phonetic: "/partridge/" },
+    { word: "like", pos: "adj.", meaning: "类似的", phonetic: "/like/" },
+    { word: "propulsion", pos: "n.", meaning: "推进力", phonetic: "/propulsion/" },
+    { word: "utter", pos: "adj.", meaning: "完全的", phonetic: "/utter/" },
+    { word: "slip", pos: "v.", meaning: "滑行", phonetic: "/slip/" },
+    { word: "adverse", pos: "adj.", meaning: "逆的，相反的", phonetic: "/adverse/" },
+    { word: "omen", pos: "n.", meaning: "预兆", phonetic: "/omen/" }
+  ],
+}
+const articleNce4L25: Article = {
+  id: "nce4-l25",
+  lesson: 25,
+  tag: "C25",
+  title: "Non-auditory effects of noise",
+  titleCn: "",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "D.E.BROADBENT（D.E.布罗德本特）《Non-auditory effects of noise》from《Science Survey》",
+  originalId: "nce4-l25",
+  vocabulary: [
+    { word: "auditory", pos: "adj.", meaning: "听觉的", phonetic: "/auditory/" },
+    { word: "inadequate", pos: "adj.", meaning: "不适当的", phonetic: "/inadequate/" },
+    { word: "plea", pos: "n.", meaning: "要求", phonetic: "/plea/" },
+    { word: "abatement", pos: "n.", meaning: "减少", phonetic: "/abatement/" },
+    { word: "discredit", pos: "v.", meaning: "怀疑", phonetic: "/discredit/" },
+    { word: "allegation", pos: "n.", meaning: "断言", phonetic: "/allegation/" },
+    { word: "caption", pos: "n.", meaning: "插图说明", phonetic: "/caption/" },
+    { word: "wreck", pos: "n.", meaning: "残废人", phonetic: "/wreck/" },
+    { word: "snag", pos: "n.", meaning: "疑难之处，障碍", phonetic: "/snag/" },
+    { word: "anecdote", pos: "n.", meaning: "轶闻", phonetic: "/anecdote/" },
+    { word: "slander", pos: "v.", meaning: "诽谤", phonetic: "/slander/" },
+    { word: "persecute", pos: "v.", meaning: "迫害", phonetic: "/persecute/" },
+    { word: "squadron", pos: "n.", meaning: "中队", phonetic: "/squadron/" },
+    { word: "psychiatric", pos: "adj.", meaning: "精神病学的", phonetic: "/psychiatric/" },
+    { word: "diagnosis", pos: "n.", meaning: "诊所", phonetic: "/diagnosis/" },
+    { word: "orphanage", pos: "n.", meaning: "孤儿院", phonetic: "/orphanage/" }
+  ],
+}
+const articleNce4L26: Article = {
+  id: "nce4-l26",
+  lesson: 26,
+  tag: "C26",
+  title: "The past life of the earth",
+  titleCn: "地球上的昔日生命",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "ERROL WHITE（埃罗尔·怀特）《The past life of the earth》from《Discovery》",
+  notesOnText: [
+    { label: "the 'Vasa'", description: "“瓦萨号”战船。这艘船是以瑞典瓦萨王朝（1523-1654）创始人Gustavus Vasa的姓氏命名的。Gustavus Vasa(1496-1560)曾领导了反对丹麦统治的暴动，1523年出任国王，使瑞典成了一个独立、统一、富强的国家。" },
+    { label: "2 the Thirty Years War \"三十年战争\"。这是欧洲历史上的一场多国混战", description: "具有政治和宗教色彩、是新教诸侯和天主教诸侯之间的连年战争（161801648）,最后在1648年签定了威斯物伐利亚条约，以天主教诸侯失败而告终。" },
+    { label: "a riot of", description: "许多...,主要指色彩丰富。" },
+    { label: "with the water churned...", description: "her flags flying,pennans waving,sails filling...,and the red and gold..ablaze...with 后有5个独立主格结构，均作方式状语，修饰动词emerged。" }
+  ],
+
+  originalId: "nce4-l26",
+  vocabulary: [
+    { word: "preservation", pos: "n.", meaning: "保存", phonetic: "/preservation/" },
+    { word: "silt", pos: "n.", meaning: "淤泥", phonetic: "/silt/" },
+    { word: "scavenger", pos: "n.", meaning: "食腐动物", phonetic: "/scavenger/" },
+    { word: "vole", pos: "n.", meaning: "野鼠，鼹鼠", phonetic: "/vole/" },
+    { word: "decompose", pos: "v.", meaning: "腐烂", phonetic: "/decompose/" },
+    { word: "inaccessible", pos: "adj.", meaning: "不能到达的", phonetic: "/inaccessible/" },
+    { word: "crevasse", pos: "n.", meaning: "缝隙", phonetic: "/crevasse/" },
+    { word: "Siberian", pos: "adj.", meaning: "西伯利亚的", phonetic: "/siberian/" },
+    { word: "palaeontological", pos: "adj.", meaning: "古生物学的", phonetic: "/palaeontological/" },
+    { word: "St. Petersburg", pos: "n.", meaning: "圣彼得堡", phonetic: "/st. petersburg/" },
+    { word: "sabre-toothed", pos: "adj.", meaning: "长着锐利的长牙", phonetic: "/sabre-toothed/" },
+    { word: "venture", pos: "v.", meaning: "冒险", phonetic: "/venture/" },
+    { word: "bogged", pos: "adj.", meaning: "陷入泥沼的，陷入要困境的", phonetic: "/bogged/" }
+  ],
+}
+const articleNce4L27: Article = {
+  id: "nce4-l27",
+  lesson: 27,
+  tag: "C27",
+  title: "The 'Vasa' ＂",
+  titleCn: "瓦萨＂号",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "ROY SAUNGERS（罗伊·桑德斯）《The Raising of the 'Vasa'》from《The Listener》",
+  notesOnText: [
+    { label: "form-blind", description: "这是作者仿照colour-blind(色盲)生造的一个词，意指“形盲”" },
+    { label: "in its full spatial completeness", description: "存在于空间的整个（形体）。" },
+    { label: "as it were", description: "可以说是。" },
+    { label: "whatever its size", description: "这是一个省略了maybe的让步状语从句。" },
+    { label: "from all round itself", description: "从它的各个角度构想。" },
+    { label: "centre of gravity", description: "重心。" },
+    { label: "apart from", description: "撇开。" }
+  ],
+
+  originalId: "nce4-l27",
+  vocabulary: [
+    { word: "galleon", pos: "n.", meaning: "大型帆船", phonetic: "/galleon/" },
+    { word: "Stockholm", pos: "n.", meaning: "斯德哥尔摩", phonetic: "/stockholm/" },
+    { word: "flagship", pos: "n.", meaning: "旗舰", phonetic: "/flagship/" },
+    { word: "imperial", pos: "adj.", meaning: "帝国的", phonetic: "/imperial/" },
+    { word: "hurricane", pos: "n.", meaning: "飓风", phonetic: "/hurricane/" },
+    { word: "armament", pos: "n.", meaning: "军械", phonetic: "/armament/" },
+    { word: "triple", pos: "adj.", meaning: "三层的", phonetic: "/triple/" },
+    { word: "mount", pos: "v.", meaning: "架有", phonetic: "/mount/" },
+    { word: "bronze", pos: "n.", meaning: "青铜", phonetic: "/bronze/" },
+    { word: "cannon", pos: "n.", meaning: "加农炮", phonetic: "/cannon/" },
+    { word: "might", pos: "n.", meaning: "力量", phonetic: "/might/" },
+    { word: "ferment", pos: "n.", meaning: "激动不安", phonetic: "/ferment/" },
+    { word: "ornament", pos: "v.", meaning: "装饰", phonetic: "/ornament/" },
+    { word: "riot", pos: "n.", meaning: "丰富", phonetic: "/riot/" },
+    { word: "demon", pos: "n.", meaning: "恶魔", phonetic: "/demon/" },
+    { word: "mermaid", pos: "n.", meaning: "美人鱼", phonetic: "/mermaid/" },
+    { word: "cherub", pos: "n.", meaning: "小天使", phonetic: "/cherub/" },
+    { word: "zoomorphic", pos: "adj.", meaning: "兽形的", phonetic: "/zoomorphic/" },
+    { word: "ablaze", pos: "adj.", meaning: "光彩的", phonetic: "/ablaze/" },
+    { word: "portray", pos: "v.", meaning: "绘制", phonetic: "/portray/" },
+    { word: "drifting", pos: "adj.", meaning: "弥漫的", phonetic: "/drifting/" },
+    { word: "churn", pos: "v.", meaning: "翻滚", phonetic: "/churn/" },
+    { word: "pennant", pos: "n.", meaning: "三角旗", phonetic: "/pennant/" },
+    { word: "superstructure", pos: "n.", meaning: "上部结构", phonetic: "/superstructure/" },
+    { word: "majestic", pos: "adj.", meaning: "威严的", phonetic: "/majestic/" },
+    { word: "muzzle", pos: "n.", meaning: "炮口", phonetic: "/muzzle/" },
+    { word: "freshen", pos: "v.", meaning: "变强", phonetic: "/freshen/" },
+    { word: "squall", pos: "n.", meaning: "狂风", phonetic: "/squall/" },
+    { word: "list", pos: "v.", meaning: "倾斜", phonetic: "/list/" },
+    { word: "ordnance", pos: "n.", meaning: "军械", phonetic: "/ordnance/" },
+    { word: "heave", pos: "v.", meaning: "拖", phonetic: "/heave/" },
+    { word: "starboard", pos: "n.", meaning: "(船、飞机的)右舷", phonetic: "/starboard/" },
+    { word: "counteract", pos: "v.", meaning: "抵消", phonetic: "/counteract/" },
+    { word: "steepen", pos: "v.", meaning: "变得更陡峭", phonetic: "/steepen/" },
+    { word: "ballast", pos: "n.", meaning: "压舱物", phonetic: "/ballast/" },
+    { word: "inrush", pos: "n.", meaning: "水的涌入", phonetic: "/inrush/" },
+    { word: "Baltic", pos: "n.", meaning: "波罗的海", phonetic: "/baltic/" }
+  ],
+}
+const articleNce4L29: Article = {
+  id: "nce4-l29",
+  lesson: 29,
+  tag: "C29",
+  title: "The hovercraft",
+  titleCn: "气垫船",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "EGON LARSEN（埃贡·拉森）《The Pegasus Book of Inventors》",
+  notesOnText: [
+    { label: "the comparable speed from the Moon", description: "从月球出发的相应的速度，这里是指摆脱月球引力所需达到的速度。" },
+    { label: "the Apollo astronauts", description: "指1969年7月20日美国“阿波罗11号”宇宙飞船第一次载人登月球。" },
+    { label: "the Grand Ganyon", description: "指位于美国亚利桑那州西北部的科罗拉多河的大峡谷。" }
+  ],
+
+  originalId: "nce4-l29",
+  vocabulary: [
+    { word: "hovercraft", pos: "n.", meaning: "气垫船", phonetic: "/hovercraft/" },
+    { word: "Norfolk Broads", pos: "n.", meaning: "诺福克郡的湖泊地区", phonetic: "/norfolk broads/" },
+    { word: "cushion", pos: "n.", meaning: "座垫", phonetic: "/cushion/" },
+    { word: "ring", pos: "v.", meaning: "围", phonetic: "/ring/" },
+    { word: "Solent", pos: "n.", meaning: "（英国的）苏伦特海峡", phonetic: "/solent/" },
+    { word: "sensation", pos: "n.", meaning: "轰动", phonetic: "/sensation/" },
+    { word: "dune", pos: "n.", meaning: "沙丘", phonetic: "/dune/" },
+    { word: "plantation", pos: "n.", meaning: "种植园", phonetic: "/plantation/" },
+    { word: "hovertrain", pos: "n.", meaning: "气垫火车", phonetic: "/hovertrain/" }
+  ],
+}
+const articleNce4L31: Article = {
+  id: "nce4-l31",
+  lesson: 31,
+  tag: "C31",
+  title: "The sculptor speaks",
+  titleCn: "雕塑家的语言",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "HENRY MOORE（亨利·摩尔）《The Sculptor Speaks》from《The Listener》",
+  notesOnText: [
+    { label: "economic resource", description: "经济实力。" },
+    { label: "stay in business", description: "维持营业。" },
+    { label: "as falls within their sphere", description: "属于他们分内的。" },
+    { label: "keep someone in line", description: "控制住某人。" },
+    { label: "keep them in order", description: "管理他们。" }
+  ],
+
+  originalId: "nce4-l31",
+  vocabulary: [
+    { word: "colour-blind", pos: "adj.", meaning: "色盲的", phonetic: "/colour-blind/" },
+    { word: "perception", pos: "n.", meaning: "知觉", phonetic: "/perception/" },
+    { word: "comprehend", pos: "v.", meaning: "理解", phonetic: "/comprehend/" },
+    { word: "spatial", pos: "adj.", meaning: "空间", phonetic: "/spatial/" },
+    { word: "visualize", pos: "v.", meaning: "使具形象，设想", phonetic: "/visualize/" },
+    { word: "reminiscence", pos: "n.", meaning: "回忆，联想", phonetic: "/reminiscence/" },
+    { word: "tadpole", pos: "n.", meaning: "蝌蚪", phonetic: "/tadpole/" },
+    { word: "mushroom", pos: "n.", meaning: "蘑菇", phonetic: "/mushroom/" },
+    { word: "carrot", pos: "n.", meaning: "胡萝卜", phonetic: "/carrot/" },
+    { word: "bud", pos: "n.", meaning: "花蕾", phonetic: "/bud/" },
+    { word: "lark", pos: "n.", meaning: "云雀", phonetic: "/lark/" },
+    { word: "ladybird", pos: "n.", meaning: "瓢虫", phonetic: "/ladybird/" },
+    { word: "bulrush", pos: "n.", meaning: "芦苇", phonetic: "/bulrush/" }
+  ],
+}
+const articleNce4L35: Article = {
+  id: "nce4-l35",
+  lesson: 35,
+  tag: "C35",
+  title: "Space odyssey",
+  titleCn: "太空探索",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "ARTHUR C. CLARKE（阿瑟·克拉克）《The Exploration of Space》, 1951",
+  notesOnText: [
+    { label: "keep to", description: "局限于。" },
+    { label: "know about", description: "知道...的情况，了解。" }
+  ],
+
+  originalId: "nce4-l35",
+  vocabulary: [
+    { word: "hub", pos: "n.", meaning: "（活动的）中心", phonetic: "/hub/" },
+    { word: "lunar", pos: "adj.", meaning: "月球的", phonetic: "/lunar/" },
+    { word: "oxygen", pos: "n.", meaning: "氧气", phonetic: "/oxygen/" },
+    { word: "Apollo", pos: "n.", meaning: "阿波罗", phonetic: "/apollo/" },
+    { word: "accelerate", pos: "v.", meaning: "加速", phonetic: "/accelerate/" },
+    { word: "terrestrial", pos: "adj.", meaning: "地球的", phonetic: "/terrestrial/" },
+    { word: "permanently", pos: "adv.", meaning: "永远地", phonetic: "/permanently/" },
+    { word: "fascination", pos: "n.", meaning: "魅力", phonetic: "/fascination/" },
+    { word: "senior", pos: "adj.", meaning: "资历深的，年长的", phonetic: "/senior/" },
+    { word: "chasm", pos: "n.", meaning: "断层，裂口", phonetic: "/chasm/" },
+    { word: "canyon", pos: "n.", meaning: "峡谷", phonetic: "/canyon/" }
+  ],
+}
+const articleNce4L36: Article = {
+  id: "nce4-l36",
+  lesson: 36,
+  tag: "C36",
+  title: "The cost of government",
+  titleCn: "政府的开支",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "RAYMOND FROST（雷蒙德·弗罗斯特）《The Backward Society》",
+  notesOnText: [
+    { label: "where they are going", description: "他们要写什么，怎么写。" },
+    { label: "set their pen to paper", description: "开始写作。" },
+    { label: "pass for", description: "\"被当作\"，但常指蒙骗，假冒。" },
+    { label: "to my certain knowledge", description: "据我所知。" },
+    { label: "nothing but", description: "仅，只。" },
+    { label: "like adolescents they stand before the mirror", description: "and still cannot fathom the exact outline of the vision before them." },
+    { label: "他们如同少年", description: "站在镜前，不能辨认出自身的真面目。此句出自古希腊的一则是神话：有一漂亮少年，他热恋上了水中自身的映像，最后憔悴而死，化为水仙花。" },
+    { label: "in the sight of", description: "从...角度来看。" }
+  ],
+
+  originalId: "nce4-l36",
+  vocabulary: [
+    { word: "disunited", pos: "adj.", meaning: "分裂的", phonetic: "/disunited/" },
+    { word: "correspondingly", pos: "adv.", meaning: "相应地", phonetic: "/correspondingly/" },
+    { word: "backward", pos: "adj.", meaning: "落后的", phonetic: "/backward/" },
+    { word: "incur", pos: "v.", meaning: "承担", phonetic: "/incur/" },
+    { word: "administer", pos: "v.", meaning: "管理", phonetic: "/administer/" },
+    { word: "adminstrative", pos: "adj.", meaning: "行政管理的", phonetic: "/adminstrative/" },
+    { word: "analogous", pos: "adj.", meaning: "类似的", phonetic: "/analogous/" },
+    { word: "overheads", pos: "n.", meaning: "一般费用", phonetic: "/overheads/" },
+    { word: "initiative", pos: "n.", meaning: "主动，积极性", phonetic: "/initiative/" },
+    { word: "checker", pos: "n.", meaning: "检查人员", phonetic: "/checker/" },
+    { word: "foreman", pos: "n.", meaning: "监工", phonetic: "/foreman/" },
+    { word: "dividend", pos: "n.", meaning: "红利", phonetic: "/dividend/" },
+    { word: "unduly", pos: "adv.", meaning: "过度地", phonetic: "/unduly/" }
+  ],
+}
+const articleNce4L38: Article = {
+  id: "nce4-l38",
+  lesson: 38,
+  tag: "C38",
+  title: "Water and the traveller",
+  titleCn: "水和旅行者",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "RICHARD DAWOOD（理查德·达伍德）《Travellers' Health》",
+  notesOnText: [
+    { label: "back to its starting point again", description: "又返回出发点。" },
+    { label: "be subject to", description: "受...的支配，服从于...。" }
+  ],
+
+  originalId: "nce4-l38",
+  vocabulary: [
+    { word: "contamination", pos: "n.", meaning: "污染", phonetic: "/contamination/" },
+    { word: "sanitation", pos: "n.", meaning: "卫生，卫生设备", phonetic: "/sanitation/" },
+    { word: "sewage", pos: "n.", meaning: "污水", phonetic: "/sewage/" },
+    { word: "leakage", pos: "n.", meaning: "泄漏", phonetic: "/leakage/" },
+    { word: "intermittent", pos: "adj.", meaning: "间歇的，断断续续的", phonetic: "/intermittent/" },
+    { word: "carbonated", pos: "adj.", meaning: "碳化的，碳酸的", phonetic: "/carbonated/" },
+    { word: "acidic", pos: "adj.", meaning: "酸的，酸性的", phonetic: "/acidic/" },
+    { word: "alcohol", pos: "n.", meaning: "酒精", phonetic: "/alcohol/" },
+    { word: "disinfectant", pos: "n.", meaning: "消毒剂", phonetic: "/disinfectant/" },
+    { word: "sterilize", pos: "v.", meaning: "消毒", phonetic: "/sterilize/" },
+    { word: "ethanol", pos: "n.", meaning: "乙醇", phonetic: "/ethanol/" },
+    { word: "bactericidal", pos: "adj.", meaning: "杀菌的", phonetic: "/bactericidal/" },
+    { word: "negligible", pos: "adj.", meaning: "可以忽略的，微不足道的", phonetic: "/negligible/" },
+    { word: "methylated", pos: "adj.", meaning: "加入甲醇的", phonetic: "/methylated/" }
+  ],
+}
+const articleNce4L39: Article = {
+  id: "nce4-l39",
+  lesson: 39,
+  tag: "C39",
+  title: "What every writer wants",
+  titleCn: "作家之所需",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "JOHN LE CARRE（约翰·勒卡雷）《What every writer wants》from《Harper's》",
+  notesOnText: [
+    { label: "by some unavoidable circumstance", description: "由于某些不可避免的情况。" },
+    { label: "with a grain of salt", description: "有保留地。" },
+    { label: "a very firm hand", description: "一个强有力的人。" },
+    { label: "with the aid of", description: "在...的帮助下。" },
+    { label: "This is supposed", description: "据说...。" }
+  ],
+
+  originalId: "nce4-l39",
+  vocabulary: [
+    { word: "confress", pos: "v.", meaning: "承认", phonetic: "/confress/" },
+    { word: "inspiration", pos: "n.", meaning: "灵感", phonetic: "/inspiration/" },
+    { word: "Kasmir", pos: "n.", meaning: "克什米尔", phonetic: "/kasmir/" },
+    { word: "interweave", pos: "v.", meaning: "交织", phonetic: "/interweave/" },
+    { word: "afresh", pos: "adv.", meaning: "重新", phonetic: "/afresh/" },
+    { word: "discern", pos: "v.", meaning: "辨明，领悟", phonetic: "/discern/" },
+    { word: "indescribable", pos: "adj.", meaning: "无法描述的", phonetic: "/indescribable/" },
+    { word: "blur", pos: "v.", meaning: "使...模糊不清", phonetic: "/blur/" },
+    { word: "yeast", pos: "n.", meaning: "激动", phonetic: "/yeast/" },
+    { word: "fathom", pos: "v.", meaning: "领悟，彻底了解", phonetic: "/fathom/" },
+    { word: "interminably", pos: "adv.", meaning: "没完没了地", phonetic: "/interminably/" },
+    { word: "winkle", pos: "v.", meaning: "挖掘", phonetic: "/winkle/" },
+    { word: "incidentally", pos: "adv.", meaning: "顺便说一下", phonetic: "/incidentally/" },
+    { word: "pertinent", pos: "adj.", meaning: "中肯的", phonetic: "/pertinent/" },
+    { word: "flirt", pos: "v.", meaning: "调情", phonetic: "/flirt/" },
+    { word: "inmost", pos: "adj.", meaning: "内心深处的", phonetic: "/inmost/" }
+  ],
+}
+const articleNce4L40: Article = {
+  id: "nce4-l40",
+  lesson: 40,
+  tag: "C40",
+  title: "Waves",
+  titleCn: "海浪",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "S. H. HURLBUT（S. H. 赫伯特）《The Sea》, 1964",
+  notesOnText: [
+    { label: "stand up on end", description: "竖立着。" },
+    { label: "the ideal to be aimed at", description: "理想的目标。" },
+    { label: "I could in time...", description: "我最终能够....。" },
+    { label: "help us a little further", description: "帮助我们进一步搞清这个问题。" },
+    { label: "with the hand...hold the string...", description: "这是一个祈使句，谓语动词是hold,with the hand held high in the air是介词短语作方式状语。" },
+    { label: "to and fro", description: "来回地。" }
+  ],
+
+  originalId: "nce4-l40",
+  vocabulary: [
+    { word: "signature", pos: "n.", meaning: "签名，标记", phonetic: "/signature/" },
+    { word: "infinity", pos: "n.", meaning: "无穷", phonetic: "/infinity/" },
+    { word: "ray", pos: "n.", meaning: "光线", phonetic: "/ray/" },
+    { word: "energize", pos: "v.", meaning: "给与...能量", phonetic: "/energize/" },
+    { word: "rhythm", pos: "n.", meaning: "节奏", phonetic: "/rhythm/" },
+    { word: "transmit", pos: "v.", meaning: "传送", phonetic: "/transmit/" },
+    { word: "exquisite", pos: "adj.", meaning: "高雅的", phonetic: "/exquisite/" },
+    { word: "phenomena", pos: "n.", meaning: "现象", phonetic: "/phenomena/" },
+    { word: "crest", pos: "n.", meaning: "浪峰", phonetic: "/crest/" },
+    { word: "trough", pos: "n.", meaning: "波谷", phonetic: "/trough/" },
+    { word: "vertical", pos: "adj.", meaning: "垂直的", phonetic: "/vertical/" },
+    { word: "horizontal", pos: "adj.", meaning: "水平的", phonetic: "/horizontal/" },
+    { word: "actuality", pos: "n.", meaning: "现实", phonetic: "/actuality/" },
+    { word: "catastrophic", pos: "adj.", meaning: "大灾难的", phonetic: "/catastrophic/" },
+    { word: "particle", pos: "n.", meaning: "微粒", phonetic: "/particle/" },
+    { word: "maturity", pos: "n.", meaning: "成熟", phonetic: "/maturity/" },
+    { word: "undulate", pos: "v.", meaning: "波动，形成波浪", phonetic: "/undulate/" },
+    { word: "tremor", pos: "n.", meaning: "震颤", phonetic: "/tremor/" },
+    { word: "gravitational", pos: "adj.", meaning: "地心吸力的", phonetic: "/gravitational/" }
+  ],
+}
+const articleNce4L41: Article = {
+  id: "nce4-l41",
+  lesson: 41,
+  tag: "C41",
+  title: "Training elephants",
+  titleCn: "训练大象",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "RICHARD CARRINGTON（理查德·卡林顿）《Elephants》",
+  originalId: "nce4-l41",
+  vocabulary: [
+    { word: "technique", pos: "n.", meaning: "技术", phonetic: "/technique/" },
+    { word: "tough", pos: "adj.", meaning: "强硬的", phonetic: "/tough/" },
+    { word: "resentful", pos: "adj.", meaning: "忿恨不满的", phonetic: "/resentful/" },
+    { word: "assign", pos: "v.", meaning: "分配，指派", phonetic: "/assign/" },
+    { word: "mahout", pos: "n.", meaning: "驯象人", phonetic: "/mahout/" },
+    { word: "calf", pos: "n.", meaning: "幼仔", phonetic: "/calf/" },
+    { word: "pine", pos: "v.", meaning: "消瘦", phonetic: "/pine/" },
+    { word: "underline", pos: "v.", meaning: "着重说明，强调", phonetic: "/underline/" },
+    { word: "keep", pos: "n.", meaning: "生计", phonetic: "/keep/" },
+    { word: "subservient", pos: "adj.", meaning: "屈从的", phonetic: "/subservient/" },
+    { word: "plunge", pos: "v.", meaning: "向前冲", phonetic: "/plunge/" },
+    { word: "tame", pos: "adj.", meaning: "养驯服了的", phonetic: "/tame/" },
+    { word: "tether", pos: "v.", meaning: "（用绳）拴", phonetic: "/tether/" },
+    { word: "ticklish", pos: "adj.", meaning: "难对付的，棘手的", phonetic: "/ticklish/" },
+    { word: "alarming", pos: "adj.", meaning: "引起惊恐的", phonetic: "/alarming/" },
+    { word: "accompaniment", pos: "n.", meaning: "伴奏", phonetic: "/accompaniment/" },
+    { word: "soothe", pos: "v.", meaning: "镇定", phonetic: "/soothe/" },
+    { word: "chant", pos: "n.", meaning: "单调的歌", phonetic: "/chant/" },
+    { word: "reinforce", pos: "v.", meaning: "加强", phonetic: "/reinforce/" },
+    { word: "endearing", pos: "adj.", meaning: "惹人喜爱的", phonetic: "/endearing/" },
+    { word: "epithet", pos: "n.", meaning: "称呼", phonetic: "/epithet/" },
+    { word: "susceptible", pos: "adj.", meaning: "易受感动的", phonetic: "/susceptible/" },
+    { word: "blandishment", pos: "n.", meaning: "奉承", phonetic: "/blandishment/" },
+    { word: "lash", pos: "v.", meaning: "猛烈地甩", phonetic: "/lash/" },
+    { word: "curl", pos: "v.", meaning: "使卷曲", phonetic: "/curl/" }
+  ],
+}
+const articleNce4L42: Article = {
+  id: "nce4-l42",
+  lesson: 42,
+  tag: "C42",
+  title: "Recording and earthquake",
+  titleCn: "记录地震",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+  notesOnText: [
+    { label: "that given a planet...certain to start", description: "这是一个宾语从句，作动词conclude的宾语，其中given a planet...our own,过去分词短语作条件状语，given与if的意思相近，这个过去分词短语可译成“如果一个行星与我们所在的行星大致相同的话”。" },
+    { label: "is best left unsaid", description: "最好不去说（它）。" },
+    { label: "come up against", description: "遇到。" }
+  ],
+
+  originalId: "nce4-l42",
+  vocabulary: [
+    { word: "earthquake", pos: "n.", meaning: "地震", phonetic: "/earthquake/" },
+    { word: "slumber", pos: "v.", meaning: "睡眠", phonetic: "/slumber/" },
+    { word: "ninepin", pos: "n.", meaning: "九柱戏中的木柱", phonetic: "/ninepin/" },
+    { word: "rigid", pos: "adj.", meaning: "坚硬的", phonetic: "/rigid/" },
+    { word: "delicate", pos: "adj.", meaning: "灵感的", phonetic: "/delicate/" },
+    { word: "seismometer", pos: "n.", meaning: "地震仪", phonetic: "/seismometer/" },
+    { word: "penholder", pos: "n.", meaning: "笔杆", phonetic: "/penholder/" },
+    { word: "legibly", pos: "adv.", meaning: "字迹清楚地", phonetic: "/legibly/" },
+    { word: "drum", pos: "n.", meaning: "鼓状物", phonetic: "/drum/" },
+    { word: "wriggle", pos: "v.", meaning: "扭动", phonetic: "/wriggle/" },
+    { word: "bluebottle", pos: "n.", meaning: "绿头苍蝇", phonetic: "/bluebottle/" },
+    { word: "graph", pos: "n.", meaning: "图表", phonetic: "/graph/" },
+    { word: "graphic", pos: "adj.", meaning: "图示的", phonetic: "/graphic/" },
+    { word: "longitudinal", pos: "adj.", meaning: "纵向的", phonetic: "/longitudinal/" },
+    { word: "transverse", pos: "adj.", meaning: "横向的", phonetic: "/transverse/" }
+  ],
+}
+const articleNce4L43: Article = {
+  id: "nce4-l43",
+  lesson: 43,
+  tag: "C43",
+  title: "Are there strangers in space?",
+  titleCn: "宇宙中有外星人吗？",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "ANTHONY MICHAELIS（安东尼·米凯利斯）《Are There Strangers in Space?》from《The Weekend Telegraph》",
+  notesOnText: [
+    { label: "make a very poor show", description: "出丑。" },
+    { label: "I stand alone", description: "仅我一人。" },
+    { label: "the last creature to compete with man", description: "其中的last有“极不可能”的意思。" },
+    { label: "The Holy Office knew this full well when it caused heretics to be burned in days gone by.the Holy Office 是指罗马天主教的宗教法庭；full well中的full是副词", description: "有very的意思；gone by作days的定语，整个词组的意思是“过去的日子”。" }
+  ],
+
+  originalId: "nce4-l43",
+  vocabulary: [
+    { word: "Mercury", pos: "n.", meaning: "水星", phonetic: "/mercury/" },
+    { word: "hydrogen", pos: "n.", meaning: "氢气", phonetic: "/hydrogen/" },
+    { word: "prevailing", pos: "adj.", meaning: "普遍的", phonetic: "/prevailing/" },
+    { word: "uniquely", pos: "adv.", meaning: "唯一地", phonetic: "/uniquely/" },
+    { word: "rational", pos: "adj.", meaning: "合理的", phonetic: "/rational/" },
+    { word: "cm", pos: "n.", meaning: "厘米", phonetic: "/cm/" },
+    { word: "megacycle", pos: "n.", meaning: "兆周", phonetic: "/megacycle/" },
+    { word: "emission", pos: "n.", meaning: "散发", phonetic: "/emission/" },
+    { word: "intersteller", pos: "adj.", meaning: "星际的", phonetic: "/intersteller/" },
+    { word: "rendezvous", pos: "n.", meaning: "约会地点", phonetic: "/rendezvous/" }
+  ],
+}
+const articleNce4L45: Article = {
+  id: "nce4-l45",
+  lesson: 45,
+  tag: "C45",
+  title: "Of men and galaxies",
+  titleCn: "人生星系",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "FRED HOYLE（弗雷德·霍伊尔）《Of Men and Galaxies》",
+  originalId: "nce4-l45",
+  vocabulary: [
+    { word: "dispute", pos: "v.", meaning: "争夺", phonetic: "/dis'pju:t/" },
+    { word: "mosquito", pos: "n.", meaning: "蚊子", phonetic: "/məs'ki:təu/" },
+    { word: "subdue", pos: "v.", meaning: "征服", phonetic: "/səb'dju:/" },
+    { word: "drainage", pos: "n.", meaning: "下水系统", phonetic: "/'dreinidʒ/" },
+    { word: "envision", pos: "v.", meaning: "预想", phonetic: "/in'viʒən/" },
+    { word: "Morocco", pos: "n.", meaning: "摩洛哥", phonetic: "/mə'rɔkəu/" },
+    { word: "latitude", pos: "n.", meaning: "纬度", phonetic: "/'lætitju:d/" },
+    { word: "heretic", pos: "n.", meaning: "异教徒，异端邪说", phonetic: "/'herətik/" },
+    { word: "conceive", pos: "v.", meaning: "想像", phonetic: "/kən'si:v/" },
+    { word: "suffice", pos: "v.", meaning: "足够", phonetic: "/sə'fais/" },
+    { word: "nuclear", pos: "adj.", meaning: "原子弹的", phonetic: "/'nju:kliə/" },
+    { word: "original", pos: "adj.", meaning: "有独到见解的", phonetic: "/ə'ridʒənəl/" }
+  ],
+}
+const articleNce4L47: Article = {
+  id: "nce4-l47",
+  lesson: 47,
+  tag: "C47",
+  title: "The great escape",
+  titleCn: "大逃亡",
+  keyArticle: false,
+  level: "NCE4",
+  heatmap: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+
+  attribution: "NIGEL BUXTON（奈杰尔·巴克斯顿）《The Great Escape》from《The Weekend Telegraph》",
+  originalId: "nce4-l47",
+  vocabulary: [
+    { word: "assumption", pos: "n.", meaning: "假定", phonetic: "/assumption/" },
+    { word: "manoeuvre", pos: "v.", meaning: "（驱车）移动", phonetic: "/manoeuvre/" },
+    { word: "myriad", pos: "adj.", meaning: "无数的", phonetic: "/myriad/" },
+    { word: "paradox", pos: "n.", meaning: "自相矛盾的呈", phonetic: "/paradox/" },
+    { word: "cynic", pos: "n.", meaning: "愤世嫉俗者", phonetic: "/cynic/" },
+    { word: "sociologist", pos: "n.", meaning: "社会学家", phonetic: "/sociologist/" },
+    { word: "shun", pos: "v.", meaning: "避开", phonetic: "/shun/" },
+    { word: "affluent", pos: "adj.", meaning: "富有的", phonetic: "/affluent/" },
+    { word: "chambermaid", pos: "n.", meaning: "女招待员", phonetic: "/chambermaid/" },
+    { word: "boo", pos: "n.", meaning: "呸的一声", phonetic: "/boo/" },
+    { word: "maitre d'hotel", pos: "n.", meaning: "[法语]总管", phonetic: "/maitre d'hotel/" },
+    { word: "snobbery", pos: "n.", meaning: "势利", phonetic: "/snobbery/" },
+    { word: "hierarchy", pos: "n.", meaning: "等级制度", phonetic: "/hierarchy/" },
+    { word: "entail", pos: "v.", meaning: "便成为必要", phonetic: "/entail/" },
+    { word: "inclement", pos: "adj.", meaning: "险恶的", phonetic: "/inclement/" },
+    { word: "insularity", pos: "n.", meaning: "偏狭", phonetic: "/insularity/" },
+    { word: "cater", pos: "v.", meaning: "迎合", phonetic: "/cater/" },
+    { word: "exclusively", pos: "adv.", meaning: "排他地", phonetic: "/exclusively/" },
+    { word: "cosmopolitan", pos: "adj.", meaning: "世界的", phonetic: "/cosmopolitan/" },
+    { word: "preponderance", pos: "n.", meaning: "优势", phonetic: "/preponderance/" },
+    { word: "overwhelmingly", pos: "adv.", meaning: "以压倒优势地，清一色地", phonetic: "/overwhelmingly/" },
+    { word: "patronage", pos: "n.", meaning: "恩惠，惠顾", phonetic: "/patronage/" },
+    { word: "sauerkraut", pos: "n.", meaning: "泡菜", phonetic: "/sauerkraut/" },
+    { word: "vie", pos: "v.", meaning: "竞争", phonetic: "/vie/" },
+    { word: "municipality", pos: "n.", meaning: "市政当局", phonetic: "/municipality/" },
+    { word: "itinerant", pos: "n.", meaning: "巡回者", phonetic: "/itinerant/" },
+    { word: "heath", pos: "n.", meaning: "荒地", phonetic: "/heath/" },
+    { word: "alienate", pos: "v.", meaning: "使疏远", phonetic: "/alienate/" },
+    { word: "eternal", pos: "adj.", meaning: "永久的", phonetic: "/eternal/" }
+  ],
+}
+
+
+
+// --- Article original content (paragraphs) ---
+import { registerOriginals } from "./article-notes";
+
+registerOriginals({
+  "nce4-l1": {
     paragraphs: [
       [
         {
@@ -367,55 +2484,14 @@ const articleNce4L1: Article = {
         }
       ]
     ],
+    pendingNotes: [
+    { label: "英语标题的特点", description: "英语的标题通常不会用完整的句子，尽量追去简洁，一般使用音节比较少的词，避免使用大词，使用简洁且能鲜明的表达中心思想为宜。" },
+    { label: "find = discover", description: "发现。例句：discover fossil man、ancient man、prehistoric man。" },
+    { label: "标题词常用简洁的单词", description: "拼写与发音更容易的词。encourage → spur 激励；prohibit / forbid → ban 禁止；compete → vie 竞争；nominate → name 提名。" },
+    { label: "alliteration 头韵", description: "叮当、咔嚓、哗啦、呱唧。例句：Spare that spider；Matterhorn man；The sporting spirit；Pride and Prejudice（傲慢与偏见）；Prince and Pauper（王子与乞丐）；World Wide Watch（世界观察）；A Delicious Dish A Day（甜甜饮食）；Beauty and Beast（美女与野兽）；WWW = The World Wide Web。" },
+  ]
   },
-
-  vocabulary: [
-    { word: "fossil (man)", pos: "adj.", meaning: "化石(人)", phonetic: "/英[ˈfɒsl/" },
-    { word: "recount", pos: "v.", meaning: "叙述", phonetic: "/ri'kaunt/" },
-    { word: "saga", pos: "n.", meaning: "英雄故事", phonetic: "/'sa:gə/" },
-    { word: "legend", pos: "n.", meaning: "传说，传奇", phonetic: "/'ledʒənd/" },
-    { word: "migration", pos: "n.", meaning: "迁移，移居", phonetic: "/mai'greiʃən/" },
-    { word: "anthropologist", pos: "n.", meaning: "人类学家", phonetic: "/ænθrə'pɔlədʒist/" },
-    { word: "archaeologist", pos: "n.", meaning: "考古学家", phonetic: "/'a:kiə'lɔdʒist/" },
-    { word: "ancestor", pos: "n.", meaning: "祖先", phonetic: "/'ænsistə/" },
-    { word: "Polynesian", pos: "adj.", meaning: "波利尼西亚(中太平洋之一群岛)的", phonetic: "/pɔli'ni:zjən/" },
-    { word: "Indonesia", pos: "n.", meaning: "印度尼西亚", phonetic: "/'indəu'ni:zjə/" },
-    { word: "flint", pos: "n.", meaning: "燧石", phonetic: "/flint/" },
-    { word: "rot", pos: "v.", meaning: "烂掉", phonetic: "/rɔt/" }
-  ],
-}
-
-const articleNce4L2: Article = {
-
-  id: "nce4-l2",
-  lesson: 2,
-  tag: "C2",
-  title: "Spare that spider",
-  titleCn: "不要伤害蜘蛛",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "T.H.GILLESPIE（T.H.吉莱斯皮）《Spare that spider》from《The Listener》",
-  notesOnText: [
-    { label: "if it were not for the protection we get from inscet-eating animals 这是一个非真实条件状语从句", description: "were表示虚拟语气。" }
-  ],
-
-  pendingNotes: [
-    { label: "文章押韵", description: "" },
-    { label: "Gre写作范文", description: "" },
-    { label: "rhyme 尾韵", description: "" },
-    { label: "Gre写作范文", description: "" },
-    { label: "spare v. 节约，吝惜；饶恕；分出，分让", description: "" }
-  ],
-
-  original: {
+  "nce4-l2": {
     paragraphs: [
       [
         { text: "Why, you may wonder, should spiders be our friends?", translation: "你可能会觉得奇怪， 蜘蛛怎么会是我们的朋友呢？", predicates: ["wonder", "be"], clauseIntroducers: [], auxiliaries: ["may"], inlineAnnotations: [{ label: ", you may wonder,", description: "插入语(额外不重要的信息)" }], expansionNotes: [{ label: "插入语 先去掉再翻译或者先翻译（次要信息但会增加阅读难度）", description: "", examples: [{ kind: "example", word: "", meaning: "", enExample: "Why, you may wonder, should spiders be our friends?", zhExample: "" }, { kind: "example", word: "", meaning: "", enExample: "Dogs, it seems, love to chew up money.", zhExample: "" }, { kind: "example", word: "", meaning: "", enExample: "Chickens slaughtered in the United States, claim officials in Brussels, are not fit to grace European tables.", zhExample: "" }, { kind: "example", word: "", meaning: "", enExample: "A man without an education, many of us believe, is an unfortunate victim of adverse circumstances, deprived of one of the greatest twentieth-century opportunities.", zhExample: "" }] }, { label: "should 怎么会", description: "", examples: [{ kind: "example", word: "", meaning: "", enExample: "How should I know?", zhExample: "我怎么会知道？" }, { kind: "example", word: "", meaning: "", enExample: "Why should conservatives vote for Bush?", zhExample: "保守派怎么会投票给布什？" }, { kind: "example", word: "", meaning: "", enExample: "Why should they oppose this plan?", zhExample: "他们怎么会反对这个计划？" }, { kind: "synonym", word: "You may wonder", meaning: "", enExample: "why spiders are our friends?", zhExample: "" }, { kind: "synonym", word: "主要信息", meaning: "", enExample: "次要信息", zhExample: "" }] }, { label: "You may wonder... 设问句结构(重点突出wonder)", description: "", examples: [{ kind: "example", word: "", meaning: "", enExample: "You may wonder why he left early.", zhExample: "你可能会想知道他为什么早退。" }, { kind: "example", word: "", meaning: "", enExample: "You may wonder, why should we care about climate change?", zhExample: "你可能想知道，我们为什么要关心气候变化？" }, { kind: "example", word: "", meaning: "", enExample: "You may wonder, why should education be a priority?", zhExample: "你可能会想，为什么教育应该优先？" }] }, { label: "【设问句】写作技巧 引起兴趣，避免说教", description: "", examples: [{ kind: "example", word: "", meaning: "", enExample: "Why should we learn from history?", zhExample: "我们为什么要学习历史？" }, { kind: "example", word: "", meaning: "", enExample: "Why must we rethink our lifestyles?", zhExample: "我们为什么必须重新思考我们的生活方式？" }, { kind: "example", word: "", meaning: "", enExample: "Why do small habits matter so much?", zhExample: "为什么小习惯如此重要？" }, { kind: "synonym", word: "Building harmonious personal relationships is very important in the modern society.", meaning: "", enExample: "Why, you may wonder, should some of us become experts in building and maintaining personal relationships?", zhExample: "" }, { kind: "synonym", word: "说教语气（容易让人产生不悦感）", meaning: "", enExample: "设问句开头，引起读者兴趣", zhExample: "" }] }] },
@@ -432,42 +2508,15 @@ const articleNce4L2: Article = {
         { text: "It has been estimated that the weight of all the insects destroyed by spiders in Britain in one year would be greater than the total weight of all the human beings in the country.", translation: "据估计，在英国蜘蛛一年里所消灭昆虫的重量超过这个国家人口的总重量。", predicates: ["has been estimated", "be"], clauseIntroducers: [], auxiliaries: ["would"], inlineAnnotations: [{ label: "It has been estimated", description: "据估计" }, { label: "the weight of all the insects", description: "所有昆虫的重量" }, { label: "in Britain", description: "地点状语" }, { label: "in one year", description: "时间状语" }, { label: "the total weight of all the human beings", description: "所有人类的总体重" }, { label: "in the country", description: "地点状语" }], expansionNotes: [{ label: "be estimated (据)估计", description: "", examples: [{ kind: "example", word: "", meaning: "", enExample: "The loss is estimated to reach upwards of 30000 yuan.", zhExample: "据估计损失达30000元以上。" }, { kind: "example", word: "", meaning: "", enExample: "They are estimated to employ around 50, 000 gunmen.", zhExample: "他们估计雇用约50,000名枪手。" }, { kind: "example", word: "", meaning: "", enExample: "The cost to repair it was estimated at $800.", zhExample: "修复的成本估计为800美元。" }, { kind: "example", word: "", meaning: "", enExample: "Adjusted odds ratios were estimated with logistic regression.", zhExample: "用逻辑回归法评估了调整后比率。" }] }, { label: "鼻腔爆破 nasal explosion [t] / [d] + [n]", description: "", examples: [{ kind: "synonym", word: "Britain", meaning: "", enExample: "mutton", zhExample: "" }, { kind: "synonym", word: "mountain", meaning: "", enExample: "didn’t", zhExample: "" }] }] }
       ]
     ],
+    pendingNotes: [
+    { label: "文章押韵", description: "" },
+    { label: "Gre写作范文", description: "" },
+    { label: "rhyme 尾韵", description: "" },
+    { label: "Gre写作范文", description: "" },
+    { label: "spare v. 节约，吝惜；饶恕；分出，分让", description: "" }
+  ]
   },
-
-  vocabulary: [
-    { word: "beast", pos: "n.", meaning: "野兽", phonetic: "/bi:st/" },
-    { word: "census", pos: "n.", meaning: "统计数字", phonetic: "/'sensəs/" },
-    { word: "acre", pos: "n.", meaning: "英亩", phonetic: "/'eikə/" },
-    { word: "content", pos: "adj.", meaning: "满足的", phonetic: "/'kɔntent, kən'tent/" }
-  ],
-}
-const articleNce4L3: Article = {
-
-  id: "nce4-l3",
-  lesson: 3,
-  tag: "C3",
-  title: "Matterhorn man",
-  titleCn: "马特霍恩山区人",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "WALTER UNSWORTH（沃尔特·昂斯沃思）《Matterhorn Man》",
-  notesOnText: [
-    { label: "in the pioneering days", description: "在初创时期，这里指登山运动的初创期。" },
-    { label: "equipped in a manner which would make a modern climber shudder at the thought", description: "他们的装备如此简陋，足以使现代登山者一想起来就胆战心惊。at the thought,一想到（他们的装备），英文中省略了 of the manner." },
-    { label: "go out of one's way 特地", description: "不怕麻烦" },
-    { label: "such inns as there were 那里有的小客栈", description: "as there were 用来修饰inns,作定语。" },
-    { label: "the food simply local cheese", description: "在food 后面省略了was。" }
-  ],
-
-  original: {
+  "nce4-l3": {
     paragraphs: [
       [
         { text: "Modern alpinists try to climb mountains by a route which will give them good sport, and the more difficult it is, the more highly it is regarded.", translation: "现代登山运动员总想找一条能够给他们带来运动乐趣的路线来攀登山峰。他们认为，道路愈艰险愈带劲儿。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -486,57 +2535,7 @@ const articleNce4L3: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "Matterhorn", pos: "n.", meaning: "马特霍恩峰(阿尔卑斯山峰之一)", phonetic: "/'mætəhɔ:n/" },
-    { word: "alpinist", pos: "n.", meaning: "登山运动员", phonetic: "/'ælpinist/" },
-    { word: "pioneer", pos: "v./n.", meaning: "开辟，倡导;先锋，开辟者", phonetic: "/'paiə'niə/" },
-    { word: "summit", pos: "n.", meaning: "顶峰", phonetic: "/'sʌmit/" },
-    { word: "attain", pos: "v.", meaning: "到达", phonetic: "/ə'tein/" },
-    { word: "perilous", pos: "adj.", meaning: "危险的", phonetic: "/'periləs/" },
-    { word: "shudder", pos: "v.", meaning: "不寒而栗", phonetic: "/'ʃʌdə/" },
-    { word: "court", pos: "v.", meaning: "追求", phonetic: "/kɔ:t/" },
-    { word: "solitary", pos: "adj.", meaning: "唯一的", phonetic: "/'sɔlitəri/" },
-    { word: "impoverish", pos: "v.", meaning: "使贫困", phonetic: "/im'pɔvəriʃ/" },
-    { word: "Alpine", pos: "adj.", meaning: "阿尔卑斯山的", phonetic: "/'ælpain/" },
-    { word: "flea-ridden", pos: "adj.", meaning: "布满跳蚤的", phonetic: "//" },
-    { word: "coarse", pos: "adj.", meaning: "粗劣的", phonetic: "/kɔ:s/" },
-    { word: "boast", pos: "v.", meaning: "自恃有", phonetic: "/bəust/" },
-    { word: "parishioner", pos: "n.", meaning: "教区居民", phonetic: "/pə'riʃənə/" },
-    { word: "shepherd", pos: "n.", meaning: "牧羊人", phonetic: "/'ʃepəd/" },
-    { word: "linen", pos: "n.", meaning: "亚麻布", phonetic: "/'linin/" },
-    { word: "the Alps", pos: "n.", meaning: "阿尔卑斯山脉", phonetic: "//" }
-  ],
-}
-const articleNce4L4: Article = {
-
-  id: "nce4-l4",
-  lesson: 4,
-  tag: "C4",
-  title: "Seeing hands",
-  titleCn: "能看见东西的手",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "ERIC DE MAUNY（埃里克·德莫尼）《Seeing hands》from《The Listener》",
-  notesOnText: [
-    { label: "of people who can read...", description: "这个定语从句用来修饰主语cases,由于太长，因此被移至谓语之后。" },
-    { label: "through solid walls与 with different parts of her skin并列", description: "作perceive的状语。" },
-    { label: "lock something away", description: "把...锁藏起来。" },
-    { label: "do up", description: "引起捆，包" },
-    { label: "bring...to the notice of", description: "引起某人注意。" },
-    { label: "except when blindfold", description: "其中when之后省略了she was。" },
-    { label: "the moment her hands were wet", description: "这是一个时间状语从句,the moment 有\"一....就....\"的意思。" }
-  ],
-
-  original: {
+  "nce4-l4": {
     paragraphs: [
       [
         { text: "Several cases have been reported in Russia recently of people who can read and detect colours with their fingers, and even see through solid doors and walls.", translation: "俄罗斯最近报导了几个事例，有人能用手指看书识字和辨认颜色，甚至能透过厚实的门和墙看到东西。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -553,45 +2552,7 @@ const articleNce4L4: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "solid", pos: "adj.", meaning: "坚实的", phonetic: "/'sɔlid/" },
-    { word: "safe", pos: "n.", meaning: "保险柜", phonetic: "/seif/" },
-    { word: "Ulyanovsk", pos: "n.", meaning: "乌里扬诺夫斯克", phonetic: "/u:'lja:nɔfsk/" },
-    { word: "commission", pos: "n.", meaning: "委员会", phonetic: "/kə'miʃən/" },
-    { word: "opaque", pos: "adj.", meaning: "不透明的", phonetic: "/əu'peik/" },
-    { word: "lotto", pos: "n.", meaning: "一种有编号的纸牌", phonetic: "/'lɔtou/" },
-    { word: "slipper", pos: "n.", meaning: "拖鞋", phonetic: "/'slipə/" },
-    { word: "blindfold", pos: "a./ad.", meaning: "被蒙上眼睛的", phonetic: "/'blaindfəuld/" }
-  ],
-}
-const articleNce4L6: Article = {
-
-  id: "nce4-l6",
-  lesson: 6,
-  tag: "C7",
-  title: "The sports spirit",
-  titleCn: "体育精神",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "GEORGE ORWELL（乔治·奥威尔）《The sporting spirit》",
-  notesOnText: [
-    { label: "if only the common peoples of the world...", description: "这里 if only 引导的一个非真实条件句，if only作“只要”讲。" },
-    { label: "have no inclination to do", description: "无意做.....,不想做.....。" },
-    { label: "You play to win. 句中的you 是泛指人", description: "可译作“人们”。" },
-    { label: "pick up", description: "随意挑选。" },
-    { label: "and", description: "behind the spectators,of the nations,在of the nations前面省略了the attitude。" }
-  ],
-
-  original: {
+  "nce4-l6": {
     paragraphs: [
       [
         { text: "I am always amazed when I hear people saying that sport creates goodwill between the nations, and that if only the common peoples of the world could meet one another at football or cricket, they would have no inclination to meet on the battlefield.", translation: "当我听人们说体育运动可创造国家之间的友谊，还说各国民众若在足球场或板球场上交锋，就不愿在战场上残杀的时候，我总是惊愕不已。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -608,52 +2569,7 @@ const articleNce4L6: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "goodwill", pos: "n.", meaning: "友好", phonetic: "//" },
-    { word: "cricket", pos: "n.", meaning: "板球", phonetic: "/'krikit/" },
-    { word: "inclination", pos: "n.", meaning: "意愿", phonetic: "/'inkli'neiʃən/" },
-    { word: "contest", pos: "n.", meaning: "比赛", phonetic: "/kən'test, 'kɔntest/" },
-    { word: "orgy", pos: "n.", meaning: "无节制，放荡", phonetic: "/'ɔ:dʒi/" },
-    { word: "deduce", pos: "v.", meaning: "推断", phonetic: "/di'dju:s/" },
-    { word: "competitive", pos: "adj.", meaning: "竞争性的", phonetic: "/kəm'petitiv/" },
-    { word: "patriotism", pos: "n.", meaning: "地方观念，爱国主义", phonetic: "/'pætriətizm/" },
-    { word: "disgrace", pos: "v.", meaning: "使丢脸", phonetic: "/dis'greis/" },
-    { word: "savage", pos: "adj.", meaning: "野性的", phonetic: "/'sævidʒ/" },
-    { word: "combative", pos: "adj.", meaning: "好斗的", phonetic: "/'kɔmbətiv/" },
-    { word: "mimic warfare", pos: "n.", meaning: "模拟战争", phonetic: "//" },
-    { word: "behaviour", pos: "n.", meaning: "行动，举止", phonetic: "/bi'heivjə/" },
-    { word: "absurd", pos: "adj.", meaning: "荒唐的", phonetic: "/əb'sə:d/" }
-  ],
-}
-const articleNce4L7: Article = {
-
-  id: "nce4-l7",
-  lesson: 7,
-  tag: "C9",
-  title: "Bats",
-  titleCn: "蝙蝠",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "MAURICE BURTON（莫里斯·伯顿）《Curiosities of animal life》",
-  notesOnText: [
-    { label: "Not all sounds made by animals serve as language", description: "动物发出的声音不全是作语言交际。此句采用了部分否定，即不是否定所有的动物，而只是一部分。serve as,作...之用。" },
-    { label: "turn to", description: "求助于。" },
-    { label: "play a role in", description: "在...方面起作用。" },
-    { label: "in the vicinity of", description: "在...的附近。" },
-    { label: "So was born the echo-sounding apparatus", description: "这样就诞生了回声探测仪。这是一个倒装句，主要是为了避免因主语过长而使全句失去平衡，同时也为了使apparatus的定语now in general use in ships紧挨着名词。in general use,普遍使用。" },
-    { label: "steer clear of", description: "避开。" }
-  ],
-
-  original: {
+  "nce4-l7": {
     paragraphs: [
       [
         { text: "Not all sounds made by animals serve as language, and we have only to turn to that extraordinary discovery of echo-location in bats to see a case in which the voice plays a strictly utilitarian role.", translation: "动物发出的声音不都是用作语言交际。我们只要看一看蝙蝠回声定位这一极不寻常的发现，就可以探究一下声音在什么情况下有绝对的实用价值。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
@@ -675,48 +2591,7 @@ const articleNce4L7: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "bat", pos: "n.", meaning: "蝙蝠", phonetic: "/bæt/" },
-    { word: "strictly", pos: "adv.", meaning: "明确地", phonetic: "/'striktli/" },
-    { word: "utilitarian", pos: "adj.", meaning: "实用的", phonetic: "/'ju:tili'tєəriən/" },
-    { word: "appreciation", pos: "n.", meaning: "理解", phonetic: "/ə'pri:ʃi'eiʃən/" },
-    { word: "obstruction", pos: "n.", meaning: "障碍物", phonetic: "/əb'strʌkʃən/" },
-    { word: "elapse", pos: "v.", meaning: "消逝", phonetic: "/i'læps/" },
-    { word: "hull", pos: "n.", meaning: "船体", phonetic: "/hʌl/" },
-    { word: "interval", pos: "n.", meaning: "间隔", phonetic: "/'intəvəl/" },
-    { word: "receipt", pos: "n.", meaning: "收到", phonetic: "/ri'si:t/" },
-    { word: "apparatus", pos: "n.", meaning: "仪器", phonetic: "/,æpə'reitəs/" },
-    { word: "shoal", pos: "n.", meaning: "鱼群", phonetic: "/ʃəul/" },
-    { word: "herring", pos: "n.", meaning: "鲱鱼", phonetic: "/'heriŋ/" },
-    { word: "cod", pos: "n.", meaning: "鳕鱼", phonetic: "/kɔd/" },
-    { word: "squeak", pos: "n.", meaning: "尖叫声", phonetic: "/skwi:k/" }
-  ],
-}
-const articleNce4L8: Article = {
-
-  id: "nce4-l8",
-  lesson: 8,
-  title: "Trading Standards",
-  titleCn: "贸易标准",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "from《The Economist》, 1997",
-  notesOnText: [
-    { label: "Chickens slaughtered in ... to grace European tables.在这句话中引用了布鲁塞尔官员的评论", description: "却没有放在引号之中。这种方式常用于报刊文章，对读者的直接影响更大。在claim officials in Brussels中，动词claim置于名词之前。" },
-    { label: "it is differences in national regulations .. between rich countries.是各国管理条例上的差异", description: "而不是关税阻碍了发达国家之间的贸易。这是一个it 引导的强调句。put sand in the wheels of,阻碍，阻挠。" },
-    { label: "So", description: "ask businesses on both sides of the Atlantic,why have two lots of tests where one would do?这是另一个没有引号的直接引语的例子。注意why have two...do 中的语序，这是非常口语化的直接引语的语序。" }
-  ],
-
-  original: {
+  "nce4-l8": {
     paragraphs: [
       [
         { text: "Chickens slaughtered in the United States, claim officials in Brussels, are not fit to grace European tables.", translation: "布鲁塞尔的官员说，在美国屠宰的鸡不适于用来装点欧洲的餐桌。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -740,50 +2615,7 @@ const articleNce4L8: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "slaughter", pos: "v.", meaning: "屠宰", phonetic: "/'slɔ:tə/" },
-    { word: "fit", pos: "adj.", meaning: "适合", phonetic: "/fit/" },
-    { word: "grace", pos: "v.", meaning: "给…增光", phonetic: "/greis/" },
-    { word: "tariff", pos: "n.", meaning: "关税", phonetic: "/'tærif/" },
-    { word: "standard", pos: "n.", meaning: "标准", phonetic: "/'stændəd/" },
-    { word: "dialysis", pos: "n.", meaning: "分离，分解；透析，渗析", phonetic: "/dai'ælisis/" },
-    { word: "electrocute", pos: "v.", meaning: "使触电身亡", phonetic: "/i'lektrəkjut/" },
-    { word: "eliminate", pos: "v.", meaning: "消灭", phonetic: "/i'limineit/" },
-    { word: "accord", pos: "n.", meaning: "协议", phonetic: "/ə'kɔ:d/" },
-    { word: "device", pos: "n.", meaning: "仪器，器械", phonetic: "/di'vais/" },
-    { word: "hammer out", pos: "v.", meaning: "推敲", phonetic: "//" },
-    { word: "pact", pos: "n.", meaning: "合同，条约，公约", phonetic: "/pækt/" }
-  ],
-}
-const articleNce4L11: Article = {
-
-  id: "nce4-l11",
-  lesson: 11,
-  tag: "C14",
-  title: "How to grow old",
-  titleCn: "如何安度晚年",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "BERTRAND RUSSELL（伯特兰·罗素）《How to grow old》from《Portraits from Memory》",
-  notesOnText: [
-    { label: "in the young", description: "在年轻人身上。" },
-    { label: "Young men who have reason...that life has to offer.这个句子较长", description: "其中有3个that。第1个that引导一个宾语从句that...battle,是fear的宾语。第2个that引导一个同位语从句that they...to offer,说明thought的内容。第2个that引导一个定语从句that life has to offer,修饰things。" },
-    { label: "cheat of...", description: "从...那里骗取....。" },
-    { label: "whatever work it was in him to do", description: "他所能做的任何工作。" },
-    { label: "so at least it seems to me", description: "这里一个插入语，用了倒装语序，自然的语序是at least it seems so to me。" },
-    { label: "bit by bit", description: "一点一点地。" }
-  ],
-
-  original: {
+  "nce4-l11": {
     paragraphs: [
       [
         { text: "Some old people are oppressed by the fear of death.", translation: "有些老年人因为怕死而感到烦恼。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -799,58 +2631,7 @@ const articleNce4L11: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "oppress", pos: "v.", meaning: "忧郁，压抑", phonetic: "/ə'pres/" },
-    { word: "justification", pos: "n.", meaning: "正当理由", phonetic: "/'dʒʌstifi'keiʃən/" },
-    { word: "justifiably", pos: "adv.", meaning: "无可非议地", phonetic: "/-faiəbli/" },
-    { word: "cheat", pos: "v.", meaning: "欺骗", phonetic: "/tʃi:t/" },
-    { word: "abject", pos: "adj.", meaning: "可怜的", phonetic: "/'æbdʒekt/" },
-    { word: "ignoble", pos: "adj.", meaning: "不体面的，可耻的", phonetic: "/ig'nəubl/" },
-    { word: "impersonal", pos: "adj.", meaning: "超脱个人感情影响的", phonetic: "/im'pə:sənl/" },
-    { word: "ego", pos: "n.", meaning: "自我", phonetic: "/'egəu/" },
-    { word: "recede", pos: "v.", meaning: "退去", phonetic: "/ri'si:d/" },
-    { word: "increasingly", pos: "adv.", meaning: "日益，不断", phonetic: "/in'kri:siŋli/" },
-    { word: "passionately", pos: "adv.", meaning: "激昂地", phonetic: "//" },
-    { word: "painlessly", pos: "adv.", meaning: "毫无痛苦地", phonetic: "//" },
-    { word: "vitality", pos: "n.", meaning: "精力", phonetic: "/vai'tæliti/" },
-    { word: "weariness", pos: "n.", meaning: "疲惫感", phonetic: "/wiərinis/" }
-  ],
-}
-const articleNce4L13: Article = {
-
-  id: "nce4-l13",
-  lesson: 13,
-  title: "The search for oil",
-  titleCn: "探寻石油",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "T. F. GASKELL（T. F. 加斯克尔）《The Search for the Earth's Minerals》from《Discovery》",
-  notesOnText: [
-    { label: "they go down to as much as 25", description: "0000 feet，as much as意为“多达”，“达到（量）”。" },
-    { label: "as+形容词+as表示“……达”", description: "例如：as long as长达……，as tall as高达……，as expensive as贵至……。" },
-    { label: "as we must with other mineral deposits", description: "must后面省去了与上句中相同的部分send men down。" },
-    { label: "a foot in diameter", description: "直径一英尺。" },
-    { label: "every so often", description: "时常。" },
-    { label: "我不再经常看见约翰了", description: "但他偶尔还到我办公室来。" },
-    { label: "obtain a sample", description: "取样。" },
-    { label: "To obtain something means to get it or achieve it. (FORMAL)获得", description: "取得某物。" },
-    { label: "形容词形式为obtainable：If something is obtainable", description: "it is possible to get or achieve it." },
-    { label: "by means of", description: "用……，靠……手段。" },
-    { label: "endeavour to", description: "努力去，尽力去。" },
-    { label: "If you endeavour to do something", description: "you try very hard to do it. 同义词组喂strive to。" },
-    { label: "他们尽量使她快乐", description: "却徒劳无功。" }
-  ],
-
-  original: {
+  "nce4-l13": {
     paragraphs: [
       [
         { text: "The deepest holes of all are made for oil, and they go down to as much as 25,000 feet.", translation: "在所有洞穴中，为寻找石油所钻出的洞是最深的，这些洞可深达25,000英尺。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -870,50 +2651,7 @@ const articleNce4L13: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "mineral", pos: "adj.", meaning: "矿物的", phonetic: "/'minərəl/" },
-    { word: "boring", pos: "n.", meaning: "钻孔", phonetic: "/'bɔ:riŋ/" },
-    { word: "derrick", pos: "n.", meaning: "井架", phonetic: "/'derik/" },
-    { word: "block and tackle", pos: "n.", meaning: "滑轮组", phonetic: "//" },
-    { word: "haul", pos: "v.", meaning: "拖，拉", phonetic: "/hɔ:l/" },
-    { word: "rotate", pos: "v.", meaning: "使转动", phonetic: "/rəu'teit/" },
-    { word: "cutting bit", pos: "n.", meaning: "钻头", phonetic: "//" },
-    { word: "geologist", pos: "n.", meaning: "地质学家", phonetic: "/dʒi'ɔlədʒist/" },
-    { word: "coring bit", pos: "n.", meaning: "取芯钻头", phonetic: "//" },
-    { word: "cylinder", pos: "n.", meaning: "圆柱体", phonetic: "/'silində/" },
-    { word: "strata", pos: "n.", meaning: "岩层［复］(［单］stratum)", phonetic: "/'streitə/" },
-    { word: "circulate", pos: "v.", meaning: "注入，环流", phonetic: "/'sə:kjuleit/" },
-    { word: "gusher", pos: "n.", meaning: "喷油井", phonetic: "//" }
-  ],
-}
-const articleNce4L15: Article = {
-
-  id: "nce4-l15",
-  lesson: 15,
-  tag: "C18",
-  title: "Secrecy in industry",
-  titleCn: "工业中的秘密",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "W. J. READER（W. J. 里德）from《The Observer》, 1964",
-  notesOnText: [
-    { label: "weigh against", description: "不利于....。" },
-    { label: "in so far as...", description: "就...而言。" },
-    { label: "which are of such general and fundamental nature", description: "其中to be of 有“具有”的意思。" },
-    { label: "are sought for with complete secrecy", description: "极端秘密地探索。" },
-    { label: "such and such a book", description: "某一本书。" }
-  ],
-
-  original: {
+  "nce4-l15": {
     paragraphs: [
       [
         { text: "Two factors weigh heavily against the effectiveness of scientific research in industry.", translation: "有两个因素严重地妨碍工业中科学研究的效率：一是科研工作中普遍存在的保密气氛；二是研究人员缺乏个人自由。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -929,36 +2667,7 @@ const articleNce4L15: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "secrecy", pos: "n.", meaning: "秘密", phonetic: "//" },
-    { word: "effectiveness", pos: "n.", meaning: "成效，效力", phonetic: "/i'fektivnis/" },
-    { word: "inquiry", pos: "n.", meaning: "调查研究", phonetic: "/in'kwaiəri/" },
-    { word: "positive", pos: "adj.", meaning: "确实的", phonetic: "/'pɔzətiv/" },
-    { word: "process", pos: "n.", meaning: "过程", phonetic: "/'prəuses/" },
-    { word: "patent", pos: "n./v.", meaning: "专利；得到专利权", phonetic: "/'peitənt/" },
-    { word: "agent", pos: "n.", meaning: "情报人员", phonetic: "/'eidʒənt/" }
-  ],
-}
-const articleNce4L16: Article = {
-
-  id: "nce4-l16",
-  lesson: 16,
-  tag: "C20",
-  title: "The modern city",
-  titleCn: "现代城市",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "ALEXIS CARREL（亚历克西斯·卡雷尔）《Man, the Unknown》",
-  original: {
+  "nce4-l16": {
     paragraphs: [
       [
         { text: "In the organisation of industrial life the influence of the factory upon the physiological and mental state of the workers has been completely neglected.", translation: "在工业生活的组织中，工厂对工人的生理和精神状态的影响完全被忽视了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -975,56 +2684,7 @@ const articleNce4L16: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "physiological", pos: "adj.", meaning: "生理的", phonetic: "/'fiziə'lɔdʒikəl/" },
-    { word: "maximum", pos: "adj.", meaning: "最大限度的", phonetic: "/'mæksiməm/" },
-    { word: "consideration", pos: "n.", meaning: "考虑", phonetic: "/kən'sidə'reiʃən/" },
-    { word: "descendant", pos: "n.", meaning: "子孙，后代", phonetic: "/di'sendənt/" },
-    { word: "artificial", pos: "adj.", meaning: "人工的", phonetic: "/'a:ti'fiʃəl/" },
-    { word: "impose", pos: "v.", meaning: "强加", phonetic: "/im'pəuz/" },
-    { word: "dimension", pos: "n.", meaning: "直径", phonetic: "/di'menʃən/" },
-    { word: "skyscraper", pos: "n.", meaning: "摩天大楼", phonetic: "/'skai'skreipə/" },
-    { word: "tenant", pos: "n.", meaning: "租户", phonetic: "/'tenənt/" },
-    { word: "civilized", pos: "adj.", meaning: "文明的", phonetic: "/'sivilaizd/" },
-    { word: "banal", pos: "adj.", meaning: "平庸的", phonetic: "/bə'na:l/" },
-    { word: "luxury", pos: "n.", meaning: "豪华", phonetic: "/'lʌkʃəri/" },
-    { word: "deprive", pos: "v.", meaning: "剥夺", phonetic: "/di'praiv/" },
-    { word: "monstrous", pos: "adj.", meaning: "畸形的", phonetic: "/'mɔnstrəs/" },
-    { word: "edifice", pos: "n.", meaning: "大厦", phonetic: "/'edifis/" },
-    { word: "toxic", pos: "adj.", meaning: "有毒的", phonetic: "/'tɔksik/" },
-    { word: "ceaselessly", pos: "adv.", meaning: "不停地", phonetic: "/'si:slisli/" },
-    { word: "throng", pos: "v.", meaning: "挤满，壅塞", phonetic: "/θrɔŋ/" }
-  ],
-}
-const articleNce4L18: Article = {
-
-  id: "nce4-l18",
-  lesson: 18,
-  tag: "C22",
-  title: "Porpoises",
-  titleCn: "海豚",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "RALPH NADING HILL（拉尔夫·纳丁·希尔）《Window in the Sea》",
-  notesOnText: [
-    { label: "however intelligent they may be", description: "不管它们有多聪明，这是一个让步状语从句。" },
-    { label: "as in riding the how waves of a ship", description: "就像它们追逐被船首犁开的浪花一样。" },
-    { label: "If as has been reported", description: "they have protected humans from sharks...," },
-    { label: "as 是关系代词", description: "代替they have protected humans from sharks." },
-    { label: "Whether it be bird", description: "fish or beast...,这是一个让步状语从句，用的是虚拟语气形式。" },
-    { label: "for dear life", description: "拼命地。" }
-  ],
-
-  original: {
+  "nce4-l18": {
     paragraphs: [
       [
         { text: "There has long been a superstition among mariners that porpoises will save drowning men by pushing them to the surface, or protect them from sharks by surrounding them in defensive formation.", translation: "长期以来，海员中流传着一种迷信的说法，认为海豚会把快要淹死的人托到水面，救人性命；或在人们周围列队保护，使他们免遭鲨鱼伤害。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1050,59 +2710,7 @@ const articleNce4L18: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "porpoise", pos: "n.", meaning: "海豚", phonetic: "//" },
-    { word: "mariner", pos: "n.", meaning: "水手", phonetic: "/'mærinə/" },
-    { word: "shark", pos: "n.", meaning: "鲨鱼", phonetic: "/ʃa:k/" },
-    { word: "formation", pos: "n.", meaning: "队形", phonetic: "/fɔ:'meiʃən/" },
-    { word: "dolphin", pos: "n.", meaning: "海豚科动物", phonetic: "/'dɔlfin/" },
-    { word: "unconscious", pos: "adj.", meaning: "不省人事的", phonetic: "/ʌn'kɔʃəs/" },
-    { word: "beaver", pos: "n.", meaning: "海狸", phonetic: "/'bi:və/" },
-    { word: "ashore", pos: "adv.", meaning: "上岸", phonetic: "/ə'ʃɔ:/" },
-    { word: "waterlogged", pos: "adj.", meaning: "浸满水的", phonetic: "//" },
-    { word: "scent", pos: "n.", meaning: "香味", phonetic: "/sent/" },
-    { word: "ensue", pos: "v.", meaning: "接着发生", phonetic: "/in'sju:/" },
-    { word: "intrigue", pos: "v.", meaning: "引起兴趣", phonetic: "/in'tri:g/" },
-    { word: "indignity", pos: "n.", meaning: "侮辱", phonetic: "/in'digniti/" },
-    { word: "snout", pos: "n.", meaning: "口鼻部", phonetic: "/snaut/" },
-    { word: "shove", pos: "v.", meaning: "硬推", phonetic: "/ʃʌv/" },
-    { word: "aquaplane", pos: "n.", meaning: "驾浪滑水板", phonetic: "/'ækwəplein/" },
-    { word: "oceanarium", pos: "n.", meaning: "水族馆", phonetic: "/'ouʃən'ʒəri-əm/" },
-    { word: "swoop", pos: "v.", meaning: "猛扑", phonetic: "/swu:p/" },
-    { word: "belly", pos: "n.", meaning: "腹部", phonetic: "/'beli/" },
-    { word: "equilibrium", pos: "n.", meaning: "平衡", phonetic: "/i:kwi'libriəm/" },
-    { word: "butt", pos: "v.", meaning: "碰撞", phonetic: "/bʌt/" },
-    { word: "crack", pos: "n.", meaning: "重击", phonetic: "/kræk/" }
-  ],
-}
-const articleNce4L21: Article = {
-
-  id: "nce4-l21",
-  lesson: 21,
-  title: "William S. Hart and the Early \"Western\" Film",
-  titleCn: "威廉·S·哈特与早期的西部片",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "CARL FOREMAN（卡尔·福尔曼）《Virtue and a Fast Gun》from《The Observer》",
-  notesOnText: [
-    { label: "nothing but", description: "仅仅，只是。" },
-    { label: "in short", description: "总而言之，一句话。" },
-    { label: "the old West", description: "指密西西比河以西地区。" },
-    { label: "be rooted in", description: "生根于。" },
-    { label: "join hands in", description: "携手联合。" },
-    { label: "live by", description: "靠...过活。" }
-  ],
-
-  original: {
+  "nce4-l21": {
     paragraphs: [
       [
         { text: "William S. Hart was, perhaps, the greatest of all Western stars, for unlike Gary Cooper and John Wayne he appeared in nothing but Westerns.", translation: "威廉.S.哈特大概是美国西部电影明星中的佼佼者。他和加里.古柏、约翰.韦恩不同，他只在西部电影中扮演角色。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1124,58 +2732,7 @@ const articleNce4L21: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "supreme", pos: "adj.", meaning: "首屈一指的", phonetic: "/sju:'pri:m/" },
-    { word: "protagonist", pos: "n.", meaning: "主角", phonetic: "/prəu'tægənist/" },
-    { word: "outlaw", pos: "n.", meaning: "逃犯，亡命之徒", phonetic: "/'autlɔ:/" },
-    { word: "framed", pos: "adj.", meaning: "遭到陷害的", phonetic: "//" },
-    { word: "vicious", pos: "adj.", meaning: "恶毒的", phonetic: "/'viʃəs/" },
-    { word: "mythology", pos: "n.", meaning: "神话", phonetic: "/mi'θɔlədʒi/" },
-    { word: "vanished", pos: "adj.", meaning: "消失了的", phonetic: "//" },
-    { word: "absurdly", pos: "adv.", meaning: "荒诞地", phonetic: "/əb'sə:dli/" },
-    { word: "arena", pos: "n.", meaning: "竞技场地", phonetic: "/ə'ri:nə/" },
-    { word: "encroaching", pos: "adj.", meaning: "渐渐渗入的", phonetic: "//" },
-    { word: "Indian", pos: "n.", meaning: "印第安人", phonetic: "/'indiən/" },
-    { word: "bewilder", pos: "v.", meaning: "使手足无措", phonetic: "/bi'wildə/" },
-    { word: "alien", pos: "adj.", meaning: "外来的", phonetic: "/'eiljən/" },
-    { word: "taboo", pos: "n.", meaning: "戒律", phonetic: "/tə'bu:/" },
-    { word: "disinherit", pos: "v.", meaning: "剥夺…继承权", phonetic: "/'disin'herit/" },
-    { word: "undeclared", pos: "adj.", meaning: "未经宣布的", phonetic: "/'ʌndi'klєəd/" },
-    { word: "hypocrisy", pos: "n.", meaning: "伪善", phonetic: "/hi'pɔkrəsi/" },
-    { word: "chicanery", pos: "n.", meaning: "诈骗", phonetic: "/ʃi'keinəri/" },
-    { word: "impending", pos: "adj.", meaning: "迫近的，迫在眉睫的", phonetic: "/im'pendiŋ/" },
-    { word: "immolation", pos: "n.", meaning: "杀戮", phonetic: "/iməu'leiʃən/" },
-    { word: "code", pos: "n.", meaning: "准则", phonetic: "/kəud/" }
-  ],
-}
-const articleNce4L22: Article = {
-
-  id: "nce4-l22",
-  lesson: 22,
-  tag: "C27",
-  title: "Knowledge and progress",
-  titleCn: "知识和进步",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "BERTRAND RUSSELL（伯特兰·罗素）《The Impact of Science on Society》, 1952",
-  notesOnText: [
-    { label: "with the invention of writing", description: "短语中的with 是“由于”的意思。" },
-    { label: "education in its turn added to libraries", description: "教育反过来也丰富了藏书。" },
-    { label: "a kind of compound interest law", description: "一种复利法则。compound interest law有时也被称作雪球法则，即利上滚利，增长很快。" },
-    { label: "turn... to account", description: "利用...。" },
-    { label: "Could any spectacle", description: "...to restore them?这句话从形式上是个疑问句，但实质上起一个加强语气的陈述句的作用，这种疑问句常被称为修辞疑问句。" }
-  ],
-
-  original: {
+  "nce4-l22": {
     paragraphs: [
       [
         { text: "Why does the idea of progress loom so large in the modern world?", translation: "为什么进步这个概念在现代世界显得如此突出？", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1197,52 +2754,7 @@ const articleNce4L22: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "loom", pos: "v.", meaning: "赫然耸起", phonetic: "/lu:m/" },
-    { word: "manifest", pos: "adj.", meaning: "明显的", phonetic: "/'mænifest/" },
-    { word: "morality", pos: "n.", meaning: "道德", phonetic: "/mə'ræliti/" },
-    { word: "communicate", pos: "v.", meaning: "交流，交际", phonetic: "/kə'mju:nikeit/" },
-    { word: "compound", pos: "adj.", meaning: "复合的", phonetic: "/'kɔmpaund, kəm'paund/" },
-    { word: "enhance", pos: "v.", meaning: "增进", phonetic: "/in'ha:ns/" },
-    { word: "tempo", pos: "n.", meaning: "速率", phonetic: "/'tempəu/" },
-    { word: "trickle", pos: "n.", meaning: "涓涓细流", phonetic: "/'trikl/" },
-    { word: "torrent", pos: "n.", meaning: "滔滔洪流", phonetic: "/'tɔrənt/" },
-    { word: "humanity", pos: "n.", meaning: "人类", phonetic: "/hju:'mæniti/" },
-    { word: "indifferently", pos: "adv.", meaning: "不在乎地", phonetic: "/in'difrəntli/" },
-    { word: "grimly", pos: "adv.", meaning: "可怖地", phonetic: "/'grimli/" },
-    { word: "whimsical", pos: "adj.", meaning: "怪诞的", phonetic: "/'wimzikl/" },
-    { word: "shatter", pos: "v.", meaning: "毁坏", phonetic: "/'ʃætə/" },
-    { word: "twofold", pos: "adj.", meaning: "双重的", phonetic: "/'tu:fəuld/" }
-  ],
-}
-const articleNce4L24: Article = {
-
-  id: "nce4-l24",
-  lesson: 24,
-  tag: "C29",
-  title: "Beauty",
-  titleCn: "美",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "C. E. M. JOAD（C. E. M. 乔德）《Pieces of mind》, 1961",
-  notesOnText: [
-    { label: "the same as theirs", description: "这里的theirs是指our forefathers'。" },
-    { label: "only too ready to provide", description: "非常乐意提供。在英语中too...to do...的结构通常表示否定，但如果在前面加上only,就有“非常...能做”的意思。" },
-    { label: "disposing of", description: "处理。" },
-    { label: "It is recounted of Thomas Carlyle...", description: "据说，托马斯.卡莱尔...（有下面这件）.托马斯.卡莱尔是十九世纪英国著名的散文作家和历史学家。" },
-    { label: "in all probability", description: "很可能。" },
-    { label: "put up with", description: "忍受。" }
-  ],
-
-  original: {
+  "nce4-l24": {
     paragraphs: [
       [
         { text: "A young man sees a sunset and, unable to understand or to express the emotion that it rouses in him, concludes that it must be the gateway to a world that lies beyond.", translation: "一个年轻人看到日落，由于无法理解和表达日落在他心中唤起的激情，便得出结论：日落处想必是通往遥远世界的大门。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1260,52 +2772,7 @@ const articleNce4L24: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "intense", pos: "adj.", meaning: "强烈的", phonetic: "/in'tens/" },
-    { word: "aesthetic", pos: "adj.", meaning: "审美的", phonetic: "/i:s'θetik/" },
-    { word: "realm", pos: "n.", meaning: "世界", phonetic: "/'relm/" },
-    { word: "serenity", pos: "n.", meaning: "静谧", phonetic: "/si'reniti/" },
-    { word: "undeniable", pos: "adj.", meaning: "不可否认的", phonetic: "/'ʌndi'naiəbl/" },
-    { word: "indefinable", pos: "adj.", meaning: "模糊不清的", phonetic: "/'indi'fainəbl/" },
-    { word: "vulgar", pos: "adj.", meaning: "平庸的", phonetic: "/'vʌlgə/" },
-    { word: "radiance", pos: "n.", meaning: "发光", phonetic: "/'reidjəns/" },
-    { word: "intimation", pos: "n.", meaning: "暗示", phonetic: "/inti'meiʃən/" },
-    { word: "unutterable", pos: "adj.", meaning: "不可言传的", phonetic: "/ʌn'ʌtərəbl/" },
-    { word: "invest", pos: "v.", meaning: "赋予", phonetic: "/in'vest/" }
-  ],
-}
-const articleNce4L28: Article = {
-
-  id: "nce4-l28",
-  lesson: 28,
-  tag: "C34",
-  title: "Patients and doctors",
-  titleCn: "病人与医生",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "KENNETH WALKER（肯尼斯·沃克）《Patients and doctors》",
-  notesOnText: [
-    { label: "be confined to", description: "仅限于...。" },
-    { label: "shallow water", description: "浅水区。" },
-    { label: "open sea", description: "无办际的大海。" },
-    { label: "gave more than a passing thought to", description: "稍微想过。" },
-    { label: "at the disposal of", description: "交由...支配。" },
-    { label: "a relief map", description: "地形图。" },
-    { label: "with", description: "superimposed upon it,the continents,together with the islands and other features of the oceans,这是with引导的一个过去分词独立主格结构。因逻辑主语太长，所以使用了倒装语序。superimposed upon it是逻辑谓语部分。" },
-    { label: "continental shelf", description: "大陆架。" },
-    { label: "1 in 30", description: "1/30。" }
-  ],
-
-  original: {
+  "nce4-l28": {
     paragraphs: [
       [
         { text: "This is a sceptical age, but although our faith in many of the things in which our forefathers fervently believed has weakened, our confidence in the curative properties of the bottle of medicine remains the same as theirs.", translation: "这是一个怀疑一切的时代，可是虽然我们对我们祖先笃信的许多事物已不太相信，我们对瓶装药品疗效的信心仍与祖辈一样坚定。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1324,49 +2791,7 @@ const articleNce4L28: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "skeptical", pos: "adj.", meaning: "怀疑的", phonetic: "/'skeptikəl/" },
-    { word: "forefathers", pos: "n.", meaning: "祖先", phonetic: "//" },
-    { word: "fervently", pos: "adv.", meaning: "热情地", phonetic: "/'fə:vəntli/" },
-    { word: "curative", pos: "adj.", meaning: "治病的", phonetic: "/'kjuərətiv/" },
-    { word: "astronomical", pos: "adj.", meaning: "天文学的", phonetic: "/'æstrə'nɔmikəl/" },
-    { word: "tangible", pos: "adj.", meaning: "实实在在的", phonetic: "/tændʒəbl/" },
-    { word: "remedy", pos: "n.", meaning: "药物", phonetic: "/'remidi/" },
-    { word: "ointment", pos: "n.", meaning: "药膏", phonetic: "/'ɔintmənt/" },
-    { word: "prescribe", pos: "v.", meaning: "开药方", phonetic: "/pri'skraib/" },
-    { word: "indisposition", pos: "n.", meaning: "小病", phonetic: "/in'dispə'ziʃən/" },
-    { word: "disgusting", pos: "adj.", meaning: "令人讨厌的", phonetic: "//" },
-    { word: "inconvenience", pos: "n.", meaning: "不便", phonetic: "/'inkən'vi:njəns/" }
-  ],
-}
-const articleNce4L30: Article = {
-
-  id: "nce4-l30",
-  lesson: 30,
-  tag: "C36",
-  title: "Exploring the sea-floor",
-  titleCn: "海底勘探",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "H. H. HESS（H. H. 赫斯）from《Scientific American》, 1960",
-  notesOnText: [
-    { label: "something like", description: "多少，大约。" },
-    { label: "a problem child", description: "problem 作定语，修饰 child。这是一种比喻修辞法，意思是“新出现的问题”。" },
-    { label: "a man who... who... who... who...", description: "这里一连用了4个定语从句，均用who引导，构成了排比结构，起加强语气的作用。" },
-    { label: "at the time", description: "当时。" },
-    { label: "use a telescope at the limit of its power", description: "用望远镜的极限功率。" }
-  ],
-
-  original: {
+  "nce4-l30": {
     paragraphs: [
       [
         { text: "Our knowledge of the oceans a hundred years ago was confined to the two-dimensional shape of the sea surface and the hazards of navigation presented by the irregularities in depth of the shallow water close to the land.", translation: "100年前，我们只知道海洋是二维平面形的，以及靠近陆地浅水区的深浅不一能给航行带来危险。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1388,51 +2813,7 @@ const articleNce4L30: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "navigation", pos: "n.", meaning: "航海", phonetic: "/'nævi'geiʃən/" },
-    { word: "sounding", pos: "n.", meaning: "水深度", phonetic: "//" },
-    { word: "fathom", pos: "n.", meaning: "英寻（1寻等于1.8米）", phonetic: "/'fæðəm/" },
-    { word: "porcupine", pos: "n.", meaning: "箭猪", phonetic: "/'pɔ:kjupain/" },
-    { word: "dredge", pos: "v.", meaning: "挖掘", phonetic: "/dredʒ/" },
-    { word: "expedition", pos: "n.", meaning: "远征", phonetic: "/'ekspi'diʃən/" },
-    { word: "physicist", pos: "n.", meaning: "物理学家", phonetic: "/'fizisist/" },
-    { word: "magnitude", pos: "n.", meaning: "很多", phonetic: "/'mægnitju:d/" },
-    { word: "topography", pos: "n.", meaning: "地形", phonetic: "/tə'pɔgrəfi/" },
-    { word: "crust", pos: "n.", meaning: "地壳", phonetic: "/krʌst/" },
-    { word: "rugged", pos: "adj.", meaning: "崎岖不平的", phonetic: "/'rʌgid/" },
-    { word: "tableland", pos: "n.", meaning: "高地", phonetic: "//" },
-    { word: "sediment", pos: "n.", meaning: "沉淀物", phonetic: "/'sedimənt/" },
-    { word: "terrace", pos: "n.", meaning: "阶地", phonetic: "/'terəs/" },
-    { word: "erode", pos: "v.", meaning: "侵蚀", phonetic: "/i'rəud/" }
-  ],
-}
-const articleNce4L32: Article = {
-
-  id: "nce4-l32",
-  lesson: 32,
-  tag: "C39",
-  title: "Galileo reborn",
-  titleCn: "伽利略的复生",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "MICHAEL HOSKIN（迈克尔·霍斯金）《Galileo Reborn》from《The Listener》",
-  notesOnText: [
-    { label: "Education", description: "with its cycles...,punctuated by textbooks...,这句话中的主语 Education 与 punctuated 并不是一种主谓关系，因此，这句话在语法上被称作单元句" },
-    { label: "So much is certain", description: "有承上启下的作用:一方面回答了前一段最后一句的提问，另一方面开始列举没有教育将会给社会文明带来的影响。" },
-    { label: "be fashioned after", description: "按...做成。" },
-    { label: "without a script", description: "没有文字的。" }
-  ],
-
-  original: {
+  "nce4-l32": {
     paragraphs: [
       [
         { text: "In his own lifetime Galileo was the centre of violent controversy;", translation: "伽利略在世时是激烈论战的中心。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1454,58 +2835,7 @@ const articleNce4L32: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "controversy", pos: "n.", meaning: "争议，争论", phonetic: "/'kɔntrəvə:si/" },
-    { word: "dust", pos: "n.", meaning: "纠纷，骚动", phonetic: "/dʌst/" },
-    { word: "clash", pos: "n.", meaning: "冲突", phonetic: "/klæʃ/" },
-    { word: "Inquisition", pos: "n.", meaning: "(罗马天主教的)宗教法庭", phonetic: "/inkwi'ziʃən/" },
-    { word: "perspective", pos: "n.", meaning: "观点，看法", phonetic: "/pə:'spektiv/" },
-    { word: "despise", pos: "v.", meaning: "蔑视", phonetic: "/dis'paiz/" },
-    { word: "generalize", pos: "v.", meaning: "归纳", phonetic: "/'dʒenərəlaiz/" },
-    { word: "undercurrent", pos: "n.", meaning: "潜流", phonetic: "/'ʌndə'kʌrənt/" },
-    { word: "theoretical", pos: "adj.", meaning: "理论上的", phonetic: "/θiə'retikl/" },
-    { word: "potentiality", pos: "n.", meaning: "潜能", phonetic: "/pə'tenʃi'æliti/" },
-    { word: "intimate", pos: "adj.", meaning: "详尽的", phonetic: "/'intimit/" },
-    { word: "familiarity", pos: "n.", meaning: "熟悉", phonetic: "/fə'mili'æriti/" },
-    { word: "culpable", pos: "adj.", meaning: "应受谴责的", phonetic: "/'kʌlpəbl/" },
-    { word: "Aristotelian", pos: "n.", meaning: "亚里士多德学派的人", phonetic: "/æristə'ti:liən/" },
-    { word: "Aristotle", pos: "n.", meaning: "亚里士多德(古希腊哲学家)", phonetic: "/'æristɔtl/" },
-    { word: "Ptolemy", pos: "n.", meaning: "托勒密(公元-，古希腊天文学家)", phonetic: "//" },
-    { word: "Leaning Tower Pisa", pos: "n.", meaning: "比萨斜塔", phonetic: "//" },
-    { word: "spiral", pos: "adj.", meaning: "螺旋状的", phonetic: "/'spaiərəl/" },
-    { word: "nebula", pos: "n.", meaning: "星云", phonetic: "/'nebjulə/" },
-    { word: "scratch", pos: "n.", meaning: "擦痕", phonetic: "/skrætʃ/" },
-    { word: "contrivance", pos: "n.", meaning: "器械", phonetic: "/kən'traivəns/" },
-    { word: "distort", pos: "v.", meaning: "歪曲", phonetic: "/dis'tɔ:t/" }
-  ],
-}
-const articleNce4L33: Article = {
-
-  id: "nce4-l33",
-  lesson: 33,
-  tag: "C41",
-  title: "Education",
-  titleCn: "教育",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "JULIUS E. LIPS（朱利叶斯·E·利普斯）《The Origin of Things》",
-  notesOnText: [
-    { label: "on the part of", description: "在...一边。" },
-    { label: "they have brought this on themselves", description: "他们是咎由自取。" },
-    { label: "stand up to", description: "经得起。" },
-    { label: "face up to", description: "正视。" }
-  ],
-
-  original: {
+  "nce4-l33": {
     paragraphs: [
       [
         { text: "Education is one of the key words of our time.", translation: "教育是我们这个时代的关键词之一。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1536,53 +2866,7 @@ const articleNce4L33: Article = {
       ],
     ],
   },
-
-  vocabulary: [
-    { word: "adverse", pos: "adj.", meaning: "逆的，相反的", phonetic: "/'ædvə:s/" },
-    { word: "purchasable", pos: "adj.", meaning: "可买到的", phonetic: "/'pə:tʃəsəbl/" },
-    { word: "preacher", pos: "n.", meaning: "传教士", phonetic: "/'pri:tʃə/" },
-    { word: "defendant", pos: "n.", meaning: "被告", phonetic: "/di'fendənt/" },
-    { word: "outlook", pos: "n.", meaning: "视野", phonetic: "/'aut-luk/" },
-    { word: "capacity", pos: "n.", meaning: "能力", phonetic: "/kə'pæsiti/" },
-    { word: "means", pos: "n.", meaning: "方法，手段，财产，资力", phonetic: "/mi:nz/" },
-    { word: "hamper", pos: "v.", meaning: "妨碍", phonetic: "/'hæmpə/" },
-    { word: "savannah", pos: "n.", meaning: "大草原", phonetic: "/sə'vænə/" },
-    { word: "democratic", pos: "adj.", meaning: "民主的", phonetic: "/'demə'krætik/" },
-    { word: "tribal", pos: "adj.", meaning: "部落的", phonetic: "/traibl/" },
-    { word: "tribe", pos: "n.", meaning: "部落", phonetic: "/traib/" },
-    { word: "illiterate", pos: "n.", meaning: "文盲", phonetic: "/i'litərit/" },
-    { word: "compulsory", pos: "adj.", meaning: "义务的", phonetic: "/kəm'pʌlsəri/" },
-    { word: "deem", pos: "v.", meaning: "认为", phonetic: "/di:m/" },
-    { word: "juvenile", pos: "adj.", meaning: "青少年的", phonetic: "/'dʒu:vinail/" },
-    { word: "delinquency", pos: "n.", meaning: "犯罪", phonetic: "/di'liŋkwənsi/" }
-  ],
-}
-const articleNce4L34: Article = {
-
-  id: "nce4-l34",
-  lesson: 34,
-  tag: "C42",
-  title: "Adolescence",
-  titleCn: "青春期",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "DOTID OFLUM（多蒂德·奥弗拉姆）《Journey Through Adolescence》",
-  notesOnText: [
-    { label: "at its most vigorous", description: "生命力最旺盛的时候。" },
-    { label: "with the passing of time", description: "随着时间的流失。" },
-    { label: "It is one of the most unpleasant discoveries...that...", description: "that...,and that..., 3个以that引导的从句是discoveries 的同位语。" },
-    { label: "a wound watch", description: "上紧了发条的表。" }
-  ],
-
-  original: {
+  "nce4-l34": {
     paragraphs: [
       [
         { text: "Parents are often upset when their children praise the homes of their friends and regard it as a slur on their own cooking, or cleaning, or furniture, and often are foolish enough to let the adolescents see that they are annoyed.", translation: "当家长听到孩子赞扬自己朋友的家时，总感到不安，认为孩子在嫌弃自家的饭菜、卫生、或家具，而且愚蠢地让孩子看出自己的烦恼。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1608,57 +2892,7 @@ const articleNce4L34: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "adolescence", pos: "n.", meaning: "青春期", phonetic: "/'ædəu'lesns/" },
-    { word: "slur", pos: "n.", meaning: "诋毁", phonetic: "/slə:/" },
-    { word: "adolescent", pos: "n.", meaning: "青少年(-岁)", phonetic: "/ædə'lesənt/" },
-    { word: "disloyalty", pos: "n.", meaning: "不忠实", phonetic: "/dis'lɔiəlti/" },
-    { word: "spiteful", pos: "adj.", meaning: "恶意的，怀恨的", phonetic: "/'spaitful/" },
-    { word: "disillusionment", pos: "n.", meaning: "幻灭感", phonetic: "/-mənt/" },
-    { word: "evaluation", pos: "n.", meaning: "评价", phonetic: "/i'vælju'eiʃən/" },
-    { word: "Infallibility", pos: "n.", meaning: "一贯正确", phonetic: "/in'fælə'biləti/" },
-    { word: "resent", pos: "v.", meaning: "怨恨", phonetic: "/ri'zent/" },
-    { word: "sincerity", pos: "n.", meaning: "诚挚", phonetic: "/sin'seriti/" },
-    { word: "victorian", pos: "adj.", meaning: "维多利亚式的", phonetic: "/vik'tɔ:riən/" },
-    { word: "retreat", pos: "v.", meaning: "后退", phonetic: "/ri'tri:t/" },
-    { word: "unreasoning", pos: "adj.", meaning: "不凭理智的", phonetic: "/ʌn'ri:zəniŋ/" },
-    { word: "authoritarian", pos: "adj.", meaning: "专制的", phonetic: "/ɔ:'θɔri'tєəriən/" },
-    { word: "cow", pos: "v.", meaning: "吓唬", phonetic: "/kau/" }
-  ],
-}
-const articleNce4L37: Article = {
-
-  id: "nce4-l37",
-  lesson: 37,
-  tag: "C45",
-  title: "The process of ageing",
-  titleCn: "衰老过程",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "ALEX COMPORT（亚历克斯·康福特）《The process of ageing》",
-  notesOnText: [
-    { label: "The inner workings of our own brains", description: "这一部分是feel的宾语，为了强调而把宾语提前了，to be uniquely worthy of investigation 是宾语补足语。" },
-    { label: "the other way around", description: "正好相反。" },
-    { label: "taken the world over", description: "是过去分词短语，作Traditional custom的定语，taken前省略了it is 意为：被全世界所接受的。" },
-    { label: "go behind these stereotypes", description: "摆脱这些旧框框。" },
-    { label: "his very concepts", description: "其中的very是形容词，用于加强语气。" },
-    { label: "have reference to", description: "参照...,与...有关。" },
-    { label: "be taken up into", description: "被接纳进。" },
-    { label: "first and foremost", description: "首先。" },
-    { label: "the thousandth part", description: "等于the thousandth part of the customs。" },
-    { label: "let us say", description: "譬如说。" }
-  ],
-
-  original: {
+  "nce4-l37": {
     paragraphs: [
       [
         { text: "At the age of 12 years, the human body is at its most vigorous.", translation: "人体在12岁时是生命力最旺盛的时期。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1688,43 +2922,7 @@ const articleNce4L37: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "likelihood", pos: "n.", meaning: "可能性", phonetic: "/'laiklihud/" },
-    { word: "infant", pos: "n.", meaning: "婴儿", phonetic: "/'infənt/" },
-    { word: "vulnerable", pos: "adj.", meaning: "脆弱的", phonetic: "/'vʌlnərəbl/" },
-    { word: "imperceptible", pos: "adj.", meaning: "感觉不到的", phonetic: "/'impə'septəbl/" },
-    { word: "robust", pos: "adj.", meaning: "强健的", phonetic: "/rəu'bʌst/" },
-    { word: "organism", pos: "n.", meaning: "有机体", phonetic: "/'ɔ:gənizəm/" },
-    { word: "thermodynamics", pos: "n.", meaning: "热力学", phonetic: "/'θə:məudai'næmiks/" },
-    { word: "steep", pos: "adj.", meaning: "急转直下的", phonetic: "/sti:p/" },
-    { word: "ageing", pos: "n.", meaning: "老化", phonetic: "//" },
-    { word: "odds", pos: "n.", meaning: "可能性", phonetic: "/ɔdz/" },
-    { word: "virtual", pos: "adj.", meaning: "实际上的", phonetic: "/'və:tjuəl/" },
-    { word: "moot", pos: "adj.", meaning: "争论未决的", phonetic: "/mu:t/" },
-    { word: "run-down", pos: "adj.", meaning: "破旧的", phonetic: "//" },
-    { word: "friction", pos: "n.", meaning: "摩擦", phonetic: "/'frikʃən/" }
-  ],
-}
-const articleNce4L44: Article = {
-
-  id: "nce4-l44",
-  lesson: 44,
-  tag: "C55",
-  title: "Patterns of culture",
-  titleCn: "文化的模式",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "RUTH BENEDICT（鲁思·本尼迪克特）《Patterns of Culture》",
-  original: {
+  "nce4-l44": {
     paragraphs: [
       [
         { text: "Custom has not commonly been regarded as a subject of any great moment.", translation: "风俗一般未被认为是什么重要的课题。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1762,57 +2960,7 @@ const articleNce4L44: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "commonplace", pos: "adj.", meaning: "平凡的", phonetic: "/'kɔmənpleis/" },
-    { word: "aberrant", pos: "adj.", meaning: "脱离常轨的，异常的", phonetic: "/æ'berənt/" },
-    { word: "trivial", pos: "adj.", meaning: "微不足道的", phonetic: "/'triviəl/" },
-    { word: "predominant", pos: "adj.", meaning: "占优势的，起支配作用的", phonetic: "/pri'dɔminənt/" },
-    { word: "manifest", pos: "adj.", meaning: "明显的", phonetic: "/'mænifest/" },
-    { word: "pristine", pos: "adj.", meaning: "纯洁的，质朴的", phonetic: "/'pristain/" },
-    { word: "stereotype", pos: "n.", meaning: "陈规", phonetic: "/stiəriətaip/" },
-    { word: "vernacular", pos: "n.", meaning: "方言", phonetic: "/və'nækjulə/" },
-    { word: "accommodation", pos: "n.", meaning: "适应", phonetic: "/ə,kɔmə'deiʃən/" },
-    { word: "incumbent", pos: "adj.", meaning: "义不容辞的，有责任的", phonetic: "/in'kʌmbənt/" },
-    { word: "preliminary", pos: "adj.", meaning: "初步的", phonetic: "/pri'liminəri/" },
-    { word: "proposition", pos: "n.", meaning: "主张", phonetic: "/'prɔpə'ziʃən/" },
-    { word: "preferential", pos: "adj.", meaning: "优先的", phonetic: "/prefə'renʃəl/" },
-    { word: "controversial", pos: "adj.", meaning: "引起争论的", phonetic: "/'kɔntrə'və:ʃəl/" },
-    { word: "cactus", pos: "n.", meaning: "仙人掌", phonetic: "/'kæktəs/" },
-    { word: "termite", pos: "n.", meaning: "白蚁", phonetic: "/'tə:mait/" },
-    { word: "nebula", pos: "n.", meaning: "星云", phonetic: "/'nebjulə/" },
-    { word: "variant", pos: "adj.", meaning: "不同的", phonetic: "/'vєəriənt/" },
-    { word: "barbarian", pos: "n.", meaning: "野蛮人", phonetic: "/ba:'bєəriən/" },
-    { word: "pagan", pos: "n.", meaning: "异教徒", phonetic: "/'peigən/" },
-    { word: "sophistication", pos: "n.", meaning: "老练", phonetic: "/sə'fisti'keiʃən/" },
-    { word: "premise", pos: "n.", meaning: "前提", phonetic: "/'premis, pri'maiz/" },
-    { word: "supernatural", pos: "adj.", meaning: "超自然的", phonetic: "/'sju:pə'nætʃərəl/" }
-  ],
-}
-const articleNce4L46: Article = {
-
-  id: "nce4-l46",
-  lesson: 46,
-  tag: "C58",
-  title: "Hobbies",
-  titleCn: "业余爱好",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-
-  attribution: "WINSTON CHURCHILL（温斯顿·丘吉尔）《Painting as a Pastime》",
-  notesOnText: [
-    { label: "catch hold of", description: "抓住....,let ...go,放掉....。" },
-    { label: "lay one's hands on", description: "得到...,抓到....。" }
-  ],
-
-  original: {
+  "nce4-l46": {
     paragraphs: [
       [
         { text: "A gifted American psychologist has said, 'Worry is a spasm of the emotion;", translation: "一位天才的美国心理学家曾经说过：“烦恼是感情的发作，", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -1861,60 +3009,7 @@ const articleNce4L46: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "gifted", pos: "adj.", meaning: "有天才的", phonetic: "/'giftid/" },
-    { word: "psychologist", pos: "n.", meaning: "心理学家", phonetic: "/sai'kɔlədʒist/" },
-    { word: "spasm", pos: "n.", meaning: "一阵(感情)发作", phonetic: "/'spæzəm/" },
-    { word: "futile", pos: "adj.", meaning: "无用的", phonetic: "/'fju:tail/" },
-    { word: "insinuate", pos: "v.", meaning: "使潜入，暗示", phonetic: "/in'sinjueit/" },
-    { word: "convulsive", pos: "adj.", meaning: "起痉挛的", phonetic: "/kən'vʌlsiv/" },
-    { word: "illumination", pos: "n.", meaning: "启发，照明", phonetic: "/i'lju:mi'neiʃən/" },
-    { word: "undue", pos: "adj.", meaning: "不适当的", phonetic: "/'ʌn'dju:/" },
-    { word: "grip", pos: "n.", meaning: "紧张", phonetic: "/grip/" },
-    { word: "recuperation", pos: "n.", meaning: "休息", phonetic: "/ri'kju:pə'reiʃən/" },
-    { word: "improvise", pos: "v.", meaning: "临时作成", phonetic: "/'imprəvaiz/" },
-    { word: "sedulously", pos: "adv.", meaning: "孜孜不倦地", phonetic: "//" },
-    { word: "vivify", pos: "v.", meaning: "使生气勃勃", phonetic: "/'vivifai/" },
-    { word: "aggravate", pos: "v.", meaning: "加剧", phonetic: "/'ægrəveit/" },
-    { word: "trifling", pos: "adj.", meaning: "微小的", phonetic: "/'traifliŋ/" },
-    { word: "gratify", pos: "v.", meaning: "使满意", phonetic: "/'grætifai/" },
-    { word: "caprice", pos: "n.", meaning: "任性", phonetic: "/kə'pri:s/" },
-    { word: "satiation", pos: "n.", meaning: "满足", phonetic: "/'seiʃi'eiʃən/" },
-    { word: "frantically", pos: "adv.", meaning: "狂乱地", phonetic: "/'fræntikəli/" },
-    { word: "avenge", pos: "v.", meaning: "替…报复", phonetic: "/ə'vendʒ/" },
-    { word: "boredom", pos: "n.", meaning: "厌烦", phonetic: "/'bɔ:dəm/" },
-    { word: "clatter", pos: "n.", meaning: "喧闹的谈话", phonetic: "/'klætə/" },
-    { word: "sustenance", pos: "n.", meaning: "支撑力", phonetic: "/'sʌstənəns/" },
-    { word: "appetite", pos: "n.", meaning: "欲望", phonetic: "/'æpitait/" },
-    { word: "grudge", pos: "v.", meaning: "怨恨", phonetic: "/grʌdʒ/" },
-    { word: "absorbing", pos: "adj.", meaning: "引人入胜的", phonetic: "/əb'sɔ:biŋ/" },
-    { word: "banish", pos: "v.", meaning: "排除，放弃", phonetic: "/'bæniʃ/" }
-  ],
-}
-const articleNce4L48: Article = {
-
-  id: "nce4-l48",
-  lesson: 48,
-  title: "Planning a share portfolio",
-  titleCn: "规划股票投资组合",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  notesOnText: [
-    { label: "go about", description: "从事，做。" },
-    { label: "Periwigs", description: "是一个假想中公司的名字。" },
-    { label: "the basics", description: "这里指基本情况，基本要素。" },
-    { label: "If you recognize yourself in this description", description: "如果你觉得你的情况是这样的话。" }
-  ],
-
-  original: {
+  "nce4-l48": {
     paragraphs: [
       [
         {
@@ -1959,54 +3054,7 @@ const articleNce4L48: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "portfolio", pos: "n.", meaning: "投资组合", phonetic: "/pɔ:t'fouljou/" },
-    { word: "tipster", pos: "n.", meaning: "(提供证券投机等消息为生的)情报贩子", phonetic: "/'tipstə/" },
-    { word: "Las Vegas", pos: "n.", meaning: "拉斯韦加斯", phonetic: "//" },
-    { word: "fritter", pos: "v.", meaning: "挥霍，浪费", phonetic: "/'fritə/" },
-    { word: "reputable", pos: "adj.", meaning: "享有声望的", phonetic: "/'repjutəbl/" },
-    { word: "broker", pos: "n.", meaning: "经纪人", phonetic: "/'brəukə/" },
-    { word: "finance", pos: "n.", meaning: "资金，财源", phonetic: "/fai'næns, fi-/" },
-    { word: "mortgage", pos: "n.", meaning: "抵押贷款", phonetic: "/'mɔ:gidʒ/" },
-    { word: "pension", pos: "n.", meaning: "养老金", phonetic: "/'penʃən/" },
-    { word: "priority", pos: "n.", meaning: "优先权", phonetic: "/prai'ɔriti/" },
-    { word: "gilt", pos: "n.", meaning: "金边证券(高度可靠的证券)", phonetic: "/gilt/" },
-    { word: "convertible", pos: "n.", meaning: "可换证券", phonetic: "/kən'və:təbl/" },
-    { word: "sanguine", pos: "adj.", meaning: "乐观的", phonetic: "/'sæŋgwin/" },
-    { word: "heady", pos: "adj.", meaning: "令人陶醉的", phonetic: "/'hedi/" },
-    { word: "alongside", pos: "prep.", meaning: "在…旁边，和…一起", phonetic: "/ə'lɔŋ'said/" },
-    { word: "pedestrian", pos: "adj.", meaning: "平淡无奇的，乏味的", phonetic: "/pi'destriən/" }
-  ],
-}
-
-const articleNce4L5: Article = {
-
-  id: "nce4-l5",
-  lesson: 5,
-  tag: "C6",
-  title: "The Problem of Youth",
-  titleCn: "青年",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 1, 2, 0, 1, 3, 2, 1, 0],
-    [1, 2, 0, 1, 0, 2, 4, 0, 1],
-    [0, 0, 1, 3, 2, 0, 1, 2, 0],
-    [2, 1, 0, 0, 1, 2, 3, 1, 2],
-  ],
-
-  attribution: "SAMUEL ULLMAN（塞缪尔·厄尔曼）《Youth》, 1917",
-  notesOnText: [
-    { label: "which I take leave to doubt", description: "这是一个插入成分，用两个破折号与句子的主要部分分工。take leave to do sth.是“擅自做”，“冒昧去做”的意思。" },
-    { label: "get down to", description: "认真处理，认真研究。" },
-    { label: "for one thing", description: "首先。" },
-    { label: "air of freedom", description: "无拘无束。" },
-    { label: "in some sense", description: "在某种意义上。" },
-    { label: "turn to...for ...", description: "为...而求助于....。" }
-  ],
-
-  original: {
+  "nce4-l5": {
     paragraphs: [
       [
         { text: "People are always talking about 'the problem of youth'.", translation: "人们总是在谈论「青年问题」。", predicates: ["are talking"], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [{ label: "about 'the problem of youth'", description: "介词 + 名词 → 作状语" }] },
@@ -2030,50 +3078,7 @@ const articleNce4L5: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "leave", pos: "n.", meaning: "允许", phonetic: "/li:v/" },
-    { word: "fundamentals", pos: "n.", meaning: "基本原则", phonetic: "//" },
-    { word: "glorious", pos: "adj.", meaning: "光辉灿烂的", phonetic: "/'glɔ:riəs/" },
-    { word: "splendid", pos: "adj.", meaning: "灿烂的", phonetic: "/'splendid/" },
-    { word: "rub", pos: "n.", meaning: "难题", phonetic: "/rʌb/" },
-    { word: "identity", pos: "n.", meaning: "身份", phonetic: "/ai'dentiti/" },
-    { word: "dreary", pos: "adj.", meaning: "沉郁的", phonetic: "/'driəri/" },
-    { word: "commitment", pos: "n.", meaning: "信奉", phonetic: "/kə'mitmənt/" },
-    { word: "mean", pos: "adj.", meaning: "吝啬，小气", phonetic: "/mi:n/" },
-    { word: "social climber", pos: "n.", meaning: "追求更高社会地位的人，向上爬的人", phonetic: "//" },
-    { word: "devotion", pos: "n.", meaning: "热爱", phonetic: "/di'vəuʃən/" },
-    { word: "cosmic", pos: "adj.", meaning: "宇宙的", phonetic: "/'kɔzmik/" },
-    { word: "suburban", pos: "adj.", meaning: "见识不广的，偏狭的", phonetic: "/sə'bə:bən/" },
-    { word: "conceited", pos: "adj.", meaning: "自高自大的", phonetic: "/kən'si:tid/" },
-    { word: "presumptuous", pos: "adj.", meaning: "自以为是的，放肆的", phonetic: "/pri'zʌmptjuəs/" },
-    { word: "fatuous", pos: "adj.", meaning: "愚蠢的", phonetic: "/'fætjuəs/" },
-    { word: "cliché", pos: "n.", meaning: "陈词滥调", phonetic: "/'kli:ʃei/" },
-  ],
-}
-
-const articleNce4L9: Article = {
-  id: "nce4-l9",
-  lesson: 9,
-  tag: "C9",
-  title: "Royal espionage",
-  titleCn: "王室谍报活动",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "BERNARD NEWMAN（伯纳德·纽曼）《Spies in Britain》",
-  notesOnText: [
-    { label: "settle down", description: "驻扎" },
-    { label: "They lived well", description: "on the proceeds of raids,他们的生活舒适，靠袭击（周围地区）掠夺得到的财物为生。live on ,靠为生。" },
-    { label: "be fit for", description: "适宜于.....。" }
-  ],
-
-  original: {
+  "nce4-l9": {
     paragraphs: [
       [
         { text: "Alfred the Great acted as his own spy, visiting Danish camps disguised as a minstrel.", translation: "阿尔弗雷德大帝曾亲自充当间谍。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2100,52 +3105,7 @@ const articleNce4L9: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "espionage", pos: "n.", meaning: "间谍活动", phonetic: "/'espiənɑ:ʒ/" },
-    { word: "Alfred", pos: "n.", meaning: "阿尔弗雷德(公元871-899年间任英国国王)", phonetic: "/'ælfrid/" },
-    { word: "Danish", pos: "adj.", meaning: "丹麦的，丹麦人的，丹麦语的", phonetic: "/'deiniʃ/" },
-    { word: "minstrel", pos: "n.", meaning: "中世纪的吟游歌手", phonetic: "/'minstrəl/" },
-    { word: "wandering", pos: "adj.", meaning: "漫游的", phonetic: "/'wɔndəriŋ/" },
-    { word: "harp", pos: "n.", meaning: "竖琴", phonetic: "/hɑ:p/" },
-    { word: "ballad", pos: "n.", meaning: "民歌", phonetic: "/'bæləd/" },
-    { word: "acrobatic", pos: "adj.", meaning: "杂技的", phonetic: "/ækrə'bætik/" },
-    { word: "conjuring", pos: "n.", meaning: "魔术", phonetic: "/'kʌndʒəriŋ/" },
-    { word: "Athelney", pos: "n.", meaning: "阿塞尔纳（英国一个小岛）", phonetic: "/'æθəlni/" },
-    { word: "Chippenham", pos: "n.", meaning: "切本哈姆（英国一城市）", phonetic: "/'tʃipənəm/" },
-    { word: "thither", pos: "adv.", meaning: "向那里", phonetic: "/'ðiðə/" },
-    { word: "Dane", pos: "n.", meaning: "丹麦人", phonetic: "/dein/" },
-    { word: "slack", pos: "adj.", meaning: "涣散的", phonetic: "/slæk/" },
-    { word: "conqueror", pos: "n.", meaning: "征服者", phonetic: "/'kɔŋkərə/" },
-    { word: "casual", pos: "adj.", meaning: "马虎的，随便的", phonetic: "/'kæʒjuəl/" },
-    { word: "precaution", pos: "n.", meaning: "预防，警惕", phonetic: "/pri'kɔ:ʃən/" },
-    { word: "proceeds", pos: "n.", meaning: "所得", phonetic: "/'prəusi:dz/" },
-    { word: "assemble", pos: "v.", meaning: "集合", phonetic: "/ə'sembl/" }
-  ],
-}
-const articleNce4L10: Article = {
-  id: "nce4-l10",
-  lesson: 10,
-  tag: "C10",
-  title: "Silicon valley",
-  titleCn: "硅谷",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "《US NEWS AND WORLD REPORT》, October 2, 1989",
-  notesOnText: [
-    { label: "much the way an editor creates a newsletter", description: "就像一位编辑出一份时事通讯一样。" },
-    { label: "be free to", description: "可以做....。" },
-    { label: "in droves", description: "一批批，成群地。" },
-    { label: "draw on", description: "依靠，凭借。" }
-  ],
-
-  original: {
+  "nce4-l10": {
     paragraphs: [
       [
         { text: "Technology trends may push Silicon Valley back to the future.", translation: "技术的发展趋势有可能把硅谷重新推向未来。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2166,56 +3126,7 @@ const articleNce4L10: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "silicon", pos: "n.", meaning: "硅", phonetic: "/'silikən/" },
-    { word: "integrated", pos: "adj.", meaning: "综合的", phonetic: "/'intigreitid/" },
-    { word: "circuit", pos: "n.", meaning: "线路，电路", phonetic: "/'sə:kit/" },
-    { word: "California", pos: "n.", meaning: "加利福尼亚（美国州名）", phonetic: "/kæli'fɔ:njə/" },
-    { word: "workstation", pos: "n.", meaning: "工作站", phonetic: "/'wə:ksteiʃən/" },
-    { word: "chip", pos: "n.", meaning: "芯片，集成电路片，集成块", phonetic: "/tʃip/" },
-    { word: "newsletter", pos: "n.", meaning: "时事通讯", phonetic: "/'nju:zletə/" },
-    { word: "Macintosh", pos: "n.", meaning: "苹果机，一种个人电脑", phonetic: "/'mækintɔʃ/" },
-    { word: "penalize", pos: "v.", meaning: "处罚，惩罚", phonetic: "/'pi:nəlaiz/" },
-    { word: "customize", pos: "v.", meaning: "按顾客具体需要制造", phonetic: "/'kʌstəmaiz/" },
-    { word: "spawn", pos: "v.", meaning: "引起，酿成", phonetic: "/spɔ:n/" },
-    { word: "thrive", pos: "v.", meaning: "兴旺，繁荣", phonetic: "/θraiv/" },
-    { word: "anarchy", pos: "n.", meaning: "无政府状态，混乱", phonetic: "/'ænəki/" },
-    { word: "oriental", pos: "n.", meaning: "东方人", phonetic: "/ɔ:ri'entl/" },
-    { word: "constitute", pos: "v.", meaning: "构成", phonetic: "/'kɔnstitju:t/" },
-    { word: "drove", pos: "n.", meaning: "群", phonetic: "/drəuv/" },
-    { word: "innovator", pos: "n.", meaning: "发明者", phonetic: "/'inəuveitə/" },
-    { word: "forge", pos: "v.", meaning: "发展", phonetic: "/fɔ:dʒ/" },
-    { word: "memory-chip", pos: "n.", meaning: "内存条", phonetic: "/'meməritʃip/" },
-    { word: "AT&T", pos: "n.", meaning: "美国电话电报公司", phonetic: "/'ei'ti:ænd'ti:/" },
-    { word: "Kansas", pos: "n.", meaning: "堪萨斯（美国州名）", phonetic: "/'kænzəs/" },
-    { word: "Missouri", pos: "n.", meaning: "密苏里（美国州名）", phonetic: "/mi'zuəri/" }
-  ],
-}
-const articleNce4L12: Article = {
-  id: "nce4-l12",
-  lesson: 12,
-  tag: "C12",
-  title: "Banks and their customers",
-  titleCn: "银行和顾客",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "GORDON BARRIE（戈登·巴里） and AUBREY L. DLAMOND《The Consumer Society and the Law》",
-  notesOnText: [
-    { label: "open a current account", description: "开一个活期账号" },
-    { label: "draw a cheque in favour of ...", description: "开一张以...为收款人的支票。" },
-    { label: "who is which depending on ...is overdrawn", description: "这是现在分词短语depending on ...is overdrawn的独立主格结构。who is which是分词短语意思上的主语，which代表debtor or creditor。" },
-    { label: "give rise to", description: "引起。" },
-    { label: "be loaded against...", description: "与...不利。" }
-  ],
-
-  original: {
+  "nce4-l12": {
     paragraphs: [
       [
         { text: "When anyone opens a current account at a bank, he is lending the bank money, repayment of which he may demand at any time, either in cash or by drawing a cheque in favour of another person.", translation: "任何人在银行开一个活期账户，就等于把钱借给了银行。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2231,47 +3142,7 @@ const articleNce4L12: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "current", pos: "adj.", meaning: "通用的，流行的", phonetic: "/'kʌrənt/" },
-    { word: "account", pos: "n.", meaning: "账户", phonetic: "/ə'kaunt/" },
-    { word: "cash", pos: "n.", meaning: "现金", phonetic: "/kæʃ/" },
-    { word: "cheque", pos: "n.", meaning: "支票", phonetic: "/tʃek/" },
-    { word: "debtor", pos: "n.", meaning: "借方", phonetic: "/'detə/" },
-    { word: "creditor", pos: "n.", meaning: "贷方", phonetic: "/'kreditə/" },
-    { word: "obligation", pos: "n.", meaning: "义务", phonetic: "/ɔbli'geiʃən/" },
-    { word: "complication", pos: "n.", meaning: "纠纷", phonetic: "/kɔmpli'keiʃən/" },
-    { word: "debit", pos: "v.", meaning: "把...记入借方", phonetic: "/'debit/" },
-    { word: "specimen", pos: "n.", meaning: "样本", phonetic: "/'spesimin/" },
-    { word: "forge", pos: "v.", meaning: "伪造", phonetic: "/fɔ:dʒ/" },
-    { word: "forgery", pos: "n.", meaning: "伪造（文件，签名等）", phonetic: "/'fɔ:dʒəri/" },
-    { word: "adopt", pos: "v.", meaning: "采用", phonetic: "/ə'dɔpt/" },
-    { word: "facilitate", pos: "v.", meaning: "使便利", phonetic: "/fə'siliteit/" }
-  ],
-}
-const articleNce4L14: Article = {
-  id: "nce4-l14",
-  lesson: 14,
-  tag: "C14",
-  title: "The Butterfly Effect",
-  titleCn: "蝴蝶效应",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "JAMES GLEICK（詹姆斯·格莱克）《Chaos》",
-  notesOnText: [
-    { label: "so that it multiplied with that promiscuous abandon characteristic of rabbits", description: "这里so that引导的一个结果状语从句，可译成“因此便以兔子所特有的杂乱交配繁衍后代”。" },
-    { label: "be susceptible to ...", description: "易受...感染的，易受...影响的。" },
-    { label: "let loose", description: "让乱跑。" },
-    { label: "pass ... on to", description: "把...传给。" }
-  ],
-
-  original: {
+  "nce4-l14": {
     paragraphs: [
       [
         { text: "Beyond two or three days, the world's best weather forecasts are speculative, and beyond six or seven they are worthless.", translation: "世界上最好的两三天以上的天气预报具有很强的猜测性，如果超过六七天，天气预报就没有了任何价值。 原因是蝴蝶效应。对于小片的恶劣天气 -- 对一个全球性的气象预报员来说，“小”可以意味着雷暴雨和暴风雪 -- 任何预测的质量会很快下降。错误和不可靠性上升，接踵而来的是一系列湍流的徵状，从小尘暴和暴风发展到只有卫星上可以看到的席卷整块大陆的旋涡。 现代气象模型以一个坐标图来显示，图中每个点大约是间隔60英里。既使是这样，有些开始时的资料也不得不依靠推测，因为地面工作站和卫星不可能看到地球上的每一个地方。假设地球上可以布满传感器，每个相隔1英尺，并按1英尺的间隔从地面一直排列到大气层的顶端。再假定每个传感器都极极端准确地读出了温度、气压、温度和气象学家需要的任何其他数据。在正午时分，一个功能巨大的计算机搜集了所有的资料，并算出在每一个点上12：01、12：02、12：03时可能出现的情况。 计算机无法推断出1个月以后的某一天，新泽西州的普林斯顿究竟是晴天还是雨天。正午时分，传感器之间的距离会掩盖计算机无法知道的波动、任何偏平均值的变化。到12：01时，那些波动就已经会在1英尺远的地方造成偏差。很快这种偏差会增加到尺10英的范围，如此等等，一直到全球的范围。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2293,51 +3164,7 @@ const articleNce4L14: Article = {
       ],
     ],
   },
-  vocabulary: [
-    { word: "forecast", pos: "n.", meaning: "预报", phonetic: "/'fɔ:kɑ:st/" },
-    { word: "speculative", pos: "adj.", meaning: "推测的", phonetic: "/'spekjulətiv/" },
-    { word: "blizzard", pos: "n.", meaning: "暴风雪", phonetic: "/'blizəd/" },
-    { word: "deteriorate", pos: "v.", meaning: "变坏，恶化", phonetic: "/di'tiəriəreit/" },
-    { word: "multiply", pos: "v.", meaning: "增加", phonetic: "/'mʌltiplai/" },
-    { word: "cascade", pos: "v.", meaning: "瀑布似的落下", phonetic: "/kæs'keid/" },
-    { word: "turbulent", pos: "adj.", meaning: "狂暴的", phonetic: "/'tə:bjulənt/" },
-    { word: "dust devil", pos: "n.", meaning: "小尘暴，尘旋风", phonetic: "/'dʌst'devl/" },
-    { word: "squall", pos: "n.", meaning: "暴风", phonetic: "/skwɔ:l/" },
-    { word: "eddy", pos: "n.", meaning: "旋涡", phonetic: "/'edi/" },
-    { word: "grid", pos: "n.", meaning: "坐标方格", phonetic: "/grid/" },
-    { word: "sensor", pos: "n.", meaning: "传感器", phonetic: "/'sensə/" },
-    { word: "humidity", pos: "n.", meaning: "湿度", phonetic: "/hju:'miditi/" },
-    { word: "meteorologist", pos: "n.", meaning: "气象学家", phonetic: "/mi:tjə'rɔlədʒist/" },
-    { word: "Princeton", pos: "n.", meaning: "普林斯顿（美国城市）", phonetic: "/'prinstən/" },
-    { word: "New Jersey", pos: "n.", meaning: "新泽西（美国州名）", phonetic: "/nju:'dʒə:zi/" },
-    { word: "fluctuation", pos: "n.", meaning: "起伏，波动", phonetic: "/flʌktju'eiʃən/" },
-    { word: "deviation", pos: "n.", meaning: "偏差", phonetic: "/di:vi'eiʃən/" }
-  ],
-}
-const articleNce4L17: Article = {
-  id: "nce4-l17",
-  lesson: 17,
-  tag: "C17",
-  title: "A man-made disease",
-  titleCn: "人为的疾病",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "RITCHIE CALDER（里奇·考尔德）《Science Makes Sense》",
-  notesOnText: [
-    { label: "in terms of muscle relaxation and so on", description: "从使肌肉得到放松等方面来看。in terms of,从...方面看。" },
-    { label: "then perhaps it is the brain that need resting?这是个陈述句的语序", description: "但句尾加问号，表示说话人对这种观点有把握但需进一步证实。" },
-    { label: "were it not far two factors", description: "这是省略了if 的条件句，可译作“如果不是下面两个因素的话”。" },
-    { label: "servral nights on end", description: "一连几夜。" }
-  ],
-
-  original: {
+  "nce4-l17": {
     paragraphs: [
       [
         { text: "In the early days of the settlement of Australia,enterprising settlers unwisely introduced the European rabbit.", translation: "在澳大利亚移民初期，一些有创业精神的移民不明智地把欧洲兔子引进了澳大利亚。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2360,58 +3187,7 @@ const articleNce4L17: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "settlement", pos: "n.", meaning: "新拓居地", phonetic: "/'setlmənt/" },
-    { word: "enterprising", pos: "adj.", meaning: "有事业心的", phonetic: "/'entəpraiziŋ/" },
-    { word: "settler", pos: "n.", meaning: "移居者", phonetic: "/'setlə/" },
-    { word: "Antipodes", pos: "n.", meaning: "新西兰和澳大利亚（英）", phonetic: "/æn'tipədi:z/" },
-    { word: "promiscuous", pos: "adj.", meaning: "杂乱的", phonetic: "/prə'miskjuəs/" },
-    { word: "abandon", pos: "n.", meaning: "放任，纵情", phonetic: "/ə'bændən/" },
-    { word: "overrun", pos: "v.", meaning: "蔓延，泛滥", phonetic: "/əuvə'rʌn/" },
-    { word: "devastation", pos: "n.", meaning: "破坏，劫掠", phonetic: "/devəs'teiʃən/" },
-    { word: "burrow", pos: "v.", meaning: "挖、掘", phonetic: "/'bʌrəu/" },
-    { word: "susceptible", pos: "adj.", meaning: "易受感染的", phonetic: "/sə'septəbl/" },
-    { word: "virus", pos: "n.", meaning: "病毒", phonetic: "/'vaiərəs/" },
-    { word: "myxomatosis", pos: "n.", meaning: "多发性粘液瘤", phonetic: "/miksəmə'təusis/" },
-    { word: "infect", pos: "v.", meaning: "传染", phonetic: "/in'fekt/" },
-    { word: "epidemic", pos: "n.", meaning: "流行病", phonetic: "/epi'demik/" },
-    { word: "mosquito", pos: "n.", meaning: "蚊虫", phonetic: "/məs'ki:təu/" },
-    { word: "carrier", pos: "n.", meaning: "带菌者", phonetic: "/'kæriə/" },
-    { word: "exterminate", pos: "v.", meaning: "消灭", phonetic: "/eks'tə:mineit/" },
-    { word: "ironically", pos: "adv.", meaning: "具有讽刺意味的", phonetic: "/ai'rɔnikəli/" },
-    { word: "bequeath", pos: "v.", meaning: "把...传给", phonetic: "/bi'kwi:ð/" }
-  ],
-}
-const articleNce4L19: Article = {
-  id: "nce4-l19",
-  lesson: 19,
-  tag: "C19",
-  title: "The stuff of dreams",
-  titleCn: "话说梦的本质",
-  keyArticle: true,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "H. W. MAGOUN（H. W. 马贡）《The Story of Language》, 1955",
-  notesOnText: [
-    { label: "How it came about that snakes...a mystery", description: "这句话的主语是一个句子：How it came about that snakes manufactured poison,谓语部分是is a mystery.主语从句中的it是形式主语，真正主语是that snakes manufactured poison,因为主语太长，所以使用it作先生主语的结构。" },
-    { label: "over the periods", description: "经过很长时间。" },
-    { label: "live on", description: "靠...生活。" },
-    { label: "a two-edged weapon", description: "一把双刃刀，这里的意思是：如果食肉动物都有毒液，就会造成食肉动物之间的互相残杀。" },
-    { label: "act on", description: "对...起作用。" },
-    { label: "by far the more unpleasant", description: "更难受得多，by far是“...得多”的意思。" },
-    { label: "so to speak", description: "插入语，有“可以这样说”，“打个比方说”的意思。" },
-    { label: "Be that as it may", description: "这是一个倒装的站步状语从句，相当于however that may be,可译成“尽管如此”。" },
-    { label: "does its business with man", description: "在人的身上发挥作用，要人的命。" },
-    { label: "the effects on these of viperine poison", description: "these是指rats and mice,介词宾语结构of viperine poison是作effects 的定语。" }
-  ],
-
-  original: {
+  "nce4-l19": {
     paragraphs: [
       [
         { text: "It is fairly clear that the sleeping period must have some function, and because there is so much of it the function would seem to be important.", translation: "很清楚，睡眠必然具有某种作用。睡眠占去那么多时间，所以其作用似乎还是很重要。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2434,48 +3210,7 @@ const articleNce4L19: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "speculation", pos: "n.", meaning: "推测", phonetic: "/,spekju'leiʃən/" },
-    { word: "literally", pos: "adv.", meaning: "确实", phonetic: "/'litərəli/" },
-    { word: "odd", pos: "adj.", meaning: "奇特的", phonetic: "/ɔd/" },
-    { word: "tissue", pos: "n.", meaning: "组织", phonetic: "/'tiʃu:/" },
-    { word: "plausible", pos: "adj.", meaning: "似乎有理的", phonetic: "/'plɔ:zəbl/" },
-    { word: "hypothesis", pos: "n.", meaning: "假说", phonetic: "/hai'pɔθisis/" },
-    { word: "electroencephalograph", pos: "n.", meaning: "脑电图仪", phonetic: "//" },
-    { word: "electrode", pos: "n.", meaning: "电极", phonetic: "/i'lektrəud/" },
-    { word: "scalp", pos: "n.", meaning: "头皮", phonetic: "/skælp/" },
-    { word: "psychiatrist", pos: "n.", meaning: "精神病学家", phonetic: "/sai'kaiətrist/" },
-    { word: "punctuate", pos: "v.", meaning: "不时介入", phonetic: "/'pʌŋktjueit/" },
-    { word: "jerky", pos: "adj.", meaning: "急动的", phonetic: "/'dʒə:ki/" },
-    { word: "disorder", pos: "n.", meaning: "失调", phonetic: "/dis'ɔ:də/" },
-    { word: "implication", pos: "n.", meaning: "表明", phonetic: "/,impli'keiʃən/" }
-  ],
-}
-const articleNce4L20: Article = {
-  id: "nce4-l20",
-  lesson: 20,
-  tag: "C20",
-  title: "Snake poison",
-  titleCn: "蛇",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "JOHN CROMPTON（约翰·克朗普顿）《The snake》",
-  notesOnText: [
-    { label: "keep company with", description: "陪伴着....。" },
-    { label: "The currents of air that the walls of the ship direct upwards", description: "沿着船体上升的气流。" },
-    { label: "steel-like muscles", description: "that are a good part of the weight of the bird,句中以that引导的从句是一个非限定性定语从句，修饰muscles,但用that引导非限定性定语从句是很罕见的。" },
-    { label: "in hghest measure", description: "最大程度的。" },
-    { label: "It tires no nor does it boast of its power", description: "but belongs to the air,travelling it may be .. adverse.句中的tires not 是古英语或诗歌中使用的句式。boast of 中的of = about;belong to the air的意思是：与天空融为一体。travelling it may be是倒装语序，这是为了强调travelling 的生动逼真，自然语离是it may be travelling...;nesting home.意为home for nesting,flown young中的flown意为已会飞的。a medium(媒介)指air." }
-  ],
-
-  original: {
+  "nce4-l20": {
     paragraphs: [
       [
         { text: "How it came about that snakes manufactured poison is a mystery.", translation: "蛇是怎样产生毒液的，这是一个谜。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2504,58 +3239,7 @@ const articleNce4L20: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "saliva", pos: "n.", meaning: "唾液", phonetic: "/saliva/" },
-    { word: "digestive", pos: "adj.", meaning: "助消化的", phonetic: "/digestive/" },
-    { word: "defy", pos: "v.", meaning: "使不可能", phonetic: "/defy/" },
-    { word: "analysis", pos: "n.", meaning: "分析", phonetic: "/analysis/" },
-    { word: "prey", pos: "n.", meaning: "被捕食的动物", phonetic: "/prey/" },
-    { word: "fierce", pos: "adj.", meaning: "凶猛的", phonetic: "/fierce/" },
-    { word: "tussle", pos: "n.", meaning: "扭打", phonetic: "/tussle/" },
-    { word: "carnivore", pos: "n.", meaning: "食肉动物", phonetic: "/carnivore/" },
-    { word: "vertebrate", pos: "n.", meaning: "脊椎动物", phonetic: "/vertebrate/" },
-    { word: "lizard", pos: "n.", meaning: "蜥蜴", phonetic: "/lizard/" },
-    { word: "concoct", pos: "v.", meaning: "调制", phonetic: "/concoct/" },
-    { word: "potency", pos: "n.", meaning: "效力", phonetic: "/potency/" },
-    { word: "conversion", pos: "n.", meaning: "转变", phonetic: "/conversion/" },
-    { word: "arsenic", pos: "n.", meaning: "砒霜", phonetic: "/arsenic/" },
-    { word: "strychnine", pos: "n.", meaning: "马钱子碱", phonetic: "/strychnine/" },
-    { word: "mamba", pos: "n.", meaning: "树眼镜蛇", phonetic: "/mamba/" },
-    { word: "cobra", pos: "n.", meaning: "眼镜蛇", phonetic: "/cobra/" },
-    { word: "venom", pos: "n.", meaning: "毒液", phonetic: "/venom/" },
-    { word: "neurotoxic", pos: "adj.", meaning: "毒害神经的", phonetic: "/neurotoxic/" },
-    { word: "viper", pos: "n.", meaning: "蝰蛇", phonetic: "/viper/" },
-    { word: "adder", pos: "n.", meaning: "蝮蛇", phonetic: "/adder/" },
-    { word: "rattlesnake", pos: "n.", meaning: "响尾蛇", phonetic: "/rattlesnake/" },
-    { word: "haemolytic", pos: "adj.", meaning: "溶血性的", phonetic: "/haemolytic/" },
-    { word: "viperine", pos: "adj.", meaning: "毒蛇", phonetic: "/viperine/" }
-  ],
-}
-const articleNce4L23: Article = {
-  id: "nce4-l23",
-  lesson: 23,
-  tag: "C23",
-  title: "Bird flight",
-  titleCn: "鸟的飞行方法",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "WILLIAM BEACH THOMAS（威廉·比奇·托马斯）《A Countryman's Creed》",
-  notesOnText: [
-    { label: "the Services", description: "军队" },
-    { label: "On turning eagerly to the text", description: "one learns that..." },
-    { label: "句中 on 的意思是 on the occasion of", description: "directly after(当时，随后)。" },
-    { label: "aircraft carrier", description: "航空母舰。" },
-    { label: "That does not prove that it does no exist;but it does mean that...句中出现的3个does的语法功能并不相同", description: "前两个does是一般现在时的否定式使用的助动词，第3个does则是强调用法，有强化句意的作用。" }
-  ],
-
-  original: {
+  "nce4-l23": {
     paragraphs: [
       [
         { text: "No two sorts of birds practise quite the same sort of flight; the varieties are infinite; but two classes may be roughly seen.", translation: "没有任何两种鸟的飞行方式是相同的。鸟的飞行方式千差万别，但大体上可分为两类。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2573,41 +3257,7 @@ const articleNce4L23: Article = {
       ]
     ],
   },
-
-  vocabulary: [
-    { word: "albatross", pos: "n.", meaning: "信天翁", phonetic: "/albatross/" },
-    { word: "sustenance", pos: "n.", meaning: "支撑力", phonetic: "/sustenance/" },
-    { word: "glider", pos: "n.", meaning: "滑翔者", phonetic: "/glider/" },
-    { word: "harness", pos: "v.", meaning: "利用", phonetic: "/harness/" },
-    { word: "endow", pos: "v.", meaning: "赋有", phonetic: "/endow/" },
-    { word: "ply", pos: "v.", meaning: "不断地供给", phonetic: "/ply/" },
-    { word: "gale", pos: "n.", meaning: "大风", phonetic: "/gale/" },
-    { word: "partridge", pos: "n.", meaning: "鹧鸪", phonetic: "/partridge/" },
-    { word: "like", pos: "adj.", meaning: "类似的", phonetic: "/like/" },
-    { word: "propulsion", pos: "n.", meaning: "推进力", phonetic: "/propulsion/" },
-    { word: "utter", pos: "adj.", meaning: "完全的", phonetic: "/utter/" },
-    { word: "slip", pos: "v.", meaning: "滑行", phonetic: "/slip/" },
-    { word: "adverse", pos: "adj.", meaning: "逆的，相反的", phonetic: "/adverse/" },
-    { word: "omen", pos: "n.", meaning: "预兆", phonetic: "/omen/" }
-  ],
-}
-const articleNce4L25: Article = {
-  id: "nce4-l25",
-  lesson: 25,
-  tag: "C25",
-  title: "Non-auditory effects of noise",
-  titleCn: "",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "D.E.BROADBENT（D.E.布罗德本特）《Non-auditory effects of noise》from《Science Survey》",
-  original: {
+  "nce4-l25": {
     paragraphs: [
       [
         { text: "Many people in industry and the Services, who have practical experience of noise, regard any investigation of this question as a waste of time; they are not prepared even to admit the possibility that noise affects people.", translation: "在工业部门工作和在军队中服役的许多人对噪声音有切身的体会，他们认为对这个问题进行调查中浪费时间，甚至不愿承认噪音可能对人有影响。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2630,49 +3280,7 @@ const articleNce4L25: Article = {
       ],
     ],
   },
-  vocabulary: [
-    { word: "auditory", pos: "adj.", meaning: "听觉的", phonetic: "/auditory/" },
-    { word: "inadequate", pos: "adj.", meaning: "不适当的", phonetic: "/inadequate/" },
-    { word: "plea", pos: "n.", meaning: "要求", phonetic: "/plea/" },
-    { word: "abatement", pos: "n.", meaning: "减少", phonetic: "/abatement/" },
-    { word: "discredit", pos: "v.", meaning: "怀疑", phonetic: "/discredit/" },
-    { word: "allegation", pos: "n.", meaning: "断言", phonetic: "/allegation/" },
-    { word: "caption", pos: "n.", meaning: "插图说明", phonetic: "/caption/" },
-    { word: "wreck", pos: "n.", meaning: "残废人", phonetic: "/wreck/" },
-    { word: "snag", pos: "n.", meaning: "疑难之处，障碍", phonetic: "/snag/" },
-    { word: "anecdote", pos: "n.", meaning: "轶闻", phonetic: "/anecdote/" },
-    { word: "slander", pos: "v.", meaning: "诽谤", phonetic: "/slander/" },
-    { word: "persecute", pos: "v.", meaning: "迫害", phonetic: "/persecute/" },
-    { word: "squadron", pos: "n.", meaning: "中队", phonetic: "/squadron/" },
-    { word: "psychiatric", pos: "adj.", meaning: "精神病学的", phonetic: "/psychiatric/" },
-    { word: "diagnosis", pos: "n.", meaning: "诊所", phonetic: "/diagnosis/" },
-    { word: "orphanage", pos: "n.", meaning: "孤儿院", phonetic: "/orphanage/" }
-  ],
-}
-const articleNce4L26: Article = {
-  id: "nce4-l26",
-  lesson: 26,
-  tag: "C26",
-  title: "The past life of the earth",
-  titleCn: "地球上的昔日生命",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "ERROL WHITE（埃罗尔·怀特）《The past life of the earth》from《Discovery》",
-  notesOnText: [
-    { label: "the 'Vasa'", description: "“瓦萨号”战船。这艘船是以瑞典瓦萨王朝（1523-1654）创始人Gustavus Vasa的姓氏命名的。Gustavus Vasa(1496-1560)曾领导了反对丹麦统治的暴动，1523年出任国王，使瑞典成了一个独立、统一、富强的国家。" },
-    { label: "2 the Thirty Years War \"三十年战争\"。这是欧洲历史上的一场多国混战", description: "具有政治和宗教色彩、是新教诸侯和天主教诸侯之间的连年战争（161801648）,最后在1648年签定了威斯物伐利亚条约，以天主教诸侯失败而告终。" },
-    { label: "a riot of", description: "许多...,主要指色彩丰富。" },
-    { label: "with the water churned...", description: "her flags flying,pennans waving,sails filling...,and the red and gold..ablaze...with 后有5个独立主格结构，均作方式状语，修饰动词emerged。" }
-  ],
-
-  original: {
+  "nce4-l26": {
     paragraphs: [
       [
         { text: "It is animals and plants which lived in or near water whose remains are most likely to be preserved, for one of the necessary conditions of preservation is quick burial, and it is only in the seas and rivers, and sometimes lakes, where mud and silt have been continuously deposited, that bodies and the like can be rapidly covered over and preserved.", translation: "只有生活在水中或水边的动植物尸体最有可能被保存下来，因为保存的必要条件之一是迅速掩埋，所以只有在泥沙不停淤积的海洋和江河里，有时在湖泊里，尸体之类的东西才能被迅速地覆盖而保存下来。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2694,115 +3302,11 @@ const articleNce4L26: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "preservation", pos: "n.", meaning: "保存", phonetic: "/preservation/" },
-    { word: "silt", pos: "n.", meaning: "淤泥", phonetic: "/silt/" },
-    { word: "scavenger", pos: "n.", meaning: "食腐动物", phonetic: "/scavenger/" },
-    { word: "vole", pos: "n.", meaning: "野鼠，鼹鼠", phonetic: "/vole/" },
-    { word: "decompose", pos: "v.", meaning: "腐烂", phonetic: "/decompose/" },
-    { word: "inaccessible", pos: "adj.", meaning: "不能到达的", phonetic: "/inaccessible/" },
-    { word: "crevasse", pos: "n.", meaning: "缝隙", phonetic: "/crevasse/" },
-    { word: "Siberian", pos: "adj.", meaning: "西伯利亚的", phonetic: "/siberian/" },
-    { word: "palaeontological", pos: "adj.", meaning: "古生物学的", phonetic: "/palaeontological/" },
-    { word: "St. Petersburg", pos: "n.", meaning: "圣彼得堡", phonetic: "/st. petersburg/" },
-    { word: "sabre-toothed", pos: "adj.", meaning: "长着锐利的长牙", phonetic: "/sabre-toothed/" },
-    { word: "venture", pos: "v.", meaning: "冒险", phonetic: "/venture/" },
-    { word: "bogged", pos: "adj.", meaning: "陷入泥沼的，陷入要困境的", phonetic: "/bogged/" }
-  ],
-}
-const articleNce4L27: Article = {
-  id: "nce4-l27",
-  lesson: 27,
-  tag: "C27",
-  title: "The 'Vasa' ＂",
-  titleCn: "瓦萨＂号",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "ROY SAUNGERS（罗伊·桑德斯）《The Raising of the 'Vasa'》from《The Listener》",
-  notesOnText: [
-    { label: "form-blind", description: "这是作者仿照colour-blind(色盲)生造的一个词，意指“形盲”" },
-    { label: "in its full spatial completeness", description: "存在于空间的整个（形体）。" },
-    { label: "as it were", description: "可以说是。" },
-    { label: "whatever its size", description: "这是一个省略了maybe的让步状语从句。" },
-    { label: "from all round itself", description: "从它的各个角度构想。" },
-    { label: "centre of gravity", description: "重心。" },
-    { label: "apart from", description: "撇开。" }
-  ],
-
-  original: {
+  "nce4-l27": {
     paragraphs: [
     ],
   },
-  vocabulary: [
-    { word: "galleon", pos: "n.", meaning: "大型帆船", phonetic: "/galleon/" },
-    { word: "Stockholm", pos: "n.", meaning: "斯德哥尔摩", phonetic: "/stockholm/" },
-    { word: "flagship", pos: "n.", meaning: "旗舰", phonetic: "/flagship/" },
-    { word: "imperial", pos: "adj.", meaning: "帝国的", phonetic: "/imperial/" },
-    { word: "hurricane", pos: "n.", meaning: "飓风", phonetic: "/hurricane/" },
-    { word: "armament", pos: "n.", meaning: "军械", phonetic: "/armament/" },
-    { word: "triple", pos: "adj.", meaning: "三层的", phonetic: "/triple/" },
-    { word: "mount", pos: "v.", meaning: "架有", phonetic: "/mount/" },
-    { word: "bronze", pos: "n.", meaning: "青铜", phonetic: "/bronze/" },
-    { word: "cannon", pos: "n.", meaning: "加农炮", phonetic: "/cannon/" },
-    { word: "might", pos: "n.", meaning: "力量", phonetic: "/might/" },
-    { word: "ferment", pos: "n.", meaning: "激动不安", phonetic: "/ferment/" },
-    { word: "ornament", pos: "v.", meaning: "装饰", phonetic: "/ornament/" },
-    { word: "riot", pos: "n.", meaning: "丰富", phonetic: "/riot/" },
-    { word: "demon", pos: "n.", meaning: "恶魔", phonetic: "/demon/" },
-    { word: "mermaid", pos: "n.", meaning: "美人鱼", phonetic: "/mermaid/" },
-    { word: "cherub", pos: "n.", meaning: "小天使", phonetic: "/cherub/" },
-    { word: "zoomorphic", pos: "adj.", meaning: "兽形的", phonetic: "/zoomorphic/" },
-    { word: "ablaze", pos: "adj.", meaning: "光彩的", phonetic: "/ablaze/" },
-    { word: "portray", pos: "v.", meaning: "绘制", phonetic: "/portray/" },
-    { word: "drifting", pos: "adj.", meaning: "弥漫的", phonetic: "/drifting/" },
-    { word: "churn", pos: "v.", meaning: "翻滚", phonetic: "/churn/" },
-    { word: "pennant", pos: "n.", meaning: "三角旗", phonetic: "/pennant/" },
-    { word: "superstructure", pos: "n.", meaning: "上部结构", phonetic: "/superstructure/" },
-    { word: "majestic", pos: "adj.", meaning: "威严的", phonetic: "/majestic/" },
-    { word: "muzzle", pos: "n.", meaning: "炮口", phonetic: "/muzzle/" },
-    { word: "freshen", pos: "v.", meaning: "变强", phonetic: "/freshen/" },
-    { word: "squall", pos: "n.", meaning: "狂风", phonetic: "/squall/" },
-    { word: "list", pos: "v.", meaning: "倾斜", phonetic: "/list/" },
-    { word: "ordnance", pos: "n.", meaning: "军械", phonetic: "/ordnance/" },
-    { word: "heave", pos: "v.", meaning: "拖", phonetic: "/heave/" },
-    { word: "starboard", pos: "n.", meaning: "(船、飞机的)右舷", phonetic: "/starboard/" },
-    { word: "counteract", pos: "v.", meaning: "抵消", phonetic: "/counteract/" },
-    { word: "steepen", pos: "v.", meaning: "变得更陡峭", phonetic: "/steepen/" },
-    { word: "ballast", pos: "n.", meaning: "压舱物", phonetic: "/ballast/" },
-    { word: "inrush", pos: "n.", meaning: "水的涌入", phonetic: "/inrush/" },
-    { word: "Baltic", pos: "n.", meaning: "波罗的海", phonetic: "/baltic/" }
-  ],
-}
-const articleNce4L29: Article = {
-  id: "nce4-l29",
-  lesson: 29,
-  tag: "C29",
-  title: "The hovercraft",
-  titleCn: "气垫船",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "EGON LARSEN（埃贡·拉森）《The Pegasus Book of Inventors》",
-  notesOnText: [
-    { label: "the comparable speed from the Moon", description: "从月球出发的相应的速度，这里是指摆脱月球引力所需达到的速度。" },
-    { label: "the Apollo astronauts", description: "指1969年7月20日美国“阿波罗11号”宇宙飞船第一次载人登月球。" },
-    { label: "the Grand Ganyon", description: "指位于美国亚利桑那州西北部的科罗拉多河的大峡谷。" }
-  ],
-
-  original: {
+  "nce4-l29": {
     paragraphs: [
       [
         { text: "Many strange new means of transport have been developed in our century, the strangest of them being perhaps the hovercraft.", translation: "本世纪已研制出许多新奇的交通工具，其中最新奇的要数气垫船了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2828,43 +3332,7 @@ const articleNce4L29: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "hovercraft", pos: "n.", meaning: "气垫船", phonetic: "/hovercraft/" },
-    { word: "Norfolk Broads", pos: "n.", meaning: "诺福克郡的湖泊地区", phonetic: "/norfolk broads/" },
-    { word: "cushion", pos: "n.", meaning: "座垫", phonetic: "/cushion/" },
-    { word: "ring", pos: "v.", meaning: "围", phonetic: "/ring/" },
-    { word: "Solent", pos: "n.", meaning: "（英国的）苏伦特海峡", phonetic: "/solent/" },
-    { word: "sensation", pos: "n.", meaning: "轰动", phonetic: "/sensation/" },
-    { word: "dune", pos: "n.", meaning: "沙丘", phonetic: "/dune/" },
-    { word: "plantation", pos: "n.", meaning: "种植园", phonetic: "/plantation/" },
-    { word: "hovertrain", pos: "n.", meaning: "气垫火车", phonetic: "/hovertrain/" }
-  ],
-}
-const articleNce4L31: Article = {
-  id: "nce4-l31",
-  lesson: 31,
-  tag: "C31",
-  title: "The sculptor speaks",
-  titleCn: "雕塑家的语言",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "HENRY MOORE（亨利·摩尔）《The Sculptor Speaks》from《The Listener》",
-  notesOnText: [
-    { label: "economic resource", description: "经济实力。" },
-    { label: "stay in business", description: "维持营业。" },
-    { label: "as falls within their sphere", description: "属于他们分内的。" },
-    { label: "keep someone in line", description: "控制住某人。" },
-    { label: "keep them in order", description: "管理他们。" }
-  ],
-
-  original: {
+  "nce4-l31": {
     paragraphs: [
       [
         { text: "Appreciation of sculpture depends upon the ability to respond to form in three dimensions.", translation: "对雕塑的鉴赏力取决于立体的反应能力。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2889,44 +3357,7 @@ const articleNce4L31: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "colour-blind", pos: "adj.", meaning: "色盲的", phonetic: "/colour-blind/" },
-    { word: "perception", pos: "n.", meaning: "知觉", phonetic: "/perception/" },
-    { word: "comprehend", pos: "v.", meaning: "理解", phonetic: "/comprehend/" },
-    { word: "spatial", pos: "adj.", meaning: "空间", phonetic: "/spatial/" },
-    { word: "visualize", pos: "v.", meaning: "使具形象，设想", phonetic: "/visualize/" },
-    { word: "reminiscence", pos: "n.", meaning: "回忆，联想", phonetic: "/reminiscence/" },
-    { word: "tadpole", pos: "n.", meaning: "蝌蚪", phonetic: "/tadpole/" },
-    { word: "mushroom", pos: "n.", meaning: "蘑菇", phonetic: "/mushroom/" },
-    { word: "carrot", pos: "n.", meaning: "胡萝卜", phonetic: "/carrot/" },
-    { word: "bud", pos: "n.", meaning: "花蕾", phonetic: "/bud/" },
-    { word: "lark", pos: "n.", meaning: "云雀", phonetic: "/lark/" },
-    { word: "ladybird", pos: "n.", meaning: "瓢虫", phonetic: "/ladybird/" },
-    { word: "bulrush", pos: "n.", meaning: "芦苇", phonetic: "/bulrush/" }
-  ],
-}
-const articleNce4L35: Article = {
-  id: "nce4-l35",
-  lesson: 35,
-  tag: "C35",
-  title: "Space odyssey",
-  titleCn: "太空探索",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "ARTHUR C. CLARKE（阿瑟·克拉克）《The Exploration of Space》, 1951",
-  notesOnText: [
-    { label: "keep to", description: "局限于。" },
-    { label: "know about", description: "知道...的情况，了解。" }
-  ],
-
-  original: {
+  "nce4-l35": {
     paragraphs: [
       [
         { text: "The Moon is likely to become the industrial hub of the Solar System, supplying the rocket fuels for its ships, easily obtainable from the lunar rocks in the form of liquid oxygen.", translation: "月球很可能成为太阳系的工业中心。从月球上的岩石中很容易提炼出液态氧，作为航天飞船的燃料。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -2965,48 +3396,7 @@ const articleNce4L35: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "hub", pos: "n.", meaning: "（活动的）中心", phonetic: "/hub/" },
-    { word: "lunar", pos: "adj.", meaning: "月球的", phonetic: "/lunar/" },
-    { word: "oxygen", pos: "n.", meaning: "氧气", phonetic: "/oxygen/" },
-    { word: "Apollo", pos: "n.", meaning: "阿波罗", phonetic: "/apollo/" },
-    { word: "accelerate", pos: "v.", meaning: "加速", phonetic: "/accelerate/" },
-    { word: "terrestrial", pos: "adj.", meaning: "地球的", phonetic: "/terrestrial/" },
-    { word: "permanently", pos: "adv.", meaning: "永远地", phonetic: "/permanently/" },
-    { word: "fascination", pos: "n.", meaning: "魅力", phonetic: "/fascination/" },
-    { word: "senior", pos: "adj.", meaning: "资历深的，年长的", phonetic: "/senior/" },
-    { word: "chasm", pos: "n.", meaning: "断层，裂口", phonetic: "/chasm/" },
-    { word: "canyon", pos: "n.", meaning: "峡谷", phonetic: "/canyon/" }
-  ],
-}
-const articleNce4L36: Article = {
-  id: "nce4-l36",
-  lesson: 36,
-  tag: "C36",
-  title: "The cost of government",
-  titleCn: "政府的开支",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "RAYMOND FROST（雷蒙德·弗罗斯特）《The Backward Society》",
-  notesOnText: [
-    { label: "where they are going", description: "他们要写什么，怎么写。" },
-    { label: "set their pen to paper", description: "开始写作。" },
-    { label: "pass for", description: "\"被当作\"，但常指蒙骗，假冒。" },
-    { label: "to my certain knowledge", description: "据我所知。" },
-    { label: "nothing but", description: "仅，只。" },
-    { label: "like adolescents they stand before the mirror", description: "and still cannot fathom the exact outline of the vision before them." },
-    { label: "他们如同少年", description: "站在镜前，不能辨认出自身的真面目。此句出自古希腊的一则是神话：有一漂亮少年，他热恋上了水中自身的映像，最后憔悴而死，化为水仙花。" },
-    { label: "in the sight of", description: "从...角度来看。" }
-  ],
-
-  original: {
+  "nce4-l36": {
     paragraphs: [
       [
         { text: "If a nation is essentially disunited, it is left to the government to hold it together.", translation: "如果一个国家实际上处于分裂状态，使之联合起来就是政府的事了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3035,44 +3425,7 @@ const articleNce4L36: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "disunited", pos: "adj.", meaning: "分裂的", phonetic: "/disunited/" },
-    { word: "correspondingly", pos: "adv.", meaning: "相应地", phonetic: "/correspondingly/" },
-    { word: "backward", pos: "adj.", meaning: "落后的", phonetic: "/backward/" },
-    { word: "incur", pos: "v.", meaning: "承担", phonetic: "/incur/" },
-    { word: "administer", pos: "v.", meaning: "管理", phonetic: "/administer/" },
-    { word: "adminstrative", pos: "adj.", meaning: "行政管理的", phonetic: "/adminstrative/" },
-    { word: "analogous", pos: "adj.", meaning: "类似的", phonetic: "/analogous/" },
-    { word: "overheads", pos: "n.", meaning: "一般费用", phonetic: "/overheads/" },
-    { word: "initiative", pos: "n.", meaning: "主动，积极性", phonetic: "/initiative/" },
-    { word: "checker", pos: "n.", meaning: "检查人员", phonetic: "/checker/" },
-    { word: "foreman", pos: "n.", meaning: "监工", phonetic: "/foreman/" },
-    { word: "dividend", pos: "n.", meaning: "红利", phonetic: "/dividend/" },
-    { word: "unduly", pos: "adv.", meaning: "过度地", phonetic: "/unduly/" }
-  ],
-}
-const articleNce4L38: Article = {
-  id: "nce4-l38",
-  lesson: 38,
-  tag: "C38",
-  title: "Water and the traveller",
-  titleCn: "水和旅行者",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "RICHARD DAWOOD（理查德·达伍德）《Travellers' Health》",
-  notesOnText: [
-    { label: "back to its starting point again", description: "又返回出发点。" },
-    { label: "be subject to", description: "受...的支配，服从于...。" }
-  ],
-
-  original: {
+  "nce4-l38": {
     paragraphs: [
       [
         { text: "Contamination of water supplies is usually due to poor sanitation close to water sources, sewage disposal into the sources themselves, leakage of sewage into distribution systems or contamination with industrial or farm waste.", translation: "水源的污染通常是由于接近水源的地方卫条件太差而造成的：污水排入水源，污水渗入给水系统或工农业污水造成污染。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3108,48 +3461,7 @@ const articleNce4L38: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "contamination", pos: "n.", meaning: "污染", phonetic: "/contamination/" },
-    { word: "sanitation", pos: "n.", meaning: "卫生，卫生设备", phonetic: "/sanitation/" },
-    { word: "sewage", pos: "n.", meaning: "污水", phonetic: "/sewage/" },
-    { word: "leakage", pos: "n.", meaning: "泄漏", phonetic: "/leakage/" },
-    { word: "intermittent", pos: "adj.", meaning: "间歇的，断断续续的", phonetic: "/intermittent/" },
-    { word: "carbonated", pos: "adj.", meaning: "碳化的，碳酸的", phonetic: "/carbonated/" },
-    { word: "acidic", pos: "adj.", meaning: "酸的，酸性的", phonetic: "/acidic/" },
-    { word: "alcohol", pos: "n.", meaning: "酒精", phonetic: "/alcohol/" },
-    { word: "disinfectant", pos: "n.", meaning: "消毒剂", phonetic: "/disinfectant/" },
-    { word: "sterilize", pos: "v.", meaning: "消毒", phonetic: "/sterilize/" },
-    { word: "ethanol", pos: "n.", meaning: "乙醇", phonetic: "/ethanol/" },
-    { word: "bactericidal", pos: "adj.", meaning: "杀菌的", phonetic: "/bactericidal/" },
-    { word: "negligible", pos: "adj.", meaning: "可以忽略的，微不足道的", phonetic: "/negligible/" },
-    { word: "methylated", pos: "adj.", meaning: "加入甲醇的", phonetic: "/methylated/" }
-  ],
-}
-const articleNce4L39: Article = {
-  id: "nce4-l39",
-  lesson: 39,
-  tag: "C39",
-  title: "What every writer wants",
-  titleCn: "作家之所需",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "JOHN LE CARRE（约翰·勒卡雷）《What every writer wants》from《Harper's》",
-  notesOnText: [
-    { label: "by some unavoidable circumstance", description: "由于某些不可避免的情况。" },
-    { label: "with a grain of salt", description: "有保留地。" },
-    { label: "a very firm hand", description: "一个强有力的人。" },
-    { label: "with the aid of", description: "在...的帮助下。" },
-    { label: "This is supposed", description: "据说...。" }
-  ],
-
-  original: {
+  "nce4-l39": {
     paragraphs: [
       [
         { text: "I have known very few writers, but those I have known, and whom I respect, confess at once that they have little idea where they are going when they first set pen to paper.", translation: "我认识的作家寥寥无几，然而凡是我所认识和尊敬的作家，都立即承认在他们动笔时，不清楚要写什么，怎么写。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3181,51 +3493,7 @@ const articleNce4L39: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "confress", pos: "v.", meaning: "承认", phonetic: "/confress/" },
-    { word: "inspiration", pos: "n.", meaning: "灵感", phonetic: "/inspiration/" },
-    { word: "Kasmir", pos: "n.", meaning: "克什米尔", phonetic: "/kasmir/" },
-    { word: "interweave", pos: "v.", meaning: "交织", phonetic: "/interweave/" },
-    { word: "afresh", pos: "adv.", meaning: "重新", phonetic: "/afresh/" },
-    { word: "discern", pos: "v.", meaning: "辨明，领悟", phonetic: "/discern/" },
-    { word: "indescribable", pos: "adj.", meaning: "无法描述的", phonetic: "/indescribable/" },
-    { word: "blur", pos: "v.", meaning: "使...模糊不清", phonetic: "/blur/" },
-    { word: "yeast", pos: "n.", meaning: "激动", phonetic: "/yeast/" },
-    { word: "fathom", pos: "v.", meaning: "领悟，彻底了解", phonetic: "/fathom/" },
-    { word: "interminably", pos: "adv.", meaning: "没完没了地", phonetic: "/interminably/" },
-    { word: "winkle", pos: "v.", meaning: "挖掘", phonetic: "/winkle/" },
-    { word: "incidentally", pos: "adv.", meaning: "顺便说一下", phonetic: "/incidentally/" },
-    { word: "pertinent", pos: "adj.", meaning: "中肯的", phonetic: "/pertinent/" },
-    { word: "flirt", pos: "v.", meaning: "调情", phonetic: "/flirt/" },
-    { word: "inmost", pos: "adj.", meaning: "内心深处的", phonetic: "/inmost/" }
-  ],
-}
-const articleNce4L40: Article = {
-  id: "nce4-l40",
-  lesson: 40,
-  tag: "C40",
-  title: "Waves",
-  titleCn: "海浪",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "S. H. HURLBUT（S. H. 赫伯特）《The Sea》, 1964",
-  notesOnText: [
-    { label: "stand up on end", description: "竖立着。" },
-    { label: "the ideal to be aimed at", description: "理想的目标。" },
-    { label: "I could in time...", description: "我最终能够....。" },
-    { label: "help us a little further", description: "帮助我们进一步搞清这个问题。" },
-    { label: "with the hand...hold the string...", description: "这是一个祈使句，谓语动词是hold,with the hand held high in the air是介词短语作方式状语。" },
-    { label: "to and fro", description: "来回地。" }
-  ],
-
-  original: {
+  "nce4-l40": {
     paragraphs: [
       [
         { text: "Waves are the children of the struggle between ocean and atmosphere, the ongoing signatures of infinity.", translation: "海浪是大海和空气相斗的产物，无限的一种不间断的标志。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3253,45 +3521,7 @@ const articleNce4L40: Article = {
       ],
     ],
   },
-  vocabulary: [
-    { word: "signature", pos: "n.", meaning: "签名，标记", phonetic: "/signature/" },
-    { word: "infinity", pos: "n.", meaning: "无穷", phonetic: "/infinity/" },
-    { word: "ray", pos: "n.", meaning: "光线", phonetic: "/ray/" },
-    { word: "energize", pos: "v.", meaning: "给与...能量", phonetic: "/energize/" },
-    { word: "rhythm", pos: "n.", meaning: "节奏", phonetic: "/rhythm/" },
-    { word: "transmit", pos: "v.", meaning: "传送", phonetic: "/transmit/" },
-    { word: "exquisite", pos: "adj.", meaning: "高雅的", phonetic: "/exquisite/" },
-    { word: "phenomena", pos: "n.", meaning: "现象", phonetic: "/phenomena/" },
-    { word: "crest", pos: "n.", meaning: "浪峰", phonetic: "/crest/" },
-    { word: "trough", pos: "n.", meaning: "波谷", phonetic: "/trough/" },
-    { word: "vertical", pos: "adj.", meaning: "垂直的", phonetic: "/vertical/" },
-    { word: "horizontal", pos: "adj.", meaning: "水平的", phonetic: "/horizontal/" },
-    { word: "actuality", pos: "n.", meaning: "现实", phonetic: "/actuality/" },
-    { word: "catastrophic", pos: "adj.", meaning: "大灾难的", phonetic: "/catastrophic/" },
-    { word: "particle", pos: "n.", meaning: "微粒", phonetic: "/particle/" },
-    { word: "maturity", pos: "n.", meaning: "成熟", phonetic: "/maturity/" },
-    { word: "undulate", pos: "v.", meaning: "波动，形成波浪", phonetic: "/undulate/" },
-    { word: "tremor", pos: "n.", meaning: "震颤", phonetic: "/tremor/" },
-    { word: "gravitational", pos: "adj.", meaning: "地心吸力的", phonetic: "/gravitational/" }
-  ],
-}
-const articleNce4L41: Article = {
-  id: "nce4-l41",
-  lesson: 41,
-  tag: "C41",
-  title: "Training elephants",
-  titleCn: "训练大象",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "RICHARD CARRINGTON（理查德·卡林顿）《Elephants》",
-  original: {
+  "nce4-l41": {
     paragraphs: [
       [
         { text: "Two main techniques have been used for training elephants, which we may call respectively the tough and the gentle.", translation: "驯象有两种主要的方法，我们分别称之为强硬法和温柔法。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3327,55 +3557,7 @@ const articleNce4L41: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "technique", pos: "n.", meaning: "技术", phonetic: "/technique/" },
-    { word: "tough", pos: "adj.", meaning: "强硬的", phonetic: "/tough/" },
-    { word: "resentful", pos: "adj.", meaning: "忿恨不满的", phonetic: "/resentful/" },
-    { word: "assign", pos: "v.", meaning: "分配，指派", phonetic: "/assign/" },
-    { word: "mahout", pos: "n.", meaning: "驯象人", phonetic: "/mahout/" },
-    { word: "calf", pos: "n.", meaning: "幼仔", phonetic: "/calf/" },
-    { word: "pine", pos: "v.", meaning: "消瘦", phonetic: "/pine/" },
-    { word: "underline", pos: "v.", meaning: "着重说明，强调", phonetic: "/underline/" },
-    { word: "keep", pos: "n.", meaning: "生计", phonetic: "/keep/" },
-    { word: "subservient", pos: "adj.", meaning: "屈从的", phonetic: "/subservient/" },
-    { word: "plunge", pos: "v.", meaning: "向前冲", phonetic: "/plunge/" },
-    { word: "tame", pos: "adj.", meaning: "养驯服了的", phonetic: "/tame/" },
-    { word: "tether", pos: "v.", meaning: "（用绳）拴", phonetic: "/tether/" },
-    { word: "ticklish", pos: "adj.", meaning: "难对付的，棘手的", phonetic: "/ticklish/" },
-    { word: "alarming", pos: "adj.", meaning: "引起惊恐的", phonetic: "/alarming/" },
-    { word: "accompaniment", pos: "n.", meaning: "伴奏", phonetic: "/accompaniment/" },
-    { word: "soothe", pos: "v.", meaning: "镇定", phonetic: "/soothe/" },
-    { word: "chant", pos: "n.", meaning: "单调的歌", phonetic: "/chant/" },
-    { word: "reinforce", pos: "v.", meaning: "加强", phonetic: "/reinforce/" },
-    { word: "endearing", pos: "adj.", meaning: "惹人喜爱的", phonetic: "/endearing/" },
-    { word: "epithet", pos: "n.", meaning: "称呼", phonetic: "/epithet/" },
-    { word: "susceptible", pos: "adj.", meaning: "易受感动的", phonetic: "/susceptible/" },
-    { word: "blandishment", pos: "n.", meaning: "奉承", phonetic: "/blandishment/" },
-    { word: "lash", pos: "v.", meaning: "猛烈地甩", phonetic: "/lash/" },
-    { word: "curl", pos: "v.", meaning: "使卷曲", phonetic: "/curl/" }
-  ],
-}
-const articleNce4L42: Article = {
-  id: "nce4-l42",
-  lesson: 42,
-  tag: "C42",
-  title: "Recording and earthquake",
-  titleCn: "记录地震",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-  notesOnText: [
-    { label: "that given a planet...certain to start", description: "这是一个宾语从句，作动词conclude的宾语，其中given a planet...our own,过去分词短语作条件状语，given与if的意思相近，这个过去分词短语可译成“如果一个行星与我们所在的行星大致相同的话”。" },
-    { label: "is best left unsaid", description: "最好不去说（它）。" },
-    { label: "come up against", description: "遇到。" }
-  ],
-
-  original: {
+  "nce4-l42": {
     paragraphs: [
       [
         { text: "An earthquake comes like a thief in the night, without warning.", translation: "地震就像夜间的小偷，不打招呼就来了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3423,48 +3605,7 @@ const articleNce4L42: Article = {
       ],
     ],
   },
-  vocabulary: [
-    { word: "earthquake", pos: "n.", meaning: "地震", phonetic: "/earthquake/" },
-    { word: "slumber", pos: "v.", meaning: "睡眠", phonetic: "/slumber/" },
-    { word: "ninepin", pos: "n.", meaning: "九柱戏中的木柱", phonetic: "/ninepin/" },
-    { word: "rigid", pos: "adj.", meaning: "坚硬的", phonetic: "/rigid/" },
-    { word: "delicate", pos: "adj.", meaning: "灵感的", phonetic: "/delicate/" },
-    { word: "seismometer", pos: "n.", meaning: "地震仪", phonetic: "/seismometer/" },
-    { word: "penholder", pos: "n.", meaning: "笔杆", phonetic: "/penholder/" },
-    { word: "legibly", pos: "adv.", meaning: "字迹清楚地", phonetic: "/legibly/" },
-    { word: "drum", pos: "n.", meaning: "鼓状物", phonetic: "/drum/" },
-    { word: "wriggle", pos: "v.", meaning: "扭动", phonetic: "/wriggle/" },
-    { word: "bluebottle", pos: "n.", meaning: "绿头苍蝇", phonetic: "/bluebottle/" },
-    { word: "graph", pos: "n.", meaning: "图表", phonetic: "/graph/" },
-    { word: "graphic", pos: "adj.", meaning: "图示的", phonetic: "/graphic/" },
-    { word: "longitudinal", pos: "adj.", meaning: "纵向的", phonetic: "/longitudinal/" },
-    { word: "transverse", pos: "adj.", meaning: "横向的", phonetic: "/transverse/" }
-  ],
-}
-const articleNce4L43: Article = {
-  id: "nce4-l43",
-  lesson: 43,
-  tag: "C43",
-  title: "Are there strangers in space?",
-  titleCn: "宇宙中有外星人吗？",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "ANTHONY MICHAELIS（安东尼·米凯利斯）《Are There Strangers in Space?》from《The Weekend Telegraph》",
-  notesOnText: [
-    { label: "make a very poor show", description: "出丑。" },
-    { label: "I stand alone", description: "仅我一人。" },
-    { label: "the last creature to compete with man", description: "其中的last有“极不可能”的意思。" },
-    { label: "The Holy Office knew this full well when it caused heretics to be burned in days gone by.the Holy Office 是指罗马天主教的宗教法庭；full well中的full是副词", description: "有very的意思；gone by作days的定语，整个词组的意思是“过去的日子”。" }
-  ],
-
-  original: {
+  "nce4-l43": {
     paragraphs: [
       [
         { text: "We must conclude from the work of those who have studied the origin of life, that given a planet only approximately like our own, life is almost certain to start.", translation: "根据研究生命起源的人们所作的工作，我们必然会得出这样的结论：如果设想有一颗行星和我们地球的情况基本相似，那几乎肯定会产生生命。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3503,36 +3644,7 @@ const articleNce4L43: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "Mercury", pos: "n.", meaning: "水星", phonetic: "/mercury/" },
-    { word: "hydrogen", pos: "n.", meaning: "氢气", phonetic: "/hydrogen/" },
-    { word: "prevailing", pos: "adj.", meaning: "普遍的", phonetic: "/prevailing/" },
-    { word: "uniquely", pos: "adv.", meaning: "唯一地", phonetic: "/uniquely/" },
-    { word: "rational", pos: "adj.", meaning: "合理的", phonetic: "/rational/" },
-    { word: "cm", pos: "n.", meaning: "厘米", phonetic: "/cm/" },
-    { word: "megacycle", pos: "n.", meaning: "兆周", phonetic: "/megacycle/" },
-    { word: "emission", pos: "n.", meaning: "散发", phonetic: "/emission/" },
-    { word: "intersteller", pos: "adj.", meaning: "星际的", phonetic: "/intersteller/" },
-    { word: "rendezvous", pos: "n.", meaning: "约会地点", phonetic: "/rendezvous/" }
-  ],
-}
-const articleNce4L45: Article = {
-  id: "nce4-l45",
-  lesson: 45,
-  tag: "C45",
-  title: "Of men and galaxies",
-  titleCn: "人生星系",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "FRED HOYLE（弗雷德·霍伊尔）《Of Men and Galaxies》",
-  original: {
+  "nce4-l45": {
     paragraphs: [
       [
         { text: "In man's early days, competition with other creatures must have been critical.", translation: "在人类早期，人类与其他生物的竞争一定是必不可少的。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3572,38 +3684,7 @@ const articleNce4L45: Article = {
       ]
     ],
   },
-  vocabulary: [
-    { word: "dispute", pos: "v.", meaning: "争夺", phonetic: "/dis'pju:t/" },
-    { word: "mosquito", pos: "n.", meaning: "蚊子", phonetic: "/məs'ki:təu/" },
-    { word: "subdue", pos: "v.", meaning: "征服", phonetic: "/səb'dju:/" },
-    { word: "drainage", pos: "n.", meaning: "下水系统", phonetic: "/'dreinidʒ/" },
-    { word: "envision", pos: "v.", meaning: "预想", phonetic: "/in'viʒən/" },
-    { word: "Morocco", pos: "n.", meaning: "摩洛哥", phonetic: "/mə'rɔkəu/" },
-    { word: "latitude", pos: "n.", meaning: "纬度", phonetic: "/'lætitju:d/" },
-    { word: "heretic", pos: "n.", meaning: "异教徒，异端邪说", phonetic: "/'herətik/" },
-    { word: "conceive", pos: "v.", meaning: "想像", phonetic: "/kən'si:v/" },
-    { word: "suffice", pos: "v.", meaning: "足够", phonetic: "/sə'fais/" },
-    { word: "nuclear", pos: "adj.", meaning: "原子弹的", phonetic: "/'nju:kliə/" },
-    { word: "original", pos: "adj.", meaning: "有独到见解的", phonetic: "/ə'ridʒənəl/" }
-  ],
-}
-const articleNce4L47: Article = {
-  id: "nce4-l47",
-  lesson: 47,
-  tag: "C47",
-  title: "The great escape",
-  titleCn: "大逃亡",
-  keyArticle: false,
-  level: "NCE4",
-  heatmap: [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
-  attribution: "NIGEL BUXTON（奈杰尔·巴克斯顿）《The Great Escape》from《The Weekend Telegraph》",
-  original: {
+  "nce4-l47": {
     paragraphs: [
       [
         { text: "Economy is one powerful motive for camping, since after the initial outlay upon equipment, or through hiring it, the total expense can be far less than the cost of hotels.", translation: "图省钱是露营的一个主要动机，因为除了开始时购置或是租借一套露营装备外，总费用算起来要比住旅馆开支少得多。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
@@ -3655,40 +3736,8 @@ const articleNce4L47: Article = {
         { text: "Only good scouting is likely to preserve the freedoms so dear to the heart of the eternal Boy Scout.", translation: "只有优良的童子军活动才能保持不朽的童子军所衷心热爱的各项自由。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
       ]
     ],
-  },
-  vocabulary: [
-    { word: "assumption", pos: "n.", meaning: "假定", phonetic: "/assumption/" },
-    { word: "manoeuvre", pos: "v.", meaning: "（驱车）移动", phonetic: "/manoeuvre/" },
-    { word: "myriad", pos: "adj.", meaning: "无数的", phonetic: "/myriad/" },
-    { word: "paradox", pos: "n.", meaning: "自相矛盾的呈", phonetic: "/paradox/" },
-    { word: "cynic", pos: "n.", meaning: "愤世嫉俗者", phonetic: "/cynic/" },
-    { word: "sociologist", pos: "n.", meaning: "社会学家", phonetic: "/sociologist/" },
-    { word: "shun", pos: "v.", meaning: "避开", phonetic: "/shun/" },
-    { word: "affluent", pos: "adj.", meaning: "富有的", phonetic: "/affluent/" },
-    { word: "chambermaid", pos: "n.", meaning: "女招待员", phonetic: "/chambermaid/" },
-    { word: "boo", pos: "n.", meaning: "呸的一声", phonetic: "/boo/" },
-    { word: "maitre d'hotel", pos: "n.", meaning: "[法语]总管", phonetic: "/maitre d'hotel/" },
-    { word: "snobbery", pos: "n.", meaning: "势利", phonetic: "/snobbery/" },
-    { word: "hierarchy", pos: "n.", meaning: "等级制度", phonetic: "/hierarchy/" },
-    { word: "entail", pos: "v.", meaning: "便成为必要", phonetic: "/entail/" },
-    { word: "inclement", pos: "adj.", meaning: "险恶的", phonetic: "/inclement/" },
-    { word: "insularity", pos: "n.", meaning: "偏狭", phonetic: "/insularity/" },
-    { word: "cater", pos: "v.", meaning: "迎合", phonetic: "/cater/" },
-    { word: "exclusively", pos: "adv.", meaning: "排他地", phonetic: "/exclusively/" },
-    { word: "cosmopolitan", pos: "adj.", meaning: "世界的", phonetic: "/cosmopolitan/" },
-    { word: "preponderance", pos: "n.", meaning: "优势", phonetic: "/preponderance/" },
-    { word: "overwhelmingly", pos: "adv.", meaning: "以压倒优势地，清一色地", phonetic: "/overwhelmingly/" },
-    { word: "patronage", pos: "n.", meaning: "恩惠，惠顾", phonetic: "/patronage/" },
-    { word: "sauerkraut", pos: "n.", meaning: "泡菜", phonetic: "/sauerkraut/" },
-    { word: "vie", pos: "v.", meaning: "竞争", phonetic: "/vie/" },
-    { word: "municipality", pos: "n.", meaning: "市政当局", phonetic: "/municipality/" },
-    { word: "itinerant", pos: "n.", meaning: "巡回者", phonetic: "/itinerant/" },
-    { word: "heath", pos: "n.", meaning: "荒地", phonetic: "/heath/" },
-    { word: "alienate", pos: "v.", meaning: "使疏远", phonetic: "/alienate/" },
-    { word: "eternal", pos: "adj.", meaning: "永久的", phonetic: "/eternal/" }
-  ],
-}
-
+  }
+});
 
 export const articlesNce4: Record<string, Article> = {
 

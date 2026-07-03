@@ -3,7 +3,9 @@ import { articlesNce2 } from "./nce2";
 import { articlesNce3 } from "./nce3";
 import { articlesNce4 } from "./nce4";
 
-export type { Article, VocabItem, SentenceNote, SentenceData, GrammarRelatedExample } from "./types";
+export type { Article, ArticleOriginalContent, VocabItem, SentenceNote, SentenceData, GrammarRelatedExample } from "./types";
+import { ARTICLE_ORIGINALS, getParagraphs } from "./article-notes";
+export { ARTICLE_ORIGINALS, getParagraphs };
 export { articlesIelts } from "./ielts";
 export { articlesNce2 } from "./nce2";
 export { articlesNce3 } from "./nce3";
@@ -28,7 +30,7 @@ export interface ArticleListItem {
   keyArticle?: boolean;
 }
 
-export function getArticleList(articles: Record<string, { id: string; title: string; titleCn?: string; level: string; lesson: number; original: { paragraphs: unknown[][] }; vocabulary: unknown[]; keyArticle?: boolean }>): ArticleListItem[] {
+export function getArticleList(articles: Record<string, { id: string; title: string; titleCn?: string; level: string; lesson: number; originalId: string; vocabulary: unknown[]; keyArticle?: boolean }>): ArticleListItem[] {
   return Object.values(articles)
     .sort((a, b) => a.lesson - b.lesson)
     .map((article) => ({
@@ -37,7 +39,7 @@ export function getArticleList(articles: Record<string, { id: string; title: str
       titleCn: article.titleCn,
       level: article.level,
       lesson: article.lesson,
-      paragraphCount: article.original.paragraphs.length,
+      paragraphCount: getParagraphs(article).length,
       vocabularyCount: article.vocabulary.length,
       keyArticle: article.keyArticle,
     }));

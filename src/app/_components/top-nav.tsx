@@ -7,7 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon, PanelRight } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
-import { allArticles } from "@/app/mock";
+import { allArticles, getParagraphs } from "@/app/mock";
 import { useReaderStore } from "@/stores/reader-store";
 import { keywordCategories } from "@/app/mock/ielts-538-vocabulary";
 import { vocabChapters } from "@/app/mock/ielts-vocabulary";
@@ -333,7 +333,7 @@ const pageSearchItems: PageSearchItem[] = [
 
 const articleSearchItems: ArticleSearchItem[] = Object.values(allArticles).map((article) => {
   const levelRoute = ARTICLE_LEVEL_ROUTES[article.level] ?? "/v2/ielts";
-  const paragraphKeywords = article.original.paragraphs
+  const paragraphKeywords = getParagraphs(article)
     .flatMap((paragraph) =>
       paragraph.map((sentence) =>
         `${sentence.text} ${sentence.translation ?? ""} ${(sentence.grammarNotes ?? [])

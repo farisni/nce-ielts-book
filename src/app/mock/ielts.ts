@@ -1,4 +1,5 @@
 import type { Article, GrammarRelatedExample, VocabItem, SentenceData } from './types';
+import { registerOriginals, getParagraphs } from "./article-notes";
 
 export const grammarRelatedExamples: Record<string, GrammarRelatedExample[]> = {
   asReason: [
@@ -75,9 +76,7 @@ function buildArticle(
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
     attribution: 'Based on IELTS_16 Reading',
-    original: {
-      paragraphs: paragraphs.map((paragraph, index) => buildSentenceItems(paragraph, paragraphTranslations[index] ?? [])),
-    },
+    originalId: id,
     vocabulary,
   }
 }
@@ -85,7 +84,7 @@ function buildArticle(
 function assignPredicates(article: Article, predicates: string[][][]) {
   predicates.forEach((paragraph, paragraphIndex) => {
     paragraph.forEach((sentencePredicates, sentenceIndex) => {
-      const sentence = article.original.paragraphs[paragraphIndex]?.[sentenceIndex]
+      const sentence = getParagraphs(article)[paragraphIndex]?.[sentenceIndex]
       if (sentence) sentence.predicates = sentencePredicates
     })
   })
@@ -252,6 +251,7 @@ const polarBearsVocabulary: VocabItem[] = [
 ]
 
 const polarBearsArticle = buildArticle('ielts-1', 'Why we need to protect polar bears', '为什么我们需要保护北极熊', 1, polarBearsParagraphs, polarBearsVocabulary, polarBearsParagraphTranslations)
+registerOriginals({ [polarBearsArticle.originalId]: { paragraphs: polarBearsParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, polarBearsParagraphTranslations[index] ?? [])) } })
 
 const futureOfWorkVocabulary: VocabItem[] = [
   { word: 'workforce', pos: 'n.', meaning: '劳动力', phonetic: '/ˈwɜːkfɔːs/' },
@@ -275,9 +275,10 @@ const futureOfWorkVocabulary: VocabItem[] = [
 ]
 
 const futureOfWorkArticle = buildArticle('ielts-3', 'The future of work', '未来的工作', 3, futureOfWorkParagraphs, futureOfWorkVocabulary, futureOfWorkParagraphTranslations)
+registerOriginals({ [futureOfWorkArticle.originalId]: { paragraphs: futureOfWorkParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, futureOfWorkParagraphTranslations[index] ?? [])) } })
 
 // Add expansionNotes to selected sentences
-const fow = futureOfWorkArticle.original.paragraphs
+const fow = getParagraphs(futureOfWorkArticle)
 fow[0][1].expansionNotes = [{ label: "embodied AI", description: "具身化人工智能，指具有物理载体（如机器人）的AI系统，与运行在服务器中的纯软件算法相对。" }]
 fow[0][2].expansionNotes = [{ label: "disembodied AI", description: "非实体化AI，指不具有物理形态的算法系统，如手机中的推荐算法、语音助手等。" }]
 fow[1][0].expansionNotes = [{ label: "algorithmication", description: "算法化。将传统上需要人类判断与决策的工作交给算法处理的过程，是知识经济的核心特征之一。" }]
@@ -410,25 +411,25 @@ assignPredicates(futureOfWorkArticle, [
     ['are', 'pre-empt', 'guarantee'],
   ],
 ])
-futureOfWorkArticle.original.paragraphs[0][0].grammarNotes = [
+getParagraphs(futureOfWorkArticle)[0][0].grammarNotes = [
   { label: 'as their occupations evolve alongside increasingly capable machines', description: 'as 引导伴随状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[0][2].inlineAnnotations = [
+getParagraphs(futureOfWorkArticle)[0][2].inlineAnnotations = [
   { label: 'Disembodied', description: '非实体化的' },
 ]
-futureOfWorkArticle.original.paragraphs[1][0].grammarNotes = [
+getParagraphs(futureOfWorkArticle)[1][0].grammarNotes = [
   { label: 'as a result of the algorithmication of jobs', description: 'as 引导原因状语。' },
 ]
-futureOfWorkArticle.original.paragraphs[1][1].grammarNotes = [
+getParagraphs(futureOfWorkArticle)[1][1].grammarNotes = [
   { label: 'to undertake tasks', description: 'to do 目的状语，去承担任务。' },
 ]
-futureOfWorkArticle.original.paragraphs[2][0].inlineAnnotations = [
+getParagraphs(futureOfWorkArticle)[2][0].inlineAnnotations = [
   { label: 'outperform', description: '胜过' },
 ]
-futureOfWorkArticle.original.paragraphs[2][3].inlineAnnotations = [
+getParagraphs(futureOfWorkArticle)[2][3].inlineAnnotations = [
   { label: 'cognitive', description: '认知的' },
 ]
-futureOfWorkArticle.original.paragraphs[2][4].inlineAnnotations = [
+getParagraphs(futureOfWorkArticle)[2][4].inlineAnnotations = [
   { label: 'legitimate', description: '合法的' },
   { label: 'peripheral', description: '外围的' },
   { label: 'participation', description: '参与' },
@@ -446,6 +447,6 @@ export const articleIeltsList = Object.values(articlesIelts).map((article) => ({
   titleCn: article.titleCn,
   level: article.level,
   lesson: article.lesson,
-  paragraphCount: article.original.paragraphs.length,
+  paragraphCount: getParagraphs(article).length,
   vocabularyCount: article.vocabulary.length,
 }))

@@ -28,6 +28,11 @@ export interface SentenceData {
   expansionNotes?: SentenceNote[]
 }
 
+export interface ArticleOriginalContent {
+  paragraphs: SentenceData[][]
+  pendingNotes?: SentenceNote[]
+}
+
 export interface Article {
   id: string
   title: string
@@ -37,13 +42,10 @@ export interface Article {
   heatmap?: number[][]
   attribution?: string
   keyArticle?: boolean
-  original: {
-    paragraphs: SentenceData[][]
-  }
+  originalId: string
   tag?: string
   vocabulary: VocabItem[]
   notesOnText?: SentenceNote[]
-  pendingNotes?: SentenceNote[]
 }
 
 export interface GrammarRelatedExample {

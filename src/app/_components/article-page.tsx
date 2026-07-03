@@ -42,7 +42,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { allArticles, getArticleList, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
+import { allArticles, getArticleList, getParagraphs, ARTICLE_ORIGINALS, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
 import { grammarRelatedExamples } from "@/app/mock/ielts";
 import {
   Collapsible,
@@ -209,13 +209,13 @@ function buildParagraphStarts(paragraphs: string[]) {
 }
 
 function getArticleParagraphs(article: Article) {
-  return article.original.paragraphs.map((paragraph) =>
+  return getParagraphs(article).map((paragraph) =>
     paragraph.map((sentence) => sentence.text).join(" "),
   );
 }
 
 function getArticleParagraphTranslations(article: Article) {
-  return article.original.paragraphs
+  return getParagraphs(article)
     .map((paragraph) =>
       paragraph
         .map((sentence) => sentence.translation)
@@ -225,7 +225,7 @@ function getArticleParagraphTranslations(article: Article) {
 }
 
 function getArticleSentences(article: Article) {
-  return article.original.paragraphs;
+  return getParagraphs(article);
 }
 
 function getRelatedExamplesForGrammar(noteBody: string) {
@@ -241,7 +241,7 @@ function getRelatedExamplesForGrammar(noteBody: string) {
 }
 
 function getGrammarSummaryGroups(article: Article): GrammarSummaryGroup[] {
-  return article.original.paragraphs
+  return getParagraphs(article)
     .map((paragraph, paragraphIndex) => ({
       key: `${article.id}-grammar-${paragraphIndex}`,
       paragraphIndex,
@@ -516,19 +516,19 @@ function ArticleReader({ article }: { article: Article }) {
 
   const sentenceCount = useMemo(() => {
     let count = 0;
-    for (const p of article.original.paragraphs) count += p.length;
+    for (const p of getParagraphs(article)) count += p.length;
     return count;
-  }, [article.original.paragraphs]);
+  }, [getParagraphs(article)]);
 
   const readingTime = useMemo(() => {
     let words = 0;
-    for (const p of article.original.paragraphs) {
+    for (const p of getParagraphs(article)) {
       for (const s of p) {
         words += s.text.split(/\s+/).filter(Boolean).length;
       }
     }
     return Math.max(1, Math.ceil(words / 200)); // 200 wpm
-  }, [article.original.paragraphs]);
+  }, [getParagraphs(article)]);
 
   const {
     audioRef,
@@ -546,13 +546,13 @@ function ArticleReader({ article }: { article: Article }) {
   const allSentenceKeys = useMemo(() => {
     const keys: string[] = [];
     for (let pi = 0; pi < articleParagraphs.length; pi++) {
-      const sentences = article.original.paragraphs[pi] ?? [];
+      const sentences = getParagraphs(article)[pi] ?? [];
       for (let si = 0; si < sentences.length; si++) {
         keys.push(`${article.id}-p${pi}-s${si}`);
       }
     }
     return keys;
-  }, [article.id, article.original.paragraphs, articleParagraphs]);
+  }, [article.id, getParagraphs(article), articleParagraphs]);
 
   // Sync article to reader store for notebook panel
   useEffect(() => {
@@ -572,13 +572,13 @@ function ArticleReader({ article }: { article: Article }) {
       if (!parts) continue;
       const pi = parseInt(parts[0]);
       const si = parseInt(parts[1]);
-      const sentence = article.original.paragraphs[pi]?.[si];
+      const sentence = getParagraphs(article)[pi]?.[si];
       if (!sentence) continue;
       const sText = sentence.text.toLowerCase().replace(/[^a-z0-9]/g, '');
       if (sText.includes(lrcText) || lrcText.includes(sText)) return key;
     }
     return null;
-  }, [isNce4, activeSentenceIndex, lrcLines, allSentenceKeys, article.original.paragraphs]);
+  }, [isNce4, activeSentenceIndex, lrcLines, allSentenceKeys, getParagraphs(article)]);
 
   /* auto-scroll to audio-active sentence */
   const prevAudioKeyRef = useRef<string | null>(null);
@@ -1112,12 +1112,12 @@ function ArticleReader({ article }: { article: Article }) {
                         ))}
                       </div>
                     )}
-                    {!isIelts && article.pendingNotes?.length ? (
+                    {!isIelts && ARTICLE_ORIGINALS[article.originalId]?.pendingNotes?.length ? (
                       <div className="pt-6">
                         <h2 className="mb-4 text-lg font-semibold text-foreground">其他笔记</h2>
                         <table className="w-full border-separate border-spacing-y-2">
                           <tbody>
-                            {article.pendingNotes.map((note, i) => (
+                            {ARTICLE_ORIGINALS[article.originalId]!.pendingNotes!.map((note, i) => (
                               <tr key={i} className="note-item align-top">
                                 <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
                                 <td className="align-top pt-0.5">
