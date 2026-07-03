@@ -94,18 +94,18 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     <div className="h-screen w-full overflow-hidden flex">
       <AppSidebar />
 
-      <div className="flex-1 min-w-0">
-        <PanelGroup direction="horizontal" className="h-full">
-          <Panel defaultSize={70} minSize={40}>
-            <div className="h-full flex flex-col relative">
+      <div className="min-h-0 flex-1 min-w-0 overflow-hidden">
+        <PanelGroup direction="horizontal" className="h-full min-h-0 overflow-hidden">
+          <Panel defaultSize={70} minSize={40} className="min-h-0 overflow-hidden">
+            <div className="relative flex h-full min-h-0 flex-col overflow-hidden">
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
-              <main ref={mainRef} data-scroll-container data-section="main-content" className="relative flex-1 overflow-y-auto p-6">
+              <main ref={mainRef} data-scroll-container data-section="main-content" className="relative min-h-0 flex-1 overflow-y-auto p-6">
                 <div className="p-6 min-h-full">
                   {children}
                 </div>
               </main>
-              <FloatAction className="absolute bottom-4 right-4 z-50" />
+              <FloatAction className="absolute bottom-6 right-6 z-50" />
             </div>
           </Panel>
 
@@ -116,15 +116,15 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             defaultSize={0}
             minSize={0}
             maxSize={40}
-            className={transitioning ? "transition-[flex] duration-300 ease-out" : ""}
+            className={transitioning ? "min-h-0 overflow-hidden transition-[flex] duration-300 ease-out" : "min-h-0 overflow-hidden"}
           >
             <motion.aside
               initial={false}
               animate={{ opacity: isPanelOpen ? 1 : 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="h-full bg-sidebar border-l border-border"
+              className="h-full min-h-0 overflow-hidden bg-sidebar border-l border-border"
             >
-              <ScrollArea className="h-full" chevron={false} scrollFade={false} viewportClassName="notes-panel-viewport">
+              <ScrollArea className="h-full" chevron={false} scrollFade={false} viewportClassName="notes-panel-viewport [overflow-anchor:none]">
                 {article ? (
                   <NotebookTab article={article} onScrollToBlock={scrollToBlock} />
                 ) : (

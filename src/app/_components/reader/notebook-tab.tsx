@@ -6,7 +6,8 @@ import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
 
 const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
-const anchorBg = "#e8f1ff";  // 句子描点统一色
+const anchorBg = "#f7f4f0";  // 句子描点统一色
+const stickyHeaderHeight = 56;
 
 const highlightInText = (text: string, keyword: string) => {
   if (!keyword || !text) return text;
@@ -39,21 +40,20 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   const setActiveBlockId = useReaderStore((s) => s.setActiveBlockId);
   const prevOpenedRef = useRef<string | null>(null);
   const closedBlockRef = useRef<string | null>(null);
+  const closedActiveBlockRef = useRef<string | null>(null);
   const skipObserverRef = useRef(false);
   const scrollOffsetsRef = useRef<Map<string, number>>(new Map());
-  const ratiosRef = useRef<Map<string, number>>(new Map());
 
   // 面板关闭时保存 viewport.scrollTop + 当前 activeBlockId
   const saveScrollState = useCallback(() => {
     const store = useReaderStore.getState();
-    const id = store.activeBlockId || store.openedByBlockId;
+    const id = store.openedByBlockId || store.activeBlockId;
     if (!id) return;
-    const el = document.getElementById(`nb-${id}`);
-    if (!el) return;
-    const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
+    const viewport = document.querySelector('.notes-panel-viewport') as HTMLElement | null;
     if (!viewport) return;
     scrollOffsetsRef.current.set(id, viewport.scrollTop);
     closedBlockRef.current = id;
+    closedActiveBlockRef.current = store.activeBlockId;
     useReaderStore.setState({
       panelScrollTop: viewport.scrollTop,
       openedByBlockId: id,
@@ -70,34 +70,50 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   useEffect(() => {
     if (!isPanelOpen || !openedByBlockId) return;
 
-    // 面板关闭期间用户通过句末按钮切换了句子 → 更新 openedByBlockId
     const store = useReaderStore.getState();
-    if (store.activeBlockId && openedByBlockId !== store.activeBlockId) {
+    const activeChangedWhileClosed =
+      Boolean(closedBlockRef.current) &&
+      Boolean(store.activeBlockId) &&
+      store.activeBlockId !== closedActiveBlockRef.current;
+
+    // 面板关闭期间用户通过句末按钮切换了句子 → 更新 openedByBlockId
+    if (activeChangedWhileClosed && store.activeBlockId && openedByBlockId !== store.activeBlockId) {
       useReaderStore.setState({ openedByBlockId: store.activeBlockId });
       return;
     }
 
     const sameBlock = openedByBlockId === closedBlockRef.current;
+    const savedScrollTop = scrollOffsetsRef.current.get(openedByBlockId) ?? store.panelScrollTop;
     closedBlockRef.current = openedByBlockId;
     prevOpenedRef.current = openedByBlockId;
-    setActiveBlockId(openedByBlockId);
     skipObserverRef.current = true;
 
     if (sameBlock) {
-      // 同一 block：恢复 viewport.scrollTop，不滚动
-      const id = setTimeout(() => {
+      // 同一 block：不回写 active，只恢复关闭前的像素位置，避免展开重排改变 scrollTop。
+      const restoreScrollTop = () => {
         const viewport = document.querySelector('.notes-panel-viewport') as HTMLElement | null;
-        const saved = scrollOffsetsRef.current.get(openedByBlockId);
-        if (viewport && saved !== undefined) {
-          viewport.scrollTop = saved;
+        if (viewport && Number.isFinite(savedScrollTop)) {
+          viewport.scrollTop = savedScrollTop;
         }
+      };
+
+      restoreScrollTop();
+      const restoreIds = [80, 180, 360].map((delay) => setTimeout(restoreScrollTop, delay));
+      const id = setTimeout(() => {
+        restoreScrollTop();
         skipObserverRef.current = false;
       }, 400);
-      return () => { clearTimeout(id); skipObserverRef.current = false; };
+      return () => {
+        restoreIds.forEach(clearTimeout);
+        clearTimeout(id);
+        skipObserverRef.current = false;
+      };
     }
 
-    // 不同 block：滚动到默认位置（60px 距顶部）
-    const id = setTimeout(() => {
+    setActiveBlockId(openedByBlockId);
+
+    // 不同 block：平滑滚动到 sticky 标题下方
+    const scrollId = setTimeout(() => {
       const el = document.getElementById(`nb-${openedByBlockId}`);
       if (!el) { skipObserverRef.current = false; return; }
       const viewport = el.closest('[data-slot="scroll-area-viewport"]') as HTMLElement | null;
@@ -105,64 +121,73 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
       const elTop = el.getBoundingClientRect().top;
       const vpTop = viewport.getBoundingClientRect().top;
       viewport.scrollBy({
-        top: elTop - vpTop - 60,
-        behavior: "instant" as ScrollBehavior,
+        top: elTop - vpTop - stickyHeaderHeight,
+        behavior: "smooth",
       });
+    }, 360);
+    const releaseId = setTimeout(() => {
       skipObserverRef.current = false;
-    }, 400);
-    return () => { clearTimeout(id); skipObserverRef.current = false; };
+    }, 900);
+    return () => {
+      clearTimeout(scrollId);
+      clearTimeout(releaseId);
+      skipObserverRef.current = false;
+    };
   }, [isPanelOpen, openedByBlockId, setActiveBlockId]);
 
-  // Notebook scroll sync: update activeBlockId as notebook scrolls
+  // Notebook scroll sync: only activate a block after it owns most of the viewport.
   useEffect(() => {
+    if (!isPanelOpen) return;
+
     const root = document.querySelector('.notes-panel-viewport') as HTMLElement | null;
     if (!root) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const id = (entry.target as HTMLElement).id.replace(/^nb-/, '');
-          if (entry.intersectionRatio > 0) {
-            ratiosRef.current.set(id, entry.intersectionRatio);
-          } else {
-            ratiosRef.current.delete(id);
-          }
-        }
-        let bestId: string | null = null;
-        let bestRatio = 0;
-        for (const [id, ratio] of ratiosRef.current) {
-          if (ratio > bestRatio) {
-            bestRatio = ratio;
-            bestId = id;
-          }
-        }
-        if (bestId && !skipObserverRef.current) setActiveBlockId(bestId);
-      },
-      {
-        root,
-        rootMargin: "0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
+    let frame = 0;
 
-    // Observe all existing nb-* elements
-    const observeAll = () => {
-      root.querySelectorAll('[id^="nb-"]').forEach((el) => observer.observe(el));
+    const computeActiveBlock = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (skipObserverRef.current) return;
+
+        const rootRect = root.getBoundingClientRect();
+        if (rootRect.height <= 0) return;
+
+        let bestId: string | null = null;
+        let bestViewportShare = 0;
+
+        root.querySelectorAll<HTMLElement>('[id^="nb-"]').forEach((element) => {
+          const rect = element.getBoundingClientRect();
+          const visibleTop = Math.max(rect.top, rootRect.top);
+          const visibleBottom = Math.min(rect.bottom, rootRect.bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const viewportShare = visibleHeight / rootRect.height;
+
+          if (viewportShare > bestViewportShare) {
+            bestViewportShare = viewportShare;
+            bestId = element.id.replace(/^nb-/, '');
+          }
+        });
+
+        if (bestId && bestViewportShare >= 0.5) {
+          setActiveBlockId(bestId);
+        }
+      });
     };
 
-    // Initial observe
-    observeAll();
+    computeActiveBlock();
+    root.addEventListener("scroll", computeActiveBlock, { passive: true });
+    window.addEventListener("resize", computeActiveBlock);
 
-    // Also watch for new nb-* elements being added
-    const mutationObs = new MutationObserver(() => observeAll());
+    const mutationObs = new MutationObserver(computeActiveBlock);
     mutationObs.observe(root, { childList: true, subtree: true });
 
     return () => {
-      observer.disconnect();
+      cancelAnimationFrame(frame);
+      root.removeEventListener("scroll", computeActiveBlock);
+      window.removeEventListener("resize", computeActiveBlock);
       mutationObs.disconnect();
-      ratiosRef.current.clear();
     };
-  }, [setActiveBlockId]);
+  }, [isPanelOpen, setActiveBlockId]);
 
   // Collect all expansionNotes
   const expansionEntries: ExpansionEntry[] = [];
@@ -213,9 +238,11 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
   const highlightClass = (blockId: string) => {
     const isHighlighted = activeBlockId === blockId;
-    return isHighlighted
-      ? "border-l-2 border-[#80b0eb]"
-      : "";
+    return [
+      "relative mb-2 py-1 transition-colors duration-500 ease-out",
+      "before:pointer-events-none before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:origin-center before:scale-y-0 before:bg-[#80b0eb] before:transition-transform before:duration-500 before:ease-out",
+      isHighlighted ? "bg-[#e8f1ff]/25 before:scale-y-100" : "",
+    ].filter(Boolean).join(" ");
   };
 
   // Track seen blockIds to only add id to first entry per block

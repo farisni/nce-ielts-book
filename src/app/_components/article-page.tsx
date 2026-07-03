@@ -350,6 +350,24 @@ type ArticlePageProps = {
 const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
 const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
 
+function renderTitleWithDropCap(title: string) {
+  const firstLetterIndex = title.search(/[A-Za-z]/);
+
+  if (firstLetterIndex === -1) {
+    return title;
+  }
+
+  return (
+    <>
+      {title.slice(0, firstLetterIndex)}
+      <span className="mr-0.5 inline-block origin-bottom align-baseline text-[1.45em] leading-[0.72] text-foreground">
+        {title[firstLetterIndex]}
+      </span>
+      {title.slice(firstLetterIndex + 1)}
+    </>
+  );
+}
+
 export function ArticlePage({ defaultLevel, searchParams }: ArticlePageProps) {
   const query = use(searchParams);
   const articleParam = Array.isArray(query.article) ? query.article[0] : query.article;
@@ -791,13 +809,13 @@ function ArticleReader({ article }: { article: Article }) {
               <div className="flex items-start justify-between gap-4">
                 <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-4xl font-semibold tracking-normal text-balance">
                   <RoughUnderline trigger="always" color="#fbb150">
-                    {article.title}
+                    {renderTitleWithDropCap(article.title)}
                   </RoughUnderline>
                   <span className="text-xl font-normal text-muted-foreground">
                     {article.titleCn}
                   </span>
                 </h1>
-                <DebugInfo />
+                {/* <DebugInfo /> */}
                 {isNce4 && (
                   <div className="flex items-center gap-1.5 shrink-0 mt-1.5">
                     <Button
