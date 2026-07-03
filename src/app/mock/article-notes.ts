@@ -1,4 +1,4 @@
-import type { ArticleOriginalContent } from "./types";
+import type { ArticleOriginalContent, SentenceData } from "./types";
 
 export const ARTICLE_ORIGINALS: Record<string, ArticleOriginalContent> = {};
 
@@ -1083,7 +1083,7 @@ export function getParagraphs(article: { originalId: string; original?: { paragr
   const notes = ARTICLE_ORIGINALS[article.originalId]?.paragraphs ?? [];
   return base.map((para, pi) =>
     para.map((sent, si) => {
-      const note = notes[pi]?.[si] as Record<string, unknown> | undefined;
+      const note = notes[pi]?.[si] as unknown as Record<string, unknown> | undefined;
       return {
         text: sent.text,
         translation: sent.translation,
