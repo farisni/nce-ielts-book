@@ -100,7 +100,12 @@ def parse_html(html):
         # h4 details → attach to last sentence in this note
         details = []
         for h4 in h4s:
-            title = _clean(h4.text)
+            # Extract sup as description
+            h4_sup = h4.find('sup')
+            h4_desc = _clean(h4_sup.get_text()) if h4_sup else ''
+            if h4_sup:
+                h4_sup.decompose()
+            title = _clean(h4.get_text())
             if not title: continue
             
             examples = []
@@ -137,7 +142,7 @@ def parse_html(html):
                 
                 next_el = next_el.find_next_sibling()
             
-            detail = {'title': title, 'examples': examples}
+            detail = {'title': title, 'examples': examples, 'desc': h4_desc}
             if tables: detail['tables'] = tables
             details.append(detail)
         
@@ -194,7 +199,8 @@ def detail_to_panel(d):
                 rows.append(f'{{ kind: "example", word: "{esc(w)}", meaning: "{esc(m)}", enExample: "{esc(en)}", zhExample: "{esc(zh)}" }}')
     if not rows:
         return None
-    return f'{{ label: "{esc(d["title"])}", description: "", examples: [{", ".join(rows)}] }}' 
+    desc = esc(d.get('desc', ''))
+    return f'{{ label: "{esc(d["title"])}", description: "{desc}", examples: [{", ".join(rows)}] }}' 
 
 def anno_to_inline(a):
     return f'{{ label: "{esc(a["text"])}", description: "{esc(a["tip"])}" }}'
