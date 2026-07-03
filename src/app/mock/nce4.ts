@@ -27,12 +27,6 @@ const articleNce4L1: Article = {
     { label: "when even the bones...", description: "这个以when引导的状语从句表示让步的意思，而when可以译成\u201c虽然\u201d，\u201c尽管\u201d。" }
   ],
 
-  pendingNotes: [
-    { label: "英语标题的特点", description: "英语的标题通常不会用完整的句子，尽量追去简洁，一般使用音节比较少的词，避免使用大词，使用简洁且能鲜明的表达中心思想为宜。" },
-    { label: "find = discover", description: "发现。例句：discover fossil man、ancient man、prehistoric man。" },
-    { label: "标题词常用简洁的单词", description: "拼写与发音更容易的词。encourage → spur 激励；prohibit / forbid → ban 禁止；compete → vie 竞争；nominate → name 提名。" },
-    { label: "alliteration 头韵", description: "叮当、咔嚓、哗啦、呱唧。例句：Spare that spider；Matterhorn man；The sporting spirit；Pride and Prejudice（傲慢与偏见）；Prince and Pauper（王子与乞丐）；World Wide Watch（世界观察）；A Delicious Dish A Day（甜甜饮食）；Beauty and Beast（美女与野兽）；WWW = The World Wide Web。" },
-  ],
 
     original: {
     paragraphs: [
@@ -91,13 +85,6 @@ const articleNce4L2: Article = {
     { label: "if it were not for the protection we get from inscet-eating animals 这是一个非真实条件状语从句", description: "were表示虚拟语气。" }
   ],
 
-  pendingNotes: [
-    { label: "文章押韵", description: "" },
-    { label: "Gre写作范文", description: "" },
-    { label: "rhyme 尾韵", description: "" },
-    { label: "Gre写作范文", description: "" },
-    { label: "spare v. 节约，吝惜；饶恕；分出，分让", description: "" }
-  ],
 
     original: {
     paragraphs: [

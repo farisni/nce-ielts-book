@@ -30,7 +30,7 @@ export interface SentenceData {
 
 export interface ArticleOriginalContent {
   paragraphs: SentenceData[][]
-  pendingNotes?: SentenceNote[]
+  otherNotes?: SentenceNote[]
 }
 
 export interface Article {

@@ -1112,12 +1112,12 @@ function ArticleReader({ article }: { article: Article }) {
                         ))}
                       </div>
                     )}
-                    {!isIelts && ARTICLE_ORIGINALS[article.originalId]?.pendingNotes?.length ? (
+                    {!isIelts && ARTICLE_ORIGINALS[article.originalId]?.otherNotes?.length ? (
                       <div className="pt-6">
                         <h2 className="mb-4 text-lg font-semibold text-foreground">其他笔记</h2>
                         <table className="w-full border-separate border-spacing-y-2">
                           <tbody>
-                            {ARTICLE_ORIGINALS[article.originalId]!.pendingNotes!.map((note, i) => (
+                            {ARTICLE_ORIGINALS[article.originalId]!.otherNotes!.map((note, i) => (
                               <tr key={i} className="note-item align-top">
                                 <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
                                 <td className="align-top pt-0.5">
