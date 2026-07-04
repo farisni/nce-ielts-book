@@ -61,6 +61,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InputGroup, InputField } from "@/components/ui/input-group";
 import { motion, AnimatePresence } from "motion/react";
 import { SPRING_PANEL } from "@/lib/ease";
+import { highlightNoteText } from "@/lib/highlight-note-text";
 import { useArticleSettings } from "@/stores/article-settings";
 import { useReaderStore } from "@/stores/reader-store";
 
@@ -455,17 +456,6 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
 }
 
 function ArticleReader({ article }: { article: Article }) {
-
-  const highlightInText = (text: string, keyword: string) => {
-    if (!keyword || !text) return text;
-    const escaped = keyword.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === keyword.trim().toLowerCase()
-        ? <span key={i} className="text-amber-600/80">{part}</span>
-        : part
-    );
-  };
   const isIelts = article.level === "IELTS16";
   const levelRoute = LEVEL_ROUTES[article.level] ?? "/ielts";
   const articleList = LEVEL_LISTS[article.level] ?? [];
@@ -1024,7 +1014,7 @@ function ArticleReader({ article }: { article: Article }) {
                                                     <ul className="mt-2 ml-10 space-y-2.5 text-[13px] leading-relaxed">
                                                       {exampleRows.map((row, ri) => (
                                                         <li key={ri} className="min-w-0">
-                                                          <div className="text-foreground/65">{highlightInText(row.enExample, note.label)}</div>
+                                                          <div className="text-foreground/65">{highlightNoteText(row.enExample, [note.label, ...(row.highlightTerms ?? [])])}</div>
                                                           <div className="mt-0.5 text-[12px] text-muted-foreground">{row.zhExample}</div>
                                                         </li>
                                                       ))}
@@ -1041,14 +1031,14 @@ function ArticleReader({ article }: { article: Article }) {
                                                             <td className="w-[1%] pr-3 py-0.5 max-w-[320px]">
                                                               <Tooltip content={<span>{row.word} {row.meaning}</span>}>
                                                                 <span className="truncate block font-medium text-foreground/85">
-                                                                  {highlightInText(row.word, note.label)}
+                                                                  {highlightNoteText(row.word, note.label)}
                                                                   <span className="ml-1.5 text-[11px] font-normal">{row.meaning}</span>
                                                                 </span>
                                                               </Tooltip>
                                                             </td>
                                                             <td className="py-0.5 ">
                                                               <Tooltip content={row.zhExample}>
-                                                                <span className="cursor-help">{highlightInText(row.enExample, row.word)}</span>
+                                                                <span className="cursor-help">{highlightNoteText(row.enExample, [row.word, ...(row.highlightTerms ?? [])])}</span>
                                                               </Tooltip>
                                                             </td>
                                                           </tr>

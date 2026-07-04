@@ -14,6 +14,7 @@ export interface SentenceNote {
     meaning: string
     enExample: string
     zhExample: string
+    highlightTerms?: string[]
   }[]
 }
 

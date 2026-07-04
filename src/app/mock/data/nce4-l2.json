@@ -20,42 +20,54 @@
         ],
         "expansionNotes": [
           {
-            "label": "插入语 先去掉再翻译或者先翻译（次要信息但会增加阅读难度）",
-            "description": "",
+            "label": "插入语",
+            "description": "先去掉再翻译或者先翻译（次要信息但会增加阅读难度）",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Why, you may wonder, should spiders be our friends?",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "you may wonder"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Dogs, it seems, love to chew up money.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "it seems"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Chickens slaughtered in the United States, claim officials in Brussels, are not fit to grace European tables.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "claim officials in Brussels"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "A man without an education, many of us believe, is an unfortunate victim of adverse circumstances, deprived of one of the greatest twentieth-century opportunities.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "many of us believe"
+                ]
               }
             ]
           },
           {
-            "label": "should 怎么会",
-            "description": "",
+            "label": "should",
+            "description": "怎么会",
             "examples": [
               {
                 "kind": "example",
@@ -89,62 +101,80 @@
                 "kind": "synonym",
                 "word": "主要信息",
                 "meaning": "",
-                "enExample": "次要信息",
-                "zhExample": ""
+                "enExample": "",
+                "zhExample": "次要信息"
               }
             ]
           },
           {
-            "label": "You may wonder... 设问句结构(重点突出wonder)",
-            "description": "",
+            "label": "You may wonder...",
+            "description": "设问句结构，重点突出 wonder",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "You may wonder why he left early.",
-                "zhExample": "你可能会想知道他为什么早退。"
+                "zhExample": "你可能会想知道他为什么早退。",
+                "highlightTerms": [
+                  "You may wonder"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "You may wonder, why should we care about climate change?",
-                "zhExample": "你可能想知道，我们为什么要关心气候变化？"
+                "zhExample": "你可能想知道，我们为什么要关心气候变化？",
+                "highlightTerms": [
+                  "You may wonder"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "You may wonder, why should education be a priority?",
-                "zhExample": "你可能会想，为什么教育应该优先？"
+                "zhExample": "你可能会想，为什么教育应该优先？",
+                "highlightTerms": [
+                  "You may wonder"
+                ]
               }
             ]
           },
           {
-            "label": "【设问句】写作技巧 引起兴趣，避免说教",
-            "description": "",
+            "label": "【设问句】写作技巧",
+            "description": "引起兴趣，避免说教",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Why should we learn from history?",
-                "zhExample": "我们为什么要学习历史？"
+                "zhExample": "我们为什么要学习历史？",
+                "highlightTerms": [
+                  "Why should we learn from history"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Why must we rethink our lifestyles?",
-                "zhExample": "我们为什么必须重新思考我们的生活方式？"
+                "zhExample": "我们为什么必须重新思考我们的生活方式？",
+                "highlightTerms": [
+                  "Why must we rethink our lifestyles"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Why do small habits matter so much?",
-                "zhExample": "为什么小习惯如此重要？"
+                "zhExample": "为什么小习惯如此重要？",
+                "highlightTerms": [
+                  "Why do small habits matter so much"
+                ]
               },
               {
                 "kind": "synonym",
@@ -157,8 +187,8 @@
                 "kind": "synonym",
                 "word": "说教语气（容易让人产生不悦感）",
                 "meaning": "",
-                "enExample": "设问句开头，引起读者兴趣",
-                "zhExample": ""
+                "enExample": "",
+                "zhExample": "设问句开头，引起读者兴趣"
               }
             ]
           }
@@ -176,8 +206,8 @@
         "inlineAnnotations": [],
         "expansionNotes": [
           {
-            "label": "because 因为，用于回答why句",
-            "description": "",
+            "label": "because",
+            "description": "因为，用于回答 why 句",
             "examples": [
               {
                 "kind": "example",
@@ -203,22 +233,29 @@
             ]
           },
           {
-            "label": "kill off 杀死、屠杀、灭绝",
-            "description": "",
+            "label": "kill off",
+            "description": "杀死、屠杀、灭绝",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Disease wiped out the tribe.",
-                "zhExample": "疾病使这个部落灭绝。"
+                "zhExample": "疾病使这个部落灭绝。",
+                "highlightTerms": [
+                  "wiped out"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "What wiped out / exterminated dinosaurs from the earth?",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "wiped out",
+                  "exterminated"
+                ]
               },
               {
                 "kind": "synonym",
@@ -251,8 +288,8 @@
             ]
           },
           {
-            "label": "human race 人类(人的总称)",
-            "description": "",
+            "label": "human race",
+            "description": "人类（人的总称）",
             "examples": [
               {
                 "kind": "example",
@@ -324,77 +361,107 @@
         ],
         "expansionNotes": [
           {
-            "label": "虚拟语气 § 与事实相反的假设",
-            "description": "",
+            "label": "虚拟语气",
+            "description": "与事实相反的假设",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "If I were rich, I would travel the world.",
-                "zhExample": "如果我有钱，我会环游世界。"
+                "zhExample": "如果我有钱，我会环游世界。",
+                "highlightTerms": [
+                  "If I were rich",
+                  "would travel"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Had I studied harder, I would have passed the exam.",
-                "zhExample": "如果我更努力学习，我本可以通过考试。"
+                "zhExample": "如果我更努力学习，我本可以通过考试。",
+                "highlightTerms": [
+                  "Had I studied harder",
+                  "would have passed"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Should it rain, we would cancel the trip.",
-                "zhExample": "如果下雨，我们会取消旅行。"
+                "zhExample": "如果下雨，我们会取消旅行。",
+                "highlightTerms": [
+                  "Should it rain",
+                  "would cancel"
+                ]
               }
             ]
           },
           {
-            "label": "make it possible for sb. to do 使某人能做某事",
-            "description": "",
+            "label": "make it possible for sb. to do",
+            "description": "使某人能做某事",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "They devise hundreds of competitions which will enable us to win huge sums of money. Radio and television have made it possible for advertisers to capture the attention of millions of people in this way.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "made it possible for advertisers to capture"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The device makes it possible for blind people to read.",
-                "zhExample": "这个设备使盲人能够阅读。"
+                "zhExample": "这个设备使盲人能够阅读。",
+                "highlightTerms": [
+                  "makes it possible for blind people to read"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Radio makes it possible to reach millions.",
-                "zhExample": "广播使得能够接触到数百万人。"
+                "zhExample": "广播使得能够接触到数百万人。",
+                "highlightTerms": [
+                  "makes it possible to reach"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "His injury rendered him unfit for work.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "rendered him unfit"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Solar power could become a viable energy source, rendering fossil fuels obsolete.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "rendering fossil fuels obsolete"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "His promotion rendered him more confident.",
-                "zhExample": "他的升职使他更有自信。"
+                "zhExample": "他的升职使他更有自信。",
+                "highlightTerms": [
+                  "rendered him more confident"
+                ]
               },
               {
                 "kind": "synonym",
@@ -413,29 +480,38 @@
             ]
           },
           {
-            "label": "flocks and herds 牛羊群",
-            "description": "",
+            "label": "flocks and herds",
+            "description": "牛羊群",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "A flock of sheep grazed on the hill.",
-                "zhExample": "一群羊在山坡上吃草。"
+                "zhExample": "一群羊在山坡上吃草。",
+                "highlightTerms": [
+                  "flock of sheep"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "A herd of cattle crossed the road.",
-                "zhExample": "一群牛穿过马路。"
+                "zhExample": "一群牛穿过马路。",
+                "highlightTerms": [
+                  "herd of cattle"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "They raised large herds of animals.",
-                "zhExample": "他们养了很多牲畜。"
+                "zhExample": "他们养了很多牲畜。",
+                "highlightTerms": [
+                  "herds of animals"
+                ]
               },
               {
                 "kind": "synonym",
@@ -496,97 +572,133 @@
             ]
           },
           {
-            "label": "if it were not for / but for / except for 要不是、若没有",
-            "description": "",
+            "label": "if it were not for / but for / except for",
+            "description": "要不是、若没有",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "If it were not for your help, I couldn’t succeed.",
-                "zhExample": "要不是你的帮助，我不会成功。"
+                "zhExample": "要不是你的帮助，我不会成功。",
+                "highlightTerms": [
+                  "If it were not for"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "If it were not for your support, I would be in big trouble now.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "If it were not for"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Were it not for your support, I would be in big trouble now.",
-                "zhExample": "（倒装）"
+                "zhExample": "（倒装）",
+                "highlightTerms": [
+                  "Were it not for"
+                ]
               }
             ]
           },
           {
-            "label": "圆周句（掉尾句）特殊结构强调句；一般用于书面语，制造悬念，一般文章不能大量使用",
-            "description": "",
+            "label": "圆周句（掉尾句）",
+            "description": "特殊结构强调句；一般用于书面语，制造悬念，一般文章不能大量使用",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "That all great art has this power of suggesting a world beyond is undeniable.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "That all great art has this power of suggesting a world beyond"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Although Tchaikovsky himself thought of the Pathetic Symphony as his crowning masterpiece, the premiere on October 28th 1893 in St. Petersburg proved a disappointment.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "Although Tchaikovsky himself thought of the Pathetic Symphony as his crowning masterpiece"
+                ]
               }
             ]
           },
           {
-            "label": "insect-eating animals 吃昆虫的动物 = animals which eat insects",
-            "description": "",
+            "label": "insect-eating animals",
+            "description": "吃昆虫的动物 = animals which eat insects",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Insect-eating animals such as frogs help control pests.",
-                "zhExample": "吃昆虫的动物如青蛙有助于控制害虫。"
+                "zhExample": "吃昆虫的动物如青蛙有助于控制害虫。",
+                "highlightTerms": [
+                  "Insect-eating animals"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Birds are insect-eating animals that maintain ecological balance.",
-                "zhExample": "鸟类是维护生态平衡的吃昆虫的动物。"
+                "zhExample": "鸟类是维护生态平衡的吃昆虫的动物。",
+                "highlightTerms": [
+                  "insect-eating animals"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Bats belong to insect-eating animals and reduce mosquito populations.",
-                "zhExample": "蝙蝠属于吃昆虫的动物，减少蚊子数量。"
+                "zhExample": "蝙蝠属于吃昆虫的动物，减少蚊子数量。",
+                "highlightTerms": [
+                  "insect-eating animals"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "law-abiding citizens = citizens who abide by the law",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "law-abiding citizens",
+                  "citizens who abide by the law"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "hand-made silverware = silverware which is made by hands",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "hand-made silverware",
+                  "silverware which is made by hands"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "stress-related diseases = diseases which are related to stress",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "stress-related diseases",
+                  "diseases which are related to stress"
+                ]
               },
               {
                 "kind": "synonym",
@@ -642,8 +754,8 @@
         ],
         "expansionNotes": [
           {
-            "label": "owe 欠、感谢",
-            "description": "",
+            "label": "owe",
+            "description": "欠、感谢",
             "examples": [
               {
                 "kind": "example",
@@ -718,8 +830,8 @@
             ]
           },
           {
-            "label": "beasts who eat insects = insect-eating animals 上文中的同义词替换",
-            "description": "",
+            "label": "beasts who eat insects = insect-eating animals",
+            "description": "上文中的同义词替换",
             "examples": [
               {
                 "kind": "example",
@@ -752,43 +864,60 @@
             ]
           },
           {
-            "label": "fraction 一小部分 a small amount of sth. …的一小部分",
-            "description": "",
+            "label": "fraction",
+            "description": "一小部分；a small amount of sth.；…的一小部分",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "His shares are now worth only a fraction of their former value.",
-                "zhExample": "他的股票现在只值原来价值的一小部分。"
+                "zhExample": "他的股票现在只值原来价值的一小部分。",
+                "highlightTerms": [
+                  "fraction"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "It's usually a small fraction of the total.",
-                "zhExample": "它通常只是总数的一小部分。"
+                "zhExample": "它通常只是总数的一小部分。",
+                "highlightTerms": [
+                  "fraction"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "We are lucky in that only the lower fields, which make up a very small proportion of our farm, are effected by flooding, …",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "very small proportion"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "a high / large proportion / percentage of",
-                "zhExample": "… 一大部分"
+                "zhExample": "… 一大部分",
+                "highlightTerms": [
+                  "proportion",
+                  "percentage"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "a small / tiny proportion / percentage of",
-                "zhExample": "… 一小部分"
+                "zhExample": "… 一小部分",
+                "highlightTerms": [
+                  "proportion",
+                  "percentage"
+                ]
               }
             ]
           }
@@ -822,28 +951,34 @@
         ],
         "expansionNotes": [
           {
-            "label": "insect eaters 吃昆虫的(再次被替换)",
-            "description": "",
+            "label": "insect eaters",
+            "description": "吃昆虫的动物（再次被替换）",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "beasts who eat insects",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "beasts who eat insects"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "insect-eating animals",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "insect-eating animals"
+                ]
               }
             ]
           },
           {
-            "label": "moreover 此外；递进",
-            "description": "",
+            "label": "moreover",
+            "description": "此外；递进",
             "examples": [
               {
                 "kind": "example",
@@ -869,35 +1004,44 @@
             ]
           },
           {
-            "label": "to make things / matters worse 更糟的是… （有感情色彩）",
-            "description": "",
+            "label": "to make things / matters worse",
+            "description": "更糟的是…（有感情色彩）",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The team has lost the last two games and, to make matters worse, two of its best players are injured.",
-                "zhExample": "非谓语动词如果是固定习语，不要考虑主语统一"
+                "zhExample": "非谓语动词如果是固定习语，不要考虑主语统一",
+                "highlightTerms": [
+                  "to make matters worse"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "To make matters worse, the room is rather small, so I have temporarily put my books on the floor.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "To make matters worse"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "During these tests she was able to read a newspaper through an opaque screen and, stranger still, by moving her elbow over a child's game of Lotto she was able to describe the figures and colours printed on it; …",
-                "zhExample": "【扩展】stranger still 更奇怪的是"
+                "zhExample": "【扩展】stranger still 更奇怪的是",
+                "highlightTerms": [
+                  "stranger still"
+                ]
               }
             ]
           },
           {
-            "label": "unlike 不像；与…不同(dislike 不喜欢)",
-            "description": "",
+            "label": "unlike",
+            "description": "不像；与…不同（dislike 不喜欢）",
             "examples": [
               {
                 "kind": "example",
@@ -923,56 +1067,74 @@
             ]
           },
           {
-            "label": "do (no) harm to 对…有(无)害",
-            "description": "",
+            "label": "do (no) harm to",
+            "description": "对…有（无）害",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "These chemicals do harm to your health.",
-                "zhExample": "这些化学物质对你的健康有害。"
+                "zhExample": "这些化学物质对你的健康有害。",
+                "highlightTerms": [
+                  "do harm to"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Noise pollution can do harm to wildlife.",
-                "zhExample": "噪音污染会对野生动物有害。"
+                "zhExample": "噪音污染会对野生动物有害。",
+                "highlightTerms": [
+                  "do harm to"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Careless disposal of waste does harm to the environment.",
-                "zhExample": "乱扔垃圾对环境有害。"
+                "zhExample": "乱扔垃圾对环境有害。",
+                "highlightTerms": [
+                  "does harm to"
+                ]
               }
             ]
           },
           {
-            "label": "never do the least harm to 完全无害（Never + 最高级 = 完全...）",
-            "description": "",
+            "label": "never do the least harm to",
+            "description": "完全无害（Never + 最高级 = 完全…）",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "I have no idea what to do next. ⇒ I don’t have the foggiest idea what to do next.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "don’t have the foggiest idea"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "I have no interest in boxing. ⇒ I don’t have the slightest interest in boxing.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "don’t have the slightest interest"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "This doesn't bear the slightest resemblance to anything in real life.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "the slightest resemblance"
+                ]
               },
               {
                 "kind": "example",
@@ -993,7 +1155,10 @@
                 "word": "",
                 "meaning": "",
                 "enExample": "The software never does the least harm to system performance.",
-                "zhExample": "该软件对系统性能完全无害。"
+                "zhExample": "该软件对系统性能完全无害。",
+                "highlightTerms": [
+                  "never does the least harm to"
+                ]
               }
             ]
           },
@@ -1006,21 +1171,30 @@
                 "word": "",
                 "meaning": "",
                 "enExample": "No one can avoid being influenced by advertisements.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "No one can avoid"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "No one knows how long it will last.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "No one knows"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "But this does not matter, for, as he has often remarked, one is never too old to learn.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "never too old to learn"
+                ]
               },
               {
                 "kind": "synonym",
@@ -1086,8 +1260,8 @@
         ],
         "expansionNotes": [
           {
-            "label": "as 正如",
-            "description": "",
+            "label": "as",
+            "description": "正如",
             "examples": [
               {
                 "kind": "example",
@@ -1113,56 +1287,74 @@
             ]
           },
           {
-            "label": "非限定性定语从句 补充说明主句内容",
-            "description": "",
+            "label": "非限定性定语从句",
+            "description": "补充说明主句内容",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Things can go wrong on a big scale, as a number of people recently discovered.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "as a number of people recently discovered"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "As the Commanding Officer explained later, one half of the station did not know what the other half was doing.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "As the Commanding Officer explained later"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "But this does not matter, for, as he has often remarked, one is never too old to learn.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "never too old to learn"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "As is so often pointed out, knowledge is a two-edged weapon.",
-                "zhExample": "正如经常指出的，知识是一把双刃剑。"
+                "zhExample": "正如经常指出的，知识是一把双刃剑。",
+                "highlightTerms": [
+                  "As is so often pointed out"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "As has been said above, grammar is not a set of dead rules.",
-                "zhExample": "如果as引导的非限定性定语从句没有在句首(位于中间或尾部)指代肯定含义的主句（忽略否定词）"
+                "zhExample": "如果as引导的非限定性定语从句没有在句首(位于中间或尾部)指代肯定含义的主句（忽略否定词）",
+                "highlightTerms": [
+                  "As has been said above"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "She did not open the box, as her friends feared.",
-                "zhExample": "她没有像她朋友担心那样打开盒子 She did not<span style=\"background-color: #ecf0f1;\">, as her friends feared</span>, open the box."
+                "zhExample": "她没有像她朋友担心那样打开盒子 She did not<span style=\"background-color: #ecf0f1;\">, as her friends feared</span>, open the box.",
+                "highlightTerms": [
+                  "as her friends feared"
+                ]
               }
             ]
           },
           {
-            "label": "as VS which 的区别",
-            "description": "",
+            "label": "as VS which",
+            "description": "区别",
             "examples": [
               {
                 "kind": "example",
@@ -1230,8 +1422,8 @@
             ]
           },
           {
-            "label": "nor 部分倒装",
-            "description": "",
+            "label": "nor",
+            "description": "部分倒装",
             "examples": [
               {
                 "kind": "example",
@@ -1281,56 +1473,75 @@
         ],
         "expansionNotes": [
           {
-            "label": "tell the difference = tell sb. / sth. apart 分辨，区别",
-            "description": "",
+            "label": "tell the difference = tell sb. / sth. apart",
+            "description": "分辨，区别",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "It's hard to tell the identical twins apart.",
-                "zhExample": "很难分辨这对双胞胎。"
+                "zhExample": "很难分辨这对双胞胎。",
+                "highlightTerms": [
+                  "tell",
+                  "apart"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "She can tell the difference between genuine and fake jewelry.",
-                "zhExample": "她能分辨真假珠宝。"
+                "zhExample": "她能分辨真假珠宝。",
+                "highlightTerms": [
+                  "tell the difference"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "You should learn to tell the difference between good and bad habits.",
-                "zhExample": "你应该学会分辨好习惯和坏习惯。"
+                "zhExample": "你应该学会分辨好习惯和坏习惯。",
+                "highlightTerms": [
+                  "tell the difference"
+                ]
               }
             ]
           },
           {
-            "label": "省略结构 并列句省略(重复的内容不引起歧义的情况下)",
-            "description": "",
+            "label": "省略结构",
+            "description": "并列句省略（重复的内容不引起歧义的情况下）",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Paul likes poetry, and Peter (likes) fiction.",
-                "zhExample": "Paul喜欢诗歌，Peter喜欢小说。"
+                "zhExample": "Paul喜欢诗歌，Peter喜欢小说。",
+                "highlightTerms": [
+                  "Peter (likes) fiction"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Paul likes poetry, and I know that Peter likes fiction.",
-                "zhExample": "不能省略：因为位置宾语从句内部"
+                "zhExample": "不能省略：因为位置宾语从句内部",
+                "highlightTerms": [
+                  "Peter likes fiction"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "He enjoys swimming, and she (enjoys) diving.",
-                "zhExample": "他喜欢游泳，她喜欢跳水。"
+                "zhExample": "他喜欢游泳，她喜欢跳水。",
+                "highlightTerms": [
+                  "she (enjoys) diving"
+                ]
               }
             ]
           }
@@ -1352,77 +1563,105 @@
         ],
         "expansionNotes": [
           {
-            "label": "be engaged in 忙于（做）某事、从事",
-            "description": "",
+            "label": "be engaged in",
+            "description": "忙于（做）某事、从事",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "He is engaged in politics / business.",
-                "zhExample": "他忙于政治工作、生意。"
+                "zhExample": "他忙于政治工作、生意。",
+                "highlightTerms": [
+                  "engaged in politics",
+                  "engaged in business"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "He is engaged in searching for solutions.",
-                "zhExample": "他正忙于寻找解决办法。"
+                "zhExample": "他正忙于寻找解决办法。",
+                "highlightTerms": [
+                  "engaged in searching"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Young people are engaged in seeking their identity.",
-                "zhExample": "年轻人正忙于寻找自我认同。"
+                "zhExample": "年轻人正忙于寻找自我认同。",
+                "highlightTerms": [
+                  "engaged in seeking"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Some of the bigger firms are engaged in researches which are of such general and fundamental nature that it is a positive advantage to them not to keep them secret.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "engaged in researches"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "For one thing, being a problem gives you a certain identity, and that is one of the things the young are busily engaged in seeking.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "engaged in seeking"
+                ]
               }
             ]
           },
           {
-            "label": "on one’s behalf / on behalf of sb. 为了某人的利益 / 代表某人",
-            "description": "",
+            "label": "on one’s behalf / on behalf of sb.",
+            "description": "为了某人的利益 / 代表某人",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "We are raising a fund on behalf of orphans.",
-                "zhExample": "我们正在为孤儿募捐。"
+                "zhExample": "我们正在为孤儿募捐。",
+                "highlightTerms": [
+                  "on behalf of orphans"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "I beat you on your behalf.",
-                "zhExample": "我是为了你打的他。"
+                "zhExample": "我是为了你打的他。",
+                "highlightTerms": [
+                  "on your behalf"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "He delivered a speech on behalf of the government.",
-                "zhExample": "他<strong>代表</strong>政府发表了演讲。"
+                "zhExample": "他<strong>代表</strong>政府发表了演讲。",
+                "highlightTerms": [
+                  "on behalf of the government"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "On behalf of the department I would like to thank you all.",
-                "zhExample": "我谨<strong>代表</strong>本部门感谢大家。"
+                "zhExample": "我谨<strong>代表</strong>本部门感谢大家。",
+                "highlightTerms": [
+                  "On behalf of the department"
+                ]
               },
               {
                 "kind": "synonym",
@@ -1481,8 +1720,8 @@
         ],
         "expansionNotes": [
           {
-            "label": "on 做后置定语",
-            "description": "",
+            "label": "on",
+            "description": "做后置定语",
             "examples": [
               {
                 "kind": "example",
@@ -1501,104 +1740,140 @@
             ]
           },
           {
-            "label": "that is (to say) 也就是说；确切地说",
-            "description": "",
+            "label": "that is (to say)",
+            "description": "也就是说；确切地说",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Everybody admires him for his great sense of humour -- everybody, that is, except his six-year-old daughter, Jenny.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "that is"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The fare is reduced for children, that is anyone under 15 years old.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "that is"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Languages are taught by the direct method, that is to say, without using the student's own language.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "that is to say"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "One solution would be to change the shape of the screen, that is, to make it wider.",
-                "zhExample": "一种解决方案是改变屏幕的形状，也就是说，把它做得更宽。"
+                "zhExample": "一种解决方案是改变屏幕的形状，也就是说，把它做得更宽。",
+                "highlightTerms": [
+                  "that is"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "I'll meet you in the city, that is, if the trains are running.",
-                "zhExample": "我会在市里见你，也就是说，如果火车运行的话。"
+                "zhExample": "我会在市里见你，也就是说，如果火车运行的话。",
+                "highlightTerms": [
+                  "that is"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "I loved him — that is, I thought I did.",
-                "zhExample": "我爱他——也就是说，我以为我爱他。"
+                "zhExample": "我爱他——也就是说，我以为我爱他。",
+                "highlightTerms": [
+                  "that is"
+                ]
               }
             ]
           },
           {
-            "label": "authority 权威；当局",
-            "description": "",
+            "label": "authority",
+            "description": "权威；当局",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "When the fire had at last been put out, the forest authorities ordered several tons of a special type of grass seed which would grow quickly.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "authorities"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The French authorities had the plane packaged and moved in parts back to France.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "authorities"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "There he was picked up by a policeman and sent back to England by the local authorities.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "authorities"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "It is all too easy to blame the railway authorities when something does go wrong.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "authorities"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The authorities ordered the evacuation.",
-                "zhExample": "当局下令疏散。"
+                "zhExample": "当局下令疏散。",
+                "highlightTerms": [
+                  "authorities"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The local authorities have imposed a curfew.",
-                "zhExample": "地方当局实行了宵禁。"
+                "zhExample": "地方当局实行了宵禁。",
+                "highlightTerms": [
+                  "authorities"
+                ]
               }
             ]
           },
           {
-            "label": "something like 大约，大概",
-            "description": "",
+            "label": "something like",
+            "description": "大约，大概",
             "examples": [
               {
                 "kind": "example",
@@ -1711,50 +1986,68 @@
         ],
         "expansionNotes": [
           {
-            "label": "be busy (in) doing sth. 忙于做某事",
-            "description": "",
+            "label": "be busy (in) doing sth.",
+            "description": "忙于做某事",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Her eyes were fixed on her plate and in a short time, she was busy eating.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "busy eating"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Meanwhile, my tongue was busy searching out the hole where the tooth had been.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "busy searching"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "In a short time, I was busy mixing butter and flour, and my hands were soon covered with sticky pastry.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "busy mixing"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "She is always busy preparing dinner.",
-                "zhExample": "她总是忙着准备晚餐。"
+                "zhExample": "她总是忙着准备晚餐。",
+                "highlightTerms": [
+                  "busy preparing"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The workers are busy repairing the road.",
-                "zhExample": "工人们正忙着修路。"
+                "zhExample": "工人们正忙着修路。",
+                "highlightTerms": [
+                  "busy repairing"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "He was busy writing a report when I called.",
-                "zhExample": "我打电话时，他正忙着写报告。"
+                "zhExample": "我打电话时，他正忙着写报告。",
+                "highlightTerms": [
+                  "busy writing"
+                ]
               }
             ]
           }
@@ -1790,8 +2083,8 @@
         ],
         "expansionNotes": [
           {
-            "label": "guess 猜测（做名词、动词）",
-            "description": "",
+            "label": "guess",
+            "description": "猜测（做名词、动词）",
             "examples": [
               {
                 "kind": "example",
@@ -1824,8 +2117,8 @@
             ]
           },
           {
-            "label": "wild 离奇的；不切实际的",
-            "description": "",
+            "label": "wild",
+            "description": "离奇的；不切实际的",
             "examples": [
               {
                 "kind": "example",
@@ -1865,70 +2158,94 @@
             ]
           },
           {
-            "label": "more than + n. 超过；不仅仅...",
-            "description": "",
+            "label": "more than + n.",
+            "description": "超过；不仅仅…",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "These days, it is differences in national regulations, far more than tariffs, that put sand in the wheels of trade between rich countries.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "more than tariffs"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The open sea was deep and mysterious, and anyone who gave more than a passing thought to the bottom confines of the oceans probably assumed that the sea bed was flat.",
-                "zhExample": ""
+                "zhExample": "",
+                "highlightTerms": [
+                  "more than a passing thought"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "This is more than a book — it’s a philosophy.",
-                "zhExample": "这不仅仅是一本书，而是一种哲学。"
+                "zhExample": "这不仅仅是一本书，而是一种哲学。",
+                "highlightTerms": [
+                  "more than a book"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Peace is more than the absence of war.",
-                "zhExample": "和平<strong>不仅仅</strong>是没有战争。"
+                "zhExample": "和平<strong>不仅仅</strong>是没有战争。",
+                "highlightTerms": [
+                  "more than the absence of war"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The loss is more than we expected.",
-                "zhExample": "损失超出了我们的预期。"
+                "zhExample": "损失超出了我们的预期。",
+                "highlightTerms": [
+                  "more than we expected"
+                ]
               }
             ]
           },
           {
-            "label": "be not content with 不满足于",
-            "description": "",
+            "label": "be not content with",
+            "description": "不满足于",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "She is not content with being an average student.",
-                "zhExample": "她不满足于做一个普通的学生。"
+                "zhExample": "她不满足于做一个普通的学生。",
+                "highlightTerms": [
+                  "not content with being"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "They are not content with local success — they want to go global.",
-                "zhExample": "他们不满足于地方上的成功，想要走向全球。"
+                "zhExample": "他们不满足于地方上的成功，想要走向全球。",
+                "highlightTerms": [
+                  "not content with local success"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The company is not content with its current market share.",
-                "zhExample": "公司对现有市场份额不满意。"
+                "zhExample": "公司对现有市场份额不满意。",
+                "highlightTerms": [
+                  "not content with its current market share"
+                ]
               }
             ]
           }
@@ -1973,42 +2290,54 @@
         ],
         "expansionNotes": [
           {
-            "label": "be estimated (据)估计",
-            "description": "",
+            "label": "be estimated",
+            "description": "（据）估计",
             "examples": [
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The loss is estimated to reach upwards of 30000 yuan.",
-                "zhExample": "据估计损失达30000元以上。"
+                "zhExample": "据估计损失达30000元以上。",
+                "highlightTerms": [
+                  "is estimated"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "They are estimated to employ around 50, 000 gunmen.",
-                "zhExample": "他们估计雇用约50,000名枪手。"
+                "zhExample": "他们估计雇用约50,000名枪手。",
+                "highlightTerms": [
+                  "are estimated"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "The cost to repair it was estimated at $800.",
-                "zhExample": "修复的成本估计为800美元。"
+                "zhExample": "修复的成本估计为800美元。",
+                "highlightTerms": [
+                  "was estimated"
+                ]
               },
               {
                 "kind": "example",
                 "word": "",
                 "meaning": "",
                 "enExample": "Adjusted odds ratios were estimated with logistic regression.",
-                "zhExample": "用逻辑回归法评估了调整后比率。"
+                "zhExample": "用逻辑回归法评估了调整后比率。",
+                "highlightTerms": [
+                  "were estimated"
+                ]
               }
             ]
           },
           {
-            "label": "鼻腔爆破 nasal explosion [t] / [d] + [n]",
-            "description": "",
+            "label": "nasal explosion [t] / [d] + [n]",
+            "description": "鼻腔爆破",
             "examples": [
               {
                 "kind": "synonym",
@@ -2040,16 +2369,16 @@
       "description": ""
     },
     {
-      "label": "rhyme 尾韵",
-      "description": ""
+      "label": "rhyme",
+      "description": "尾韵"
     },
     {
       "label": "Gre写作范文",
       "description": ""
     },
     {
-      "label": "spare v. 节约，吝惜；饶恕；分出，分让",
-      "description": ""
+      "label": "spare v.",
+      "description": "节约，吝惜；饶恕；分出，分让"
     }
   ]
 }

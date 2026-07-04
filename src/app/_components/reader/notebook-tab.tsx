@@ -5,21 +5,11 @@ import { Highlighter, MessageSquareText } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
 import { getParagraphs } from "@/app/mock";
+import { highlightNoteText } from "@/lib/highlight-note-text";
 
 const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
 const anchorBg = "#f7f4f0";  // 句子描点统一色
 const stickyHeaderHeight = 56;
-
-const highlightInText = (text: string, keyword: string) => {
-  if (!keyword || !text) return text;
-  const escaped = keyword.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
-  return parts.map((part, i) =>
-    part.toLowerCase() === keyword.trim().toLowerCase()
-      ? React.createElement('span', { key: i, className: 'text-amber-600/80' }, part)
-      : part
-  );
-};
 
 type Props = {
   article: Article;
@@ -30,7 +20,7 @@ type Props = {
 type ExpansionEntry = {
   blockId: string;
   sentenceText: string;
-  note: { label: string; description: string; examples?: { kind?: "example" | "synonym"; word: string; meaning: string; enExample: string; zhExample: string }[] };
+  note: { label: string; description: string; examples?: { kind?: "example" | "synonym"; word: string; meaning: string; enExample: string; zhExample: string; highlightTerms?: string[] }[] };
 };
 
 export function NotebookTab({ article, onScrollToBlock }: Props) {
@@ -305,7 +295,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                               <div className="mt-2 ml-10 space-y-2.5">
                                 {exampleRows.map((ex, i) => (
                                   <div key={i} className="rounded py-0.5 text-sm leading-relaxed">
-                                    <span className="text-foreground/65">{highlightInText(ex.enExample, note.label)}</span>
+                                    <span className="text-foreground/65">{highlightNoteText(ex.enExample, [note.label, ...(ex.highlightTerms ?? [])])}</span>
                                     {ex.zhExample && <div className="mt-0.5 text-muted-foreground">{ex.zhExample}</div>}
                                   </div>
                                 ))}
@@ -316,7 +306,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                                   <div key={i} className="text-sm text-muted-foreground rounded px-2 py-1">
                                     <span className="font-medium text-foreground">{ex.word}</span>
                                     {ex.meaning && <span className="ml-1">{ex.meaning}</span>}
-                                    {ex.enExample && <div className="mt-0.5">{highlightInText(ex.enExample, ex.word)}</div>}
+                                    {ex.enExample && <div className="mt-0.5">{highlightNoteText(ex.enExample, [ex.word, ...(ex.highlightTerms ?? [])])}</div>}
                                     {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
                                   </div>
                                 ))}
