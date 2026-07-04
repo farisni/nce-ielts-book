@@ -1,6 +1,7 @@
 import type { ArticleOriginalContent } from "../types";
 
 import nce3L1 from "./nce3-l1.json";
+import nce3L2 from "./nce3-l2.json";
 import nce4L1 from "./nce4-l1.json";
 import nce4L10 from "./nce4-l10.json";
 import nce4L11 from "./nce4-l11.json";
@@ -52,6 +53,7 @@ import nce4L9 from "./nce4-l9.json";
 
 const nceArticleOriginals: Record<string, ArticleOriginalContent> = {
   "nce3-l1": nce3L1 as unknown as ArticleOriginalContent,
+  "nce3-l2": nce3L2 as unknown as ArticleOriginalContent,
   "nce4-l1": nce4L1 as unknown as ArticleOriginalContent,
   "nce4-l10": nce4L10 as unknown as ArticleOriginalContent,
   "nce4-l11": nce4L11 as unknown as ArticleOriginalContent,

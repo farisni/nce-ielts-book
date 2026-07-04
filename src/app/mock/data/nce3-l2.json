@@ -1,0 +1,1051 @@
+{
+  "paragraphs": [
+    [
+      {
+        "text": "Our vicar is always raising money for one cause or another, but he has never managed to get enough money to have the church clock repaired.",
+        "translation": "",
+        "predicates": [],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "for",
+            "description": "引出目的状语"
+          },
+          {
+            "label": "one cause or another",
+            "description": "cause 做某事的理由、借口 One would expect them to know their parts by heart and never have cause to falter."
+          },
+          {
+            "label": "have the church clock repaired",
+            "description": "have + done 使役动词 (请人修好教堂的钟)"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "The big clock which used to strike the hours day and night was damaged many years ago and has been silent ever since.",
+        "translation": "",
+        "predicates": [],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "the hours",
+            "description": "strike the hours 钟打点报时"
+          },
+          {
+            "label": "many years ago",
+            "description": "很多年前：指过去的某个时间点或某段时间，通常用于描述过去发生的事情。"
+          },
+          {
+            "label": "silent ever since",
+            "description": "ever since: adv. / prep. / conj. 后，一直.（用完成时）"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "have sth. done",
+            "description": "请某人做某事(使役动词)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "people would rather pay large sums of money than have their life work destroyed by gangsters.",
+                "zhExample": "(遭遇某种不愉快的事)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "King Charles I had his head cut off.",
+                "zhExample": "(不能翻译：请人把头砍了~)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The house had its window broken in the explosion.",
+                "zhExample": "(事情不遇快的经历“无灵主语”)"
+              }
+            ]
+          },
+          {
+            "label": "be always doing sth.",
+            "description": "老是做某事(不耐烦的)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He is always being late.",
+                "zhExample": "他总是迟到。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "People are always talking about the problems of youth.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Sam is always messing up the kitchen.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He is forever talking about the friendly people, the clean atmosphere, the closeness to nature and gentle pace of living.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Bruce is forever leaving his dirty dishes on the table.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The boys are constantly / continually arguing.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Mary is continually borrowing my clothes without asking me.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Peter is constantly trying to show me he is smarter than me.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Your behavior reflects on me, and I can't do my job if you're constantly humiliating me. Constantly? Aside from today, give me one example.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "From the moment he arrived there, he kept on pestering his doctor to tell him when he would be able to go home.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "In the process, he enjoyed himself thoroughly and kept telling everybody how much he hated hospitals.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Why do you keep on making the same mistakes?",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Athletes do this all the time.",
+                "zhExample": "运动员总是做这件事。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Jane forgets to give me my phone messages all the time.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I used to get up early.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Roy Trenton used to drive a taxi.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I'm used to getting up early.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "'We'll get used to that,Bill,' said the vicar.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Life is not fair, get used to it. - Bill Gates",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "For men accustomed to eating seven-course dinners and sleeping between fine linen sheets at home, the change to the Alps must have been very hard indeed.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is not long before they are so accustomed to swimming that they can pick up weights from the floor of the pool.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "I used to get up early. Roy Trenton used to drive a taxi.",
+                "meaning": "",
+                "enExample": "I'm used to getting up early. 'We'll get used to that,Bill,' said the vicar. Life is not fair, get used to it. - Bill Gates",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "strike the hours",
+            "description": "钟打点报时",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It would strike twelve in twenty minutes' time.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "ever since",
+            "description": "adv. / prep. / conj. 以那以后，一直..（用完成时）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Ever since then, the great monument has been a symbol of liberty for the millions of people who have passed through New York Harbour to make their homes in America.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "There are countless people who, ever since their early years,have learned to associate snails with food.",
+                "zhExample": "NCE3-23"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "You know how she feels about you. It's been the same way ever since we were kids.",
+                "zhExample": "conj.自从"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "One night, however, our vicar woke up with a start : the clock was striking the hours!",
+        "translation": "",
+        "predicates": [
+          "woke"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "woke up",
+            "description": "wake（up）：vi&vt.醒了；唤醒..."
+          },
+          {
+            "label": "start",
+            "description": "激灵（由于恐惧或惊讶身体突然的一动）"
+          },
+          {
+            "label": "was striking",
+            "description": "使用进行时强调当时的状态"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "Looking at his watch, he saw that it was one o'clock, but the bell struck thirteen times before it stopped.",
+        "translation": "",
+        "predicates": [
+          "saw",
+          "was",
+          "struck",
+          "stopped"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "Looking",
+            "description": "非谓语动词源于状语的省略"
+          },
+          {
+            "label": "before it stopped",
+            "description": "before 翻译较灵活，本句可翻译为：敲了13下才停（强调主句的时间比预期的长时，译为才，因为比预料的要多）"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "Armed with a torch, the vicar went up into the clock tower to see what was going on.",
+        "translation": "",
+        "predicates": [
+          "went",
+          "was going"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "went up",
+            "description": "向上走去"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "In the torchlight, he caught sight of a figure whom he immediately recognized as Bill Wilkins, our local grocer. 'Whatever are you doing up here Bill?' asked the vicar in surprise. 'I'm trying to repair the bell,' answered Bill. 'I've been coming up here night after night for weeks now. You see, I was hoping to give you a surprise.' 'You certainly did give me a surprise!' said the vicar. 'You've probably woken up everyone in the village as well.",
+        "translation": "",
+        "predicates": [
+          "caught",
+          "recognized",
+          "are",
+          "doing",
+          "m trying",
+          "'ve been coming",
+          "was hoping",
+          "did give",
+          "'ve",
+          "woken"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "In the torchlight",
+            "description": "借着手电的光线"
+          },
+          {
+            "label": "caught sight of",
+            "description": "看到；瞥见"
+          },
+          {
+            "label": "figure",
+            "description": "在本句中理解为：人影、人的轮廓"
+          },
+          {
+            "label": "recognized as",
+            "description": "认为……是：接受或确认某人或某物是某种身份、品质或状态。"
+          },
+          {
+            "label": "grocer",
+            "description": "n.食品杂货商；食品杂货店"
+          },
+          {
+            "label": "answered",
+            "description": "倒装的主语不能是代词，你不能说answer he 、ask she(必须是名词)"
+          },
+          {
+            "label": "night after night",
+            "description": "夜以继夜(夜复一夜，连续多个晚上)"
+          },
+          {
+            "label": "was hoping",
+            "description": "表达一种试探性的，委婉的语气。"
+          },
+          {
+            "label": "a surprise",
+            "description": "一语双关(惊吓？惊喜？)"
+          },
+          {
+            "label": "woken up",
+            "description": "被吵醒"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "wake（up）",
+            "description": "vi&vt.醒了；唤醒...",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The doorbell rang loud enough to wake the dead.",
+                "zhExample": "vt.及物"
+              }
+            ]
+          },
+          {
+            "label": "start",
+            "description": "n.激灵(突然一惊);v.开始",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "She woke from the dream with a start.",
+                "zhExample": "wake (up) with a start 惊醒了"
+              }
+            ]
+          },
+          {
+            "label": "with + 名词",
+            "description": "作状语修饰谓语动词（一般为方式状语）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The officer went through the case with great care(Very carefully).",
+                "zhExample": "NCE3-11"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He had spotted a tiny bottle at the bottom of my case and he pounced on it with delight(happily).",
+                "zhExample": "NCE3-11"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Then I added with a smile(smilingly).",
+                "zhExample": "NCE3-11"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "His few material possessions make it possible for him to move from place to place with ease(easily).",
+                "zhExample": "NCE3-27"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "She faced the difficulty calmly. → She faced the difficulty with calmness.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I looked at her curiously. → I looked at her with curiosity.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "She spoke to me tenderly. → She spoke to me with tenderness.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I greeted Philip enthusiastically. → I greeted Philip with enthusiasm.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "非谓语动词的逻辑主语",
+            "description": "非谓语（doing;done;to do）作状语时，一般情况下其隐含的主语应该与主句主语保持一致。",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Looking at his watch... = When he looked at his watch...",
+                "zhExample": "非谓语做状语"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "the descriptions given by people...",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Looking at his watch, it was one o'clock. ×",
+                "zhExample": "主语不一致"
+              }
+            ]
+          },
+          {
+            "label": "go on",
+            "description": "v.发生",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "What's going on here?",
+                "zhExample": "意料之外(出什么事了？)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "happen 、come up 、 occur 、come about 、take place 、strike 、coincide (with ...)",
+                "zhExample": "发生（常用于写作替换）"
+              }
+            ]
+          },
+          {
+            "label": "主动还是被动",
+            "description": "（由动词本身搭配所决定的）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "Armed with a torch, the vicar went up into the clock tower ...",
+                "meaning": "",
+                "enExample": "Carrying a torch, the vicar went up into the clock tower ..",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "catch sight of ... / catch a glimpse of ... / glimpse",
+            "description": "一眼看见、瞥见",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "When he began to play a tune, we had our first glimpse of the snake.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "a figure",
+            "description": "人影、轮廓、数字(1~9...)、重要人物",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "A farm worker, who stayed up all night, claimed to have seen a figure cutting corn in the moonlight.",
+                "zhExample": "NCE3-30 人影"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "One of the most colorful figures in boxing history was Daniel Mendoza, who was born in 1764.",
+                "zhExample": "NCE3-21 重要人物"
+              }
+            ]
+          },
+          {
+            "label": "recognize ... as ...",
+            "description": "认出",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I recognized her as one of my classmates.",
+                "zhExample": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Still, I'm glad the bell is working again.' there's nothing I can do about it. 'We'll get used to that, Bill,' said the vicar. ' Thirteen is not as good as one, but it's better than nothing. Now let's go downstairs and have a cup of tea.",
+        "translation": "",
+        "predicates": [
+          "is working",
+          "get",
+          "is",
+          "'s",
+          "let",
+          "go",
+          "have"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [
+          "'ll"
+        ],
+        "inlineAnnotations": [
+          {
+            "label": "Still",
+            "description": "尽管那样，尽管如此..."
+          },
+          {
+            "label": "glad",
+            "description": "有分歧的从句，原因状语从句？同位语从句？ 形容词补足语从句？"
+          },
+          {
+            "label": "对此我无能为力",
+            "description": ""
+          },
+          {
+            "label": "get used to",
+            "description": "变得习惯"
+          },
+          {
+            "label": "as good as",
+            "description": "几乎等于，差不多等于;实际上等于，事实上等于;与……一样好，和……一样出色"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "加强疑问语气",
+            "description": "(除了特殊疑问词 + ever以外)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "on earth",
+                "meaning": "到底",
+                "enExample": "What on earth has happened to trouble you so?",
+                "zhExample": "到底发生了什么事使你如此烦恼?"
+              },
+              {
+                "kind": "example",
+                "word": "in the world",
+                "meaning": "到底",
+                "enExample": "What in the world are you doing here at seven in the morning?",
+                "zhExample": "你早上七点(到底)在这里干什么?"
+              },
+              {
+                "kind": "example",
+                "word": "in God's name",
+                "meaning": "到底[口语化](以上帝的名义)",
+                "enExample": "What in God's name was that huge bang?",
+                "zhExample": "到底那是什么大爆炸?"
+              },
+              {
+                "kind": "example",
+                "word": "in heaven's name",
+                "meaning": "到底[口语化](以天堂的名义)",
+                "enExample": "Where in heaven's name have you been?",
+                "zhExample": "你到底去哪了?"
+              }
+            ]
+          },
+          {
+            "label": "现在完成进行时",
+            "description": "(have been doing)表示持续性的动作一直到现在，而且还有可能继续下去。",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "They have been trying to find out how the fire began.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "They have been expecting a splendid crop this year.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Doctors have been trying to find out whether the woman died of a rare disease.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "night by night",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "every night",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "one night after another",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "day by day",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "every day",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "one day after another",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "for weeks",
+                "zhExample": "好几周了"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "for hours",
+                "zhExample": "好几小时了"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "for months",
+                "zhExample": "好几个月了"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "for years",
+                "zhExample": "好几年了"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "for centuries",
+                "zhExample": "好几百年了"
+              },
+              {
+                "kind": "example",
+                "word": "night by night every night one night after another",
+                "meaning": "",
+                "enExample": "day by day every day one day after another",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "was / were hoping",
+            "description": "试探性语气",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I was hoping you could marry me.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I was hoping you would give me a job.",
+                "zhExample": "我还盼望着你能给我份工作呢。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I was hoping for yogurt.",
+                "zhExample": "我还期望是酸奶呢。"
+              }
+            ]
+          },
+          {
+            "label": "强调肯定式",
+            "description": "（emphatic positive）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Come in.",
+                "zhExample": "进来"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Shut up!",
+                "zhExample": "闭嘴"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Do come in.",
+                "zhExample": "还不快进来"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Do shut up!",
+                "zhExample": "快给我闭嘴"
+              },
+              {
+                "kind": "example",
+                "word": "I need a car.",
+                "meaning": "",
+                "enExample": "I do need a car.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "He speaks English well.",
+                "meaning": "",
+                "enExample": "He does speak English well.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "So you came after all.",
+                "meaning": "这么说你还是来了。",
+                "enExample": "So you did come after all.",
+                "zhExample": "这么说你到底还是来了。"
+              },
+              {
+                "kind": "example",
+                "word": "Come in. Shut up!",
+                "meaning": "",
+                "enExample": "Do come in. Do shut up!",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "Are they coming as well?",
+                "meaning": "他们也来吗？",
+                "enExample": "You've probably woken up everyone in the village as well as me.",
+                "zhExample": "宾语me可省，介词一起省略"
+              }
+            ]
+          },
+          {
+            "label": "Still",
+            "description": "尽管如此，还是...（放句首要加一个逗号）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "nevertheless 、nonetheless 、all the same 、 just the same",
+                "zhExample": "写作中的替换"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The girl is not beautiful.Still, I like her very much.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Nevertheless / Nonetheless / All the same / Just the same, I like her very much.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "形容词补足语",
+            "description": "",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I'm glad the bell is working again.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I'm afraid that at one o'clock it will strike thirteen times.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The telephone is out of order, and there is nothing I can do about it.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I know you are not satisfied, but there is nothing I can do about it.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "We apologize for this, but there is nothing we can do about it.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I guess there's nothing I can do about it.",
+                "zhExample": "我想我对这件事真是无能为力。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Unfortunately, there's nothing I can do about it.",
+                "zhExample": "很不幸，对此我无能为力。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "There's nothing I can do about it, unfortunately.",
+                "zhExample": "遗憾的是，我对此无能为力。"
+              }
+            ]
+          },
+          {
+            "label": "as good as = almost",
+            "description": "几乎...；和...差不多",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The injured man is as good as dead.",
+                "zhExample": "那个受伤的人差不多死了。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Everything is as good as settled.",
+                "zhExample": "一切都差不多解决了。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "As far as I could see, it needed only a minor adjustment: a turn of a screw here, a little tightening up there, a drop of oil and it would be as good as new.",
+                "zhExample": "NCE3-46"
+              }
+            ]
+          },
+          {
+            "label": "have a cup of tea",
+            "description": "喝茶",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's head off to study English and grab a cup of coffee / tea / drink.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's hit the library and fuel up with some coffee.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's swing by a cafe to study and grab a drink.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's find a cozy spot for some English practice and a caffeine fix.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's make a move and combine our study session with a coffee break.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Let's head out / off for a coffee and brush up on our English.",
+                "zhExample": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ]
+}
