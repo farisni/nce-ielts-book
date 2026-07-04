@@ -415,11 +415,11 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                   className="group flex items-center gap-5 py-5 transition-colors"
                 >
                   {/* cover thumbnail */}
-                  {defaultLevel === "IELTS16" ? (
+                  {(defaultLevel === "IELTS16" || article.illustration) ? (
                     <span className="relative h-20 w-28 shrink-0 block">
                       <Skeleton className="absolute inset-0 rounded-lg" />
                       <img
-                        src={`${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}`}
+                        src={defaultLevel === "IELTS16" ? `${["/stock-exchange-tokyo-japan.jpg", "/the-padaung.jpg"][index % 2]}` : `/${article.illustration}`}
                         alt=""
                         className="relative h-20 w-28 rounded-lg object-cover opacity-0 transition-all duration-300 group-hover:scale-[1.03]"
                         onLoad={(e) => { e.currentTarget.classList.remove('opacity-0'); }}
@@ -933,11 +933,11 @@ function ArticleReader({ article }: { article: Article }) {
                           className="text-lg leading-loose text-foreground [text-indent:2em] article-text"
                           style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                         >
-                          {index === 0 && isIelts && (
+                          {(index === 0 && (isIelts || article.illustration)) && (
                             <span className="float-right relative ml-6 mb-4 mt-1 block w-56 h-36">
                               <Skeleton className="absolute inset-0 rounded-lg" />
                               <img
-                                src={`/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg`}
+                                src={isIelts ? `/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg` : `/${article.illustration}`}
                                 alt=""
                                 className="relative w-full h-full rounded-lg object-cover opacity-0 transition-opacity duration-300"
                                 onLoad={(e) => { e.currentTarget.classList.remove('opacity-0'); }}

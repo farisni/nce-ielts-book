@@ -45,6 +45,7 @@ export interface Article {
   keyArticle?: boolean
   originalId: string
   tag?: string
+  illustration?: string
   vocabulary: VocabItem[]
   notesOnText?: SentenceNote[]
   original?: {
