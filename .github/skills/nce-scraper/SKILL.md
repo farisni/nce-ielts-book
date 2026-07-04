@@ -14,7 +14,7 @@ Scrape lesson data from ncego.com and safely merge annotations into `src/app/moc
 ## 数据架构
 
 - `src/app/mock/nce2.ts` / `src/app/mock/nce3.ts` / `src/app/mock/nce4.ts` — Article 定义 + `registerOriginals()` 提供正文和译文（**base**）
-- `src/app/mock/data/nceX-lXX.json` — 每课独立 JSON，**只存 annotations 数据**（predicates, inlineAnnotations, expansionNotes 等），text/translation 留空
+- `src/app/mock/data/nceX-lXX.json` — 每课独立 JSON，**存 annotations 数据**（predicates, inlineAnnotations, expansionNotes 等），text/translation 也可以带上但运行时 base 优先
 - `src/app/mock/data/index.ts` — 聚合所有 JSON，通过 `registerAnnotations()` 注册到 `ARTICLE_ANNOTATIONS`
 - `src/app/mock/article-notes.ts` — 两个 store + `getParagraphs()` 运行时合并
 
@@ -22,11 +22,11 @@ Scrape lesson data from ncego.com and safely merge annotations into `src/app/moc
 
 ```
 nceX.ts registerOriginals() → ARTICLE_BASES      (text + translation)
-data/index.ts JSON imports   → ARTICLE_ANNOTATIONS (annotations only)
+data/index.ts JSON imports   → ARTICLE_ANNOTATIONS (annotations, text/translation as fallback)
 
 getParagraphs():
   base  = article.original?.paragraphs
-       ?? ARTICLE_BASES[key]?.paragraphs       ← 正文来自 nceX.ts
+       ?? ARTICLE_BASES[key]?.paragraphs       ← 正文优先来自 nceX.ts
        ?? ARTICLE_ANNOTATIONS[key]?.paragraphs  ← 兜底
   notes = ARTICLE_ANNOTATIONS[key]?.paragraphs  ← 注解来自 JSON
   → 合并返回 { text, translation, predicates, inlineAnnotations, ... }
