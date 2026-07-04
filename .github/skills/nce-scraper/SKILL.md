@@ -13,14 +13,30 @@ Scrape lesson data from ncego.com and safely merge annotations into `src/app/moc
 
 ## 数据架构
 
-- `src/app/mock/nce2.ts` / `src/app/mock/nce3.ts` / `src/app/mock/nce4.ts` — Article 定义；旧课程可能还残留 `registerOriginals()` 正文注册
-- `src/app/mock/data/nceX-lXX.json` — 每课独立 JSON，正文、译文、annotations 数据（predicates, inlineAnnotations, expansionNotes 等）
-- `src/app/mock/data/index.ts` — 聚合所有 JSON，注册到 `ARTICLE_ORIGINALS`
-- `src/app/mock/article-notes.ts` — `getParagraphs()` 运行时合并 text/translation + annotations
+- `src/app/mock/nce2.ts` / `src/app/mock/nce3.ts` / `src/app/mock/nce4.ts` — Article 定义 + `registerOriginals()` 提供正文和译文（**base**）
+- `src/app/mock/data/nceX-lXX.json` — 每课独立 JSON，**只存 annotations 数据**（predicates, inlineAnnotations, expansionNotes 等），text/translation 留空
+- `src/app/mock/data/index.ts` — 聚合所有 JSON，通过 `registerAnnotations()` 注册到 `ARTICLE_ANNOTATIONS`
+- `src/app/mock/article-notes.ts` — 两个 store + `getParagraphs()` 运行时合并
 
-## Workflow
+### Store 拆分
 
-### Step 1: Scrape
+```
+nceX.ts registerOriginals() → ARTICLE_BASES      (text + translation)
+data/index.ts JSON imports   → ARTICLE_ANNOTATIONS (annotations only)
+
+getParagraphs():
+  base  = article.original?.paragraphs
+       ?? ARTICLE_BASES[key]?.paragraphs       ← 正文来自 nceX.ts
+       ?? ARTICLE_ANNOTATIONS[key]?.paragraphs  ← 兜底
+  notes = ARTICLE_ANNOTATIONS[key]?.paragraphs  ← 注解来自 JSON
+  → 合并返回 { text, translation, predicates, inlineAnnotations, ... }
+```
+
+这样 `registerOriginals` 和 JSON 不再互相覆盖——正文和注解各走各的 store。
+
+## 新课文添加流程
+
+### Step 1: 抓取
 
 ```bash
 python3 scripts/scrape_ncego.py <URL>
@@ -28,66 +44,43 @@ python3 scripts/scrape_ncego.py <URL>
 
 输出 `nce4-lXX.ts`（临时文件），包含抓取的 annotations 数据。
 
-### Step 2: Merge
+### Step 2: 转换 annotations 到 JSON
 
-```bash
-python3 .github/skills/nce-scraper/scripts/merge_paragraphs.py <scraped.ts> <lesson_no>
+从抓取输出中提取 annotations（predicates、inlineAnnotations、expansionNotes 等），生成 JSON。**text 和 translation 留空**——它们来自 `nceX.ts` 的 `registerOriginals`。
+
+```json
+{
+  "paragraphs": [
+    [
+      {
+        "text": "",
+        "translation": "",
+        "predicates": ["was made"],
+        "inlineAnnotations": [{"label": "Some time ago", "description": "..."}],
+        "expansionNotes": []
+      }
+    ]
+  ]
+}
 ```
 
-合并脚本只写 `article-notes.ts`，**不动 nce4.ts**，**不动 translation**。
+JSON 里的 `paragraphs` 结构（段落数、每段句子数）必须与 `nceX.ts` 中 `registerOriginals` 的对应 entry 严格一致，这样 `getParagraphs` 才能按索引正确合并 base 和 notes。
 
-### Step 3: Validate ⭐
+### Step 3: 注册 JSON
 
-```bash
-python3 .github/skills/nce-scraper/scripts/validate_notes.py nce4-l3
-```
+在 `src/app/mock/data/index.ts` 中添加 import 和注册项。
 
-检查项：
+### Step 4: 确保课文在 registerOriginals 中
 
-| 类别 | 检查项 |
-|------|--------|
-| 完整性 | 句子数是否与 nce4.ts 匹配 |
-| 完整性 | 每句 text 非空 |
-| 合理性 | translation 为空（应来自 nce4.ts） |
-| 合理性 | enExample ≠ zhExample（无重复翻译） |
-| 合理性 | enExample 不含中文（sup extract 正常） |
-| 合理性 | expansionNote label 无 HTML 残留 |
-| 合理性 | inlineAnnotation 有 label |
-| 合理性 | otherNotes 有 label |
+如果该课文还不在 `nceX.ts` 的 `registerOriginals` 里，需要添加。正文和译文从这里来。
 
-批量验证：
+### Step 5: 验证
 
 ```bash
-python3 .github/skills/nce-scraper/scripts/validate_notes.py --all     # 全部
-python3 .github/skills/nce-scraper/scripts/validate_notes.py --summary # 汇总
+rm -rf .next && npm run dev
 ```
 
-## Key Rules
-
-- 只更新 `src/app/mock/data/`（annotations），绝不碰 nce4.ts
-- translation 永远保留，不会被覆盖
-- 合并后**必须运行 validate_notes.py** 验证
-
-## 旧正文注册覆盖排查
-
-如果 JSON 数据存在，但页面没有正文语法标注、句末三点、笔记面板内容，先检查运行时是否被旧注册覆盖：
-
-```bash
-rg -n "registerOriginals|nce3-l2|nce4-l2" src/app/mock
-```
-
-常见问题：
-
-- `src/app/mock/data/nceX-lXX.json` 已经注册到 `data/index.ts`，但 `nce2.ts` / `nce3.ts` / `nce4.ts` 底部又有旧的 `registerOriginals({ "nceX-lXX": ... })`。
-- 旧注册会后执行并覆盖 JSON 注册结果，导致页面读取到旧正文、空 `inlineAnnotations`、空 `expansionNotes`。
-- 不要只删除旧注册就结束；如果 JSON 里 `translation` 为空，或抓取时把多句合并成坏 block，会导致原文结构和参考译文丢失。
-
-正确修复顺序：
-
-1. 以页面原有正文/参考译文为 base，恢复 `src/app/mock/data/nceX-lXX.json` 的 `paragraphs` 结构。
-2. 把抓取来的 `predicates`、`inlineAnnotations`、`expansionNotes` 合并到对应句子。
-3. 确认 JSON 已经包含完整 `text` 和 `translation` 后，再移除同一 lesson 的旧 `registerOriginals` 覆盖项（**只移除该项，不要删整个 registerOriginals 块**——其他没有独立 JSON 的 lesson 还依赖它）。
-4. 刷新页面验证：句子数、参考译文、正文 tooltip 标注、句末三点和笔记面板都要同时存在。
+打开页面检查：正文、译文、tooltip 标注、句末三点、语法摘要面板都要正常显示。
 
 ## 例句显式高亮
 
