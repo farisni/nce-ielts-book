@@ -46,15 +46,15 @@ python3 scripts/scrape_ncego.py <URL>
 
 ### Step 2: 转换 annotations 到 JSON
 
-从抓取输出中提取 annotations（predicates、inlineAnnotations、expansionNotes 等），生成 JSON。**text/translation 可以带着（方便后续查看），但运行时不会被用**——`getParagraphs` 的 base 从 `nceX.ts` 的 `registerOriginals` 拿正文和译文。
+从抓取输出中提取所有字段（text、translation、predicates、inlineAnnotations、expansionNotes 等），生成 JSON。text/translation 可以带着（方便查看），但**运行时不会被用到**——`getParagraphs` 优先从 `nceX.ts` 的 `registerOriginals` 拿 base 的正文和译文，不在 base 里的才会兜底用 JSON 的。
 
 ```json
 {
   "paragraphs": [
     [
       {
-        "text": "",
-        "translation": "",
+        "text": "Some time ago, an interesting discovery was made...",
+        "translation": "不久之前，在爱琴海的基亚岛上...",
         "predicates": ["was made"],
         "inlineAnnotations": [{"label": "Some time ago", "description": "..."}],
         "expansionNotes": []
