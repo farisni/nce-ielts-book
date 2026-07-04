@@ -934,12 +934,12 @@ function ArticleReader({ article }: { article: Article }) {
                           style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                         >
                           {(index === 0 && (isIelts || article.illustration)) && (
-                            <span className="float-right relative ml-6 mb-4 mt-1 block w-56 h-36">
+                            <span className="float-right relative ml-6 mb-4 mt-1 block max-w-56">
                               <Skeleton className="absolute inset-0 rounded-lg" />
                               <img
                                 src={isIelts ? `/${article.id === 'ielts-1' ? 'stock-exchange-tokyo-japan' : 'the-padaung'}.jpg` : `/${article.illustration}`}
                                 alt=""
-                                className="relative w-full h-full rounded-lg object-cover opacity-0 transition-opacity duration-300"
+                                className="relative w-full h-full rounded-lg object-contain opacity-0 transition-opacity duration-300"
                                 onLoad={(e) => { e.currentTarget.classList.remove('opacity-0'); }}
                               />
                             </span>
