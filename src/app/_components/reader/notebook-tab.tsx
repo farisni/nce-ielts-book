@@ -282,33 +282,31 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                       <span className="text-sm text-muted-foreground/60 font-mono ml-2">block {blockId}</span>
                     </p>
                   </button>
-                  <div className="px-3 pb-3 space-y-2">
+                  <div className="px-3 pb-4 space-y-4">
                     {entries.map(({ note }, ni) => (
                       <div key={ni} className="text-sm">
-                        <div className="flex items-start gap-1.5">
-                          <span>
-                            <span
-                              className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80"
-                              style={{ background: pillBg[ni % pillBg.length] }}
-                            >
-                              {note.label}
-                            </span>
-                            {note.description && (
-                              <span className="text-foreground font-medium">
-                                {" — "}{note.description}
-                              </span>
-                            )}
+                        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                          <span
+                            className="inline-flex max-w-full items-center whitespace-normal rounded px-2 py-0.5 text-sm font-medium leading-snug text-foreground/80"
+                            style={{ background: pillBg[ni % pillBg.length] }}
+                          >
+                            {note.label}
                           </span>
+                          {note.description && (
+                            <span className="font-medium leading-relaxed text-foreground/85">
+                              — {note.description}
+                            </span>
+                          )}
                         </div>
                         {note.examples && note.examples.length > 0 && (() => {
                             const synonymRows = note.examples.filter(r => r.kind === "synonym" || (!r.kind && r.word));
                             const exampleRows = note.examples.filter(r => r.kind === "example" || (!r.kind && !r.word));
                             return (
-                              <div className="mt-1.5 ml-4.5 space-y-1.5">
+                              <div className="mt-2 ml-10 space-y-2.5">
                                 {exampleRows.map((ex, i) => (
-                                  <div key={i} className="text-sm text-muted-foreground rounded px-2 py-1">
-                                    <span>{highlightInText(ex.enExample, note.label)}</span>
-                                    {ex.zhExample && <div className="mt-0.5">{ex.zhExample}</div>}
+                                  <div key={i} className="rounded py-0.5 text-sm leading-relaxed">
+                                    <span className="text-foreground/65">{highlightInText(ex.enExample, note.label)}</span>
+                                    {ex.zhExample && <div className="mt-0.5 text-muted-foreground">{ex.zhExample}</div>}
                                   </div>
                                 ))}
                                 {exampleRows.length > 0 && synonymRows.length > 0 && (

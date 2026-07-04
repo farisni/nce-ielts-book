@@ -1003,17 +1003,17 @@ function ArticleReader({ article }: { article: Article }) {
                                       exit={{ opacity: 0, y: -4 }}
                                       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                                     >
-                                      <div className="flex flex-col gap-2 text-left">
+                                      <div className="flex flex-col gap-4 text-left">
                                         {(sentence.expansionNotes!).map((note, ni) => (
                                           <div key={ni}>
-                                            <div className="flex items-start gap-3">
+                                            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                                               <span
-                                                className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
+                                                className="inline-flex max-w-full items-center whitespace-normal rounded px-2 py-0.5 text-sm font-semibold leading-snug text-foreground/80"
                                                 style={{ background: pillBg[ni % pillBg.length] }}
                                               >
                                                 {note.label.trim()}
                                               </span>
-                                              <span className="text-sm text-muted-foreground leading-relaxed">{note.description}</span>
+                                              <span className="text-sm font-medium leading-relaxed text-foreground/85">{note.description}</span>
                                             </div>
                                             {note.examples && note.examples.length > 0 && (() => {
                                               const synonymRows = note.examples.filter(r => r.kind === "synonym" || (!r.kind && r.word));
@@ -1021,11 +1021,11 @@ function ArticleReader({ article }: { article: Article }) {
                                               return (
                                                 <>
                                                   {exampleRows.length > 0 && (
-                                                    <ul className="mt-2 space-y-2 text-[13px] text-muted-foreground">
+                                                    <ul className="mt-2 ml-10 space-y-2.5 text-[13px] leading-relaxed">
                                                       {exampleRows.map((row, ri) => (
                                                         <li key={ri} className="min-w-0">
-                                                          <div>{highlightInText(row.enExample, note.label)}</div>
-                                                          <div className="text-[11px] mt-0.5">{row.zhExample}</div>
+                                                          <div className="text-foreground/65">{highlightInText(row.enExample, note.label)}</div>
+                                                          <div className="mt-0.5 text-[12px] text-muted-foreground">{row.zhExample}</div>
                                                         </li>
                                                       ))}
                                                     </ul>
