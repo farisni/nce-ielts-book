@@ -2336,4 +2336,4 @@ export const articlesNce3: Record<string, Article> = {
 };
 
 
-export default nceArticlesNce3;
+export default articlesNce3;
