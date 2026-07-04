@@ -4,8 +4,8 @@ import { articlesNce3 } from "./nce3";
 import { articlesNce4 } from "./nce4";
 
 export type { Article, ArticleOriginalContent, VocabItem, SentenceNote, SentenceData, GrammarRelatedExample } from "./types";
-import { ARTICLE_ORIGINALS, getParagraphs } from "./article-notes";
-export { ARTICLE_ORIGINALS, getParagraphs };
+import { ARTICLE_BASES, getParagraphs } from "./article-notes";
+export { ARTICLE_BASES, getParagraphs };
 export { articlesIelts } from "./ielts";
 export { articlesNce2 } from "./nce2";
 export { articlesNce3 } from "./nce3";

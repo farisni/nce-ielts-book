@@ -42,7 +42,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { allArticles, getArticleList, getParagraphs, ARTICLE_ORIGINALS, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
+import { allArticles, getArticleList, getParagraphs, ARTICLE_BASES, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
 import { grammarRelatedExamples } from "@/app/mock/ielts";
 import {
   Collapsible,
@@ -1104,12 +1104,12 @@ function ArticleReader({ article }: { article: Article }) {
                         ))}
                       </div>
                     )}
-                    {!isIelts && ARTICLE_ORIGINALS[article.originalId]?.otherNotes?.length ? (
+                    {!isIelts && ARTICLE_BASES[article.originalId]?.otherNotes?.length ? (
                       <div className="pt-6">
                         <h2 className="mb-4 text-lg font-semibold text-foreground">其他笔记</h2>
                         <table className="w-full border-separate border-spacing-y-2">
                           <tbody>
-                            {ARTICLE_ORIGINALS[article.originalId]!.otherNotes!.map((note, i) => (
+                            {ARTICLE_BASES[article.originalId]!.otherNotes!.map((note, i) => (
                               <tr key={i} className="note-item align-top">
                                 <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
                                 <td className="align-top pt-0.5">

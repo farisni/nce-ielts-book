@@ -1,31 +1,33 @@
 import type { ArticleOriginalContent, SentenceData } from "./types";
-import nceArticleOriginals from "./data";
+import nceArticleAnnotations from "./data";
 
-export const ARTICLE_ORIGINALS: Record<string, ArticleOriginalContent> = {};
+export const ARTICLE_BASES: Record<string, ArticleOriginalContent> = {};
+export const ARTICLE_ANNOTATIONS: Record<string, ArticleOriginalContent> = {};
 
 export function registerOriginals(
   entries: Record<string, ArticleOriginalContent>
 ): Record<string, ArticleOriginalContent> {
-  Object.assign(ARTICLE_ORIGINALS, entries);
+  Object.assign(ARTICLE_BASES, entries);
   return entries;
 }
 
-// Auto-register all NCE article originals
-registerOriginals(nceArticleOriginals);
+// Annotations-only registration — only stores predicates, inlineAnnotations, expansionNotes etc.
+export function registerAnnotations(
+  entries: Record<string, ArticleOriginalContent>
+): Record<string, ArticleOriginalContent> {
+  Object.assign(ARTICLE_ANNOTATIONS, entries);
+  return entries;
+}
+
+// Auto-register all NCE article annotations from JSON
+registerAnnotations(nceArticleAnnotations);
 
 export function getParagraphs(article: { originalId: string; original?: { paragraphs: { text: string; translation: string }[][] } }): ArticleOriginalContent["paragraphs"] {
-  const base = article.original?.paragraphs ?? ARTICLE_ORIGINALS[article.originalId]?.paragraphs ?? [];
-  const notes = ARTICLE_ORIGINALS[article.originalId]?.paragraphs ?? [];
+  const base = article.original?.paragraphs ?? ARTICLE_BASES[article.originalId]?.paragraphs ?? ARTICLE_ANNOTATIONS[article.originalId]?.paragraphs ?? [];
+  const notes = ARTICLE_ANNOTATIONS[article.originalId]?.paragraphs ?? [];
   return base.map((para, pi) =>
     para.map((sent, si) => {
       const note = notes[pi]?.[si] as unknown as Record<string, unknown> | undefined;
-      const hasAnnotations = note && (
-        ((note.predicates as string[])?.length ?? 0) > 0 ||
-        ((note.clauseIntroducers as string[])?.length ?? 0) > 0 ||
-        ((note.auxiliaries as string[])?.length ?? 0) > 0 ||
-        ((note.inlineAnnotations as SentenceData["inlineAnnotations"])?.length ?? 0) > 0 ||
-        ((note.expansionNotes as SentenceData["expansionNotes"])?.length ?? 0) > 0
-      );
       return {
         text: sent.text,
         translation: sent.translation,
