@@ -2340,39 +2340,6 @@ export const articlesNce3: Record<string, Article> = {
 import { registerOriginals } from "./article-notes";
 
 registerOriginals({
-  "nce3-l2": {
-    paragraphs: [
-      [
-        { text: "Our vicar is always raising money for one cause or another, but he has never managed to get enough money to have the church clock repaired.", translation: "我们教区的牧师总是为各种各样的事筹集资金。但始终未能筹足资金把教堂的钟修好。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "The big clock which used to strike the hours day and night was damaged many years ago and has been silent ever since.", translation: "教堂的钟很大，以前不分昼夜打点报时，但很多年前遭到毁坏，从此便无声无息了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ],
-      [
-        { text: "One night, however, our vicar woke up with a start: the clock was striking the hours!", translation: "一天夜里，我们的牧师突然被惊醒了，大钟又在“打点”报时了！", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "Looking at his watch, he saw that it was one o'clock, but the bell struck thirteen times before it stopped.", translation: "他一看表，才1点钟，可是那钟一边敲了13下才停。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "Armed with a torch, the vicar went up into the clock tower to see what was going on.", translation: "牧师拿着一支电筒走上钟楼想去看看究竟发生了什么事情。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "In the torchlight, he caught sight of a figure whom he immediately recognized as Bill Wilkins, our local grocer.", translation: "借着电筒光，他看见一个人，马上认出那是本地杂货店主比尔.威尔金斯。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ],
-      [
-        { text: "'I'm trying to repair the bell,' answered Bill.", translation: "“我想把这口钟修好，”比尔回答说。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "'I've been coming up here night after night for weeks now.", translation: "“好几个星期了，我天天夜里到钟楼上来。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "You see, I was hoping to give you a surprise.", translation: "嗯，我是想让你大吃一惊。”", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ],
-      [
-        { text: "'You certainly did give me a surprise!' said the vicar.", translation: "“你确实使我大吃了一惊！”牧师说。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "'You've probably woken up everyone in the village as well.", translation: "“也许同时你把村里所有的人都吵醒了。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "Still, I'm glad the bell is working again.", translation: "不过，钟又能报时了，我还是很高兴的。”", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ],
-      [
-        { text: "'That's the trouble, vicar,' answered Bill.", translation: "“问题就在这里，牧师，”比尔回答说。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "'It's working all right, but I'm afraid that at one o'clock it will strike thirteen times and there's nothing I can do about it.", translation: "“不错，钟能报时了，但是，恐怕每到1点钟，它总要敲13下，对此我已无能为力了。”", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ],
-      [
-        { text: "'We'll get used to that, Bill,' said the vicar.", translation: "“大家慢慢就习惯了，比尔，”牧师说。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "'Thirteen is not as good as one, but it's better than nothing.", translation: "“13下是不如1下好，但总比1下也不敲强。", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] },
-        { text: "Now let's go downstairs and have a cup of tea.", translation: "来，咱们下楼去喝杯茶吧。”", predicates: [], clauseIntroducers: [], auxiliaries: [], inlineAnnotations: [] }
-      ]
-    ],
-  },
   "nce3-l3": {
     paragraphs: [
       [
