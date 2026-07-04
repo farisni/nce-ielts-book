@@ -1,0 +1,1574 @@
+{
+  "paragraphs": [
+    [
+      {
+        "text": "Pumas are large, cat-like animals which are found in America.",
+        "translation": "",
+        "predicates": [
+          "are"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "found in",
+            "description": "产于"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "When reports came into London Zoo that a wild puma had been spotted forty-five miles south of London, they were not taken seriously.",
+        "translation": "",
+        "predicates": [
+          "came",
+          "had been spotted",
+          "were",
+          "taken"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "When",
+            "description": "引导时间状语从句"
+          },
+          {
+            "label": "came into",
+            "description": "进入：指进入某个地方或状态。 He came into the classroom."
+          },
+          {
+            "label": "had been spotted",
+            "description": "had been seen / found / observed ..."
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "构词法",
+            "description": "名词-like",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "cat-like ↔ catlike",
+                "zhExample": "偷偷摸摸的"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "dog-like ↔ doglike",
+                "zhExample": "忠实的"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "bird-like ↔ birdlike",
+                "zhExample": "敏捷轻快的"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "lady-like ↔ ladylike",
+                "zhExample": "风度雍容如贵妇的,温雅的"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "childlike 、homelike、kinglike",
+                "zhExample": "天真烂漫的"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "catty 、doggy",
+                "zhExample": "辅元辅(汉堡结构)需要双写"
+              }
+            ]
+          },
+          {
+            "label": "be found in ...",
+            "description": "产于(生存于、生活于某地)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Many plant and animal species are found only in the rainforests.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Vitamin C is found in citrus fruit.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "Pumas are large, cat-like animals",
+                "meaning": "",
+                "enExample": "(which are) found in America.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "引出本文的“主人翁” (名字、体型、特征、产地)",
+                "meaning": "",
+                "enExample": "关系代词(which、that) + Be动词 可省略（非谓语动词做后置定语）",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "无灵主语(inanimate subject)",
+            "description": "物称主语(拟人化)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "However, a new type of humor, which stems largely from the US, has recently come into fashion.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The dealer told him that it had just come in, but that he could not be bothered to open it.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I thought of a good idea. → A good idea came / flashed into my mind.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He went to the town on business. → Business took him to the town.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "A warm and sunny Sunday found my whole family going for an outing at the beach.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The sea bed was scoured with powerful nets and there was tremendous excitement on board when a chest was raised from the bottom.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He lost his confidence. → Confidence deserted him.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I couldn't sleep that night. → That night sleep eluded me.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "We only travelled half the distance at sunset. → Sunset met us halfway.",
+                "zhExample": "日落在中途与我们相遇。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The past few years witnessed the great influx of foreigners to China, for travelling, studies or business.",
+                "zhExample": "过去几年见证了大量外国人涌入中国旅游、学习或经商。"
+              },
+              {
+                "kind": "example",
+                "word": "定义：起到后置定语的作用，常译为”…的〞",
+                "meaning": "",
+                "enExample": "定义：解释前面名词的 具体内容",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "形式：\"that\"是关系代词，在从句中充当主语、宾语或表语",
+                "meaning": "",
+                "enExample": "形式：\"that\"仅起到连接符号的作用，不充当语法成分",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "The proposal that John put forward is unacceptable.",
+                "meaning": "",
+                "enExample": "The proposal that John should be dismissed is unacceptable.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td>We hold <strong>these truths</strong> to be self-evident,</td>",
+                "meaning": "",
+                "enExample": "that all men are created equal,",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td style=\"text-align: center;\">",
+                "meaning": "平行结构</td>",
+                "enExample": "同位语从句（短在前）",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "in / on / to the south of ...",
+            "description": "只有to可省略",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Shanghai is in the south of China.",
+                "zhExample": "范围以内"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Vietnam is on the south of China.",
+                "zhExample": "外部相接壤"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Indonesia is to the south of China. = Indonesia is south of China.",
+                "zhExample": "外部并有距离（to 可以省略）"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "100 kilometers south of Xi'an",
+                "zhExample": "在西安以南100公里处"
+              }
+            ]
+          },
+          {
+            "label": "take",
+            "description": "v.看待、对待",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Unfortunately, no one took my opinion seriously.",
+                "zhExample": "不幸的是，没有人严肃地看待我的意见。 (以某种方式) 看待"
+              },
+              {
+                "kind": "example",
+                "word": "And that's a threat to take seriously.",
+                "meaning": "这是一个需要认真对待的威胁。",
+                "enExample": "This is not a problem we should take lightly.",
+                "zhExample": "这个问题我们可不能掉以轻心。"
+              }
+            ]
+          },
+          {
+            "label": "造句",
+            "description": "参考课文例句结构",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "crocodile: The crocodile raised its head out of the water and opened its huge mouth.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "fish: I watched the beautiful fish as they swam around the aquarium.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "bear: We were walking in the woods when we saw a big black bear.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "cat: The cat sat on my knee, purring contentedly.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "chicken: Our chicken gives us eggs every day.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "horse: The horse was standing in the field, eating grass.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "bird: I looked up and saw a bird flying through the sky.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "deer: While we were walking in the park, we came across several deer.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "pig: The fat pink pig devoured its food very quickly.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "duck: The duck was swimming happily in the pond.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "frog: I watched the frog catch a fly in its mouth before jumping back into the pond.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "lion: The big yellow lion roared loudly when I approached.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "squirrel: The squirrel picked up the nut from the ground and headed back up the tree.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "rabbit: I saw a grey rabbit in the field nibbling on a carrot.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "dog: The dog barked excitedly as I approached the house.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "monkey: I looked up and saw a monkey sitting in a tree.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "snake: The long green snake moved quickly through the grass.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "sheep: The white sheep were standing in the field, eating grass.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "giraffe: Giraffes use their long necks to eat leaves from tall trees.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "cow: The black and white cow mooed loudly as I entered the barn.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td>When <strong>reports</strong> came into London Zoo</td>",
+                "meaning": "",
+                "enExample": "that a wild puma had been spotted forty-five miles south of London,",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td style=\"text-align: center;\">When",
+                "meaning": "引导时间</td>",
+                "enExample": "同位语从句",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td style=\"text-align: center;\">When <strong>news</strong> came into <abbr title=\"",
+                "meaning": "国家博物馆\">the national museum</abbr></td>",
+                "enExample": "that an ancient tomb had been found 100 kilometers (to the) south of Xi'an,",
+                "zhExample": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "However, as the evidence began to accumulate, experts from the Zoo felt obliged to investigate, for the descriptions given by people who claimed to have seen the puma were extraordinarily similar.",
+        "translation": "",
+        "predicates": [
+          "began",
+          "felt obliged",
+          "claimed",
+          "have seen",
+          "were"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "as",
+            "description": "引导一个时间状语从句：随着"
+          },
+          {
+            "label": "the evidence",
+            "description": "the evidence 证据(不可数)"
+          },
+          {
+            "label": "accumulate",
+            "description": "began to accumulate 开始积累：逐渐增加或积累。"
+          },
+          {
+            "label": "experts from the Zoo",
+            "description": "动物园的专家"
+          },
+          {
+            "label": "for",
+            "description": "引导原因状语从句，for引导的原因状语从句一般起到补充说明的作用，因果关系不太强烈。不放句首，一般放到主句的后面做补充。"
+          },
+          {
+            "label": "given",
+            "description": "非谓语动词做后置定语"
+          },
+          {
+            "label": "claimed to have seen",
+            "description": "声称看到：表示某人声称自己看到了某事或某物，但并不确定其真实性。"
+          },
+          {
+            "label": "extraordinarily similar",
+            "description": "非常相似：形容两个或多个事物在某些方面非常相似，超出了一般的相似程度。"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "give descriptions",
+            "description": "= descriptions which were given by people ...",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "make descriptions",
+                "zhExample": "作描述 descriptions made by people ..."
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "We shall give brief descriptions of both models next.",
+                "zhExample": "我们然后将提供两者模型的简短描述。"
+              }
+            ]
+          },
+          {
+            "label": "非谓语动词做后置定语",
+            "description": "",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "John had a very good day and put his wallet containing £3,000 into the microwave oven for safekeeping.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "For hundreds of years, St. Bernard dogs have saved the lives of travellers crossing the dangerous Pass.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "movies directed by Zhang Yimou",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The man leaning against the wall named George is my brother.",
+                "zhExample": "简洁写法(强调正靠着墙)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The man who is leaning against the wall who is named George is my brother.",
+                "zhExample": "有点乱(不推荐)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The man named George, who is leaning against the wall, is my brother.",
+                "zhExample": "使用从句修饰”靠墙“，但强调名字”George“"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "My brother is the man named George who is leaning against the wall.",
+                "zhExample": "强调”我的兄弟“"
+              },
+              {
+                "kind": "example",
+                "word": "novels written by Lu Xun",
+                "meaning": "鲁迅写的小说",
+                "enExample": "A woman picking blackberries saw a large cat only five yards away from her.",
+                "zhExample": "非谓后做后置定语"
+              },
+              {
+                "kind": "example",
+                "word": "Novels which are written by Lu Xun.",
+                "meaning": "鲁迅写的小说",
+                "enExample": "A woman who is picking blackberries saw a large cat only five yards away from her.",
+                "zhExample": "源自定语从句的省略"
+              }
+            ]
+          },
+          {
+            "label": "done 做非谓语原因之一",
+            "description": "（状语从句的省略）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Tired of sleeping on the floor, a young man in Tehran saved up for years to buy a real bed.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "过去分词 (被动/完成)",
+                "meaning": "",
+                "enExample": "Built in 1885, it was the oldest car taking part..",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "现在分词(主动/进行)",
+                "meaning": "",
+                "enExample": "Fishing is my favourite sport.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "to do",
+                "meaning": "不定式(将要)",
+                "enExample": "She wanted him to repair their grandson's bicycle!",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "be extraordinarily similar",
+            "description": "非常相似",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "be particularly alike",
+                "zhExample": "写作替换"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "had a lot in common",
+                "zhExample": "有很多共同点"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "look a little bit alike",
+                "zhExample": "看起来有点像(口语)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "had considerable commonalities",
+                "zhExample": "相当于英语的”文言文“"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Fishermen and sailors sometimes claim to have seen monsters in the sea.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Everyone went to the funeral, for the 'ghost' was none other than Eric Cox, a third brother who was supposed to have died as a young man.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "A policeman approached Jimmy and told him he ought to have gone along a side street as Jumbo was holding up the traffic.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "A third brother who was supposed to have died as a young man.",
+                "meaning": "",
+                "enExample": "So far, no organization has claimed to be responsible for the accident.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "as the evidence began to accumulate,",
+                "meaning": "",
+                "enExample": "experts from the Zoo felt obliged to investigate,",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "时间状语从句",
+                "meaning": "",
+                "enExample": "时间状语主语",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "定语主句",
+                "meaning": "",
+                "enExample": "原因状语从句",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "As the cases began to accumulate,",
+                "meaning": "",
+                "enExample": "specialists felt obliged to investigate,",
+                "zhExample": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "text": "The hunt for the puma began in a small village where a woman picking blackberries saw 'a large cat' only five yards away from her.",
+        "translation": "",
+        "predicates": [
+          "began",
+          "saw"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "The hunt for the puma",
+            "description": "搜寻美洲狮的工作"
+          },
+          {
+            "label": "yards",
+            "description": "码（长度单位，等于 3 英尺或 0.914 米）"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "It immediately ran away when she saw it, and experts confirmed that a puma will not attack a human being unless it is cornered.",
+        "translation": "",
+        "predicates": [
+          "ran",
+          "saw",
+          "confirmed",
+          "attack",
+          "is cornered"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [
+          "will"
+        ],
+        "inlineAnnotations": [
+          {
+            "label": "ran away",
+            "description": "逃跑、逃离：离开某个地方或情境，通常是因为害怕、不满或想要避免某种情况。"
+          },
+          {
+            "label": "unless",
+            "description": "conj. 除非，除非在……情况下；若非，如果不  prep. 除……之外；除……之外"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "The search proved difficult, for the puma was often observed at one place in the morning and at another place twenty miles away in the evening.",
+        "translation": "",
+        "predicates": [
+          "proved",
+          "was",
+          "observed"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "one place in the morning",
+            "description": "早上的一个地方"
+          },
+          {
+            "label": "another place",
+            "description": "另一个地方：指不同于当前所在位置的地方。"
+          },
+          {
+            "label": "miles away",
+            "description": "A Thousand Miles Away 千里之外"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "Wherever it went, it left behind it a trail of dead deer and small animals like rabbits.",
+        "translation": "",
+        "predicates": [
+          "went",
+          "left"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "behind it",
+            "description": "状语前置"
+          },
+          {
+            "label": "deer",
+            "description": "单复数同形；类似 sheep"
+          },
+          {
+            "label": "like",
+            "description": "类似"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "Paw prints were seen in a number of places and puma fur was found clinging to bushes.",
+        "translation": "",
+        "predicates": [
+          "were seen",
+          "was found"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "Paw prints",
+            "description": "爪印：动物（如猫、狗或熊）在走过表面时留下的印记，或者代表这种印记的图片。"
+          },
+          {
+            "label": "clinging to bushes",
+            "description": "依附在灌木丛上"
+          },
+          {
+            "label": "clinging",
+            "description": "做主语的补足语用：As no pumas had been reported missing from any zoo in the country, ..."
+          },
+          {
+            "label": "无灵主语(突出句子核心、句首和句尾是最核心位置)",
+            "description": ""
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "hunt for ...",
+            "description": "(出去)找、搜寻",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I'm hunting for a job now.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The hunt for a job will begin tomorrow.",
+                "zhExample": "动词变名词后介词不变"
+              }
+            ]
+          },
+          {
+            "label": "可表名词所有格的介词",
+            "description": "",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "the winter in America",
+                "zhExample": "美国的冬天"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Paris in the spring",
+                "zhExample": "巴黎之春"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "the entrance to the parking lot",
+                "zhExample": "停车场的入口"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "a witness to the accident",
+                "zhExample": "事故的目击者"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "a longing for love",
+                "zhExample": "对爱的渴望"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "the reason for the disaster",
+                "zhExample": "灾难的原因"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "His injury proved (to be) fatal.",
+                "zhExample": "他的伤证明是致命的。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The operation proved (to be) a success.",
+                "zhExample": "手术证明是成功的。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "They were amazed to find that the goddess turned out to be a very modern-looking woman.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The new blog may turn out to be no more than a clever public-relations stunt.",
+                "zhExample": "新的博客可能只不过是一个聪明的公关噱头。"
+              },
+              {
+                "kind": "example",
+                "word": "the winter in America Paris in the spring",
+                "meaning": "",
+                "enExample": "the entrance to the parking lot a witness to the accident",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td>It immediately ran away <strong>when</strong> she saw it,</td>",
+                "meaning": "",
+                "enExample": "and experts confirmed",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "<td style=\"text-align: center;\">",
+                "meaning": "时间状语从句</td>",
+                "enExample": "并列句",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "His injury proved (to be) fatal. The operation proved (to be) a success.",
+                "meaning": "",
+                "enExample": "They were amazed to find that the goddess turned out to be a very modern-looking woman. The new blog may turn out to be no more than a clever public-relations stunt.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "疑问词 + ever",
+            "description": "两种用法",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "引导让步状语从句：no matter + 疑问词 + 从句，表示“无论…”",
+                "zhExample": "No matter where you live, you would find it difficult not to laugh at, say, Charlie Chaplin's early films."
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "用于疑问句中：表示“到底(加强语气)”",
+                "zhExample": "'Whatever are you doing up here Bill?' asked the vicar in surprise."
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Where did you go yesterday?",
+                "zhExample": "你昨天去哪儿了?"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Wherever did you go yesterday?",
+                "zhExample": "你昨天到底去哪儿了?"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "When ever am I going to see you again?",
+                "zhExample": "我到底什么时候才能再见到你?"
+              }
+            ]
+          },
+          {
+            "label": "a trail of",
+            "description": "一串：一连串的物体或事件。",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Wherever he went, he left a trail of unpaid bills behind him.",
+                "zhExample": "无论他走到哪里，总会留下一串未付的账单。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Wherever he went, he left a trail of broken hearts behind him.",
+                "zhExample": "无论他走到哪里，身后都留下了一串破碎的心。"
+              }
+            ]
+          },
+          {
+            "label": "突出重点",
+            "description": "",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "People have paid more and more attention to the condition of the laid-off workers.",
+                "zhExample": "人做主语(分不清重点信息)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Increasing attention has been paid to the condition of the laid-off workers.",
+                "zhExample": "下岗工人的状况已受到越来越多的关注。"
+              }
+            ]
+          },
+          {
+            "label": "fur and feather",
+            "description": "飞禽走兽(单词短的放前面)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "fin, fur and feather",
+                "zhExample": "押首韵(f)"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The crown should not yield to the cross.",
+                "zhExample": "王权不应该屈服神权(押首韵c)"
+              },
+              {
+                "kind": "example",
+                "word": "The chick will soon feather out.",
+                "meaning": "这只小鸡很快就要长羽毛了。",
+                "enExample": "This creature's fur is short, dense and silky.",
+                "zhExample": "这种动物的毛短、浓密且柔顺。"
+              }
+            ]
+          },
+          {
+            "label": "Puma fur was found clinging to bushes.",
+            "description": "非谓语动词做主语补足语",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "As no pumas had been reported missing from any zoo in the country...",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The fire was reported controlled. ↔ It is reported that the fire was controlled. 主语从句（啰嗦）",
+                "zhExample": "更简洁"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Several people complained of 'cat-like noises' at night and a businessman on a fishing trip saw the puma up a tree.",
+        "translation": "",
+        "predicates": [
+          "complained",
+          "saw"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "on a fishing trip",
+            "description": "on a fishing trip 在钓鱼的路上"
+          },
+          {
+            "label": "up a tree",
+            "description": "在树上(宾语补足语)"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "The experts were now fully convinced that the animal was a puma, but where had it come from?",
+        "translation": "",
+        "predicates": [
+          "were",
+          "convinced",
+          "was",
+          "had",
+          "come"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "come from",
+            "description": "来自：指具有特定的起源或来源。"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "As no pumas had been reported missing from any zoo in the country, this one must have been in the possession of a private collector and somehow managed to escape.",
+        "translation": "",
+        "predicates": [
+          "had been reported",
+          "have been",
+          "escape"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [
+          "must",
+          "managed"
+        ],
+        "inlineAnnotations": [
+          {
+            "label": "As",
+            "description": "引导原因状语从句表因为"
+          },
+          {
+            "label": "missing",
+            "description": "非谓语动词做主语的补足语"
+          },
+          {
+            "label": "any zoo in the country",
+            "description": "这个国家的任何一个动物园"
+          },
+          {
+            "label": "the possession of a private collector",
+            "description": "私人收藏家的财产"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "The hunt went on for several weeks, but the puma was not caught.",
+        "translation": "",
+        "predicates": [
+          "went",
+          "was",
+          "caught"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "several weeks",
+            "description": "几周：指不确定的时间段，通常表示大约两到四周的时间。"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": []
+      },
+      {
+        "text": "It is disturbing to think that a dangerous wild animal is still at large in the quiet countryside.",
+        "translation": "",
+        "predicates": [
+          "is disturbing",
+          "is"
+        ],
+        "clauseIntroducers": [],
+        "auxiliaries": [],
+        "inlineAnnotations": [
+          {
+            "label": "It",
+            "description": "形式主语"
+          },
+          {
+            "label": "to think",
+            "description": "真正主语"
+          },
+          {
+            "label": "at large",
+            "description": "结尾“点题”"
+          },
+          {
+            "label": "in the quiet countryside",
+            "description": "在宁静的乡村"
+          }
+        ],
+        "grammarNotes": null,
+        "expansionNotes": [
+          {
+            "label": "on a business / honeymoon trip",
+            "description": "出差/蜜月旅行",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "on a journey / voyage / expedition / tour ...",
+                "zhExample": "在一次旅行/航行/探险(远征)/环游/周游中……"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Jimmy is going on a journey tomorrow.",
+                "zhExample": "吉米明天要去旅行。"
+              },
+              {
+                "kind": "example",
+                "word": "Almost immediately he began to complain about the weather, ...",
+                "meaning": "",
+                "enExample": "She complained that no one had been at the airport to meet her.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "介词遇到that被省略的例外情况",
+            "description": "",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "in that ...",
+                "zhExample": "因为（句中、句末，引导原因状态从句）"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "except / but that ...",
+                "zhExample": "除了/ 但"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "They do not, however, need to be convinced that.",
+                "zhExample": "读者可能不相信这是真的。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "He is convinced that his poem will win the award.",
+                "zhExample": "他深信自己那首诗会得奖。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Thomas, she sensed, could convince anyone of anything.",
+                "zhExample": "她觉得，托马斯能说服任何人相信任何事。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "She or he should be able to convince you of stupid decisions and future consequences.",
+                "zhExample": "她或他应该能够说服你的愚蠢决定和未来的后果。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "You can't have been ill yesterday. I saw you going shopping with your wife.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The girl asked to see a timetable, feeling sure that her father could not have made such a mistake.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "You ought to have done your homework.",
+                "zhExample": "你本应该做作业的。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "You should have finished your work yesterday.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Military advantages should not be given away.",
+                "zhExample": "军事优势不应该丧失。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I shouldn't have shouted at you yesterday.",
+                "zhExample": "自责"
+              },
+              {
+                "kind": "example",
+                "word": "They do not, however, need to be convinced that. He is convinced that his poem will win the award.",
+                "meaning": "",
+                "enExample": "Thomas, she sensed, could convince anyone of anything. She or he should be able to convince you of stupid decisions and future consequences.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "You must have been ill yesterday.You looked so pale.",
+                "meaning": "",
+                "enExample": "She knew that it must be the baker.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "He may have put pressure on her to agree.",
+                "meaning": "",
+                "enExample": "They may be shredding documents.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "You can't have been ill yesterday. I saw you going shopping with your wife. The girl asked to see a timetable, feeling sure that her father could not have made such a mistake.",
+                "meaning": "",
+                "enExample": "He can’t be studying now.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "You ought to have done your homework. You should have finished your work yesterday.",
+                "meaning": "",
+                "enExample": "Military advantages should not be given away. I shouldn't have shouted at you yesterday.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "manage to do",
+            "description": "设法完成了某事（强调结果）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Our vicar is always raising money for one cause or another, but he has never managed to get enough money to have the church clock repaired.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Though he managed to take a number of brilliant photographs, he could not stay near the volcano for very long.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The pilot managed to circle the balloon for some time.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "A few hours earlier, someone had told the police that thieves would try to steal the diamonds.",
+                "zhExample": "强调去做(与manage to导向不同)"
+              }
+            ]
+          },
+          {
+            "label": "fail to do",
+            "description": "没能完成某事(努力过了)",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "When the journalist again failed to reply, the editor reluctantly published the article as it had originally been written.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Once, however, it failed to give the correct time.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "Those who failed to get in need not have felt disappointed, as many of the artistes who should have appeared did not come.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The land is in the possession of the merchant.",
+                "zhExample": "这块地为该商人所有。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "My house is in the possession of an old lady now.",
+                "zhExample": "我的那所房子已归一位老太太所有。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The house is in his possession.",
+                "zhExample": "那楝房子为他所有。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The book is in my possession.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "The gang was caught in possession of stolen goods.",
+                "zhExample": "这伙人被逮住，人赃俱获。"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "I'm in possession of the book.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "The land is in the possession of the merchant. My house is in the possession of an old lady now.",
+                "meaning": "",
+                "enExample": "The house is in his possession. The book is in my possession.",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "Our class was in the charge of Miss Wang.",
+                "meaning": "我们班级由王老师负责管理。",
+                "enExample": "The bookstore is in my charge.",
+                "zhExample": ""
+              }
+            ]
+          },
+          {
+            "label": "It is ... to think that ...",
+            "description": "一想到某事就让人...（动词+ing 当形容词表事物的特征）",
+            "examples": [
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is worrying to think that ...",
+                "zhExample": "不安、担忧"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is exciting to think that ...",
+                "zhExample": "兴奋、激动"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is comforting to think that...",
+                "zhExample": "安慰、欣慰"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is amusing to think that ...",
+                "zhExample": "有趣、好笑"
+              },
+              {
+                "kind": "example",
+                "word": "",
+                "meaning": "",
+                "enExample": "It is irritating to think that ...",
+                "zhExample": "烦人、恼火"
+              },
+              {
+                "kind": "example",
+                "word": "It",
+                "meaning": "",
+                "enExample": "is disturbing",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "形式主语",
+                "meaning": "",
+                "enExample": "宁人不安的",
+                "zhExample": ""
+              },
+              {
+                "kind": "example",
+                "word": "系+表",
+                "meaning": "",
+                "enExample": "主语从句(逻辑主语)",
+                "zhExample": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ]
+}

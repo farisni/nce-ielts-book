@@ -87,8 +87,8 @@ export function renderHighlightedText(
   }
 
   // If nothing to highlight, return plain text
-  if (disableHighlights && filteredGrammar.length === 0) return text;
-  if (relevantHighlights.length === 0 && filteredGrammar.length === 0) return text;
+  if (disableHighlights && filteredGrammar.length === 0 && rubyRanges.length === 0) return text;
+  if (relevantHighlights.length === 0 && filteredGrammar.length === 0 && rubyRanges.length === 0) return text;
 
   // Merge user highlights and grammar matches, splitting text into segments
   interface Segment { start: number; end: number; color?: string; isUser?: boolean }
@@ -225,4 +225,3 @@ type ArticlePageProps = {
 
 const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
 const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
-
