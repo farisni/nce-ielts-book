@@ -445,6 +445,7 @@
   font-size: 0.85rem;
   font-weight: 400;
   color: #37352f;
+  background: #eaf1eb;
   border-radius: 6px;
   margin-right: 0;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "LXGW WenKai Screen", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -456,22 +457,12 @@
 }
 .section-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 20px; padding-top: 28px; }
 
-.note-item:nth-child(7n+1) .note-label { background: #ede8e3; }
-.note-item:nth-child(7n+2) .note-label { background: #e3e8ed; }
-.note-item:nth-child(7n+3) .note-label { background: #e8ede3; }
-.note-item:nth-child(7n+4) .note-label { background: #ede3e8; }
-.note-item:nth-child(7n+5) .note-label { background: #e8e3ed; }
-.note-item:nth-child(7n+6) .note-label { background: var(--tone-6); }
-.note-item:nth-child(7n+0) .note-label { background: var(--tone-7); }
-
 .dark .note-index { color: #888; }
-.dark .note-label { color: #e0e0e0; }
+.dark .note-label {
+  color: #e0e0e0;
+  background: rgba(63, 81, 70, 0.28);
+}
 .dark .note-body { color: #aaa; }
-.dark .note-item:nth-child(7n+1) .note-label { background: rgba(237, 232, 227, 0.18); }
-.dark .note-item:nth-child(7n+2) .note-label { background: rgba(227, 232, 237, 0.18); }
-.dark .note-item:nth-child(7n+3) .note-label { background: rgba(232, 237, 227, 0.18); }
-.dark .note-item:nth-child(7n+4) .note-label { background: rgba(237, 227, 232, 0.18); }
-.dark .note-item:nth-child(7n+5) .note-label { background: rgba(232, 227, 237, 0.18); }
 
 /* === MDX markdown table styles === */
 .prose table {

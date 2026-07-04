@@ -6,7 +6,7 @@ import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
 import { getParagraphs } from "@/app/mock";
 
-const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
+const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
 const anchorBg = "#f7f4f0";  // 句子描点统一色
 const stickyHeaderHeight = 56;
 
@@ -242,7 +242,7 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
     return [
       "relative mb-2 py-1 transition-colors duration-500 ease-out",
       "before:pointer-events-none before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:origin-center before:scale-y-0 before:bg-[#80b0eb] before:transition-transform before:duration-500 before:ease-out",
-      isHighlighted ? "bg-[#e8f1ff]/25 before:scale-y-100" : "",
+      isHighlighted ? "before:scale-y-100" : "",
     ].filter(Boolean).join(" ");
   };
 
@@ -287,7 +287,10 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
                       <div key={ni} className="text-sm">
                         <div className="flex items-start gap-1.5">
                           <span>
-                            <span className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}>
+                            <span
+                              className="shrink-0 inline-flex items-center rounded px-1.5 py-0.5 text-sm font-semibold text-foreground/80"
+                              style={{ background: pillBg[ni % pillBg.length] }}
+                            >
                               {note.label}
                             </span>
                             {note.description && (

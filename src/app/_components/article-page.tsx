@@ -348,7 +348,7 @@ type ArticlePageProps = {
 };
 
 const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
-const pillBg = ["#ede8e3", "#e3e8ed", "#e8ede3", "#ede3e8", "#e8e3ed"];
+const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
 
 function renderTitleWithDropCap(title: string) {
   const firstLetterIndex = title.search(/[A-Za-z]/);
@@ -964,7 +964,7 @@ function ArticleReader({ article }: { article: Article }) {
                             return (
                               <React.Fragment key={key}>
                                 <span data-sentence-key={key} data-block-id={blockId} className="sentence-inline">
-                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : isButtonActive ? "bg-[#e8f1ff] dark:bg-[#1a2744] rounded-sm px-0.5 py-0.5 -mx-0.5 -my-0.5" : ""}>
+                                  <span className={isActive ? "relative z-[52] bg-white/90 rounded-md px-1.5 py-0.5 -mx-1.5" : ""}>
                                     {renderHighlightedText(sentence.text, sentenceOffsets[index]?.[sIdx] ?? 0, highlights, highlightsHidden, isRouteChange || highlightAnimateRef.current, sentence.predicates, sentence.auxiliaries, sentence.clauseIntroducers, showGrammar, sentence.inlineAnnotations)}
                                   </span>
                                   {hasPanelNotes && (
@@ -997,7 +997,7 @@ function ArticleReader({ article }: { article: Article }) {
                                       key={key}
                                       data-selection-offset-excluded="true"
                                       className="rounded-lg px-4 py-3 relative z-[52] [text-indent:0] font-sans"
-                                      style={{ background: "#f2f7f2" }}
+                                      style={{ background: "#f6f7f8" }}
                                       initial={{ opacity: 0, y: -4 }}
                                       animate={{ opacity: 1, y: 0 }}
                                       exit={{ opacity: 0, y: -4 }}
@@ -1007,7 +1007,9 @@ function ArticleReader({ article }: { article: Article }) {
                                         {(sentence.expansionNotes!).map((note, ni) => (
                                           <div key={ni}>
                                             <div className="flex items-start gap-3">
-                                              <span className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80" style={{ background: pillBg[ni % pillBg.length] }}
+                                              <span
+                                                className="shrink-0 flex items-center rounded px-2 py-0.5 text-sm font-semibold text-foreground/80"
+                                                style={{ background: pillBg[ni % pillBg.length] }}
                                               >
                                                 {note.label.trim()}
                                               </span>
