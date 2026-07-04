@@ -67,3 +67,23 @@ python3 .github/skills/nce-scraper/scripts/validate_notes.py --summary # 汇总
 - 只更新 `src/app/mock/data/`（annotations），绝不碰 nce4.ts
 - translation 永远保留，不会被覆盖
 - 合并后**必须运行 validate_notes.py** 验证
+
+## 例句显式高亮
+
+笔记面板例句高亮默认会先用 `note.label` 做正则匹配；如果 label 表达的是语法结构、同义替换或非连续搭配，例句里常常不会出现完整 label。遇到这种情况，需要在对应 `examples` 条目上补充人工字段：
+
+```json
+{
+  "enExample": "It's hard to tell the identical twins apart.",
+  "zhExample": "很难分辨这对双胞胎。",
+  "highlightTerms": ["tell", "apart"]
+}
+```
+
+处理规则：
+
+- `highlightTerms?: string[]` 只放例句中真实出现、需要额外高亮的英文片段。
+- 保留 `label` 的完整表达，不要为了高亮把 label 改短或拆碎。
+- 优先根据 label 语义补充字段，例如 `tell sb. / sth. apart` 可标 `["tell", "apart"]`，`be busy (in) doing sth.` 可标 `["busy eating"]`。
+- 如果 label 能直接匹配例句，可以不加 `highlightTerms`。
+- 如果例句只是语义相关、没有稳定可高亮的英文片段，放弃高亮，不要硬塞字段。
