@@ -86,7 +86,7 @@ rg -n "registerOriginals|nce3-l2|nce4-l2" src/app/mock
 
 1. 以页面原有正文/参考译文为 base，恢复 `src/app/mock/data/nceX-lXX.json` 的 `paragraphs` 结构。
 2. 把抓取来的 `predicates`、`inlineAnnotations`、`expansionNotes` 合并到对应句子。
-3. 确认 JSON 已经包含完整 `text` 和 `translation` 后，再移除同一 lesson 的旧 `registerOriginals` 覆盖项。
+3. 确认 JSON 已经包含完整 `text` 和 `translation` 后，再移除同一 lesson 的旧 `registerOriginals` 覆盖项（**只移除该项，不要删整个 registerOriginals 块**——其他没有独立 JSON 的 lesson 还依赖它）。
 4. 刷新页面验证：句子数、参考译文、正文 tooltip 标注、句末三点和笔记面板都要同时存在。
 
 ## 例句显式高亮
