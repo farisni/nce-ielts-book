@@ -19,6 +19,13 @@ export function getParagraphs(article: { originalId: string; original?: { paragr
   return base.map((para, pi) =>
     para.map((sent, si) => {
       const note = notes[pi]?.[si] as unknown as Record<string, unknown> | undefined;
+      const hasAnnotations = note && (
+        ((note.predicates as string[])?.length ?? 0) > 0 ||
+        ((note.clauseIntroducers as string[])?.length ?? 0) > 0 ||
+        ((note.auxiliaries as string[])?.length ?? 0) > 0 ||
+        ((note.inlineAnnotations as SentenceData["inlineAnnotations"])?.length ?? 0) > 0 ||
+        ((note.expansionNotes as SentenceData["expansionNotes"])?.length ?? 0) > 0
+      );
       return {
         text: sent.text,
         translation: sent.translation,
