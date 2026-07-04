@@ -1158,7 +1158,7 @@ function ArticleReader({ article }: { article: Article }) {
             </ContextMenu>
           </section>
 
-          <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-[10px]">
+          <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-28">
             <div className="flex min-w-0 max-w-full gap-5 overflow-hidden text-sm font-medium border-b border-transparent pb-1 mt-4">
               <button
                 type="button"
