@@ -5,7 +5,7 @@ import path from "path";
 
 function TedIcon() {
   const svg = readFileSync(
-    path.join(process.cwd(), "asset/ted.svg"),
+    path.join(process.cwd(), "public/asset/ted.svg"),
     "utf8",
   );
   return (

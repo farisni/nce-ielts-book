@@ -29,7 +29,7 @@ def parse_html(html):
     title_full = title_tag.text.strip() if title_tag else ''
     m = re.match(r'Lesson (\d+)\s+(.+?)\s+(.+?)\s', title_full)
     metadata = {
-        'book': '新概念英语第四册',
+        'book': '新概念英语',
         'lesson_no': int(m.group(1)) if m else 1,
         'title_en': m.group(2).strip() if m else '',
         'title_cn': m.group(3).strip() if m else '',
@@ -205,7 +205,7 @@ def detail_to_panel(d):
 def anno_to_inline(a):
     return f'{{ label: "{esc(a["text"])}", description: "{esc(a["tip"])}" }}'
 
-def generate_article(data):
+def generate_article(data, level_prefix):
     secs = data['content']['sections']
     
     pending_idx = 0
@@ -271,19 +271,20 @@ def generate_article(data):
     
     m = data['metadata']
     ln = m['lesson_no']
+
     en = esc(m['title_en'])
     cn = esc(m['title_cn'])
     
     nl = '\n'
     # --- Article stub (paste into nce4.ts) ---
-    article_stub = f'''const articleNce4L{ln}: Article = {{
+    article_stub = f'''const articleNce{level_prefix[-1].upper()}L{ln}: Article = {{
 
-  id: "nce4-l{ln}",
+  id: "{level_prefix.lower()}",
   lesson: {ln},
   tag: "C{ln}",
   title: "{en}",
   titleCn: "{cn}",
-  level: "NCE4",
+  level: level,
   keyArticle: true,
   heatmap: [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -300,7 +301,7 @@ def generate_article(data):
     
 
     article_stub += f'''
-  originalId: "nce4-l{ln}",
+  originalId: "{level_prefix.lower()}",
 
   vocabulary: [
     {", ".join(vocab)}
@@ -311,7 +312,7 @@ def generate_article(data):
     # --- registerOriginals entry (paste into article-notes.ts) ---
     reg_paragraphs = ',\n'.join(sentences)
     reg_entry = f'''registerOriginals({{
-  "nce4-l{ln}": {{
+  "{level_prefix.lower()}": {{
     paragraphs: [
       [
 {reg_paragraphs}
@@ -329,7 +330,7 @@ def generate_article(data):
 /*  - annotations / expansionNotes 仅作参考                           */
 /* ================================================================ */
 
-/* === nce4.ts === */
+/* === Article data === */
 {article_stub}
 
 /* === article-notes.ts === */
@@ -384,8 +385,27 @@ def main():
             print(f"  [{i}] {s['sentence'][:55]} | pred={s['predicates']} | {dt}")
         return
     
-    ts = generate_article(data)
-    outname = f'nce4-l{data["metadata"]["lesson_no"]}.ts'
+    # Match by title against known articles
+    import glob as _glob
+    scraped_title = data['metadata']['title_en'].strip()
+    level_prefix = None
+    for fname in _glob.glob('src/app/mock/nce?.ts'):
+        with open(fname) as _f:
+            _c = _f.read()
+        for _id, _t in __import__('re').findall(r'id:\s*"(nce\d+-l\d+)".*?\btitle:\s*"([^"]+)"', _c, __import__('re').DOTALL):
+            if _t.lower().strip() == scraped_title.lower():
+                level_prefix = _id
+                break
+        if level_prefix:
+            break
+    if not level_prefix:
+        level_prefix = 'unknown'
+        print(f'WARNING: title "{scraped_title}" not found in local articles, using unknown')
+    else:
+        print(f'Matched: {level_prefix} = "{_t}"')
+    
+    ts = generate_article(data, level_prefix)  # will be overridden below
+    outname = f'out-{data["metadata"]["lesson_no"]}.ts'
     with open(outname, 'w', encoding='utf-8') as f:
         f.write(ts)
     print(f'\nDone: {outname}  sentences:{ts.count("text:")}  pendingNotes:{"yes" if "pendingNotes" in ts else "no"}  vocab:{len(data["content"]["vocabulary"])}')

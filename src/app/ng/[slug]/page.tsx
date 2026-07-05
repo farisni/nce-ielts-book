@@ -5,7 +5,7 @@ import path from "path";
 
 function NgIcon() {
   const svg = readFileSync(
-    path.join(process.cwd(), "asset/national-geographic-logo.svg"),
+    path.join(process.cwd(), "public/asset/national-geographic-logo.svg"),
     "utf8",
   );
   return (
