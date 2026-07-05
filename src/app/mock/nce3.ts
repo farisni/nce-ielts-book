@@ -15,7 +15,7 @@ const articleNce3L1: Article = {
       [0,0,0,0,0,0,0,0,0],
     ],
 
-  illustration: "asset/nce3/nce3-l1.png",
+  illustration: "asset/nce3/nce3-l1.jpg",
     originalId: "nce3-l1",
 
   original: {

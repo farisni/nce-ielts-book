@@ -4,7 +4,7 @@ description: >
   Scrape NCE lesson data from ncego.com and safely merge annotations into article-notes.ts.
   Use when the user wants to scrape a lesson, update article annotations/notes from ncego.com,
   or merge scraped annotation data. Triggers on "爬取", "scrape ncego",
-  "更新课文数据", "merge paragraphs", "nce4-l" URLs, or when working with scripts/scrape_ncego.py.
+  "更新课文数据", "merge paragraphs", "nce4-l" URLs, or when working with .github/skills/nce-scraper/scripts/scrape_ncego.py.
 ---
 
 # NCE Scraper
@@ -39,7 +39,7 @@ getParagraphs():
 ### Step 1: 抓取
 
 ```bash
-python3 scripts/scrape_ncego.py <URL>
+python3 .github/skills/nce-scraper/.github/skills/nce-scraper/scripts/scrape_ncego.py <URL>
 ```
 
 输出 `nce4-lXX.ts`（临时文件），包含抓取的 annotations 数据。
