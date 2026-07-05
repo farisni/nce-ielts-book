@@ -42,7 +42,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { allArticles, getArticleList, getParagraphs, ARTICLE_BASES, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
+import { allArticles, getArticleList, mergeArticleData, ARTICLE_BASES, nce2List, nce3List, nce4List, ieltsList, type Article, type ArticleListItem, type GrammarRelatedExample, type SentenceData } from "@/app/mock";
 import { grammarRelatedExamples } from "@/app/mock/ielts";
 import {
   Collapsible,
@@ -210,13 +210,13 @@ function buildParagraphStarts(paragraphs: string[]) {
 }
 
 function getArticleParagraphs(article: Article) {
-  return getParagraphs(article).map((paragraph) =>
+  return mergeArticleData(article).map((paragraph) =>
     paragraph.map((sentence) => sentence.text).join(" "),
   );
 }
 
 function getArticleParagraphTranslations(article: Article) {
-  return getParagraphs(article)
+  return mergeArticleData(article)
     .map((paragraph) =>
       paragraph
         .map((sentence) => sentence.translation)
@@ -226,7 +226,7 @@ function getArticleParagraphTranslations(article: Article) {
 }
 
 function getArticleSentences(article: Article) {
-  return getParagraphs(article);
+  return mergeArticleData(article);
 }
 
 function getRelatedExamplesForGrammar(noteBody: string) {
@@ -242,7 +242,7 @@ function getRelatedExamplesForGrammar(noteBody: string) {
 }
 
 function getGrammarSummaryGroups(article: Article): GrammarSummaryGroup[] {
-  return getParagraphs(article)
+  return mergeArticleData(article)
     .map((paragraph, paragraphIndex) => ({
       key: `${article.id}-grammar-${paragraphIndex}`,
       paragraphIndex,
@@ -506,19 +506,19 @@ function ArticleReader({ article }: { article: Article }) {
 
   const sentenceCount = useMemo(() => {
     let count = 0;
-    for (const p of getParagraphs(article)) count += p.length;
+    for (const p of mergeArticleData(article)) count += p.length;
     return count;
-  }, [getParagraphs(article)]);
+  }, [mergeArticleData(article)]);
 
   const readingTime = useMemo(() => {
     let words = 0;
-    for (const p of getParagraphs(article)) {
+    for (const p of mergeArticleData(article)) {
       for (const s of p) {
         words += s.text.split(/\s+/).filter(Boolean).length;
       }
     }
     return Math.max(1, Math.ceil(words / 200)); // 200 wpm
-  }, [getParagraphs(article)]);
+  }, [mergeArticleData(article)]);
 
   const {
     audioRef,
@@ -536,13 +536,13 @@ function ArticleReader({ article }: { article: Article }) {
   const allSentenceKeys = useMemo(() => {
     const keys: string[] = [];
     for (let pi = 0; pi < articleParagraphs.length; pi++) {
-      const sentences = getParagraphs(article)[pi] ?? [];
+      const sentences = mergeArticleData(article)[pi] ?? [];
       for (let si = 0; si < sentences.length; si++) {
         keys.push(`${article.id}-p${pi}-s${si}`);
       }
     }
     return keys;
-  }, [article.id, getParagraphs(article), articleParagraphs]);
+  }, [article.id, mergeArticleData(article), articleParagraphs]);
 
   // Sync article to reader store for notebook panel
   useEffect(() => {
@@ -562,13 +562,13 @@ function ArticleReader({ article }: { article: Article }) {
       if (!parts) continue;
       const pi = parseInt(parts[0]);
       const si = parseInt(parts[1]);
-      const sentence = getParagraphs(article)[pi]?.[si];
+      const sentence = mergeArticleData(article)[pi]?.[si];
       if (!sentence) continue;
       const sText = sentence.text.toLowerCase().replace(/[^a-z0-9]/g, '');
       if (sText.includes(lrcText) || lrcText.includes(sText)) return key;
     }
     return null;
-  }, [isNce4, activeSentenceIndex, lrcLines, allSentenceKeys, getParagraphs(article)]);
+  }, [isNce4, activeSentenceIndex, lrcLines, allSentenceKeys, mergeArticleData(article)]);
 
   /* auto-scroll to audio-active sentence */
   const prevAudioKeyRef = useRef<string | null>(null);

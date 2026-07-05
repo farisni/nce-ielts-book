@@ -3405,9 +3405,9 @@ export const articlesNce2: Record<string, Article> = {
 
 
 // --- Article original content (paragraphs) ---
-import { registerOriginals } from "./article-notes";
+import { registerArticleBases } from "./article-notes";
 
-registerOriginals({
+registerArticleBases({
   "nce2-l1": {
     paragraphs: [
       [

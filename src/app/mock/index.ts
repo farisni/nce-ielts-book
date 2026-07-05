@@ -4,8 +4,8 @@ import { articlesNce3 } from "./nce3";
 import { articlesNce4 } from "./nce4";
 
 export type { Article, ArticleOriginalContent, VocabItem, SentenceNote, SentenceData, GrammarRelatedExample } from "./types";
-import { ARTICLE_BASES, getParagraphs } from "./article-notes";
-export { ARTICLE_BASES, getParagraphs };
+import { ARTICLE_BASES, mergeArticleData } from "./article-notes";
+export { ARTICLE_BASES, mergeArticleData };
 export { articlesIelts } from "./ielts";
 export { articlesNce2 } from "./nce2";
 export { articlesNce3 } from "./nce3";
@@ -40,7 +40,7 @@ export function getArticleList(articles: Record<string, { id: string; title: str
       titleCn: article.titleCn,
       level: article.level,
       lesson: article.lesson,
-      paragraphCount: getParagraphs(article).length,
+      paragraphCount: mergeArticleData(article).length,
       vocabularyCount: article.vocabulary.length,
       keyArticle: article.keyArticle,
       illustration: article.illustration,

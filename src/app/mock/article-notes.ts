@@ -4,7 +4,7 @@ import nceArticleAnnotations from "./data";
 export const ARTICLE_BASES: Record<string, ArticleOriginalContent> = {};
 export const ARTICLE_ANNOTATIONS: Record<string, ArticleOriginalContent> = {};
 
-export function registerOriginals(
+export function registerArticleBases(
   entries: Record<string, ArticleOriginalContent>
 ): Record<string, ArticleOriginalContent> {
   Object.assign(ARTICLE_BASES, entries);
@@ -22,7 +22,7 @@ export function registerAnnotations(
 // Auto-register all NCE article annotations from JSON
 registerAnnotations(nceArticleAnnotations);
 
-export function getParagraphs(article: { originalId: string; original?: { paragraphs: { text: string; translation: string }[][] } }): ArticleOriginalContent["paragraphs"] {
+export function mergeArticleData(article: { originalId: string; original?: { paragraphs: { text: string; translation: string }[][] } }): ArticleOriginalContent["paragraphs"] {
   const base = article.original?.paragraphs ?? ARTICLE_BASES[article.originalId]?.paragraphs ?? ARTICLE_ANNOTATIONS[article.originalId]?.paragraphs ?? [];
   const notes = ARTICLE_ANNOTATIONS[article.originalId]?.paragraphs ?? [];
   return base.map((para, pi) =>

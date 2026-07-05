@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { Highlighter, MessageSquareText } from "lucide-react";
 import { useReaderStore } from "@/stores/reader-store";
 import type { Article } from "@/app/mock";
-import { getParagraphs } from "@/app/mock";
+import { mergeArticleData } from "@/app/mock";
 import { highlightNoteText } from "@/lib/highlight-note-text";
 
 const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
@@ -182,8 +182,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
 
   // Collect all expansionNotes
   const expansionEntries: ExpansionEntry[] = [];
-  for (let pi = 0; pi < getParagraphs(article).length; pi++) {
-    const paragraph = getParagraphs(article)[pi];
+  for (let pi = 0; pi < mergeArticleData(article).length; pi++) {
+    const paragraph = mergeArticleData(article)[pi];
     for (let si = 0; si < paragraph.length; si++) {
       const sentence = paragraph[si];
       const blockId = `${pi}-${si}`;
@@ -202,8 +202,8 @@ export function NotebookTab({ article, onScrollToBlock }: Props) {
   // Also collect custom notes
   const noteEntries = Object.entries(notesByBlockId).map(([blockId, note]) => {
     let sentenceText = "";
-    for (let pi = 0; pi < getParagraphs(article).length; pi++) {
-      const paragraph = getParagraphs(article)[pi];
+    for (let pi = 0; pi < mergeArticleData(article).length; pi++) {
+      const paragraph = mergeArticleData(article)[pi];
       for (let si = 0; si < paragraph.length; si++) {
         if (`${pi}-${si}` === blockId) {
           sentenceText = paragraph[si].text;

@@ -83,7 +83,7 @@ function buildArticle(
 function assignPredicates(article: Article, predicates: string[][][]) {
   predicates.forEach((paragraph, paragraphIndex) => {
     paragraph.forEach((sentencePredicates, sentenceIndex) => {
-      const sentence = getParagraphs(article)[paragraphIndex]?.[sentenceIndex]
+      const sentence = mergeArticleData(article)[paragraphIndex]?.[sentenceIndex]
       if (sentence) sentence.predicates = sentencePredicates
     })
   })
@@ -250,7 +250,7 @@ const polarBearsVocabulary: VocabItem[] = [
 ]
 
 const polarBearsArticle = buildArticle('ielts-1', 'Why we need to protect polar bears', '为什么我们需要保护北极熊', 1, polarBearsParagraphs, polarBearsVocabulary, polarBearsParagraphTranslations)
-registerOriginals({ [polarBearsArticle.originalId]: { paragraphs: polarBearsParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, polarBearsParagraphTranslations[index] ?? [])) } })
+registerArticleBases({ [polarBearsArticle.originalId]: { paragraphs: polarBearsParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, polarBearsParagraphTranslations[index] ?? [])) } })
 
 const futureOfWorkVocabulary: VocabItem[] = [
   { word: 'workforce', pos: 'n.', meaning: '劳动力', phonetic: '/ˈwɜːkfɔːs/' },
@@ -274,7 +274,7 @@ const futureOfWorkVocabulary: VocabItem[] = [
 ]
 
 const futureOfWorkArticle = buildArticle('ielts-3', 'The future of work', '未来的工作', 3, futureOfWorkParagraphs, futureOfWorkVocabulary, futureOfWorkParagraphTranslations)
-registerOriginals({ [futureOfWorkArticle.originalId]: { paragraphs: futureOfWorkParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, futureOfWorkParagraphTranslations[index] ?? [])) } })
+registerArticleBases({ [futureOfWorkArticle.originalId]: { paragraphs: futureOfWorkParagraphs.map((paragraph, index) => buildSentenceItems(paragraph, futureOfWorkParagraphTranslations[index] ?? [])) } })
 assignPredicates(polarBearsArticle, [
   [
     ['are being threatened', 'could have'],
@@ -395,25 +395,25 @@ assignPredicates(futureOfWorkArticle, [
     ['are', 'pre-empt', 'guarantee'],
   ],
 ])
-getParagraphs(futureOfWorkArticle)[0][0].grammarNotes = [
+mergeArticleData(futureOfWorkArticle)[0][0].grammarNotes = [
   { label: 'as their occupations evolve alongside increasingly capable machines', description: 'as 引导伴随状语。' },
 ]
-getParagraphs(futureOfWorkArticle)[0][2].inlineAnnotations = [
+mergeArticleData(futureOfWorkArticle)[0][2].inlineAnnotations = [
   { label: 'Disembodied', description: '非实体化的' },
 ]
-getParagraphs(futureOfWorkArticle)[1][0].grammarNotes = [
+mergeArticleData(futureOfWorkArticle)[1][0].grammarNotes = [
   { label: 'as a result of the algorithmication of jobs', description: 'as 引导原因状语。' },
 ]
-getParagraphs(futureOfWorkArticle)[1][1].grammarNotes = [
+mergeArticleData(futureOfWorkArticle)[1][1].grammarNotes = [
   { label: 'to undertake tasks', description: 'to do 目的状语，去承担任务。' },
 ]
-getParagraphs(futureOfWorkArticle)[2][0].inlineAnnotations = [
+mergeArticleData(futureOfWorkArticle)[2][0].inlineAnnotations = [
   { label: 'outperform', description: '胜过' },
 ]
-getParagraphs(futureOfWorkArticle)[2][3].inlineAnnotations = [
+mergeArticleData(futureOfWorkArticle)[2][3].inlineAnnotations = [
   { label: 'cognitive', description: '认知的' },
 ]
-getParagraphs(futureOfWorkArticle)[2][4].inlineAnnotations = [
+mergeArticleData(futureOfWorkArticle)[2][4].inlineAnnotations = [
   { label: 'legitimate', description: '合法的' },
   { label: 'peripheral', description: '外围的' },
   { label: 'participation', description: '参与' },
@@ -431,6 +431,6 @@ export const articleIeltsList = Object.values(articlesIelts).map((article) => ({
   titleCn: article.titleCn,
   level: article.level,
   lesson: article.lesson,
-  paragraphCount: getParagraphs(article).length,
+  paragraphCount: mergeArticleData(article).length,
   vocabularyCount: article.vocabulary.length,
 }))

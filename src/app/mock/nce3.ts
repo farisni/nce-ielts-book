@@ -139,6 +139,28 @@ const articleNce3L4: Article = {
 
     originalId: "nce3-l4",
 
+  original: {
+    paragraphs: [
+      [
+        { text: "These days, people who do manual work often receive far more money than people who work in offices.", translation: "如今，从事体力劳动的人的收入一般要比坐办公室的人高出许多。" },
+        { text: "People who work in offices are frequently referred to as 'white-collar workers' for the simple reason that they usually wear a collar and tie to go to work.", translation: "坐办公室的人常常被称为「白领工人」。原因很简单，他们通常是穿着硬领白衬衫、系着领带去上班的。" },
+        { text: "Such is human nature, that a great many people are often willing to sacrifice higher pay for the privilege of becoming white-collar workers.", translation: "这是人之常情，很多人愿意牺牲高收入来换取成为白领工人的殊荣。" },
+        { text: "This can give rise to curious situations, as it did in the case of Alfred Bloggs who worked as a dustman for the Ellesmere Corporation.", translation: "这常常会引起种种怪异的现象，埃尔斯米尔公司清洁工艾尔弗雷德·布洛格斯就是一个例子。" },
+      ],
+      [
+        { text: "When he got married, Alf was too embarrassed to say anything to his wife about his job.", translation: "艾尔弗结婚时，感到非常难为情，因此没向妻子说自己的工作。" },
+        { text: "Every morning, he left home dressed in a smart black suit.", translation: "每天早上，他穿上一身漂亮的黑色西装出门。" },
+        { text: "He then changed into overalls and spent the next eight hours as a dustman.", translation: "然后换上工作服，当8个小时清洁工。" },
+        { text: "Before returning home at night, he took a shower and changed back into his suit.", translation: "晚上回家前，他洗个淋浴，重新换上西装。" },
+        { text: "Alf did this for over two years and his fellow dustmen kept his secret.", translation: "艾尔弗一直这样过了两年多，他的同事也为他保守秘密。" },
+        { text: "Alf's wife has never discovered that she married a dustman and she never will, for Alf has just found another job.", translation: "艾尔弗的妻子一直不知道她嫁给了一个清洁工，而且她永远也不会知道了，因为艾尔弗已找到新工作。" },
+        { text: "He will soon be working in an office.", translation: "他不久就要坐办公室里工作了。" },
+        { text: "He will be earning only half as much as he used to, but he feels that his rise in status is well worth the loss of money.", translation: "他将来挣的钱只有他现在的一半，不过他觉得，地位升高了，损失点钱也值得。" },
+        { text: "From now on, he will wear a suit all day and others will call him 'Mr. Bloggs', not 'Alf'.", translation: "从此，艾尔弗可以一天到晚穿西服了。别人将称呼他为「布洛格斯先生」，而不再叫他「艾尔弗」了。" },
+      ]
+    ],
+  },
+
   vocabulary: [
     { word: "manual", pos: "adj.", meaning: "体力的", phonetic: "/'mænjuəl/" },
     { word: "collar", pos: "n.", meaning: "衣领", phonetic: "/'kɔlə/" },
@@ -2338,9 +2360,9 @@ export const articlesNce3: Record<string, Article> = {
 
 
 // --- Article original content (paragraphs) ---
-import { registerOriginals } from "./article-notes";
+import { registerArticleBases } from "./article-notes";
 
-registerOriginals({
+registerArticleBases({
   "nce3-l2": {
     paragraphs: [
       [

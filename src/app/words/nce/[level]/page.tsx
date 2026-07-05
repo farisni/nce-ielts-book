@@ -22,7 +22,7 @@ import { RootAffixSections } from "@/app/_components/md-root-affix-sections";
 import { RoughHighlight } from "@/components/rough-annotate";
 import { InputGroup, InputField } from "@/components/ui/input-group";
 
-import { articlesNce2, articlesNce3, articlesNce4, getParagraphs, type VocabItem, type Article } from "@/app/mock";
+import { articlesNce2, articlesNce3, articlesNce4, mergeArticleData, type VocabItem, type Article } from "@/app/mock";
 
 
 const LEVEL_DATA: Record<string, { articles: Record<string, Article>; api: string; label: string }> = {
@@ -60,7 +60,7 @@ function getTermParts(word: string) {
 function getSourceSentences(article: Article, word: string) {
   const terms = getTermParts(word).map(normalizeText);
   if (!terms.length) return [];
-  return getParagraphs(article)
+  return mergeArticleData(article)
     .flat()
     .filter((s) => terms.some((t) => normalizeText(s.text).includes(t)))
     .map(({ text, translation }) => ({ text, translation }));
