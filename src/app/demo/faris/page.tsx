@@ -214,11 +214,11 @@ export default function FarisPage() {
       </KnowledgePoint>
 
       <SentenceQuote>
-        When reports came into London Zoo{" "}
-        <a href="https://www.ncego.com/tags/114" className="text-blue-600 underline">that</a>{" "}
-        a wild puma had been spotted forty-five miles{" "}
+        <span style={{ color: "#8C8BF4" }}>When reports came into London Zoo</span>{" "}
+        <a href="https://www.ncego.com/tags/114" style={{ color: "#FE8A98", fontWeight: 600 }}>that</a>{" "}
+        <span style={{ color: "#B1DAED" }}>a wild puma had been spotted forty-five miles{" "}
         <a href="https://www.ncego.com/lessons/141#article" className="text-blue-600 underline">south of</a>{" "}
-        London, they were not taken seriously.
+        London, they were not taken seriously.</span>
       </SentenceQuote>
 
       <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
