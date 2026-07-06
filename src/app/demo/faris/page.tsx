@@ -215,7 +215,7 @@ export default function FarisPage() {
 
       <SentenceQuote>
         <span style={{ color: "#8C8BF4" }}>When reports came into London Zoo</span>{" "}
-        <a href="https://www.ncego.com/tags/114" style={{ color: "#FE8A98", fontWeight: 600 }}>that</a>{" "}
+        <span style={{ color: "#FE8A98", fontWeight: 600 }}>that</span>{" "}
         <span style={{ color: "#B1DAED" }}>a wild puma had been spotted forty-five miles{" "}
         south of{" "}
         London, they were not taken seriously.</span>
