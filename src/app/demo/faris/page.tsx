@@ -38,7 +38,7 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base">Pumas are large, cat-like animals which are found in America.</blockquote>
+      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">Pumas are large, cat-like animals which are found in America.</blockquote>
       <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
 <ul className="space-y-1.5 mb-6">
               <li className="flex items-center gap-1.5">
@@ -66,7 +66,7 @@ export default function FarisPage() {
                 <span className="text-sm">↔ 辅元辅(汉堡结构)需要双写 、doggy</span>
               </li>
             </ul>
-      <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+      <Table className="table-fixed text-black text-base font-semibold" containerClassName="overflow-visible">
         <TableHeader>
           <TableRow className="border-b border-gray-200 hover:bg-transparent">
             <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
