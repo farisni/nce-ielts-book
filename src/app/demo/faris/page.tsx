@@ -48,7 +48,8 @@ function renderFoundIn(segments: (string | { hl: string })[], color: string) {
   );
 }
 
-const AT_LARGE_TITLE = "at large";
+const AT_LARGE_TITLE_EN = "at large";
+const AT_LARGE_TITLE_CN = "未被限制的；自由的；在逃的";
 const AT_LARGE_LIST = [
   { en: "at large", cn: "未被限制的；自由的；在逃的" },
   { en: "a prisoner / suspect at large", cn: "（通常做后置定语）" },
@@ -95,7 +96,7 @@ export default function FarisPage() {
         </span>
       </blockquote>
 
-      <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-4 underline-offset-3">{AT_LARGE_TITLE}</div>
+      <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-4 underline-offset-3">{AT_LARGE_TITLE_EN} <span className="font-normal text-gray-400 no-underline">{AT_LARGE_TITLE_CN}</span></div>
 
       <ul className="space-y-1.5 mb-6">
         {AT_LARGE_LIST.map((item, i) => (
