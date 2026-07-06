@@ -26,7 +26,7 @@ export function Nce4L48ClientPage({
               <style jsx>{`
                 article :global(mark) {
                   background: linear-gradient(to top, rgba(73, 128, 177, 0.24) 42%, transparent 42%);
-                  color: inherit;
+                  color: #333;
                   font-weight: 600;
                   padding: 0 0.02em 0.02em;
                 }
