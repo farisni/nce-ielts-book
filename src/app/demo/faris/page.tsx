@@ -10,6 +10,20 @@ import {
   TableCell,
 } from "@/components/ui/table";
 
+const QUOTE_TEXT = "Pumas are large, cat-like animals which are found in America.";
+const SECTION_TITLE = "构词法 名词-like";
+
+const BADGE_LIST = [
+  { term: "cat-like", desc: "↔ catlike 偷偷摸摸的" },
+  { term: "dog-like", desc: "↔ doglike 忠实的" },
+  { term: "bird-like", desc: "↔ birdlike 敏捷轻快的" },
+  { term: "lady-like", desc: "↔ ladylike 风度雍容如贵妇的,温雅的" },
+  { term: "childlike", desc: "↔ 天真烂漫的 、homelike、kinglike" },
+  { term: "catty", desc: "↔ 辅元辅(汉堡结构)需要双写 、doggy" },
+];
+
+const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
+
 const TABLE_DATA = [
   { expression: "bear-like animals", expressionCn: "像熊一样的动物", exampleEn: "Giant pandas are large, bear-like animals which are found in Sichuan province, China.", exampleCn: "熊猫是一种体形似熊的大动物，产于中国的四川。", highlight: "bear-like animals" },
   { expression: "lady-like behavior", expressionCn: "女性的行为", exampleEn: "The look was always lady-like and appropriately flaunty.", exampleCn: "这种装扮总是很淑女，奢华得恰到好处。", highlight: "lady-like" },
@@ -20,8 +34,6 @@ const TABLE_DATA = [
   { expression: "flu-like symptoms", expressionCn: "流感样症状", exampleEn: "Take them at the onset of cold or flu-like symptoms.", exampleCn: "出现感冒或类似流感症状时就服用。", highlight: "flu-like symptoms" },
   { expression: "cobweb-like", expressionCn: "蜘蛛网式的", exampleEn: "As is shown in the picture, there is a cobweb-like structure with separate compartments packed in it.", exampleCn: "", highlight: "cobweb-like structure" },
 ];
-
-const DOT_COLORS = ['#38bdf8', '#818cf8', '#f472b6', '#facc15', '#34d399', '#fb7185'];
 
 function HighlightText({ text, word }: { text: string; word: string }) {
   const idx = text.indexOf(word);
@@ -38,34 +50,27 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">Pumas are large, cat-like animals which are found in America.</blockquote>
-      <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
-<ul className="space-y-1.5 mb-6">
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#38bdf8" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">cat-like</span>
-                <span className="text-sm">↔ catlike 偷偷摸摸的</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#818cf8" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">dog-like</span>
-                <span className="text-sm">↔ doglike 忠实的</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#f472b6" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">bird-like</span>
-                <span className="text-sm">↔ birdlike 敏捷轻快的</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#facc15" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">lady-like</span>
-                <span className="text-sm">↔ ladylike 风度雍容如贵妇的,温雅的</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#34d399" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">childlike</span>
-                <span className="text-sm">↔ 天真烂漫的 、homelike、kinglike</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5" style={{ background: "#fb7185" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">catty</span>
-                <span className="text-sm">↔ 辅元辅(汉堡结构)需要双写 、doggy</span>
-              </li>
-            </ul>
+      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
+        {QUOTE_TEXT}
+      </blockquote>
+
+      <div className="text-lg font-semibold mb-5 pt-7">{SECTION_TITLE}</div>
+
+      <ul className="space-y-1.5 mb-6">
+        {BADGE_LIST.map((item, i) => (
+          <li key={i} className="flex items-center gap-1.5">
+            <span
+              className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+              style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+            />
+            <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">
+              {item.term}
+            </span>
+            <span className="text-sm">{item.desc}</span>
+          </li>
+        ))}
+      </ul>
+
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
         <TableHeader>
           <TableRow className="border-b border-gray-200 hover:bg-transparent">
@@ -98,6 +103,7 @@ export default function FarisPage() {
           ))}
         </TableBody>
       </Table>
+
       <style>{`
         main mark {
           background: linear-gradient(to top, rgba(73, 128, 177, 0.24) 42%, transparent 42%);
