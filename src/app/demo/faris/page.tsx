@@ -82,7 +82,7 @@ export default function FarisPage() {
         <span className="border-b border-dotted border-gray-400"><span style={{ color: "#bd491e", fontWeight: 600 }}>are</span> found in</span>{" "}
         America.
       <br />
-        <span className="text-sm text-gray-500 font-normal">
+        <span className="text-[13px] text-gray-500 font-normal">
           引出本文的"主人翁"（名字、体型、特征、产地），关系代词（which、that）+ Be动词 可省略（非谓语动词做后置定语）
         </span>
       </blockquote>
