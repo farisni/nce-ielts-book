@@ -1,3 +1,5 @@
+"use client";
+
 const TABLE_DATA = [
   {
     expression: "bear-like animals",
@@ -106,7 +108,7 @@ export default function FarisPage() {
           </tbody>
         </table>
       </div>
-      <style jsx>{`
+      <style>{`
         main :global(mark) {
           background: linear-gradient(to top, rgba(73, 128, 177, 0.24) 42%, transparent 42%);
           color: #333;
