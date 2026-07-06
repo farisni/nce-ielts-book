@@ -55,7 +55,7 @@ export default function FarisPage() {
         <span className="text-orange-500 font-bold">are</span>{" "}
         large, cat-like animals which{" "}
         <span className="text-orange-500 font-bold">are</span>{" "}
-        <span className="border-b border-dashed border-orange-400">found in</span>{" "}
+        <span className="border-b border-dotted border-gray-400">found in</span>{" "}
         America.
       </blockquote>
 
