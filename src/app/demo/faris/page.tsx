@@ -70,7 +70,7 @@ const WULING_LIST = [
     <>The sea bed was scoured with powerful nets and <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>there was tremendous</mark> excitement on board when a chest was raised from the bottom.</>
     .
   </>,
-  <>He lost his confidence. → Confidence deserted him.</>,
+  <>He lost his confidence. → <span className="border-b border-dotted border-gray-400">Confidence</span> deserted him.</>,
   <>I couldn't sleep that night. → That night sleep eluded me.</>,
   <>
     We only travelled half the distance at sunset. → Sunset met us halfway.{" "}
