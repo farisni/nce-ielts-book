@@ -16,7 +16,7 @@ export function SimpleTable({ children }: SimpleTableProps) {
   const thead = rows[0];
 
   if (!thead) {
-    return <table className="w-full border-collapse text-sm">{children}</table>;
+    return <table className="w-full border-collapse text-base">{children}</table>;
   }
 
   const headerRows = React.Children.toArray(getChildren(thead));
@@ -24,7 +24,7 @@ export function SimpleTable({ children }: SimpleTableProps) {
   const isTwoColumnTable = headerCells.length === 2;
 
   if (!isTwoColumnTable) {
-    return <table className="w-full border-collapse text-sm">{children}</table>;
+    return <table className="w-full border-collapse text-base">{children}</table>;
   }
 
   // 对两列表格应用 3:7 (30%/70%) 的列宽
@@ -59,7 +59,7 @@ export function SimpleTable({ children }: SimpleTableProps) {
   });
 
   return (
-    <table className="w-full border-collapse text-sm table-fixed">
+    <table className="w-full border-collapse text-base table-fixed">
       {styledThead}
       {styledRows}
     </table>
