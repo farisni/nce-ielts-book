@@ -113,7 +113,7 @@ export default function FarisPage() {
         ))}
       </ul>
 
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-4 underline-offset-3">{SECTION_TITLE_MAIN} <span className="font-normal text-gray-400 no-underline text-base">{SECTION_TITLE_SUB}</span></div>
+      <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-3 underline-offset-3">{SECTION_TITLE_MAIN} <span className="font-normal text-gray-400 no-underline text-sm">{SECTION_TITLE_SUB}</span></div>
 
       <ul className="space-y-1.5 mb-6">
         {BADGE_LIST.map((item, i) => (
