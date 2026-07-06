@@ -51,7 +51,6 @@ function renderFoundIn(segments: (string | { hl: string })[], color: string) {
 const AT_LARGE_TITLE_EN = "at large";
 const AT_LARGE_TITLE_CN = "未被限制的；自由的；在逃的";
 const AT_LARGE_LIST = [
-  { en: "at large", cn: "未被限制的；自由的；在逃的" },
   { en: "a prisoner / suspect at large", cn: "（通常做后置定语）" },
   { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
