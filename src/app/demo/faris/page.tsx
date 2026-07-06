@@ -43,7 +43,7 @@ const FOUND_IN_LIST = [
 
 function renderFoundIn(segments: (string | { hl: string })[]) {
   return segments.map((seg, i) =>
-    typeof seg === "string" ? seg : <mark key={i}>{seg.hl}</mark>
+    typeof seg === "string" ? seg : <mark key={i} style={{ background: "linear-gradient(to top, rgba(189, 73, 30, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>
   );
 }
 
