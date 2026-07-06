@@ -59,27 +59,27 @@ const AT_LARGE_LIST = [
 const WULING_LIST = [
   <>
     However, a new type of{" "}
-    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="">humor</a>
+    <span>humor</span>
     , which stems largely from the US,{" "}
-    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="">has recently come into</a>{" "}
-    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="">fashion</a>
+    <span>has recently come into</span>{" "}
+    <span>fashion</span>
     .
   </>,
   <>
-    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="">The dealer told him</a>{" "}
-    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="">that</a>{" "}
-    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="">it</a>{" "}
-    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="">had just</a>{" "}
-    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="">come in, but that he could not be bothered to open it</a>
+    <span>The dealer told him</span>{" "}
+    <span>that</span>{" "}
+    <span>it</span>{" "}
+    <span>had just</span>{" "}
+    <span>come in, but that he could not be bothered to open it</span>
     .
   </>,
   <>I thought of a good idea. → A good idea came / flashed into my mind.</>,
   <>He went to the town on business. → Business took him to the town.</>,
   <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
   <>
-    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="">The sea bed was scoured with powerful nets and</a>{" "}
-    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="">there was tremendous</a>{" "}
-    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="">excitement on board when a chest was raised from the bottom</a>
+    <span>The sea bed was scoured with powerful nets and</span>{" "}
+    <span>there was tremendous</span>{" "}
+    <span>excitement on board when a chest was raised from the bottom</span>
     .
   </>,
   <>He lost his confidence. → Confidence deserted him.</>,
