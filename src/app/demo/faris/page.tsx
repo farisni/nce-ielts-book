@@ -54,7 +54,7 @@ export default function FarisPage() {
         {QUOTE_TEXT}
       </blockquote>
 
-      <div className="text-lg font-semibold mb-5 pt-7">{SECTION_TITLE}</div>
+      <div className="text-base font-semibold mb-5 pt-7">{SECTION_TITLE}</div>
 
       <ul className="space-y-1.5 mb-6">
         {BADGE_LIST.map((item, i) => (
