@@ -350,6 +350,7 @@ type ArticlePageProps = {
 
 const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
 const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
+const textNoteLabelBg = ["#eaf1eb", "#eef0f8", "#f5eeee", "#f4f1e8", "#edf3ee", "#f0eef6"];
 
 function renderTitleWithDropCap(title: string) {
   const firstLetterIndex = title.search(/[A-Za-z]/);
@@ -1081,7 +1082,12 @@ function ArticleReader({ article }: { article: Article }) {
                                 <td className="note-index align-top pt-1 w-6">{i + 1}.</td>
                                 <td className="align-top pt-0.5">
                                   <div className="flex items-start gap-1.5">
-                                    <span className="note-label shrink-0">{note.label}</span>
+                                    <span
+                                      className="note-label shrink-0"
+                                      style={{ background: textNoteLabelBg[i % textNoteLabelBg.length] }}
+                                    >
+                                      {note.label}
+                                    </span>
                                     <span className="note-body">{note.description}</span>
                                   </div>
                                 </td>
