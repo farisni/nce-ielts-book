@@ -25,7 +25,7 @@ const BADGE_LIST = [
 ];
 
 const FOUND_IN_LIST = [
-  { text: "Many plant and animal species", hl: "are found in", rest: "only the rainforests." },
+  { text: "Many plant and animal species", hl: "are found", rest: "only in the rainforests." },
   { text: "Vitamin C", hl: "is found in", rest: "citrus fruit." },
 ];
 
