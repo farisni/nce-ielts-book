@@ -67,7 +67,7 @@ const WULING_LIST = [
   <>He went to the town on business. → Business took him to the town.</>,
   <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
   <>
-    <>The sea bed was scoured with powerful nets and there was tremendous excitement on board when a chest was raised from the bottom.</>
+    <>The sea bed was scoured with powerful nets and <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>there was tremendous</mark> excitement on board when a chest was raised from the bottom.</>
     .
   </>,
   <>He lost his confidence. → Confidence deserted him.</>,
