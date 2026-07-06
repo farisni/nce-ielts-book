@@ -41,9 +41,9 @@ const FOUND_IN_LIST = [
   ],
 ];
 
-function renderFoundIn(segments: (string | { hl: string })[]) {
+function renderFoundIn(segments: (string | { hl: string })[], color: string) {
   return segments.map((seg, i) =>
-    typeof seg === "string" ? seg : <mark key={i} style={{ background: "linear-gradient(to top, rgba(189, 73, 30, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>
+    typeof seg === "string" ? seg : <mark key={i} style={{ background: `linear-gradient(to top, ${color}3d 42%, transparent 42%)`, color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>
   );
 }
 
@@ -142,7 +142,7 @@ export default function FarisPage() {
               className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
               style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
             />
-            <span className="text-base">{renderFoundIn(item)}</span>
+            <span className="text-base">{renderFoundIn(item, DOT_COLORS[i % DOT_COLORS.length])}</span>
           </li>
         ))}
       </ul>
