@@ -56,7 +56,7 @@ const AT_LARGE_LIST = [
   { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
 
-type Seg = string | { hl: string } | { dot: string } | { note: string };
+type Seg = string | { hl: string } | { hl2: string } | { dot: string } | { note: string };
 
 const WULING_LIST: Seg[][] = [
   [
@@ -75,7 +75,7 @@ const WULING_LIST: Seg[][] = [
     { hl: "come in" },
     ", but that he could not be bothered to open it.",
   ],
-  ["I thought of a good idea. → ", { hl: "A good idea" }, " came / flashed into my mind."],
+  ["I thought of a good idea. → ", { hl: "A good idea" }, " ", { hl2: "came / flashed" }, " into my mind."],
   ["He went to the town on business. → Business took him to the town."],
   ["A warm and sunny Sunday found my whole family going for an outing at the beach."],
   [
@@ -221,6 +221,7 @@ export default function FarisPage() {
                 {item.map((seg, j) => {
                   if (typeof seg === "string") return seg;
                   if ("hl" in seg) return <mark key={j} style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>;
+                  if ("hl2" in seg) return <mark key={j} style={{ background: "none", color: "#bd491e", fontWeight: 600 }}>{seg.hl2}</mark>;
                   if ("dot" in seg) return <span key={j} className="border-b border-dotted border-gray-400">{seg.dot}</span>;
                   if ("note" in seg) return <span key={j} className="text-sm text-gray-400">{seg.note}</span>;
                   return null;
