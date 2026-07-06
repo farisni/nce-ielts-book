@@ -7,7 +7,7 @@ interface SentenceQuoteProps {
 
 export function SentenceQuote({ children, className }: SentenceQuoteProps) {
   return (
-    <blockquote className={`border-l-2 border-zinc-300 pl-4 my-4 text-black text-sm font-semibold ${className ?? ""}`}>
+    <blockquote className={`border-l-2 border-zinc-300 pl-4 my-4 text-black text-lg font-semibold ${className ?? ""}`}>
       {children}
     </blockquote>
   );
