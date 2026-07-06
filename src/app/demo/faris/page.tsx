@@ -50,9 +50,9 @@ function renderFoundIn(segments: (string | { hl: string })[], color: string) {
 
 const AT_LARGE_TITLE = "at large";
 const AT_LARGE_LIST = [
-  "at large 未被限制的；自由的；在逃的",
-  "a prisoner / suspect at large（通常做后置定语）",
-  "The disease is still at large.疾病仍在肆虐。",
+  { en: "at large", cn: "未被限制的；自由的；在逃的" },
+  { en: "a prisoner / suspect at large", cn: "（通常做后置定语）" },
+  { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
 
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
@@ -98,13 +98,17 @@ export default function FarisPage() {
       <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-4 underline-offset-3">{AT_LARGE_TITLE}</div>
 
       <ul className="space-y-1.5 mb-6">
-        {AT_LARGE_LIST.map((text, i) => (
+        {AT_LARGE_LIST.map((item, i) => (
           <li key={i} className="flex items-start gap-1.5 text-black text-base">
             <span
               className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
               style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
             />
-            <span className="text-base">{text}</span>
+            <span>
+              <span className="text-base">{item.en}</span>
+              {" "}
+              <span className="text-sm text-gray-400">{item.cn}</span>
+            </span>
           </li>
         ))}
       </ul>
