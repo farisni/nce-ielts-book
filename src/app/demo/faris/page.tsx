@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { KnowledgePoint } from "@/app/_components/knowledge-point";
 import {
   Table,
   TableHeader,
@@ -95,40 +96,40 @@ export default function FarisPage() {
         </span>
       </blockquote>
 
-      <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-3 underline-offset-3">{AT_LARGE_TITLE_EN} <span className="font-normal text-gray-400 no-underline text-sm">{AT_LARGE_TITLE_CN}</span></div>
+      <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor="decoration-purple-200">
+        <ul className="space-y-1.5 mb-6">
+          {AT_LARGE_LIST.map((item, i) => (
+            <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <span
+                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+              />
+              <span>
+                <span className="text-base">{item.en}</span>
+                {" "}
+                <span className="text-sm text-gray-400">{item.cn}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </KnowledgePoint>
 
-      <ul className="space-y-1.5 mb-6">
-        {AT_LARGE_LIST.map((item, i) => (
-          <li key={i} className="flex items-start gap-1.5 text-black text-base">
-            <span
-              className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
-              style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
-            />
-            <span>
-              <span className="text-base">{item.en}</span>
-              {" "}
-              <span className="text-sm text-gray-400">{item.cn}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-3 underline-offset-3">{SECTION_TITLE_MAIN} <span className="font-normal text-gray-400 no-underline text-sm">{SECTION_TITLE_SUB}</span></div>
-
-      <ul className="space-y-1.5 mb-6">
-        {BADGE_LIST.map((item, i) => (
-          <li key={i} className="flex items-center gap-1.5">
-            <span
-              className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
-              style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
-            />
-            <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">
-              {item.term}
-            </span>
-            <span className="text-sm">{item.desc}</span>
-          </li>
-        ))}
-      </ul>
+      <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor="decoration-emerald-200">
+        <ul className="space-y-1.5 mb-6">
+          {BADGE_LIST.map((item, i) => (
+            <li key={i} className="flex items-center gap-1.5">
+              <span
+                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+              />
+              <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">
+                {item.term}
+              </span>
+              <span className="text-sm">{item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </KnowledgePoint>
 
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
         <TableHeader>
@@ -163,19 +164,21 @@ export default function FarisPage() {
         </TableBody>
       </Table>
 
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-3 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline text-sm">{SECTION_TITLE_2_CN}</span></div>
+      <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor="decoration-blue-200">
+        <ul className="space-y-1.5 mb-6">
+          {FOUND_IN_LIST.map((item, i) => (
+            <li key={i} className="flex items-center gap-1.5 text-black text-base">
+              <span
+                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+              />
+              <span className="text-base">{renderFoundIn(item, DOT_COLORS[i % DOT_COLORS.length])}</span>
+            </li>
+          ))}
+        </ul>
+      </KnowledgePoint>
 
-      <ul className="space-y-1.5 mb-6">
-        {FOUND_IN_LIST.map((item, i) => (
-          <li key={i} className="flex items-center gap-1.5 text-black text-base">
-            <span
-              className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
-              style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
-            />
-            <span className="text-base">{renderFoundIn(item, DOT_COLORS[i % DOT_COLORS.length])}</span>
-          </li>
-        ))}
-      </ul>
+      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200" />
 
       <style>{`
         main mark {
