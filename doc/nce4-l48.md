@@ -151,11 +151,11 @@ The golden rule here is spread your risk — if you put all of your money into P
 
 | 表达 | 例句 |
 |---|---|
-| **bear-like animals**<br /><span class="text-xs text-gray-400">像熊一样的动物</span>| Giant pandas are large, ==bear-like animals== which are found in Sichuan province, China.<br /><span class="text-xs text-gray-400">熊猫是一种体形似熊的大动物，产于中国的四川。</span>|
-| **lady-like behavior**<br /><span class="text-xs text-gray-400">女性的行为</span>| The look was always ==lady-like== and appropriately flaunty.<br /><span class="text-xs text-gray-400">这种装扮总是很淑女，奢华得恰到好处。</span>|
-| **child-like simplicity**<br /><span class="text-xs text-gray-400">童心般的简单</span>| Do you think you shall like Morton? She asked of me, with a direct and naive simplicity of tone and manner, pleasing, if ==child-like==.<br /><span class="text-xs text-gray-400">“你觉得会喜欢莫尔顿吗？”她问我，语调和举止里带着一种直率而幼稚的单纯，虽然有些孩子气，但讨人喜欢。</span>|
-| **an angel-like girl**<br /><span class="text-xs text-gray-400">天使般的女孩</span>| She is a lovely girl, with curl hair, baby skin, and smiles ==like an angel==.<br /><span class="text-xs text-gray-400">她长得很可爱，卷卷的头发，婴儿的皮肤，天使的笑容(Like an Angel girl像天使的女孩)</span>|
-| **dog-like animals**<br /><span class="text-xs text-gray-400">像狗一样的动物</span>| Foxes and farmers have never got on well. These small ==dog-like animals== have long been accused of killing farm animals.（CET-4） |
-| **crystal-like eyes**<br /><span class="text-xs text-gray-400">明亮的双眸</span>| Few have got a pair of ==crystal eyes like his==.<br /><span class="text-xs text-gray-400">很少有人像他那样生着一副水晶般的眼睛。</span>|
-| **flu-like symptoms**<br /><span class="text-xs text-gray-400">流感样症状</span>| Take them at the onset of cold or ==flu-like symptoms==.<br /><span class="text-xs text-gray-400">出现感冒或类似流感症状时就服用。</span>|
-| **cobweb-like**<br /><span class="text-xs text-gray-400">蜘蛛网式的</span>| As is shown in the picture, there is a ==cobweb-like structure== with separate compartments packed in it. |
+| **bear-like animals**<br /><span class="text-sm text-gray-400">像熊一样的动物</span>| Giant pandas are large, ==bear-like animals== which are found in Sichuan province, China.<br /><span class="text-sm text-gray-400">熊猫是一种体形似熊的大动物，产于中国的四川。</span>|
+| **lady-like behavior**<br /><span class="text-sm text-gray-400">女性的行为</span>| The look was always ==lady-like== and appropriately flaunty.<br /><span class="text-sm text-gray-400">这种装扮总是很淑女，奢华得恰到好处。</span>|
+| **child-like simplicity**<br /><span class="text-sm text-gray-400">童心般的简单</span>| Do you think you shall like Morton? She asked of me, with a direct and naive simplicity of tone and manner, pleasing, if ==child-like==.<br /><span class="text-sm text-gray-400">“你觉得会喜欢莫尔顿吗？”她问我，语调和举止里带着一种直率而幼稚的单纯，虽然有些孩子气，但讨人喜欢。</span>|
+| **an angel-like girl**<br /><span class="text-sm text-gray-400">天使般的女孩</span>| She is a lovely girl, with curl hair, baby skin, and smiles ==like an angel==.<br /><span class="text-sm text-gray-400">她长得很可爱，卷卷的头发，婴儿的皮肤，天使的笑容(Like an Angel girl像天使的女孩)</span>|
+| **dog-like animals**<br /><span class="text-sm text-gray-400">像狗一样的动物</span>| Foxes and farmers have never got on well. These small ==dog-like animals== have long been accused of killing farm animals.（CET-4） |
+| **crystal-like eyes**<br /><span class="text-sm text-gray-400">明亮的双眸</span>| Few have got a pair of ==crystal eyes like his==.<br /><span class="text-sm text-gray-400">很少有人像他那样生着一副水晶般的眼睛。</span>|
+| **flu-like symptoms**<br /><span class="text-sm text-gray-400">流感样症状</span>| Take them at the onset of cold or ==flu-like symptoms==.<br /><span class="text-sm text-gray-400">出现感冒或类似流感症状时就服用。</span>|
+| **cobweb-like**<br /><span class="text-sm text-gray-400">蜘蛛网式的</span>| As is shown in the picture, there is a ==cobweb-like structure== with separate compartments packed in it. |
