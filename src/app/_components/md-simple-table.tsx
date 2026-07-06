@@ -50,7 +50,7 @@ export function SimpleTable({ children }: SimpleTableProps) {
         return React.cloneElement(tr as React.ReactElement<{ children?: React.ReactNode }>, {
           children: tds.map((td, ci) =>
             React.cloneElement(td as React.ReactElement<{ className?: string }>, {
-              className: `px-3 py-2 text-gray-600 text-sm align-top ${ci === 0 ? "w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]" : "w-[70%]"}`,
+              className: `px-3 py-2 text-gray-400 text-sm align-top ${ci === 0 ? "w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]" : "w-[70%]"}`,
             })
           ),
         });
