@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/table";
 
 // QUOTE_TEXT removed - see JSX below
-const SECTION_TITLE = "构词法 名词-like";
+const SECTION_TITLE_MAIN = "构词法";
+const SECTION_TITLE_SUB = "名词-like";
 const SECTION_TITLE_2_EN = "be found in ...";
 const SECTION_TITLE_2_CN = "产于(生存于、生活于某地)";
 
@@ -108,7 +109,7 @@ export default function FarisPage() {
         ))}
       </ul>
 
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-4 underline-offset-3">{SECTION_TITLE}</div>
+      <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-4 underline-offset-3">{SECTION_TITLE_MAIN} <span className="font-normal text-gray-400 no-underline">{SECTION_TITLE_SUB}</span></div>
 
       <ul className="space-y-1.5 mb-6">
         {BADGE_LIST.map((item, i) => (
