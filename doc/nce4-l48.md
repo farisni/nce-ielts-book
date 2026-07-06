@@ -141,12 +141,12 @@ The golden rule here is spread your risk — if you put all of your money into P
 
 > [!note] 构词法 - 名词-like
 >
-> - **cat-like** ↔ **catlike** 偷偷摸摸的
-> - **dog-like** ↔ **doglike** 忠实的
-> - **bird-like** ↔ **birdlike** 敏捷轻快的
-> - **lady-like** ↔ **ladylike** 风度雍容如贵妇的,温雅的
-> - **childlike** 天真烂漫的 、**homelike**、**kinglike**
-> - **catty** 辅元辅(汉堡结构)需要双写 、**doggy**
+> - <span class="note-label" style="background:#eaf1eb">cat-like</span> ↔ <span class="note-label" style="background:#eef0f8">catlike</span> 偷偷摸摸的
+> - <span class="note-label" style="background:#f5eeee">dog-like</span> ↔ <span class="note-label" style="background:#f4f1e8">doglike</span> 忠实的
+> - <span class="note-label" style="background:#edf3ee">bird-like</span> ↔ <span class="note-label" style="background:#f0eef6">birdlike</span> 敏捷轻快的
+> - <span class="note-label" style="background:#eaf1eb">lady-like</span> ↔ <span class="note-label" style="background:#eef0f8">ladylike</span> 风度雍容如贵妇的,温雅的
+> - <span class="note-label" style="background:#f5eeee">childlike</span> 天真烂漫的 、<span class="note-label" style="background:#f4f1e8">homelike</span>、<span class="note-label" style="background:#edf3ee">kinglike</span>
+> - <span class="note-label" style="background:#f0eef6">catty</span> 辅元辅(汉堡结构)需要双写 、<span class="note-label" style="background:#eaf1eb">doggy</span>
 
 
 | 表达 | 例句 |
