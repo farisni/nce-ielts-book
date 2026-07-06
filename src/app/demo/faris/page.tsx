@@ -10,7 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 
-const QUOTE_TEXT = "Pumas are large, cat-like animals which are found in America.";
+const QUOTE_TEXT = "Pumas <span className="text-orange-500 font-bold">are</span> large, cat-like animals which <span className="text-orange-500 font-bold">are found</span> in America.";
 const SECTION_TITLE = "构词法 名词-like";
 
 const BADGE_LIST = [
