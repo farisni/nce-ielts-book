@@ -241,3 +241,4 @@ export default function FarisPage() {
     </main>
   );
 }
+size-2 shrink-0 self-center mt-0.5 bg-gray-400"
