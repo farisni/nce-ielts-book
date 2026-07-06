@@ -95,7 +95,7 @@ export default function FarisPage() {
         </span>
       </blockquote>
 
-      <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-2 underline-offset-3">{AT_LARGE_TITLE_EN} <span className="font-normal text-gray-400 no-underline text-sm">{AT_LARGE_TITLE_CN}</span></div>
+      <div className="text-base font-semibold mb-4 pt-7 underline decoration-purple-200 decoration-3 underline-offset-3">{AT_LARGE_TITLE_EN} <span className="font-normal text-gray-400 no-underline text-sm">{AT_LARGE_TITLE_CN}</span></div>
 
       <ul className="space-y-1.5 mb-6">
         {AT_LARGE_LIST.map((item, i) => (
@@ -163,7 +163,7 @@ export default function FarisPage() {
         </TableBody>
       </Table>
 
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-2 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline text-sm">{SECTION_TITLE_2_CN}</span></div>
+      <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-3 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline text-sm">{SECTION_TITLE_2_CN}</span></div>
 
       <ul className="space-y-1.5 mb-6">
         {FOUND_IN_LIST.map((item, i) => (
