@@ -132,7 +132,7 @@ export default function FarisPage() {
       </SentenceQuote>
 
       <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor="decoration-purple-200">
-        <ul className="space-y-1.5 mb-6">
+        <ul className="space-y-1.5 mb-8">
           {AT_LARGE_LIST.map((item, i) => (
             <li key={i} className="flex items-start gap-1.5 text-black text-base">
               <span
@@ -150,7 +150,7 @@ export default function FarisPage() {
       </KnowledgePoint>
 
       <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor="decoration-emerald-200">
-        <ul className="space-y-1.5 mb-6">
+        <ul className="space-y-1.5 mb-8">
           {BADGE_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5">
               <span
@@ -200,7 +200,7 @@ export default function FarisPage() {
       </Table>
 
       <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor="decoration-blue-200">
-        <ul className="space-y-1.5 mb-6">
+        <ul className="space-y-1.5 mb-8">
           {FOUND_IN_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5 text-black text-base">
               <span
