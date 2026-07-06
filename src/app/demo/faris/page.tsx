@@ -40,27 +40,27 @@ export default function FarisPage() {
 <ul className="space-y-1.5 mb-6">
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">cat-like</span>
-                ↔ <span className="text-sm text-gray-400">catlike 偷偷摸摸的</span>
+                ↔ <span className="text-sm">catlike 偷偷摸摸的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">dog-like</span>
-                ↔ <span className="text-sm text-gray-400">doglike 忠实的</span>
+                ↔ <span className="text-sm">doglike 忠实的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">bird-like</span>
-                ↔ <span className="text-sm text-gray-400">birdlike 敏捷轻快的</span>
+                ↔ <span className="text-sm">birdlike 敏捷轻快的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">lady-like</span>
-                ↔ <span className="text-sm text-gray-400">ladylike 风度雍容如贵妇的,温雅的</span>
+                ↔ <span className="text-sm">ladylike 风度雍容如贵妇的,温雅的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">childlike</span>
-                ↔ <span className="text-sm text-gray-400">天真烂漫的 、homelike、kinglike</span>
+                ↔ <span className="text-sm">天真烂漫的 、homelike、kinglike</span>
               </li>
               <li className="flex items-baseline gap-1.5">
                 <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">catty</span>
-                ↔ <span className="text-sm text-gray-400">辅元辅(汉堡结构)需要双写 、doggy</span>
+                ↔ <span className="text-sm">辅元辅(汉堡结构)需要双写 、doggy</span>
               </li>
             </ul>
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
@@ -78,7 +78,7 @@ export default function FarisPage() {
                 {row.expressionCn && (
                   <>
                     <br />
-                    <span className="text-sm text-gray-400">{row.expressionCn}</span>
+                    <span className="text-sm">{row.expressionCn}</span>
                   </>
                 )}
               </TableCell>
@@ -87,7 +87,7 @@ export default function FarisPage() {
                 {row.exampleCn && (
                   <>
                     <br />
-                    <span className="text-sm text-gray-400">{row.exampleCn}</span>
+                    <span className="text-sm">{row.exampleCn}</span>
                   </>
                 )}
               </TableCell>
