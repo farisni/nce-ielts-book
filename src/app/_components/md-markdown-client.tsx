@@ -13,6 +13,7 @@ import { remarkHighlight } from "@/app/_components/remark-highlight";
 import { HandDrawnMark } from "@/app/_components/handdrawn-mark";
 import { CalloutBlock } from "@/app/_components/md-callout";
 import { CodeBlock } from "@/app/_components/md-code-block";
+import { SimpleTable } from "@/app/_components/md-simple-table";
 import { ExpandableTable } from "@/app/_components/md-expandable-table";
 
 interface Props {
@@ -26,7 +27,7 @@ export function MarkdownClient({ content, handDrawnMarks = true, expandableTable
     blockquote: CalloutBlock,
     pre: ({ children }) => <>{children}</>,
     code: CodeBlock,
-    table: expandableTable ? ExpandableTable : "table",
+    table: expandableTable ? ExpandableTable : SimpleTable,
   };
 
   const markdown = (
