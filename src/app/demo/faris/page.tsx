@@ -25,8 +25,8 @@ const BADGE_LIST = [
 ];
 
 const FOUND_IN_LIST = [
-  { text: "Many plant and animal species", hl: "are found", rest: "only", rest2: "in", rest3: "the rainforests." },
-  { text: "Vitamin C", hl: "is found", rest: "", rest2: "in", rest3: "citrus fruit." },
+  "Many plant and animal species are found only in the rainforests.",
+  "Vitamin C is found in citrus fruit.",
 ];
 
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
@@ -118,19 +118,13 @@ export default function FarisPage() {
       <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-4 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline">{SECTION_TITLE_2_CN}</span></div>
 
       <ul className="space-y-1.5 mb-6">
-        {FOUND_IN_LIST.map((item, i) => (
+        {FOUND_IN_LIST.map((text, i) => (
           <li key={i} className="flex items-center gap-1.5 text-black text-base">
             <span
               className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
               style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
             />
-            <span className="text-sm">
-              {item.text}{" "}
-              <span style={{ color: "#bd491e", fontWeight: 600 }}>{item.hl}</span>{" "}
-              {item.rest}{" "}
-              <span className="border-b border-dotted border-gray-400">{item.rest2}</span>{" "}
-              {item.rest3}
-            </span>
+            <span className="text-sm">{text}</span>
           </li>
         ))}
       </ul>
