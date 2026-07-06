@@ -39,27 +39,27 @@ export default function FarisPage() {
       <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
 <ul className="space-y-1.5 mb-6">
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">cat-like</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">cat-like</span>
                 ↔ <span className="text-sm text-gray-400">catlike 偷偷摸摸的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">dog-like</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">dog-like</span>
                 ↔ <span className="text-sm text-gray-400">doglike 忠实的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">bird-like</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">bird-like</span>
                 ↔ <span className="text-sm text-gray-400">birdlike 敏捷轻快的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">lady-like</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">lady-like</span>
                 ↔ <span className="text-sm text-gray-400">ladylike 风度雍容如贵妇的,温雅的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">childlike</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">childlike</span>
                 ↔ <span className="text-sm text-gray-400">天真烂漫的 、homelike、kinglike</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent">catty</span>
+                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">catty</span>
                 ↔ <span className="text-sm text-gray-400">辅元辅(汉堡结构)需要双写 、doggy</span>
               </li>
             </ul>
