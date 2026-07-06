@@ -24,6 +24,11 @@ const BADGE_LIST = [
   { term: "catty", desc: "↔ 辅元辅(汉堡结构)需要双写 、doggy" },
 ];
 
+const FOUND_IN_LIST = [
+  "Many plant and animal species are found only in the rainforests.",
+  "Vitamin C is found in citrus fruit.",
+];
+
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
 
 const TABLE_DATA = [
@@ -111,6 +116,18 @@ export default function FarisPage() {
       </Table>
 
       <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-4 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline">{SECTION_TITLE_2_CN}</span></div>
+
+      <ul className="space-y-1.5 mb-6">
+        {FOUND_IN_LIST.map((text, i) => (
+          <li key={i} className="flex items-center gap-1.5 text-black text-base">
+            <span
+              className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+              style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+            />
+            <span className="text-sm">{text}</span>
+          </li>
+        ))}
+      </ul>
 
       <style>{`
         main mark {
