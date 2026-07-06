@@ -18,7 +18,7 @@ export function KnowledgePoint({
   return (
     <div className={className}>
       <div
-        className={`text-base font-semibold mb-4 pt-7 underline ${underlineColor} decoration-3 underline-offset-3`}
+        className={`text-base font-semibold mb-4 pt-6 underline ${underlineColor} decoration-3 underline-offset-3`}
       >
         {titleEn}
         {titleCn && (
