@@ -58,7 +58,7 @@ const AT_LARGE_LIST = [
 
 const WULING_LIST = [
   <>
-    <>However, a new type of <mark>humor</mark>, which stems largely from the US, has recently <mark>come into</mark> <mark>fashion</mark>.</>
+    <>However, a new type of <mark style={{ background: "linear-gradient(to top, rgba(236, 72, 153, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>humor</mark>, which stems largely from the US, has recently <mark style={{ background: "linear-gradient(to top, rgba(236, 72, 153, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>come into</mark> <mark style={{ background: "linear-gradient(to top, rgba(236, 72, 153, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>fashion</mark>.</>
   </>,
   <>
     <>The dealer told him that it had just come in, but that he could not be bothered to open it.</>
