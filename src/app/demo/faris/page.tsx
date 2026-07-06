@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { SentenceQuote } from "@/app/_components/sentence-quote";
 import { KnowledgePoint } from "@/app/_components/knowledge-point";
 import {
   Table,
@@ -118,17 +119,17 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
+      <SentenceQuote>
         Pumas{" "}
         <span style={{ color: "#bd491e", fontWeight: 600 }}>are</span>{" "}
         large, cat-like animals which{" "}
         <span className="border-b border-dotted border-gray-400"><span style={{ color: "#bd491e", fontWeight: 600 }}>are</span> found in</span>{" "}
         America.
-      <br />
+        <br />
         <span className="text-[13px] text-gray-500 font-normal">
           引出本文的"主人翁"（名字、体型、特征、产地），关系代词（which、that）+ Be动词 可省略（非谓语动词做后置定语）
         </span>
-      </blockquote>
+      </SentenceQuote>
 
       <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor="decoration-purple-200">
         <ul className="space-y-1.5 mb-6">
@@ -212,13 +213,13 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
+      <SentenceQuote>
         When reports came into London Zoo{" "}
         <a href="https://www.ncego.com/tags/114" className="text-blue-600 underline">that</a>{" "}
         a wild puma had been spotted forty-five miles{" "}
         <a href="https://www.ncego.com/lessons/141#article" className="text-blue-600 underline">south of</a>{" "}
         London, they were not taken seriously.
-      </blockquote>
+      </SentenceQuote>
 
       <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
         <table className="w-full border-separate border-spacing-y-2">
