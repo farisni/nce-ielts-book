@@ -207,9 +207,9 @@ export default function FarisPage() {
       <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
         <ul className="space-y-1.5 mb-6">
           {WULING_LIST.map((item, i) => (
-            <li key={i} className="flex items-start gap-1.5 text-black text-base">
-              <span className="inline-block size-1.5 shrink-0 mt-[0.55rem] bg-gray-400" />
-              <span className="text-base">{item}</span>
+            <li key={i} className="text-black text-base">
+              <span className="inline-block size-1.5 bg-gray-400 align-middle mr-1.5" />
+              {item}
             </li>
           ))}
         </ul>
