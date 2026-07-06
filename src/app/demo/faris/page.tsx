@@ -58,7 +58,7 @@ const AT_LARGE_LIST = [
 
 const WULING_LIST = [
   <>
-    <>However, a new type of humor, which stems largely from the US, has recently come into fashion.</>
+    <>However, a new type of <mark>humor</mark>, which stems largely from the US, has recently <mark>come into</mark> <mark>fashion</mark>.</>
   </>,
   <>
     <>The dealer told him that it had just come in, but that he could not be bothered to open it.</>
