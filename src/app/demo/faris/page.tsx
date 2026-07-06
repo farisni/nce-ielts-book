@@ -12,7 +12,8 @@ import {
 
 // QUOTE_TEXT removed - see JSX below
 const SECTION_TITLE = "构词法 名词-like";
-const SECTION_TITLE_2 = "be found in ... 产于(生存于、生活于某地)";
+const SECTION_TITLE_2_EN = "be found in ...";
+const SECTION_TITLE_2_CN = "产于(生存于、生活于某地)";
 
 const BADGE_LIST = [
   { term: "cat-like", desc: "↔ catlike 偷偷摸摸的" },
@@ -110,7 +111,7 @@ export default function FarisPage() {
         </TableBody>
       </Table>
 
-      <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-4 underline-offset-3">{SECTION_TITLE_2}</div>
+      <div className="text-base font-semibold mb-5 pt-7 underline decoration-blue-200 decoration-4 underline-offset-3">{SECTION_TITLE_2_EN} <span className="font-normal text-gray-400 no-underline">{SECTION_TITLE_2_CN}</span></div>
 
       <style>{`
         main mark {
