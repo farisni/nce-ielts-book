@@ -36,6 +36,7 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
+      <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
         <TableHeader>
           <TableRow className="border-b border-gray-200 hover:bg-transparent">
