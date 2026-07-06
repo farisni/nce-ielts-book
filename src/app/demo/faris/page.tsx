@@ -221,7 +221,7 @@ export default function FarisPage() {
                 {item.map((seg, j) => {
                   if (typeof seg === "string") return seg;
                   if ("hl" in seg) return <mark key={j} style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>;
-                  if ("hl2" in seg) return <mark key={j} style={{ background: "none", color: "#bd491e", fontWeight: 600 }}>{seg.hl2}</mark>;
+                  if ("hl2" in seg) return <mark key={j} style={{ background: "none", color: "#bd491e" }}>{seg.hl2}</mark>;
                   if ("dot" in seg) return <span key={j} className="border-b border-dotted border-gray-400">{seg.dot}</span>;
                   if ("note" in seg) return <span key={j} className="text-sm text-gray-400">{seg.note}</span>;
                   return null;
