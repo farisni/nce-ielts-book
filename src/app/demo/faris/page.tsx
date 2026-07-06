@@ -209,7 +209,15 @@ export default function FarisPage() {
           {WULING_LIST.map((item, i) => (
             <tr key={i} className="align-top">
               <td className="align-middle w-4"><span className="inline-block size-1.5 bg-gray-400 align-middle" /></td>
-              <td className="text-base text-black align-top pt-1">{item}</td>
+              <td className="text-base text-black align-top pt-1">
+                {item.map((seg, j) => {
+                  if (typeof seg === "string") return seg;
+                  if ("hl" in seg) return <mark key={j} style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.hl}</mark>;
+                  if ("dot" in seg) return <span key={j} className="border-b border-dotted border-gray-400">{seg.dot}</span>;
+                  if ("note" in seg) return <span key={j} className="text-sm text-gray-400">{seg.note}</span>;
+                  return null;
+                })}
+              </td>
             </tr>
           ))}
         </ul>
