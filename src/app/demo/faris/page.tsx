@@ -124,7 +124,7 @@ export default function FarisPage() {
               className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
               style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
             />
-            <span className="text-sm">{text}</span>
+            <span className="text-base">{text}</span>
           </li>
         ))}
       </ul>
