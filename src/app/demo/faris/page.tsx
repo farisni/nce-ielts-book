@@ -109,7 +109,7 @@ export default function FarisPage() {
         </table>
       </div>
       <style>{`
-        main :global(mark) {
+        mark {
           background: linear-gradient(to top, rgba(73, 128, 177, 0.24) 42%, transparent 42%);
           color: #333;
           font-weight: 600;
