@@ -40,14 +40,21 @@ export function SimpleTable({ children }: SimpleTableProps) {
     ),
   });
 
-  const styledRows = React.Children.map(rows.slice(1), (row) => {
-    const cells = React.Children.toArray(getChildren(row));
-    return React.cloneElement(row as React.ReactElement<{ children?: React.ReactNode }>, {
-      children: cells.map((cell, ci) =>
-        React.cloneElement(cell as React.ReactElement<{ className?: string }>, {
-          className: `px-3 py-2 text-gray-600 text-sm align-top ${ci === 0 ? "w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]" : "w-[70%]"}`
-        })
-      ),
+  const styledRows = React.Children.map(rows.slice(1), (node) => {
+    // node is <tbody>, get its <tr> children
+    const trs = React.Children.toArray(getChildren(node));
+    return React.cloneElement(node as React.ReactElement<{ children?: React.ReactNode }>, {
+      children: trs.map((tr) => {
+        // get <td> children of each <tr>
+        const tds = React.Children.toArray(getChildren(tr));
+        return React.cloneElement(tr as React.ReactElement<{ children?: React.ReactNode }>, {
+          children: tds.map((td, ci) =>
+            React.cloneElement(td as React.ReactElement<{ className?: string }>, {
+              className: `px-3 py-2 text-gray-600 text-sm align-top ${ci === 0 ? "w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]" : "w-[70%]"}`,
+            })
+          ),
+        });
+      }),
     });
   });
 
