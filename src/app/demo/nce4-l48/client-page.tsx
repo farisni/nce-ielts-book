@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { TableOfContents } from "@/app/_components/toc";
 import { MarkdownClient } from "@/app/_components/md-markdown-client";
 import { RootDataProvider, type RootData } from "@/app/_components/md-root-data-context";
 import { Drawer } from "@/app/_components/drawer";
@@ -20,8 +19,7 @@ export function Nce4L48ClientPage({
   return (
     <>
       <main className="mx-auto w-[1022px] min-w-[1022px] flex-none rounded-md pl-16 pr-[40px] py-6">
-        <div className="flex gap-8 items-start">
-          <div className="w-full">
+        <div className="w-full">
             <article id="mdx-content" className="prose max-w-none text-black prose-headings:text-gray-900 prose-headings:font-semibold prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-3 prose-h2:scroll-mt-24 prose-h3:scroll-mt-24 prose-p:text-black prose-strong:text-gray-600 prose-code:before:content-none prose-code:after:content-none [&_table]:!border-0 [&_th]:!border-0 [&_td]:!border-0 [&_thead]:!bg-transparent [&_tr]:border-b [&_tr]:border-gray-200 [&_tr:last-child]:border-b-0">
               <style jsx>{`
                 article :global(mark) {
@@ -36,8 +34,6 @@ export function Nce4L48ClientPage({
               </RootDataProvider>
             </article>
           </div>
-          <TableOfContents contentSelector="#mdx-content" />
-        </div>
       </main>
 
       <Drawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} title="词根图谱">
