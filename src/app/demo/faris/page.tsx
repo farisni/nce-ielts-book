@@ -208,7 +208,7 @@ export default function FarisPage() {
         <ul className="space-y-1.5 mb-6">
           {WULING_LIST.map((item, i) => (
             <tr key={i} className="align-top">
-              <td className="align-top pt-1 w-4"><span className="inline-block size-1.5 bg-gray-400 align-middle" /></td>
+              <td className="align-middle w-4"><span className="inline-block size-1.5 bg-gray-400 align-middle" /></td>
               <td className="text-base text-black align-top pt-1">{item}</td>
             </tr>
           ))}
