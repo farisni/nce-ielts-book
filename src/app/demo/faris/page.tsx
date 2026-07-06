@@ -37,6 +37,32 @@ export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
+<ul className="space-y-1.5 mb-6">
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#eaf1eb" }}>cat-like</span>
+                ↔ <span className="text-sm text-gray-400">catlike 偷偷摸摸的</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#f5eeee" }}>dog-like</span>
+                ↔ <span className="text-sm text-gray-400">doglike 忠实的</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#edf3ee" }}>bird-like</span>
+                ↔ <span className="text-sm text-gray-400">birdlike 敏捷轻快的</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#eaf1eb" }}>lady-like</span>
+                ↔ <span className="text-sm text-gray-400">ladylike 风度雍容如贵妇的,温雅的</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#f5eeee" }}>childlike</span>
+                ↔ <span className="text-sm text-gray-400">天真烂漫的 、homelike、kinglike</span>
+              </li>
+              <li className="flex items-start gap-1.5">
+                <span className="note-label shrink-0" style={{ background: "#f0eef6" }}>catty</span>
+                ↔ <span className="text-sm text-gray-400">辅元辅(汉堡结构)需要双写 、doggy</span>
+              </li>
+            </ul>
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
         <TableHeader>
           <TableRow className="border-b border-gray-200 hover:bg-transparent">
