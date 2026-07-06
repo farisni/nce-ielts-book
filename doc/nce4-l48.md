@@ -139,14 +139,14 @@ The golden rule here is spread your risk — if you put all of your money into P
 
 > Pumas are large, cat-like animals which are found in America.
 
-**构词法** - 名词-like
-
-- **cat-like** ↔ **catlike** 偷偷摸摸的
-- **dog-like** ↔ **doglike** 忠实的
-- **bird-like** ↔ **birdlike** 敏捷轻快的
-- **lady-like** ↔ **ladylike** 风度雍容如贵妇的,温雅的
-- **childlike** 天真烂漫的 、**homelike**、**kinglike**
-- **catty** 辅元辅(汉堡结构)需要双写 、**doggy**
+> [!note] 构词法 - 名词-like
+>
+> - **cat-like** ↔ **catlike** 偷偷摸摸的
+> - **dog-like** ↔ **doglike** 忠实的
+> - **bird-like** ↔ **birdlike** 敏捷轻快的
+> - **lady-like** ↔ **ladylike** 风度雍容如贵妇的,温雅的
+> - **childlike** 天真烂漫的 、**homelike**、**kinglike**
+> - **catty** 辅元辅(汉堡结构)需要双写 、**doggy**
 
 
 | 表达 | 例句 |
