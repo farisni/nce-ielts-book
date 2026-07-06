@@ -68,6 +68,7 @@ const WULING_LIST: Seg[][] = [
     " ",
     { hl: "fashion" },
     ".",
+    { note: "NCE3-L29" },
   ],
   [
     "The dealer told him that ",
