@@ -66,7 +66,7 @@ export default function FarisPage() {
                 <span className="text-sm">↔ 辅元辅(汉堡结构)需要双写 、doggy</span>
               </li>
             </ul>
-      <Table className="table-fixed text-black text-base font-semibold" containerClassName="overflow-visible">
+      <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
         <TableHeader>
           <TableRow className="border-b border-gray-200 hover:bg-transparent">
             <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
