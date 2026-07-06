@@ -214,9 +214,9 @@ export default function FarisPage() {
 
       <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
         When reports came into London Zoo{" "}
-        <a href="https://www.ncego.com/tags/114" className="text-blue-600 underline">that</a>{" "}
+        <a href="https://www.ncego.com/tags/114" className="">that</a>{" "}
         a wild puma had been spotted forty-five miles{" "}
-        <a href="https://www.ncego.com/lessons/141#article" className="text-blue-600 underline">south of</a>{" "}
+        <a href="https://www.ncego.com/lessons/141#article" className="">south of</a>{" "}
         London, they were not taken seriously.
       </blockquote>
 
