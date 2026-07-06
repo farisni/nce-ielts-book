@@ -10,7 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 
-const QUOTE_TEXT = "Pumas <span className="text-orange-500 font-bold">are</span> large, cat-like animals which <span className="text-orange-500 font-bold">are found</span> in America.";
+const QUOTE_TEXT = `Pumas <span className="text-orange-500 font-bold">are</span> large, cat-like animals which <span className="text-orange-500 font-bold">are</span> <span className="border-b border-dashed border-orange-400">found in</span> America.`;
 const SECTION_TITLE = "构词法 名词-like";
 
 const BADGE_LIST = [
