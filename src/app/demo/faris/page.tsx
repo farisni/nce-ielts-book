@@ -145,8 +145,7 @@ export default function FarisPage() {
               </span>
             </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
       </KnowledgePoint>
 
       <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor="decoration-emerald-200">
@@ -163,8 +162,7 @@ export default function FarisPage() {
               <span className="text-sm">{item.desc}</span>
             </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
       </KnowledgePoint>
 
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
@@ -211,8 +209,7 @@ export default function FarisPage() {
               <span className="text-base">{renderFoundIn(item, DOT_COLORS[i % DOT_COLORS.length])}</span>
             </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
       </KnowledgePoint>
 
       <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
