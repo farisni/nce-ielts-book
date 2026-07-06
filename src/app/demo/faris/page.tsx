@@ -46,7 +46,7 @@ export default function FarisPage() {
         <TableBody>
           {TABLE_DATA.map((row, i) => (
             <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-              <TableCell className="px-3 py-2 align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+              <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
                 <strong>{row.expression}</strong>
                 {row.expressionCn && (
                   <>
@@ -55,7 +55,7 @@ export default function FarisPage() {
                   </>
                 )}
               </TableCell>
-              <TableCell className="px-3 py-2 align-top text-black w-[70%]">
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[70%]">
                 <HighlightText text={row.exampleEn} word={row.highlight} />
                 {row.exampleCn && (
                   <>
