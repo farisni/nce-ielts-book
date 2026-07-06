@@ -131,3 +131,31 @@ The golden rule here is spread your risk — if you put all of your money into P
 一旦你的投资目标确立以后，你就可以决定你的钱投向何处。
 
 这里的指导原则是：分散你的投资风险。如果你把所有资金投入佩里威格斯国际公司，你就把自己当成了命运的人质。
+
+
+
+## 笔记
+
+
+> Pumas are large, cat-like animals which are found in America.
+
+**构词法** - 名词-like
+
+- cat-like ↔ catlike 偷偷摸摸的
+- dog-like ↔ doglike 忠实的
+- bird-like ↔ birdlike 敏捷轻快的
+- lady-like ↔ ladylike 风度雍容如贵妇的,温雅的
+- childlike 天真烂漫的 、homelike、kinglike
+- catty 辅元辅(汉堡结构)需要双写 、doggy
+
+
+| 表达 | 例句 |
+|---|---|
+| **bear-like animals**<br />像熊一样的动物 | Giant pandas are large, ==bear-like animals== which are found in Sichuan province, China.<br />熊猫是一种体形似熊的大动物，产于中国的四川。 |
+| **lady-like behavior**<br />女性的行为 | The look was always ==lady-like== and appropriately flaunty.<br />这种装扮总是很淑女，奢华得恰到好处。 |
+| **child-like simplicity**<br />童心般的简单 | Do you think you shall like Morton? She asked of me, with a direct and naive simplicity of tone and manner, pleasing, if ==child-like==.<br />“你觉得会喜欢莫尔顿吗？”她问我，语调和举止里带着一种直率而幼稚的单纯，虽然有些孩子气，但讨人喜欢。 |
+| **an angel-like girl**<br />天使般的女孩 | She is a lovely girl, with curl hair, baby skin, and smiles ==like an angel==.<br />她长得很可爱，卷卷的头发，婴儿的皮肤，天使的笑容(Like an Angel girl像天使的女孩) |
+| **dog-like animals**<br />像狗一样的动物 | Foxes and farmers have never got on well. These small ==dog-like animals== have long been accused of killing farm animals.（CET-4） |
+| **crystal-like eyes**<br />明亮的双眸 | Few have got a pair of ==crystal eyes like his==.<br />很少有人像他那样生着一副水晶般的眼睛。 |
+| **flu-like symptoms**<br />流感样症状 | Take them at the onset of cold or ==flu-like symptoms==.<br />出现感冒或类似流感症状时就服用。 |
+| **cobweb-like**<br />蜘蛛网式的 | As is shown in the picture, there is a ==cobweb-like structure== with separate compartments packed in it. |

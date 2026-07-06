@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import { Ellipsis, Search, X } from "lucide-react";
 import { useRootData, useRootClick } from "./md-root-data-context";
 import { RootAffixSections } from "./md-root-affix-sections";
 
 type ElementWithChildren = React.ReactElement<{ children?: React.ReactNode }>;
 
-interface ExpandableTableProps extends React.TableHTMLAttributes<HTMLTableElement> {}
+type ExpandableTableProps = React.TableHTMLAttributes<HTMLTableElement>;
 
 function getChildren(node: React.ReactNode) {
   return React.isValidElement<{ children?: React.ReactNode }>(node)
@@ -32,7 +32,11 @@ export function ExpandableTable({ children }: ExpandableTableProps) {
   const toggleRow = useCallback((index: number) => {
     setExpandedRows((prev) => {
       const next = new Set(prev);
-      next.has(index) ? next.delete(index) : next.add(index);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
       return next;
     });
   }, []);
@@ -52,13 +56,14 @@ export function ExpandableTable({ children }: ExpandableTableProps) {
       ? (cell as ElementWithChildren).props.children
       : ""
   );
+  const isTwoColumnTable = headerCells.length === 2;
 
   const bodyRows = React.Children.toArray(
     getChildren(tbody)
   );
 
-  const filteredRows = useMemo(() => {
-    const term = filter.trim().toLowerCase();
+  const term = filter.trim().toLowerCase();
+  const filteredRows = (() => {
     if (!term) return bodyRows;
     return bodyRows.filter((row) => {
       const cells = React.Children.toArray(
@@ -69,7 +74,7 @@ export function ExpandableTable({ children }: ExpandableTableProps) {
         return text.includes(term);
       });
     });
-  }, [bodyRows, filter]);
+  })();
 
   return (
     <div>
@@ -103,11 +108,16 @@ export function ExpandableTable({ children }: ExpandableTableProps) {
         )}
       </div>
 
-      <table className="w-full border-collapse text-sm">
+      <table className={`w-full border-collapse text-sm ${isTwoColumnTable ? "table-fixed" : ""}`}>
         <thead className="border-b border-gray-200">
           <tr>
             {headerCells.map((cell, i) => (
-              <th key={i} className="px-3 py-2 text-left text-xs font-medium text-gray-500">
+              <th
+                key={i}
+                className={`px-3 py-2 text-left text-xs font-medium text-gray-500 ${
+                  isTwoColumnTable ? (i === 0 ? "w-[30%]" : "w-[70%]") : ""
+                }`}
+              >
                 {headerTexts[i]}
               </th>
             ))}
@@ -141,7 +151,12 @@ export function ExpandableTable({ children }: ExpandableTableProps) {
                     }`}
                   >
                     {cells.map((cell, ci) => (
-                      <td key={ci} className="px-3 py-2 text-gray-600 text-sm">
+                      <td
+                        key={ci}
+                        className={`px-3 py-2 text-gray-600 text-sm align-top ${
+                          isTwoColumnTable ? (ci === 0 ? "w-[30%]" : "w-[70%]") : ""
+                        } ${isTwoColumnTable && ci === 0 ? "[&_strong]:!font-semibold [&_strong]:!text-[#4980b1]" : ""}`}
+                      >
                         {(cell as ElementWithChildren).props.children}
                       </td>
                     ))}

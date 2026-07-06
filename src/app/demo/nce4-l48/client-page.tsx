@@ -32,7 +32,7 @@ export function Nce4L48ClientPage({
                 }
               `}</style>
               <RootDataProvider data={rootData} onRootClick={onRootClick}>
-                <MarkdownClient content={content} handDrawnMarks={false} />
+                <MarkdownClient content={content} handDrawnMarks={false} expandableTable={false} />
               </RootDataProvider>
             </article>
           </div>

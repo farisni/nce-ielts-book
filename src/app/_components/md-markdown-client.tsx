@@ -16,26 +16,28 @@ import { CodeBlock } from "@/app/_components/md-code-block";
 import { ExpandableTable } from "@/app/_components/md-expandable-table";
 
 interface Props {
+  expandableTable?: boolean;
   content: string;
+  handDrawnMarks?: boolean;
 }
 
-export function MarkdownClient({ content }: Props) {
+export function MarkdownClient({ content, handDrawnMarks = true, expandableTable = true }: Props) {
   const components: Components = {
     blockquote: CalloutBlock,
     pre: ({ children }) => <>{children}</>,
     code: CodeBlock,
-    table: ExpandableTable,
+    table: expandableTable ? ExpandableTable : "table",
   };
 
-  return (
-    <HandDrawnMark>
-      <Markdown
-        remarkPlugins={[remarkGfm, remarkMath, remarkHighlight, remarkBlockId, remarkCallout]}
-        rehypePlugins={[rehypeKatex, rehypeRaw]}
-        components={components}
-      >
-        {content}
-      </Markdown>
-    </HandDrawnMark>
+  const markdown = (
+    <Markdown
+      remarkPlugins={[remarkGfm, remarkMath, remarkHighlight, remarkBlockId, remarkCallout]}
+      rehypePlugins={[rehypeKatex, rehypeRaw]}
+      components={components}
+    >
+      {content}
+    </Markdown>
   );
+
+  return handDrawnMarks ? <HandDrawnMark>{markdown}</HandDrawnMark> : markdown;
 }
