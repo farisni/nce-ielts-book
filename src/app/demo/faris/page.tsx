@@ -56,31 +56,39 @@ const AT_LARGE_LIST = [
   { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
 
-const WULING_LIST = [
-  <>
-    <>However, a new type of <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>humor</mark>, which stems largely from the US, has recently <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>come into</mark> <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>fashion</mark>.</>
-  </>,
-  <>
-    <>The dealer told him that <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>it</mark> had just <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>come in</mark>, but that he could not be bothered to open it.</>
-  </>,
-  <>I thought of a good idea. → <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>A good idea</mark> came / flashed into my mind.</>,
-  <>He went to the town on business. → Business took him to the town.</>,
-  <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
-  <>
-    <>The sea bed was scoured with powerful nets and <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>there was tremendous</mark> excitement on board when a chest was raised from the bottom.</>
-    .
-  </>,
-  <>He lost his confidence. → <span className="border-b border-dotted border-gray-400">Confidence</span> deserted him.</>,
-  <>I couldn't sleep that night. → That night sleep eluded me.</>,
-  <>
-    We only travelled half the distance at sunset. → Sunset met us halfway.{" "}
-    <span className="text-sm text-gray-400">日落在中途与我们相遇。</span>
-  </>,
-  <>
-    The past few years witnessed the great influx of foreigners to China, for travelling, studies or business.{" "}
-    <span className="text-sm text-gray-400">过去几年见证了大量外国人涌入中国旅游、学习或经商。</span>
-  </>,
+type Seg = string | { hl: string } | { dot: string } | { note: string };
+
+const WULING_LIST: Seg[][] = [
+  [
+    "However, a new type of ",
+    { hl: "humor" },
+    ", which stems largely from the US, has recently ",
+    { hl: "come into" },
+    " ",
+    { hl: "fashion" },
+    ".",
+  ],
+  [
+    "The dealer told him that ",
+    { hl: "it" },
+    " had just ",
+    { hl: "come in" },
+    ", but that he could not be bothered to open it.",
+  ],
+  ["I thought of a good idea. → ", { hl: "A good idea" }, " came / flashed into my mind."],
+  ["He went to the town on business. → Business took him to the town."],
+  ["A warm and sunny Sunday found my whole family going for an outing at the beach."],
+  [
+    "The sea bed was scoured with powerful nets and ",
+    { hl: "there was tremendous" },
+    " excitement on board when a chest was raised from the bottom.",
+  ],
+  ["He lost his confidence. → ", { dot: "Confidence" }, " deserted him."],
+  ["I couldn't sleep that night. → That night sleep eluded me."],
+  ["We only travelled half the distance at sunset. → Sunset met us halfway.", { note: "日落在中途与我们相遇。" }],
+  ["The past few years witnessed the great influx of foreigners to China, for travelling, studies or business.", { note: "过去几年见证了大量外国人涌入中国旅游、学习或经商。" }],
 ];
+
 
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
 
