@@ -63,7 +63,7 @@ const WULING_LIST = [
   <>
     <>The dealer told him that <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>it</mark> had just <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>come in</mark>, but that he could not be bothered to open it.</>
   </>,
-  <>I thought of a good idea. → A good idea came / flashed into my mind.</>,
+  <>I thought of a good idea. → <mark style={{ background: "linear-gradient(to top, rgba(34, 197, 94, 0.24) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>A good idea</mark> came / flashed into my mind.</>,
   <>He went to the town on business. → Business took him to the town.</>,
   <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
   <>
