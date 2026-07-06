@@ -10,7 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 
-const QUOTE_TEXT = `Pumas <span className="text-orange-500 font-bold">are</span> large, cat-like animals which <span className="text-orange-500 font-bold">are</span> <span className="border-b border-dashed border-orange-400">found in</span> America.`;
+// QUOTE_TEXT removed - see JSX below
 const SECTION_TITLE = "构词法 名词-like";
 
 const BADGE_LIST = [
@@ -51,7 +51,12 @@ export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
-        {QUOTE_TEXT}
+        Pumas{" "}
+        <span className="text-orange-500 font-bold">are</span>{" "}
+        large, cat-like animals which{" "}
+        <span className="text-orange-500 font-bold">are</span>{" "}
+        <span className="border-b border-dashed border-orange-400">found in</span>{" "}
+        America.
       </blockquote>
 
       <div className="text-base font-semibold mb-5 pt-7 underline decoration-emerald-200 decoration-4 underline-offset-3">{SECTION_TITLE}</div>
