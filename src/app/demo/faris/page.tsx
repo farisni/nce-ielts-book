@@ -213,7 +213,7 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <SentenceQuote className="mt-8">
+      <SentenceQuote className="mt-12">
         <span style={{ color: "#6B6AD6" }}>When reports came into London Zoo</span>{" "}
         <span style={{ color: "#E85D7F", fontWeight: 600 }}>that</span>{" "}
         <span style={{ color: "#5BA4C6" }}>a wild puma had been spotted forty-five miles{" "}
