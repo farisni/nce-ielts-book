@@ -214,9 +214,9 @@ export default function FarisPage() {
       </KnowledgePoint>
 
       <SentenceQuote>
-        <span style={{ color: "#8C8BF4" }}>When reports came into London Zoo</span>{" "}
-        <span style={{ color: "#FE8A98", fontWeight: 600 }}>that</span>{" "}
-        <span style={{ color: "#B1DAED" }}>a wild puma had been spotted forty-five miles{" "}
+        <span style={{ color: "#6B6AD6" }}>When reports came into London Zoo</span>{" "}
+        <span style={{ color: "#E85D7F", fontWeight: 600 }}>that</span>{" "}
+        <span style={{ color: "#5BA4C6" }}>a wild puma had been spotted forty-five miles{" "}
         south of{" "}
         London, they were not taken seriously.</span>
       </SentenceQuote>
