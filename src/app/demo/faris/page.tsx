@@ -56,6 +56,44 @@ const AT_LARGE_LIST = [
   { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
 
+const WULING_LIST = [
+  <>
+    However, a new type of{" "}
+    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="text-blue-600 underline">humor</a>
+    , which stems largely from the US,{" "}
+    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="text-blue-600 underline">has recently come into</a>{" "}
+    <a href="https://www.ncego.com/lessons/201#come%20into%20fashion" className="text-blue-600 underline">fashion</a>
+    .
+  </>,
+  <>
+    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="text-blue-600 underline">The dealer told him</a>{" "}
+    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="text-blue-600 underline">that</a>{" "}
+    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="text-blue-600 underline">it</a>{" "}
+    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="text-blue-600 underline">had just</a>{" "}
+    <a href="https://www.ncego.com/lessons/206#it%20had%20just%20come%20in" className="text-blue-600 underline">come in, but that he could not be bothered to open it</a>
+    .
+  </>,
+  <>I thought of a good idea. → A good idea came / flashed into my mind.</>,
+  <>He went to the town on business. → Business took him to the town.</>,
+  <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
+  <>
+    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="text-blue-600 underline">The sea bed was scoured with powerful nets and</a>{" "}
+    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="text-blue-600 underline">there was tremendous</a>{" "}
+    <a href="https://www.ncego.com/lessons/204#there%20was%20tremendous" className="text-blue-600 underline">excitement on board when a chest was raised from the bottom</a>
+    .
+  </>,
+  <>He lost his confidence. → Confidence deserted him.</>,
+  <>I couldn't sleep that night. → That night sleep eluded me.</>,
+  <>
+    We only travelled half the distance at sunset. → Sunset met us halfway.{" "}
+    <span className="text-sm text-gray-400">日落在中途与我们相遇。</span>
+  </>,
+  <>
+    The past few years witnessed the great influx of foreigners to China, for travelling, studies or business.{" "}
+    <span className="text-sm text-gray-400">过去几年见证了大量外国人涌入中国旅游、学习或经商。</span>
+  </>,
+];
+
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
 
 const TABLE_DATA = [
@@ -178,7 +216,19 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200" />
+      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
+        <ul className="space-y-1.5 mb-6">
+          {WULING_LIST.map((item, i) => (
+            <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <span
+                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+              />
+              <span className="text-base">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </KnowledgePoint>
 
       <style>{`
         main mark {
