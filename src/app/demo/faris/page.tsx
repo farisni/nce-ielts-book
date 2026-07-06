@@ -78,7 +78,7 @@ export default function FarisPage() {
                 {row.expressionCn && (
                   <>
                     <br />
-                    <span className="text-sm">{row.expressionCn}</span>
+                    <span className="text-sm text-gray-400">{row.expressionCn}</span>
                   </>
                 )}
               </TableCell>
@@ -87,7 +87,7 @@ export default function FarisPage() {
                 {row.exampleCn && (
                   <>
                     <br />
-                    <span className="text-sm">{row.exampleCn}</span>
+                    <span className="text-sm text-gray-400">{row.exampleCn}</span>
                   </>
                 )}
               </TableCell>
