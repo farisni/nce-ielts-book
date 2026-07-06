@@ -4,14 +4,13 @@ import { useMemo, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, LanguagesIcon, PanelRight } from "lucide-react";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles, mergeArticleData } from "@/app/mock";
 import { useReaderStore } from "@/stores/reader-store";
 import { keywordCategories } from "@/app/mock/ielts-538-vocabulary";
 import { vocabChapters } from "@/app/mock/ielts-vocabulary";
-import {
   CommandDialog,
   Command,
   CommandEmpty,
@@ -21,7 +20,6 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -137,6 +135,15 @@ const pageSearchItems: PageSearchItem[] = [
     group: "Demo",
     icon: <PlayIcon className="text-muted-foreground" />,
     keywords: toKeywords("ted 演讲 language 语言 学习 外语 lidia"),
+  },
+  {
+    id: "demo-faris",
+    label: "Faris · 测试页",
+    description: "Faris demo test page",
+    href: "/demo/faris",
+    group: "Demo",
+    icon: <SquareDashedIcon className="text-muted-foreground" />,
+    keywords: toKeywords("faris demo test"),
   },
 
   {

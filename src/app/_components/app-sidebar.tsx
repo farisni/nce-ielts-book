@@ -14,7 +14,7 @@ import {
   Rows3,
   Sparkles,
   Table2,
-  Play } from "lucide-react";
+  Play, SquareDashed } from "lucide-react";
 import { Sidebar, SidebarBody, SidebarLink, useSidebar } from "@/components/ui/sidebar";
 import { motion } from "motion/react";
 
@@ -83,6 +83,11 @@ const tedItems = [
 
 const demoItems = [
   {
+  {
+    label: "Faris · 测试页",
+    href: "/demo/faris",
+    icon: <SquareDashed className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+  },
     label: "Demo · Table",
     href: "/demo/table",
     icon: <Table2 className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
