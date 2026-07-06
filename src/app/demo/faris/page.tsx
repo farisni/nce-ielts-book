@@ -21,6 +21,8 @@ const TABLE_DATA = [
   { expression: "cobweb-like", expressionCn: "蜘蛛网式的", exampleEn: "As is shown in the picture, there is a cobweb-like structure with separate compartments packed in it.", exampleCn: "", highlight: "cobweb-like structure" },
 ];
 
+const DOT_COLORS = ['#eaf1eb', '#eef0f8', '#f5eeee', '#f4f1e8', '#edf3ee', '#f0eef6'];
+
 function HighlightText({ text, word }: { text: string; word: string }) {
   const idx = text.indexOf(word);
   if (idx === -1) return <>{text}</>;
@@ -39,27 +41,27 @@ export default function FarisPage() {
       <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
 <ul className="space-y-1.5 mb-6">
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">cat-like</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#eaf1eb" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">cat-like</span>
                 ↔ <span className="text-sm">catlike 偷偷摸摸的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">dog-like</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#eef0f8" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">dog-like</span>
                 ↔ <span className="text-sm">doglike 忠实的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">bird-like</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#f5eeee" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">bird-like</span>
                 ↔ <span className="text-sm">birdlike 敏捷轻快的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">lady-like</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#f4f1e8" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">lady-like</span>
                 ↔ <span className="text-sm">ladylike 风度雍容如贵妇的,温雅的</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">childlike</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#edf3ee" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">childlike</span>
                 ↔ <span className="text-sm">天真烂漫的 、homelike、kinglike</span>
               </li>
               <li className="flex items-baseline gap-1.5">
-                <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">catty</span>
+                <span className="inline-block size-2 rounded-full shrink-0 self-center" style={{ background: "#f0eef6" }} /> <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">catty</span>
                 ↔ <span className="text-sm">辅元辅(汉堡结构)需要双写 、doggy</span>
               </li>
             </ul>
