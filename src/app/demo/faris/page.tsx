@@ -119,7 +119,7 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <SentenceQuote>
+      <SentenceQuote className="mb-8">
         Pumas{" "}
         <span style={{ color: "#bd491e", fontWeight: 600 }}>are</span>{" "}
         large, cat-like animals which{" "}
@@ -213,7 +213,7 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <SentenceQuote className="mb-8">
+      <SentenceQuote>
         <span style={{ color: "#6B6AD6" }}>When reports came into London Zoo</span>{" "}
         <span style={{ color: "#E85D7F", fontWeight: 600 }}>that</span>{" "}
         <span style={{ color: "#5BA4C6" }}>a wild puma had been spotted forty-five miles{" "}
