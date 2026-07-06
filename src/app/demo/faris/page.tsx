@@ -52,9 +52,9 @@ export default function FarisPage() {
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
         Pumas{" "}
-        <mark>are</mark>{" "}
+        <mark style="background:#fce4d8;color:#333;font-weight:600;border-radius:3px;padding:0 0.15em">are</mark>{" "}
         large, cat-like animals which{" "}
-        <mark>are</mark>{" "}
+        <mark style="background:#fce4d8;color:#333;font-weight:600;border-radius:3px;padding:0 0.15em">are</mark>{" "}
         <span className="border-b border-dotted border-gray-400">found in</span>{" "}
         America.
       </blockquote>
