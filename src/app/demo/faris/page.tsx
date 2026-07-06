@@ -25,8 +25,8 @@ const BADGE_LIST = [
 ];
 
 const FOUND_IN_LIST = [
-  { text: "Many plant and animal species", hl: "are found", rest: "only in the rainforests." },
-  { text: "Vitamin C", hl: "is found", rest: "in citrus fruit." },
+  { text: "Many plant and animal species", hl: "are found in", rest: "only the rainforests." },
+  { text: "Vitamin C", hl: "is found in", rest: "citrus fruit." },
 ];
 
 const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
