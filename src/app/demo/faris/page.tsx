@@ -38,7 +38,7 @@ function HighlightText({ text, word }: { text: string; word: string }) {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-12 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-gray-500 text-base">Pumas are large, cat-like animals which are found in America.</blockquote>
+      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base">Pumas are large, cat-like animals which are found in America.</blockquote>
       <div className="text-lg font-semibold mb-5 pt-7">构词法 名词-like</div>
 <ul className="space-y-1.5 mb-6">
               <li className="flex items-center gap-1.5">
