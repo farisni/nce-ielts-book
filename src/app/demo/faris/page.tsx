@@ -58,28 +58,16 @@ const AT_LARGE_LIST = [
 
 const WULING_LIST = [
   <>
-    However, a new type of{" "}
-    <span>humor</span>
-    , which stems largely from the US,{" "}
-    <span>has recently come into</span>{" "}
-    <span>fashion</span>
-    .
+    <>However, a new type of humor, which stems largely from the US, has recently come into fashion.</>
   </>,
   <>
-    <span>The dealer told him</span>{" "}
-    <span>that</span>{" "}
-    <span>it</span>{" "}
-    <span>had just</span>{" "}
-    <span>come in, but that he could not be bothered to open it</span>
-    .
+    <>The dealer told him that it had just come in, but that he could not be bothered to open it.</>
   </>,
   <>I thought of a good idea. → A good idea came / flashed into my mind.</>,
   <>He went to the town on business. → Business took him to the town.</>,
   <>A warm and sunny Sunday found my whole family going for an outing at the beach.</>,
   <>
-    <span>The sea bed was scoured with powerful nets and</span>{" "}
-    <span>there was tremendous</span>{" "}
-    <span>excitement on board when a chest was raised from the bottom</span>
+    <>The sea bed was scoured with powerful nets and there was tremendous excitement on board when a chest was raised from the bottom.</>
     .
   </>,
   <>He lost his confidence. → Confidence deserted him.</>,
