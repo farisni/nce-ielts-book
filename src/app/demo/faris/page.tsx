@@ -21,7 +21,7 @@ const TABLE_DATA = [
   { expression: "cobweb-like", expressionCn: "蜘蛛网式的", exampleEn: "As is shown in the picture, there is a cobweb-like structure with separate compartments packed in it.", exampleCn: "", highlight: "cobweb-like structure" },
 ];
 
-const DOT_COLORS = ['#eaf1eb', '#eef0f8', '#f5eeee', '#f4f1e8', '#edf3ee', '#f0eef6'];
+const DOT_COLORS = ['#7dd3fc', '#a5b4fc', '#f9a8d4', '#fde68a', '#86efac', '#fca5a5'];
 
 function HighlightText({ text, word }: { text: string; word: string }) {
   const idx = text.indexOf(word);
