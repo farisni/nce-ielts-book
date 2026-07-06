@@ -83,7 +83,6 @@ const tedItems = [
 
 const demoItems = [
   {
-  {
     label: "Faris · 测试页",
     href: "/demo/faris",
     icon: <SquareDashed className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
