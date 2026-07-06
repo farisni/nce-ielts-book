@@ -133,7 +133,7 @@ export default function FarisPage() {
       <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor="decoration-purple-200">
         <ul className="space-y-1.5 mb-6">
           {AT_LARGE_LIST.map((item, i) => (
-            <li key={i} className="flex items-start gap-1.5 text-black text-base">
+            <li key={i} className="flex items-start gap-1.5 text-black text-base font-semibold">
               <span
                 className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
@@ -201,7 +201,7 @@ export default function FarisPage() {
       <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor="decoration-blue-200">
         <ul className="space-y-1.5 mb-6">
           {FOUND_IN_LIST.map((item, i) => (
-            <li key={i} className="flex items-center gap-1.5 text-black text-base">
+            <li key={i} className="flex items-center gap-1.5 text-black text-base font-semibold">
               <span
                 className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
@@ -212,7 +212,7 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base">
+      <blockquote className="border-l-2 border-zinc-300 pl-4 my-4 text-black text-base font-semibold">
         When reports came into London Zoo{" "}
         <a href="https://www.ncego.com/tags/114" className="text-blue-600 underline">that</a>{" "}
         a wild puma had been spotted forty-five miles{" "}
