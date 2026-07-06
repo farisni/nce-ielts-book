@@ -56,8 +56,7 @@ export default function FarisPage() {
         Pumas{" "}
         <mark style={{ background: "none", color: "#bd491e", fontWeight: 600 }}>are</mark>{" "}
         large, cat-like animals which{" "}
-        <mark style={{ background: "none", color: "#bd491e", fontWeight: 600 }}>are</mark>{" "}
-        <span className="border-b border-dotted border-gray-400">found in</span>{" "}
+        <span className="border-b border-dotted border-gray-400"><mark style={{ background: "none", color: "#bd491e", fontWeight: 600 }}>are</mark> found in</span>{" "}
         America.
       </blockquote>
 
