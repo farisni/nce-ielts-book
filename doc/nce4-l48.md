@@ -141,10 +141,10 @@ The golden rule here is spread your risk — if you put all of your money into P
 
 <div style="font-size:1.15rem;font-weight:600;margin-bottom:20px;padding-top:28px">构词法 - 名词-like</div>
 
-- <span class="note-label" style="background:#eaf1eb">cat-like</span> ↔ <span class="note-label" style="background:#eef0f8">catlike</span> 偷偷摸摸的
-- <span class="note-label" style="background:#f5eeee">dog-like</span> ↔ <span class="note-label" style="background:#f4f1e8">doglike</span> 忠实的
-- <span class="note-label" style="background:#edf3ee">bird-like</span> ↔ <span class="note-label" style="background:#f0eef6">birdlike</span> 敏捷轻快的
-- <span class="note-label" style="background:#eaf1eb">lady-like</span> ↔ <span class="note-label" style="background:#eef0f8">ladylike</span> 风度雍容如贵妇的,温雅的
+- <span class="note-label" style="background:#eaf1eb">cat-like</span> ↔ catlike 偷偷摸摸的
+- <span class="note-label" style="background:#f5eeee">dog-like</span> ↔ doglike 忠实的
+- <span class="note-label" style="background:#edf3ee">bird-like</span> ↔ birdlike 敏捷轻快的
+- <span class="note-label" style="background:#eaf1eb">lady-like</span> ↔ ladylike 风度雍容如贵妇的,温雅的
 - <span class="note-label" style="background:#f5eeee">childlike</span> 天真烂漫的 、<span class="note-label" style="background:#f4f1e8">homelike</span>、<span class="note-label" style="background:#edf3ee">kinglike</span>
 - <span class="note-label" style="background:#f0eef6">catty</span> 辅元辅(汉堡结构)需要双写 、<span class="note-label" style="background:#eaf1eb">doggy</span>
 
