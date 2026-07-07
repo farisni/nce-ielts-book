@@ -68,7 +68,7 @@ LIST_KP = [
     I + '          <span className="text-sm text-gray-400">{item.cn}</span>',
     I + '        </span>',
     I + '      </li>',
-    I + '    )}}}</ul>',
+    I + '    )}</ul>',
     I + '</KnowledgePoint>',
 ]
 
@@ -91,7 +91,7 @@ TABLE_KP = [
     I + '            <HighlightText text={r.ex} word={r.hl} />',
     I + '          </TableCell>',
     I + '        </TableRow>',
-    I + '      )}}}</TableBody>',
+    I + '      )}</TableBody>',
     I + '  </Table>',
     I + '</KnowledgePoint>',
 ]

@@ -202,7 +202,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
         <KnowledgePoint titleEn="appeal to sb ." titleCn="吸引某人（令某人产生兴趣）">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
@@ -222,7 +222,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -263,7 +263,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -302,7 +302,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="at the ... of ..." titleCn="一...(马上)就...">
@@ -323,7 +323,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -370,7 +370,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -406,7 +406,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="be superior to" titleCn="天生比较级(搭配to而非than)">
@@ -427,7 +427,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -463,7 +463,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -508,7 +508,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="at dawn" titleCn="在黎明时刻">
@@ -529,7 +529,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -614,7 +614,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -657,7 +657,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
@@ -672,7 +672,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -714,7 +714,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="provide sb. with sth." titleCn="为某人提供某物（sb. 短 sth. 长）">
@@ -735,7 +735,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -777,7 +777,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -818,7 +818,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
@@ -833,7 +833,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -869,7 +869,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -906,7 +906,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -941,7 +941,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -996,7 +996,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -1036,7 +1036,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -1066,7 +1066,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -1105,7 +1105,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -1146,7 +1146,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
@@ -1161,7 +1161,7 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}}}</ul>
+            )}</ul>
         </KnowledgePoint>
       </Sentence>
 
@@ -1196,7 +1196,7 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}}}</TableBody>
+              )}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -1210,6 +1210,7 @@ export default function Page() {
           }
       `}</style>
     </main>
+
 
 
 
