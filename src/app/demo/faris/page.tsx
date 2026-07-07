@@ -247,7 +247,7 @@ export default function FarisPage() {
                   </>
                 )}
               </TableCell>
-              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[70%]">
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
                 <HighlightText text={row.exampleEn} word={row.highlight} />
                 {row.exampleCn && (
                   <>
@@ -347,7 +347,7 @@ export default function FarisPage() {
                 <br />
                 <span className="text-sm text-gray-400">{row.note}</span>
               </TableCell>
-              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[60%]">
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[60%]">
                 {row.sentences.map((s, j) => (
                   <React.Fragment key={j}>
                     {j > 0 && <br />}
@@ -401,7 +401,7 @@ export default function FarisPage() {
                 <br />
                 <span className="text-sm text-gray-400">{row.note}</span>
               </TableCell>
-              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[60%]">
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[60%]">
                 {row.examples.map((ex, ei) => (
                   <React.Fragment key={ei}>
                     {ei > 0 && <br />}
