@@ -93,7 +93,6 @@ const WULING_LIST: Seg[][] = [
 ];
 
 
-const TITLE_UNDERLINE_COLOR = "decoration-slate-300";
 const DOT_COLORS = ["#7dd3fc", "#67c4f4", "#52b6ec", "#3fa8df", "#3499cf", "#2f8dbc"];
 
 const TABLE_DATA = [
@@ -134,7 +133,7 @@ export default function FarisPage() {
         </span>
       </SentenceQuote>
 
-      <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor={TITLE_UNDERLINE_COLOR}>
+      <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN}>
         <ul className="space-y-1.5 mb-7">
           {AT_LARGE_LIST.map((item, i) => (
             <li key={i} className="flex items-start gap-1.5 text-black text-base">
@@ -152,7 +151,7 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor={TITLE_UNDERLINE_COLOR}>
+      <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB}>
         <ul className="space-y-1.5 mb-7">
           {BADGE_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5">
@@ -202,7 +201,7 @@ export default function FarisPage() {
         </TableBody>
       </Table>
 
-      <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor={TITLE_UNDERLINE_COLOR}>
+      <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN}>
         <ul className="space-y-1.5 mb-7">
           {FOUND_IN_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5 text-black text-base">
@@ -224,12 +223,17 @@ export default function FarisPage() {
         London, they were not taken seriously.</span>
       </SentenceQuote>
 
-      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor={TITLE_UNDERLINE_COLOR}>
+      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)">
         <table className="w-full border-separate border-spacing-y-2">
         <tbody>
           {WULING_LIST.map((item, i) => (
             <tr key={i} className="align-top">
-              <td className="align-middle w-4"><span className="inline-block size-1.5 bg-gray-400 align-middle" /></td>
+              <td className="align-middle w-4">
+                <span
+                  className="inline-block size-1.5 rounded-full align-middle"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+                />
+              </td>
               <td className="text-base text-black align-top pt-1">
                 {item.map((seg, j) => {
                   if (typeof seg === "string") return seg;

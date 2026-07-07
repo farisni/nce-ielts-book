@@ -3,7 +3,6 @@ import React from "react";
 interface KnowledgePointProps {
   titleEn: string;
   titleCn?: string;
-  underlineColor: string;
   children: React.ReactNode;
   className?: string;
 }
@@ -11,20 +10,25 @@ interface KnowledgePointProps {
 export function KnowledgePoint({
   titleEn,
   titleCn,
-  underlineColor,
   children,
   className,
 }: KnowledgePointProps) {
   return (
     <div className={className}>
-      <div
-        className={`text-base font-semibold mb-4 pt-6 underline ${underlineColor} decoration-3 underline-offset-3`}
-      >
-        {titleEn}
+      <div className="mb-5 pt-6 text-base font-semibold text-zinc-950">
+        <span
+          className="inline border-b border-[#9fcddd] px-0.5 pb-0.5"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(125, 211, 252, 0.22) 44%, transparent 44%)",
+          }}
+        >
+          {titleEn}
+        </span>
         {titleCn && (
           <>
             {" "}
-            <span className="font-normal text-gray-400 no-underline text-sm">
+            <span className="ml-1 font-normal text-gray-400 text-sm">
               {titleCn}
             </span>
           </>
