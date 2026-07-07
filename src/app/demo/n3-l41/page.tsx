@@ -213,9 +213,9 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {COUNTRY_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -270,7 +270,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="regard A as" titleCn="B 把A看着B">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -310,7 +310,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="go into raptures" titleCn="欣喜若狂">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -380,7 +380,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="extol the virtues / benefits of sth." titleCn="盛赞...的好处">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -417,7 +417,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="be / live under the illusion / delusion that..." titleCn="有某种错觉">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -482,9 +482,9 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="be forever doing sth." titleCn="老是做某事">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {FOREVER_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -522,7 +522,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="compare A with / to B" titleCn="把A和B做比较">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -580,7 +580,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
 
       </Sentence>
 
@@ -598,7 +598,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
 
       </Sentence>
 
@@ -616,7 +616,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="everyday vs every day" titleCn="">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -651,9 +651,9 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="主语从句" titleCn="形式主语 it / 主语从句">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {SUBJECT_CLAUSE_DATA.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -712,7 +712,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="save sb. sth. / doing sth." titleCn="某人节省某物/免于做某事">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -736,7 +736,7 @@ export default function Page() {
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {RIGHTLY_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -771,7 +771,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="do without sth." titleCn="没有...也行">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -836,7 +836,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="be available for sth." titleCn="有空做某事">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -878,7 +878,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="go up to the city 上城市" titleCn="">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -902,7 +902,7 @@ export default function Page() {
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {TREAT_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -931,7 +931,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="major" titleCn="important; significant">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -969,7 +969,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="draw to a close" titleCn="接近尾声">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1005,7 +1005,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="... of this / that sort / kind 这种...、那种...(前面的名字用 复数 )" titleCn="这种...、那种...(前面的名字用复数)">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1039,7 +1039,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="be only a short bus ride away" titleCn="只有很短的公共汽车车程（公交车即可达）">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1104,7 +1104,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="make do with ..." titleCn="凑合用">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1151,9 +1151,9 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="run / go wild with delight" titleCn="系表（变得...）欣喜若狂">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {GO_WILD_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -1182,9 +1182,9 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="双重否定 = 加强肯定" titleCn="">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {DOUBLE_NEG_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -1216,7 +1216,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="shed" titleCn="v.流，洒，落（泪），射(发)出光，蜕皮、掉落（货物）">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1258,7 +1258,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="比较级表最高级" titleCn="">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1282,7 +1282,7 @@ export default function Page() {
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
-          <ul className="space-y-1.5 mb-7">
+          <ul className="space-y-1.5 mb-5">
             {TUCK_LIST.map((item, i) => (
               <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
@@ -1310,7 +1310,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </div>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="It has always been a mystery to me" titleCn="这对我来说一直是个谜">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
