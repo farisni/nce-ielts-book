@@ -69,7 +69,7 @@ const WULING_LIST: Seg[][] = [
     " ",
     { hl: "fashion" },
     ".",
-    { tag: "NCE3-L29" },
+    { tag: "N3-L29" },
   ],
   [
     "The dealer told him that ",
@@ -173,7 +173,7 @@ const POSSESSION_CHARGE_DATA = [
 
 function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
   if (tag.startsWith("NCE4")) return "destructive";
-  if (tag.startsWith("NCE3")) return "success";
+  if (tag.startsWith("N3")) return "success";
   if (tag.startsWith("NCE2")) return "info";
   return "secondary";
 }
