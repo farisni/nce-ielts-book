@@ -4,7 +4,7 @@ import { SentenceQuote } from "./sentence-quote";
 interface SentenceProps {
   quote?: React.ReactNode;
   quoteClassName?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function Sentence({ quote, quoteClassName, children }: SentenceProps) {
