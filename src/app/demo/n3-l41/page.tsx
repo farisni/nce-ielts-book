@@ -708,9 +708,9 @@ export default function Page() {
         <span> to live in the city </span>
         <span>where they rightly belong</span>
         <span>. </span>
-        <span>虚拟语气</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
+          虚拟语气
         </span>
       </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="save sb. sth. / doing sth." titleCn="某人节省某物/免于做某事">
