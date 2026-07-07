@@ -144,31 +144,44 @@ const MODAL_HAVE_DONE_DATA = [
 
 const FAIL_TO_DO_LIST = [
   [
-    { text: "When the journalist again" },
-    { text: "failed to reply, the editor reluctantly published the article as it had originally been written" },
-    { text: "." },
+    { text: "When the journalist again " },
+    { text: "failed to reply", hl: true },
+    { text: ", the editor reluctantly published the article as it had originally been written." },
   ],
   [
-    { text: "Once, however, it" },
-    { text: "failed to give" },
-    { text: "the correct time" },
-    { text: "." },
+    { text: "Once, however, it " },
+    { text: "failed to give", hl: true },
+    { text: " the correct time." },
   ],
   [
-    { text: "Those who" },
-    { text: "failed to get" },
-    { text: "in need not have felt disappointed, as many of the artistes who should have appeared did not come" },
-    { text: "." },
+    { text: "Those who " },
+    { text: "failed to get", hl: true },
+    { text: " in need not have felt disappointed, as many of the artistes who should have appeared did not come." },
   ],
 ];
 
 const POSSESSION_CHARGE_DATA = [
-  { pattern: "in the possession of sb.", note: "…为某人所拥有", examples: ["The land is in the possession of the merchant.", "My house is in the possession of an old lady now."] },
-  { pattern: "in one's possession", note: "为某人所拥有", examples: ["The house is in his possession.", "The book is in my possession."] },
-  { pattern: "in possession of sth.", note: "拥有某物", examples: ["The gang was caught in possession of stolen goods.", "I'm in possession of the book."] },
-  { pattern: "in the charge of sb.", note: "…为某人所负责/管理", examples: ["Our class was in the charge of Miss Wang."] },
-  { pattern: "in one's charge", note: "为某人所负责/管理", examples: ["The bookstore is in my charge."] },
-  { pattern: "in charge of ...", note: "负责/管理", examples: ["I'm in charge of the bookstore."] },
+  { pattern: "in the possession of sb.", note: "…为某人所拥有", examples: [
+    { text: "The land is ", hl: "in the possession of", text2: " the merchant." },
+    { text: "My house is ", hl: "in the possession of", text2: " an old lady now." },
+  ]},
+  { pattern: "in one's possession", note: "为某人所拥有", examples: [
+    { text: "The house is ", hl: "in his possession", text2: "." },
+    { text: "The book is ", hl: "in my possession", text2: "." },
+  ]},
+  { pattern: "in possession of sth.", note: "拥有某物", examples: [
+    { text: "The gang was caught ", hl: "in possession of", text2: " stolen goods." },
+    { text: "I'm ", hl: "in possession of", text2: " the book." },
+  ]},
+  { pattern: "in the charge of sb.", note: "…为某人所负责/管理", examples: [
+    { text: "Our class was ", hl: "in the charge of", text2: " Miss Wang." },
+  ]},
+  { pattern: "in one's charge", note: "为某人所负责/管理", examples: [
+    { text: "The bookstore is ", hl: "in my charge", text2: "." },
+  ]},
+  { pattern: "in charge of ...", note: "负责/管理", examples: [
+    { text: "I'm ", hl: "in charge of", text2: " the bookstore." },
+  ]},
 ];
 
 function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
@@ -383,6 +396,7 @@ export default function FarisPage() {
               />
               <span>
                 {item.map((seg, j) => {
+                  if ("hl" in seg) return <mark key={j} style={{ background: "linear-gradient(to top, rgba(250, 220, 180, 0.34) 42%, transparent 42%)", color: "#333", fontWeight: 600, padding: "0 0.02em 0.02em" }}>{seg.text}</mark>;
                   return <React.Fragment key={j}>{seg.text}</React.Fragment>;
                 })}
               </span>
@@ -410,7 +424,7 @@ export default function FarisPage() {
                   <React.Fragment key={ei}>
                     {ei > 0 && <br />}
                     <span className={ei === 0 ? "inline-block size-1.5 rounded-full border border-[#C7D2CD] shrink-0 align-middle mr-1.5" : "inline-block size-1.5 rounded-full bg-[#C7D2CD] shrink-0 align-middle mr-1.5"} />
-                    <span className="">{ex}</span>
+                    <span className="">{ex.text}<mark>{ex.hl}</mark>{ex.text2}</span>
                   </React.Fragment>
                 ))}
               </TableCell>
