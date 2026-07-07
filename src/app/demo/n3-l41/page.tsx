@@ -209,9 +209,9 @@ export default function Page() {
         <span> never </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>appealed</span>
         <span> to me. </span>
-        <span>开篇明义</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
+          开篇明义
         </span>
       </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
