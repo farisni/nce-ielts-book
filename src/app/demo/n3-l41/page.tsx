@@ -28,6 +28,23 @@ const APPEAL_DATA = [
   { expr: "regard A as B", note: "", ex: "…the Italians regarded him as a sort of hero.", hl: "regarded" },
 ];
 
+
+const COUNTRY_LIST = [
+  { en: "spend three days in the country!", cn: "在乡村（玩三天）" },
+  { en: "buy a small house in the country.", cn: "在乡下（买房子）" },
+  { en: "visiting all parts of the country.", cn: "全国各地" },
+  { en: "living in a beautiful new house in the country.", cn: "在乡下（居住）" },
+  { en: "people will be visiting the country", cn: "本国" },
+  { en: "sold the house and left the country.", cn: "这个国家（离开）" },
+  { en: "carried the news to everyone in the country.", cn: "全国" },
+];
+
+
+const CITY_BORN_LIST = [
+  { en: "City born and city bred, I have always regarded…", cn: "非谓语动词（过去分词）做原因状语" },
+  { en: "Tucked away in the country, the thousands…are never seen.", cn: "过去分词短语表伴随 / 原因" },
+];
+
 // ═══ Sentence 2: 朋友幻想 ═══
 const RAPTURE_DATA = [
   { expr: "go into raptures", note: "欣喜若狂", ex: "People go into raptures at the mere mention of shopping.", hl: "go into raptures" },
@@ -56,6 +73,15 @@ const COMPARE_DATA = [
   { expr: "by contrast with...", note: "", ex: "By contrast with the previous design, this one is more user-friendly.", hl: "By contrast with" },
 ];
 
+
+const AT_THE_OF_DATA = [
+  { expr: "at the ... of ...", note: "一…就…", ex: "They always go into raptures at the mere mention of the country.", hl: "at the mere mention of" },
+  { expr: "at the ... of ...", note: "", ex: "Your stomach would turn at the idea of frying potatoes in animal fat.", hl: "at the idea of" },
+  { expr: "within + 时间", note: "不到…（时间内）", ex: "He was back in town within six months.", hl: "within six months" },
+  { expr: "within + 时间", note: "", ex: "The bird covered the distance within three minutes.", hl: "within three minutes" },
+  { expr: "at dawn", note: "在黎明（时刻）", ex: "Nothing can be compared with the first cockcrow, the twittering of birds at dawn.", hl: "at dawn" },
+];
+
 // ═══ Sentence 3: 田园另一面 ═══
 const FAIL_DATA = [
   { expr: "fail to do", note: "没能做成某事", ex: "My friend fails to mention the long and friendless winter evenings.", hl: "fails to mention" },
@@ -76,23 +102,38 @@ const SAVE_DATA = [
   { expr: "save sb. doing sth.", note: "省得某人做某事", ex: "If you tell her the news, it will save me calling her.", hl: "save me" },
 ];
 
-// ═══ Sentence 4: 城市也有美好 ═══
+
+const PROVIDE_DATA = [
+  { expr: "provide sb. with sth.", note: "为某人提供某物", ex: "Editors of newspapers often go to extremes to provide their readers with unimportant facts.", hl: "provide" },
+  { expr: "be loaded with", note: "满载…", ex: "Country people stagger home loaded with exotic items.", hl: "loaded with" },
+  { expr: "... of this sort / kind", note: "这种/那种（前面名词用复数）", ex: "The city dweller never experiences anxieties of this sort.", hl: "anxieties of this sort" },
+  { expr: "be only a short bus ride away", note: "公交车即可达", ex: "The latest exhibitions, films, or plays are only a short bus ride away.", hl: "a short bus ride away" },
+  { expr: "be available for", note: "有空做某事", ex: "They invariably live nearby and are always available for an informal chat.", hl: "available for" },
+];
+
+// ═══ Sentence 5: 城市之美 ═══
 const COMPARATIVE_DATA = [
   { expr: "比较级表最高级", note: "Few/Nothing + 比较级 = 最…", ex: "Few things could be more impressive than the peace that descends on deserted city streets.", hl: "Few things could be more" },
   { expr: "比较级表最高级", note: "", ex: "Few students could be more diligent than she (is).", hl: "Few students could be more" },
 ];
 
-const DOUBLE_NEG_DATA = [
-  { expr: "双重否定 = 加强肯定", note: "nothing / no one ... not / without", ex: "Nothing can be compared with the first cockcrow, the twittering of birds at dawn.", hl: "Nothing can be compared" },
-  { expr: "双重否定", note: "", ex: "Nothing is impossible to a willing mind.", hl: "Nothing is impossible" },
-  { expr: "双重否定", note: "", ex: "No one has nothing to offer to society.", hl: "No one has nothing" },
-  { expr: "双重否定", note: "", ex: "Impossible is nothing.", hl: "Impossible is nothing" },
-  { expr: "Nor 部分倒装", note: "也不…（= and not... either）", ex: "Nor is the city without its moments of beauty.", hl: "Nor is the city" },
+const DOUBLE_NEG_LIST = [
+  { en: "Nothing can be compared with the first cockcrow, the twittering of birds at dawn.", cn: "双重否定 = 加强肯定（课文原句）" },
+  { en: "Nothing is impossible to a willing mind.", cn: "世上无难事，只怕有心人。" },
+  { en: "No one has nothing to offer to society.", cn: "每个人都可以为社会做贡献。" },
+  { en: "Impossible is nothing.", cn: "一切皆有可能（双重否定 = 加强肯定）" },
+  { en: "Anything is possible.", cn: "一切皆有可能（反例：单重肯定）" },
+  { en: "Nor is the city without its moments of beauty.", cn: "城市也不乏属于它自己的良辰美景（Nor 部分倒装）" },
 ];
 
-const FOREVER_DATA = [
-  { expr: "be forever doing sth.", note: "总是做某事（抱怨语气）", ex: "He is forever talking about the friendly people.", hl: "is forever talking" },
-  { expr: "be forever doing sth.", note: "", ex: "She is forever complaining about the weather.", hl: "is forever complaining" },
+const FOREVER_LIST = [
+  { en: "He is forever talking about the friendly people, the clean atmosphere…", cn: "总是做某事（抱怨/强调语气）" },
+  { en: "She is forever complaining about the weather.", cn: "总是在抱怨" },
+];
+
+const RIGHTLY_LIST = [
+  { en: "They could be saved so much misery and expense if they chose to live in the city where they rightly belong.", cn: "本来应该地（for a good reason）" },
+  { en: "It was a vicious foul, and the referee rightly removed him from the game.", cn: "理应，理所当然地" },
 ];
 
 const MYSTERY_DATA = [
@@ -101,7 +142,13 @@ const MYSTERY_DATA = [
   { expr: "It beats me + 从句", note: "真搞不懂…", ex: "It beats me why he always arrives late to meetings.", hl: "beats me" },
 ];
 
-// ═══ Sentence 5: 城市居民 ═══
+
+const SHED_DATA = [
+  { expr: "shed", note: "洒下/发散（光）", ex: "There is something comforting about the warm glow shed by advertisements.", hl: "shed" },
+  { expr: "shed tears / blood", note: "流泪 / 流血", ex: "She shed bitter tears when she heard the news.", hl: "shed" },
+  { expr: "shed light on", note: "阐明，揭示", ex: "These discoveries may shed light on the origins of the universe.", hl: "shed light on" },
+];
+// ═══ Sentence 4: 城市便利 ═══
 const COME_UP_DATA = [
   { expr: "come up to town", note: "上城里去（从次要→重要）", ex: "Some of my acquaintances in the country come up to town once or twice a year.", hl: "come up to town" },
   { expr: "go down to the country", note: "下乡去（从重要→次要）", ex: "go down to the country for the weekend", hl: "go down to" },
@@ -112,55 +159,86 @@ const DRAW_DATA = [
   { expr: "a major operation", note: "一件大事（手术→隐喻）", ex: "For them, visiting the theatre is a major operation.", hl: "major operation" },
 ];
 
-const TREAT_DATA = [
-  { expr: "a special treat", note: "特别的消遣/犒赏", ex: "When we were kids, a trip to the beach was a real treat.", hl: "a real treat" },
-  { expr: "a treat (for sb.)", note: "难得的乐事", ex: "Her son's visits are a great treat for her.", hl: "a great treat" },
+const TREAT_LIST = [
+  { en: "When we were kids, a trip to the beach was a real treat.", cn: "特别的消遣/犒赏" },
+  { en: "Her son's visits are a great treat for her.", cn: "难得的乐事" },
 ];
 
-const GO_WILD_DATA = [
-  { expr: "run / go wild with delight", note: "变得欣喜若狂（系表结构）", ex: "The children ran wild with delight when they saw the ice cream truck.", hl: "ran wild with delight" },
-  { expr: "go wild with delight", note: "", ex: "Fans went wild with delight when their team won the championship.", hl: "went wild with delight" },
+const GO_WILD_LIST = [
+  { en: "The children ran wild with delight when they saw the ice cream truck.", cn: "变得欣喜若狂（系表结构：go/run wild）" },
+  { en: "Fans went wild with delight when their team won the championship.", cn: "欣喜若狂" },
 ];
 
-const TUCK_DATA = [
-  { expr: "tuck away", note: "藏匿，隐藏", ex: "…the thousands that travel to work every day are tucked away in their homes in the country.", hl: "tucked away" },
-  { expr: "tuck … into …", note: "把…塞进…", ex: "He tried to tuck his flapping shirt inside his trousers.", hl: "tuck" },
+const TUCK_LIST = [
+  { en: "…the thousands … are tucked away in their homes in the country.", cn: "隐藏，藏匿" },
+  { en: "He tried to tuck his flapping shirt inside his trousers.", cn: "把…塞进…" },
 ];
 
-export default function N3L41Page() {
+export default function Page() {
   return (
     <main className="mx-auto mt-16 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-
-      {/* ═══ Sentence 1 ═══ */}
+      {/* === Sentence 0 === */}
       <Sentence quote={<>
-        <span>The quiet life of the country has never </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>appealed to</span>
-        <span> me. City born and city bred, I have always </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>regarded</span>
-        <span> the country </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>as</span>
-        <span> something you look at through a train window, or something you occasionally visit during the weekend.</span>
-        <span className="text-[11px] text-gray-400 font-normal ml-2"><Badge variant="info" size="sm" className="align-middle">N3-L41</Badge></span>
+        <span>The quiet life of the country</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
+        <span>never</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>appealed</span>
+        <span>to me.</span>
+        <span>开篇明义</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
-          开篇明义：城里出生城里长大的人对乡村的态度。
         </span>
-      </>} quoteClassName="mb-7">
-        <KnowledgePoint titleEn="appeal to / regard … as" titleCn="核心表达">
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
+          <ul className="space-y-1.5 mb-7">
+            {COUNTRY_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 1 === */}
+      <Sentence quote={<>
+        <span>City born and city bred</span>
+        <span>, I</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>have</span>
+        <span>always</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>regarded</span>
+        <span>the country</span>
+        <span>as</span>
+        <span>something</span>
+        <span>you look at through a train window</span>
+        <span>, or something</span>
+        <span>you occasionally visit during the weekend</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="regard A as" titleCn="B 把A看着B">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {APPEAL_DATA.map((r, i) => (
                 <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
                     <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
@@ -170,39 +248,35 @@ export default function N3L41Page() {
         </KnowledgePoint>
       </Sentence>
 
-      {/* ═══ Sentence 2 ═══ */}
+      {/* === Sentence 2 === */}
       <Sentence quote={<>
-        <span>Most of my friends live in the city, yet they always </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>go into raptures</span>
-        <span> at the mere mention of the country. Though they </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>extol the virtues of</span>
-        <span> the peaceful life, only one of them has ever gone to live in the country and he was back in town </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>within six months</span>
-        <span>. Even he still lives </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>under the illusion that</span>
-        <span> country life is somehow </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>superior to</span>
-        <span> town life.</span>
+        <span>Most of my friends</span>
+        <span>live in</span>
+        <span>the city,</span>
+        <span>yet</span>
+        <span>they always</span>
+        <span>go into raptures</span>
+        <span>at the mere mention of the country</span>
+        <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
-          朋友的田园狂热 vs 现实的快速逃离——对比突出讽刺。
         </span>
       </>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="go into raptures" titleCn="欣喜若狂">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {RAPTURE_DATA.map((r, i) => (
                 <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
                     <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
@@ -210,21 +284,66 @@ export default function N3L41Page() {
             </TableBody>
           </Table>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="extol the virtues of" titleCn="赞美…的优点">
+        <KnowledgePoint titleEn="at the ... of ..." titleCn="一...(马上)就...">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {AT_THE_OF_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 3 === */}
+      <Sentence quote={<>
+        <span>Though</span>
+        <span>they</span>
+        <span>extol the virtues of</span>
+        <span>the peaceful life,</span>
+        <span>only one of them</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
+        <span>ever</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>gone</span>
+        <span>to</span>
+        <span>live in the country</span>
+        <span>and he</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>was</span>
+        <span>back in town</span>
+        <span>within six months</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="extol the virtues / benefits of sth." titleCn="盛赞...的好处">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {EXTOL_DATA.map((r, i) => (
                 <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
                     <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
@@ -232,11 +351,25 @@ export default function N3L41Page() {
             </TableBody>
           </Table>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="be under the illusion that" titleCn="误以为…">
+      </Sentence>
+
+      {/* === Sentence 4 === */}
+      <Sentence quote={<>
+        <span>Even he still</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>lives</span>
+        <span>under</span>
+        <span>the illusion</span>
+        <span>that country life is somehow superior to town life</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="be / live under the illusion / delusion that..." titleCn="有某种错觉">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
@@ -254,11 +387,11 @@ export default function N3L41Page() {
             </TableBody>
           </Table>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="be superior to" titleCn="天生比较级（to 而非 than）">
+        <KnowledgePoint titleEn="be superior to" titleCn="天生比较级(搭配to而非than)">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
@@ -276,11 +409,69 @@ export default function N3L41Page() {
             </TableBody>
           </Table>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="compare A with / to B" titleCn="对比表达">
+      </Sentence>
+
+      {/* === Sentence 5 === */}
+      <Sentence quote={<>
+        <span>He</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>forever</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>talking</span>
+        <span>about</span>
+        <span>the friendly people</span>
+        <span>, the</span>
+        <span>clean atmosphere</span>
+        <span>, the</span>
+        <span>closeness to nature</span>
+        <span>and the</span>
+        <span>gentle pace of living</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="be forever doing sth." titleCn="老是做某事">
+          <ul className="space-y-1.5 mb-7">
+            {FOREVER_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 6 === */}
+      <Sentence quote={<>
+        <span>Nothing</span>
+        <span style={{ color: "#d97706", fontWeight: 600 }}>can</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>be compared</span>
+        <span>, he</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>maintains</span>
+        <span>,</span>
+        <span>with</span>
+        <span>the first cockcrow</span>
+        <span>,</span>
+        <span>the twittering of birds at dawn</span>
+        <span>,</span>
+        <span>the sight of the rising sun</span>
+        <span>glinting on the trees and pastures</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="compare A with / to B" titleCn="把A和B做比较">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
@@ -300,72 +491,172 @@ export default function N3L41Page() {
         </KnowledgePoint>
       </Sentence>
 
-      {/* ═══ Sentence 3 ═══ */}
+      {/* === Sentence 7 === */}
       <Sentence quote={<>
-        <span>This idyllic pastoral scene is only part of the picture. My friend </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>fails to mention</span>
-        <span> the long and friendless winter evenings in front of the TV — virtually the only form of entertainment. He says nothing about the poor selection of goods in the shops, or about those unfortunate people who have to travel from the country to the city every day and are prepared to </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>tolerate</span>
-        <span> a four-hour journey for the dubious privilege of living in the country.</span>
+        <span>This idyllic pastoral scene</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>only</span>
+        <span>part of</span>
+        <span>the picture.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
-          田园生活另一面：漫长冬夜、购物不便、通勤痛苦。
         </span>
       </>} quoteClassName="mt-16 mb-7">
-        <KnowledgePoint titleEn="fail to do" titleCn="没能完成某事">
+
+      </Sentence>
+
+      {/* === Sentence 8 === */}
+      <Sentence quote={<>
+        <span>My friend</span>
+        <span>fails to</span>
+        <span>mention</span>
+        <span>the long and friendless winter evenings</span>
+        <span>in front of the TV</span>
+        <span>—</span>
+        <span>virtually the only form of entertainment</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+
+      </Sentence>
+
+      {/* === Sentence 9 === */}
+      <Sentence quote={<>
+        <span>He</span>
+        <span>says nothing</span>
+        <span>about the poor selection of goods in the shops</span>
+        <span>, or</span>
+        <span>about those unfortunate people</span>
+        <span>who have to travel from the country to the city every day to get to work</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+
+      </Sentence>
+
+      {/* === Sentence 10 === */}
+      <Sentence quote={<>
+        <span>Why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>beyond me.</span>
+        <span>雄狮句型（对比上下句）</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+
+      </Sentence>
+
+      {/* === Sentence 11 === */}
+      <Sentence quote={<>
+        <span>They</span>
+        <span>could be saved</span>
+        <span>so much misery</span>
+        <span>and</span>
+        <span>expense</span>
+        <span>if</span>
+        <span>they</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>chose</span>
+        <span>to live in the city</span>
+        <span>where they rightly belong</span>
+        <span>.</span>
+        <span>虚拟语气</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="save sb. sth. / doing sth." titleCn="某人节省某物/免于做某事">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">结构</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {FAIL_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="make do with / second best" titleCn="将就 / 退而求其次">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {MAKE_DO_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="do without / save sb. sth." titleCn="没有…也行 / 省去某人某事">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {[...DO_WITHOUT_DATA, ...SAVE_DATA].map((r, i) => (
+              {SAVE_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+        <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
+          <ul className="space-y-1.5 mb-7">
+            {RIGHTLY_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 12 === */}
+      <Sentence quote={<>
+        <span>If</span>
+        <span>you</span>
+        <span>can</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>do</span>
+        <span>without the</span>
+        <span>few pastoral pleasures of the country</span>
+        <span>, you</span>
+        <span>will</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>find</span>
+        <span>the city can provide you with the best that life can offer</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="do without sth." titleCn="没有...也行">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {DO_WITHOUT_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+        <KnowledgePoint titleEn="provide sb. with sth." titleCn="为某人提供某物（sb. 短 sth. 长）">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {PROVIDE_DATA.map((r, i) => (
                 <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
                     <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
@@ -380,25 +671,322 @@ export default function N3L41Page() {
         </KnowledgePoint>
       </Sentence>
 
-      {/* ═══ Sentence 4 ═══ */}
+      {/* === Sentence 13 === */}
       <Sentence quote={<>
-        <span>Few things could be more impressive than the peace that descends on deserted city streets at weekends, </span>
-        <span style={{ color: "#E85D7F", fontWeight: 600 }}>when</span>
-        <span> the thousands that travel to work every day are </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>tucked away</span>
-        <span> in their homes in the country. </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>Nor</span>
-        <span> is the city without its moments of beauty.</span>
+        <span>They</span>
+        <span>invariably</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>live</span>
+        <span>nearby and</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>are</span>
+        <span>always</span>
+        <span>available for</span>
+        <span>an</span>
+        <span>informal chat</span>
+        <span>or an</span>
+        <span>evening's entertainment</span>
+        <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
-          城市周末的宁静 + 双重否定/部分倒装，表达「城市也有美好」。
         </span>
       </>} quoteClassName="mt-16 mb-7">
-        <KnowledgePoint titleEn="比较级表最高级" titleCn="Few ... could be more ...">
+
+      </Sentence>
+
+      {/* === Sentence 14 === */}
+      <Sentence quote={<>
+        <span>Some of my acquaintances</span>
+        <span>in the country</span>
+        <span>come up</span>
+        <span>to town</span>
+        <span>once or twice a year</span>
+        <span>to</span>
+        <span>visit the theatre</span>
+        <span>as a special treat</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
+          <ul className="space-y-1.5 mb-7">
+            {TREAT_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 15 === */}
+      <Sentence quote={<>
+        <span>For them</span>
+        <span>this</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>a major operation</span>
+        <span>which involves considerable planning</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="major" titleCn="important; significant">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {DRAW_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 16 === */}
+      <Sentence quote={<>
+        <span>As</span>
+        <span>the play</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>draws</span>
+        <span>to its close, they</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>wonder</span>
+        <span>whether they will ever catch that last train home</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="draw to a close" titleCn="接近尾声">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {DRAW_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 17 === */}
+      <Sentence quote={<>
+        <span>The city dweller</span>
+        <span>never</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>experiences</span>
+        <span>anxieties of this sort</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+
+      </Sentence>
+
+      {/* === Sentence 18 === */}
+      <Sentence quote={<>
+        <span>The latest</span>
+        <span>exhibitions, films, or plays</span>
+        <span>are only a short bus ride away</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+
+      </Sentence>
+
+      {/* === Sentence 19 === */}
+      <Sentence quote={<>
+        <span>There</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>so</span>
+        <span>much variety</span>
+        <span>that</span>
+        <span>you never</span>
+        <span>have to</span>
+        <span>make do with</span>
+        <span>second best</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="make do with ..." titleCn="凑合用">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {MAKE_DO_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 20 === */}
+      <Sentence quote={<>
+        <span>Country people</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>run</span>
+        <span>wild</span>
+        <span>when</span>
+        <span>they</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>go</span>
+        <span>shopping in the city</span>
+        <span>and</span>
+        <span>stagger home</span>
+        <span>loaded with</span>
+        <span>as many of the</span>
+        <span>exotic items</span>
+        <span>as they can carry</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="run / go wild with delight" titleCn="系表（变得...）欣喜若狂">
+          <ul className="space-y-1.5 mb-7">
+            {GO_WILD_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 21 === */}
+      <Sentence quote={<>
+        <span>Nor</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>the city</span>
+        <span>without</span>
+        <span>its moments of beauty</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="双重否定 = 加强肯定" titleCn="">
+          <ul className="space-y-1.5 mb-7">
+            {DOUBLE_NEG_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 22 === */}
+      <Sentence quote={<>
+        <span>There</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span>something</span>
+        <span>comforting about the warm glow</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>shed</span>
+        <span>by</span>
+        <span>advertisements</span>
+        <span>on cold wet winter nights</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="shed" titleCn="v.流，洒，落（泪），射(发)出光，蜕皮、掉落（货物）">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {SHED_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 23 === */}
+      <Sentence quote={<>
+        <span>Few things</span>
+        <span>could</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>be</span>
+        <span>more impressive</span>
+        <span>than the peace</span>
+        <span>that descends on deserted city streets at weekends when the thousands that travel to work every day are tucked away in their homes in the country</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="比较级表最高级" titleCn="">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
@@ -416,55 +1004,41 @@ export default function N3L41Page() {
             </TableBody>
           </Table>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="双重否定 + Nor 倒装" titleCn="nothing / no one ... not / Nor ...">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {DOUBLE_NEG_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
+          <ul className="space-y-1.5 mb-7">
+            {TUCK_LIST.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </KnowledgePoint>
-        <KnowledgePoint titleEn="be forever doing" titleCn="总是做某事（抱怨语气）">
+      </Sentence>
+
+      {/* === Sentence 24 === */}
+      <Sentence quote={<>
+        <span>It</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
+        <span>always</span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>been</span>
+        <span>a mystery to me</span>
+        <span>why city dwellers, who appreciate all these things, obstinately pretend that they would prefer to live in the country</span>
+        <span>.</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="It has always been a mystery to me" titleCn="这对我来说一直是个谜">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">结构</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {FOREVER_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="It is a mystery to me / be beyond sb." titleCn="形式主语 → 我不明白…">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
                 <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
               </TableRow>
             </TableHeader>
@@ -483,130 +1057,16 @@ export default function N3L41Page() {
           </Table>
         </KnowledgePoint>
       </Sentence>
-
-      {/* ═══ Sentence 5 ═══ */}
-      <Sentence quote={<>
-        <span>Some of my acquaintances in the country </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>come up</span>
-        <span> to town once or twice a year to visit the theatre </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>as a special treat</span>
-        <span>. For them this is </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>a major operation</span>
-        <span> which involves considerable planning. </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>As the day drew to a close</span>
-        <span>, the city dweller never experiences </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>anxieties of this sort</span>
-        <span>. The latest exhibitions, films, or plays are only a short bus ride away. Shopping, too, is always a pleasure. There is so much variety that you never have to </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>make do with second best</span>
-        <span>. Country people </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>run wild</span>
-        <span> when they go shopping in the city and stagger home </span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>loaded with</span>
-        <span> exotic items.</span>
-        <br />
-        <span className="text-[13px] text-gray-500 font-normal">
-          城市居民 vs 乡村来客——对比城市便利与乡村匮乏。
-        </span>
-      </>} quoteClassName="mt-16 mb-7">
-        <KnowledgePoint titleEn="come up to / go down to" titleCn="方向性表达（上城市 / 下乡）">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {COME_UP_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="a major operation / draw to a close" titleCn="隐喻表达 / 接近尾声">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {DRAW_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="a special treat" titleCn="难得的乐事 / 犒赏">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[30%]">表达</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[70%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {TREAT_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[30%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-        <KnowledgePoint titleEn="go wild with delight / tuck away" titleCn="系表结构 / 隐藏">
-          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">结构</TableHead>
-                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {[...GO_WILD_DATA, ...TUCK_DATA].map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
-                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
-                  </TableCell>
-                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </KnowledgePoint>
-      </Sentence>
-
       <style>{`
-        blockquote { font-family: "Lyon Text", Georgia, "LXGW WenKai Screen", serif; }
-        main mark {
-          background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
-          color: #1f465b;
-          font-weight: 600;
-          padding: 0 0.02em 0.02em;
-        }
+          blockquote { font-family: "Lyon Text", Georgia, "LXGW WenKai Screen", serif; }
+          main mark {
+            background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
+            color: #1f465b;
+            font-weight: 600;
+            padding: 0 0.02em 0.02em;
+          }
       `}</style>
     </main>
+
   );
 }
