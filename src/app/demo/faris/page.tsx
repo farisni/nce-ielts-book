@@ -11,6 +11,7 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 
 // QUOTE_TEXT removed - see JSX below
 const SECTION_TITLE_MAIN = "构词法";
@@ -57,7 +58,7 @@ const AT_LARGE_LIST = [
   { en: "The disease is still at large.", cn: "疾病仍在肆虐。" },
 ];
 
-type Seg = string | { hl: string } | { hl2: string } | { dot: string } | { note: string };
+type Seg = string | { hl: string } | { hl2: string } | { dot: string } | { note: string } | { tag: string };
 
 const WULING_LIST: Seg[][] = [
   [
@@ -68,7 +69,7 @@ const WULING_LIST: Seg[][] = [
     " ",
     { hl: "fashion" },
     ".",
-    { note: "NCE3-L29" },
+    { tag: "NCE3-L29" },
   ],
   [
     "The dealer told him that ",
@@ -92,7 +93,8 @@ const WULING_LIST: Seg[][] = [
 ];
 
 
-const DOT_COLORS = ["#38bdf8", "#818cf8", "#f472b6", "#facc15", "#34d399", "#fb7185"];
+const TITLE_UNDERLINE_COLOR = "decoration-slate-300";
+const DOT_COLORS = ["#7dd3fc", "#67c4f4", "#52b6ec", "#3fa8df", "#3499cf", "#2f8dbc"];
 
 const TABLE_DATA = [
   { expression: "bear-like animals", expressionCn: "像熊一样的动物", exampleEn: "Giant pandas are large, bear-like animals which are found in Sichuan province, China.", exampleCn: "熊猫是一种体形似熊的大动物，产于中国的四川。", highlight: "bear-like animals" },
@@ -128,11 +130,11 @@ export default function FarisPage() {
         America.
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
-          引出本文的"主人翁"（名字、体型、特征、产地），关系代词（which、that）+ Be动词 可省略（非谓语动词做后置定语）
+          引出本文的「主人翁」（名字、体型、特征、产地），关系代词（which、that）+ Be动词 可省略（非谓语动词做后置定语）
         </span>
       </SentenceQuote>
 
-      <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor="decoration-purple-200">
+      <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN} underlineColor={TITLE_UNDERLINE_COLOR}>
         <ul className="space-y-1.5 mb-7">
           {AT_LARGE_LIST.map((item, i) => (
             <li key={i} className="flex items-start gap-1.5 text-black text-base">
@@ -150,7 +152,7 @@ export default function FarisPage() {
         </ul>
       </KnowledgePoint>
 
-      <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor="decoration-emerald-200">
+      <KnowledgePoint titleEn={SECTION_TITLE_MAIN} titleCn={SECTION_TITLE_SUB} underlineColor={TITLE_UNDERLINE_COLOR}>
         <ul className="space-y-1.5 mb-7">
           {BADGE_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5">
@@ -200,7 +202,7 @@ export default function FarisPage() {
         </TableBody>
       </Table>
 
-      <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor="decoration-blue-200">
+      <KnowledgePoint titleEn={SECTION_TITLE_2_EN} titleCn={SECTION_TITLE_2_CN} underlineColor={TITLE_UNDERLINE_COLOR}>
         <ul className="space-y-1.5 mb-7">
           {FOUND_IN_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5 text-black text-base">
@@ -222,7 +224,7 @@ export default function FarisPage() {
         London, they were not taken seriously.</span>
       </SentenceQuote>
 
-      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor="decoration-pink-200">
+      <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)" underlineColor={TITLE_UNDERLINE_COLOR}>
         <table className="w-full border-separate border-spacing-y-2">
         <tbody>
           {WULING_LIST.map((item, i) => (
@@ -235,6 +237,7 @@ export default function FarisPage() {
                   if ("hl2" in seg) return <mark key={j} style={{ background: "none", color: "#bd491e", fontWeight: "normal" }}>{seg.hl2}</mark>;
                   if ("dot" in seg) return <span key={j} className="border-b border-dotted border-gray-400">{seg.dot}</span>;
                   if ("note" in seg) return <span key={j} className="text-sm text-gray-400">{seg.note}</span>;
+                  if ("tag" in seg) return <Badge key={j} color="blue" size="sm" className="ml-1.5">{seg.tag}</Badge>;
                   return null;
                 })}
               </td>
@@ -246,8 +249,8 @@ export default function FarisPage() {
 
       <style>{`
         main mark {
-          background: linear-gradient(to top, rgba(73, 128, 177, 0.24) 42%, transparent 42%);
-          color: #333;
+          background: linear-gradient(to top, rgba(125, 211, 252, 0.34) 42%, transparent 42%);
+          color: #1f465b;
           font-weight: 600;
           padding: 0 0.02em 0.02em;
         }
