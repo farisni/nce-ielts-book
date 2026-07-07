@@ -178,7 +178,7 @@ export default function Page() {
   return (
     <main className="mx-auto mt-16 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       {/* === Sentence 1 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>The quiet life of the country</span>
         <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
@@ -189,7 +189,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
           <ul className="space-y-1.5 mb-7">
             {COUNTRY_LIST.map((item, i) => (
@@ -202,7 +202,8 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
         <KnowledgePoint titleEn="appeal to sb ." titleCn="吸引某人（令某人产生兴趣）">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
@@ -222,13 +223,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 2 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>City born and city bred</span>
         <span>, I </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>have</span>
@@ -244,7 +246,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="regard A as" titleCn="B 把A看着B">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -263,13 +265,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 3 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Most of my friends</span>
         <span> </span>
         <span>live in</span>
@@ -283,7 +286,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="go into raptures" titleCn="欣喜若狂">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -302,7 +305,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="at the ... of ..." titleCn="一...(马上)就...">
@@ -323,13 +327,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 4 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Though</span>
         <span> they </span>
         <span>extol the virtues of</span>
@@ -351,7 +356,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="extol the virtues / benefits of sth." titleCn="盛赞...的好处">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -370,13 +375,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 5 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Even he still </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>lives</span>
         <span> under </span>
@@ -387,7 +393,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="be / live under the illusion / delusion that..." titleCn="有某种错觉">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -406,7 +412,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="be superior to" titleCn="天生比较级(搭配to而非than)">
@@ -427,13 +434,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 6 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>He </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
         <span> forever </span>
@@ -450,7 +458,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="be forever doing sth." titleCn="老是做某事">
           <ul className="space-y-1.5 mb-7">
             {FOREVER_LIST.map((item, i) => (
@@ -463,12 +471,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 7 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Nothing </span>
         <span style={{ color: "#d97706", fontWeight: 600 }}>can</span>
         <span> </span>
@@ -489,7 +498,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="compare A with / to B" titleCn="把A和B做比较">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -508,7 +517,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="at dawn" titleCn="在黎明时刻">
@@ -529,13 +539,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 8 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>This idyllic pastoral scene</span>
         <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
@@ -545,12 +556,12 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
 
       </Sentence>
 
       {/* === Sentence 9 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>My friend </span>
         <span>fails to</span>
         <span> mention </span>
@@ -563,12 +574,12 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
 
       </Sentence>
 
       {/* === Sentence 10 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>He</span>
         <span> says nothing</span>
         <span> </span>
@@ -581,12 +592,12 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
 
       </Sentence>
 
       {/* === Sentence 11 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country</span>
         <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
@@ -595,7 +606,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="be beyond sb." titleCn="使某人无法理解(难以置信)">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -614,13 +625,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 12 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>They </span>
         <span>could be saved</span>
         <span> </span>
@@ -638,7 +650,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="save sb. sth. / doing sth." titleCn="某人节省某物/免于做某事">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -657,7 +669,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
@@ -672,12 +685,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 13 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>If</span>
         <span> you </span>
         <span>can</span>
@@ -695,7 +709,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="do without sth." titleCn="没有...也行">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -714,7 +728,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="provide sb. with sth." titleCn="为某人提供某物（sb. 短 sth. 长）">
@@ -735,13 +750,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 14 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>They </span>
         <span>invariably</span>
         <span> </span>
@@ -758,7 +774,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="be available for sth." titleCn="有空做某事">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -777,13 +793,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 15 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Some of my acquaintances</span>
         <span> </span>
         <span>in the country</span>
@@ -799,7 +816,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="go up to the city 上城市" titleCn="">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -818,7 +835,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
@@ -833,12 +851,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 16 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>For them</span>
         <span> this </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
@@ -850,7 +869,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="major" titleCn="important; significant">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -869,13 +888,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 17 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>As</span>
         <span> the play </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>draws</span>
@@ -887,7 +907,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="draw to a close" titleCn="接近尾声">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -906,13 +926,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 18 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>The city dweller</span>
         <span> never </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>experiences</span>
@@ -922,7 +943,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="... of this / that sort / kind 这种...、那种...(前面的名字用 复数 )" titleCn="这种...、那种...(前面的名字用复数)">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -941,13 +962,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 19 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>The latest</span>
         <span> exhibitions, films, or plays </span>
         <span>are only a short bus ride away</span>
@@ -955,12 +977,12 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
 
       </Sentence>
 
       {/* === Sentence 20 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>There </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
         <span> </span>
@@ -977,7 +999,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="make do with ..." titleCn="凑合用">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -996,13 +1018,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 21 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Country people </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>run</span>
         <span> </span>
@@ -1023,7 +1046,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="run / go wild with delight" titleCn="系表（变得...）欣喜若狂">
           <ul className="space-y-1.5 mb-7">
             {GO_WILD_LIST.map((item, i) => (
@@ -1036,12 +1059,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 22 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Nor</span>
         <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
@@ -1053,7 +1077,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="双重否定 = 加强肯定" titleCn="">
           <ul className="space-y-1.5 mb-7">
             {DOUBLE_NEG_LIST.map((item, i) => (
@@ -1066,12 +1090,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 23 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>There </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
         <span> something </span>
@@ -1086,7 +1111,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="shed" titleCn="v.流，洒，落（泪），射(发)出光，蜕皮、掉落（货物）">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1105,13 +1130,14 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 24 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>Few things</span>
         <span> </span>
         <span>could</span>
@@ -1127,7 +1153,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="比较级表最高级" titleCn="">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1146,7 +1172,8 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
@@ -1161,12 +1188,13 @@ export default function Page() {
                   <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
-            )}</ul>
+            ))}
+          </ul>
         </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 25 === */}
-      <Sentence quote={<>
+      <Sentence quote={<div>
         <span>It </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
         <span> always </span>
@@ -1177,7 +1205,7 @@ export default function Page() {
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
-      </>} quoteClassName="mt-16 mb-7">
+      </div>} quoteClassName="mt-16 mb-7">
         <KnowledgePoint titleEn="It has always been a mystery to me" titleCn="这对我来说一直是个谜">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -1196,25 +1224,11 @@ export default function Page() {
                     <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
-              )}</TableBody>
+              ))}
+            </TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
-      <style>{`
-          blockquote { font-family: "Lyon Text", Georgia, "LXGW WenKai Screen", serif; }
-          main mark {
-            background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
-            color: #1f465b;
-            font-weight: 600;
-            padding: 0 0.02em 0.02em;
-          }
-      `}</style>
     </main>
-
-
-
-
-
-
   );
 }
