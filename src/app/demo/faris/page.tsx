@@ -313,7 +313,7 @@ export default function FarisPage() {
           {MODAL_HAVE_DONE_DATA.map((row, i) => (
             <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
 <TableCell className="px-3 py-2 whitespace-normal align-top w-[40%] [&_strong]:!font-semibold">
-                <strong className="text-[#bd491e]">{row.modal}</strong>{" "}<strong className="!text-[#4980b1]">{row.suffix}</strong>
+                <strong className="text-[#d97706]">{row.modal}</strong>{" "}<strong className="!text-[#4980b1]">{row.suffix}</strong>
                 <br />
                 <span className="text-sm text-gray-400">{row.note}</span>
               </TableCell>
