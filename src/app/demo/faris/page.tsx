@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { SentenceQuote } from "@/app/_components/sentence-quote";
 import { KnowledgePoint } from "@/app/_components/knowledge-point";
+import { Sentence } from "@/app/_components/sentence";
 import {
   Table,
   TableHeader,
@@ -144,20 +144,20 @@ const MODAL_HAVE_DONE_DATA = [
 
 const FAIL_TO_DO_LIST = [
   [
-    { link: "When the journalist again", href: "https://www.ncego.com/lessons/177#failed%20to%20reply" },
-    { link: "failed to reply, the editor reluctantly published the article as it had originally been written", href: "https://www.ncego.com/lessons/177#failed%20to%20reply" },
+    { text: "When the journalist again" },
+    { text: "failed to reply, the editor reluctantly published the article as it had originally been written" },
     { text: "." },
   ],
   [
-    { link: "Once, however, it", href: "https://www.ncego.com/lessons/146#failed%20to" },
-    { link: "failed to give", href: "https://www.ncego.com/lessons/146#failed%20to" },
-    { link: "the correct time", href: "https://www.ncego.com/lessons/146#failed%20to" },
+    { text: "Once, however, it" },
+    { text: "failed to give" },
+    { text: "the correct time" },
     { text: "." },
   ],
   [
-    { link: "Those who", href: "https://www.ncego.com/lessons/164#failed%20to" },
-    { link: "failed to get", href: "https://www.ncego.com/lessons/164#failed%20to" },
-    { link: "in need not have felt disappointed, as many of the artistes who should have appeared did not come", href: "https://www.ncego.com/lessons/164#failed%20to" },
+    { text: "Those who" },
+    { text: "failed to get" },
+    { text: "in need not have felt disappointed, as many of the artistes who should have appeared did not come" },
     { text: "." },
   ],
 ];
@@ -181,7 +181,7 @@ function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
 export default function FarisPage() {
   return (
     <main className="mx-auto mt-16 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <SentenceQuote className="mb-7">
+      <Sentence quote={<>
         Pumas{" "}
         <span style={{ color: "#bd491e", fontWeight: 600 }}>are</span>{" "}
         large, cat-like animals which{" "}
@@ -191,7 +191,8 @@ export default function FarisPage() {
         <span className="text-[13px] text-gray-500 font-normal">
           引出本文的「主人翁」（名字、体型、特征、产地），关系代词（which、that）+ Be动词 可省略（非谓语动词做后置定语）
         </span>
-      </SentenceQuote>
+      </>}
+      quoteClassName="mb-7">
 
       <KnowledgePoint titleEn={AT_LARGE_TITLE_EN} titleCn={AT_LARGE_TITLE_CN}>
         <ul className="space-y-1.5 mb-7">
@@ -274,14 +275,16 @@ export default function FarisPage() {
           ))}
         </ul>
       </KnowledgePoint>
+      </Sentence>
 
-      <SentenceQuote className="mt-16">
+      <Sentence quote={<>
         <span style={{ color: "#6B6AD6" }}>When reports came into London Zoo</span>{" "}
         <span style={{ color: "#E85D7F", fontWeight: 600 }}>that</span>{" "}
         <span style={{ color: "#5BA4C6" }}>a wild puma had been spotted forty-five miles{" "}
         south of{" "}
         London, they were not taken seriously.</span>
-      </SentenceQuote>
+      </>}
+      quoteClassName="mt-16">
 
       <KnowledgePoint titleEn="无灵主语(inanimate subject)" titleCn="物称主语(拟人化)">
         <table className="w-full border-separate border-spacing-y-2">
@@ -310,6 +313,7 @@ export default function FarisPage() {
         </tbody>
       </table>
       </KnowledgePoint>
+      </Sentence>
 
       <style>{`
         main mark {
@@ -319,17 +323,18 @@ export default function FarisPage() {
           padding: 0 0.02em 0.02em;
         }
       `}</style>
-      <SentenceQuote className="mt-16 mb-7">
+      <Sentence quote={<>
         <span style={{ color: "#5BA4C6" }}>As no pumas had been reported missing from any zoo in the country, this one </span>
-        <a href="https://www.ncego.com/lessons/66#sentence" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>must</a>
+        <span className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>must</span>
         {" "}
-        <a href="https://www.ncego.com/lessons/66#sentence" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>have been</a>
+        <span className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>have been</span>
         <span style={{ color: "#5BA4C6" }}> in the possession of a private collector and somehow </span>
-        <a href="https://www.ncego.com/lessons/142#managed%20to" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>managed</a>
+        <span className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>managed</span>
         {" "}
-        <a href="https://www.ncego.com/lessons/142#managed%20to" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>to</a>
+        <span className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>to</span>
         <span style={{ color: "#5BA4C6" }}> escape.</span>
-      </SentenceQuote>
+      </>}
+      quoteClassName="mt-16 mb-7">
 
       <KnowledgePoint titleEn="情态动词 + have done">
       <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
@@ -378,7 +383,6 @@ export default function FarisPage() {
               />
               <span>
                 {item.map((seg, j) => {
-                  if ("link" in seg) return <React.Fragment key={j}>{seg.link}</React.Fragment>;
                   return <React.Fragment key={j}>{seg.text}</React.Fragment>;
                 })}
               </span>
@@ -415,6 +419,7 @@ export default function FarisPage() {
         </TableBody>
       </Table>
       </KnowledgePoint>
+      </Sentence>
 
     </main>
   );
