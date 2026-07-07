@@ -93,7 +93,7 @@ const WULING_LIST: Seg[][] = [
 ];
 
 
-const DOT_COLORS = ["#7dd3fc", "#67c4f4", "#52b6ec", "#3fa8df", "#3499cf", "#2f8dbc"];
+const DOT_COLORS = ["#d4ddd9", "#C7D2CD", "#b4c1bb", "#a1b0a9", "#8e9f97", "#7b8e85"];
 
 const TABLE_DATA = [
   { expression: "bear-like animals", expressionCn: "像熊一样的动物", exampleEn: "Giant pandas are large, bear-like animals which are found in Sichuan province, China.", exampleCn: "熊猫是一种体形似熊的大动物，产于中国的四川。", highlight: "bear-like animals" },
@@ -198,7 +198,7 @@ export default function FarisPage() {
           {AT_LARGE_LIST.map((item, i) => (
             <li key={i} className="flex items-start gap-1.5 text-black text-base">
               <span
-                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
               />
               <span>
@@ -216,7 +216,7 @@ export default function FarisPage() {
           {BADGE_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5">
               <span
-                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
               />
               <span className="note-label shrink-0 !text-base !font-semibold !bg-transparent !inline !px-0">
@@ -266,7 +266,7 @@ export default function FarisPage() {
           {FOUND_IN_LIST.map((item, i) => (
             <li key={i} className="flex items-center gap-1.5 text-black text-base">
               <span
-                className="inline-block size-2 rounded-full shrink-0 self-center mt-0.5"
+                className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
               />
               <span className="text-base">{renderFoundIn(item, DOT_COLORS[i % DOT_COLORS.length])}</span>
@@ -353,8 +353,8 @@ export default function FarisPage() {
                     {j > 0 && <br />}
                     <span
                       className={j === 0
-                        ? "inline-block size-1.5 rounded-full border border-gray-400 shrink-0 align-middle mr-1.5"
-                        : "inline-block size-1.5 rounded-full bg-gray-500 shrink-0 align-middle mr-1.5"
+                        ? "inline-block size-1.5 rounded-full border border-[#C7D2CD] shrink-0 align-middle mr-1.5"
+                        : "inline-block size-1.5 rounded-full bg-[#C7D2CD] shrink-0 align-middle mr-1.5"
                       }
                     />
                     <HighlightText text={s.text} word={s.highlight} />
@@ -373,7 +373,7 @@ export default function FarisPage() {
           {FAIL_TO_DO_LIST.map((item, i) => (
             <li key={i} className="flex items-start gap-1.5 text-black text-base">
               <span
-                className="inline-block size-2 rounded-full shrink-0 mt-[0.55em]"
+                className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
                 style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
               />
               <span>
@@ -405,8 +405,8 @@ export default function FarisPage() {
                 {row.examples.map((ex, ei) => (
                   <React.Fragment key={ei}>
                     {ei > 0 && <br />}
-                    <span className={ei === 0 ? "inline-block size-1.5 rounded-full border border-gray-400 shrink-0 align-middle mr-1.5" : "inline-block size-1.5 rounded-full bg-gray-500 shrink-0 align-middle mr-1.5"} />
-                    <span className="text-sm">{ex}</span>
+                    <span className={ei === 0 ? "inline-block size-1.5 rounded-full border border-[#C7D2CD] shrink-0 align-middle mr-1.5" : "inline-block size-1.5 rounded-full bg-[#C7D2CD] shrink-0 align-middle mr-1.5"} />
+                    <span className="">{ex}</span>
                   </React.Fragment>
                 ))}
               </TableCell>

@@ -17,10 +17,10 @@ export function KnowledgePoint({
     <div className={className}>
       <div className="mb-5 pt-6 text-base font-semibold text-zinc-950">
         <span
-          className="inline border-b-2 border-[#9fcddd] px-0.5 pb-0.5"
+          className="inline border-b-2 border-[#C7D2CD] px-0.5 pb-0.5"
           style={{
             background:
-              "linear-gradient(to top, rgba(125, 211, 252, 0.22) 44%, transparent 44%)",
+              "linear-gradient(to top, rgba(199, 210, 205, 0.22) 44%, transparent 44%)",
           }}
         >
           {titleEn}
