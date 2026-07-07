@@ -101,3 +101,61 @@ rm -rf .next && npm run dev
 - 优先根据 label 语义补充字段，例如 `tell sb. / sth. apart` 可标 `["tell", "apart"]`，`be busy (in) doing sth.` 可标 `["busy eating"]`。
 - 如果 label 能直接匹配例句，可以不加 `highlightTerms`。
 - 如果例句只是语义相关、没有稳定可高亮的英文片段，放弃高亮，不要硬塞字段。
+
+## Demo 页面编码规范
+
+编写 `src/app/demo/{level}-l{lesson}/` 下课文 demo 页面时遵守。参考实现：`src/app/demo/n3-l41/page.tsx`。
+
+### 组件与间距
+
+```tsx
+<Sentence quote={...} quoteClassName="mt-12 mb-5">
+  <KnowledgePoint titleEn="标题" titleCn="副标题">
+    <Table>...</Table>  {/* 或 <ul> */}
+  </KnowledgePoint>
+</Sentence>
+```
+
+- 句子间距：`mt-12`（48px）/ `mb-5`（20px）
+- 知识点底部：`mb-5`
+- 列表条目：`space-y-1.5`
+- Sentence 的 `children` 可选（允许无知识点的句子）
+
+### 注释/解说样式
+
+句末中文注释（如"开篇明义"、"雄狮句型"、"虚拟语气"）必须换行，用小字灰色：
+
+```tsx
+<span>. </span>
+<br />
+<span className="text-[13px] text-gray-500 font-normal">
+  开篇明义
+</span>
+```
+
+**不要**把中文注释内联在句子 `<span>` 中。
+
+### 高亮约定
+
+例句高亮词（`hl` 字段）对齐 ncego.com 原始页面的 `<strong>` 标签：
+
+- 从缓存 HTML 提取 `<strong>` 内容作为 `hl`
+- 若原始无 `<strong>`，取核心语法标记词
+- 渲染用 `HighlightText` 组件
+- 避免太短的 `hl`（如 `"it"`）导致误匹配
+
+### 数据形状
+
+目标统一为四字段 `{ term, gloss, example, highlight }`（未来入库）。过渡期暂用：
+
+| 形态 | 字段 | 示例 |
+|---|---|---|
+| 表达+例句表 | `{ expr, note, ex, hl }` | APPEAL_DATA, BUS_RIDE_DATA |
+| 简单词汇列表 | `{ en, cn }` | COUNTRY_LIST, TREAT_LIST |
+| 对比表 | `{ expr, note, ex, hl }`（ex 作对比值） | EVERYDAY_DATA |
+
+### Flat UI 美学
+
+- 标题 16px semibold，正文 16px regular — 同级字号，层级靠字重和间距
+- 颜色：zinc-950（标题）/ gray-600（正文）/ gray-400（副标题）/ #4980b1（关键词）
+- 谓语标记：`<span style={{ color: "#bd491e", fontWeight: 600 }}>`
