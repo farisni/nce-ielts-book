@@ -118,6 +118,29 @@ function HighlightText({ text, word }: { text: string; word: string }) {
   );
 }
 
+const MODAL_HAVE_DONE_DATA = [
+  { modal: "must", suffix: "have done", note: "过去强烈肯定推测", sentences: [
+    { text: "You must have been ill yesterday. You looked so pale.", highlight: "must have been" },
+    { text: "She knew that it must be the baker.", highlight: "must be" },
+  ]},
+  { modal: "may / might", suffix: "have done", note: "过去弱推测", sentences: [
+    { text: "He may have put pressure on her to agree.", highlight: "may have put" },
+    { text: "They may be shredding documents.", highlight: "may be shredding" },
+  ]},
+  { modal: "can't / couldn't", suffix: "have done", note: "过去否定推测", sentences: [
+    { text: "You can't have been ill yesterday. I saw you going shopping with your wife.", highlight: "can't have been" },
+    { text: "The girl asked to see a timetable, feeling sure that her father could not have made such a mistake.", highlight: "could not have made" },
+  ]},
+  { modal: "should / ought to", suffix: "have done", note: "本应做而未做（责备）", sentences: [
+    { text: "You should have finished your work yesterday.", highlight: "should have finished" },
+    { text: "You ought to have done your homework.", highlight: "ought to have done" },
+  ]},
+  { modal: "shouldn't / ought not to", suffix: "have done", note: "本不应做却做了（自责）", sentences: [
+    { text: "I shouldn't have shouted at you yesterday.", highlight: "shouldn't have shouted" },
+    { text: "Military advantages should not be given away.", highlight: "should not be given" },
+  ]},
+];
+
 function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
   if (tag.startsWith("NCE4")) return "destructive";
   if (tag.startsWith("NCE3")) return "success";
@@ -266,6 +289,54 @@ export default function FarisPage() {
           padding: 0 0.02em 0.02em;
         }
       `}</style>
+      <SentenceQuote className="mt-16 mb-7">
+        <span style={{ color: "#5BA4C6" }}>As no pumas had been reported missing from any zoo in the country, this one </span>
+        <a href="https://www.ncego.com/lessons/66#sentence" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>must</a>
+        {" "}
+        <a href="https://www.ncego.com/lessons/66#sentence" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>have been</a>
+        <span style={{ color: "#5BA4C6" }}> in the possession of a private collector and somehow </span>
+        <a href="https://www.ncego.com/lessons/142#managed%20to" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>managed</a>
+        {" "}
+        <a href="https://www.ncego.com/lessons/142#managed%20to" className="border-b border-dotted border-gray-400" style={{ color: "#bd491e", fontWeight: 600 }}>to</a>
+        <span style={{ color: "#5BA4C6" }}> escape.</span>
+      </SentenceQuote>
+
+      <KnowledgePoint titleEn="情态动词 + have done">
+      <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+        <TableHeader>
+          <TableRow className="border-b border-gray-200 hover:bg-transparent">
+            <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[40%]">情态动词 + have done</TableHead>
+            <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[60%]">例句</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {MODAL_HAVE_DONE_DATA.map((row, i) => (
+            <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+<TableCell className="px-3 py-2 whitespace-normal align-top w-[40%] [&_strong]:!font-semibold">
+                <strong className="text-[#bd491e]">{row.modal}</strong>{" "}<strong className="!text-[#4980b1]">{row.suffix}</strong>
+                <br />
+                <span className="text-sm text-gray-400">{row.note}</span>
+              </TableCell>
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[60%]">
+                {row.sentences.map((s, j) => (
+                  <React.Fragment key={j}>
+                    {j > 0 && <br />}
+                    <span
+                      className={j === 0
+                        ? "inline-block size-1.5 rounded-full border border-gray-400 shrink-0 align-middle mr-1.5"
+                        : "inline-block size-1.5 rounded-full bg-gray-500 shrink-0 align-middle mr-1.5"
+                      }
+                    />
+                    <HighlightText text={s.text} word={s.highlight} />
+                  </React.Fragment>
+                ))}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      </KnowledgePoint>
+
     </main>
   );
 }
