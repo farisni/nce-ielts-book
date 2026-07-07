@@ -313,7 +313,7 @@ export default function FarisPage() {
 
       <style>{`
         main mark {
-          background: linear-gradient(to top, rgba(125, 211, 252, 0.34) 42%, transparent 42%);
+          background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
           color: #1f465b;
           font-weight: 600;
           padding: 0 0.02em 0.02em;
