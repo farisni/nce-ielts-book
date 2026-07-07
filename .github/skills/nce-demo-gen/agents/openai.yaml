@@ -1,0 +1,4 @@
+interface:
+  display_name: "NCE Demo Generator"
+  short_description: "从 ncego.com 爬虫缓存生成语法教学 demo 页"
+  default_prompt: "解析爬虫缓存 HTML，生成 Sentence + KnowledgePoint 结构的 demo 页"

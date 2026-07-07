@@ -177,13 +177,14 @@ const TUCK_LIST = [
 export default function Page() {
   return (
     <main className="mx-auto mt-16 w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      {/* === Sentence 0 === */}
+      {/* === Sentence 1 === */}
       <Sentence quote={<>
         <span>The quiet life of the country</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
-        <span>never</span>
+        <span> never </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>appealed</span>
-        <span>to me.</span>
+        <span> to me. </span>
         <span>开篇明义</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
@@ -192,32 +193,52 @@ export default function Page() {
         <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
           <ul className="space-y-1.5 mb-7">
             {COUNTRY_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
+        </KnowledgePoint>
+        <KnowledgePoint titleEn="appeal to sb ." titleCn="吸引某人（令某人产生兴趣）">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {APPEAL_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
+          </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 1 === */}
+      {/* === Sentence 2 === */}
       <Sentence quote={<>
         <span>City born and city bred</span>
-        <span>, I</span>
+        <span>, I </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>have</span>
-        <span>always</span>
+        <span> always </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>regarded</span>
-        <span>the country</span>
+        <span> the country </span>
         <span>as</span>
-        <span>something</span>
+        <span> something </span>
         <span>you look at through a train window</span>
-        <span>, or something</span>
+        <span>, or something </span>
         <span>you occasionally visit during the weekend</span>
         <span>.</span>
         <br />
@@ -234,28 +255,29 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {APPEAL_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 2 === */}
+      {/* === Sentence 3 === */}
       <Sentence quote={<>
         <span>Most of my friends</span>
+        <span> </span>
         <span>live in</span>
-        <span>the city,</span>
+        <span> the city, </span>
         <span>yet</span>
-        <span>they always</span>
+        <span> they always </span>
         <span>go into raptures</span>
+        <span> </span>
         <span>at the mere mention of the country</span>
         <span>.</span>
         <br />
@@ -272,16 +294,15 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {RAPTURE_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="at the ... of ..." titleCn="一...(马上)就...">
@@ -294,35 +315,37 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {AT_THE_OF_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 3 === */}
+      {/* === Sentence 4 === */}
       <Sentence quote={<>
         <span>Though</span>
-        <span>they</span>
+        <span> they </span>
         <span>extol the virtues of</span>
-        <span>the peaceful life,</span>
-        <span>only one of them</span>
+        <span> the peaceful life,</span>
+        <span> only one of them</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
-        <span>ever</span>
+        <span> ever </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>gone</span>
-        <span>to</span>
+        <span> to </span>
         <span>live in the country</span>
-        <span>and he</span>
+        <span> and he </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>was</span>
+        <span> </span>
         <span>back in town</span>
+        <span> </span>
         <span>within six months</span>
         <span>.</span>
         <br />
@@ -339,26 +362,26 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {EXTOL_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 4 === */}
+      {/* === Sentence 5 === */}
       <Sentence quote={<>
-        <span>Even he still</span>
+        <span>Even he still </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>lives</span>
-        <span>under</span>
+        <span> under </span>
         <span>the illusion</span>
+        <span> </span>
         <span>that country life is somehow superior to town life</span>
         <span>.</span>
         <br />
@@ -375,16 +398,15 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {ILLUSION_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="be superior to" titleCn="天生比较级(搭配to而非than)">
@@ -397,33 +419,32 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SUPERIOR_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 5 === */}
+      {/* === Sentence 6 === */}
       <Sentence quote={<>
-        <span>He</span>
+        <span>He </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
-        <span>forever</span>
+        <span> forever </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>talking</span>
-        <span>about</span>
+        <span> about </span>
         <span>the friendly people</span>
-        <span>, the</span>
+        <span>, the </span>
         <span>clean atmosphere</span>
-        <span>, the</span>
+        <span>, the </span>
         <span>closeness to nature</span>
-        <span>and the</span>
+        <span> and the </span>
         <span>gentle pace of living</span>
         <span>.</span>
         <br />
@@ -433,34 +454,36 @@ export default function Page() {
         <KnowledgePoint titleEn="be forever doing sth." titleCn="老是做某事">
           <ul className="space-y-1.5 mb-7">
             {FOREVER_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 6 === */}
+      {/* === Sentence 7 === */}
       <Sentence quote={<>
-        <span>Nothing</span>
+        <span>Nothing </span>
         <span style={{ color: "#d97706", fontWeight: 600 }}>can</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>be compared</span>
-        <span>, he</span>
+        <span>, he </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>maintains</span>
-        <span>,</span>
+        <span>, </span>
         <span>with</span>
+        <span> </span>
         <span>the first cockcrow</span>
         <span>,</span>
-        <span>the twittering of birds at dawn</span>
+        <span> the twittering of birds at dawn</span>
         <span>,</span>
-        <span>the sight of the rising sun</span>
+        <span> the sight of the rising sun</span>
+        <span> </span>
         <span>glinting on the trees and pastures</span>
         <span>.</span>
         <br />
@@ -477,44 +500,48 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {COMPARE_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
+          </Table>
+        </KnowledgePoint>
+        <KnowledgePoint titleEn="at dawn" titleCn="在黎明时刻">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {AT_THE_OF_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 7 === */}
-      <Sentence quote={<>
-        <span>This idyllic pastoral scene</span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
-        <span>only</span>
-        <span>part of</span>
-        <span>the picture.</span>
-        <br />
-        <span className="text-[13px] text-gray-500 font-normal">
-        </span>
-      </>} quoteClassName="mt-16 mb-7">
-
-      </Sentence>
-
       {/* === Sentence 8 === */}
       <Sentence quote={<>
-        <span>My friend</span>
-        <span>fails to</span>
-        <span>mention</span>
-        <span>the long and friendless winter evenings</span>
-        <span>in front of the TV</span>
-        <span>—</span>
-        <span>virtually the only form of entertainment</span>
-        <span>.</span>
+        <span>This idyllic pastoral scene</span>
+        <span> </span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span> only </span>
+        <span>part of</span>
+        <span> the picture.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
@@ -524,12 +551,14 @@ export default function Page() {
 
       {/* === Sentence 9 === */}
       <Sentence quote={<>
-        <span>He</span>
-        <span>says nothing</span>
-        <span>about the poor selection of goods in the shops</span>
-        <span>, or</span>
-        <span>about those unfortunate people</span>
-        <span>who have to travel from the country to the city every day to get to work</span>
+        <span>My friend </span>
+        <span>fails to</span>
+        <span> mention </span>
+        <span>the long and friendless winter evenings</span>
+        <span> </span>
+        <span>in front of the TV</span>
+        <span> —</span>
+        <span>virtually the only form of entertainment</span>
         <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
@@ -540,10 +569,15 @@ export default function Page() {
 
       {/* === Sentence 10 === */}
       <Sentence quote={<>
-        <span>Why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country</span>
-        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
-        <span>beyond me.</span>
-        <span>雄狮句型（对比上下句）</span>
+        <span>He</span>
+        <span> says nothing</span>
+        <span> </span>
+        <span>about the poor selection of goods in the shops</span>
+        <span>, or </span>
+        <span>about those unfortunate people</span>
+        <span> </span>
+        <span>who have to travel from the country to the city every day to get to work</span>
+        <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
@@ -553,17 +587,53 @@ export default function Page() {
 
       {/* === Sentence 11 === */}
       <Sentence quote={<>
-        <span>They</span>
+        <span>Why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country</span>
+        <span> </span>
+        <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span> beyond me. </span>
+        <span>雄狮句型（对比上下句）</span>
+        <br />
+        <span className="text-[13px] text-gray-500 font-normal">
+        </span>
+      </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="be beyond sb." titleCn="使某人无法理解(难以置信)">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {MYSTERY_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
+          </Table>
+        </KnowledgePoint>
+      </Sentence>
+
+      {/* === Sentence 12 === */}
+      <Sentence quote={<>
+        <span>They </span>
         <span>could be saved</span>
+        <span> </span>
         <span>so much misery</span>
-        <span>and</span>
+        <span> and </span>
         <span>expense</span>
+        <span> </span>
         <span>if</span>
-        <span>they</span>
+        <span> they </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>chose</span>
-        <span>to live in the city</span>
+        <span> to live in the city </span>
         <span>where they rightly belong</span>
-        <span>.</span>
+        <span>. </span>
         <span>虚拟语气</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
@@ -579,46 +649,47 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SAVE_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
           <ul className="space-y-1.5 mb-7">
             {RIGHTLY_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 12 === */}
+      {/* === Sentence 13 === */}
       <Sentence quote={<>
         <span>If</span>
-        <span>you</span>
+        <span> you </span>
         <span>can</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>do</span>
-        <span>without the</span>
+        <span> without the </span>
         <span>few pastoral pleasures of the country</span>
-        <span>, you</span>
+        <span>, you </span>
         <span>will</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>find</span>
+        <span> </span>
         <span>the city can provide you with the best that life can offer</span>
         <span>.</span>
         <br />
@@ -635,16 +706,15 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DO_WITHOUT_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="provide sb. with sth." titleCn="为某人提供某物（sb. 短 sth. 长）">
@@ -657,79 +727,124 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {PROVIDE_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 13 === */}
+      {/* === Sentence 14 === */}
       <Sentence quote={<>
-        <span>They</span>
+        <span>They </span>
         <span>invariably</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>live</span>
-        <span>nearby and</span>
+        <span> nearby and </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>are</span>
-        <span>always</span>
+        <span> always </span>
         <span>available for</span>
-        <span>an</span>
+        <span> an </span>
         <span>informal chat</span>
-        <span>or an</span>
+        <span> or an </span>
         <span>evening's entertainment</span>
         <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </>} quoteClassName="mt-16 mb-7">
-
+        <KnowledgePoint titleEn="be available for sth." titleCn="有空做某事">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {PROVIDE_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
+          </Table>
+        </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 14 === */}
+      {/* === Sentence 15 === */}
       <Sentence quote={<>
         <span>Some of my acquaintances</span>
+        <span> </span>
         <span>in the country</span>
+        <span> </span>
         <span>come up</span>
-        <span>to town</span>
+        <span> to town </span>
         <span>once or twice a year</span>
-        <span>to</span>
+        <span> to </span>
         <span>visit the theatre</span>
+        <span> </span>
         <span>as a special treat</span>
         <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="go up to the city 上城市" titleCn="">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {COME_UP_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
+          </Table>
+        </KnowledgePoint>
         <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
           <ul className="space-y-1.5 mb-7">
             {TREAT_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 15 === */}
+      {/* === Sentence 16 === */}
       <Sentence quote={<>
         <span>For them</span>
-        <span>this</span>
+        <span> this </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span> </span>
         <span>a major operation</span>
+        <span> </span>
         <span>which involves considerable planning</span>
         <span>.</span>
         <br />
@@ -746,27 +861,27 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DRAW_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 16 === */}
+      {/* === Sentence 17 === */}
       <Sentence quote={<>
         <span>As</span>
-        <span>the play</span>
+        <span> the play </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>draws</span>
-        <span>to its close, they</span>
+        <span> to its close, they </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>wonder</span>
+        <span> </span>
         <span>whether they will ever catch that last train home</span>
         <span>.</span>
         <br />
@@ -783,38 +898,58 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DRAW_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 17 === */}
+      {/* === Sentence 18 === */}
       <Sentence quote={<>
         <span>The city dweller</span>
-        <span>never</span>
+        <span> never </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>experiences</span>
+        <span> </span>
         <span>anxieties of this sort</span>
         <span>.</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </>} quoteClassName="mt-16 mb-7">
-
+        <KnowledgePoint titleEn="... of this / that sort / kind 这种...、那种...(前面的名字用 复数 )" titleCn="这种...、那种...(前面的名字用复数)">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {PROVIDE_DATA.map((r, i) => (
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                  </TableCell>
+                </TableRow>
+              )}}}</TableBody>
+          </Table>
+        </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 18 === */}
+      {/* === Sentence 19 === */}
       <Sentence quote={<>
         <span>The latest</span>
-        <span>exhibitions, films, or plays</span>
+        <span> exhibitions, films, or plays </span>
         <span>are only a short bus ride away</span>
         <span>.</span>
         <br />
@@ -824,16 +959,19 @@ export default function Page() {
 
       </Sentence>
 
-      {/* === Sentence 19 === */}
+      {/* === Sentence 20 === */}
       <Sentence quote={<>
-        <span>There</span>
+        <span>There </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
+        <span> </span>
         <span>so</span>
-        <span>much variety</span>
+        <span> much variety </span>
         <span>that</span>
-        <span>you never</span>
+        <span> you never </span>
         <span>have to</span>
+        <span> </span>
         <span>make do with</span>
+        <span> </span>
         <span>second best</span>
         <span>.</span>
         <br />
@@ -850,34 +988,36 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {MAKE_DO_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 20 === */}
+      {/* === Sentence 21 === */}
       <Sentence quote={<>
-        <span>Country people</span>
+        <span>Country people </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>run</span>
+        <span> </span>
         <span>wild</span>
+        <span> </span>
         <span>when</span>
-        <span>they</span>
+        <span> they </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>go</span>
-        <span>shopping in the city</span>
+        <span> shopping in the city </span>
         <span>and</span>
-        <span>stagger home</span>
+        <span> stagger home </span>
         <span>loaded with</span>
-        <span>as many of the</span>
+        <span> as many of the </span>
         <span>exotic items</span>
+        <span> </span>
         <span>as they can carry</span>
         <span>.</span>
         <br />
@@ -887,26 +1027,27 @@ export default function Page() {
         <KnowledgePoint titleEn="run / go wild with delight" titleCn="系表（变得...）欣喜若狂">
           <ul className="space-y-1.5 mb-7">
             {GO_WILD_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 21 === */}
+      {/* === Sentence 22 === */}
       <Sentence quote={<>
         <span>Nor</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
-        <span>the city</span>
+        <span> the city </span>
         <span>without</span>
+        <span> </span>
         <span>its moments of beauty</span>
         <span>.</span>
         <br />
@@ -916,29 +1057,30 @@ export default function Page() {
         <KnowledgePoint titleEn="双重否定 = 加强肯定" titleCn="">
           <ul className="space-y-1.5 mb-7">
             {DOUBLE_NEG_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 22 === */}
+      {/* === Sentence 23 === */}
       <Sentence quote={<>
-        <span>There</span>
+        <span>There </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
-        <span>something</span>
+        <span> something </span>
         <span>comforting about the warm glow</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>shed</span>
-        <span>by</span>
+        <span> by </span>
         <span>advertisements</span>
+        <span> </span>
         <span>on cold wet winter nights</span>
         <span>.</span>
         <br />
@@ -955,27 +1097,31 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SHED_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 23 === */}
+      {/* === Sentence 24 === */}
       <Sentence quote={<>
         <span>Few things</span>
+        <span> </span>
         <span>could</span>
+        <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>be</span>
+        <span> </span>
         <span>more impressive</span>
+        <span> </span>
         <span>than the peace</span>
+        <span> </span>
         <span>that descends on deserted city streets at weekends when the thousands that travel to work every day are tucked away in their homes in the country</span>
         <span>.</span>
         <br />
@@ -992,42 +1138,40 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {COMPARATIVE_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
         <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
           <ul className="space-y-1.5 mb-7">
             {TUCK_LIST.map((item, i) => (
-              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
                 <span>
-                  <span className="text-base">{item.en}</span>
-                  {" "}
-                  <span className="text-sm text-gray-400">{item.cn}</span>
+                  <span className="text-base">{{item.en}}</span>
+                  {{" "}}
+                  <span className="text-sm text-gray-400">{{item.cn}}</span>
                 </span>
               </li>
-            ))}
-          </ul>
+            )}}}</ul>
         </KnowledgePoint>
       </Sentence>
 
-      {/* === Sentence 24 === */}
+      {/* === Sentence 25 === */}
       <Sentence quote={<>
-        <span>It</span>
+        <span>It </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>has</span>
-        <span>always</span>
+        <span> always </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>been</span>
-        <span>a mystery to me</span>
+        <span> a mystery to me </span>
         <span>why city dwellers, who appreciate all these things, obstinately pretend that they would prefer to live in the country</span>
         <span>.</span>
         <br />
@@ -1044,16 +1188,15 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {MYSTERY_DATA.map((r, i) => (
-                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={r.ex} word={r.hl} />
+                    <HighlightText text={{r.ex}} word={{r.hl}} />
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
+              )}}}</TableBody>
           </Table>
         </KnowledgePoint>
       </Sentence>
@@ -1067,6 +1210,8 @@ export default function Page() {
           }
       `}</style>
     </main>
+
+
 
   );
 }
