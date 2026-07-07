@@ -100,7 +100,7 @@ const TABLE_DATA = [
   { expression: "lady-like behavior", expressionCn: "女性的行为", exampleEn: "The look was always lady-like and appropriately flaunty.", exampleCn: "这种装扮总是很淑女，奢华得恰到好处。", highlight: "lady-like" },
   { expression: "child-like simplicity", expressionCn: "童心般的简单", exampleEn: "Do you think you shall like Morton? She asked of me, with a direct and naive simplicity of tone and manner, pleasing, if child-like.", exampleCn: "\"你觉得会喜欢莫尔顿吗？\"她问我，语调和举止里带着一种直率而幼稚的单纯，虽然有些孩子气，但讨人喜欢。", highlight: "child-like" },
   { expression: "an angel-like girl", expressionCn: "天使般的女孩", exampleEn: "She is a lovely girl, with curl hair, baby skin, and smiles like an angel.", exampleCn: "她长得很可爱，卷卷的头发，婴儿的皮肤，天使的笑容(Like an Angel girl像天使的女孩)", highlight: "like an angel" },
-  { expression: "dog-like animals", expressionCn: "像狗一样的动物", exampleEn: "Foxes and farmers have never got on well. These small dog-like animals have long been accused of killing farm animals.（CET-4）", exampleCn: "", highlight: "dog-like animals" },
+  { expression: "dog-like animals", expressionCn: "像狗一样的动物", exampleEn: "Foxes and farmers have never got on well. These small dog-like animals have long been accused of killing farm animals.", exampleCn: "", highlight: "dog-like animals", badge: "CET-4" },
   { expression: "crystal-like eyes", expressionCn: "明亮的双眸", exampleEn: "Few have got a pair of crystal eyes like his.", exampleCn: "很少有人像他那样生着一副水晶般的眼睛。", highlight: "crystal eyes like his" },
   { expression: "flu-like symptoms", expressionCn: "流感样症状", exampleEn: "Take them at the onset of cold or flu-like symptoms.", exampleCn: "出现感冒或类似流感症状时就服用。", highlight: "flu-like symptoms" },
   { expression: "cobweb-like", expressionCn: "蜘蛛网式的", exampleEn: "As is shown in the picture, there is a cobweb-like structure with separate compartments packed in it.", exampleCn: "", highlight: "cobweb-like structure" },
@@ -248,7 +248,7 @@ export default function FarisPage() {
                 )}
               </TableCell>
               <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[70%]">
-                <HighlightText text={row.exampleEn} word={row.highlight} />
+                <HighlightText text={row.exampleEn} word={row.highlight} />{row.badge && <> <Badge variant="info" size="sm" className="ml-1.5 align-middle">{row.badge}</Badge></>}
                 {row.exampleCn && (
                   <>
                     <br />
