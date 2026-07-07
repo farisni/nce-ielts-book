@@ -193,13 +193,13 @@ export default function Page() {
         <KnowledgePoint titleEn="the country" titleCn="表示乡村、本国要加定冠词">
           <ul className="space-y-1.5 mb-7">
             {COUNTRY_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -214,12 +214,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {APPEAL_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -255,12 +255,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {APPEAL_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -294,12 +294,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {RAPTURE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -315,12 +315,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {AT_THE_OF_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -362,12 +362,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {EXTOL_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -398,12 +398,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {ILLUSION_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -419,12 +419,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SUPERIOR_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -454,13 +454,13 @@ export default function Page() {
         <KnowledgePoint titleEn="be forever doing sth." titleCn="老是做某事">
           <ul className="space-y-1.5 mb-7">
             {FOREVER_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -500,12 +500,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {COMPARE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -521,12 +521,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {AT_THE_OF_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -606,12 +606,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {MYSTERY_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -649,12 +649,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SAVE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -663,13 +663,13 @@ export default function Page() {
         <KnowledgePoint titleEn="rightly" titleCn="adv. for a good reason 本来应该地">
           <ul className="space-y-1.5 mb-7">
             {RIGHTLY_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -706,12 +706,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DO_WITHOUT_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -727,12 +727,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {PROVIDE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -769,12 +769,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {PROVIDE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -810,12 +810,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {COME_UP_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -824,13 +824,13 @@ export default function Page() {
         <KnowledgePoint titleEn="treat" titleCn="n.难得的乐事">
           <ul className="space-y-1.5 mb-7">
             {TREAT_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -861,12 +861,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DRAW_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -898,12 +898,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {DRAW_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -933,12 +933,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {PROVIDE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -988,12 +988,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {MAKE_DO_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -1027,13 +1027,13 @@ export default function Page() {
         <KnowledgePoint titleEn="run / go wild with delight" titleCn="系表（变得...）欣喜若狂">
           <ul className="space-y-1.5 mb-7">
             {GO_WILD_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -1057,13 +1057,13 @@ export default function Page() {
         <KnowledgePoint titleEn="双重否定 = 加强肯定" titleCn="">
           <ul className="space-y-1.5 mb-7">
             {DOUBLE_NEG_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -1097,12 +1097,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {SHED_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -1138,12 +1138,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {COMPARATIVE_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -1152,13 +1152,13 @@ export default function Page() {
         <KnowledgePoint titleEn="tuck" titleCn="v.掖进，塞进">
           <ul className="space-y-1.5 mb-7">
             {TUCK_LIST.map((item, i) => (
-              <li key={{i}} className="flex items-start gap-1.5 text-black text-base">
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
-                  style={{{{ background: DOT_COLORS[i % DOT_COLORS.length] }}}} />
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{{item.en}}</span>
-                  {{" "}}
-                  <span className="text-sm text-gray-400">{{item.cn}}</span>
+                  <span className="text-base">{item.en}</span>
+                  {" "}
+                  <span className="text-sm text-gray-400">{item.cn}</span>
                 </span>
               </li>
             )}}}</ul>
@@ -1188,12 +1188,12 @@ export default function Page() {
             </TableHeader>
             <TableBody>
               {MYSTERY_DATA.map((r, i) => (
-                <TableRow key={{i}} className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
                   <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
-                    <strong>{{r.expr}}</strong>{{r.note && <><br /><span className="text-sm text-gray-400">{{r.note}}</span></>}}
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
                   </TableCell>
                   <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
-                    <HighlightText text={{r.ex}} word={{r.hl}} />
+                    <HighlightText text={r.ex} word={r.hl} />
                   </TableCell>
                 </TableRow>
               )}}}</TableBody>
@@ -1210,6 +1210,7 @@ export default function Page() {
           }
       `}</style>
     </main>
+
 
 
 
