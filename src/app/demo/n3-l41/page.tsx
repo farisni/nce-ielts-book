@@ -647,9 +647,9 @@ export default function Page() {
         <span> </span>
         <span style={{ color: "#bd491e", fontWeight: 600 }}>is</span>
         <span> beyond me. </span>
-        <span>雄狮句型（对比上下句）</span>
         <br />
         <span className="text-[13px] text-gray-500 font-normal">
+          雄狮句型（对比上下句）
         </span>
       </div>} quoteClassName="mt-12 mb-5">
         <KnowledgePoint titleEn="主语从句" titleCn="形式主语 it / 主语从句">
