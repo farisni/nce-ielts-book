@@ -329,6 +329,7 @@ export default function FarisPage() {
       </Sentence>
 
       <style>{`
+        blockquote { font-family: "Lyon Text", Georgia, "LXGW WenKai Screen", serif; }
         main mark {
           background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
           color: #1f465b;
