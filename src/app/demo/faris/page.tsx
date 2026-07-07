@@ -11,7 +11,7 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+import { Badge, type BadgeProps } from "@/components/reui/badge";
 
 // QUOTE_TEXT removed - see JSX below
 const SECTION_TITLE_MAIN = "构词法";
@@ -116,6 +116,13 @@ function HighlightText({ text, word }: { text: string; word: string }) {
       {text.slice(idx + word.length)}
     </>
   );
+}
+
+function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
+  if (tag.startsWith("NCE4")) return "destructive";
+  if (tag.startsWith("NCE3")) return "success";
+  if (tag.startsWith("NCE2")) return "info";
+  return "secondary";
 }
 
 export default function FarisPage() {
@@ -241,7 +248,7 @@ export default function FarisPage() {
                   if ("hl2" in seg) return <mark key={j} style={{ background: "none", color: "#bd491e", fontWeight: "normal" }}>{seg.hl2}</mark>;
                   if ("dot" in seg) return <span key={j} className="border-b border-dotted border-gray-400">{seg.dot}</span>;
                   if ("note" in seg) return <span key={j} className="text-sm text-gray-400">{seg.note}</span>;
-                  if ("tag" in seg) return <Badge key={j} color="blue" size="sm" className="ml-1.5">{seg.tag}</Badge>;
+                  if ("tag" in seg) return <Badge key={j} variant={getLessonBadgeVariant(seg.tag)} size="sm" className="ml-1.5">{seg.tag}</Badge>;
                   return null;
                 })}
               </td>
