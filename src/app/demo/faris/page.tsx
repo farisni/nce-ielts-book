@@ -141,6 +141,36 @@ const MODAL_HAVE_DONE_DATA = [
   ]},
 ];
 
+
+const FAIL_TO_DO_LIST = [
+  [
+    { link: "When the journalist again", href: "https://www.ncego.com/lessons/177#failed%20to%20reply" },
+    { link: "failed to reply, the editor reluctantly published the article as it had originally been written", href: "https://www.ncego.com/lessons/177#failed%20to%20reply" },
+    { text: "." },
+  ],
+  [
+    { link: "Once, however, it", href: "https://www.ncego.com/lessons/146#failed%20to" },
+    { link: "failed to give", href: "https://www.ncego.com/lessons/146#failed%20to" },
+    { link: "the correct time", href: "https://www.ncego.com/lessons/146#failed%20to" },
+    { text: "." },
+  ],
+  [
+    { link: "Those who", href: "https://www.ncego.com/lessons/164#failed%20to" },
+    { link: "failed to get", href: "https://www.ncego.com/lessons/164#failed%20to" },
+    { link: "in need not have felt disappointed, as many of the artistes who should have appeared did not come", href: "https://www.ncego.com/lessons/164#failed%20to" },
+    { text: "." },
+  ],
+];
+
+const POSSESSION_CHARGE_DATA = [
+  { pattern: "in the possession of sb.", note: "…为某人所拥有", examples: ["The land is in the possession of the merchant.", "My house is in the possession of an old lady now."] },
+  { pattern: "in one's possession", note: "为某人所拥有", examples: ["The house is in his possession.", "The book is in my possession."] },
+  { pattern: "in possession of sth.", note: "拥有某物", examples: ["The gang was caught in possession of stolen goods.", "I'm in possession of the book."] },
+  { pattern: "in the charge of sb.", note: "…为某人所负责/管理", examples: ["Our class was in the charge of Miss Wang."] },
+  { pattern: "in one's charge", note: "为某人所负责/管理", examples: ["The bookstore is in my charge."] },
+  { pattern: "in charge of ...", note: "负责/管理", examples: ["I'm in charge of the bookstore."] },
+];
+
 function getLessonBadgeVariant(tag: string): BadgeProps["variant"] {
   if (tag.startsWith("NCE4")) return "destructive";
   if (tag.startsWith("NCE3")) return "success";
@@ -328,6 +358,55 @@ export default function FarisPage() {
                       }
                     />
                     <HighlightText text={s.text} word={s.highlight} />
+                  </React.Fragment>
+                ))}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      </KnowledgePoint>
+
+
+      <KnowledgePoint titleEn="fail to do" titleCn="没能完成某事（努力过了）">
+        <ul className="space-y-1.5 mb-7">
+          {FAIL_TO_DO_LIST.map((item, i) => (
+            <li key={i} className="flex items-start gap-1.5 text-black text-base">
+              <span
+                className="inline-block size-2 rounded-full shrink-0 mt-[0.55em]"
+                style={{ background: DOT_COLORS[i % DOT_COLORS.length] }}
+              />
+              <span>
+                {item.map((seg, j) => {
+                  if ("link" in seg) return <React.Fragment key={j}>{seg.link}</React.Fragment>;
+                  return <React.Fragment key={j}>{seg.text}</React.Fragment>;
+                })}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <Table className="table-fixed text-black text-base mt-5" containerClassName="overflow-visible">
+        <TableHeader>
+          <TableRow className="border-b border-gray-200 hover:bg-transparent">
+            <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[40%]">结构</TableHead>
+            <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[60%]">例句</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {POSSESSION_CHARGE_DATA.map((row, i) => (
+            <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+              <TableCell className="px-3 py-2 whitespace-normal align-top w-[40%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                <strong>{row.pattern}</strong>
+                <br />
+                <span className="text-sm text-gray-400">{row.note}</span>
+              </TableCell>
+              <TableCell className="px-3 py-2 whitespace-normal align-top text-black w-[60%]">
+                {row.examples.map((ex, ei) => (
+                  <React.Fragment key={ei}>
+                    {ei > 0 && <br />}
+                    <span className={ei === 0 ? "inline-block size-1.5 rounded-full border border-gray-400 shrink-0 align-middle mr-1.5" : "inline-block size-1.5 rounded-full bg-gray-500 shrink-0 align-middle mr-1.5"} />
+                    <span className="text-sm">{ex}</span>
                   </React.Fragment>
                 ))}
               </TableCell>
