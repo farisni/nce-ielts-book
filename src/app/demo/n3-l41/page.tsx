@@ -136,10 +136,10 @@ const RIGHTLY_LIST = [
 ];
 
 const SUBJECT_CLAUSE_DATA = [
-  { ex: "It is beyond me / a mystery to me / beats me why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "形式主语（孔雀句型）" },
-  { ex: "I cannot understand why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "人做主语符合中文思维" },
-  { ex: "At one point, it seemed certain that their plane would crash.", cn: "形式主语 it" },
-  { ex: "Such is human nature, that a great many people are often willing to sacrifice higher pay for the privilege of becoming white-collar workers.", cn: "such...that 提前表强调" },
+  { ex: "It is beyond me / a mystery to me / beats me why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "形式主语（孔雀句型）", hl: "beyond me" },
+  { ex: "I cannot understand why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "人做主语符合中文思维", hl: "cannot understand" },
+  { ex: "At one point, it seemed certain that their plane would crash.", cn: "形式主语 it", hl: "it seemed certain" },
+  { ex: "Such is human nature, that a great many people are often willing to sacrifice higher pay for the privilege of becoming white-collar workers.", cn: "such...that 提前表强调", hl: "for the privilege of" },
 ];
 
 const MYSTERY_DATA = [
@@ -659,7 +659,7 @@ export default function Page() {
                 <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
                   style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
                 <span>
-                  <span className="text-base">{item.ex}</span>
+                  <span className="text-base"><HighlightText text={item.ex} word={item.hl} /></span>
                   {item.cn && <>
                     {" "}
                     <span className="text-sm text-gray-400">{item.cn}</span>
