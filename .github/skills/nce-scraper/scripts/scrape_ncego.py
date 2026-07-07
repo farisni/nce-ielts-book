@@ -94,11 +94,11 @@ def parse_html(html):
             sentence_h3s.append({
                 'sentence': text, 'predicates': preds, 'auxiliaries': auxs,
                 'background_quotes': bg_quotes, 'annotations': annotations,
-                'preamble': None, 'details': []
+                'preamble': None, 'details': [], '_el': h3
             })
         
-        # h4 details → attach to last sentence in this note
-        details = []
+        # h4 details → attach to nearest preceding h3 sentence
+        h3_map = {id(s['_el']): s for s in sentence_h3s}
         for h4 in h4s:
             # Extract sup as description
             h4_sup = h4.find('sup')
@@ -144,11 +144,45 @@ def parse_html(html):
             
             detail = {'title': title, 'examples': examples, 'desc': h4_desc}
             if tables: detail['tables'] = tables
-            details.append(detail)
+            # Find nearest preceding h3 and attach detail there
+            prev_h3 = h4.find_previous('h3')
+            if prev_h3 and id(prev_h3) in h3_map:
+                h3_map[id(prev_h3)]['details'].append(detail)
         
-        if sentence_h3s and details:
-            sentence_h3s[-1]['details'] = details
         
+        # Capture orphan tables directly after h3 (no h4 wrapper)
+        for s in sentence_h3s:
+            h3_el = s['_el']
+            next_sib = h3_el.find_next_sibling()
+            while next_sib and next_sib.name not in ('h3', 'h4'):
+                for tbl in (next_sib.find_all('table') if next_sib.name != 'table' else [next_sib]):
+                    trs = tbl.find_all('tr')
+                    if not trs: continue
+                    tds0 = trs[0].find_all('td')
+                    if len(tds0) >= 2:
+                        # Extract rows: first col is main keyword, second col is contrast
+                        rows = []
+                        for tr in trs:
+                            tds = tr.find_all('td')
+                            if len(tds) >= 2:
+                                # Extract sup from first td, then get clean text
+                                sup_el = tds[0].find('sup')
+                                sup_text = _clean(sup_el.get_text()) if sup_el else ''
+                                if sup_el: sup_el.extract()
+                                c1 = _clean(tds[0].get_text())
+                                c2 = _clean(tds[1].get_text())
+                                if c1:
+                                    rows.append({'main': c1, 'sup': sup_text, 'content': c2})
+                        if rows:
+                            sup0 = rows[0]['sup']
+                            title = sup0 if sup0 else rows[0]['main'][:40]
+                            s['details'].append({'title': title, 'examples': [], 'desc': '', 'tables': [rows]})
+                next_sib = next_sib.find_next_sibling()
+
+        # Clean up internal _el references before extending
+        for s in sentence_h3s:
+            if '_el' in s:
+                del s['_el']
         sections.extend(sentence_h3s)
     
     # Exercises

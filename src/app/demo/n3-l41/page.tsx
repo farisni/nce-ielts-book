@@ -107,7 +107,6 @@ const PROVIDE_DATA = [
   { expr: "provide sb. with sth.", note: "为某人提供某物", ex: "Editors of newspapers often go to extremes to provide their readers with unimportant facts.", hl: "provide" },
   { expr: "be loaded with", note: "满载…", ex: "Country people stagger home loaded with exotic items.", hl: "loaded with" },
   { expr: "... of this sort / kind", note: "这种/那种（前面名词用复数）", ex: "The city dweller never experiences anxieties of this sort.", hl: "anxieties of this sort" },
-  { expr: "be only a short bus ride away", note: "公交车即可达", ex: "The latest exhibitions, films, or plays are only a short bus ride away.", hl: "a short bus ride away" },
   { expr: "be available for", note: "有空做某事", ex: "They invariably live nearby and are always available for an informal chat.", hl: "available for" },
 ];
 
@@ -134,6 +133,13 @@ const FOREVER_LIST = [
 const RIGHTLY_LIST = [
   { en: "They could be saved so much misery and expense if they chose to live in the city where they rightly belong.", cn: "本来应该地（for a good reason）" },
   { en: "It was a vicious foul, and the referee rightly removed him from the game.", cn: "理应，理所当然地" },
+];
+
+const SUBJECT_CLAUSE_DATA = [
+  { ex: "It is beyond me / a mystery to me / beats me why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "形式主语（孔雀句型）" },
+  { ex: "I cannot understand why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country.", cn: "人做主语符合中文思维" },
+  { ex: "At one point, it seemed certain that their plane would crash.", cn: "形式主语 it" },
+  { ex: "Such is human nature, that a great many people are often willing to sacrifice higher pay for the privilege of becoming white-collar workers.", cn: "such...that 提前表强调" },
 ];
 
 const MYSTERY_DATA = [
@@ -167,6 +173,24 @@ const TREAT_LIST = [
 const GO_WILD_LIST = [
   { en: "The children ran wild with delight when they saw the ice cream truck.", cn: "变得欣喜若狂（系表结构：go/run wild）" },
   { en: "Fans went wild with delight when their team won the championship.", cn: "欣喜若狂" },
+];
+
+const BUS_RIDE_DATA = [
+  { expr: "be only a short bus ride away", note: "公交车即可达", ex: "The town centre is only a short bus ride away.", hl: "a short bus ride away" },
+  { expr: "be only a short bus ride away", note: "", ex: "The shopping mall is only a short bus ride away from my house.", hl: "a short bus ride away" },
+];
+
+const BUS_RIDE_DISTANCE_DATA = [
+  { expr: "be within walking distance", note: "步行可达", ex: "The park is within walking distance from our hotel.", hl: "within walking distance" },
+  { expr: "be within driving distance", note: "开车可达", ex: "The beach is within driving distance from the city center.", hl: "within driving distance" },
+  { expr: "be within commuting distance", note: "通勤范围内", ex: "My new job is within commuting distance of my home.", hl: "within commuting distance" },
+  { expr: "be only a stone's throw away", note: "只有一箭之遥", ex: "The library is only a stone's throw away from the university.", hl: "a stone's throw away" },
+];
+
+const EVERYDAY_DATA = [
+  { expr: "everyday life", note: "adj. 每天的、日常的", ex: "nearly every day", hl: "every day" },
+  { expr: "everyday work", note: "每天的工作（日常劳动）", ex: "work every day", hl: "every day" },
+  { expr: "everyday necessities", note: "日常必需品", ex: "need every day", hl: "every day" },
 ];
 
 const TUCK_LIST = [
@@ -593,7 +617,28 @@ export default function Page() {
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </div>} quoteClassName="mt-16 mb-7">
-
+        <KnowledgePoint titleEn="everyday vs every day" titleCn="">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[40%]">everyday</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[60%]">every day</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {EVERYDAY_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[40%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[60%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 11 === */}
@@ -607,6 +652,23 @@ export default function Page() {
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </div>} quoteClassName="mt-16 mb-7">
+        <KnowledgePoint titleEn="主语从句" titleCn="形式主语 it / 主语从句">
+          <ul className="space-y-1.5 mb-7">
+            {SUBJECT_CLAUSE_DATA.map((item, i) => (
+              <li key={i} className="flex items-start gap-1.5 text-black text-base">
+                <span className="inline-block size-1.5 rounded-full shrink-0 self-center mt-0.5"
+                  style={{ background: DOT_COLORS[i % DOT_COLORS.length] }} />
+                <span>
+                  <span className="text-base">{item.ex}</span>
+                  {item.cn && <>
+                    {" "}
+                    <span className="text-sm text-gray-400">{item.cn}</span>
+                  </>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </KnowledgePoint>
         <KnowledgePoint titleEn="be beyond sb." titleCn="使某人无法理解(难以置信)">
           <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
             <TableHeader>
@@ -978,7 +1040,50 @@ export default function Page() {
         <span className="text-[13px] text-gray-500 font-normal">
         </span>
       </div>} quoteClassName="mt-16 mb-7">
-
+        <KnowledgePoint titleEn="be only a short bus ride away" titleCn="只有很短的公共汽车车程（公交车即可达）">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {BUS_RIDE_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
+        <KnowledgePoint titleEn="距离表达" titleCn="">
+          <Table className="table-fixed text-black text-base" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[35%]">表达</TableHead>
+                <TableHead className="px-3 py-2 h-auto text-xs font-medium text-gray-500 w-[65%]">例句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {BUS_RIDE_DISTANCE_DATA.map((r, i) => (
+                <TableRow key={i} className="border-b border-gray-200 hover:bg-transparent">
+                  <TableCell className="px-3 py-2 whitespace-normal align-top w-[35%] [&_strong]:!font-semibold [&_strong]:!text-[#4980b1]">
+                    <strong>{r.expr}</strong>{r.note && <><br /><span className="text-sm text-gray-400">{r.note}</span></>}
+                  </TableCell>
+                  <TableCell className="px-3 py-2 whitespace-normal align-top text-gray-600 w-[65%]">
+                    <HighlightText text={r.ex} word={r.hl} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </KnowledgePoint>
       </Sentence>
 
       {/* === Sentence 20 === */}
