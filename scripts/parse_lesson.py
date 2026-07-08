@@ -93,14 +93,54 @@ def parse(html_file):
 
     nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul)")
 
-    def _merge_or_standalone(view_type):
+    def _parse_table(table):
+        rows = []
+        for tr in table.find_all("tr"):
+            th, td = tr.find("th"), tr.find("td")
+            if not th or not td:
+                continue
+            th_sup = th.find("sup")
+            th_desc = clean(th_sup.get_text(" ", strip=True)) if th_sup else ""
+            if th_sup:
+                th_sup.extract()
+            th_title = clean(th.get_text(" ", strip=True))
+
+            td_sup = td.find("sup")
+            td_cn = clean(td_sup.get_text(" ", strip=True)) if td_sup else ""
+            if td_sup:
+                td_sup.extract()
+            td_text = clean(td.get_text(" ", strip=True))
+
+            rows.append({"title": th_title, "desc": th_desc, "example": td_text, "example_cn": td_cn})
+        return {"rows": rows}
+
+    def _parse_list(ul):
+        items = []
+        for li in ul.find_all("li", recursive=False):
+            sup = li.find("sup")
+            note = clean(sup.get_text(" ", strip=True)) if sup else ""
+            if sup:
+                sup.extract()
+            text = clean(li.get_text(" ", strip=True))
+            items.append({"text": text, "note": note})
+        return {"items": items}
+
+    def _merge_or_standalone(view_type, node):
         """紧跟 h4 则合并到其 view，否则独立节点"""
+        parsed = _parse_table(node.find("table")) if view_type == "table" else _parse_list(node)
         if knowledge and "view" not in knowledge[-1]:
             knowledge[-1]["view"] = [view_type]
+            knowledge[-1]["data"] = parsed
         elif knowledge and "view" in knowledge[-1]:
-            knowledge[-1]["view"].append(view_type)
+            prev = knowledge[-1]
+            prev["view"].append(view_type)
+            # 同类型追加到已有数组，不同类型新增 key
+            if view_type == "table":
+                prev["data"].setdefault("rows", []).extend(parsed["rows"])
+            else:
+                prev["data"].setdefault("items", []).extend(parsed["items"])
         else:
-            knowledge.append({"view": [view_type]})
+            knowledge.append({"view": [view_type], "data": parsed})
 
     for node in nodes:
         # h3 句子
@@ -134,12 +174,12 @@ def parse(html_file):
         elif node.name == "div":
             table = node.find("table")
             if table and current_sentence:
-                _merge_or_standalone("table")
+                _merge_or_standalone("table", node)
 
         # ul/ol list
         elif node.name == "ul":
             if current_sentence:
-                _merge_or_standalone("list")
+                _merge_or_standalone("list", node)
 
     if current_sentence:
         result.append({
