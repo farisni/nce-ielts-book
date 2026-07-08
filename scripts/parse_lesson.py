@@ -91,7 +91,7 @@ def parse(html_file):
     current_sentence = None
     knowledge = []
 
-    nodes = soup.select(".lesson-notes h3, .lesson-notes h4")
+    nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive")
 
     for node in nodes:
         # h3 句子
@@ -120,6 +120,12 @@ def parse(html_file):
                     "title": title,
                     "desc": desc,
                 })
+
+        # table 知识点 — 整个 table 作为一个知识点节点
+        elif node.name == "div":
+            table = node.find("table")
+            if table and current_sentence:
+                knowledge.append({"type": "table"})
 
     if current_sentence:
         result.append({
