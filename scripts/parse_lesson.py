@@ -109,7 +109,7 @@ def parse(html_file):
                 result.append({
                     "index": len(result) + 1,
                     "sentence": current_sentence,
-                    "knowledge": knowledge,
+                    "knowledgePoint": knowledge,
                 })
 
             current_sentence = clean(node.get_text(" ", strip=True))
@@ -145,7 +145,7 @@ def parse(html_file):
         result.append({
             "index": len(result) + 1,
             "sentence": current_sentence,
-            "knowledge": knowledge,
+            "knowledgePoint": knowledge,
         })
 
     return result
