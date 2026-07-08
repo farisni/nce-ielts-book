@@ -10,6 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Badge } from "@/components/reui/badge";
+import { Tooltip } from "@/components/ui/tooltip";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
@@ -92,6 +93,66 @@ const TEXT_HIGHLIGHT: Record<string, string> = {
   "表语": "bg-gradient-to-t from-orange-300/50 from-50% to-transparent to-50%",
 };
 
+const EXAMPLE_SENTENCES: Record<string, string> = {
+  // 主语
+  "名词::主语": "The dog barks. 狗在叫。",
+  "代词::主语": "I love you. 我爱你。",
+  "动名词::主语": "Swimming is fun. 游泳很有趣。",
+  "不定式::主语": "To err is human. 犯错乃人之常情。",
+  "从句::主语": "What you said is true. 你说的是真的。",
+  // 谓语
+  "动词::谓语": "She runs fast. 她跑得很快。",
+  "动词短语::谓语": "She is looking after the baby. 她在照看宝宝。",
+  // 宾语
+  "名词::宾语": "He reads books. 他读书。",
+  "代词::宾语": "He saw her. 他看见了她。",
+  "动名词::宾语": "I enjoy swimming. 我喜欢游泳。",
+  "不定式::宾语": "She wants to go. 她想去。",
+  "从句::宾语": "I know what you mean. 我懂你的意思。",
+  // 间接宾语
+  "名词::间接宾语": "He gave Mary a gift. 他给了Mary一份礼物。",
+  "代词::间接宾语": "He gave her a gift. 他给了她一份礼物。",
+  // 直接宾语
+  "名词::直接宾语": "She threw the ball. 她扔了那个球。",
+  "代词::直接宾语": "She threw it. 她扔了它。",
+  "动名词::直接宾语": "She enjoys dancing. 她喜欢跳舞。",
+  "不定式::直接宾语": "He wants to leave. 他想离开。",
+  "从句::直接宾语": "She said that she would come. 她说她会来。",
+  // 表语
+  "名词::表语": "He is a teacher. 他是一名老师。",
+  "形容词::表语": "She is happy. 她很开心。",
+  "分词::表语": "He is excited. 他很兴奋。",
+  "动名词::表语": "Seeing is believing. 眼见为实。",
+  "不定式::表语": "My goal is to succeed. 我的目标是成功。",
+  "介词短语::表语": "She is in the room. 她在房间里。",
+  "从句::表语": "The truth is that he lied. 事实是他撒谎了。",
+  // 宾语补足语
+  "名词::宾语补足语": "They elected John president. 他们选John当总统。",
+  "形容词::宾语补足语": "They painted the wall white. 他们把墙刷白了。",
+  "不定式::宾语补足语": "I want you to go. 我要你走。",
+  "分词::宾语补足语": "I saw him running. 我看见他在跑。",
+  "介词短语::宾语补足语": "She put the book on the table. 她把书放在桌上。",
+  // 定语
+  "形容词::定语": "a beautiful flower 一朵美丽的花",
+  "不定式::定语": "a book to read 一本要读的书",
+  "介词短语::定语": "the girl in red 穿红裙的女孩",
+  "从句::定语": "the man who came yesterday 昨天来的那个人",
+  // 状语
+  "副词::状语": "He runs quickly. 他跑得很快。",
+  "介词短语::状语": "She arrived in the morning. 她早上到的。",
+  "不定式::状语": "He went to buy milk. 他去买牛奶了。",
+  "从句::状语": "When it rains, I stay home. 下雨我就待在家。",
+  // 同位语
+  "名词::同位语": "Beijing, the capital of China 北京，中国的首都",
+  "介词短语::同位语": "His hobby, playing guitar 他的爱好——弹吉他",
+  "分词::同位语": "The man, standing there 那个站在那里的男人",
+  "从句::同位语": "The idea that he proposed is great. 他提的建议很棒。",
+};
+
+function getExample(form: string, role: string): string | null {
+  return EXAMPLE_SENTENCES[`${form}::${role}`] ?? null;
+}
+
 export default function GrammarCorePage() {
   const FORM_ALIAS: Record<string, string> = {
     "名词性从句": "从句",
@@ -132,19 +193,31 @@ export default function GrammarCorePage() {
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
-                          {row.forms.map((f) => (
-                            <Badge
-                              key={f}
-                              variant="outline"
-                              className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
-                                hoveredForm && hoveredForm !== resolveForm(f) ? "opacity-30" : ""
-                              }`}
-                              onMouseEnter={() => setHoveredForm(resolveForm(f))}
-                              onMouseLeave={() => setHoveredForm(null)}
-                            >
-                              {f}
-                            </Badge>
-                          ))}
+                          {row.forms.map((f) => {
+                            const resolved = resolveForm(f);
+                            const example = getExample(resolved, row.roleKey);
+                            const badge = (
+                              <Badge
+                                key={f}
+                                variant="outline"
+                                className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
+                                  hoveredForm && hoveredForm !== resolved ? "opacity-30" : ""
+                                }`}
+                                onMouseEnter={() => setHoveredForm(resolved)}
+                                onMouseLeave={() => setHoveredForm(null)}
+                              >
+                                {f}
+                              </Badge>
+                            );
+                            if (example) {
+                              return (
+                                <Tooltip key={f} content={<span className="text-xs">{example}</span>}>
+                                  {badge}
+                                </Tooltip>
+                              );
+                            }
+                            return badge;
+                          })}
                         </div>
                       </TableCell>
                     </TableRow>
@@ -180,19 +253,30 @@ export default function GrammarCorePage() {
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
-                          {row.roles.map((r) => (
-                            <Badge
-                              key={r}
-                              variant="outline"
-                              className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
-                                hoveredRole && hoveredRole !== r ? "opacity-30" : ""
-                              }`}
-                              onMouseEnter={() => setHoveredRole(r)}
-                              onMouseLeave={() => setHoveredRole(null)}
-                            >
-                              {r}
-                            </Badge>
-                          ))}
+                          {row.roles.map((r) => {
+                            const example = getExample(row.form, r);
+                            const badge = (
+                              <Badge
+                                key={r}
+                                variant="outline"
+                                className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
+                                  hoveredRole && hoveredRole !== r ? "opacity-30" : ""
+                                }`}
+                                onMouseEnter={() => setHoveredRole(r)}
+                                onMouseLeave={() => setHoveredRole(null)}
+                              >
+                                {r}
+                              </Badge>
+                            );
+                            if (example) {
+                              return (
+                                <Tooltip key={r} content={<span className="text-xs">{example}</span>}>
+                                  {badge}
+                                </Tooltip>
+                              );
+                            }
+                            return badge;
+                          })}
                         </div>
                       </TableCell>
                     </TableRow>
