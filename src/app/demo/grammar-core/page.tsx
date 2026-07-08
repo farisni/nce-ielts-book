@@ -19,6 +19,8 @@ const SENTENCE_COMPONENTS = [
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "宾语补足语 (OC)", roleKey: "宾语补足语", forms: ["名词", "形容词", "不定式", "分词", "介词短语"] },
+  { component: "定语 (Attr)", roleKey: "定语", forms: ["形容词", "不定式", "从句"] },
+  { component: "状语 (Adv)", roleKey: "状语", forms: ["副词", "介词短语", "不定式", "从句"] },
 ];
 
 const FORM_COMPONENTS = [
