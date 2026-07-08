@@ -173,7 +173,7 @@ export default function GrammarCorePage() {
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
           <div className="flex-1 p-3">
-            <Table>
+            <Table className="table-fixed w-full">
               <TableHeader>
                 <TableRow>
                   <TableHead>句子成分</TableHead>
@@ -253,7 +253,7 @@ export default function GrammarCorePage() {
 
           {/* 右：结构形式 → 句子成分 */}
           <div className="flex-1 p-3">
-            <Table>
+            <Table className="table-fixed w-full">
               <TableHeader>
                 <TableRow>
                   <TableHead>结构形式</TableHead>
