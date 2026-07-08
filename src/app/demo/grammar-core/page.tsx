@@ -234,7 +234,7 @@ export default function GrammarCorePage() {
                             <div className="space-y-2">
                               {examples.map(({ form, example }) => (
                                 <div key={form} className="flex items-start gap-2 text-sm">
-                                  <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
+                                  <Badge variant="outline" className={`text-xs shrink-0 min-w-[4.5rem] ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
                                   <span className="text-muted-foreground leading-relaxed">{example}</span>
                                 </div>
                               ))}
@@ -313,7 +313,7 @@ export default function GrammarCorePage() {
                             <div className="space-y-2">
                               {examples.map(({ role, example }) => (
                                 <div key={role} className="flex items-start gap-2 text-sm">
-                                  <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
+                                  <Badge variant="outline" className={`text-xs shrink-0 min-w-[3.5rem] ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
                                   <span className="text-muted-foreground leading-relaxed">{example}</span>
                                 </div>
                               ))}
