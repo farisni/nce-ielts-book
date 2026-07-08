@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -164,6 +164,8 @@ export default function GrammarCorePage() {
 
   const [hoveredForm, setHoveredForm] = useState<string | null>(null);
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
+  const [expandedLeft, setExpandedLeft] = useState<string | null>(null);
+  const [expandedRight, setExpandedRight] = useState<string | null>(null);
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -183,44 +185,64 @@ export default function GrammarCorePage() {
                   const rowDimmed =
                     (hoveredRole && row.roleKey !== hoveredRole) ||
                     (hoveredForm && !row.forms.some(f => resolveForm(f) === hoveredForm));
+                  const isExpanded = expandedLeft === row.roleKey;
+                  const examples = row.forms
+                    .map(f => ({ form: f, example: getExample(resolveForm(f), row.roleKey) }))
+                    .filter(e => e.example);
                   return (
-                    <TableRow
-                      key={row.roleKey}
-                      className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
-                    >
-                      <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
-                        {TEXT_HIGHLIGHT[row.roleKey] ? <span className={TEXT_HIGHLIGHT[row.roleKey]}>{row.component}</span> : row.component}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex flex-wrap gap-1">
-                          {row.forms.map((f) => {
-                            const resolved = resolveForm(f);
-                            const example = getExample(resolved, row.roleKey);
-                            const badge = (
-                              <Badge
-                                key={f}
-                                variant="outline"
-                                className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
-                                  hoveredForm && hoveredForm !== resolved ? "opacity-30" : ""
-                                }`}
-                                onMouseEnter={() => setHoveredForm(resolved)}
-                                onMouseLeave={() => setHoveredForm(null)}
-                              >
-                                {f}
-                              </Badge>
-                            );
-                            if (example) {
-                              return (
-                                <Tooltip key={f} content={<span className="text-xs">{example}</span>}>
-                                  {badge}
-                                </Tooltip>
+                    <React.Fragment key={row.roleKey}>
+                      <TableRow
+                        className={`transition-opacity cursor-pointer ${rowDimmed ? "opacity-25" : ""}`}
+                        onDoubleClick={() => setExpandedLeft(isExpanded ? null : row.roleKey)}
+                      >
+                        <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
+                          {TEXT_HIGHLIGHT[row.roleKey] ? <span className={TEXT_HIGHLIGHT[row.roleKey]}>{row.component}</span> : row.component}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex flex-wrap gap-1">
+                            {row.forms.map((f) => {
+                              const resolved = resolveForm(f);
+                              const example = getExample(resolved, row.roleKey);
+                              const badge = (
+                                <Badge
+                                  key={f}
+                                  variant="outline"
+                                  className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
+                                    hoveredForm && hoveredForm !== resolved ? "opacity-30" : ""
+                                  }`}
+                                  onMouseEnter={() => setHoveredForm(resolved)}
+                                  onMouseLeave={() => setHoveredForm(null)}
+                                >
+                                  {f}
+                                </Badge>
                               );
-                            }
-                            return badge;
-                          })}
-                        </div>
-                      </TableCell>
-                    </TableRow>
+                              if (example) {
+                                return (
+                                  <Tooltip key={f} content={<span className="text-xs">{example}</span>}>
+                                    {badge}
+                                  </Tooltip>
+                                );
+                              }
+                              return badge;
+                            })}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                      {isExpanded && examples.length > 0 && (
+                        <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
+                          <TableCell colSpan={2} className="py-3">
+                            <div className="space-y-2">
+                              {examples.map(({ form, example }) => (
+                                <div key={form} className="flex items-start gap-2 text-sm">
+                                  <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
+                                  <span className="text-muted-foreground leading-relaxed">{example}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </React.Fragment>
                   );
                 })}
               </TableBody>
@@ -243,43 +265,63 @@ export default function GrammarCorePage() {
                   const rowDimmed =
                     (hoveredForm && row.form !== hoveredForm) ||
                     (hoveredRole && !row.roles.includes(hoveredRole));
+                  const isExpanded = expandedRight === row.form;
+                  const examples = row.roles
+                    .map(r => ({ role: r, example: getExample(row.form, r) }))
+                    .filter(e => e.example);
                   return (
-                    <TableRow
-                      key={row.form}
-                      className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
-                    >
-                      <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
-                        {TEXT_HIGHLIGHT[row.form] ? <span className={TEXT_HIGHLIGHT[row.form]}>{row.form}</span> : row.form}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex flex-wrap gap-1">
-                          {row.roles.map((r) => {
-                            const example = getExample(row.form, r);
-                            const badge = (
-                              <Badge
-                                key={r}
-                                variant="outline"
-                                className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
-                                  hoveredRole && hoveredRole !== r ? "opacity-30" : ""
-                                }`}
-                                onMouseEnter={() => setHoveredRole(r)}
-                                onMouseLeave={() => setHoveredRole(null)}
-                              >
-                                {r}
-                              </Badge>
-                            );
-                            if (example) {
-                              return (
-                                <Tooltip key={r} content={<span className="text-xs">{example}</span>}>
-                                  {badge}
-                                </Tooltip>
+                    <React.Fragment key={row.form}>
+                      <TableRow
+                        className={`transition-opacity cursor-pointer ${rowDimmed ? "opacity-25" : ""}`}
+                        onDoubleClick={() => setExpandedRight(isExpanded ? null : row.form)}
+                      >
+                        <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
+                          {TEXT_HIGHLIGHT[row.form] ? <span className={TEXT_HIGHLIGHT[row.form]}>{row.form}</span> : row.form}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex flex-wrap gap-1">
+                            {row.roles.map((r) => {
+                              const example = getExample(row.form, r);
+                              const badge = (
+                                <Badge
+                                  key={r}
+                                  variant="outline"
+                                  className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
+                                    hoveredRole && hoveredRole !== r ? "opacity-30" : ""
+                                  }`}
+                                  onMouseEnter={() => setHoveredRole(r)}
+                                  onMouseLeave={() => setHoveredRole(null)}
+                                >
+                                  {r}
+                                </Badge>
                               );
-                            }
-                            return badge;
-                          })}
-                        </div>
-                      </TableCell>
-                    </TableRow>
+                              if (example) {
+                                return (
+                                  <Tooltip key={r} content={<span className="text-xs">{example}</span>}>
+                                    {badge}
+                                  </Tooltip>
+                                );
+                              }
+                              return badge;
+                            })}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                      {isExpanded && examples.length > 0 && (
+                        <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
+                          <TableCell colSpan={2} className="py-3">
+                            <div className="space-y-2">
+                              {examples.map(({ role, example }) => (
+                                <div key={role} className="flex items-start gap-2 text-sm">
+                                  <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
+                                  <span className="text-muted-foreground leading-relaxed">{example}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      )}
+                    </React.Fragment>
                   );
                 })}
               </TableBody>
