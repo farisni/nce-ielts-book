@@ -76,7 +76,7 @@ const FORM_COLOR: Record<string, string> = {
 
 const FORM_UNDERLINE: Record<string, string> = {
   "名词": "decoration-emerald-400",
-  "代词": "decoration-emerald-400",
+  "代词": "decoration-emerald-300",
   "形容词": "decoration-yellow-400",
   "副词": "decoration-rose-400",
   "介词短语": "decoration-violet-400",
