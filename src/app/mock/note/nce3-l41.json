@@ -1,0 +1,1933 @@
+[
+  {
+    "index": 1,
+    "sentence": "The quiet life of the country has never appealed to me. 开篇明义",
+    "knowledgePoint": [
+      {
+        "title": "the country",
+        "desc": "表示乡村、本国要加定冠词",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "We're going to spend three days in the country !",
+              "desc": "在乡村",
+              "hl": [
+                "in the country"
+              ],
+              "tooltip": "Friday, Saturday and Sunday in the country!"
+            },
+            {
+              "example": "I want to buy a small house in the country .",
+              "desc": "在乡下",
+              "hl": [
+                "in the country",
+                "."
+              ],
+              "tooltip": "Lesson 089&90 For sale 待售"
+            },
+            {
+              "example": "At present, they are visiting all parts of the country .",
+              "desc": "全国各地",
+              "hl": [
+                "all parts of the country"
+              ],
+              "tooltip": "Lesson 13 The Greenwood Boys 绿林少年"
+            },
+            {
+              "example": "We are now living in a beautiful new house in the country .",
+              "desc": "在乡下",
+              "hl": [
+                "in the country"
+              ],
+              "tooltip": "Lesson 23 A new house 新居"
+            },
+            {
+              "example": "As a great many people will be visiting the country , the government will be building ...",
+              "desc": "本国",
+              "hl": [
+                "the country"
+              ],
+              "tooltip": "As a great many people will be visiting the country, the government will be building new hotels, an immense stadium, and a new Olympic-standard swimming pool."
+            },
+            {
+              "example": "He had hardly had time to settle down when he sold the house and left the country .",
+              "desc": "这个国家",
+              "hl": [
+                "the country"
+              ],
+              "tooltip": "He had often dreamed of retiring in England and had planned to settle down in the country."
+            },
+            {
+              "example": "Television cameras and newspapers carried the news to everyone in the country .",
+              "desc": "全国",
+              "hl": [
+                "in the country"
+              ],
+              "tooltip": "Lesson 45 The power of the press 新闻报道的威力"
+            }
+          ]
+        }
+      },
+      {
+        "title": "appeal to sb .",
+        "desc": "吸引某人（令某人产生兴趣）",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "The idea never appealed to me very much, but one day, after a heavy shower, I happened to be walking in my garden when I noticed a huge number of snails taking a stroll on some of my prize plants .",
+              "desc": "",
+              "hl": [
+                "appealed to me"
+              ],
+              "tooltip": "Lesson 23 One man's meat is another man's poison 各有所爱"
+            }
+          ],
+          "table_1": [
+            {
+              "title": "appeal",
+              "titleDesc": "v.引起兴趣 n. 吸引力",
+              "example": "In spite of national differences, certain funny situations have a universal appeal .",
+              "exampleDesc": "",
+              "hl": [
+                "a universal appeal"
+              ],
+              "tooltip": "Lesson 29 Funny or not? 是否可笑？"
+            },
+            {
+              "title": "attract",
+              "titleDesc": "v.吸引",
+              "example": "The quiet life of the country has never attracted me.",
+              "exampleDesc": "替换",
+              "hl": [
+                "attracted"
+              ]
+            },
+            {
+              "title": "intrigue",
+              "titleDesc": "v.引起好奇",
+              "example": "The quiet life of the country has never intrigued me.",
+              "exampleDesc": "替换",
+              "hl": [
+                "intrigued"
+              ]
+            },
+            {
+              "title": "is not my cup of tea",
+              "titleDesc": "不是我的茶(不是我的菜、我没有兴趣)",
+              "example": "The quiet life of the country is not my cup of tea .",
+              "exampleDesc": "常用于否定（习语）",
+              "hl": [
+                "is not my cup of tea"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "sentence": "City born and city bred , I have always regarded the country as something you look at through a train window , or something you occasionally visit during the weekend .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "note_1"
+        ],
+        "data": {
+          "note_1": "Because / Since I was born and bred in the city, ... 替换成原因状语从句(非谓语更简洁) Because / Since I was city born and bred, ... §"
+        }
+      },
+      {
+        "title": "regard A as",
+        "desc": "B 把A看着B",
+        "view": [
+          "list_1",
+          "note_1",
+          "table_1",
+          "note_2"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "We regard them as unnecessary creatures that do more harm than good .",
+              "desc": "",
+              "hl": [
+                "regard",
+                "as"
+              ],
+              "tooltip": "Lesson 54 Instinct or cleverness? 是本能还是机智"
+            },
+            {
+              "example": "... but was regarded as unsinkable, for she had sixteen watertight compartments .",
+              "desc": "",
+              "hl": [
+                "regarded as"
+              ],
+              "tooltip": "At that time, however, she was not only the largest ship that had ever been built, but was regarded as unsinkable, for she had sixteen watertight compartments."
+            },
+            {
+              "example": "... a particularly officious young Customs Officer clearly regarded me as a smuggler .",
+              "desc": "",
+              "hl": [
+                "regarded",
+                "as"
+              ],
+              "tooltip": "When I returned from abroad recently, a particularly officious young Customs Officer clearly regarded me as a smuggler."
+            },
+            {
+              "example": "In spite of this, the Italians regarded him as a sort of hero .",
+              "desc": "",
+              "hl": [
+                "regarded",
+                "as"
+              ],
+              "tooltip": "Lesson 14 A noble gangster 贵族歹徒"
+            }
+          ],
+          "note_1": ".., I have always thought of the country as something ... 替换",
+          "table_1": [
+            {
+              "title": "thought of ... as ...",
+              "titleDesc": "视为...",
+              "example": "This was often thought of as the country's finest hour.",
+              "exampleDesc": "一般认为这是该国家最美好的一段时光。",
+              "hl": [
+                "thought of as"
+              ]
+            },
+            {
+              "title": "consider",
+              "titleDesc": "v.斟酌；视为；顾及...",
+              "example": "..., I have always considered the country something ...",
+              "exampleDesc": "替换",
+              "hl": [
+                "considered"
+              ]
+            }
+          ],
+          "note_2": "China born and China bred, I have always regarded America as something you watch in Hollywood movies, or something you occasionally visit during holidays. 因为是士生士长的中国人，我总是认 为美国就是在好莱坞电影里看到的样子，或者偶尔在假期里看到的样子。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "sentence": "Most of my friends live in the city, yet they always go into raptures at the mere mention of the country .",
+    "knowledgePoint": [
+      {
+        "title": "go into raptures",
+        "desc": "欣喜若狂",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Everytime we will go into raptures on receiving it .",
+              "desc": "我们收到任何礼物时都会很高兴的接受它。",
+              "hl": [
+                "go into raptures"
+              ]
+            },
+            {
+              "example": "People go into raptures at the mere mention of shopping .",
+              "desc": "人们一提到购物就欣喜若狂。",
+              "hl": [
+                "go into raptures"
+              ]
+            },
+            {
+              "example": "They always go into raptures at the mere mention of winning other stores .",
+              "desc": "一提到赢了其他店他们就高兴的欢呼雀跃。",
+              "hl": [
+                "go into raptures"
+              ]
+            },
+            {
+              "example": "Many young people always go into raptures at the merely mention of buying fashion clothes .",
+              "desc": "许多年轻人一提到时尚服装就兴高采烈。",
+              "hl": [
+                "go into raptures"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "go into ecstasies",
+              "titleDesc": "陶醉、欣喜若狂",
+              "example": "She went into ecstasies when she found out she won the lottery.",
+              "exampleDesc": "当她得知自己中了大奖时，她欣喜若狂。",
+              "hl": [
+                "went into ecstasies"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "at the ... of ...",
+        "desc": "一...(马上)就...",
+        "view": [
+          "list_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "On the other hand, your stomach would turn at the idea of frying potatoes in animal fat , ...",
+              "desc": "",
+              "hl": [
+                "at the",
+                "of"
+              ],
+              "tooltip": "Lesson 23 One man's meat is another man's poison 各有所爱"
+            },
+            {
+              "example": "It is true that during their explorations they often faced difficulties and dangers of the most perilous nature, equipped in a manner which would make a modern climber shudder at the thought , ...",
+              "desc": "",
+              "hl": [
+                "at the thought"
+              ],
+              "tooltip": "Lesson 3 Matterhorn man 马特霍恩山区人"
+            }
+          ],
+          "note_1": "Most of my friends live in China, yet they always go into raptures at th are mention of America. 我的朋友们多数住在中国 ，然而他们总是仅仅一提到美国就欣喜若狂。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "sentence": "Though they extol the virtues of the peaceful life, only one of them has ever gone to live in the country and he was back in town within six months .",
+    "knowledgePoint": [
+      {
+        "title": "extol the virtues / benefits of sth.",
+        "desc": "盛赞...的好处",
+        "view": [
+          "list_1",
+          "note_1",
+          "table_1",
+          "note_2"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "He extolled the virtues of a plant-based diet.",
+              "desc": "他赞扬了植物性饮食的好处。",
+              "hl": [
+                "extolled the virtues of"
+              ]
+            },
+            {
+              "example": "She extolled the benefits of regular exercise.",
+              "desc": "她称赞了定期锻炼的好处。",
+              "hl": [
+                "extolled the benefits of"
+              ]
+            }
+          ],
+          "note_1": "... only one of them has personal experience of living in the country. 替换",
+          "table_1": [],
+          "note_2": "Though they extol the virtues of life in America, only one of them has ever gone to live there and he was back in China within a mere two years. 尽管他们盛赞美国生活的种种好 处，但只有一个人曾经去那里住过，并且 仅仅 不到两年就回中国了。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "sentence": "Even he still lives under the illusion that country life is somehow superior to town life .",
+    "knowledgePoint": [
+      {
+        "title": "be / live under the illusion / delusion that...",
+        "desc": "有某种错觉",
+        "view": [
+          "note_1",
+          "list_1"
+        ],
+        "data": {
+          "note_1": "Even he is still under the illusion that... 替换",
+          "list_1": [
+            {
+              "example": "The worst thing about the do-it-yourself game is that sometimes even men live under the delusion that they can do anything, even when they have been repeatedly proved wrong .",
+              "desc": "",
+              "hl": [
+                "live under the delusion"
+              ],
+              "tooltip": "Lesson 46 Do it yourself 自己动手"
+            }
+          ]
+        }
+      },
+      {
+        "title": "be superior to",
+        "desc": "天生比较级(搭配to而非than)",
+        "view": [
+          "note_1",
+          "list_1",
+          "note_2"
+        ],
+        "data": {
+          "note_1": "... town life is somehow inferior to country life. 用反义证替换 ...country life somehow beats town life. 用动词替换 ...country life somehow has an advantage over town life. 用词组替换",
+          "list_1": [
+            {
+              "example": "This model is superior to the previous one in terms of performance.",
+              "desc": "就性能而言，这款型号优于之前的型号。",
+              "hl": [
+                "is superior to"
+              ]
+            },
+            {
+              "example": "The quality of this product is inferior to that of the competitor's.",
+              "desc": "这个产品的质量不如竞争对手的好。",
+              "hl": [
+                "is inferior to"
+              ]
+            },
+            {
+              "example": "Our team has an advantage over theirs because of our experience.",
+              "desc": "我们的团队因为经验而优于他们的团队。",
+              "hl": [
+                "has an advantage over"
+              ]
+            },
+            {
+              "example": "He beat me at chess.",
+              "desc": "他下棋赢了我。",
+              "hl": [
+                "beat"
+              ]
+            }
+          ],
+          "note_2": "Even he still lives under the illusion that American life is somehow superior to Chinese life. 甚至连他都依然有一种错觉好像美国生活比中国生活优越。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "sentence": "He is forever talking about the friendly people , the clean atmosphere , the closeness to nature and the gentle pace of living .",
+    "knowledgePoint": [
+      {
+        "title": "be forever doing sth.",
+        "desc": "老是做某事",
+        "view": [
+          "list_1",
+          "table_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "She is forever complaining about the weather.",
+              "desc": "她总是在抱怨天气。",
+              "hl": [
+                "is forever complaining"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be always doing sth.",
+              "titleDesc": "总是做某事",
+              "example": "Our vicar is always raising money for one cause or another, but he ...",
+              "exampleDesc": "",
+              "hl": [
+                "is always raising money"
+              ],
+              "tooltip": "Our vicar is always raising money for one cause or another, but he has never managed to get enough money to have the church clock repaired."
+            },
+            {
+              "title": "be continually doing sth.",
+              "titleDesc": "不断地做某事",
+              "example": "He is continually checking his phone for messages.",
+              "exampleDesc": "他不断地检查手机是否有消息。",
+              "hl": [
+                "is continually checking"
+              ]
+            },
+            {
+              "title": "be constantly doing sth.",
+              "titleDesc": "不断地做某事",
+              "example": "They are constantly arguing about trivial matters.",
+              "exampleDesc": "他们总是在为琐事争吵。",
+              "hl": [
+                "are constantly arguing"
+              ]
+            },
+            {
+              "title": "keep (on) doing sth .",
+              "titleDesc": "继续做某事",
+              "example": "She keeps on practicing the piano every day.",
+              "exampleDesc": "她每天坚持练习钢琴。",
+              "hl": [
+                "keeps on practicing"
+              ]
+            },
+            {
+              "title": "do sth. all the time",
+              "titleDesc": "一直做某事",
+              "example": "He complains about his job all the time .",
+              "exampleDesc": "他总是抱怨他的工作。",
+              "hl": [
+                "complains",
+                "all the time"
+              ],
+              "tooltip": "The spheres had been magnetized and attracted or repelled each other all the time."
+            }
+          ],
+          "note_1": "He is forever talking about the friendly people, the clean atmosphere, the azure sky and the cheap commodities. 他总是不停地谈论友好的人民， 干净的空气， 蔚蓝的 天空和廉价的商品。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "sentence": "Nothing can be compared , he maintains , with the first cockcrow , the twittering of birds at dawn , the sight of the rising sun glinting on the trees and pastures .",
+    "knowledgePoint": [
+      {
+        "title": "compare A with / to B",
+        "desc": "把A和B做比较",
+        "view": [
+          "list_1",
+          "note_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "I hate the way you always compare me with your ex-boyfriend.",
+              "desc": "",
+              "hl": [
+                "compare",
+                "with"
+              ]
+            }
+          ],
+          "note_1": "Nothing can be compared with the sight of the rising sun glinting on Mount Tai. 泰山 日出的美景是无以伦比的。",
+          "table_1": [
+            {
+              "title": "compared to / with ...",
+              "titleDesc": "与...相比",
+              "example": "Compared to our small flat, Bill's house seemed like a palace.",
+              "exampleDesc": "",
+              "hl": [
+                "Compared to"
+              ]
+            },
+            {
+              "title": "in contrast to ... in contrast with ... by contrast to ... by contrast with ...",
+              "titleDesc": "",
+              "example": "in / by contrast to / with the hot days, the nights are bitterly cold. In contrast to her quiet brother, she is very outgoing. In contrast with the last report, this one is much more detailed. 与上一份报告相比，这一份详细得多。 By contrast to the other candidates, he has more experience.与 其他候选人相比，他有更多经验。 By contrast with the previous design, this one is more user-friendly. 与之前的设计相比，这个更加用户友好。",
+              "exampleDesc": "与她安静的哥哥相比，她非常外向。",
+              "hl": [
+                "in / by",
+                "to / with",
+                "In contrast to",
+                "In contrast with",
+                "By contrast to",
+                "By contrast with"
+              ]
+            },
+            {
+              "title": "in comparison to ... in comparison with ... by comparison to ... by comparison with ...",
+              "titleDesc": "",
+              "example": "People who do manual work often receive far more money in / by comparison to / with people who work in offices. In comparison to last year, sales have increased significantly. In comparison with other cities, this one is much cleaner. 与其他城市相比，这个城市干净得多。 By comparison to her previous job, this one is much more challenging. 与她之前的工作相比，这个工作更具挑战性。 By comparison with his peers, he is very talented. 与同龄人相比，他非常有才华。",
+              "exampleDesc": "与去年相比，销售额大幅增加。",
+              "hl": [
+                "in",
+                "by",
+                "to",
+                "with",
+                "In comparison to",
+                "In comparison with",
+                "By comparison to",
+                "By comparison with"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "at dawn",
+        "desc": "在黎明时刻",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "at the break / crack of dawn",
+              "desc": "黎明（破晓）时分",
+              "hl": [
+                "break",
+                "crack"
+              ]
+            },
+            {
+              "example": "at sunrise",
+              "desc": "在日出时刻",
+              "hl": []
+            },
+            {
+              "example": "at daybreak",
+              "desc": "黎明时分",
+              "hl": []
+            },
+            {
+              "example": "from dawn to dusk",
+              "desc": "从日出到日落",
+              "hl": []
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "sentence": "This idyllic pastoral scene is only part of the picture.",
+    "knowledgePoint": [
+      {
+        "view": [
+          "table_1"
+        ],
+        "data": {
+          "table_1": []
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "sentence": "My friend fails to mention the long and friendless winter evenings in front of the TV — virtually the only form of entertainment .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "note_1"
+        ],
+        "data": {
+          "note_1": "造句：The real estate agent failed to mention the stuffy and packed minibuses on rough country roads — virtually the only form of transportation. 这个 房地产经纪人 根本就没提在 崎岖的 乡间道路上 又闷又挤的 小公共汽车 ，而这几乎是唯一的交通方式。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "sentence": "He says nothing about the poor selection of goods in the shops , or about those unfortunate people who have to travel from the country to the city every day to get to work .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "table_1"
+        ],
+        "data": {
+          "table_1": []
+        }
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "sentence": "Why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country is beyond me. 雄狮句型（对比上下句）",
+    "knowledgePoint": [
+      {
+        "title": "主语从句",
+        "desc": "",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "It is beyond me / a mystery to me / beats me why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country .",
+              "desc": "形式主语(孔雀句型)",
+              "hl": [
+                "beyond me",
+                "a mystery to me",
+                "beats me"
+              ]
+            },
+            {
+              "example": "I cannot understand why people are prepared to tolerate a four-hour journey each day for the dubious privilege of living in the country .",
+              "desc": "人做主语符合中文思维",
+              "hl": [
+                "cannot understand"
+              ]
+            },
+            {
+              "example": "At one point, it seemed certain that their plane would crash .",
+              "desc": "",
+              "hl": []
+            },
+            {
+              "example": "Such is human nature, that a great many people are often willing to sacrifice higher pay for the privilege of becoming white-collar workers .",
+              "desc": "",
+              "hl": [
+                "for the privilege of"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "be beyond sb.",
+        "desc": "使某人无法理解(难以置信)",
+        "view": [
+          "list_1",
+          "table_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "How Harry managed to keep a straight face during these performances is quite beyond me .",
+              "desc": "主语从句",
+              "hl": [
+                "is",
+                "beyond me"
+              ],
+              "tooltip": "Lesson 52 Mud is mud 实事求是"
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be a mystery to sb.",
+              "titleDesc": "对某人来说是个谜（难以理解）",
+              "example": "It has always been a mystery to me why city dwellers, who appreciate all these things, ...",
+              "exampleDesc": "",
+              "hl": [
+                "a mystery to me"
+              ]
+            },
+            {
+              "title": "beat sb.",
+              "titleDesc": "打败某人、比...强、某人无法理解",
+              "example": "He beat his opponent in the final match. Our team's performance beats all the others. 我们团队的表现比其他所有团队都强。 It beats me how she manages to stay so organized . 我无法理解她是如何保持如此有条理的。",
+              "exampleDesc": "他在决赛中打败了对手。",
+              "hl": [
+                "beats",
+                "beats"
+              ]
+            }
+          ],
+          "note_1": "造句： Why people are prepared to sacrifice higher pay for the dubious privilege of becoming white-collar workers is beyond me. 我无法理解为什么人们 愿意 放弃更高的薪水而为 了 可疑的 成为白领工人的所谓特权。 Why people are prepared to tolerate language and cultural barriers, haunting loneliness and acute homesickness for the dubious privilege of livingn in America is beyond me. 我无法理解为什么人们愿意忍受 语言和文化 的障碍 ，难以 排遣 的寂真和 强烈 的为了换取 思乡之情 ，为了换取可疑的住在美国的好处。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "sentence": "They could be saved so much misery and expense if they chose to live in the city where they rightly belong . 虚拟语气",
+    "knowledgePoint": [
+      {
+        "title": "save sb. sth. / doing sth.",
+        "desc": "某人节省某物/免于做某事",
+        "view": [
+          "list_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "If you lend me some money, it will save me a trip to the bank.",
+              "desc": "主将从现",
+              "hl": [
+                "save me a trip"
+              ]
+            },
+            {
+              "example": "If you tell her the news, it will save me calling her.",
+              "desc": "省得我打电话给她",
+              "hl": [
+                "save me calling"
+              ]
+            }
+          ],
+          "note_1": "...live in the city which they rightly belong to . 先行词做宾语用belong to，因为belong不及物"
+        }
+      },
+      {
+        "title": "rightly",
+        "desc": "adv. for a good reason 本来应该地",
+        "view": [
+          "list_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "It was a vicious foul , and the referee rightly removed him from the game.",
+              "desc": "",
+              "hl": [
+                "rightly"
+              ]
+            }
+          ],
+          "note_1": "They could be saved so much misery, inconvenience and endless nostalgia if they chose to live in the land where they rightly belong. 他们可以省去诸多痛苦、不便和 无尽的 怀旧之情 ，如果他们选择住在他们本应属于的 国度 。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "sentence": "If you can do without the few pastoral pleasures of the country , you will find the city can provide you with the best that life can offer .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "table_1"
+        ],
+        "data": {
+          "table_1": []
+        }
+      },
+      {
+        "title": "do without sth.",
+        "desc": "没有...也行",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "If you need my car, I can do without it today.",
+              "desc": "",
+              "hl": [
+                "do without"
+              ]
+            },
+            {
+              "example": "She can't do without candy .",
+              "desc": "",
+              "hl": [
+                "can't do without"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "go without sth.",
+              "titleDesc": "没有某物（也行）",
+              "example": "During the drought, they had to go without running water for weeks.",
+              "exampleDesc": "在干旱期间，他们不得不几周没有自来水。",
+              "hl": [
+                "go without"
+              ]
+            },
+            {
+              "title": "manage without sth.",
+              "titleDesc": "没有某物也能应付",
+              "example": "She managed without a car for years before buying one.",
+              "exampleDesc": "她在买车之前好几年都没有车也能应付。",
+              "hl": [
+                "managed without"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "provide sb. with sth.",
+        "desc": "为某人提供某物（sb. 短 sth. 长）",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Editors of newspapers and magazines often go to extremes to provide their readers with unimportant facts and statistics .",
+              "desc": "",
+              "hl": [
+                "provide",
+                "with"
+              ],
+              "tooltip": "Lesson 5 The facts 确切数字"
+            }
+          ],
+          "table_1": [
+            {
+              "title": "provide sth. for sb .",
+              "titleDesc": "为某人提供某物（sb. 长 sth. 短）",
+              "example": "Such things provide an excellent outlet for pent up creative energy, but unfortunately not all of us are born handymen .",
+              "exampleDesc": "",
+              "hl": [
+                "provide",
+                "for"
+              ],
+              "tooltip": "Lesson 46 Do it yourself 自己动手"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "sentence": "They invariably live nearby and are always available for an informal chat or an evening's entertainment .",
+    "knowledgePoint": [
+      {
+        "title": "be available for sth.",
+        "desc": "有空做某事",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "I am available for a meeting tomorrow afternoon.",
+              "desc": "我明天下午有空开会。",
+              "hl": []
+            },
+            {
+              "example": "My professor is always available for a conversation / to talk with his students.",
+              "desc": "",
+              "hl": [
+                "is",
+                "available for",
+                "to"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be available to do sth.",
+              "titleDesc": "有空、有时间做某事",
+              "example": "She is available to discuss the project later today.",
+              "exampleDesc": "她今天稍晚有空讨论这个项目。",
+              "hl": [
+                "is available to"
+              ]
+            },
+            {
+              "title": "be free for sth.",
+              "titleDesc": "有空做某事",
+              "example": "Are you free for lunch today?",
+              "exampleDesc": "你今天中午有空吗？",
+              "hl": [
+                "you free for"
+              ]
+            },
+            {
+              "title": "be free to do sth.",
+              "titleDesc": "有空做某事",
+              "example": "He is free to help you with your homework tonight.",
+              "exampleDesc": "他今晚有空帮你做作业。",
+              "hl": [
+                "is free to"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "be busy",
+        "desc": "忙于干某事（没时间做其它事）",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Her eyes were fixed on her plate and in a short time, she was busy eating .",
+              "desc": "",
+              "hl": [
+                "was busy"
+              ],
+              "tooltip": "Lesson 40 Food and talk 进餐与交谈"
+            },
+            {
+              "example": "Meanwhile, my tongue was busy searching out the hole where the tooth had been .",
+              "desc": "",
+              "hl": [
+                "was busy"
+              ],
+              "tooltip": "Lesson 48 Did you want to tell me something? 你想对我说什么吗？"
+            },
+            {
+              "example": "In a short time, I was busy mixing butter and flour, and my hands were soon covered with sticky pastry .",
+              "desc": "",
+              "hl": [
+                "was busy"
+              ],
+              "tooltip": "Lesson 54 Sticky fingers 粘糊的手指"
+            },
+            {
+              "example": "You 're not busy doing anything, are you?'",
+              "desc": "",
+              "hl": [
+                "'re not busy"
+              ],
+              "tooltip": "Lesson 68 Persistent 纠缠不休"
+            },
+            {
+              "example": "The bull was busy with the matador at the time, but it suddenly caught sight of the drunk who was shouting rude remarks and waving a red cap .",
+              "desc": "",
+              "hl": [
+                "was busy"
+              ],
+              "tooltip": "Lesson 70 Red for danger 危险的红色"
+            },
+            {
+              "example": "I appreciate your kind invitation , but I have a previous / prior engagement .",
+              "desc": "",
+              "hl": [
+                "have a previous",
+                "prior engagement"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be not available",
+              "titleDesc": "",
+              "example": "I’m sorry, but I 'm not available for the meeting on Friday.",
+              "exampleDesc": "很抱歉，我周五没空参加会议。",
+              "hl": [
+                "'m not available"
+              ]
+            },
+            {
+              "title": "be tied up",
+              "titleDesc": "",
+              "example": "She is tied up with work all day and can't meet you.",
+              "exampleDesc": "她一整天都忙于工作，无法见你。",
+              "hl": [
+                "is tied up"
+              ]
+            },
+            {
+              "title": "have a previous engagement",
+              "titleDesc": "",
+              "example": "I have a previous engagement that I can't cancel.",
+              "exampleDesc": "我有一个无法取消的预定。",
+              "hl": [
+                "have a previous engagement"
+              ]
+            },
+            {
+              "title": "have a prior engagement",
+              "titleDesc": "",
+              "example": "He has a prior engagement and won't be able to attend the dinner.",
+              "exampleDesc": "他有一个优先安排，无法参加晚宴。",
+              "hl": [
+                "has a prior engagement"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "sentence": "Some of my acquaintances in the country come up to town once or twice a year to visit the theatre as a special treat .",
+    "knowledgePoint": [
+      {
+        "title": "go up to the city 上城市",
+        "desc": "",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "hey decided to go up to the city for the weekend.",
+              "desc": "他们决定周末去城市。",
+              "hl": [
+                "go up to the city"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "go down to the country",
+              "titleDesc": "下乡下去",
+              "example": "We're going down to the country to visit my grandparents.",
+              "exampleDesc": "我们要下乡去看望我的祖父母。",
+              "hl": [
+                "going down to the country"
+              ]
+            },
+            {
+              "title": "up",
+              "titleDesc": "上北、上游",
+              "example": "They walked up north. They sailed up the river. 上游",
+              "exampleDesc": "北上",
+              "hl": [
+                "up",
+                "up"
+              ]
+            },
+            {
+              "title": "down 下南、下游",
+              "titleDesc": "",
+              "example": "They walked down south. They sailed down the river. 下游",
+              "exampleDesc": "南下",
+              "hl": [
+                "down",
+                "down"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "treat",
+        "desc": "n.难得的乐事",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "treat or trick",
+              "desc": "不给糖就捣蛋",
+              "hl": [
+                "treat"
+              ]
+            },
+            {
+              "example": "The children were given milk shakes as a special treat .",
+              "desc": "小孩受到特别招待，给吃牛奶泡泡冰。",
+              "hl": [
+                "as a special treat"
+              ]
+            },
+            {
+              "example": "When we were kids, a trip to the beach was a real treat .",
+              "desc": "",
+              "hl": [
+                "was a real treat"
+              ]
+            },
+            {
+              "example": "Her son's visits are a great treat for her .",
+              "desc": "",
+              "hl": [
+                "are a great treat for her"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "as a special treat",
+              "titleDesc": "作为难得的乐事",
+              "example": "We took the kids to the zoo as a special treat .",
+              "exampleDesc": "",
+              "hl": [
+                "as a special treat"
+              ]
+            },
+            {
+              "title": "be a real treat",
+              "titleDesc": "真正的享受",
+              "example": "The concert last night was a real treat .",
+              "exampleDesc": "昨晚的音乐会真是享受。",
+              "hl": [
+                "was a real treat"
+              ]
+            },
+            {
+              "title": "be a great treat",
+              "titleDesc": "盛情款待、天大的乐事",
+              "example": "Visiting the amusement park was a great treat for the kids.",
+              "exampleDesc": "参观游乐园对孩子们来说是一大享受。",
+              "hl": [
+                "was a great treat"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "sentence": "For them this is a major operation which involves considerable planning .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "note_1"
+        ],
+        "data": {
+          "note_1": "... and it involves considerable planning. 延续性从句替换 and it"
+        }
+      },
+      {
+        "title": "major",
+        "desc": "important; significant",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Libya is a major oil producer.",
+              "desc": "利比亚是主要石油生产国之一。",
+              "hl": [
+                "major"
+              ]
+            },
+            {
+              "example": "Rotterdam is a major port.",
+              "desc": "鹿特丹是一个重要的港口城市。",
+              "hl": [
+                "major"
+              ]
+            },
+            {
+              "example": "Tokyo is a major financial centre.",
+              "desc": "东京是主要的金融中心。",
+              "hl": [
+                "major"
+              ]
+            },
+            {
+              "example": "She's an education major .",
+              "desc": "她主修教育学。",
+              "hl": [
+                "major"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "minor",
+              "titleDesc": "unimportant",
+              "example": "I can put up with minor inconveniences. The symptoms suggest a minor heart attack. 症状显示这是轻微心脏病发作。 He had a minor operation to remove a cyst. 他做了一个切除了囊肿的小手术。 Small children often cry after a minor bump. 小孩子们在轻微的碰撞后常常会哭。 Relatively minor modifications were required. 需要相对较小的修改。",
+              "exampleDesc": "我能忍受些小的不便。",
+              "hl": [
+                "minor",
+                "minor",
+                "minor",
+                "minor",
+                "minor"
+              ]
+            },
+            {
+              "title": "trivial",
+              "titleDesc": "insignificant",
+              "example": "It's a trivial matter and not worth fighting about. I know it sounds trivial , but I'm worried about it. 我知道这事听起来微不足道，但我还是放心不下。 His mood can be gauged by his reaction to the most trivial of incidents. 他的情绪可以通过他对最琐碎的小事的反应来判定。 These may seem like trivial phobias. 这些似乎是微不足道的恐惧症。 Trivial formalities have been done away with. 繁琐礼节都取消了。",
+              "exampleDesc": "这是一桩小事，不值得为之争辩。",
+              "hl": [
+                "trivial",
+                "trivial",
+                "trivial",
+                "trivial",
+                "Trivial"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "operation",
+        "desc": "work; activity; action",
+        "view": [
+          "list_1",
+          "table_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "The salvage operation had been a complete failure .",
+              "desc": "",
+              "hl": [
+                "operation"
+              ],
+              "tooltip": "Lesson 32 A lost ship 一艘沉船"
+            },
+            {
+              "example": "There are three ski lifts in operation .",
+              "desc": "有3辆滑雪缆车在运行。",
+              "hl": [
+                "operation"
+              ]
+            },
+            {
+              "example": "The system has been in operation for six months.",
+              "desc": "这个系统已经运行六个月了。",
+              "hl": [
+                "operation"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "rescue operation",
+              "titleDesc": "营救行动",
+              "example": "However, rescue operations are proving difficult .",
+              "exampleDesc": "",
+              "hl": [
+                "rescue operations"
+              ],
+              "tooltip": "They have been told that rescue operations are progressing smoothly."
+            },
+            {
+              "title": "relief operation",
+              "titleDesc": "救援行动",
+              "example": "The relief operation also includes the provision of food, water and other supplies to the victims.",
+              "exampleDesc": "救援行动包括向灾民提供粮食、水和其他供需品。",
+              "hl": [
+                "The relief operation"
+              ]
+            },
+            {
+              "title": "cleanup operation",
+              "titleDesc": "清理行动(大扫除)",
+              "example": "The cleanup operation helped ensure the water quality of the dam and its navigability.",
+              "exampleDesc": "清理工作有助于确保大坝的水质及顺利巡航。",
+              "hl": [
+                "The cleanup operation"
+              ]
+            }
+          ],
+          "note_1": "造句： Studying abroad is a major operation which involves considerable planning . 出国留学是一个重大的行动，需要精心的计划。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "sentence": "As the play draws to its close, they wonder whether they will ever catch that last train home .",
+    "knowledgePoint": [
+      {
+        "title": "draw to a close",
+        "desc": "接近尾声",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "As the day drew to a close , the sun set beautifully over the horizon.",
+              "desc": "当一天接近尾声时，夕阳美丽地落在地平线上。",
+              "hl": [
+                "drew to a close"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "draw to an end",
+              "titleDesc": "即将结束",
+              "example": "The meeting drew to an end after three hours of discussion.",
+              "exampleDesc": "经过三个小时的讨论，会议接近尾声。",
+              "hl": [
+                "drew to an end"
+              ]
+            },
+            {
+              "title": "draw to a conclusion",
+              "titleDesc": "接近结束",
+              "example": "The investigation drew to a conclusion with the final report.",
+              "exampleDesc": "调查随着最终报告接近结束。",
+              "hl": [
+                "drew to a conclusion"
+              ]
+            },
+            {
+              "title": "come to a close",
+              "titleDesc": "进入尾声",
+              "example": "The concert came to a close with a spectacular fireworks display.",
+              "exampleDesc": "音乐会以壮观的烟花表演结束。",
+              "hl": [
+                "came to a close"
+              ]
+            },
+            {
+              "title": "come to an end",
+              "titleDesc": "曲终人散",
+              "example": "Their long journey finally came to an end .",
+              "exampleDesc": "他们的长途旅行终于结束了。",
+              "hl": [
+                "came to an end"
+              ]
+            },
+            {
+              "title": "come to a conclusion",
+              "titleDesc": "得出结论",
+              "example": "After reviewing all the evidence, the jury came to a conclusion .",
+              "exampleDesc": "在审查了所有证据后，陪审团达成了结论。",
+              "hl": [
+                "came to a conclusion"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "sentence": "The city dweller never experiences anxieties of this sort .",
+    "knowledgePoint": [
+      {
+        "title": "... of this / that sort / kind",
+        "desc": "这种...、那种...(前面的名字用 复数 )",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "I can't approve of things of this sort .",
+              "desc": "",
+              "hl": [
+                "things of this sort"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "this / that sort / kind of ...",
+              "titleDesc": "将后面的名词通通看着不可数",
+              "example": "I can't approve of this sort of thing .",
+              "exampleDesc": "",
+              "hl": [
+                "this sort of thing"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "sentence": "The latest exhibitions, films, or plays are only a short bus ride away .",
+    "knowledgePoint": [
+      {
+        "title": "be only a short bus ride away",
+        "desc": "只有很短的公共汽车车程(公交车即可达)",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "The town centre is only a short bus ride away .",
+              "desc": "坐公共汽车去市中心只有很短一段路程。",
+              "hl": [
+                "is only a short bus ride away"
+              ]
+            },
+            {
+              "example": "The shopping mall is only a short bus ride away from my house.",
+              "desc": "购物中心离我家只有一小段公交车程。",
+              "hl": [
+                "is only a short bus ride away"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be within walking distance",
+              "titleDesc": "步行可达",
+              "example": "The park is within walking distance from our hotel.",
+              "exampleDesc": "公园离我们的酒店在步行可达的距离内。",
+              "hl": [
+                "is within walking distance"
+              ]
+            },
+            {
+              "title": "be within driving distance",
+              "titleDesc": "开车可达",
+              "example": "The beach is within driving distance from the city center.",
+              "exampleDesc": "海滩离市中心在开车可达的距离内。",
+              "hl": [
+                "is within driving distance"
+              ]
+            },
+            {
+              "title": "be within commuting distance",
+              "titleDesc": "通勤范围内",
+              "example": "My new job is within commuting distance of my home.",
+              "exampleDesc": "我的新工作在我家通勤范围内。",
+              "hl": [
+                "is within commuting distance"
+              ]
+            },
+            {
+              "title": "be only a stone's throw away",
+              "titleDesc": "只有一箭之遥",
+              "example": "The library is only a stone's throw away from the university.",
+              "exampleDesc": "图书馆离大学只有一箭之遥。",
+              "hl": [
+                "is only a stone's throw away"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "sentence": "There is so much variety that you never have to make do with second best .",
+    "knowledgePoint": [
+      {
+        "title": "make do with ...",
+        "desc": "凑合用",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "John did not have a hammer, so he had to make do with a rock.",
+              "desc": "",
+              "hl": [
+                "make do with"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "second best",
+        "desc": "次优、其次",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "He put on his second best suit.",
+              "desc": "他穿上了他第二好的西服。",
+              "hl": [
+                "second best"
+              ]
+            },
+            {
+              "example": "My best subject was history and my second best was geography.",
+              "desc": "我学得最好的科目是历史，其次是地理。",
+              "hl": [
+                "second best"
+              ]
+            },
+            {
+              "example": "I couldn't afford the house I really wanted, so I had to settle for second best .",
+              "desc": "我真心想要的房子我买不起，所以只得退而求其次了。",
+              "hl": [
+                "second best"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "be second only to ...",
+              "titleDesc": "仅次于...",
+              "example": "The euro has a circulation second only to that of the dollar.",
+              "exampleDesc": "",
+              "hl": [
+                "second only to"
+              ]
+            },
+            {
+              "title": "be second to none",
+              "titleDesc": "没有排在任何的后面（最棒的）",
+              "example": "When it comes to singing , John is second to none .",
+              "exampleDesc": "",
+              "hl": [
+                "is second to none"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "sentence": "Country people run wild when they go shopping in the city and stagger home loaded with as many of the exotic items as they can carry .",
+    "knowledgePoint": [
+      {
+        "title": "run / go wild with delight",
+        "desc": "系表（变得...）欣喜若狂",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "The children ran wild with delight when they saw the ice cream truck.",
+              "desc": "孩子们看到冰淇淋车时高兴得疯了。",
+              "hl": [
+                "ran wild with delight"
+              ]
+            },
+            {
+              "example": "Fans went wild with delight when their team won the championship.",
+              "desc": "球迷们在他们的球队赢得冠军时兴奋得疯了。",
+              "hl": [
+                "went wild with delight"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "run crazy with delight",
+              "titleDesc": "高兴疯了",
+              "example": "The kids ran crazy with delight when they saw the balloons.",
+              "exampleDesc": "孩子们看到气球时高兴得疯了。",
+              "hl": [
+                "ran crazy with delight"
+              ]
+            },
+            {
+              "title": "go crazy with delight",
+              "titleDesc": "高兴得发疯",
+              "example": "She went crazy with delight when she heard she won the lottery.",
+              "exampleDesc": "她听到自己中了大奖时高兴得发疯。",
+              "hl": [
+                "went crazy with delight"
+              ]
+            },
+            {
+              "title": "go into raptures",
+              "titleDesc": "欣喜若狂",
+              "example": "The audience went into raptures when the singer came on stage.",
+              "exampleDesc": "歌手登台时，观众们欣喜若狂。",
+              "hl": [
+                "went into raptures"
+              ]
+            },
+            {
+              "title": "go into ecstasies",
+              "titleDesc": "欣喜若狂",
+              "example": "She went into ecstasies over the beautiful painting she received.",
+              "exampleDesc": "她对收到的美丽画作欣喜若狂。",
+              "hl": [
+                "went into ecstasies"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "sentence": "Nor is the city without its moments of beauty .",
+    "knowledgePoint": [
+      {
+        "title": "双重否定 = 加强肯定",
+        "desc": "",
+        "view": [
+          "list_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Nothing is impossible to a willing mind.",
+              "desc": "世上无难事，只怕有心人。",
+              "hl": [
+                "Nothing",
+                "impossible"
+              ]
+            },
+            {
+              "example": "No one has nothing to offer to society.",
+              "desc": "每个人都可以为社会做贡献",
+              "hl": [
+                "No one",
+                "nothing"
+              ]
+            },
+            {
+              "example": "Impossible is nothing .",
+              "desc": "一切皆有可能（双重否定=加强肯定）Adidas slogan",
+              "hl": [
+                "Impossible",
+                "nothing"
+              ]
+            },
+            {
+              "example": "Anything is possible.",
+              "desc": "一切皆有可能（李宁 slogan）",
+              "hl": []
+            }
+          ],
+          "note_1": "造句： Nor are men without their moments of frailty. 男人也不是没有脆弱的时候。"
+        }
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "sentence": "There is something comforting about the warm glow shed by advertisements on cold wet winter nights .",
+    "knowledgePoint": [
+      {
+        "title": "shed",
+        "desc": "v.流，洒，落（泪），射(发)出光，蜕皮、掉落（货物）",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "shed bitter tears",
+              "desc": "",
+              "hl": [
+                "shed"
+              ]
+            },
+            {
+              "example": "shed blood",
+              "desc": "",
+              "hl": [
+                "shed"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "shed light on sth.",
+              "titleDesc": "阐明某事（揭示）",
+              "example": "These discoveries may shed light on the origins of the universe .",
+              "exampleDesc": "",
+              "hl": [
+                "shed light on"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "on a Monday night",
+        "desc": "早中晚前面有修饰语时使用介词on",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "on a Sunday morning",
+              "desc": "",
+              "hl": [
+                "morning"
+              ]
+            },
+            {
+              "example": "On Christmas morning",
+              "desc": "",
+              "hl": [
+                "morning"
+              ]
+            },
+            {
+              "example": "On Friday evening",
+              "desc": "",
+              "hl": [
+                "evening"
+              ]
+            },
+            {
+              "example": "on Wednesday evening",
+              "desc": "",
+              "hl": [
+                "evening"
+              ]
+            },
+            {
+              "example": "on a sunny afternoon",
+              "desc": "",
+              "hl": [
+                "afternoon"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "sentence": "Few things could be more impressive than the peace that descends on deserted city streets at weekends when the thousands that travel to work every day are tucked away in their homes in the country .",
+    "knowledgePoint": [
+      {
+        "title": "比较级表最高级",
+        "desc": "",
+        "view": [
+          "list_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "Few students could be more diligent than she (is).",
+              "desc": "",
+              "hl": [
+                "Few",
+                "more",
+                "than"
+              ]
+            },
+            {
+              "example": "Few things could be more misleading than the precept that the way to be loved is-just to love.",
+              "desc": "只要去爱就能得到爱，没有比这更误导人的箴言了。",
+              "hl": [
+                "Few",
+                "more",
+                "than"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "tuck",
+        "desc": "v.掖进，塞进",
+        "view": [
+          "list_1",
+          "table_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "tuck your trousers into your boots",
+              "desc": "",
+              "hl": [
+                "tuck",
+                "into"
+              ]
+            },
+            {
+              "example": "He tried to tuck his flapping shirt inside his trousers.",
+              "desc": "他试图把飘动的衬衫塞进他的裤子里。",
+              "hl": [
+                "tuck"
+              ]
+            },
+            {
+              "example": "I'll tuck your sheets in for you. How's that? Comfortable?",
+              "desc": "我给你把被单掖在垫褥下面吧。怎么样？舒服吗？",
+              "hl": [
+                "tuck"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "nip and tuck",
+              "titleDesc": "势均力敌、棋逢对手",
+              "example": "The presidential contest is nip and tuck . The two runners contested the race closely -- it was nip and tuck all the way. 那两个赛跑选手竞争激烈-在赛程中一直不相上下。",
+              "exampleDesc": "总统竞选势均力敌。",
+              "hl": [
+                "nip and tuck",
+                "nip and tuck"
+              ]
+            },
+            {
+              "title": "be tucked away",
+              "titleDesc": "be hidden （被塞进去隐藏了）",
+              "example": "A group of tiny brick houses is tucked away behind the factory.",
+              "exampleDesc": "",
+              "hl": [
+                "is tucked away"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "sentence": "It has always been a mystery to me why city dwellers , who appreciate all these things , obstinately pretend that they would prefer to live in the country .",
+    "knowledgePoint": [
+      {
+        "view": [
+          "note_1"
+        ],
+        "data": {
+          "note_1": "作者总结：They are hypocritical ."
+        }
+      },
+      {
+        "title": "It has always been a mystery to me",
+        "desc": "这对我来说一直是个谜",
+        "view": [
+          "list_1",
+          "table_1",
+          "note_1"
+        ],
+        "data": {
+          "list_1": [
+            {
+              "example": "It has always been a mystery to me why people enjoy horror movies.",
+              "desc": "我一直不明白为什么人们喜欢恐怖电影。",
+              "hl": [
+                "It has always been a mystery to me why"
+              ]
+            },
+            {
+              "example": "It has always been a mystery to me how he manages to stay so calm.",
+              "desc": "我一直不明白他是如何保持如此冷静的。",
+              "hl": [
+                "It has always been a mystery to me how"
+              ]
+            },
+            {
+              "example": "It has always been a mystery to me what she sees in him.",
+              "desc": "我一直不明白她在他身上看到了什么。",
+              "hl": [
+                "It has always been a mystery to me what"
+              ]
+            }
+          ],
+          "table_1": [
+            {
+              "title": "It has always been beyond me",
+              "titleDesc": "...我到现在总是不明白(一直不明白)",
+              "example": "It has always been beyond me why he chose to quit his job. It has always been beyond me how she manages to juggle work and family. 我一直不明白她是如何平衡工作和家庭的。 It has always been beyond me what he sees in her. 我一直不明白他在她身上看到了什么。 It has always been beyond me who would leave such a mess behind. 我一直不明白是谁留下了这么一团糟。 It has always been beyond me where he disappeared to. 我一直不明白他去了哪里。",
+              "exampleDesc": "我一直不明白他为什么选择辞去工作。",
+              "hl": [
+                "It has always been beyond me why",
+                "It has always been beyond me how",
+                "It has always been beyond me what",
+                "It has always been beyond me who",
+                "It has always been beyond me where"
+              ]
+            },
+            {
+              "title": "It beats me ...",
+              "titleDesc": "击败了我（我搞不懂）",
+              "example": "It beats me why he always arrives late to meetings It beats me how she manages to keep her room so tidy. 我真不知道她是怎么把房间收拾得这么干净的。 It beats me what he sees in her. 我真不知道他看中她什么。 It beats me who would leave the door unlocked overnight. 我真不知道谁会把门整夜不锁。 It beats me where he found that rare book. 我真不知道他在哪里找到那本稀有的书。",
+              "exampleDesc": ".我真搞不懂他为什么总是迟到会议。",
+              "hl": [
+                "It beats me why",
+                "It beats me how",
+                "It beats me what",
+                "It beats me who",
+                "It beats me where"
+              ]
+            }
+          ],
+          "note_1": "... they would prefer to live in the country rather than live in the city . 补充完整"
+        }
+      }
+    ]
+  }
+]

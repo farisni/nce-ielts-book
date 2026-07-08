@@ -796,7 +796,7 @@ function ArticleReader({ article }: { article: Article }) {
   return (
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       {showNotebook ? (
-        <NotebookPlaceholder title={article.title} titleCn={article.titleCn} />
+        <NotebookPlaceholder article={article} />
       ) : (
         <>
           <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
