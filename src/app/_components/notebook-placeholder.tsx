@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { NotebookPen } from "lucide-react";
+import { ArrowLeft, NotebookPen } from "lucide-react";
 import { KnowledgePoint } from "@/app/_components/knowledge-point";
 import { Sentence } from "@/app/_components/sentence";
 import type { Article, SentenceData, SentenceNote } from "@/app/mock";
@@ -37,6 +37,7 @@ type NotebookBlock = {
 
 type Props = {
   article: Article;
+  onBackToArticle: () => void;
 };
 
 const NOTEBOOK_DATA: Record<string, NotebookBlock[]> = {
@@ -227,10 +228,32 @@ function renderPointView(point: NotebookKnowledgePoint, view: string) {
   return renderList(value as NotebookListRow[]);
 }
 
-function StructuredNotebook({ article, blocks }: { article: Article; blocks: NotebookBlock[] }) {
+function BackToArticleButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="mb-8 inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-sm font-medium text-gray-500 transition-colors hover:bg-zinc-100 hover:text-zinc-950"
+    >
+      <ArrowLeft className="size-4" />
+      <span>返回文章</span>
+    </button>
+  );
+}
+
+function StructuredNotebook({
+  article,
+  blocks,
+  onBackToArticle,
+}: {
+  article: Article;
+  blocks: NotebookBlock[];
+  onBackToArticle: () => void;
+}) {
   return (
     <main className="notebook-container mx-auto w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       <header className="mb-8">
+        <BackToArticleButton onClick={onBackToArticle} />
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-gray-400">
           {article.level} Lesson {article.lesson}
         </p>
@@ -285,14 +308,25 @@ function noteToTableRow(note: SentenceNote): NotebookTableRow[] {
   }));
 }
 
-function GenericNotebook({ article, paragraphs }: { article: Article; paragraphs: SentenceData[][] }) {
+function GenericNotebook({
+  article,
+  paragraphs,
+  onBackToArticle,
+}: {
+  article: Article;
+  paragraphs: SentenceData[][];
+  onBackToArticle: () => void;
+}) {
   const hasNotes = paragraphs.some((paragraph) =>
     paragraph.some((sentence) => (sentence.expansionNotes?.length ?? 0) > 0),
   );
 
   if (!hasNotes) {
     return (
-      <div className="notebook-container flex min-h-[600px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 p-8">
+      <div className="notebook-container relative flex min-h-[600px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 p-8">
+        <div className="absolute left-8 top-8">
+          <BackToArticleButton onClick={onBackToArticle} />
+        </div>
         <NotebookPen className="mb-4 size-12 text-muted-foreground/20" />
         <p className="text-4xl font-semibold tracking-normal text-muted-foreground/60">{article.title}</p>
         {article.titleCn ? <p className="mt-1 text-xl text-muted-foreground/40">{article.titleCn}</p> : null}
@@ -304,6 +338,7 @@ function GenericNotebook({ article, paragraphs }: { article: Article; paragraphs
   return (
     <main className="notebook-container mx-auto w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
       <header className="mb-8">
+        <BackToArticleButton onClick={onBackToArticle} />
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-gray-400">
           {article.level} Lesson {article.lesson}
         </p>
@@ -332,12 +367,12 @@ function GenericNotebook({ article, paragraphs }: { article: Article; paragraphs
   );
 }
 
-export function NotebookPlaceholder({ article }: Props) {
+export function NotebookPlaceholder({ article, onBackToArticle }: Props) {
   const structuredBlocks = NOTEBOOK_DATA[article.originalId];
 
   if (structuredBlocks) {
-    return <StructuredNotebook article={article} blocks={structuredBlocks} />;
+    return <StructuredNotebook article={article} blocks={structuredBlocks} onBackToArticle={onBackToArticle} />;
   }
 
-  return <GenericNotebook article={article} paragraphs={mergeArticleData(article)} />;
+  return <GenericNotebook article={article} paragraphs={mergeArticleData(article)} onBackToArticle={onBackToArticle} />;
 }
