@@ -94,14 +94,14 @@ const TEXT_HIGHLIGHT: Record<string, string> = {
 
 export default function GrammarCorePage() {
   const FORM_ALIAS: Record<string, string> = {
-  "名词性从句": "从句",
-};
+    "名词性从句": "从句",
+  };
 
-function resolveForm(f: string): string {
-  return FORM_ALIAS[f] ?? f;
-}
+  function resolveForm(f: string): string {
+    return FORM_ALIAS[f] ?? f;
+  }
 
-const [hoveredForm, setHoveredForm] = useState<string | null>(null);
+  const [hoveredForm, setHoveredForm] = useState<string | null>(null);
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
 
   return (
@@ -119,10 +119,11 @@ const [hoveredForm, setHoveredForm] = useState<string | null>(null);
               </TableHeader>
               <TableBody>
                 {SENTENCE_COMPONENTS.map((row) => {
+                  // 左 table 行暗化：由右 table hover 驱动
                   const rowDimmed = hoveredRole && row.roleKey !== hoveredRole;
                   return (
                     <TableRow
-                      key={TEXT_HIGHLIGHT[row.roleKey] ? <span className={TEXT_HIGHLIGHT[row.roleKey]}>{row.component}</span> : row.component}
+                      key={row.roleKey}
                       className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
                     >
                       <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
@@ -163,6 +164,7 @@ const [hoveredForm, setHoveredForm] = useState<string | null>(null);
               </TableHeader>
               <TableBody>
                 {FORM_COMPONENTS.map((row) => {
+                  // 右 table 行暗化：由左 table hover 驱动
                   const rowDimmed = hoveredForm && row.form !== hoveredForm;
                   return (
                     <TableRow
@@ -171,7 +173,6 @@ const [hoveredForm, setHoveredForm] = useState<string | null>(null);
                     >
                       <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
                         {TEXT_HIGHLIGHT[row.form] ? <span className={TEXT_HIGHLIGHT[row.form]}>{row.form}</span> : row.form}
-
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
