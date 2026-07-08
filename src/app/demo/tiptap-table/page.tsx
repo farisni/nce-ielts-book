@@ -486,6 +486,25 @@ export default function TipTapTableDemo() {
           outline: none;
         }
 
+        /* Edit mode: show table outer border and cell left/right borders */
+        .ProseMirror[contenteditable="true"] table {
+          border: 1px solid #e5e7eb;
+        }
+        .ProseMirror[contenteditable="true"] table td,
+        .ProseMirror[contenteditable="true"] table th {
+          border-left: 1px solid #e5e7eb;
+          border-right: 1px solid #e5e7eb;
+        }
+        /* Remove duplicate left border on first cell in each row */
+        .ProseMirror[contenteditable="true"] table td:first-child,
+        .ProseMirror[contenteditable="true"] table th:first-child {
+          border-left: none;
+        }
+        .ProseMirror[contenteditable="true"] table td:last-child,
+        .ProseMirror[contenteditable="true"] table th:last-child {
+          border-right: none;
+        }
+
         /* Editor min height */
         .ProseMirror {
           min-height: 400px;
