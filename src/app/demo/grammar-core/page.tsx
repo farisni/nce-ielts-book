@@ -340,7 +340,7 @@ export default function GrammarCorePage() {
         <div className="mt-8 overflow-x-auto">
           <div className="inline-block min-w-full">
             <div className="grid border border-dashed border-border rounded-md"
-                 style={{ gridTemplateColumns: '6.5rem repeat(11, 1fr)' }}>
+                 style={{ gridTemplateColumns: '7rem repeat(11, 1fr)' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
               {MATRIX_FORMS.map((f, ci) => (
                 <div key={f} className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${FORM_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>
