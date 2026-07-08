@@ -127,6 +127,7 @@ def parse(html_file):
             if table and current_sentence:
                 # 找到前一个知识点，如果是 h4 则追加 view
                 if knowledge and "view" not in knowledge[-1]:
+                    knowledge[-1]["type"] = "muti"
                     knowledge[-1]["view"] = ["table"]
                 elif knowledge and "view" in knowledge[-1]:
                     knowledge[-1]["view"].append("table")
