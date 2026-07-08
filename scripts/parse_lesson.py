@@ -111,7 +111,7 @@ def parse(html_file):
                 td_sup.extract()
             td_text = clean(td.get_text(" ", strip=True))
 
-            rows.append({"core": th_title, "desc": th_desc, "example": td_text, "example_cn": td_cn})
+            rows.append({"title": th_title, "titleDesc": th_desc, "example": td_text, "exampleDesc": td_cn})
         return {"table": rows}
 
     def _parse_list(ul):
@@ -122,7 +122,7 @@ def parse(html_file):
             if sup:
                 sup.extract()
             text = clean(li.get_text(" ", strip=True))
-            items.append({"example": text, "note": note})
+            items.append({"example": text, "desc": note})
         return {"list": items}
 
     def _merge_or_standalone(view_type, node):
