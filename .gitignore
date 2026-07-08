@@ -42,4 +42,5 @@ next-env.d.ts
 __pycache__/
 scripts/html_cache/
 _cache/
+_output/
 .github/skills/nce-scraper/html_cache/
