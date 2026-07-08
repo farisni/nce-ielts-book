@@ -121,11 +121,17 @@ def parse(html_file):
                     "desc": desc,
                 })
 
-        # table 知识点 — 整个 table 作为一个知识点节点
+        # table — 紧跟 h4 则合并到其 view，否则独立节点
         elif node.name == "div":
             table = node.find("table")
             if table and current_sentence:
-                knowledge.append({"type": "table"})
+                # 找到前一个知识点，如果是 h4 则追加 view
+                if knowledge and "view" not in knowledge[-1]:
+                    knowledge[-1]["view"] = ["table"]
+                elif knowledge and "view" in knowledge[-1]:
+                    knowledge[-1]["view"].append("table")
+                else:
+                    knowledge.append({"type": "table"})
 
     if current_sentence:
         result.append({
