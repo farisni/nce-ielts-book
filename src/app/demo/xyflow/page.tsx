@@ -1,225 +1,316 @@
 "use client";
 
-import { useCallback } from "react";
+import { useMemo } from "react";
 import {
-  addEdge,
   Background,
   BackgroundVariant,
   Controls,
   MiniMap,
-  Panel,
   ReactFlow,
-  type Connection,
   type Edge,
   type Node,
-  useEdgesState,
-  useNodesState,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { Maximize2, Plus, RotateCcw } from "lucide-react";
+import { hierarchy, tree } from "d3-hierarchy";
+import { Maximize2 } from "lucide-react";
 
-const initialNodes: Node[] = [
-  {
-    id: "collect",
-    type: "input",
-    position: { x: 0, y: 80 },
-    data: { label: "采集课文" },
-    style: {
-      width: 150,
-      border: "1px solid #d4d4d8",
-      borderRadius: 8,
-      background: "#ffffff",
-      color: "#18181b",
-      fontWeight: 600,
-    },
-  },
-  {
-    id: "parse",
-    position: { x: 230, y: 0 },
-    data: { label: "解析结构" },
-    style: {
-      width: 150,
-      border: "1px solid #cbd5e1",
-      borderRadius: 8,
-      background: "#f8fafc",
-      color: "#18181b",
-      fontWeight: 600,
-    },
-  },
-  {
-    id: "annotate",
-    position: { x: 230, y: 160 },
-    data: { label: "标注语法" },
-    style: {
-      width: 150,
-      border: "1px solid #bfdbfe",
-      borderRadius: 8,
-      background: "#eff6ff",
-      color: "#1f2937",
-      fontWeight: 600,
-    },
-  },
-  {
-    id: "merge",
-    position: { x: 460, y: 80 },
-    data: { label: "合并笔记" },
-    style: {
-      width: 150,
-      border: "1px solid #bbf7d0",
-      borderRadius: 8,
-      background: "#f0fdf4",
-      color: "#1f2937",
-      fontWeight: 600,
-    },
-  },
-  {
-    id: "preview",
-    type: "output",
-    position: { x: 690, y: 80 },
-    data: { label: "页面预览" },
-    style: {
-      width: 150,
-      border: "1px solid #fde68a",
-      borderRadius: 8,
-      background: "#fffbeb",
-      color: "#1f2937",
-      fontWeight: 600,
-    },
-  },
-];
+/* ------------------------------------------------------------------ */
+/*  Grammar tree data                                                 */
+/* ------------------------------------------------------------------ */
 
-const initialEdges: Edge[] = [
-  { id: "collect-parse", source: "collect", target: "parse", animated: true },
-  { id: "collect-annotate", source: "collect", target: "annotate" },
-  { id: "parse-merge", source: "parse", target: "merge" },
-  { id: "annotate-merge", source: "annotate", target: "merge", animated: true },
-  { id: "merge-preview", source: "merge", target: "preview" },
-];
-
-function createReviewNode(index: number): Node {
-  return {
-    id: `review-${index}`,
-    position: { x: 460 + (index % 3) * 80, y: 260 + index * 16 },
-    data: { label: `校对 ${index}` },
-    style: {
-      width: 132,
-      border: "1px solid #e5e7eb",
-      borderRadius: 8,
-      background: "#ffffff",
-      color: "#3f3f46",
-      fontWeight: 600,
-    },
-  };
+interface TreeNode {
+  id: string;
+  title: string;
+  type: "root" | "pattern" | "component" | "clause" | "form";
+  children?: TreeNode[];
 }
 
-export default function XyflowDemoPage() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const onConnect = useCallback(
-    (connection: Connection) => {
-      setEdges((currentEdges) => addEdge({ ...connection, animated: true }, currentEdges));
+const grammarTree: TreeNode = {
+  id: "root",
+  title: "英语五大句型",
+  type: "root",
+  children: [
+    {
+      id: "sv",
+      title: "主谓 SV",
+      type: "pattern",
+      children: [
+        {
+          id: "sv-vi",
+          title: "不及物动词",
+          type: "component",
+          children: [
+            { id: "sv-vi-bare", title: "The sun rises.", type: "form" },
+            { id: "sv-vi-adv", title: "Birds fly south.", type: "form" },
+          ],
+        },
+      ],
     },
-    [setEdges],
+    {
+      id: "svo",
+      title: "主谓宾 SVO",
+      type: "pattern",
+      children: [
+        {
+          id: "svo-subject",
+          title: "主语 Subject",
+          type: "component",
+          children: [
+            { id: "svo-subj-noun", title: "名词短语", type: "form" },
+            { id: "svo-subj-clause", title: "主语从句", type: "clause" },
+          ],
+        },
+        {
+          id: "svo-object",
+          title: "宾语 Object",
+          type: "component",
+          children: [
+            { id: "svo-obj-noun", title: "名词", type: "form" },
+            { id: "svo-obj-infinitive", title: "不定式", type: "form" },
+            {
+              id: "svo-obj-that",
+              title: "宾语从句",
+              type: "clause",
+              children: [{ id: "svo-obj-that-sub", title: "that 从句", type: "form" }],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "svc",
+      title: "主系表 SVC",
+      type: "pattern",
+      children: [
+        {
+          id: "svc-predicative",
+          title: "表语",
+          type: "component",
+          children: [
+            { id: "svc-adj", title: "形容词", type: "form" },
+            { id: "svc-noun", title: "名词", type: "form" },
+            { id: "svc-prep", title: "介词短语", type: "form" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "svoo",
+      title: "主谓双宾 SVOO",
+      type: "pattern",
+      children: [
+        {
+          id: "svoo-io",
+          title: "间接宾语",
+          type: "component",
+          children: [
+            { id: "svoo-io-pronoun", title: "人称代词", type: "form" },
+          ],
+        },
+        {
+          id: "svoo-do",
+          title: "直接宾语",
+          type: "component",
+          children: [
+            { id: "svoo-do-noun", title: "名词短语", type: "form" },
+            { id: "svoo-do-clause", title: "从句", type: "clause" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "svoc",
+      title: "主谓宾补 SVOC",
+      type: "pattern",
+      children: [
+        {
+          id: "svoc-obj",
+          title: "宾语",
+          type: "component",
+          children: [
+            { id: "svoc-obj-noun", title: "名词", type: "form" },
+          ],
+        },
+        {
+          id: "svoc-comp",
+          title: "宾补",
+          type: "component",
+          children: [
+            { id: "svoc-comp-adj", title: "形容词补语", type: "form" },
+            { id: "svoc-comp-bare-inf", title: "不带 to 不定式", type: "form" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+/* ------------------------------------------------------------------ */
+/*  d3-hierarchy layout                                               */
+/* ------------------------------------------------------------------ */
+
+const NODE_STYLE_MAP: Record<string, { w: number; h: number }> = {
+  root:     { w: 220, h: 80 },
+  pattern:  { w: 180, h: 70 },
+  component:{ w: 150, h: 60 },
+  clause:   { w: 150, h: 60 },
+  form:     { w: 120, h: 50 },
+};
+
+function treeToGraph(data: TreeNode) {
+  const root = hierarchy<TreeNode>(data);
+  const layout = tree<TreeNode>().nodeSize([100, 320]);
+  const laidOut = layout(root);
+
+  const nodes: Node[] = laidOut.descendants().map((d) => {
+    const size = NODE_STYLE_MAP[d.data.type] ?? { w: 150, h: 60 };
+    return {
+      id: d.data.id,
+      position: { x: d.y, y: d.x },
+      data: { label: d.data.title, type: d.data.type, size },
+      sourcePosition: "right" as const,
+      targetPosition: "left" as const,
+    };
+  });
+
+  const edges: Edge[] = laidOut.links().map((link) => ({
+    id: `${link.source.data!.id}-${link.target.data!.id}`,
+    source: link.source.data!.id,
+    target: link.target.data!.id,
+    type: "smoothstep",
+  }));
+
+  return { nodes, edges };
+}
+
+/* ------------------------------------------------------------------ */
+/*  Type → style map                                                  */
+/* ------------------------------------------------------------------ */
+
+const TYPE_STYLES: Record<string, React.CSSProperties> = {
+  root: {
+    border: "1px solid #d4d4d8",
+    borderRadius: 12,
+    background: "#18181b",
+    color: "#fafafa",
+    fontWeight: 700,
+    fontSize: 15,
+  },
+  pattern: {
+    border: "1px solid #bfdbfe",
+    borderRadius: 12,
+    background: "#eff6ff",
+    color: "#1e3a5f",
+    fontWeight: 600,
+    fontSize: 14,
+  },
+  component: {
+    border: "1px solid #bbf7d0",
+    borderRadius: 12,
+    background: "#f0fdf4",
+    color: "#14532d",
+    fontWeight: 600,
+    fontSize: 13,
+  },
+  clause: {
+    border: "1px solid #fde68a",
+    borderRadius: 12,
+    background: "#fffbeb",
+    color: "#713f12",
+    fontWeight: 600,
+    fontSize: 13,
+  },
+  form: {
+    border: "1px dashed #d4d4d8",
+    borderRadius: 10,
+    background: "#ffffff",
+    color: "#52525b",
+    fontWeight: 500,
+    fontSize: 12,
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/*  Page component                                                    */
+/* ------------------------------------------------------------------ */
+
+export default function XyflowDemoPage() {
+  const { nodes, edges } = useMemo(() => treeToGraph(grammarTree), []);
+
+  const styledNodes: Node[] = useMemo(
+    () =>
+      nodes.map((n) => {
+        const data = n.data as { size: { w: number; h: number }; type: string };
+        return {
+          ...n,
+          style: {
+            width: data.size.w,
+            height: data.size.h,
+            ...TYPE_STYLES[data.type] ?? {},
+          },
+        };
+      }),
+    [nodes],
   );
 
-  const resetGraph = useCallback(() => {
-    setNodes(initialNodes);
-    setEdges(initialEdges);
-  }, [setEdges, setNodes]);
-
-  const addReviewNode = useCallback(() => {
-    setNodes((currentNodes) => {
-      const nextIndex = currentNodes.filter((node) => node.id.startsWith("review-")).length + 1;
-      const nextNode = createReviewNode(nextIndex);
-
-      setEdges((currentEdges) => [
-        ...currentEdges,
-        {
-          id: `merge-${nextNode.id}`,
-          source: "merge",
-          target: nextNode.id,
-        },
-      ]);
-
-      return [...currentNodes, nextNode];
-    });
-  }, [setEdges, setNodes]);
-
   return (
-    <main className="min-h-screen bg-zinc-50 px-6 py-8 text-zinc-950">
-      <section className="mx-auto flex h-[calc(100vh-4rem)] min-h-[680px] w-full max-w-7xl flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white">
-        <header className="flex items-center justify-between border-b border-zinc-200 px-5 py-4">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-400">@xyflow/react</p>
-            <h1 className="mt-1 text-xl font-semibold tracking-normal">React Flow Demo</h1>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={addReviewNode}
-              className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-200 px-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
-            >
-              <Plus className="size-4" />
-              <span>新增节点</span>
-            </button>
-            <button
-              type="button"
-              onClick={resetGraph}
-              className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-200 px-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
-            >
-              <RotateCcw className="size-4" />
-              <span>重置</span>
-            </button>
-          </div>
-        </header>
-
-        <div className="relative min-h-0 flex-1">
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            fitView
-            fitViewOptions={{ padding: 0.18 }}
-            colorMode="light"
-            proOptions={{ hideAttribution: true }}
-            className="bg-white"
-          >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#d4d4d8" />
-            <MiniMap
-              pannable
-              zoomable
-              className="!rounded-md !border !border-zinc-200 !bg-white"
-              nodeColor={(node) => {
-                if (node.id === "annotate") return "#bfdbfe";
-                if (node.id === "merge") return "#bbf7d0";
-                if (node.id === "preview") return "#fde68a";
-                return "#e4e4e7";
-              }}
-            />
-            <Controls className="!border !border-zinc-200 !shadow-none" />
-            <Panel position="top-left" className="rounded-md border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-500">
-              <span className="font-medium text-zinc-700">{nodes.length}</span> nodes
-              <span className="mx-2 text-zinc-300">/</span>
-              <span className="font-medium text-zinc-700">{edges.length}</span> edges
-            </Panel>
-            <Panel position="bottom-left">
-              <button
-                type="button"
-                onClick={() => {
-                  document.querySelector<HTMLButtonElement>(".react-flow__controls-fitview")?.click();
-                }}
-                className="inline-flex h-9 items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
-              >
-                <Maximize2 className="size-4" />
-                <span>适配画布</span>
-              </button>
-            </Panel>
-          </ReactFlow>
+    <div className="flex h-screen flex-col overflow-hidden bg-zinc-50 text-zinc-950">
+      <header className="flex h-16 flex-none items-center justify-between border-b border-zinc-200 bg-white px-5">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-400">
+            @xyflow/react · d3-hierarchy
+          </p>
+          <h1 className="mt-0.5 text-lg font-semibold tracking-normal">
+            英语五大句型 · 语法知识树
+          </h1>
         </div>
-      </section>
-    </main>
+        <div className="flex items-center gap-3">
+          <span className="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs text-zinc-500">
+            <span className="font-medium text-zinc-700">{styledNodes.length}</span> nodes
+            <span className="mx-1.5 text-zinc-300">/</span>
+            <span className="font-medium text-zinc-700">{edges.length}</span> edges
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              document
+                .querySelector<HTMLButtonElement>(".react-flow__controls-fitview")
+                ?.click();
+            }}
+            className="inline-flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
+          >
+            <Maximize2 className="size-3.5" />
+            <span>适配画布</span>
+          </button>
+        </div>
+      </header>
+
+      <div className="relative min-h-0 flex-1 overflow-hidden bg-white">
+        <ReactFlow
+          nodes={styledNodes}
+          edges={edges}
+          fitView
+          fitViewOptions={{ padding: 0.22 }}
+          defaultEdgeOptions={{ type: "smoothstep" }}
+          colorMode="light"
+        >
+          <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#d4d4d8" />
+          <MiniMap
+            pannable
+            zoomable
+            className="!rounded-md !border !border-zinc-200 !bg-white"
+            nodeColor={(node) => {
+              const t = (node.data as { type: string }).type;
+              if (t === "root") return "#18181b";
+              if (t === "pattern") return "#bfdbfe";
+              if (t === "component") return "#bbf7d0";
+              if (t === "clause") return "#fde68a";
+              return "#e4e4e7";
+            }}
+          />
+          <Controls className="!border !border-zinc-200 !shadow-none" />
+        </ReactFlow>
+      </div>
+    </div>
   );
 }
