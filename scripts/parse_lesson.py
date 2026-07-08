@@ -94,15 +94,13 @@ def parse(html_file):
     nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul)")
 
     def _merge_or_standalone(view_type):
-        """紧跟 h4 则合并；单元素 type 取自身类型，多元素 type 为 muti"""
+        """紧跟 h4 则合并到其 view，否则独立节点"""
         if knowledge and "view" not in knowledge[-1]:
-            knowledge[-1]["type"] = view_type
             knowledge[-1]["view"] = [view_type]
         elif knowledge and "view" in knowledge[-1]:
-            knowledge[-1]["type"] = "muti"
             knowledge[-1]["view"].append(view_type)
         else:
-            knowledge.append({"type": view_type})
+            knowledge.append({"view": [view_type]})
 
     for node in nodes:
         # h3 句子
