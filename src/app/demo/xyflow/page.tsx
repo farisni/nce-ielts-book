@@ -394,8 +394,11 @@ function XyflowDemoPage() {
             height: data.size.h,
             ...TYPE_STYLES[data.type] ?? {},
             ...(isCollapsed
-              ? { borderWidth: "1px" as const, borderStyle: "dashed" as const, borderColor: "#a1a1aa" }
-              : {}),
+            ? ({
+                borderStyle: "dashed" as const,
+                borderColor: "#a1a1aa" as const,
+              } satisfies React.CSSProperties)
+            : {}),
           },
         };
       }),
