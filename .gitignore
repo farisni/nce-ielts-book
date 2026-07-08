@@ -41,6 +41,5 @@ yarn-error.log*
 next-env.d.ts
 __pycache__/
 scripts/html_cache/
-.github/skills/nce-scraper/html_cache/
-.github/skills/nce-scraper/html_cache/
+_cache/
 .github/skills/nce-scraper/html_cache/
