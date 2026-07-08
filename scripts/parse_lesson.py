@@ -1,6 +1,7 @@
 from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
+import ssl
 
 from bs4 import BeautifulSoup
 import argparse
@@ -10,6 +11,44 @@ import re
 
 def clean(text):
     return re.sub(r"\s+", " ", text).strip()
+
+
+def extract_title(html_path):
+    """Extract the lesson title from a cached HTML file."""
+    with open(html_path, "r", encoding="utf-8") as f:
+        soup = BeautifulSoup(f.read(), "html.parser")
+    tag = soup.find("title")
+    if not tag:
+        return None
+    raw = clean(tag.get_text())
+
+    # Map Chinese book numbers: 一→1, 二→2, 三→3, 四→4
+    cn_to_num = {"一": "1", "二": "2", "三": "3", "四": "4"}
+
+    # Detect "新概念英语第X册" → NCE{book}_L{lesson}
+    nce_match = re.search(r"《新概念英语第([一二三四])册》", raw)
+    lesson_match = re.search(r"Lesson\s*(\d+)", raw, re.IGNORECASE)
+
+    if nce_match and lesson_match:
+        book_num = cn_to_num.get(nce_match.group(1), "?")
+        lesson_num = int(lesson_match.group(1))
+        # Strip " 《新概念英语第X册》..." suffix to get the pure title
+        title_body = re.sub(r"\s*《[^》]*》.*$", "", raw).strip()
+        # Remove the "Lesson N" prefix since we already have L{NN}
+        title_body = re.sub(r"^Lesson\s*\d+\s*", "", title_body, flags=re.IGNORECASE).strip()
+        # Remove trailing asterisk
+        title_body = re.sub(r"\*+$", "", title_body).strip()
+        # Sanitize for filename
+        safe_title = re.sub(r"[/\\?%*:|\"<>]", "", title_body)
+        safe_title = re.sub(r"\s+", "-", safe_title)
+        return f"NCE{book_num}_L{lesson_num:02d}-{safe_title}"
+
+    # Remove trailing site suffix like " 《新概念英语第三册》_夸克英语笔记"
+    raw = re.sub(r"[  ]*《[^》]*》.*$", "", raw)
+    # Sanitize for filename: replace spaces, remove unsafe chars
+    safe = re.sub(r"[/\\?%*:|\"<>]", "", raw)
+    safe = re.sub(r"\s+", "-", safe)
+    return safe
 
 
 def fetch_url_to_cache(url, cache_dir=None, filename=None):
@@ -29,8 +68,16 @@ def fetch_url_to_cache(url, cache_dir=None, filename=None):
 
     target_path = cache_path / filename
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(req) as response:
-        html = response.read().decode("utf-8", errors="replace")
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        with urlopen(req, context=ctx) as response:
+            html = response.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        hint = "网络连接失败" if isinstance(e, OSError) else str(e)
+        print(f"无法访问: {url}\n{hint}")
+        exit(1)
 
     target_path.write_text(html, encoding="utf-8")
     return target_path
@@ -107,7 +154,14 @@ if __name__ == "__main__":
 
     if args.output:
         output_path = Path(args.output)
-        output_path.write_text(payload, encoding="utf-8")
-        print(f"Saved: {output_path}")
     else:
-        print(payload)
+        output_dir = Path(__file__).resolve().parent / "_output"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        title = extract_title(str(input_path))
+        if title:
+            output_path = output_dir / f"{title}.json"
+        else:
+            output_path = output_dir / f"{input_path.stem}.json"
+
+    output_path.write_text(payload, encoding="utf-8")
+    print(f"Saved: {output_path}")
