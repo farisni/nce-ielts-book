@@ -1,13 +1,13 @@
 
 # 五大基本句型
 
-| 句型 | 结构 | 动词类型 | 示例 |
-|---|---|---|---|---|
-| SV | 主语 + 谓语 | ==不及物动词== | Birds fly. |
-| SVO | 主语 + 谓语 + 宾语 | ==及物动词== | I like coffee. |
-| SVC | 主语 + 谓语 + 表语 | ==系动词== | He is happy. |
-| SVOO | 主语 + 谓语 + 间接宾语 + 直接宾语 | ==及物动词== | He gave me a book. |
-| SVOC | 主语 + 谓语 + 宾语 + 宾语补足语 | ==及物动词== | They made him angry. |
+| 句型   | 结构                    | 动词类型      | 示例                   |
+| ---- | --------------------- | --------- | -------------------- |
+| SV   | 主语 + 谓语               | ==不及物动词== | Birds fly.           |
+| SVO  | 主语 + 谓语 + 宾语          | ==及物动词==  | I like coffee.       |
+| SVC  | 主语 + 谓语 + 表语          | ==系动词==   | He is happy.         |
+| SVOO | 主语 + 谓语 + 间接宾语 + 直接宾语 | ==及物动词==  | He gave me a book.   |
+| SVOC | 主语 + 谓语 + 宾语 + 宾语补足语  | ==及物动词==  | They made him angry. |
 
 > [!note] 补充说明
 > - **不及物动词 (vi.)**：后面不接宾语，如 fly, run, sleep → SV
@@ -75,3 +75,28 @@
     - 状语：He works in the room.
     - 表语：He is in the room.
     - 定语：the man in the room
+
+---
+
+## 常见疑问 Q&A
+
+### Q1：SVOO 和 SVOC 怎么区分？
+
+**核心方法：在两个成分之间加一个 be 动词。**
+
+- ✅ 能说得通（有"主谓"关系） → **SVOC**
+- ❌ 说不通（两个独立的事物） → **SVOO**
+
+**例 ①**：They made **him** `angry`.
+
+> 插入 be：him **is** angry ✅ 说得通 → `him` 和 `angry` 有主谓关系 → **SVOC**
+
+**例 ②**：He gave **me** `a book`.
+
+> 插入 be：me **is** a book ❌ 说不通 → `me` 和 `a book` 是两样东西 → **SVOO**
+
+**一句话总结**：
+
+> [!tip] 口诀
+> **OC 描述 O，IO 和 DO 是两个独立的东西。**
+
