@@ -91,7 +91,7 @@ def parse(html_file):
     current_sentence = None
     knowledge = []
 
-    nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul)")
+    nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul), .lesson-notes blockquote")
 
     def _extract_hl(el):
         """提取元素中所有 strong/b 高亮词"""
@@ -149,6 +149,25 @@ def parse(html_file):
             items.append(item)
         return {"list": items}
 
+    def _merge_blockquote(blockquote):
+        """紧跟 h4/h3 则作为 note_x 加入 view/data"""
+        text = clean(blockquote.get_text(" ", strip=True))
+        if not text:
+            return
+        note_cnt = sum(1 for v in (knowledge[-1].get("view", []) if knowledge else []) if v.startswith("note"))
+        note_key = f"note_{note_cnt + 1}"
+        if knowledge and "view" not in knowledge[-1]:
+            # 紧跟 h4
+            knowledge[-1]["view"] = [note_key]
+            knowledge[-1]["data"] = {note_key: text}
+        elif knowledge and "view" in knowledge[-1]:
+            # 已合并过 view 的 h4 — 追加
+            knowledge[-1]["view"].append(note_key)
+            knowledge[-1]["data"][note_key] = text
+        else:
+            # sentence-level（如 h3 后的课文注释）
+            knowledge.append({"view": [note_key], "data": {note_key: text}})
+
     def _merge_or_standalone(view_type, node):
         """紧跟 h4 则合并到其 view，否则独立节点"""
         parsed = _parse_table(node.find("table")) if view_type == "table" else _parse_list(node)
@@ -205,6 +224,11 @@ def parse(html_file):
         elif node.name == "ul":
             if current_sentence:
                 _merge_or_standalone("list", node)
+
+        # blockquote
+        elif node.name == "blockquote":
+            if current_sentence:
+                _merge_blockquote(node)
 
     if current_sentence:
         result.append({
