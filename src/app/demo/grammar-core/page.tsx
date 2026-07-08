@@ -12,9 +12,9 @@ import {
 import { Badge } from "@/components/reui/badge";
 
 const SENTENCE_COMPONENTS = [
-  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句", "从句"] },
+  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "谓语 (V)", roleKey: "谓语", forms: ["动词", "动词短语"] },
-  { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句", "从句"] },
+  { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "从句"] },
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
@@ -70,7 +70,6 @@ const FORM_COLOR: Record<string, string> = {
   "不定式": "border-purple-300 bg-purple-50 text-purple-700",
   "动名词": "border-emerald-300 bg-emerald-50 text-emerald-700",
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
-  "从句": "border-[#cfc8c0] bg-[#cfc8c0]/20 text-[#6b645e]",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
 };
@@ -84,7 +83,6 @@ const FORM_UNDERLINE: Record<string, string> = {
   "不定式": "decoration-purple-400",
   "动名词": "decoration-emerald-400",
   "分词": "decoration-lime-400",
-  "从句": "decoration-[#cfc8c0]",
 };
 
 const TEXT_HIGHLIGHT: Record<string, string> = {
@@ -95,7 +93,15 @@ const TEXT_HIGHLIGHT: Record<string, string> = {
 };
 
 export default function GrammarCorePage() {
-  const [hoveredForm, setHoveredForm] = useState<string | null>(null);
+  const FORM_ALIAS: Record<string, string> = {
+  "名词性从句": "从句",
+};
+
+function resolveForm(f: string): string {
+  return FORM_ALIAS[f] ?? f;
+}
+
+const [hoveredForm, setHoveredForm] = useState<string | null>(null);
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
 
   return (
@@ -129,9 +135,9 @@ export default function GrammarCorePage() {
                               key={f}
                               variant="outline"
                               className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
-                                hoveredForm && hoveredForm !== f ? "opacity-30" : ""
+                                hoveredForm && hoveredForm !== resolveForm(f) ? "opacity-30" : ""
                               }`}
-                              onMouseEnter={() => setHoveredForm(f)}
+                              onMouseEnter={() => setHoveredForm(resolveForm(f))}
                               onMouseLeave={() => setHoveredForm(null)}
                             >
                               {f}
