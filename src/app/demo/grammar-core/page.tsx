@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -38,7 +41,7 @@ const ROLE_COLOR: Record<string, string> = {
   "直接宾语": "border-orange-300 bg-orange-50 text-orange-700",
   "表语": "border-orange-300 bg-orange-50 text-orange-700",
   "宾语补足语": "border-[#C7D2CD] bg-[#C7D2CD]/20 text-[#5a6b63]",
-  "定语": "border-teal-300 bg-teal-50 text-teal-700",
+  "定语": "border-yellow-300 bg-yellow-50 text-yellow-700",
   "状语": "border-pink-300 bg-pink-50 text-pink-700",
   "同位语": "border-stone-300 bg-stone-50 text-stone-700",
 };
@@ -51,7 +54,7 @@ const ROLE_UNDERLINE: Record<string, string> = {
   "直接宾语": "decoration-blue-500",
   "表语": "decoration-orange-400",
   "宾语补足语": "decoration-[#C7D2CD]",
-  "定语": "decoration-teal-400",
+  "定语": "decoration-yellow-400",
   "状语": "decoration-pink-400",
   "同位语": "decoration-stone-400",
 };
@@ -82,23 +85,15 @@ const FORM_UNDERLINE: Record<string, string> = {
   "从句": "decoration-indigo-400",
 };
 
-function roleBadge(role: string) {
-  return (
-    <Badge key={role} variant="outline" className={`text-xs ${ROLE_COLOR[role] ?? ""}`}>
-      {role}
-    </Badge>
-  );
-}
-
-function formBadge(form: string) {
-  return (
-    <Badge key={form} variant="outline" className={`text-xs ${FORM_COLOR[form] ?? ""}`}>
-      {form}
-    </Badge>
-  );
-}
-
 export default function GrammarCorePage() {
+  const [hoveredForm, setHoveredForm] = useState<string | null>(null);
+
+  // 左表 Badge 是否被 hover 的 form 匹配
+  const isFormMatch = (formName: string) => hoveredForm === formName;
+
+  // 右表某一行是否高亮
+  const isRowHighlight = (formName: string) => !hoveredForm || hoveredForm === formName;
+
   return (
     <main className="min-h-screen px-6 py-8">
       <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-border p-8">
@@ -120,7 +115,19 @@ export default function GrammarCorePage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
-                        {row.forms.map((f) => formBadge(f))}
+                        {row.forms.map((f) => (
+                          <Badge
+                            key={f}
+                            variant="outline"
+                            className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
+                              hoveredForm && !isFormMatch(f) ? "opacity-30" : ""
+                            }`}
+                            onMouseEnter={() => setHoveredForm(f)}
+                            onMouseLeave={() => setHoveredForm(null)}
+                          >
+                            {f}
+                          </Badge>
+                        ))}
                       </div>
                     </TableCell>
                   </TableRow>
@@ -140,13 +147,22 @@ export default function GrammarCorePage() {
               </TableHeader>
               <TableBody>
                 {FORM_COMPONENTS.map((row) => (
-                  <TableRow key={row.form}>
+                  <TableRow
+                    key={row.form}
+                    className={`transition-opacity ${
+                      isRowHighlight(row.form) ? "" : "opacity-25"
+                    }`}
+                  >
                     <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
                       {row.form}
                     </TableCell>
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
-                        {row.roles.map((r) => roleBadge(r))}
+                        {row.roles.map((r) => (
+                          <Badge key={r} variant="outline" className={`text-xs ${ROLE_COLOR[r] ?? ""}`}>
+                            {r}
+                          </Badge>
+                        ))}
                       </div>
                     </TableCell>
                   </TableRow>
