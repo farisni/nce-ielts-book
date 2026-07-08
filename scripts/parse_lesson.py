@@ -91,7 +91,17 @@ def parse(html_file):
     current_sentence = None
     knowledge = []
 
-    nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive")
+    nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul)")
+
+    def _merge_or_standalone(view_type):
+        """紧跟 h4 则合并到其 view（加 type:muti），否则独立节点"""
+        if knowledge and "view" not in knowledge[-1]:
+            knowledge[-1]["type"] = "muti"
+            knowledge[-1]["view"] = [view_type]
+        elif knowledge and "view" in knowledge[-1]:
+            knowledge[-1]["view"].append(view_type)
+        else:
+            knowledge.append({"type": view_type})
 
     for node in nodes:
         # h3 句子
@@ -121,18 +131,16 @@ def parse(html_file):
                     "desc": desc,
                 })
 
-        # table — 紧跟 h4 则合并到其 view，否则独立节点
+        # table
         elif node.name == "div":
             table = node.find("table")
             if table and current_sentence:
-                # 找到前一个知识点，如果是 h4 则追加 view
-                if knowledge and "view" not in knowledge[-1]:
-                    knowledge[-1]["type"] = "muti"
-                    knowledge[-1]["view"] = ["table"]
-                elif knowledge and "view" in knowledge[-1]:
-                    knowledge[-1]["view"].append("table")
-                else:
-                    knowledge.append({"type": "table"})
+                _merge_or_standalone("table")
+
+        # ul/ol list
+        elif node.name == "ul":
+            if current_sentence:
+                _merge_or_standalone("list")
 
     if current_sentence:
         result.append({
