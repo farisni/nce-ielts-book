@@ -4,8 +4,7 @@ import React from "react";
 import { ArrowLeft, NotebookPen } from "lucide-react";
 import { KnowledgePoint } from "@/app/_components/knowledge-point";
 import { Sentence } from "@/app/_components/sentence";
-import type { Article, SentenceData, SentenceNote } from "@/app/mock";
-import { mergeArticleData } from "@/app/mock";
+import type { Article } from "@/app/mock";
 import nce3L41Notes from "@/app/mock/note/nce3-l41.json";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -298,72 +297,23 @@ function StructuredNotebook({
   );
 }
 
-function noteToTableRow(note: SentenceNote): NotebookTableRow[] {
-  return (note.examples ?? []).map((example) => ({
-    title: example.word || note.label,
-    titleDesc: example.meaning || note.description,
-    example: example.enExample,
-    exampleDesc: example.zhExample,
-    hl: example.highlightTerms?.length ? example.highlightTerms : [example.word || note.label],
-  }));
-}
-
-function GenericNotebook({
+function EmptyNotebook({
   article,
-  paragraphs,
   onBackToArticle,
 }: {
   article: Article;
-  paragraphs: SentenceData[][];
   onBackToArticle: () => void;
 }) {
-  const hasNotes = paragraphs.some((paragraph) =>
-    paragraph.some((sentence) => (sentence.expansionNotes?.length ?? 0) > 0),
-  );
-
-  if (!hasNotes) {
-    return (
-      <div className="notebook-container relative flex min-h-[600px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 p-8">
-        <div className="absolute left-8 top-8">
-          <BackToArticleButton onClick={onBackToArticle} />
-        </div>
-        <NotebookPen className="mb-4 size-12 text-muted-foreground/20" />
-        <p className="text-4xl font-semibold tracking-normal text-muted-foreground/60">{article.title}</p>
-        {article.titleCn ? <p className="mt-1 text-xl text-muted-foreground/40">{article.titleCn}</p> : null}
-        <p className="mt-6 text-sm text-muted-foreground/50">暂无结构化笔记</p>
-      </div>
-    );
-  }
-
   return (
-    <main className="notebook-container mx-auto w-[880px] min-w-[880px] min-h-[600px] rounded-md border border-dashed border-zinc-300 p-8">
-      <header className="mb-8">
+    <div className="notebook-container relative flex min-h-[600px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-zinc-300 p-8">
+      <div className="absolute left-8 top-8">
         <BackToArticleButton onClick={onBackToArticle} />
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-gray-400">
-          {article.level} Lesson {article.lesson}
-        </p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-normal text-zinc-950">{article.title}</h1>
-        {article.titleCn ? <p className="mt-1 text-xl text-gray-400">{article.titleCn}</p> : null}
-      </header>
-
-      {paragraphs.flat().map((sentence, index) => (
-        <Sentence
-          key={`${sentence.text}-${index}`}
-          quote={<span>{renderSentenceText(sentence.text)}</span>}
-          quoteClassName="mt-12 mb-5"
-        >
-          {(sentence.expansionNotes ?? []).map((note, noteIndex) => {
-            const rows = noteToTableRow(note);
-
-            return (
-              <KnowledgePoint key={`${note.label}-${noteIndex}`} titleEn={note.label} titleCn={note.description}>
-                {rows.length > 0 ? renderTable(rows) : null}
-              </KnowledgePoint>
-            );
-          })}
-        </Sentence>
-      ))}
-    </main>
+      </div>
+      <NotebookPen className="mb-4 size-12 text-muted-foreground/20" />
+      <p className="text-4xl font-semibold tracking-normal text-muted-foreground/60">{article.title}</p>
+      {article.titleCn ? <p className="mt-1 text-xl text-muted-foreground/40">{article.titleCn}</p> : null}
+      <p className="mt-6 text-sm text-muted-foreground/50">暂无结构化笔记</p>
+    </div>
   );
 }
 
@@ -374,5 +324,5 @@ export function NotebookPlaceholder({ article, onBackToArticle }: Props) {
     return <StructuredNotebook article={article} blocks={structuredBlocks} onBackToArticle={onBackToArticle} />;
   }
 
-  return <GenericNotebook article={article} paragraphs={mergeArticleData(article)} onBackToArticle={onBackToArticle} />;
+  return <EmptyNotebook article={article} onBackToArticle={onBackToArticle} />;
 }
