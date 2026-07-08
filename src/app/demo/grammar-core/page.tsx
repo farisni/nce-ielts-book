@@ -10,7 +10,6 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Badge } from "@/components/reui/badge";
-import { Separator } from "@/components/ui/separator";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
@@ -155,7 +154,7 @@ export default function GrammarCorePage() {
             </Table>
           </div>
 
-          <Separator orientation="vertical" className="mx-1" />
+          <div className="mx-1 w-px self-stretch bg-border" />
 
           {/* 右：结构形式 → 句子成分 */}
           <div className="flex-1 p-6">
