@@ -109,7 +109,7 @@ export default function GrammarCorePage() {
       <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-border p-8">
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
-          <div className="flex-1 p-6">
+          <div className="flex-1 p-3">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -157,7 +157,7 @@ export default function GrammarCorePage() {
           <div className="mx-1 w-px self-stretch bg-border" />
 
           {/* 右：结构形式 → 句子成分 */}
-          <div className="flex-1 p-6">
+          <div className="flex-1 p-3">
             <Table>
               <TableHeader>
                 <TableRow>
