@@ -592,3 +592,14 @@ html.dark::-webkit-scrollbar-thumb {
 html.dark::-webkit-scrollbar-thumb:hover {
   background: rgba(161, 161, 170, 0.35);
 }
+
+/* nce demo pages — blockquote & mark */
+blockquote {
+  font-family: "Lyon Text", Georgia, "LXGW WenKai Screen", serif;
+}
+main mark {
+  background: linear-gradient(to top, rgba(147, 197, 228, 0.34) 42%, transparent 42%);
+  color: #1f465b;
+  font-weight: 600;
+  padding: 0 0.02em 0.02em;
+}
