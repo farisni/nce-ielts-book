@@ -413,7 +413,7 @@ export default function TipTapTableDemo() {
         }
         .ProseMirror table .column-resize-handle:hover,
         .ProseMirror table .column-resize-handle.is-dragging {
-          background: #a1a1aa;
+          background: #b0dcfe;
         }
 
         /* Table base styles — project look: row-border only, no grid */
@@ -469,8 +469,17 @@ export default function TipTapTableDemo() {
         /* Selected cell — only in editable mode */
         .ProseMirror[contenteditable="true"] table .selectedCell {
           background: #f0f9ff;
-          outline: 1.5px solid #7dd3fc;
-          outline-offset: -1px;
+          outline: none;
+          border-left: 1px solid #e5e7eb;
+        }
+        .ProseMirror[contenteditable="true"] table .selectedCell:not(:has(+ .selectedCell)) {
+          border-right: 1px solid #e5e7eb;
+        }
+        .ProseMirror[contenteditable="true"] table tr:first-child .selectedCell {
+          border-top: 1px solid #e5e7eb;
+        }
+        .ProseMirror[contenteditable="true"] table tr:last-child .selectedCell {
+          border-bottom: 1px solid #e5e7eb;
         }
         .ProseMirror[contenteditable="false"] table .selectedCell {
           background: transparent;
