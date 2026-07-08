@@ -233,8 +233,8 @@ export default function GrammarCorePage() {
                           <TableCell colSpan={2} className="py-3">
                             <div className="space-y-2">
                               {examples.map(({ form, example }) => (
-                                <div key={form} className="flex items-start gap-2 text-sm">
-                                  <Badge variant="outline" className={`text-xs shrink-0 min-w-[4.5rem] ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
+                                <div key={form} className="grid grid-cols-[5rem_1fr] gap-x-2 gap-y-1 text-sm">
+                                  <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
                                   <span className="text-muted-foreground leading-relaxed">{example}</span>
                                 </div>
                               ))}
@@ -312,8 +312,8 @@ export default function GrammarCorePage() {
                           <TableCell colSpan={2} className="py-3">
                             <div className="space-y-2">
                               {examples.map(({ role, example }) => (
-                                <div key={role} className="flex items-start gap-2 text-sm">
-                                  <Badge variant="outline" className={`text-xs shrink-0 min-w-[3.5rem] ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
+                                <div key={role} className="grid grid-cols-[4rem_1fr] gap-x-2 gap-y-1 text-sm">
+                                  <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
                                   <span className="text-muted-foreground leading-relaxed">{example}</span>
                                 </div>
                               ))}
