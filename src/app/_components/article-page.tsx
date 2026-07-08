@@ -97,6 +97,7 @@ import { renderHighlightedText } from "@/lib/render-highlighted-text";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { useAudioSync } from "@/app/_components/use-audio-sync";
 import { GrammarToggleButton } from "@/app/_components/float-action";
+import { NotebookPlaceholder } from "@/app/_components/notebook-placeholder";
 import { Play, Pause } from "lucide-react";
 import {
   Timeline,
@@ -795,11 +796,7 @@ function ArticleReader({ article }: { article: Article }) {
   return (
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       {showNotebook ? (
-        <section className="w-full min-h-[600px] rounded-lg border border-dashed border-zinc-300 p-8 flex flex-col items-center justify-center">
-          <NotebookPen className="size-12 text-muted-foreground/20 mb-4" />
-          <p className="text-lg text-muted-foreground/60">笔记区域</p>
-          <p className="text-sm text-muted-foreground/40 mt-1">在这里记录你的学习笔记</p>
-        </section>
+        <NotebookPlaceholder />
       ) : (
         <>
           <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
