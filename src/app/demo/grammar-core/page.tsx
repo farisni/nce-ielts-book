@@ -15,7 +15,7 @@ const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "谓语 (V)", roleKey: "谓语", forms: ["动词", "动词短语"] },
   { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
-  { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "动名词", "从句"] },
+  { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "动名词", "不定式", "从句"] },
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "宾语补足语 (OC)", roleKey: "宾语补足语", forms: ["名词", "形容词", "不定式", "分词", "介词短语"] },
