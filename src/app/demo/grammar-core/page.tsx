@@ -119,8 +119,9 @@ export default function GrammarCorePage() {
               </TableHeader>
               <TableBody>
                 {SENTENCE_COMPONENTS.map((row) => {
-                  // 左 table 行暗化：由右 table hover 驱动
-                  const rowDimmed = hoveredRole && row.roleKey !== hoveredRole;
+                  const rowDimmed =
+                    (hoveredRole && row.roleKey !== hoveredRole) ||
+                    (hoveredForm && !row.forms.some(f => resolveForm(f) === hoveredForm));
                   return (
                     <TableRow
                       key={row.roleKey}
@@ -164,8 +165,9 @@ export default function GrammarCorePage() {
               </TableHeader>
               <TableBody>
                 {FORM_COMPONENTS.map((row) => {
-                  // 右 table 行暗化：由左 table hover 驱动
-                  const rowDimmed = hoveredForm && row.form !== hoveredForm;
+                  const rowDimmed =
+                    (hoveredForm && row.form !== hoveredForm) ||
+                    (hoveredRole && !row.roles.includes(hoveredRole));
                   return (
                     <TableRow
                       key={row.form}
