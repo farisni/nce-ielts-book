@@ -15,10 +15,9 @@ import { Tooltip } from "@/components/ui/tooltip";
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "谓语 (V)", roleKey: "谓语", forms: ["动词", "动词短语"] },
-  { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
+  { component: "宾语 (直接宾语)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "动名词", "不定式", "从句"] },
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
-  { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "宾语补足语 (OC)", roleKey: "宾语补足语", forms: ["名词", "形容词", "不定式", "分词", "介词短语"] },
   { component: "定语 (Attr)", roleKey: "定语", forms: ["形容词", "不定式", "介词短语", "从句"] },
   { component: "状语 (Adv)", roleKey: "状语", forms: ["副词", "介词短语", "不定式", "从句"] },
@@ -41,7 +40,6 @@ const ROLE_COLOR: Record<string, string> = {
   "谓语": "border-blue-300 bg-blue-50 text-blue-700",
   "宾语": "border-blue-300 bg-blue-50 text-blue-700",
   "间接宾语": "border-sky-300 bg-sky-50 text-sky-700",
-  "直接宾语": "border-orange-300 bg-orange-50 text-orange-700",
   "表语": "border-orange-300 bg-orange-50 text-orange-700",
   "宾语补足语": "border-[#C7D2CD] bg-[#C7D2CD]/20 text-[#5a6b63]",
   "定语": "border-yellow-300 bg-yellow-50 text-yellow-700",
@@ -54,7 +52,6 @@ const ROLE_UNDERLINE: Record<string, string> = {
   "谓语": "decoration-[#c2410c]",
   "宾语": "decoration-blue-400",
   "间接宾语": "decoration-sky-400",
-  "直接宾语": "decoration-blue-500",
   "表语": "decoration-orange-400",
   "宾语补足语": "decoration-[#C7D2CD]",
   "定语": "decoration-yellow-400",
@@ -95,7 +92,6 @@ const MATRIX_ROWS: [string, string[]][] = [
   ["宾语", ["名词","代词","动名词","不定式","从句"]],
   ["表语", ["名词","形容词","介词短语","分词","动名词","不定式","从句"]],
   ["间接宾语", ["名词","代词"]],
-  ["直接宾语", ["名词","代词","动名词","不定式","从句"]],
   ["宾语补足语", ["名词","形容词","不定式","分词","介词短语"]],
   ["定语", ["形容词","不定式","介词短语","从句"]],
   ["状语", ["副词","介词短语","不定式","从句"]],
@@ -128,12 +124,6 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   // 间接宾语
   "名词::间接宾语": "He gave Mary a gift. 他给了Mary一份礼物。",
   "代词::间接宾语": "He gave her a gift. 他给了她一份礼物。",
-  // 直接宾语
-  "名词::直接宾语": "She threw the ball. 她扔了那个球。",
-  "代词::直接宾语": "She threw it. 她扔了它。",
-  "动名词::直接宾语": "She enjoys dancing. 她喜欢跳舞。",
-  "不定式::直接宾语": "He wants to leave. 他想离开。",
-  "从句::直接宾语": "She said that she would come. 她说她会来。",
   // 表语
   "名词::表语": "He is a teacher. 他是一名老师。",
   "形容词::表语": "She is happy. 她很开心。",
