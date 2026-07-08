@@ -86,6 +86,22 @@ const FORM_UNDERLINE: Record<string, string> = {
   "分词": "decoration-lime-400",
 };
 
+
+const MATRIX_FORMS = ["名词","代词","形容词","副词","介词短语","不定式","动名词","分词","从句","动词","动词短语"];
+
+const MATRIX_ROWS: [string, string[]][] = [
+  ["主语", ["名词","代词","动名词","不定式","从句"]],
+  ["谓语", ["动词","动词短语"]],
+  ["宾语", ["名词","代词","动名词","不定式","从句"]],
+  ["表语", ["名词","形容词","介词短语","分词","动名词","不定式","从句"]],
+  ["间接宾语", ["名词","代词"]],
+  ["直接宾语", ["名词","代词","动名词","不定式","从句"]],
+  ["宾语补足语", ["名词","形容词","不定式","分词","介词短语"]],
+  ["定语", ["形容词","不定式","介词短语","从句"]],
+  ["状语", ["副词","介词短语","不定式","从句"]],
+  ["同位语", ["名词","介词短语","分词","从句"]],
+];
+
 const TEXT_HIGHLIGHT: Record<string, string> = {
   "介词短语": "bg-gradient-to-t from-violet-300/50 from-50% to-transparent to-50%",
   "不定式": "bg-gradient-to-t from-purple-300/50 from-50% to-transparent to-50%",
@@ -166,6 +182,7 @@ export default function GrammarCorePage() {
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
   const [expandedLeft, setExpandedLeft] = useState<string | null>(null);
   const [expandedRight, setExpandedRight] = useState<string | null>(null);
+  const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -326,6 +343,42 @@ export default function GrammarCorePage() {
                 })}
               </TableBody>
             </Table>
+          </div>
+        </div>
+
+        {/* 句子成分 × 结构形式 矩阵 */}
+        <div className="mt-8 overflow-x-auto">
+          <div className="inline-block min-w-full">
+            <div className="grid border border-dashed border-border rounded-md"
+                 style={{ gridTemplateColumns: '5.5rem repeat(11, 1fr)' }}>
+              <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
+              {MATRIX_FORMS.map((f, ci) => (
+                <div key={f} className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${FORM_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>
+              ))}
+              {MATRIX_ROWS.map(([role, forms], ri) => (
+                <React.Fragment key={role}>
+                  <div className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[role]} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}>{role}</div>
+                  {MATRIX_FORMS.map((f, ci) => {
+                    const hasMatch = forms.includes(f);
+                    const example = hasMatch ? getExample(f, role) : null;
+                    const cellDimmed = hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci;
+                    const cell = (
+                      <div
+                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? (FORM_COLOR[f] ?? '') : 'text-muted-foreground/20'}`}
+                        onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
+                        onMouseLeave={() => setHoveredMatrix(null)}
+                      >
+                        {hasMatch ? '●' : '·'}
+                      </div>
+                    );
+                    if (example) {
+                      return <Tooltip key={f} content={<span className="text-xs">{example}</span>}>{cell}</Tooltip>;
+                    }
+                    return <React.Fragment key={f}>{cell}</React.Fragment>;
+                  })}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </div>
