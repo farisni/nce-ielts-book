@@ -176,8 +176,8 @@ export default function GrammarCorePage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>句子成分</TableHead>
-                  <TableHead>常见充当的结构形式</TableHead>
+                  <TableHead className="w-[35%]">句子成分</TableHead>
+                  <TableHead className="w-[65%]">常见充当的结构形式</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -230,7 +230,7 @@ export default function GrammarCorePage() {
                       </TableRow>
                       {isExpanded && examples.length > 0 && (
                         <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
-                          <TableCell colSpan={2} className="py-3">
+                          <TableCell colSpan={2} className="py-3 overflow-hidden">
                             <div className="space-y-2">
                               {examples.map(({ form, example }) => (
                                 <div key={form} className="grid grid-cols-[5rem_1fr] gap-x-2 gap-y-1 text-sm">
@@ -256,8 +256,8 @@ export default function GrammarCorePage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>结构形式</TableHead>
-                  <TableHead>可以作的句子成分</TableHead>
+                  <TableHead className="w-[35%]">结构形式</TableHead>
+                  <TableHead className="w-[65%]">可以作的句子成分</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -309,7 +309,7 @@ export default function GrammarCorePage() {
                       </TableRow>
                       {isExpanded && examples.length > 0 && (
                         <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
-                          <TableCell colSpan={2} className="py-3">
+                          <TableCell colSpan={2} className="py-3 overflow-hidden">
                             <div className="space-y-2">
                               {examples.map(({ role, example }) => (
                                 <div key={role} className="grid grid-cols-[4rem_1fr] gap-x-2 gap-y-1 text-sm">
