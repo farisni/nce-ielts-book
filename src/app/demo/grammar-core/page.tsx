@@ -12,9 +12,9 @@ import {
 import { Badge } from "@/components/reui/badge";
 
 const SENTENCE_COMPONENTS = [
-  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
+  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句", "从句"] },
   { component: "谓语 (V)", roleKey: "谓语", forms: ["动词", "动词短语"] },
-  { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
+  { component: "宾语 (O)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句", "从句"] },
   { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "从句"] },
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
@@ -70,7 +70,7 @@ const FORM_COLOR: Record<string, string> = {
   "不定式": "border-purple-300 bg-purple-50 text-purple-700",
   "动名词": "border-emerald-300 bg-emerald-50 text-emerald-700",
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
-  "从句": "border-indigo-300 bg-indigo-50 text-indigo-700",
+  "从句": "border-[#cfc8c0] bg-[#cfc8c0]/20 text-[#6b645e]",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
 };
@@ -84,7 +84,14 @@ const FORM_UNDERLINE: Record<string, string> = {
   "不定式": "decoration-purple-400",
   "动名词": "decoration-emerald-400",
   "分词": "decoration-lime-400",
-  "从句": "decoration-indigo-400",
+  "从句": "decoration-[#cfc8c0]",
+};
+
+const TEXT_HIGHLIGHT: Record<string, string> = {
+  "介词短语": "bg-gradient-to-t from-violet-300/50 from-50% to-transparent to-50%",
+  "不定式": "bg-gradient-to-t from-purple-300/50 from-50% to-transparent to-50%",
+  "状语": "bg-gradient-to-t from-pink-300/50 from-50% to-transparent to-50%",
+  "表语": "bg-gradient-to-t from-orange-300/50 from-50% to-transparent to-50%",
 };
 
 export default function GrammarCorePage() {
@@ -109,11 +116,11 @@ export default function GrammarCorePage() {
                   const rowDimmed = hoveredRole && row.roleKey !== hoveredRole;
                   return (
                     <TableRow
-                      key={row.component}
+                      key={TEXT_HIGHLIGHT[row.roleKey] ? <span className={TEXT_HIGHLIGHT[row.roleKey]}>{row.component}</span> : row.component}
                       className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
                     >
                       <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
-                        {row.component}
+                        {TEXT_HIGHLIGHT[row.roleKey] ? <span className={TEXT_HIGHLIGHT[row.roleKey]}>{row.component}</span> : row.component}
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
@@ -157,7 +164,8 @@ export default function GrammarCorePage() {
                       className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
                     >
                       <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
-                        {row.form}
+                        {TEXT_HIGHLIGHT[row.form] ? <span className={TEXT_HIGHLIGHT[row.form]}>{row.form}</span> : row.form}
+
                       </TableCell>
                       <TableCell>
                         <div className="flex flex-wrap gap-1">
