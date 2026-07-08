@@ -1,18 +1,25 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import {
+  addEdge,
   Background,
   BackgroundVariant,
   Controls,
   MiniMap,
+  Position,
   ReactFlow,
+  ReactFlowProvider,
+  type Connection,
   type Edge,
   type Node,
+  useEdgesState,
+  useNodesState,
+  useOnSelectionChange,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { hierarchy, tree } from "d3-hierarchy";
-import { Maximize2 } from "lucide-react";
+import { Maximize2, Plus } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
 /*  Grammar tree data                                                 */
@@ -162,14 +169,14 @@ function treeToGraph(data: TreeNode) {
   const layout = tree<TreeNode>().nodeSize([100, 320]);
   const laidOut = layout(root);
 
-  const nodes: Node[] = laidOut.descendants().map((d) => {
+  const nodes = laidOut.descendants().map((d: any) => {
     const size = NODE_STYLE_MAP[d.data.type] ?? { w: 150, h: 60 };
     return {
       id: d.data.id,
       position: { x: d.y, y: d.x - size.h / 2 },
       data: { label: d.data.title, type: d.data.type, size },
-      sourcePosition: "right" as const,
-      targetPosition: "left" as const,
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
     };
   });
 
@@ -249,10 +256,57 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
 /*  Page component                                                    */
 /* ------------------------------------------------------------------ */
 
-export default function XyflowDemoPage() {
-  const { nodes, edges } = useMemo(() => treeToGraph(grammarTree), []);
+function XyflowDemoPage() {
+  const initial = useMemo(() => treeToGraph(grammarTree), []);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initial.nodes as Node[]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initial.edges);
+  const newNodeIndexRef = useRef(0);
+  const selectedNodeRef = useRef<string | null>(null);
 
-  const styledNodes: Node[] = useMemo(
+  useOnSelectionChange({
+    onChange: ({ nodes: selected }) => {
+      selectedNodeRef.current = selected.length === 1 ? selected[0].id : null;
+    },
+  });
+
+  const onConnect = useCallback(
+    (connection: Connection) => {
+      setEdges((current) => addEdge({ ...connection, type: "smoothstep" }, current));
+    },
+    [setEdges],
+  );
+
+  const addChildNode = useCallback(() => {
+    const parentId = selectedNodeRef.current;
+    if (!parentId) return;
+
+    const parent = nodes.find((n) => n.id === parentId);
+    if (!parent) return;
+
+    newNodeIndexRef.current += 1;
+    const idx = newNodeIndexRef.current;
+    const childId = `custom-${idx}`;
+
+    const siblingCount = nodes.filter((n) =>
+      edges.some((e) => e.source === parentId && e.target === n.id && n.id.startsWith("custom-"))
+    ).length;
+
+    const newNode = {
+      id: childId,
+      position: { x: parent.position.x + 300, y: parent.position.y + siblingCount * 70 },
+      data: { label: `新节点 ${idx}`, type: "form", size: NODE_STYLE_MAP.form },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    };
+
+    setNodes((current) => [...current, newNode]);
+    setEdges((current) => [
+      ...current,
+      { id: `${parentId}-${childId}`, source: parentId, target: childId, type: "smoothstep" },
+    ]);
+  }, [nodes, edges, setNodes, setEdges]);
+
+  const styledNodes = useMemo(
     () =>
       nodes.map((n) => {
         const data = n.data as { size: { w: number; h: number }; type: string };
@@ -266,7 +320,7 @@ export default function XyflowDemoPage() {
         };
       }),
     [nodes],
-  );
+  ) as Node[];
 
   return (
     <div className="flex h-[780px] flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white text-zinc-950">
@@ -287,6 +341,14 @@ export default function XyflowDemoPage() {
           </span>
           <button
             type="button"
+            onClick={addChildNode}
+            className="inline-flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950"
+          >
+            <Plus className="size-3.5" />
+            <span>添加子节点</span>
+          </button>
+          <button
+            type="button"
             onClick={() => {
               document
                 .querySelector<HTMLButtonElement>(".react-flow__controls-fitview")
@@ -304,6 +366,9 @@ export default function XyflowDemoPage() {
         <ReactFlow
           nodes={styledNodes}
           edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
           fitView
           fitViewOptions={{ padding: 0.22 }}
           defaultEdgeOptions={{ type: "smoothstep" }}
@@ -327,5 +392,13 @@ export default function XyflowDemoPage() {
         </ReactFlow>
       </div>
     </div>
+  );
+}
+
+export default function Wrapper() {
+  return (
+    <ReactFlowProvider>
+      <XyflowDemoPage />
+    </ReactFlowProvider>
   );
 }
