@@ -27,6 +27,8 @@ import {
   Code,
   Undo2,
   Redo2,
+  Eye,
+  Pen,
 } from "lucide-react";
 
 function ToolbarButton({
@@ -113,6 +115,7 @@ export default function TipTapTableDemo() {
     rows: number;
     cols: number;
   } | null>(null);
+  const [editable, setEditable] = useState(true);
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -129,6 +132,7 @@ export default function TipTapTableDemo() {
       TableHeader,
     ],
     content: INITIAL_CONTENT,
+    editable: true,
     editorProps: {
       attributes: {
         class:
@@ -136,6 +140,13 @@ export default function TipTapTableDemo() {
       },
     },
   });
+
+  const toggleEditable = useCallback(() => {
+    if (!editor) return;
+    const next = !editor.isEditable;
+    editor.setEditable(next);
+    setEditable(next);
+  }, [editor]);
 
   const updateTableInfo = useCallback(() => {
     if (!editor) return;
@@ -354,15 +365,28 @@ export default function TipTapTableDemo() {
 
         {/* Table info badge */}
         {tableInfo && (
-          <div className="ml-auto inline-flex items-center gap-1 rounded-md border border-zinc-200 bg-white px-2 py-1 text-xs text-zinc-500">
+          <div className="inline-flex items-center gap-1 rounded-md border border-zinc-200 bg-white px-2 py-1 text-xs text-zinc-500">
             <Table2 className="size-3" />
             {tableInfo.rows} 行 × {tableInfo.cols} 列
           </div>
         )}
+
+        {/* Read-only / Edit toggle */}
+        <ToolbarButton
+          onClick={toggleEditable}
+          active={!editable}
+          title={editable ? "切换到只读模式" : "切换到编辑模式"}
+        >
+          {editable ? (
+            <Eye className="size-3.5" />
+          ) : (
+            <Pen className="size-3.5" />
+          )}
+        </ToolbarButton>
       </div>
 
       {/* Editor */}
-      <div className="rounded-lg border border-zinc-200 bg-white">
+      <div className="rounded-lg bg-white">
         <EditorContent editor={editor} />
       </div>
 
@@ -373,7 +397,7 @@ export default function TipTapTableDemo() {
         <strong>快捷键：</strong> Tab 跳至下一单元格 · Shift+Tab 跳至上一单元格 · 拖动列边框调整列宽。
       </p>
 
-      {/* Custom styles for TipTap table */}
+      {/* Custom styles for TipTap table — matching n3-l41 project style */}
       <style jsx global>{`
         /* Table resizable handle */
         .ProseMirror table .column-resize-handle {
@@ -392,44 +416,65 @@ export default function TipTapTableDemo() {
           background: #a1a1aa;
         }
 
-        /* Table base styles */
+        /* Table base styles — project look: row-border only, no grid */
         .ProseMirror table {
           border-collapse: collapse;
           table-layout: fixed;
           width: 100%;
           margin: 1.5rem 0;
           overflow: hidden;
+          color: #000;
+          font-size: 1rem;
+          border: none;
+        }
+        .ProseMirror .tableWrapper {
+          border: none;
         }
         .ProseMirror table td,
         .ProseMirror table th {
-          min-width: 80px;
-          border: 1px solid #e4e4e7;
-          padding: 8px 12px;
+          min-width: 100px;
+          height: 41px;
+          box-sizing: border-box;
+          border: none;
+          padding: 0.5rem 0.75rem;
           vertical-align: top;
           position: relative;
           font-size: 0.875rem;
           line-height: 1.6;
         }
         .ProseMirror table th {
-          background: #fafafa;
-          font-weight: 600;
-          color: #52525b;
+          background: transparent;
+          font-weight: 500;
+          color: #6b7280;
           font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
+          text-transform: none;
+          letter-spacing: normal;
         }
         .ProseMirror table td {
-          color: #3f3f46;
+          color: #4b5563;
         }
-        .ProseMirror table tr:hover td {
-          background: #fafafa;
+        .ProseMirror table td p,
+        .ProseMirror table th p {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        .ProseMirror table tr {
+          border-bottom: 1px solid #e5e7eb;
+        }
+        .ProseMirror table tr:hover td,
+        .ProseMirror table tr:hover th {
+          background: transparent;
         }
 
-        /* Selected cell */
-        .ProseMirror table .selectedCell {
-          background: #f4f4f5;
-          outline: 2px solid #a1a1aa;
+        /* Selected cell — only in editable mode */
+        .ProseMirror[contenteditable="true"] table .selectedCell {
+          background: #f0f9ff;
+          outline: 1.5px solid #7dd3fc;
           outline-offset: -1px;
+        }
+        .ProseMirror[contenteditable="false"] table .selectedCell {
+          background: transparent;
+          outline: none;
         }
 
         /* Editor min height */
