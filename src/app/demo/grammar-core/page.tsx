@@ -233,7 +233,7 @@ export default function GrammarCorePage() {
                           <TableCell colSpan={2} className="py-3 overflow-hidden">
                             <div className="space-y-2">
                               {examples.map(({ form, example }) => (
-                                <div key={form} className="grid grid-cols-[6.5rem_1fr] gap-x-2 gap-y-1 text-sm">
+                                <div key={form} className="grid grid-cols-[5rem_1fr] gap-x-2 gap-y-1 text-sm">
                                   <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
                                   <span className="text-muted-foreground leading-relaxed">{example}</span>
                                 </div>
