@@ -795,16 +795,11 @@ function ArticleReader({ article }: { article: Article }) {
   return (
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       {showNotebook ? (
-        <>
-          <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
-            <div className="mx-auto w-full max-w-[680px] min-h-[600px] rounded-lg border border-dashed border-zinc-300 p-8 flex flex-col items-center justify-center">
-              <NotebookPen className="size-12 text-muted-foreground/20 mb-4" />
-              <p className="text-lg text-muted-foreground/60">笔记区域</p>
-              <p className="text-sm text-muted-foreground/40 mt-1">在这里记录你的学习笔记</p>
-            </div>
-          </section>
-          <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-14" />
-        </>
+        <section className="w-full min-h-[600px] rounded-lg border border-dashed border-zinc-300 p-8 flex flex-col items-center justify-center">
+          <NotebookPen className="size-12 text-muted-foreground/20 mb-4" />
+          <p className="text-lg text-muted-foreground/60">笔记区域</p>
+          <p className="text-sm text-muted-foreground/40 mt-1">在这里记录你的学习笔记</p>
+        </section>
       ) : (
         <>
           <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
