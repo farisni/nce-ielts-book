@@ -166,7 +166,7 @@ function treeToGraph(data: TreeNode) {
     const size = NODE_STYLE_MAP[d.data.type] ?? { w: 150, h: 60 };
     return {
       id: d.data.id,
-      position: { x: d.y, y: d.x },
+      position: { x: d.y, y: d.x - size.h / 2 },
       data: { label: d.data.title, type: d.data.type, size },
       sourcePosition: "right" as const,
       targetPosition: "left" as const,
@@ -195,6 +195,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     color: "#fafafa",
     fontWeight: 700,
     fontSize: 15,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   pattern: {
     border: "1px solid #bfdbfe",
@@ -203,6 +206,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     color: "#1e3a5f",
     fontWeight: 600,
     fontSize: 14,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   component: {
     border: "1px solid #bbf7d0",
@@ -211,6 +217,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     color: "#14532d",
     fontWeight: 600,
     fontSize: 13,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   clause: {
     border: "1px solid #fde68a",
@@ -219,6 +228,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     color: "#713f12",
     fontWeight: 600,
     fontSize: 13,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   form: {
     border: "1px dashed #d4d4d8",
@@ -227,6 +239,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     color: "#52525b",
     fontWeight: 500,
     fontSize: 12,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 };
 
@@ -254,7 +269,7 @@ export default function XyflowDemoPage() {
   );
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-zinc-50 text-zinc-950">
+    <div className="flex h-[780px] flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white text-zinc-950">
       <header className="flex h-16 flex-none items-center justify-between border-b border-zinc-200 bg-white px-5">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-400">
