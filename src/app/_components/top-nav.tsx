@@ -185,13 +185,13 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("demo markdown mdx 文档 演示"),
   },
   {
-    id: "demo-nce4-l48",
-    label: "NCE4 L48 · 课文",
-    description: "NCE4 lesson markdown demo",
-    href: "/demo/nce4-l48",
+    id: "demo-grammar-core",
+    label: "语法核心",
+    description: "语法核心知识整理",
+    href: "/demo/grammar-core",
     group: "Demo",
     icon: <BookOpenIcon className="text-muted-foreground" />,
-    keywords: toKeywords("demo nce4 l48 lesson 课文 markdown"),
+    keywords: toKeywords("demo grammar core 语法 核心 知识"),
   },
   {
     id: "demo-button",
