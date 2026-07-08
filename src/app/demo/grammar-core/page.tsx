@@ -10,6 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Badge } from "@/components/reui/badge";
+import { Separator } from "@/components/ui/separator";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
@@ -19,7 +20,7 @@ const SENTENCE_COMPONENTS = [
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "直接宾语 (DO)", roleKey: "直接宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
   { component: "宾语补足语 (OC)", roleKey: "宾语补足语", forms: ["名词", "形容词", "不定式", "分词", "介词短语"] },
-  { component: "定语 (Attr)", roleKey: "定语", forms: ["形容词", "不定式", "从句"] },
+  { component: "定语 (Attr)", roleKey: "定语", forms: ["形容词", "不定式", "介词短语", "从句"] },
   { component: "状语 (Adv)", roleKey: "状语", forms: ["副词", "介词短语", "不定式", "从句"] },
 ];
 
@@ -109,7 +110,7 @@ export default function GrammarCorePage() {
       <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-border p-8">
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
-          <div className="flex-1 rounded-md border border-dashed border-border p-6">
+          <div className="flex-1 p-6">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -154,8 +155,10 @@ export default function GrammarCorePage() {
             </Table>
           </div>
 
+          <Separator orientation="vertical" className="mx-1" />
+
           {/* 右：结构形式 → 句子成分 */}
-          <div className="flex-1 rounded-md border border-dashed border-border p-6">
+          <div className="flex-1 p-6">
             <Table>
               <TableHeader>
                 <TableRow>
