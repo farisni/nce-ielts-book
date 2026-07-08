@@ -87,12 +87,7 @@ const FORM_UNDERLINE: Record<string, string> = {
 
 export default function GrammarCorePage() {
   const [hoveredForm, setHoveredForm] = useState<string | null>(null);
-
-  // 左表 Badge 是否被 hover 的 form 匹配
-  const isFormMatch = (formName: string) => hoveredForm === formName;
-
-  // 右表某一行是否高亮
-  const isRowHighlight = (formName: string) => !hoveredForm || hoveredForm === formName;
+  const [hoveredRole, setHoveredRole] = useState<string | null>(null);
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -108,30 +103,36 @@ export default function GrammarCorePage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {SENTENCE_COMPONENTS.map((row) => (
-                  <TableRow key={row.component}>
-                    <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
-                      {row.component}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1">
-                        {row.forms.map((f) => (
-                          <Badge
-                            key={f}
-                            variant="outline"
-                            className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
-                              hoveredForm && !isFormMatch(f) ? "opacity-30" : ""
-                            }`}
-                            onMouseEnter={() => setHoveredForm(f)}
-                            onMouseLeave={() => setHoveredForm(null)}
-                          >
-                            {f}
-                          </Badge>
-                        ))}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {SENTENCE_COMPONENTS.map((row) => {
+                  const rowDimmed = hoveredRole && row.roleKey !== hoveredRole;
+                  return (
+                    <TableRow
+                      key={row.component}
+                      className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
+                    >
+                      <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
+                        {row.component}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex flex-wrap gap-1">
+                          {row.forms.map((f) => (
+                            <Badge
+                              key={f}
+                              variant="outline"
+                              className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
+                                hoveredForm && hoveredForm !== f ? "opacity-30" : ""
+                              }`}
+                              onMouseEnter={() => setHoveredForm(f)}
+                              onMouseLeave={() => setHoveredForm(null)}
+                            >
+                              {f}
+                            </Badge>
+                          ))}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
@@ -146,27 +147,36 @@ export default function GrammarCorePage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {FORM_COMPONENTS.map((row) => (
-                  <TableRow
-                    key={row.form}
-                    className={`transition-opacity ${
-                      isRowHighlight(row.form) ? "" : "opacity-25"
-                    }`}
-                  >
-                    <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
-                      {row.form}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap gap-1">
-                        {row.roles.map((r) => (
-                          <Badge key={r} variant="outline" className={`text-xs ${ROLE_COLOR[r] ?? ""}`}>
-                            {r}
-                          </Badge>
-                        ))}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {FORM_COMPONENTS.map((row) => {
+                  const rowDimmed = hoveredForm && row.form !== hoveredForm;
+                  return (
+                    <TableRow
+                      key={row.form}
+                      className={`transition-opacity ${rowDimmed ? "opacity-25" : ""}`}
+                    >
+                      <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
+                        {row.form}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex flex-wrap gap-1">
+                          {row.roles.map((r) => (
+                            <Badge
+                              key={r}
+                              variant="outline"
+                              className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
+                                hoveredRole && hoveredRole !== r ? "opacity-30" : ""
+                              }`}
+                              onMouseEnter={() => setHoveredRole(r)}
+                              onMouseLeave={() => setHoveredRole(null)}
+                            >
+                              {r}
+                            </Badge>
+                          ))}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </div>
