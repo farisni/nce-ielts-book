@@ -111,8 +111,8 @@ def parse(html_file):
                 td_sup.extract()
             td_text = clean(td.get_text(" ", strip=True))
 
-            rows.append({"title": th_title, "desc": th_desc, "example": td_text, "example_cn": td_cn})
-        return {"rows": rows}
+            rows.append({"core": th_title, "desc": th_desc, "example": td_text, "example_cn": td_cn})
+        return {"table": rows}
 
     def _parse_list(ul):
         items = []
@@ -122,25 +122,26 @@ def parse(html_file):
             if sup:
                 sup.extract()
             text = clean(li.get_text(" ", strip=True))
-            items.append({"text": text, "note": note})
-        return {"items": items}
+            items.append({"example": text, "note": note})
+        return {"list": items}
 
     def _merge_or_standalone(view_type, node):
         """紧跟 h4 则合并到其 view，否则独立节点"""
         parsed = _parse_table(node.find("table")) if view_type == "table" else _parse_list(node)
+        key = "table" if view_type == "table" else "list"
         if knowledge and "view" not in knowledge[-1]:
-            knowledge[-1]["view"] = [view_type]
-            knowledge[-1]["data"] = parsed
+            view_key = f"{key}_1"
+            knowledge[-1]["view"] = [view_key]
+            knowledge[-1]["data"] = {view_key: parsed[key]}
         elif knowledge and "view" in knowledge[-1]:
             prev = knowledge[-1]
-            prev["view"].append(view_type)
-            # 同类型追加到已有数组，不同类型新增 key
-            if view_type == "table":
-                prev["data"].setdefault("rows", []).extend(parsed["rows"])
-            else:
-                prev["data"].setdefault("items", []).extend(parsed["items"])
+            cnt = sum(1 for v in prev["view"] if v.startswith(key))
+            view_key = f"{key}_{cnt + 1}"
+            prev["view"].append(view_key)
+            prev["data"][view_key] = parsed[key]
         else:
-            knowledge.append({"view": [view_type], "data": parsed})
+            view_key = f"{key}_1"
+            knowledge.append({"view": [view_key], "data": {view_key: parsed[key]}})
 
     for node in nodes:
         # h3 句子
