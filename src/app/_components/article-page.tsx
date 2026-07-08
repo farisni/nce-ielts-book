@@ -26,6 +26,7 @@ import {
   X,
   ArrowLeft,
   ArrowRight,
+  NotebookPen,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -490,6 +491,7 @@ function ArticleReader({ article }: { article: Article }) {
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
 
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [showNotebook, setShowNotebook] = useState(false);
   const [chatPosition, setChatPosition] = useState({ x: 24, y: 24 });
   const [chatContext, setChatContext] = useState("");
   const [chatInput, setChatInput] = useState("");
@@ -794,8 +796,16 @@ function ArticleReader({ article }: { article: Article }) {
     <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
       
           <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
+            {showNotebook ? (
+              <div className="mx-auto w-full max-w-[680px] min-h-[600px] rounded-lg border border-dashed border-zinc-300 p-8 flex flex-col items-center justify-center">
+                <NotebookPen className="size-12 text-muted-foreground/20 mb-4" />
+                <p className="text-lg text-muted-foreground/60">笔记区域</p>
+                <p className="text-sm text-muted-foreground/40 mt-1">在这里记录你的学习笔记</p>
+              </div>
+            ) : (
+              <>
             <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-4">
-              
+
               {/* Title Header */}
               <div className="flex items-start justify-between gap-4">
                 <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-4xl font-semibold tracking-normal text-balance">
@@ -850,6 +860,17 @@ function ArticleReader({ article }: { article: Article }) {
                 <span>~{readingTime} min read</span>
                 <span className="text-border">·</span>
                 <GrammarToggleButton className="inline-flex" />
+                <Tooltip content="笔记">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setShowNotebook((v) => !v)}
+                    className={`rounded-full hover:bg-[#f0f0f0] ${showNotebook ? "text-foreground bg-muted" : "text-muted-foreground/40"}`}
+                    aria-label="Toggle notebook"
+                  >
+                    <NotebookPen className="size-4" />
+                  </Button>
+                </Tooltip>
                 <div className="ml-auto flex items-center">
                   {previousArticle ? (
                     <Tooltip content="上一课">
@@ -1162,6 +1183,8 @@ function ArticleReader({ article }: { article: Article }) {
                 </ContextMenuItem>
               </ContextMenuContent>
             </ContextMenu>
+            </>
+            )}
           </section>
 
           <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-14">
