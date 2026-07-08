@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   addEdge,
   Background,
@@ -153,6 +153,34 @@ const grammarTree: TreeNode = {
 };
 
 /* ------------------------------------------------------------------ */
+/*  Collapse helpers                                                   */
+/* ------------------------------------------------------------------ */
+
+/** 收集 grammarTree 中所有有 children 的节点 id */
+function collectParentIds(tree: TreeNode): Set<string> {
+  const ids = new Set<string>();
+  function walk(node: TreeNode) {
+    if (node.children && node.children.length > 0) {
+      ids.add(node.id);
+      node.children.forEach(walk);
+    }
+  }
+  walk(tree);
+  return ids;
+}
+
+const PARENT_IDS = collectParentIds(grammarTree);
+
+/** 根据折叠状态剪枝：collapsed 节点去掉 children */
+function pruneTree(node: TreeNode, collapsed: Set<string>): TreeNode {
+  if (collapsed.has(node.id)) {
+    return { ...node, children: undefined };
+  }
+  if (!node.children) return node;
+  return { ...node, children: node.children.map((c) => pruneTree(c, collapsed)) };
+}
+
+/* ------------------------------------------------------------------ */
 /*  d3-hierarchy layout                                               */
 /* ------------------------------------------------------------------ */
 
@@ -196,7 +224,9 @@ function treeToGraph(data: TreeNode) {
 
 const TYPE_STYLES: Record<string, React.CSSProperties> = {
   root: {
-    border: "1px solid #d4d4d8",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#d4d4d8",
     borderRadius: 12,
     background: "#18181b",
     color: "#fafafa",
@@ -207,7 +237,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   pattern: {
-    border: "1px solid #bfdbfe",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#bfdbfe",
     borderRadius: 12,
     background: "#eff6ff",
     color: "#1e3a5f",
@@ -218,7 +250,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   component: {
-    border: "1px solid #bbf7d0",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#bbf7d0",
     borderRadius: 12,
     background: "#f0fdf4",
     color: "#14532d",
@@ -229,7 +263,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   clause: {
-    border: "1px solid #fde68a",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#fde68a",
     borderRadius: 12,
     background: "#fffbeb",
     color: "#713f12",
@@ -240,7 +276,9 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   form: {
-    border: "1px dashed #d4d4d8",
+    borderWidth: 1,
+    borderStyle: "dashed",
+    borderColor: "#d4d4d8",
     borderRadius: 10,
     background: "#ffffff",
     color: "#52525b",
@@ -257,9 +295,24 @@ const TYPE_STYLES: Record<string, React.CSSProperties> = {
 /* ------------------------------------------------------------------ */
 
 function XyflowDemoPage() {
-  const initial = useMemo(() => treeToGraph(grammarTree), []);
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initial.nodes as Node[]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initial.edges);
+  const [collapsedIds, setCollapsedIds] = useState<Set<string>>(new Set());
+
+  const activeTree = useMemo(
+    () => pruneTree(grammarTree, collapsedIds),
+    [collapsedIds],
+  );
+
+  const computed = useMemo(() => treeToGraph(activeTree), [activeTree]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>(computed.nodes as Node[]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(computed.edges);
+
+  // 折叠状态变化时同步 nodes/edges（useNodesState/useEdgesState 只用到初始值）
+  useEffect(() => {
+    setNodes([...computed.nodes as Node[]]);
+    setEdges([...computed.edges]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collapsedIds]);
+
   const newNodeIndexRef = useRef(0);
   const selectedNodeRef = useRef<string | null>(null);
 
@@ -306,20 +359,47 @@ function XyflowDemoPage() {
     ]);
   }, [nodes, edges, setNodes, setEdges]);
 
+  const handleNodeDoubleClick: import("@xyflow/react").NodeMouseHandler = useCallback(
+    (_event, node) => {
+      const nodeId = node.id;
+      if (!PARENT_IDS.has(nodeId)) return;
+      setCollapsedIds((prev) => {
+        const next = new Set(prev);
+        if (next.has(nodeId)) {
+          next.delete(nodeId);
+        } else {
+          next.add(nodeId);
+        }
+        return next;
+      });
+    },
+    [],
+  );
+
   const styledNodes = useMemo(
     () =>
       nodes.map((n) => {
         const data = n.data as { size: { w: number; h: number }; type: string };
+        const isCollapsed = collapsedIds.has(n.id);
         return {
           ...n,
+          data: {
+            ...n.data,
+            label: isCollapsed
+              ? `${(n.data as { label: string }).label}  [+]`
+              : (n.data as { label: string }).label,
+          },
           style: {
             width: data.size.w,
             height: data.size.h,
             ...TYPE_STYLES[data.type] ?? {},
+            ...(isCollapsed
+              ? { borderWidth: "1px" as const, borderStyle: "dashed" as const, borderColor: "#a1a1aa" }
+              : {}),
           },
         };
       }),
-    [nodes],
+    [nodes, collapsedIds],
   ) as Node[];
 
   return (
@@ -369,6 +449,7 @@ function XyflowDemoPage() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          onNodeDoubleClick={handleNodeDoubleClick}
           fitView
           fitViewOptions={{ padding: 0.22 }}
           defaultEdgeOptions={{ type: "smoothstep" }}
