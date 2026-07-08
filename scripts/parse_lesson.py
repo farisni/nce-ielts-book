@@ -93,6 +93,10 @@ def parse(html_file):
 
     nodes = soup.select(".lesson-notes h3, .lesson-notes h4, .lesson-notes .table-responsive, .lesson-notes ul:not(.table-responsive ul)")
 
+    def _extract_hl(el):
+        """提取元素中所有 strong/b 高亮词"""
+        return [clean(s.get_text()) for s in el.find_all(["strong", "b"]) if clean(s.get_text())]
+
     def _parse_table(table):
         rows = []
         for tr in table.find_all("tr"):
@@ -110,8 +114,19 @@ def parse(html_file):
             if td_sup:
                 td_sup.extract()
             td_text = clean(td.get_text(" ", strip=True))
+            hl = _extract_hl(td)
 
-            rows.append({"title": th_title, "titleDesc": th_desc, "example": td_text, "exampleDesc": td_cn})
+            row = {"title": th_title, "titleDesc": th_desc, "example": td_text, "exampleDesc": td_cn, "hl": hl}
+
+            # 提取 <a> 标签的 tooltip（th 和 td 都可能有）
+            th_a = th.find("a")
+            if th_a and th_a.get("title"):
+                row["titleTooltip"] = clean(th_a.get("title", ""))
+            td_a = td.find("a")
+            if td_a and td_a.get("title"):
+                row["tooltip"] = clean(td_a.get("title", ""))
+
+            rows.append(row)
         return {"table": rows}
 
     def _parse_list(ul):
@@ -122,7 +137,16 @@ def parse(html_file):
             if sup:
                 sup.extract()
             text = clean(li.get_text(" ", strip=True))
-            items.append({"example": text, "desc": note})
+            hl = _extract_hl(li)
+
+            item = {"example": text, "desc": note, "hl": hl}
+
+            # 提取 <a> 标签的 tooltip
+            li_a = li.find("a")
+            if li_a and li_a.get("title"):
+                item["tooltip"] = clean(li_a.get("title", ""))
+
+            items.append(item)
         return {"list": items}
 
     def _merge_or_standalone(view_type, node):
