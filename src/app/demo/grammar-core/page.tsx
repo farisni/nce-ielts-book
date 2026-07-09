@@ -31,7 +31,7 @@ const FORM_COMPONENTS = [
   { form: "介词短语", roles: ["状语", "表语", "定语", "宾语补足语", "同位语"] },
   { form: "不定式", roles: ["主语", "宾语", "表语", "定语", "状语", "宾语补足语"] },
   { form: "动名词", roles: ["主语", "宾语", "表语", "定语"] },
-  { form: "分词", roles: ["定语", "表语", "状语", "宾语补足语", "同位语"] },
+  { form: "分词", roles: ["主语", "宾语", "定语", "表语", "状语", "宾语补足语", "同位语"] },
   { form: "从句", roles: ["主语", "宾语", "表语", "定语", "状语", "同位语"] },
 ];
 
@@ -97,7 +97,7 @@ const MATRIX_ROWS: [string, string[]][] = [
   ["介词短语", ["状语","表语","定语","宾语补足语","同位语"]],
   ["不定式", ["主语","宾语","表语","定语","状语","宾语补足语"]],
   ["动名词", ["主语","宾语","表语","定语"]],
-  ["分词", ["定语","表语","状语","宾语补足语","同位语"]],
+  ["分词", ["主语","宾语","定语","表语","状语","宾语补足语","同位语"]],
   ["从句", ["主语","宾语","表语","定语","状语","同位语"]],
   ["动词", ["谓语"]],
   ["动词短语", ["谓语"]],
@@ -113,6 +113,7 @@ const TEXT_HIGHLIGHT: Record<string, string> = {
 const EXAMPLE_SENTENCES: Record<string, string> = {
   // 主语
   "名词::主语": "The dog barks. 狗在叫。",
+  "分词::主语": "Running every day keeps you fit. 每天跑步让你健康。",
   "代词::主语": "I love you. 我爱你。",
   "动名词::主语": "Swimming is fun. 游泳很有趣。",
   "不定式::主语": "To err is human. 犯错乃人之常情。",
@@ -121,6 +122,7 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "动词::谓语": "She runs fast. 她跑得很快。",
   "动词短语::谓语": "She is looking after the baby. 她在照看宝宝。",
   // 宾语
+  "分词::宾语": "She loves dancing in the rain. 她喜欢在雨中跳舞。",
   "名词::宾语": "He reads books. 他读书。",
   "代词::宾语": "He saw her. 他看见了她。",
   "动名词::宾语": "I enjoy swimming. 我喜欢游泳。",
