@@ -170,7 +170,7 @@ export default function GrammarCorePage() {
   const [expandedLeft, setExpandedLeft] = useState<string | null>(null);
   const [expandedRight, setExpandedRight] = useState<string | null>(null);
   const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
-  const [expandedMatrix, setExpandedMatrix] = useState<string | null>(null);
+  const [expandedMatrix, setExpandedMatrix] = useState<Set<string>>(new Set());
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -390,10 +390,10 @@ export default function GrammarCorePage() {
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
                   <div className="p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
-                       onClick={() => setExpandedMatrix(expandedMatrix === role ? null : role)}
+                       onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
                        title={matrixExamples.length > 0 ? "展开例句" : ""}
                   >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
-                  {expandedMatrix === role && matrixExamples.length > 0 && (
+                  {expandedMatrix.has(role) && matrixExamples.length > 0 && (
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
                         <div className="space-y-2">
                           {matrixExamples.map(({ form, example }) => (
