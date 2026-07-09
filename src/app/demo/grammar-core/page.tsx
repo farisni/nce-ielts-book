@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { WheelPicker } from "@/components/motion/wheel-picker";
+import { cn } from "@/lib/utils";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "不定式", "名词性从句"] },
@@ -189,6 +190,19 @@ function renderExpandedExample(example: string | null | undefined, englishClassN
   );
 }
 
+function renderStackedExample(example: string) {
+  const chineseStart = example.search(/[\u3400-\u9fff]/);
+  const english = chineseStart === -1 ? example : example.slice(0, chineseStart).trimEnd();
+  const chinese = chineseStart === -1 ? null : example.slice(chineseStart).trimStart();
+
+  return (
+    <div className="flex flex-col gap-1">
+      <p className="text-lg font-semibold text-foreground/85">{english}</p>
+      {chinese && <p className="text-xs text-muted-foreground/60">{chinese}</p>}
+    </div>
+  );
+}
+
 export default function GrammarCorePage() {
   const FORM_ALIAS: Record<string, string> = {
     "名词性从句": "从句",
@@ -206,6 +220,11 @@ export default function GrammarCorePage() {
   const [expandedMatrix, setExpandedMatrix] = useState<Set<string>>(new Set());
   const [selectedMatrixForm, setSelectedMatrixForm] = useState<string | null>(null);
   const [selectedMatrixRole, setSelectedMatrixRole] = useState<string | null>(null);
+  const selectedMatrixCompatible = !selectedMatrixForm || !selectedMatrixRole
+    || MATRIX_ROWS.find(([form]) => form === selectedMatrixForm)?.[1].includes(selectedMatrixRole) === true;
+  const selectedMatrixExample = selectedMatrixForm && selectedMatrixRole && selectedMatrixCompatible
+    ? getExample(selectedMatrixForm, selectedMatrixRole)
+    : null;
   const selectedMatrix = selectedMatrixForm && selectedMatrixRole
     ? {
         row: MATRIX_ROWS.findIndex(([form]) => form === selectedMatrixForm),
@@ -220,7 +239,7 @@ export default function GrammarCorePage() {
 
         {/* 句子成分 × 结构形式 矩阵 */}
         <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
-        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg p-3">
           <div className="inline-flex items-center justify-center gap-1">
             <WheelPicker
               aria-label="选择结构形式"
@@ -232,17 +251,20 @@ export default function GrammarCorePage() {
                 ...MATRIX_ROWS.map(([form]) => form),
               ]}
               renderSelectedOption={(label, value) => value ? (
-                <Badge variant="outline" className={`text-sm ${FORM_COLOR[value] ?? ""}`}>
+                <Badge
+                  variant="outline"
+                  className={cn(
+                    "text-sm",
+                    selectedMatrixCompatible
+                      ? FORM_COLOR[value]
+                      : "border-border bg-muted/40 text-muted-foreground/50",
+                  )}
+                >
                   {label}
                 </Badge>
               ) : label}
               value={selectedMatrixForm ?? ""}
-              onValueChange={(value) => {
-                setSelectedMatrixForm(value || null);
-                if (!value) return;
-                const roles = MATRIX_ROWS.find(([form]) => form === value)?.[1] ?? [];
-                setSelectedMatrixRole((current) => current && !roles.includes(current) ? null : current);
-              }}
+              onValueChange={(value) => setSelectedMatrixForm(value || null)}
             />
             <WheelPicker
               aria-label="选择句子成分"
@@ -254,20 +276,19 @@ export default function GrammarCorePage() {
                 ...MATRIX_FORMS,
               ]}
               renderSelectedOption={(label, value) => value ? (
-                <span className={`underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[value] ?? ""}`}>
+                <span
+                  className={cn(
+                    "underline underline-offset-4 decoration-2",
+                    selectedMatrixCompatible
+                      ? ROLE_UNDERLINE[value]
+                      : "text-muted-foreground/50 decoration-muted-foreground/30",
+                  )}
+                >
                   {label}
                 </span>
               ) : label}
               value={selectedMatrixRole ?? ""}
-              onValueChange={(value) => {
-                setSelectedMatrixRole(value || null);
-                if (!value) return;
-                setSelectedMatrixForm((current) => {
-                  if (!current) return current;
-                  const roles = MATRIX_ROWS.find(([form]) => form === current)?.[1] ?? [];
-                  return roles.includes(value) ? current : null;
-                });
-              }}
+              onValueChange={(value) => setSelectedMatrixRole(value || null)}
             />
           </div>
           <Button
@@ -284,6 +305,17 @@ export default function GrammarCorePage() {
             <X data-icon="inline-start" />
             清除
           </Button>
+          <div className="flex min-w-64 flex-1 self-stretch flex-col justify-center px-4 py-3">
+            <div className="leading-relaxed">
+              {selectedMatrixExample
+                ? renderStackedExample(selectedMatrixExample)
+                : selectedMatrixForm && selectedMatrixRole
+                  ? <span className="text-sm text-muted-foreground/60">
+                      {selectedMatrixCompatible ? "暂无对应例句" : "该组合不能匹配"}
+                    </span>
+                  : <span className="text-sm text-muted-foreground/60">滚动选择结构形式和句子成分</span>}
+            </div>
+          </div>
         </div>
         <div className="mt-4 overflow-x-auto scrollbar-ghost">
           <div className="inline-block min-w-full">
