@@ -36,15 +36,15 @@ const FORM_COMPONENTS = [
 ];
 
 const ROLE_COLOR: Record<string, string> = {
-  "主语": "border-emerald-300 bg-emerald-50 text-emerald-700",
-  "谓语": "border-blue-300 bg-blue-50/30 text-blue-700",
-  "宾语": "border-blue-300 bg-blue-50 text-blue-700",
-  "间接宾语": "border-sky-300 bg-sky-50 text-sky-700",
-  "表语": "border-orange-300 bg-orange-50 text-orange-700",
-  "宾语补足语": "border-[#C7D2CD] bg-[#C7D2CD]/20 text-[#5a6b63]",
-  "定语": "border-yellow-300 bg-yellow-50 text-yellow-700",
-  "状语": "border-pink-300 bg-pink-50 text-pink-700",
-  "同位语": "border-stone-300 bg-stone-50 text-stone-700",
+  "主语": "border-emerald-300 text-emerald-700",
+  "谓语": "border-blue-300 text-blue-700",
+  "宾语": "border-blue-300 text-blue-700",
+  "间接宾语": "border-sky-300 text-sky-700",
+  "表语": "border-orange-300 text-orange-700",
+  "宾语补足语": "border-[#C7D2CD] text-[#5a6b63]",
+  "定语": "border-yellow-300 text-yellow-700",
+  "状语": "border-pink-300 text-pink-700",
+  "同位语": "border-stone-300 text-stone-700",
 };
 
 const ROLE_UNDERLINE: Record<string, string> = {
