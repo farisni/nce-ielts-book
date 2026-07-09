@@ -187,6 +187,7 @@ export default function GrammarCorePage() {
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
           <div className="flex-1 p-3">
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">句子成分 → 结构形式</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -267,6 +268,7 @@ export default function GrammarCorePage() {
 
           {/* 右：结构形式 → 句子成分 */}
           <div className="flex-1 p-3">
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">结构形式 → 句子成分</h3>
             <Table>
               <TableHeader>
                 <TableRow>
