@@ -81,6 +81,9 @@ const FORM_UNDERLINE: Record<string, string> = {
   "不定式": "decoration-purple-400",
   "动名词": "decoration-emerald-400",
   "分词": "decoration-lime-400",
+  "动词": "decoration-[#c4623d]",
+  "动词短语": "decoration-[#c4623d]",
+  "从句": "decoration-neutral-400",
 };
 
 
