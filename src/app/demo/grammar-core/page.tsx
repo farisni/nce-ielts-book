@@ -397,7 +397,7 @@ export default function GrammarCorePage() {
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
                         <div className="space-y-2">
                           {matrixExamples.map(({ form, example }) => (
-                            <div key={form} className="grid grid-cols-[5rem_1fr] gap-x-2 gap-y-1 text-sm">
+                            <div key={form} className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-sm">
                               <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[form] ?? ''}`}>{form}</Badge>
                               <span className="text-muted-foreground leading-relaxed text-xs">{example}</span>
                             </div>
