@@ -84,7 +84,7 @@ const FORM_UNDERLINE: Record<string, string> = {
 };
 
 
-const MATRIX_FORMS = ["名词","代词","形容词","副词","介词短语","不定式","动名词","分词","从句","动词","动词短语"];
+const MATRIX_FORMS = ["主语","谓语","宾语","间接宾语","宾语补足语","表语","定语","状语","同位语"];
 
 const MATRIX_ROWS: [string, string[]][] = [
   ["主语", ["名词","代词","动名词","不定式","从句"]],
@@ -340,21 +340,21 @@ export default function GrammarCorePage() {
         <div className="mt-8 overflow-x-auto">
           <div className="inline-block min-w-full">
             <div className="grid border border-dashed border-border rounded-md"
-                 style={{ gridTemplateColumns: '7rem repeat(11, 1fr)' }}>
+                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr)' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
               {MATRIX_FORMS.map((f, ci) => (
-                <div key={f} className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${FORM_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>
+                <div key={f} className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${ROLE_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>
               ))}
               {MATRIX_ROWS.map(([role, forms], ri) => (
                 <React.Fragment key={role}>
-                  <div className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[role]} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}>{role === "宾语" ? "宾语（直接宾语）" : role}</div>
+                  <div className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}>{role}</div>
                   {MATRIX_FORMS.map((f, ci) => {
                     const hasMatch = forms.includes(f);
-                    const example = hasMatch ? getExample(f, role) : null;
+                    const example = hasMatch ? getExample(role, f) : null;
                     const cellDimmed = hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci;
                     const cell = (
                       <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? (FORM_COLOR[f] ?? '') : 'text-muted-foreground/20'}`}
+                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? (ROLE_COLOR[f] ?? '') : 'text-muted-foreground/20'}`}
                         onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
                         onMouseLeave={() => setHoveredMatrix(null)}
                       >
