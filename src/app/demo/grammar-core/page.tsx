@@ -390,7 +390,7 @@ export default function GrammarCorePage() {
                     const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
                     const cell = (
                       <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
+                        className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
                         onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
                         onMouseLeave={() => setHoveredMatrix(null)}
                       >
@@ -402,7 +402,7 @@ export default function GrammarCorePage() {
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
-                  <div className={`p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
+                  <div className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
                        onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
                        title={matrixExamples.length > 0 ? "展开例句" : ""}
                   >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
