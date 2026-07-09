@@ -247,25 +247,7 @@ export default function GrammarCorePage() {
                           </TableCell>
                         </TableRow>
                       )}
-                      {expandedMatrix === role && (() => {
-                    const allExamples = forms
-                      .map(f => ({ form: f, example: getExample(role, f) }))
-                      .filter(e => e.example);
-                    if (allExamples.length === 0) return null;
-                    return (
-                      <div className="col-span-full p-3 bg-muted/20">
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                          {allExamples.map(({ form, example }) => (
-                            <React.Fragment key={form}>
-                              <Badge variant="outline" className={`text-xs shrink-0 justify-self-end ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
-                              <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
-                            </React.Fragment>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })()}
-                </React.Fragment>
+
                   );
                 })}
               </TableBody>
