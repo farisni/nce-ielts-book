@@ -194,6 +194,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("demo grammar core 语法 核心 知识"),
   },
   {
+    id: "demo-ui-showcase",
+    label: "UI 展示",
+    description: "Wheel Picker · Likes Counter · Flip Text 组件展示",
+    href: "/demo/ui-showcase",
+    group: "Demo",
+    icon: <BracesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("demo ui showcase wheel picker likes counter flip text"),
+  },
+  {
     id: "demo-button",
     label: "Demo · Button",
     description: "Button component demo",
@@ -303,14 +312,6 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("ng national geographic reading explorer 国家地理"),
   },
   {
-    id: "demo-springs",
-    label: "Demo · Springs",
-    description: "Framer-motion spring animation presets",
-    href: "/demo/springs",
-    group: "Demo",
-    icon: <CommandIcon className="text-muted-foreground" />,
-    keywords: toKeywords("demo springs animation framer motion bounce"),
-  },  {
     id: "demo-panel-notes",
     label: "Demo · Panel Notes",
     description: "行间笔记面板排版与动画预览",
