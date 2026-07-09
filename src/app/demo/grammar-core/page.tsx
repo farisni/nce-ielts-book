@@ -356,7 +356,7 @@ export default function GrammarCorePage() {
         </div>
         {/* 句子成分 × 结构形式 矩阵 */}
         <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
-        <div className="mt-8 overflow-x-auto">
+        <div className="mt-8 overflow-x-auto scrollbar-ghost">
           <div className="inline-block min-w-full">
             <div className="grid rounded-md"
                  style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
