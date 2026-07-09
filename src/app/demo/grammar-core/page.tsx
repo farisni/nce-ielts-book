@@ -395,12 +395,12 @@ export default function GrammarCorePage() {
                   >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
                   {expandedMatrix === role && matrixExamples.length > 0 && (
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                        <div className="flex flex-col gap-y-1">
                           {matrixExamples.map(({ form, example }) => (
-                            <React.Fragment key={form}>
-                              <Badge variant="outline" className={`text-xs shrink-0 justify-self-start ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
-                              <span className="text-xs text-muted-foreground leading-relaxed justify-self-start text-left">{example}</span>
-                            </React.Fragment>
+                            <div key={form} className="flex items-center gap-x-2">
+                              <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
+                              <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
+                            </div>
                           ))}
                         </div>
                       </div>
