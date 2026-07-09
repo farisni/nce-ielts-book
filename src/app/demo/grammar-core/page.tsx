@@ -366,15 +366,18 @@ export default function GrammarCorePage() {
                   const matrixExamples = forms
                     .map(f => ({ form: f, example: getExample(role, f) }))
                     .filter(e => e.example);
+                  const anyMatrixExpanded = expandedMatrix.size > 0;
+                  const isMatrixExpanded = expandedMatrix.has(role);
+                  const matrixRowDimmed = anyMatrixExpanded && !isMatrixExpanded;
                   return (
                 <React.Fragment key={role}>
                   <div
-                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}
+                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${(hoveredMatrix && hoveredMatrix.row !== ri) || matrixRowDimmed ? 'opacity-25' : ''}`}
                   >{role}</div>
                   {MATRIX_FORMS.map((f, ci) => {
                     const hasMatch = forms.includes(f);
                     const example = hasMatch ? getExample(role, f) : null;
-                    const cellDimmed = hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci;
+                    const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
                     const cell = (
                       <div
                         className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? (FORM_COLOR[role] ?? '') : 'text-muted-foreground/20'}`}
@@ -389,7 +392,7 @@ export default function GrammarCorePage() {
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
-                  <div className="p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+                  <div className={`p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
                        onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
                        title={matrixExamples.length > 0 ? "展开例句" : ""}
                   >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
