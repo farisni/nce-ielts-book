@@ -125,7 +125,7 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "名词::间接宾语": "He gave Mary a gift. 他给了Mary一份礼物。",
   "代词::间接宾语": "He gave her a gift. 他给了她一份礼物。",
   "名词::表语": "He is a teacher. 他是一名老师。",
-  "形容词::表语": "She is happy. 她很开心。",
+  "代词::表语": "The winner is him. 赢家是他。",  "形容词::表语": "She is happy. 她很开心。",
   "分词::表语": "He is excited. 他很兴奋。",
   "不定式::表语": "My goal is to succeed. 我的目标是成功。",
   "介词短语::表语": "She is in the room. 她在房间里。",
