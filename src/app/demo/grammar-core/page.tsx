@@ -152,6 +152,13 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "从句::同位语": "The idea that he proposed is great. 他提的建议很棒。",
 };
 
+function getTextColor(form: string): string {
+  const val = FORM_COLOR[form];
+  if (!val) return "";
+  const m = val.match(/text-\S+/);
+  return m ? m[0] : "";
+}
+
 function getExample(form: string, role: string): string | null {
   return EXAMPLE_SENTENCES[`${form}::${role}`] ?? null;
 }
@@ -383,7 +390,7 @@ export default function GrammarCorePage() {
                     const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
                     const cell = (
                       <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? (FORM_COLOR[role] ?? '') : 'text-muted-foreground/20'}`}
+                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
                         onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
                         onMouseLeave={() => setHoveredMatrix(null)}
                       >
