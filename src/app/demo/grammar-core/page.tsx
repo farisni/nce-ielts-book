@@ -339,6 +339,7 @@ export default function GrammarCorePage() {
         </div>
 
         {/* 句子成分 × 结构形式 矩阵 */}
+        <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
         <div className="mt-8 overflow-x-auto">
           <div className="inline-block min-w-full">
             <div className="grid border border-dashed border-border rounded-md"
