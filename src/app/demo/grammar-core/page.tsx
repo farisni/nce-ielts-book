@@ -10,17 +10,10 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
+import { WheelPicker } from "@/components/motion/wheel-picker";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "不定式", "名词性从句"] },
@@ -233,62 +226,61 @@ export default function GrammarCorePage() {
 
         {/* 句子成分 × 结构形式 矩阵 */}
         <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
-        <div className="mb-4 flex flex-wrap items-end gap-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
-          <div className="flex flex-col gap-1.5">
-            <Select
+        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+          <div className="inline-flex items-center justify-center gap-1">
+            <WheelPicker
+              aria-label="选择结构形式"
+              className="w-24 border-0 !bg-transparent"
+              visibleCount={7}
+              itemHeight={42}
+              options={[
+                { label: "结构形式", value: "" },
+                ...selectedMatrixForms,
+              ]}
+              renderSelectedOption={(label, value) => value ? (
+                <Badge variant="outline" className={`text-sm ${FORM_COLOR[value] ?? ""}`}>
+                  {label}
+                </Badge>
+              ) : label}
               value={selectedMatrixForm ?? ""}
               onValueChange={(value) => {
+                if (!value) {
+                  setSelectedMatrixForm(null);
+                  return;
+                }
                 const roles = MATRIX_ROWS.find(([form]) => form === value)?.[1] ?? [];
                 setSelectedMatrixForm(value);
                 setSelectedMatrixRole((current) => current && roles.includes(current) ? current : roles[0] ?? null);
               }}
-            >
-              <SelectTrigger className="w-36" size="default">
-                <SelectValue placeholder="选择结构形式" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {selectedMatrixForms.map((form) => (
-                    <SelectItem key={form} value={form}>
-                      <Badge variant="outline" className={`text-xs ${FORM_COLOR[form] ?? ""}`}>
-                        {form}
-                      </Badge>
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-          <span className="pb-1 text-sm font-semibold text-foreground/70">可以作为</span>
-          <div className="flex flex-col gap-1.5">
-            <Select
+            />
+            <WheelPicker
+              aria-label="选择句子成分"
+              className="w-28 border-0 !bg-transparent"
+              visibleCount={7}
+              itemHeight={42}
+              options={[
+                { label: "句子成分", value: "" },
+                ...selectedMatrixRoles,
+              ]}
+              renderSelectedOption={(label, value) => value ? (
+                <span className={`underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[value] ?? ""}`}>
+                  {label}
+                </span>
+              ) : label}
               value={selectedMatrixRole ?? ""}
               onValueChange={(value) => {
+                if (!value) {
+                  setSelectedMatrixRole(null);
+                  return;
+                }
                 const forms = MATRIX_ROWS.filter(([, roles]) => roles.includes(value)).map(([form]) => form);
                 setSelectedMatrixRole(value);
                 setSelectedMatrixForm((current) => current && forms.includes(current) ? current : forms[0] ?? null);
               }}
-            >
-              <SelectTrigger
-                className={`w-44 ${selectedMatrixRole ? `underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[selectedMatrixRole] ?? ""}` : ""}`}
-                size="default"
-              >
-                <SelectValue placeholder="选择句子成分" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {selectedMatrixRoles.map((role) => (
-                    <SelectItem key={role} value={role}>
-                      <span className={`underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[role] ?? ""}`}>
-                        {role}
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            />
           </div>
           <Button
+            className="self-center"
             type="button"
             variant="outline"
             size="sm"

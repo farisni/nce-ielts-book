@@ -5,6 +5,7 @@ import { useReducedMotion } from "motion/react";
 import {
   type KeyboardEvent,
   type PointerEvent,
+  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -21,6 +22,7 @@ export interface WheelPickerProps {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
+  renderSelectedOption?: (label: string, value: string) => ReactNode;
   /** Rows visible through the window, odd. More = flatter curve. Default 5. */
   visibleCount?: number;
   /** Row height in px. Default 36. */
@@ -60,6 +62,7 @@ export function WheelPicker({
   value,
   defaultValue,
   onValueChange,
+  renderSelectedOption,
   visibleCount = 5,
   itemHeight = 36,
   disabled = false,
@@ -370,7 +373,9 @@ export function WheelPicker({
                   )}
                   style={{ height: itemHeight }}
                 >
-                  {optionLabel(option)}
+                  {v === currentValue && renderSelectedOption
+                    ? renderSelectedOption(optionLabel(option), v)
+                    : optionLabel(option)}
                 </button>
               </li>
             );
@@ -427,7 +432,10 @@ export function WheelPicker({
           Its own perspective, centred on the container middle, matches the main
           drum's projection so the two copies register exactly. */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-1/2 z-10 -translate-y-1/2 overflow-hidden rounded-md bg-foreground/[0.04]"
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-1/2 z-10 -translate-y-1/2 overflow-hidden rounded-md",
+          renderSelectedOption ? "bg-background" : "bg-foreground/[0.04]",
+        )}
         style={{ height: itemHeight, perspective: 1000 }}
       >
         <ul
@@ -446,7 +454,9 @@ export function WheelPicker({
                 transform: `rotateX(${-itemAngle * i}deg) translateZ(${radius}px)`,
               }}
             >
-              {optionLabel(option)}
+              {renderSelectedOption
+                ? renderSelectedOption(optionLabel(option), optionValue(option))
+                : optionLabel(option)}
             </li>
           ))}
         </ul>
