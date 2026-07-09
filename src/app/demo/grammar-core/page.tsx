@@ -84,7 +84,7 @@ const FORM_UNDERLINE: Record<string, string> = {
 };
 
 
-const MATRIX_FORMS = ["主语","谓语","宾语","间接宾语","宾语补足语","表语","定语","状语","同位语"];
+const MATRIX_FORMS = ["主语","宾语","间接宾语","宾语补足语","表语","定语","状语","同位语","谓语"];
 
 const MATRIX_ROWS: [string, string[]][] = [
   ["名词", ["主语","宾语","表语","宾语补足语","同位语"]],
