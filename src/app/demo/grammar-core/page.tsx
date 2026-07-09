@@ -360,7 +360,11 @@ export default function GrammarCorePage() {
                 if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
                 return <React.Fragment key={f}>{header}</React.Fragment>;
               })}
-              {MATRIX_ROWS.map(([role, forms], ri) => (
+              {MATRIX_ROWS.map(([role, forms], ri) => {
+                  const matrixExamples = forms
+                    .map(f => ({ form: f, example: getExample(role, f) }))
+                    .filter(e => e.example);
+                  return (
                 <React.Fragment key={role}>
                   <div
                     className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 cursor-pointer ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}
@@ -384,15 +388,10 @@ export default function GrammarCorePage() {
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
-                  {expandedMatrix === role && (() => {
-                    const allExamples = forms
-                      .map(f => ({ form: f, example: getExample(role, f) }))
-                      .filter(e => e.example);
-                    if (allExamples.length === 0) return null;
-                    return (
+                  {expandedMatrix === role && matrixExamples.length > 0 && (
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                          {allExamples.map(({ form, example }) => (
+                          {matrixExamples.map(({ form, example }) => (
                             <React.Fragment key={form}>
                               <Badge variant="outline" className={`text-xs shrink-0 justify-self-end ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
                               <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
@@ -400,9 +399,10 @@ export default function GrammarCorePage() {
                           ))}
                         </div>
                       </div>
-                    );
-                  })()}
+                    )}
                 </React.Fragment>
+                  );
+                })}
               ))}
             </div>
           </div>
