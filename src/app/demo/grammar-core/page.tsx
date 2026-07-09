@@ -69,6 +69,10 @@ const FORM_COLOR: Record<string, string> = {
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
+  "动名词": "border-cyan-300 bg-cyan-50 text-cyan-700",
+  "名词性从句": "border-stone-300 bg-stone-50 text-stone-600",
+  "定语从句": "border-amber-300 bg-amber-50 text-amber-700",
+  "状语从句": "border-rose-300 bg-rose-50 text-rose-600",
 };
 
 const FORM_UNDERLINE: Record<string, string> = {
@@ -423,6 +427,77 @@ export default function GrammarCorePage() {
                 })}
             </div>
           </div>
+
+          {/* 性质 → 成分 → 结构形式 */}
+          <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-8">性质 → 成分 → 结构形式</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[22%]">性质</TableHead>
+                <TableHead className="w-[48%]">常见对应成分</TableHead>
+                <TableHead className="w-[30%]">结构形式（常见充当）</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-semibold text-emerald-700">名词性<br /><span className="text-xs font-normal text-muted-foreground">Nominal</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-emerald-300 text-emerald-700">主语 S</Badge>
+                    <Badge variant="outline" className="text-xs border-blue-300 text-blue-700">宾语 O</Badge>
+                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
+                    <Badge variant="outline" className="text-xs border-stone-300 text-stone-700">同位语</Badge>
+                    <Badge variant="outline" className="text-xs border-sky-300 text-sky-700">间接宾语 IO</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-emerald-300 bg-emerald-50 text-emerald-700">名词</Badge>
+                    <Badge variant="outline" className="text-xs border-emerald-200 bg-emerald-50/60 text-emerald-600">代词</Badge>
+                    <Badge variant="outline" className="text-xs border-cyan-300 bg-cyan-50 text-cyan-700">动名词</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-stone-300 bg-stone-50 text-stone-600">名词性从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-semibold text-yellow-700">形容词性<br /><span className="text-xs font-normal text-muted-foreground">Adjectival</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-yellow-300 text-yellow-700">定语</Badge>
+                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
+                    <Badge variant="outline" className="text-xs border-[#C7D2CD] text-[#5a6b63]">宾语补足语 OC</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-yellow-300 bg-yellow-50 text-yellow-700">形容词</Badge>
+                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
+                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-amber-300 bg-amber-50 text-amber-700">定语从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-semibold text-rose-700">副词性<br /><span className="text-xs font-normal text-muted-foreground">Adverbial</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-pink-300 text-pink-700">状语</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-700">副词</Badge>
+                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
+                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-600">状语从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
 
       </div>
