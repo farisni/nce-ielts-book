@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { MoreHorizontal } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -391,7 +392,7 @@ export default function GrammarCorePage() {
                   <div className="p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
                        onClick={() => setExpandedMatrix(expandedMatrix === role ? null : role)}
                        title={matrixExamples.length > 0 ? "展开例句" : ""}
-                  >{matrixExamples.length > 0 ? '⋯' : ''}</div>
+                  >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
                   {expandedMatrix === role && matrixExamples.length > 0 && (
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
