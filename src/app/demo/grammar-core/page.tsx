@@ -135,7 +135,7 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "形容词::宾语补足语": "They painted the wall white. 他们把墙刷白了。",
   "不定式::宾语补足语": "I want you to go. 我要你走。",
   "分词::宾语补足语": "I saw him running. 我看见他在跑。",
-  "介词短语::宾语补足语": "She put the book on the table. 她把书放在桌上。",
+  "分词::状语": "Walking slowly, he went home. 他慢慢地走回家。",  "介词短语::宾语补足语": "She put the book on the table. 她把书放在桌上。",
   // 定语
   "形容词::定语": "a beautiful flower 一朵美丽的花",
   "不定式::定语": "a book to read 一本要读的书",
