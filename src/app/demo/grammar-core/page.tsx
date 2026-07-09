@@ -186,6 +186,149 @@ export default function GrammarCorePage() {
   return (
     <main className="min-h-screen px-6 py-8">
       <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-border p-4">
+
+        {/* 句子成分 × 结构形式 矩阵 */}
+        <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
+        <div className="mt-8 overflow-x-auto scrollbar-ghost">
+          <div className="inline-block min-w-full">
+            <div className="grid rounded-md"
+                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
+              <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
+              {(() => {
+                const expandedColumns = new Set(MATRIX_ROWS.filter(([r]) => expandedMatrix.has(r)).flatMap(([, forms]) => forms));
+                const anyExpanded = expandedMatrix.size > 0;
+                return MATRIX_FORMS.map((f, ci) => {
+                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
+                const tooltipText = tipMap[f];
+                const header = <div className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-opacity ${tooltipText ? "cursor-pointer" : "cursor-default"} ${ROLE_COLOR[f] ?? ''} ${(hoveredMatrix && hoveredMatrix.col !== ci) || (anyExpanded && !expandedColumns.has(f)) ? 'opacity-25' : ''}`}>{f}</div>;
+                if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
+                return <React.Fragment key={f}>{header}</React.Fragment>;
+              })})()}
+              <div className="border-b border-dashed border-border"></div>
+              {MATRIX_ROWS.map(([role, forms], ri) => {
+                  const matrixExamples = forms
+                    .map(f => ({ form: f, example: getExample(role, f) }))
+                    .filter(e => e.example);
+                  const anyMatrixExpanded = expandedMatrix.size > 0;
+                  const isMatrixExpanded = expandedMatrix.has(role);
+                  const matrixRowDimmed = anyMatrixExpanded && !isMatrixExpanded;
+                  return (
+                <React.Fragment key={role}>
+                  <div
+                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${(hoveredMatrix && hoveredMatrix.row !== ri) || matrixRowDimmed ? 'opacity-25' : ''}`}
+                  >{role}</div>
+                  {MATRIX_FORMS.map((f, ci) => {
+                    const hasMatch = forms.includes(f);
+                    const example = hasMatch ? getExample(role, f) : null;
+                    const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
+                    const cell = (
+                      <div
+                        className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
+                        onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
+                        onMouseLeave={() => setHoveredMatrix(null)}
+                      >
+                        {hasMatch ? '●' : '·'}
+                      </div>
+                    );
+                    if (example) {
+                      return <Tooltip key={f} content={<span className="text-xs">{example}</span>}>{cell}</Tooltip>;
+                    }
+                    return <React.Fragment key={f}>{cell}</React.Fragment>;
+                  })}
+                  <div className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
+                       onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
+                       title={matrixExamples.length > 0 ? "展开例句" : ""}
+                  >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
+                  {expandedMatrix.has(role) && matrixExamples.length > 0 && (
+                      <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
+                        <div className="space-y-2">
+                          {matrixExamples.map(({ form, example }) => (
+                            <div key={form} className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-sm">
+                              <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[form] ?? ''}`}>{form}</Badge>
+                              <span className="text-muted-foreground leading-relaxed text-xs">{example}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                </React.Fragment>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+          {/* 性质 → 成分 → 结构形式 */}
+          <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-8">性质 → 成分 → 结构形式</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[22%]">性质</TableHead>
+                <TableHead className="w-[48%]">常见对应成分</TableHead>
+                <TableHead className="w-[30%]">结构形式（常见充当）</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-semibold text-emerald-700">名词性<br /><span className="text-xs font-normal text-muted-foreground">Nominal</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-emerald-300 text-emerald-700">主语 S</Badge>
+                    <Badge variant="outline" className="text-xs border-blue-300 text-blue-700">宾语 O</Badge>
+                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
+                    <Badge variant="outline" className="text-xs border-stone-300 text-stone-700">同位语</Badge>
+                    <Badge variant="outline" className="text-xs border-sky-300 text-sky-700">间接宾语 IO</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-emerald-300 bg-emerald-50 text-emerald-700">名词</Badge>
+                    <Badge variant="outline" className="text-xs border-emerald-200 bg-emerald-50/60 text-emerald-600">代词</Badge>
+                    <Badge variant="outline" className="text-xs border-cyan-300 bg-cyan-50 text-cyan-700">动名词</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-stone-300 bg-stone-50 text-stone-600">名词性从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-semibold text-yellow-700">形容词性<br /><span className="text-xs font-normal text-muted-foreground">Adjectival</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-yellow-300 text-yellow-700">定语</Badge>
+                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
+                    <Badge variant="outline" className="text-xs border-[#C7D2CD] text-[#5a6b63]">宾语补足语 OC</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-yellow-300 bg-yellow-50 text-yellow-700">形容词</Badge>
+                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
+                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-amber-300 bg-amber-50 text-amber-700">定语从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-semibold text-rose-700">副词性<br /><span className="text-xs font-normal text-muted-foreground">Adverbial</span></TableCell>
+                <TableCell className="text-sm">
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-pink-300 text-pink-700">状语</Badge>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-700">副词</Badge>
+                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
+                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
+                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-600">状语从句</Badge>
+                  </div>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
           <div className="flex-1 p-3">
@@ -357,147 +500,6 @@ export default function GrammarCorePage() {
             <p>表语 → 说明主语</p>
             <p>宾语补足语 → 说明宾语</p>
           </blockquote>
-        </div>
-        {/* 句子成分 × 结构形式 矩阵 */}
-        <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
-        <div className="mt-8 overflow-x-auto scrollbar-ghost">
-          <div className="inline-block min-w-full">
-            <div className="grid rounded-md"
-                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
-              <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
-              {(() => {
-                const expandedColumns = new Set(MATRIX_ROWS.filter(([r]) => expandedMatrix.has(r)).flatMap(([, forms]) => forms));
-                const anyExpanded = expandedMatrix.size > 0;
-                return MATRIX_FORMS.map((f, ci) => {
-                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
-                const tooltipText = tipMap[f];
-                const header = <div className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-opacity ${tooltipText ? "cursor-pointer" : "cursor-default"} ${ROLE_COLOR[f] ?? ''} ${(hoveredMatrix && hoveredMatrix.col !== ci) || (anyExpanded && !expandedColumns.has(f)) ? 'opacity-25' : ''}`}>{f}</div>;
-                if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
-                return <React.Fragment key={f}>{header}</React.Fragment>;
-              })})()}
-              <div className="border-b border-dashed border-border"></div>
-              {MATRIX_ROWS.map(([role, forms], ri) => {
-                  const matrixExamples = forms
-                    .map(f => ({ form: f, example: getExample(role, f) }))
-                    .filter(e => e.example);
-                  const anyMatrixExpanded = expandedMatrix.size > 0;
-                  const isMatrixExpanded = expandedMatrix.has(role);
-                  const matrixRowDimmed = anyMatrixExpanded && !isMatrixExpanded;
-                  return (
-                <React.Fragment key={role}>
-                  <div
-                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${(hoveredMatrix && hoveredMatrix.row !== ri) || matrixRowDimmed ? 'opacity-25' : ''}`}
-                  >{role}</div>
-                  {MATRIX_FORMS.map((f, ci) => {
-                    const hasMatch = forms.includes(f);
-                    const example = hasMatch ? getExample(role, f) : null;
-                    const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
-                    const cell = (
-                      <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
-                        onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
-                        onMouseLeave={() => setHoveredMatrix(null)}
-                      >
-                        {hasMatch ? '●' : '·'}
-                      </div>
-                    );
-                    if (example) {
-                      return <Tooltip key={f} content={<span className="text-xs">{example}</span>}>{cell}</Tooltip>;
-                    }
-                    return <React.Fragment key={f}>{cell}</React.Fragment>;
-                  })}
-                  <div className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
-                       onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
-                       title={matrixExamples.length > 0 ? "展开例句" : ""}
-                  >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
-                  {expandedMatrix.has(role) && matrixExamples.length > 0 && (
-                      <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
-                        <div className="space-y-2">
-                          {matrixExamples.map(({ form, example }) => (
-                            <div key={form} className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-sm">
-                              <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[form] ?? ''}`}>{form}</Badge>
-                              <span className="text-muted-foreground leading-relaxed text-xs">{example}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                </React.Fragment>
-                  );
-                })}
-            </div>
-          </div>
-
-          {/* 性质 → 成分 → 结构形式 */}
-          <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-8">性质 → 成分 → 结构形式</h3>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[22%]">性质</TableHead>
-                <TableHead className="w-[48%]">常见对应成分</TableHead>
-                <TableHead className="w-[30%]">结构形式（常见充当）</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-semibold text-emerald-700">名词性<br /><span className="text-xs font-normal text-muted-foreground">Nominal</span></TableCell>
-                <TableCell className="text-sm">
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-emerald-300 text-emerald-700">主语 S</Badge>
-                    <Badge variant="outline" className="text-xs border-blue-300 text-blue-700">宾语 O</Badge>
-                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
-                    <Badge variant="outline" className="text-xs border-stone-300 text-stone-700">同位语</Badge>
-                    <Badge variant="outline" className="text-xs border-sky-300 text-sky-700">间接宾语 IO</Badge>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-emerald-300 bg-emerald-50 text-emerald-700">名词</Badge>
-                    <Badge variant="outline" className="text-xs border-emerald-200 bg-emerald-50/60 text-emerald-600">代词</Badge>
-                    <Badge variant="outline" className="text-xs border-cyan-300 bg-cyan-50 text-cyan-700">动名词</Badge>
-                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
-                    <Badge variant="outline" className="text-xs border-stone-300 bg-stone-50 text-stone-600">名词性从句</Badge>
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-semibold text-yellow-700">形容词性<br /><span className="text-xs font-normal text-muted-foreground">Adjectival</span></TableCell>
-                <TableCell className="text-sm">
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-yellow-300 text-yellow-700">定语</Badge>
-                    <Badge variant="outline" className="text-xs border-orange-300 text-orange-700">表语 C</Badge>
-                    <Badge variant="outline" className="text-xs border-[#C7D2CD] text-[#5a6b63]">宾语补足语 OC</Badge>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-yellow-300 bg-yellow-50 text-yellow-700">形容词</Badge>
-                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
-                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
-                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
-                    <Badge variant="outline" className="text-xs border-amber-300 bg-amber-50 text-amber-700">定语从句</Badge>
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-semibold text-rose-700">副词性<br /><span className="text-xs font-normal text-muted-foreground">Adverbial</span></TableCell>
-                <TableCell className="text-sm">
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-pink-300 text-pink-700">状语</Badge>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className="flex flex-wrap gap-1">
-                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-700">副词</Badge>
-                    <Badge variant="outline" className="text-xs border-violet-300 bg-violet-50 text-violet-700">介词短语</Badge>
-                    <Badge variant="outline" className="text-xs border-purple-300 bg-purple-50 text-purple-700">不定式</Badge>
-                    <Badge variant="outline" className="text-xs border-lime-300 bg-lime-50 text-lime-700">分词</Badge>
-                    <Badge variant="outline" className="text-xs border-rose-300 bg-rose-50 text-rose-600">状语从句</Badge>
-                  </div>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
         </div>
 
       </div>
