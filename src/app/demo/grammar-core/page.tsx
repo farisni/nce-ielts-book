@@ -169,6 +169,7 @@ export default function GrammarCorePage() {
   const [expandedLeft, setExpandedLeft] = useState<string | null>(null);
   const [expandedRight, setExpandedRight] = useState<string | null>(null);
   const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
+  const [expandedMatrix, setExpandedMatrix] = useState<string | null>(null);
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -246,7 +247,25 @@ export default function GrammarCorePage() {
                           </TableCell>
                         </TableRow>
                       )}
-                    </React.Fragment>
+                      {expandedMatrix === role && (() => {
+                    const allExamples = forms
+                      .map(f => ({ form: f, example: getExample(role, f) }))
+                      .filter(e => e.example);
+                    if (allExamples.length === 0) return null;
+                    return (
+                      <div className="col-span-full p-3 bg-muted/20">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                          {allExamples.map(({ form, example }) => (
+                            <React.Fragment key={form}>
+                              <Badge variant="outline" className={`text-xs shrink-0 justify-self-end ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
+                              <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </React.Fragment>
                   );
                 })}
               </TableBody>
@@ -361,7 +380,10 @@ export default function GrammarCorePage() {
               })}
               {MATRIX_ROWS.map(([role, forms], ri) => (
                 <React.Fragment key={role}>
-                  <div className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}>{role}</div>
+                  <div
+                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 cursor-pointer ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}
+                    onDoubleClick={() => setExpandedMatrix(expandedMatrix === role ? null : role)}
+                  >{role}</div>
                   {MATRIX_FORMS.map((f, ci) => {
                     const hasMatch = forms.includes(f);
                     const example = hasMatch ? getExample(role, f) : null;
@@ -380,6 +402,24 @@ export default function GrammarCorePage() {
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
+                  {expandedMatrix === role && (() => {
+                    const allExamples = forms
+                      .map(f => ({ form: f, example: getExample(role, f) }))
+                      .filter(e => e.example);
+                    if (allExamples.length === 0) return null;
+                    return (
+                      <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                          {allExamples.map(({ form, example }) => (
+                            <React.Fragment key={form}>
+                              <Badge variant="outline" className={`text-xs shrink-0 justify-self-end ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
+                              <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </React.Fragment>
               ))}
             </div>
