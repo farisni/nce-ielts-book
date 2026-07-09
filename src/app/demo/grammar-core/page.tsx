@@ -13,10 +13,10 @@ import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 
 const SENTENCE_COMPONENTS = [
-  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
+  { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "不定式", "名词性从句"] },
   { component: "谓语 (V)", roleKey: "谓语", forms: ["动词", "动词短语"] },
-  { component: "宾语 (直接宾语)", roleKey: "宾语", forms: ["名词", "代词", "动名词", "不定式", "名词性从句"] },
-  { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "动名词", "不定式", "从句"] },
+  { component: "宾语 (直接宾语)", roleKey: "宾语", forms: ["名词", "代词", "不定式", "名词性从句"] },
+  { component: "表语 (C)", roleKey: "表语", forms: ["名词", "形容词", "介词短语", "分词", "不定式", "从句"] },
   { component: "间接宾语 (IO)", roleKey: "间接宾语", forms: ["名词", "代词"] },
   { component: "宾语补足语 (OC)", roleKey: "宾语补足语", forms: ["名词", "形容词", "不定式", "分词", "介词短语"] },
   { component: "定语 (Attr)", roleKey: "定语", forms: ["形容词", "不定式", "介词短语", "从句"] },
@@ -30,7 +30,6 @@ const FORM_COMPONENTS = [
   { form: "副词", roles: ["状语"] },
   { form: "介词短语", roles: ["状语", "表语", "定语", "宾语补足语", "同位语"] },
   { form: "不定式", roles: ["主语", "宾语", "表语", "定语", "状语", "宾语补足语"] },
-  { form: "动名词", roles: ["主语", "宾语", "表语", "定语"] },
   { form: "分词", roles: ["主语", "宾语", "定语", "表语", "状语", "宾语补足语", "同位语"] },
   { form: "从句", roles: ["主语", "宾语", "表语", "定语", "状语", "同位语"] },
 ];
@@ -66,7 +65,6 @@ const FORM_COLOR: Record<string, string> = {
   "副词": "border-rose-300 bg-rose-50 text-rose-700",
   "介词短语": "border-violet-300 bg-violet-50 text-violet-700",
   "不定式": "border-purple-300 bg-purple-50 text-purple-700",
-  "动名词": "border-emerald-300 bg-emerald-50 text-emerald-700",
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
@@ -79,7 +77,6 @@ const FORM_UNDERLINE: Record<string, string> = {
   "副词": "decoration-rose-400",
   "介词短语": "decoration-violet-400",
   "不定式": "decoration-purple-400",
-  "动名词": "decoration-emerald-400",
   "分词": "decoration-lime-400",
   "动词": "decoration-[#c4623d]",
   "动词短语": "decoration-[#c4623d]",
@@ -114,7 +111,6 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "名词::主语": "The dog barks. 狗在叫。",
   "分词::主语": "Running every day keeps you fit. 每天跑步让你健康。",
   "代词::主语": "I love you. 我爱你。",
-  "动名词::主语": "Swimming is fun. 游泳很有趣。",
   "不定式::主语": "To err is human. 犯错乃人之常情。",
   "从句::主语": "What you said is true. 你说的是真的。",
   // 谓语
@@ -124,7 +120,6 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "分词::宾语": "She loves dancing in the rain. 她喜欢在雨中跳舞。",
   "名词::宾语": "He reads books. 他读书。",
   "代词::宾语": "He saw her. 他看见了她。",
-  "动名词::宾语": "I enjoy swimming. 我喜欢游泳。",
   "不定式::宾语": "She wants to go. 她想去。",
   "从句::宾语": "I know what you mean. 我懂你的意思。",
   // 间接宾语
@@ -134,7 +129,6 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "名词::表语": "He is a teacher. 他是一名老师。",
   "形容词::表语": "She is happy. 她很开心。",
   "分词::表语": "He is excited. 他很兴奋。",
-  "动名词::表语": "Seeing is believing. 眼见为实。",
   "不定式::表语": "My goal is to succeed. 我的目标是成功。",
   "介词短语::表语": "She is in the room. 她在房间里。",
   "从句::表语": "The truth is that he lied. 事实是他撒谎了。",
