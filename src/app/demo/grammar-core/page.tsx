@@ -399,7 +399,7 @@ export default function GrammarCorePage() {
                           {matrixExamples.map(({ form, example }) => (
                             <React.Fragment key={form}>
                               <Badge variant="outline" className={`text-xs shrink-0 justify-self-start ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
-                              <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
+                              <span className="text-xs text-muted-foreground leading-relaxed justify-self-start text-left">{example}</span>
                             </React.Fragment>
                           ))}
                         </div>
