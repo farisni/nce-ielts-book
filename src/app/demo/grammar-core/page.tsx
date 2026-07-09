@@ -390,7 +390,7 @@ export default function GrammarCorePage() {
                     const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
                     const cell = (
                       <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs cursor-default transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
+                        className={`p-2 text-center border-b border-dashed border-border text-xs ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
                         onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
                         onMouseLeave={() => setHoveredMatrix(null)}
                       >
