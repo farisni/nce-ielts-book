@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, X } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -10,6 +10,15 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 
@@ -99,7 +108,7 @@ const MATRIX_ROWS: [string, string[]][] = [
   ["介词短语", ["状语","表语","定语","宾语补足语"]],
   ["不定式", ["主语","宾语","表语","定语","状语","宾语补足语"]],
   ["分词", ["定语","表语","状语","宾语补足语"]],
-  ["从句", ["主语","宾语","表语","定语","状语","同位语"]],
+  ["从句", ["主语","宾语","宾语补足语","表语","定语","状语","同位语"]],
   ["动词", ["谓语"]],
   ["动词短语", ["谓语"]],
 ];
@@ -140,6 +149,7 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   "形容词::宾语补足语": "They painted the wall white. 他们把墙刷白了。",
   "不定式::宾语补足语": "I want you to go. 我要你走。",
   "分词::宾语补足语": "I saw him running. 我看见他在跑。",
+  "从句::宾语补足语": "They made the city what it is today. 他们使这座城市成为今天的样子。",
   "分词::状语": "Walking slowly, he went home. 他慢慢地走回家。",  "介词短语::宾语补足语": "She put the book on the table. 她把书放在桌上。",
   // 定语
   "形容词::定语": "a beautiful flower 一朵美丽的花",
@@ -167,6 +177,25 @@ function getExample(form: string, role: string): string | null {
   return EXAMPLE_SENTENCES[`${form}::${role}`] ?? null;
 }
 
+function renderExpandedExample(example: string | null | undefined, englishClassName = "text-sm") {
+  if (!example) return null;
+
+  const chineseStart = example.search(/[\u3400-\u9fff]/);
+  if (chineseStart === -1) {
+    return <span className={`${englishClassName} text-foreground/75`}>{example}</span>;
+  }
+
+  const english = example.slice(0, chineseStart).trimEnd();
+  const chinese = example.slice(chineseStart).trimStart();
+
+  return (
+    <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+      <span className={`${englishClassName} text-foreground/75`}>{english}</span>
+      <span>{chinese}</span>
+    </span>
+  );
+}
+
 export default function GrammarCorePage() {
   const FORM_ALIAS: Record<string, string> = {
     "名词性从句": "从句",
@@ -182,6 +211,21 @@ export default function GrammarCorePage() {
   const [expandedRight, setExpandedRight] = useState<string | null>(null);
   const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
   const [expandedMatrix, setExpandedMatrix] = useState<Set<string>>(new Set());
+  const [selectedMatrixForm, setSelectedMatrixForm] = useState<string | null>(null);
+  const [selectedMatrixRole, setSelectedMatrixRole] = useState<string | null>(null);
+  const selectedMatrixForms = selectedMatrixRole
+    ? MATRIX_ROWS.filter(([, roles]) => roles.includes(selectedMatrixRole)).map(([form]) => form)
+    : MATRIX_ROWS.map(([form]) => form);
+  const selectedMatrixRoles = selectedMatrixForm
+    ? MATRIX_ROWS.find(([form]) => form === selectedMatrixForm)?.[1] ?? []
+    : MATRIX_FORMS;
+  const selectedMatrix = selectedMatrixForm && selectedMatrixRole
+    ? {
+        row: MATRIX_ROWS.findIndex(([form]) => form === selectedMatrixForm),
+        col: MATRIX_FORMS.findIndex((role) => role === selectedMatrixRole),
+      }
+    : null;
+  const activeMatrix = hoveredMatrix ?? (selectedMatrix?.row !== -1 && selectedMatrix?.col !== -1 ? selectedMatrix : null);
 
   return (
     <main className="min-h-screen px-6 py-8">
@@ -189,7 +233,76 @@ export default function GrammarCorePage() {
 
         {/* 句子成分 × 结构形式 矩阵 */}
         <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
-        <div className="mt-8 overflow-x-auto scrollbar-ghost">
+        <div className="mb-4 flex flex-wrap items-end gap-3 rounded-lg border border-dashed border-border bg-muted/20 p-3">
+          <div className="flex flex-col gap-1.5">
+            <Select
+              value={selectedMatrixForm ?? ""}
+              onValueChange={(value) => {
+                const roles = MATRIX_ROWS.find(([form]) => form === value)?.[1] ?? [];
+                setSelectedMatrixForm(value);
+                setSelectedMatrixRole((current) => current && roles.includes(current) ? current : roles[0] ?? null);
+              }}
+            >
+              <SelectTrigger className="w-36" size="default">
+                <SelectValue placeholder="选择结构形式" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {selectedMatrixForms.map((form) => (
+                    <SelectItem key={form} value={form}>
+                      <Badge variant="outline" className={`text-xs ${FORM_COLOR[form] ?? ""}`}>
+                        {form}
+                      </Badge>
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <span className="pb-1 text-sm font-semibold text-foreground/70">可以作为</span>
+          <div className="flex flex-col gap-1.5">
+            <Select
+              value={selectedMatrixRole ?? ""}
+              onValueChange={(value) => {
+                const forms = MATRIX_ROWS.filter(([, roles]) => roles.includes(value)).map(([form]) => form);
+                setSelectedMatrixRole(value);
+                setSelectedMatrixForm((current) => current && forms.includes(current) ? current : forms[0] ?? null);
+              }}
+            >
+              <SelectTrigger
+                className={`w-44 ${selectedMatrixRole ? `underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[selectedMatrixRole] ?? ""}` : ""}`}
+                size="default"
+              >
+                <SelectValue placeholder="选择句子成分" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {selectedMatrixRoles.map((role) => (
+                    <SelectItem key={role} value={role}>
+                      <span className={`underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[role] ?? ""}`}>
+                        {role}
+                      </span>
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            disabled={!selectedMatrixForm && !selectedMatrixRole}
+            onClick={() => {
+              setSelectedMatrixForm(null);
+              setSelectedMatrixRole(null);
+            }}
+          >
+            <X data-icon="inline-start" />
+            清除
+          </Button>
+        </div>
+        <div className="mt-4 overflow-x-auto scrollbar-ghost">
           <div className="inline-block min-w-full">
             <div className="grid rounded-md"
                  style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
@@ -197,10 +310,19 @@ export default function GrammarCorePage() {
               {(() => {
                 const expandedColumns = new Set(MATRIX_ROWS.filter(([r]) => expandedMatrix.has(r)).flatMap(([, forms]) => forms));
                 const anyExpanded = expandedMatrix.size > 0;
+                const hoveredRowForms = activeMatrix?.col === -1 ? MATRIX_ROWS[activeMatrix.row]?.[1] : null;
                 return MATRIX_FORMS.map((f, ci) => {
                 const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
                 const tooltipText = tipMap[f];
-                const header = <div className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-opacity ${tooltipText ? "cursor-pointer" : "cursor-default"} ${ROLE_COLOR[f] ?? ''} ${(hoveredMatrix && hoveredMatrix.col !== ci) || (anyExpanded && !expandedColumns.has(f)) ? 'opacity-25' : ''}`}>{f}</div>;
+                const header = (
+                  <div
+                    className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-[opacity,filter] ${tooltipText ? "cursor-pointer" : "cursor-default"} ${ROLE_COLOR[f] ?? ''} ${((activeMatrix && activeMatrix.col !== ci && !hoveredRowForms?.includes(f)) || (anyExpanded && !expandedColumns.has(f))) ? 'opacity-30 grayscale' : ''}`}
+                    onMouseEnter={() => setHoveredMatrix({ row: -1, col: ci })}
+                    onMouseLeave={() => setHoveredMatrix(null)}
+                  >
+                    {f}
+                  </div>
+                );
                 if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
                 return <React.Fragment key={f}>{header}</React.Fragment>;
               })})()}
@@ -212,30 +334,44 @@ export default function GrammarCorePage() {
                   const anyMatrixExpanded = expandedMatrix.size > 0;
                   const isMatrixExpanded = expandedMatrix.has(role);
                   const matrixRowDimmed = anyMatrixExpanded && !isMatrixExpanded;
+                  const hoveredColumn = activeMatrix?.row === -1 ? MATRIX_FORMS[activeMatrix.col] : null;
+                  const rowHasHoveredColumn = hoveredColumn ? forms.includes(hoveredColumn) : false;
                   return (
                 <React.Fragment key={role}>
                   <div
-                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${(hoveredMatrix && hoveredMatrix.row !== ri) || matrixRowDimmed ? 'opacity-25' : ''}`}
+                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-[opacity,filter] underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${((activeMatrix && activeMatrix.row !== ri && !rowHasHoveredColumn) || matrixRowDimmed) ? 'opacity-30 grayscale' : ''}`}
+                    onMouseEnter={() => setHoveredMatrix({ row: ri, col: -1 })}
+                    onMouseLeave={() => setHoveredMatrix(null)}
                   >{role}</div>
                   {MATRIX_FORMS.map((f, ci) => {
                     const hasMatch = forms.includes(f);
                     const example = hasMatch ? getExample(role, f) : null;
-                    const cellDimmed = (hoveredMatrix && hoveredMatrix.row !== ri && hoveredMatrix.col !== ci) || matrixRowDimmed;
+                    const exactMatrixFocus = activeMatrix && activeMatrix.row >= 0 && activeMatrix.col >= 0;
+                    const cellDimmed = exactMatrixFocus
+                      ? activeMatrix.row !== ri || activeMatrix.col !== ci || matrixRowDimmed
+                      : (activeMatrix && activeMatrix.row !== ri && activeMatrix.col !== ci) || matrixRowDimmed;
+                    const cellActive = hasMatch && activeMatrix?.row === ri && activeMatrix.col === ci;
+                    const cellSelected = !hoveredMatrix && hasMatch && selectedMatrix?.row === ri && selectedMatrix.col === ci;
                     const cell = (
                       <div
-                        className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors ${hasMatch ? "cursor-pointer" : "cursor-default"} transition-opacity ${cellDimmed ? 'opacity-25' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
-                        onMouseEnter={() => setHoveredMatrix({row: ri, col: ci})}
-                        onMouseLeave={() => setHoveredMatrix(null)}
+                        className={`group p-2 text-center border-b border-dashed border-border text-xs transition-[opacity,filter] duration-200 ease-out ${hasMatch ? "cursor-pointer" : "cursor-default"} ${cellDimmed ? 'opacity-30 grayscale' : ''} ${hasMatch ? getTextColor(role) : 'text-muted-foreground/20'}`}
+                        onMouseEnter={hasMatch ? () => setHoveredMatrix({row: ri, col: ci}) : undefined}
+                        onMouseLeave={hasMatch ? () => setHoveredMatrix(null) : undefined}
                       >
-                        {hasMatch ? '●' : '·'}
+                        {hasMatch ? (
+                          <span className="relative inline-flex size-4 items-center justify-center align-middle">
+                            <span className={`absolute inset-0 rounded-full bg-current opacity-0 transition-[opacity,transform] duration-200 group-hover:animate-pulse group-hover:scale-125 group-hover:opacity-25 ${cellActive ? "animate-pulse scale-125 opacity-25" : ""}`} />
+                            <span className={`relative size-2 rounded-full bg-current transition-transform duration-200 ease-out group-hover:scale-90 ${cellActive ? "scale-90" : ""}`} />
+                          </span>
+                        ) : null}
                       </div>
                     );
                     if (example) {
-                      return <Tooltip key={f} content={<span className="text-xs">{example}</span>}>{cell}</Tooltip>;
+                      return <Tooltip key={f} content={<span className="text-xs">{example}</span>} forceOpen={cellSelected ? true : undefined}>{cell}</Tooltip>;
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
-                  <div className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-opacity ${matrixRowDimmed ? 'opacity-25' : ''}`}
+                  <div className={`p-2 text-center border-b border-dashed border-border text-xs hover:bg-muted/20 transition-colors cursor-pointer text-muted-foreground hover:text-foreground transition-colors transition-[opacity,filter] ${((activeMatrix && activeMatrix.row !== ri) || activeMatrix?.row === -1 || matrixRowDimmed) ? 'opacity-30 grayscale' : ''}`}
                        onClick={() => setExpandedMatrix(prev => { const next = new Set(prev); if (next.has(role)) next.delete(role); else next.add(role); return next; })}
                        title={matrixExamples.length > 0 ? "展开例句" : ""}
                   >{matrixExamples.length > 0 ? <MoreHorizontal className="w-3.5 h-3.5" /> : null}</div>
@@ -245,7 +381,9 @@ export default function GrammarCorePage() {
                           {matrixExamples.map(({ form, example }) => (
                             <div key={form} className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-sm">
                               <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[form] ?? ''}`}>{form}</Badge>
-                              <span className="text-muted-foreground leading-relaxed text-xs">{example}</span>
+                              <span className="text-muted-foreground leading-relaxed text-xs">
+                                {renderExpandedExample(example, "text-sm")}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -352,7 +490,7 @@ export default function GrammarCorePage() {
                   return (
                     <React.Fragment key={row.roleKey}>
                       <TableRow
-                        className={`transition-opacity cursor-pointer ${rowDimmed ? "opacity-25" : ""}`}
+                        className={`transition-[opacity,filter] cursor-pointer ${rowDimmed ? "opacity-30 grayscale" : ""}`}
                         onDoubleClick={() => setExpandedLeft(isExpanded ? null : row.roleKey)}
                       >
                         <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[row.roleKey]}`}>
@@ -367,8 +505,8 @@ export default function GrammarCorePage() {
                                 <Badge
                                   key={f}
                                   variant="outline"
-                                  className={`text-xs cursor-pointer transition-opacity ${FORM_COLOR[f] ?? ""} ${
-                                    hoveredForm && hoveredForm !== resolved ? "opacity-30" : ""
+                                  className={`text-xs cursor-pointer transition-[opacity,filter] ${FORM_COLOR[f] ?? ""} ${
+                                    hoveredForm && hoveredForm !== resolved ? "opacity-30 grayscale" : ""
                                   }`}
                                   onMouseEnter={() => setHoveredForm(resolved)}
                                   onMouseLeave={() => setHoveredForm(null)}
@@ -389,13 +527,15 @@ export default function GrammarCorePage() {
                         </TableCell>
                       </TableRow>
                       {isExpanded && examples.length > 0 && (
-                        <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
+                        <TableRow className={`bg-muted/30 transition-[opacity,filter] ${rowDimmed ? "opacity-30 grayscale" : ""}`}>
                           <TableCell colSpan={2} className="py-3 overflow-hidden">
                             <div className="space-y-2">
                               {examples.map(({ form, example }) => (
                                 <div key={form} className="grid grid-cols-[5rem_1fr] gap-x-2 gap-y-1 text-sm">
                                   <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ""}`}>{form}</Badge>
-                                  <span className="text-muted-foreground leading-relaxed">{example}</span>
+                                  <span className="text-muted-foreground leading-relaxed">
+                                    {renderExpandedExample(example, "text-base")}
+                                  </span>
                                 </div>
                               ))}
                             </div>
@@ -433,7 +573,7 @@ export default function GrammarCorePage() {
                   return (
                     <React.Fragment key={row.form}>
                       <TableRow
-                        className={`transition-opacity cursor-pointer ${rowDimmed ? "opacity-25" : ""}`}
+                        className={`transition-[opacity,filter] cursor-pointer ${rowDimmed ? "opacity-30 grayscale" : ""}`}
                         onDoubleClick={() => setExpandedRight(isExpanded ? null : row.form)}
                       >
                         <TableCell className={`font-medium underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[row.form]}`}>
@@ -447,8 +587,8 @@ export default function GrammarCorePage() {
                                 <Badge
                                   key={r}
                                   variant="outline"
-                                  className={`text-xs cursor-pointer transition-opacity ${ROLE_COLOR[r] ?? ""} ${
-                                    hoveredRole && hoveredRole !== r ? "opacity-30" : ""
+                                  className={`text-xs cursor-pointer transition-[opacity,filter] ${ROLE_COLOR[r] ?? ""} ${
+                                    hoveredRole && hoveredRole !== r ? "opacity-30 grayscale" : ""
                                   }`}
                                   onMouseEnter={() => setHoveredRole(r)}
                                   onMouseLeave={() => setHoveredRole(null)}
@@ -469,13 +609,15 @@ export default function GrammarCorePage() {
                         </TableCell>
                       </TableRow>
                       {isExpanded && examples.length > 0 && (
-                        <TableRow className={`bg-muted/30 ${rowDimmed ? "opacity-25" : ""}`}>
+                        <TableRow className={`bg-muted/30 transition-[opacity,filter] ${rowDimmed ? "opacity-30 grayscale" : ""}`}>
                           <TableCell colSpan={2} className="py-3 overflow-hidden">
                             <div className="space-y-2">
                               {examples.map(({ role, example }) => (
                                 <div key={role} className="grid grid-cols-[4rem_1fr] gap-x-2 gap-y-1 text-sm">
                                   <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[role] ?? ""}`}>{role}</Badge>
-                                  <span className="text-muted-foreground leading-relaxed">{example}</span>
+                                  <span className="text-muted-foreground leading-relaxed">
+                                    {renderExpandedExample(example, "text-base")}
+                                  </span>
                                 </div>
                               ))}
                             </div>

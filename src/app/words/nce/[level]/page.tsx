@@ -1084,7 +1084,7 @@ export default function Page({
                 : `全部 (${allWords.length})`}
             </span>
           </SelectTrigger>
-          <SelectContent className="min-w-0" scrollFade={true}>
+          <SelectContent className="min-w-0">
             <SelectItem value="all" className="truncate min-w-0 [&>span]:!shrink [&>span]:truncate">全部 ({allWords.length})</SelectItem>
             {lessonList.map((l) => (
               <SelectItem key={l.id} value={l.id} className="truncate min-w-0 [&>span]:!shrink [&>span]:truncate">
