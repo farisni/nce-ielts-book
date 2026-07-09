@@ -354,9 +354,13 @@ export default function GrammarCorePage() {
             <div className="grid border border-dashed border-border rounded-md"
                  style={{ gridTemplateColumns: '5rem repeat(9, 1fr)' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
-              {MATRIX_FORMS.map((f, ci) => (
-                <div key={f} className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${ROLE_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>
-              ))}
+              {MATRIX_FORMS.map((f, ci) => {
+                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语" };
+                const tooltipText = tipMap[f];
+                const header = <div className={`p-2 text-xs font-medium text-center border-b border-dashed border-border transition-opacity ${ROLE_COLOR[f] ?? ''} ${hoveredMatrix && hoveredMatrix.col !== ci ? 'opacity-25' : ''}`}>{f}</div>;
+                if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
+                return <React.Fragment key={f}>{header}</React.Fragment>;
+              })}
               {MATRIX_ROWS.map(([role, forms], ri) => (
                 <React.Fragment key={role}>
                   <div className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}>{role}</div>
