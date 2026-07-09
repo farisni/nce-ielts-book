@@ -336,6 +336,11 @@ export default function GrammarCorePage() {
           </div>
         </div>
 
+        <blockquote className="mt-6 border-l-2 border-muted-foreground/30 pl-4 text-sm text-foreground space-y-1">
+          <p>动名词是<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span></p>
+          <p>同位语具有<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span></p>
+          <p>间接宾语由<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span>承担</p>
+        </blockquote>
         {/* 句子成分 × 结构形式 矩阵 */}
         <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
         <div className="mt-8 overflow-x-auto">
@@ -373,11 +378,6 @@ export default function GrammarCorePage() {
           </div>
         </div>
 
-        <blockquote className="mt-6 border-l-2 border-muted-foreground/30 pl-4 text-sm text-foreground space-y-1">
-          <p>动名词是<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span></p>
-          <p>同位语具有<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span></p>
-          <p>间接宾语由<span className="underline decoration-emerald-400 decoration-2 underline-offset-2">名词性</span>承担</p>
-        </blockquote>
       </div>
     </main>
   );
