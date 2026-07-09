@@ -247,7 +247,7 @@ export default function GrammarCorePage() {
                           </TableCell>
                         </TableRow>
                       )}
-
+                    </React.Fragment>
                   );
                 })}
               </TableBody>
