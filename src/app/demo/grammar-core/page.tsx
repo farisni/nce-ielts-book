@@ -367,7 +367,7 @@ export default function GrammarCorePage() {
                 return MATRIX_FORMS.map((f, ci) => {
                 const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
                 const tooltipText = tipMap[f];
-                const header = <div className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-opacity ${ROLE_COLOR[f] ?? ''} ${(hoveredMatrix && hoveredMatrix.col !== ci) || (anyExpanded && !expandedColumns.has(f)) ? 'opacity-25' : ''}`}>{f}</div>;
+                const header = <div className={`p-2 text-xs font-bold text-center border-b border-dashed border-border transition-opacity ${tooltipText ? "cursor-pointer" : "cursor-default"} ${ROLE_COLOR[f] ?? ''} ${(hoveredMatrix && hoveredMatrix.col !== ci) || (anyExpanded && !expandedColumns.has(f)) ? 'opacity-25' : ''}`}>{f}</div>;
                 if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
                 return <React.Fragment key={f}>{header}</React.Fragment>;
               })})()}
