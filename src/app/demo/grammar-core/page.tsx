@@ -398,7 +398,7 @@ export default function GrammarCorePage() {
                         <div className="flex flex-col gap-y-1">
                           {matrixExamples.map(({ form, example }) => (
                             <div key={form} className="flex items-center gap-x-2">
-                              <Badge variant="outline" className={`text-xs shrink-0 ${FORM_COLOR[form] ?? ''}`}>{form}</Badge>
+                              <Badge variant="outline" className={`text-xs shrink-0 ${ROLE_COLOR[form] ?? ''}`}>{form}</Badge>
                               <span className="text-xs text-muted-foreground leading-relaxed">{example}</span>
                             </div>
                           ))}
