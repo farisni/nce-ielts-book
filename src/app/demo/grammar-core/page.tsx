@@ -403,7 +403,6 @@ export default function GrammarCorePage() {
                 </React.Fragment>
                   );
                 })}
-              ))}
             </div>
           </div>
         </div>
