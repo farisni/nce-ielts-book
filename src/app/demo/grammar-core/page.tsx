@@ -372,6 +372,11 @@ export default function GrammarCorePage() {
             </div>
           </div>
         </div>
+
+        <blockquote className="mt-6 border-l-2 border-muted-foreground/30 pl-4 text-sm text-muted-foreground space-y-1">
+          <p>动名词是名词性</p>
+          <p>同位语具有名词性</p>
+        </blockquote>
       </div>
     </main>
   );
