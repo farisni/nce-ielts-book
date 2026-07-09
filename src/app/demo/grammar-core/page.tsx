@@ -37,7 +37,7 @@ const FORM_COMPONENTS = [
 
 const ROLE_COLOR: Record<string, string> = {
   "主语": "border-emerald-300 bg-emerald-50 text-emerald-700",
-  "谓语": "border-blue-300 bg-blue-50 text-blue-700",
+  "谓语": "border-blue-300 bg-blue-50/30 text-blue-700",
   "宾语": "border-blue-300 bg-blue-50 text-blue-700",
   "间接宾语": "border-sky-300 bg-sky-50 text-sky-700",
   "表语": "border-orange-300 bg-orange-50 text-orange-700",
