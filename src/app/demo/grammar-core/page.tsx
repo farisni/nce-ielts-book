@@ -351,7 +351,7 @@ export default function GrammarCorePage() {
         <div className="mt-8 overflow-x-auto">
           <div className="inline-block min-w-full">
             <div className="grid rounded-md"
-                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr)' }}>
+                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
               {MATRIX_FORMS.map((f, ci) => {
                 const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
@@ -360,6 +360,7 @@ export default function GrammarCorePage() {
                 if (tooltipText) return <Tooltip key={f} content={<span className="text-xs">{tooltipText}</span>}>{header}</Tooltip>;
                 return <React.Fragment key={f}>{header}</React.Fragment>;
               })}
+              <div className="border-b border-dashed border-border"></div>
               {MATRIX_ROWS.map(([role, forms], ri) => {
                   const matrixExamples = forms
                     .map(f => ({ form: f, example: getExample(role, f) }))
@@ -367,8 +368,7 @@ export default function GrammarCorePage() {
                   return (
                 <React.Fragment key={role}>
                   <div
-                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 cursor-pointer ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}
-                    onDoubleClick={() => setExpandedMatrix(expandedMatrix === role ? null : role)}
+                    className={`p-2 text-xs font-medium border-b border-dashed border-border transition-opacity underline underline-offset-4 decoration-2 ${FORM_UNDERLINE[role] ?? ''} ${hoveredMatrix && hoveredMatrix.row !== ri ? 'opacity-25' : ''}`}
                   >{role}</div>
                   {MATRIX_FORMS.map((f, ci) => {
                     const hasMatch = forms.includes(f);
@@ -388,6 +388,10 @@ export default function GrammarCorePage() {
                     }
                     return <React.Fragment key={f}>{cell}</React.Fragment>;
                   })}
+                  <div className="p-2 text-center border-b border-dashed border-border text-xs cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+                       onClick={() => setExpandedMatrix(expandedMatrix === role ? null : role)}
+                       title={matrixExamples.length > 0 ? "展开例句" : ""}
+                  >{matrixExamples.length > 0 ? '⋯' : ''}</div>
                   {expandedMatrix === role && matrixExamples.length > 0 && (
                       <div className="col-span-full p-3 bg-muted/20 border-b border-dashed border-border">
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
