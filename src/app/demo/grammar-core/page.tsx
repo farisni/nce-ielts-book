@@ -244,7 +244,7 @@ export default function GrammarCorePage() {
             <WheelPicker
               aria-label="选择结构形式"
               className="w-24 border-0 !bg-transparent"
-              visibleCount={7}
+              visibleCount={3}
               itemHeight={42}
               options={[
                 { label: "结构形式", value: "" },
@@ -269,7 +269,7 @@ export default function GrammarCorePage() {
             <WheelPicker
               aria-label="选择句子成分"
               className="w-28 border-0 !bg-transparent"
-              visibleCount={7}
+              visibleCount={3}
               itemHeight={42}
               options={[
                 { label: "句子成分", value: "" },
