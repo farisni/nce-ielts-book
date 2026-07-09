@@ -206,12 +206,6 @@ export default function GrammarCorePage() {
   const [expandedMatrix, setExpandedMatrix] = useState<Set<string>>(new Set());
   const [selectedMatrixForm, setSelectedMatrixForm] = useState<string | null>(null);
   const [selectedMatrixRole, setSelectedMatrixRole] = useState<string | null>(null);
-  const selectedMatrixForms = selectedMatrixRole
-    ? MATRIX_ROWS.filter(([, roles]) => roles.includes(selectedMatrixRole)).map(([form]) => form)
-    : MATRIX_ROWS.map(([form]) => form);
-  const selectedMatrixRoles = selectedMatrixForm
-    ? MATRIX_ROWS.find(([form]) => form === selectedMatrixForm)?.[1] ?? []
-    : MATRIX_FORMS;
   const selectedMatrix = selectedMatrixForm && selectedMatrixRole
     ? {
         row: MATRIX_ROWS.findIndex(([form]) => form === selectedMatrixForm),
@@ -235,7 +229,7 @@ export default function GrammarCorePage() {
               itemHeight={42}
               options={[
                 { label: "结构形式", value: "" },
-                ...selectedMatrixForms,
+                ...MATRIX_ROWS.map(([form]) => form),
               ]}
               renderSelectedOption={(label, value) => value ? (
                 <Badge variant="outline" className={`text-sm ${FORM_COLOR[value] ?? ""}`}>
@@ -244,13 +238,10 @@ export default function GrammarCorePage() {
               ) : label}
               value={selectedMatrixForm ?? ""}
               onValueChange={(value) => {
-                if (!value) {
-                  setSelectedMatrixForm(null);
-                  return;
-                }
+                setSelectedMatrixForm(value || null);
+                if (!value) return;
                 const roles = MATRIX_ROWS.find(([form]) => form === value)?.[1] ?? [];
-                setSelectedMatrixForm(value);
-                setSelectedMatrixRole((current) => current && roles.includes(current) ? current : roles[0] ?? null);
+                setSelectedMatrixRole((current) => current && !roles.includes(current) ? null : current);
               }}
             />
             <WheelPicker
@@ -260,7 +251,7 @@ export default function GrammarCorePage() {
               itemHeight={42}
               options={[
                 { label: "句子成分", value: "" },
-                ...selectedMatrixRoles,
+                ...MATRIX_FORMS,
               ]}
               renderSelectedOption={(label, value) => value ? (
                 <span className={`underline underline-offset-4 decoration-2 ${ROLE_UNDERLINE[value] ?? ""}`}>
@@ -269,13 +260,13 @@ export default function GrammarCorePage() {
               ) : label}
               value={selectedMatrixRole ?? ""}
               onValueChange={(value) => {
-                if (!value) {
-                  setSelectedMatrixRole(null);
-                  return;
-                }
-                const forms = MATRIX_ROWS.filter(([, roles]) => roles.includes(value)).map(([form]) => form);
-                setSelectedMatrixRole(value);
-                setSelectedMatrixForm((current) => current && forms.includes(current) ? current : forms[0] ?? null);
+                setSelectedMatrixRole(value || null);
+                if (!value) return;
+                setSelectedMatrixForm((current) => {
+                  if (!current) return current;
+                  const roles = MATRIX_ROWS.find(([form]) => form === current)?.[1] ?? [];
+                  return roles.includes(value) ? current : null;
+                });
               }}
             />
           </div>
