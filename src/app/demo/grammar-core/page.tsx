@@ -483,14 +483,16 @@ export default function GrammarCorePage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[22%]">性质</TableHead>
-                <TableHead className="w-[48%]">常见对应成分</TableHead>
-                <TableHead className="w-[30%]">结构形式（常见充当）</TableHead>
+                <TableHead className="w-[18%]">性质</TableHead>
+                <TableHead className="w-[22%]">修饰</TableHead>
+                <TableHead className="w-[35%]">常见对应成分</TableHead>
+                <TableHead className="w-[25%]">结构形式（常见充当）</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
                 <TableCell className="font-semibold text-emerald-700">名词性<br /><span className="text-xs font-normal text-muted-foreground">Nominal</span></TableCell>
+                <TableCell className="text-xs text-muted-foreground">—</TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-emerald-300 text-emerald-700">主语 S</Badge>
@@ -512,6 +514,7 @@ export default function GrammarCorePage() {
               </TableRow>
               <TableRow>
                 <TableCell className="font-semibold text-yellow-700">形容词性<br /><span className="text-xs font-normal text-muted-foreground">Adjectival</span></TableCell>
+                <TableCell className="text-xs">修饰 <span className="font-medium">名词</span></TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-yellow-300 text-yellow-700">定语</Badge>
@@ -531,6 +534,7 @@ export default function GrammarCorePage() {
               </TableRow>
               <TableRow>
                 <TableCell className="font-semibold text-rose-700">副词性<br /><span className="text-xs font-normal text-muted-foreground">Adverbial</span></TableCell>
+                <TableCell className="text-xs">修饰 <span className="font-medium">动词 · 形容词 · 副词 · 名词 · 整句</span></TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-pink-300 text-pink-700">状语</Badge>
