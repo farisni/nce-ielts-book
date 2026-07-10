@@ -66,10 +66,7 @@ export function VerbFormTable() {
 
   return (
     <section className="mt-10 flex flex-col gap-4" aria-labelledby="verb-form-table-title">
-      <div className="flex flex-col gap-1">
-        <h2 id="verb-form-table-title" className="text-lg font-semibold">非谓语动词的形式、时态与语态</h2>
-        <p className="text-sm text-muted-foreground">点击表格中的语法形式，查看含义、例句与时间关系。</p>
-      </div>
+      <h3 className="text-lg font-medium text-foreground mb-3">非谓语动词</h3>
 
       <ScrollArea orientation="horizontal" viewportClassName="max-w-full">
         <Table className="min-w-[860px] text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
@@ -125,37 +122,43 @@ export function VerbFormTable() {
         </Table>
       </ScrollArea>
 
-      {selected && (
-        <Card id="verb-form-details" className="bg-white ring-0" aria-live="polite">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold text-sky-700 flex items-center gap-2"><Lightbulb className="w-5 h-5" />{selected.form}</CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-4 sm:grid-cols-3">
-            <div className="flex flex-col gap-1">
-              <Badge color="violet" className="self-start">含义</Badge>
-              <p className="leading-relaxed">{selected.meaning}</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <Badge color="orange" className="self-start">例句</Badge>
-              <div className="flex flex-col gap-1 font-medium leading-relaxed">
-                {selected.examples.map((example) => <p key={example}>{example}</p>)}
+      <Card id="verb-form-details" className="bg-white ring-0 min-h-[180px]" aria-live="polite">
+        {selected ? (
+          <>
+            <CardHeader>
+              <CardTitle className="text-xl font-bold text-sky-700 flex items-center gap-2"><Lightbulb className="w-5 h-5 text-yellow-500" />{selected.form}</CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-4 sm:grid-cols-3">
+              <div className="flex flex-col gap-1">
+                <Badge color="violet" className="self-start">含义</Badge>
+                <p className="leading-relaxed">{selected.meaning}</p>
               </div>
-            </div>
-            <div className="flex flex-col gap-1">
-              <Badge className="self-start">解释</Badge>
-              <p className="leading-relaxed text-muted-foreground">{selected.explanation}</p>
-            </div>
-            {selected.patterns && (
-              <div className="flex items-start gap-4 border-t border-border pt-4 text-xs sm:col-span-3">
-                <span className="shrink-0 font-semibold text-foreground">being 后面常跟：</span>
-                <div className="flex flex-col gap-1 text-left text-foreground">
-                  {selected.patterns.map((pattern) => <p key={pattern}>{pattern}</p>)}
+              <div className="flex flex-col gap-1">
+                <Badge color="orange" className="self-start">例句</Badge>
+                <div className="flex flex-col gap-1 font-medium leading-relaxed">
+                  {selected.examples.map((example) => <p key={example}>{example}</p>)}
                 </div>
               </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
+              <div className="flex flex-col gap-1">
+                <Badge className="self-start">解释</Badge>
+                <p className="leading-relaxed text-muted-foreground">{selected.explanation}</p>
+              </div>
+              {selected.patterns && (
+                <div className="flex items-start gap-4 border-t border-border pt-4 text-xs sm:col-span-3">
+                  <span className="shrink-0 font-semibold text-foreground">being 后面常跟：</span>
+                  <div className="flex flex-col gap-1 text-left text-foreground">
+                    {selected.patterns.map((pattern) => <p key={pattern}>{pattern}</p>)}
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </>
+        ) : (
+          <div className="flex items-center justify-center h-full min-h-[180px] text-sm text-muted-foreground">
+            点击表格中的语法形式查看详情
+          </div>
+        )}
+      </Card>
     </section>
   );
 }

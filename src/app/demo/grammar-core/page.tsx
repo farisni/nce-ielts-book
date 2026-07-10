@@ -198,7 +198,7 @@ function renderStackedExample(example: string) {
 
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-lg font-semibold text-foreground/85">{english}</p>
+      <p className="text-lg font-medium text-foreground/85">{english}</p>
       {chinese && <p className="text-xs text-muted-foreground/60">{chinese}</p>}
     </div>
   );
@@ -239,7 +239,7 @@ export default function GrammarCorePage() {
       <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-border p-4">
 
         {/* 句子成分 × 结构形式 矩阵 */}
-        <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
+        <h3 className="text-lg font-medium text-foreground mb-3 mt-6">句子成分 × 结构形式 矩阵</h3>
         <div className="mb-4 flex flex-wrap items-center gap-3 rounded-lg p-3">
           <div className="inline-flex items-center justify-center gap-1">
             <WheelPicker
@@ -413,7 +413,7 @@ export default function GrammarCorePage() {
         </div>
 
           {/* 性质 → 成分 → 结构形式 */}
-          <h3 className="text-sm font-medium text-muted-foreground mb-3 mt-8">性质 → 成分 → 结构形式</h3>
+          <h3 className="text-lg font-medium text-foreground mb-3 mt-8">性质 → 成分 → 结构形式</h3>
           <Table>
             <TableHeader>
               <TableRow>
@@ -483,10 +483,12 @@ export default function GrammarCorePage() {
             </TableBody>
           </Table>
 
+        <VerbFormTable />
+
         <div className="flex w-full gap-4">
           {/* 左：句子成分 → 结构形式 */}
           <div className="flex-1 p-3">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">句子成分 → 结构形式</h3>
+            <h3 className="text-lg font-medium text-foreground mb-2">句子成分 → 结构形式</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -569,7 +571,7 @@ export default function GrammarCorePage() {
 
           {/* 右：结构形式 → 句子成分 */}
           <div className="flex-1 p-3">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">结构形式 → 句子成分</h3>
+            <h3 className="text-lg font-medium text-foreground mb-2">结构形式 → 句子成分</h3>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -660,7 +662,6 @@ export default function GrammarCorePage() {
           </blockquote>
         </div>
 
-        <VerbFormTable />
 
       </div>
     </main>
