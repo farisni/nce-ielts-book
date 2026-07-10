@@ -54,7 +54,7 @@ function FormButton({ value, onSelect, className }: { value: VerbFormValue; onSe
       {value.label.includes(" / ") ? (
         <>
           {value.label.split(" / ")[0]}
-          <span className="font-semibold text-muted-foreground"> / {value.label.split(" / ")[1]}</span>
+          <span className="font-semibold text-muted-foreground ml-1"> / {value.label.split(" / ")[1]}</span>
         </>
       ) : value.label}
     </LineHoverLink>
@@ -115,8 +115,8 @@ export function VerbFormTable() {
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-center text-sm"><FormButton value={row.transitiveActive} onSelect={setSelected} className={section.id === "doing" ? "!text-emerald-600" : undefined} /></TableCell>
-                  <TableCell className="text-center text-sm"><FormButton value={row.transitivePassive} onSelect={setSelected} className={section.id === "doing" ? "!text-emerald-600" : undefined} /></TableCell>
+                  <TableCell className="text-center text-sm"><FormButton value={row.transitiveActive} onSelect={setSelected} /></TableCell>
+                  <TableCell className="text-center text-sm"><FormButton value={row.transitivePassive} onSelect={setSelected} /></TableCell>
                   <TableCell className="border-l border-border text-center text-sm opacity-60"><FormButton value={row.intransitiveActive} onSelect={setSelected} /></TableCell>
                 </TableRow>
               )),
