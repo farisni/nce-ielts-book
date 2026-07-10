@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { Lightbulb } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { LineHoverLink } from "@/components/ui/line-hover-link";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -36,16 +36,16 @@ interface SelectedForm extends GrammarExplanation {
   form: string;
 }
 
-function FormButton({ value, onSelect }: { value: VerbFormValue; onSelect: (value: SelectedForm) => void }) {
+function FormButton({ value, onSelect, className }: { value: VerbFormValue; onSelect: (value: SelectedForm) => void; className?: string }) {
   if (!value.detail) {
-    return <span className="text-muted-foreground">{value.label}</span>;
+    return <span className={className || "text-muted-foreground"}>{value.label}</span>;
   }
 
   return (
     <LineHoverLink
       variant="slide"
       href="#verb-form-details"
-      className="px-2 font-semibold text-foreground"
+      className={`px-2 font-semibold ${className || "text-foreground"}`}
       onClick={(event) => {
         event.preventDefault();
         onSelect({ form: value.label, ...value.detail! });
@@ -100,7 +100,7 @@ export function VerbFormTable() {
                   {rowIndex === 0 && (
                     <TableCell rowSpan={section.rows.length} className="text-center align-middle">
                       <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-2xl font-bold tracking-tight text-[#d9683f]">{section.title}</span>
+                        <span className={`text-2xl font-bold tracking-tight ${section.id === "doing" ? "text-emerald-600" : "text-[#d9683f]"}`}>{section.title}</span>
                         {section.subtitle && <span className="text-xs font-semibold text-muted-foreground">{section.subtitle}</span>}
                       </div>
                     </TableCell>
@@ -108,15 +108,15 @@ export function VerbFormTable() {
                   <TableCell className="whitespace-normal">
                     <div className="flex items-baseline gap-2">
                       <span className="shrink-0 font-semibold">{row.tense}</span>
-                      <span className="text-xs leading-relaxed text-muted-foreground">
+                      <span className={`text-xs leading-relaxed ${section.id === "doing" ? "text-emerald-600" : "text-muted-foreground"}`}>
                         {row.timing.includes("谓语") ? (
-                          <span className="font-medium text-[#d9683f]">{row.timing}</span>
+                          <span className={`font-medium ${section.id === "doing" ? "text-emerald-600" : "text-[#d9683f]"}`}>{row.timing}</span>
                         ) : row.timing}
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-center text-sm"><FormButton value={row.transitiveActive} onSelect={setSelected} /></TableCell>
-                  <TableCell className="text-center text-sm"><FormButton value={row.transitivePassive} onSelect={setSelected} /></TableCell>
+                  <TableCell className="text-center text-sm"><FormButton value={row.transitiveActive} onSelect={setSelected} className={section.id === "doing" ? "!text-emerald-600" : undefined} /></TableCell>
+                  <TableCell className="text-center text-sm"><FormButton value={row.transitivePassive} onSelect={setSelected} className={section.id === "doing" ? "!text-emerald-600" : undefined} /></TableCell>
                   <TableCell className="border-l border-border text-center text-sm opacity-60"><FormButton value={row.intransitiveActive} onSelect={setSelected} /></TableCell>
                 </TableRow>
               )),
@@ -126,10 +126,9 @@ export function VerbFormTable() {
       </ScrollArea>
 
       {selected && (
-        <Card id="verb-form-details" aria-live="polite">
-          <CardHeader className="border-b">
-            <CardTitle className="text-[#d9683f]">{selected.form}</CardTitle>
-            <CardDescription>语法形式说明</CardDescription>
+        <Card id="verb-form-details" className="bg-white ring-0" aria-live="polite">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold text-sky-700 flex items-center gap-2"><Lightbulb className="w-5 h-5" />{selected.form}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-3">
             <div className="flex flex-col gap-1">
@@ -147,7 +146,7 @@ export function VerbFormTable() {
               <p className="leading-relaxed text-muted-foreground">{selected.explanation}</p>
             </div>
             {selected.patterns && (
-              <div className="flex items-start gap-4 border-t pt-3 text-xs sm:col-span-3">
+              <div className="flex items-start gap-4 border-t border-border pt-4 text-xs sm:col-span-3">
                 <span className="shrink-0 font-semibold text-foreground">being 后面常跟：</span>
                 <div className="flex flex-col gap-1 text-left text-foreground">
                   {selected.patterns.map((pattern) => <p key={pattern}>{pattern}</p>)}
