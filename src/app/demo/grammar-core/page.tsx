@@ -204,6 +204,32 @@ function renderStackedExample(example: string) {
   );
 }
 
+const CLAUSE_RELATIVES: [string, boolean, boolean, boolean, boolean, boolean][] = [
+  ["that", true, true, true, true, false],
+  ["which", true, true, true, true, false],
+  ["who", true, true, true, true, false],
+  ["whom", true, true, true, true, false],
+  ["whose", true, true, true, true, false],
+  ["when", true, true, true, true, true],
+  ["where", true, true, true, true, true],
+  ["why", true, true, true, false, true],
+  ["how", true, true, true, false, true],
+  ["whether", true, true, true, false, false],
+  ["if", false, true, false, false, true],
+  ["what", true, true, true, false, false],
+  ["whatever", true, true, true, false, true],
+  ["whoever", true, true, true, false, false],
+  ["whichever", true, true, true, false, false],
+  ["as", false, false, false, true, true],
+  ["because", false, false, true, false, true],
+  ["since", false, false, true, false, true],
+  ["although", false, false, false, false, true],
+  ["unless", false, false, false, false, true],
+  ["while", false, false, false, false, true],
+  ["before", false, false, false, false, true],
+  ["after", false, false, false, false, true],
+];
+
 export default function GrammarCorePage() {
   const FORM_ALIAS: Record<string, string> = {
     "名词性从句": "从句",
@@ -662,6 +688,38 @@ export default function GrammarCorePage() {
           </blockquote>
         </div>
 
+
+        {/* 从句关系词矩阵 */}
+        <h3 className="text-lg font-medium text-foreground mb-3 mt-8">从句关系词</h3>
+        <div className="overflow-x-auto">
+          <Table className="min-w-[700px] text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
+            <TableHeader>
+              <TableRow className="bg-muted/30 hover:bg-muted/30">
+                <TableHead className="w-28" rowSpan={2} />
+                <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
+              </TableRow>
+              <TableRow className="bg-muted/20 hover:bg-muted/20">
+                <TableHead className="text-center">主语从句</TableHead>
+                <TableHead className="text-center">宾语从句</TableHead>
+                <TableHead className="text-center">表语从句</TableHead>
+                <TableHead className="border-l border-border text-center">定语从句</TableHead>
+                <TableHead className="text-center">状语从句</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {CLAUSE_RELATIVES.map(([word, ...cols]) => (
+                <TableRow key={word} className="h-8">
+                  <TableCell className="font-semibold">{word}</TableCell>
+                  {cols.map((v, i) => (
+                    <TableCell key={i} className={`text-center${i === 3 ? " border-l border-border" : ""}`}>
+                      {v ? <span className="text-emerald-600">✓</span> : <span className="text-muted-foreground/30">—</span>}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
 
       </div>
     </main>
