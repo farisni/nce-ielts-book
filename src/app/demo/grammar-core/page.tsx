@@ -730,19 +730,20 @@ export default function GrammarCorePage() {
 
         {/* 从句关系词矩阵 */}
         <h3 className="text-lg font-medium text-foreground mb-3 mt-8">从句关系词</h3>
-        <div className="overflow-x-auto">
-          <Table className="min-w-[680px] text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
+        <Table className="w-full text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="bg-muted/30 hover:bg-muted/30">
-                <TableHead className="w-28" rowSpan={2} />
+                <TableHead className="w-20" rowSpan={2} />
                 <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
+                <TableHead colSpan={1} className="text-center">形容词性从句</TableHead>
+                <TableHead colSpan={1} className="text-center">副词性从句</TableHead>
               </TableRow>
               <TableRow className="bg-muted/20 hover:bg-muted/20">
-                <TableHead className="w-24 text-center">主语从句</TableHead>
-                <TableHead className="w-24 text-center">宾语从句</TableHead>
-                <TableHead className="w-24 text-center">表语从句</TableHead>
+                <TableHead className="w-16 text-center">主语从句</TableHead>
+                <TableHead className="w-16 text-center">宾语从句</TableHead>
+                <TableHead className="w-16 text-center">表语从句</TableHead>
                 <TableHead className="w-16 border-l border-border text-center">定语从句</TableHead>
-                <TableHead className="w-24 text-center">状语从句</TableHead>
+                <TableHead className="w-16 text-center">状语从句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -835,7 +836,6 @@ export default function GrammarCorePage() {
               })}
             </TableBody>
           </Table>
-        </div>
 
       </div>
     </main>
