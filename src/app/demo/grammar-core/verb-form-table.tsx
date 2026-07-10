@@ -93,7 +93,7 @@ export function VerbFormTable() {
           <TableBody>
             {VERB_FORM_SECTIONS.map((section) =>
               section.rows.map((row, rowIndex) => (
-                <TableRow key={`${section.id}-${row.tense}`} className={`${SECTION_TONES[section.tone]} h-8`}>
+                <TableRow key={`${section.id}-${row.tense}`} className="h-8">
                   {rowIndex === 0 && (
                     <TableCell rowSpan={section.rows.length} className="text-center align-middle">
                       <div className="flex flex-col items-center gap-0.5">
