@@ -741,9 +741,9 @@ export default function GrammarCorePage() {
             <TableHeader>
               <TableRow className="bg-muted/30 hover:bg-muted/30">
                 <TableHead className="w-64" rowSpan={2} />
-                <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
-                <TableHead colSpan={1} className="text-center">形容词性从句</TableHead>
-                <Tooltip content={<span className="text-xs">修饰 动词 · 形容词 · 副词 · 名词 · 整句</span>}><TableHead colSpan={1} className="text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default">副词性从句</LineHoverLink></TableHead></Tooltip>
+                <TableHead colSpan={3} className="text-center text-muted-foreground font-medium">名词性从句</TableHead>
+                <TableHead colSpan={1} className="text-center text-muted-foreground font-medium">形容词性从句</TableHead>
+                <Tooltip content={<span className="text-xs">修饰 动词 · 形容词 · 副词 · 名词 · 整句</span>}><TableHead colSpan={1} className="text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default !text-muted-foreground font-medium">副词性从句</LineHoverLink></TableHead></Tooltip>
               </TableRow>
               <TableRow className="bg-muted/20 hover:bg-muted/20">
                 <TableHead className="w-16 text-center">主语从句</TableHead>
