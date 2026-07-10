@@ -213,7 +213,8 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "who / whom / which / that": "Who will win is still unknown.",
     "when / where": "When he arrives is uncertain.",
     "why / how": "Why she left remains a mystery.",
-    "what / whether": "What he said surprised everyone.",
+    "what": "What he said surprised everyone.",
+    "whether": "Whether he will come is uncertain.",
     "whatever": "Whatever you decide is fine with me.",
     "whoever / whichever": "Whoever wants to join is welcome.",
   },
@@ -222,7 +223,8 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "when / where": "She asked when the meeting starts.",
     "why / how": "He explained how the system works.",
     "if": "I wonder if she will come.",
-    "what / whether": "Do you know what he wants?",
+    "what": "Do you know what he wants?",
+    "whether": "I wonder whether she will come.",
     "whatever": "Take whatever you need.",
     "whoever / whichever": "Invite whoever you like.",
     "because / since": "I know that because it's obvious.",
@@ -231,7 +233,8 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "who / whom / which / that": "The question is who will lead.",
     "when / where": "The issue is when we should start.",
     "why / how": "The mystery is why she left.",
-    "what / whether": "That's what I wanted to say.",
+    "what": "That's what I wanted to say.",
+    "whether": "The question is whether we should go.",
     "whatever": "This is whatever you make of it.",
     "whoever / whichever": "It's whoever arrives first.",
     "because / since": "The reason is because he forgot.",
@@ -248,7 +251,7 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "where": "Stay where you are.",
     "why / how": "I don't know how to fix this.",
     "if": "If it rains, we'll stay home.",
-    "what / whether": "Whether you like it or not, it's happening.",
+    "whether": "Whether you like it or not, it's happening.",
     "whatever": "Whatever happens, don't panic.",
     "as": "As time goes by, things change.",
     "because / since": "He left because he was tired.",
@@ -260,11 +263,12 @@ const clauseLabels = ["主语从句", "宾语从句", "表语从句", "定语从
 
 const CLAUSE_RELATIVES: [string, boolean, boolean, boolean, boolean, boolean][] = [
   ["who / whom / which / that", true, true, true, true, false],
+  ["what", true, true, true, false, false],
   ["whose", false, false, false, true, false],
   ["when / where", true, true, true, true, true],
   ["why / how", true, true, true, false, true],
   ["if", false, true, false, false, true],
-  ["what / whether", true, true, true, false, false],
+  ["whether", true, true, true, false, false],
   ["whatever", true, true, true, false, true],
   ["whoever / whichever", true, true, true, false, false],
   ["as", false, false, false, true, true],
@@ -765,7 +769,7 @@ export default function GrammarCorePage() {
                   .filter(Boolean) as { clause: string; example: string }[];
                 return (
                 <React.Fragment key={`group-${word}`}>
-                  {word.startsWith("who /") && (
+                  {(word.startsWith("who /") || word === "what") && (
                     <TableRow className="h-8">
                       <TableCell colSpan={6} className="py-1">
                         <span className="inline-flex items-center rounded-sm bg-emerald-600 px-2 py-0.5 text-[10px] font-bold text-white">关系代词</span>
@@ -779,7 +783,7 @@ export default function GrammarCorePage() {
                       </TableCell>
                     </TableRow>
                   )}
-                  {word === "what / whether" && (
+                  {word === "whether" && (
                     <TableRow className="h-8">
                       <TableCell colSpan={6} className="py-1">
                         <span className="inline-flex items-center rounded-sm bg-violet-600 px-2 py-0.5 text-[10px] font-bold text-white">复合连接词</span>
@@ -798,7 +802,7 @@ export default function GrammarCorePage() {
                     className={`h-8 cursor-pointer ${isExpanded ? "bg-muted/20" : ""}`}
                     onDoubleClick={() => setExpandedClause(isExpanded ? null : word)}
                   >
-                    <TableCell className="font-semibold text-sm">{word}</TableCell>
+                    <TableCell className="font-semibold text-sm">{word}{word === "what" && <span className="text-xs text-muted-foreground font-normal ml-1">= the thing + that</span>}{word.includes("where") && <span className="text-xs text-muted-foreground font-normal ml-1">= in which</span>}</TableCell>
                     {cols.map((v, i) => {
                       const clauseType = clauseLabels[i];
                       const example = v ? CLAUSE_EXAMPLES[clauseType]?.[word] : null;
