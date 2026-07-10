@@ -15,6 +15,7 @@ import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { WheelPicker } from "@/components/motion/wheel-picker";
 import { cn } from "@/lib/utils";
+import { LineHoverLink } from "@/components/ui/line-hover-link";
 import { VerbFormTable } from "./verb-form-table";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/motion/popover";
 
@@ -736,14 +737,14 @@ export default function GrammarCorePage() {
                 <TableHead className="w-64" rowSpan={2} />
                 <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
                 <TableHead colSpan={1} className="text-center">形容词性从句</TableHead>
-                <TableHead colSpan={1} className="text-center">副词性从句</TableHead>
+                <Tooltip content={<span className="text-xs">修饰 动词 · 形容词 · 副词 · 名词 · 整句</span>}><TableHead colSpan={1} className="text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default">副词性从句</LineHoverLink></TableHead></Tooltip>
               </TableRow>
               <TableRow className="bg-muted/20 hover:bg-muted/20">
                 <TableHead className="w-16 text-center">主语从句</TableHead>
                 <TableHead className="w-16 text-center">宾语从句</TableHead>
                 <TableHead className="w-16 text-center">表语从句</TableHead>
                 <TableHead className="w-16 border-l border-border text-center">定语从句</TableHead>
-                <TableHead className="w-16 text-center">状语从句</TableHead>
+                <Tooltip content={<span className="text-xs">方式 · 程度 · 地点 · 时间 · 频率 · 疑问 · 连接 · 关系</span>}><TableHead className="w-16 text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default">状语从句</LineHoverLink></TableHead></Tooltip>
               </TableRow>
             </TableHeader>
             <TableBody>
