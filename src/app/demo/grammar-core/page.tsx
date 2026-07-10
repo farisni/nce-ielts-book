@@ -75,6 +75,7 @@ const FORM_COLOR: Record<string, string> = {
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
+  "动词 / 动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动名词": "border-cyan-300 bg-cyan-50 text-cyan-700",
   "名词性从句": "border-stone-300 bg-stone-50 text-stone-600",
   "定语从句": "border-amber-300 bg-amber-50 text-amber-700",
@@ -91,6 +92,7 @@ const FORM_UNDERLINE: Record<string, string> = {
   "分词": "decoration-lime-400",
   "动词": "decoration-[#c4623d]",
   "动词短语": "decoration-[#c4623d]",
+  "动词 / 动词短语": "decoration-[#c4623d]",
   "从句": "decoration-neutral-400",
 };
 
@@ -106,8 +108,7 @@ const MATRIX_ROWS: [string, string[]][] = [
   ["不定式", ["主语","宾语","表语","定语","状语","宾语补足语"]],
   ["分词", ["定语","表语","状语","宾语补足语"]],
   ["从句", ["主语","宾语","宾语补足语","表语","定语","状语","同位语"]],
-  ["动词", ["谓语"]],
-  ["动词短语", ["谓语"]],
+  ["动词 / 动词短语", ["谓语"]],
 ];
 
 const TEXT_HIGHLIGHT: Record<string, string> = {
@@ -126,6 +127,7 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   // 谓语
   "动词::谓语": "She runs fast. 她跑得很快。",
   "动词短语::谓语": "She is looking after the baby. 她在照看宝宝。",
+  "动词 / 动词短语::谓语": "She runs fast. 她跑得很快。",
   // 宾语
   "分词::宾语": "She loves dancing in the rain. 她喜欢在雨中跳舞。",
   "名词::宾语": "He reads books. 他读书。",
@@ -387,14 +389,14 @@ export default function GrammarCorePage() {
         <div className="mt-4 overflow-x-auto scrollbar-ghost">
           <div className="inline-block min-w-full">
             <div className="grid rounded-md"
-                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
+                 style={{ gridTemplateColumns: '6.5rem repeat(9, 1fr) 2rem' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
               {(() => {
                 const expandedColumns = new Set(MATRIX_ROWS.filter(([r]) => expandedMatrix.has(r)).flatMap(([, forms]) => forms));
                 const anyExpanded = expandedMatrix.size > 0;
                 const hoveredRowForms = activeMatrix?.col === -1 ? MATRIX_ROWS[activeMatrix.row]?.[1] : null;
                 return MATRIX_FORMS.map((f, ci) => {
-                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
+                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语（又称主语补语）", "宾语补足语": "宾语补足语 → 说明宾语 · tip: 使役动词", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
                 const tooltipText = tipMap[f];
                 const header = (
                   <div
