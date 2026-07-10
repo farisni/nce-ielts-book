@@ -730,10 +730,10 @@ export default function GrammarCorePage() {
 
         {/* 从句关系词矩阵 */}
         <h3 className="text-lg font-medium text-foreground mb-3 mt-8">从句关系词</h3>
-        <Table className="w-full text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
+        <Table className="w-full table-fixed text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="bg-muted/30 hover:bg-muted/30">
-                <TableHead className="w-20" rowSpan={2} />
+                <TableHead className="w-64" rowSpan={2} />
                 <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
                 <TableHead colSpan={1} className="text-center">形容词性从句</TableHead>
                 <TableHead colSpan={1} className="text-center">副词性从句</TableHead>
