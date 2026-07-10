@@ -15,6 +15,7 @@ import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { WheelPicker } from "@/components/motion/wheel-picker";
 import { cn } from "@/lib/utils";
+import { VerbFormTable } from "./verb-form-table";
 
 const SENTENCE_COMPONENTS = [
   { component: "主语 (S)", roleKey: "主语", forms: ["名词", "代词", "不定式", "名词性从句"] },
@@ -658,6 +659,8 @@ export default function GrammarCorePage() {
             <p>宾语补足语 → 说明宾语</p>
           </blockquote>
         </div>
+
+        <VerbFormTable />
 
       </div>
     </main>
