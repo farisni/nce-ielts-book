@@ -12,6 +12,7 @@ import { FloatAction } from "@/app/_components/float-action";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { useReaderStore } from "@/stores/reader-store";
 import { useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 
 const pillHandle =
   "relative flex items-center justify-center bg-transparent cursor-col-resize flex-shrink-0 " +
@@ -25,6 +26,11 @@ const pillHandle =
 export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
+  const searchParams = useSearchParams();
+  const isArticlePage = searchParams.has("article");
+  const isNce3Article = isArticlePage && article?.level === "NCE3";
+  const shouldShowNotesPanel = isArticlePage && isPanelOpen;
+  const panelSize = isNce3Article ? 45 : isArticlePage ? 30 : 0;
   const togglePanel = useReaderStore((s) => s.togglePanel);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
@@ -35,10 +41,25 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setTransitioning(true);
-    notesPanelRef.current?.resize(isPanelOpen ? 30 : 0);
+    notesPanelRef.current?.resize(
+      isPanelOpen ? panelSize : 0,
+    );
     const t = setTimeout(() => setTransitioning(false), 350);
     return () => clearTimeout(t);
-  }, [isPanelOpen]);
+  }, [panelSize, isPanelOpen]);
+
+  const openedArticleRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!isArticlePage || !isNce3Article) {
+      openedArticleRef.current = null;
+      return;
+    }
+
+    if (openedArticleRef.current === null) {
+      useReaderStore.setState({ isPanelOpen: true });
+    }
+    openedArticleRef.current = article?.id ?? "nce3";
+  }, [article?.id, isArticlePage, isNce3Article]);
 
   // 笔记面板：Tab+Q / top-nav 打开时，滚动到上次激活的 block
   useEffect(() => {
@@ -96,7 +117,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
 
       <div className="min-h-0 flex-1 min-w-0 overflow-hidden">
         <PanelGroup direction="horizontal" className="h-full min-h-0 overflow-hidden">
-          <Panel defaultSize={70} minSize={40} className="min-h-0 overflow-hidden">
+          <Panel defaultSize={55} minSize={40} className="min-h-0 overflow-hidden">
             <div className="relative flex h-full min-h-0 flex-col overflow-hidden">
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
@@ -109,18 +130,18 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             </div>
           </Panel>
 
-          <PanelResizeHandle className={isPanelOpen ? pillHandle : "hidden"} />
+          <PanelResizeHandle className={shouldShowNotesPanel ? pillHandle : "hidden"} />
 
           <Panel
             ref={notesPanelRef}
-            defaultSize={0}
+            defaultSize={45}
             minSize={0}
-            maxSize={40}
+            maxSize={60}
             className={transitioning ? "min-h-0 overflow-hidden transition-[flex] duration-300 ease-out" : "min-h-0 overflow-hidden"}
           >
             <motion.aside
               initial={false}
-              animate={{ opacity: isPanelOpen ? 1 : 0 }}
+              animate={{ opacity: shouldShowNotesPanel ? 1 : 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="h-full min-h-0 overflow-hidden bg-sidebar border-l border-border"
             >

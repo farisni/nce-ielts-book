@@ -511,7 +511,8 @@ function ArticleReader({ article }: { article: Article }) {
   >({});
   const [lastAction, setLastAction] = useState("No selection action yet.");
   const [highlightsHidden, setHighlightsHidden] = useState(false);
-/* ---- audio sync for NCE4 ---- */
+  /* ---- audio sync for NCE4 ---- */
+  const isNce3 = article.level === "NCE3";
   const isNce4 = article.level === "NCE4";
   const readerStore = useReaderStore();
 
@@ -803,7 +804,13 @@ function ArticleReader({ article }: { article: Article }) {
   }, []);
 
   return (
-    <div className="mx-auto flex w-[1022px] min-w-[1022px] flex-none gap-6">
+    <div
+      className={`mx-auto flex flex-none gap-6 ${
+        isNce3
+          ? "w-[728px] min-w-[728px]"
+          : "w-[1022px] min-w-[1022px]"
+      }`}
+    >
       {showNotebook ? (
         <NotebookPlaceholder article={article} onBackToArticle={() => setShowNotebook(false)} />
       ) : (
@@ -1190,6 +1197,7 @@ function ArticleReader({ article }: { article: Article }) {
             </ContextMenu>
           </section>
 
+          {!isNce3 && (
           <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-14">
             <div className="flex min-w-0 max-w-full gap-5 overflow-hidden text-sm font-medium border-b border-transparent pb-1 mt-4">
               <button
@@ -1349,6 +1357,7 @@ function ArticleReader({ article }: { article: Article }) {
               </p>
             </section>
           </aside>
+          )}
 
         {isChatOpen ? (
           <form
