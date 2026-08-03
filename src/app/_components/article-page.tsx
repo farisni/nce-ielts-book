@@ -958,7 +958,7 @@ function ArticleReader({ article }: { article: Article }) {
                           ref={(element) => {
                             paragraphRefs.current[index] = element;
                           }}
-                          className="text-lg leading-loose text-foreground [text-indent:2em] article-text"
+                          className="text-xl leading-loose text-foreground [text-indent:2em] article-text"
                           style={{ fontFamily: '"Lyon Text", "IBM Plex Serif", "Georgia", "Times New Roman", serif' }}
                         >
                           {(index === 0 && (isIelts || article.illustration)) && (
