@@ -1,80 +1,119 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { LayoutGrid } from "@/components/ui/layout-grid";
-import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
+import { ieltsList, nce3List, nce4List, type ArticleListItem } from "@/app/mock";
 
-const cards = [
+type ArticleGroup = {
+  id: string;
+  label: string;
+  description: string;
+  route: string;
+  articles: ArticleListItem[];
+};
+
+const articleGroups: ArticleGroup[] = [
   {
-    id: 1, content: <div><p className="font-bold md:text-4xl text-xl text-white">课文列表</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">NCE 课文概览与学习进度，涵盖 NCE2/3/4 全部课文。</p></div>,
-    className: "md:col-span-2", thumbnail: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=3540&auto=format&fit=crop",
+    id: "nce3",
+    label: "NCE3",
+    description: "新概念英语第三册 · 经典课文与进阶表达",
+    route: "/v2/nce3",
+    articles: nce3List,
   },
   {
-    id: 2, content: <div><p className="font-bold md:text-4xl text-xl text-white">词汇学习</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">核心词汇卡片与释义，雅思词汇真经 + 538 考点词。</p></div>,
-    className: "col-span-1", thumbnail: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=3540&auto=format&fit=crop",
+    id: "nce4",
+    label: "NCE4",
+    description: "新概念英语第四册 · 高阶阅读与写作素材",
+    route: "/v2/nce4",
+    articles: nce4List,
   },
   {
-    id: 3, content: <div><p className="font-bold md:text-4xl text-xl text-white">练习与测试</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">课后练习与阶段测试，巩固所学知识。</p></div>,
-    className: "col-span-1", thumbnail: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=3540&auto=format&fit=crop",
-  },
-  {
-    id: 4, content: <div><p className="font-bold md:text-4xl text-xl text-white">语法专题</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">重点语法知识点归纳与详解。</p></div>,
-    className: "md:col-span-2", thumbnail: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=3540&auto=format&fit=crop",
-  },
-  {
-    id: 5, content: <div><p className="font-bold md:text-4xl text-xl text-white">听力训练</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">课文音频与听写练习，提升听力水平。</p></div>,
-    className: "col-span-1", thumbnail: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=3540&auto=format&fit=crop",
-  },
-  {
-    id: 6, content: <div><p className="font-bold md:text-4xl text-xl text-white">写作模板</p><p className="font-normal text-base my-4 max-w-lg text-neutral-200">范文结构与常用句型，助你轻松写作。</p></div>,
-    className: "col-span-1", thumbnail: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=3540&auto=format&fit=crop",
+    id: "ielts",
+    label: "IELTS",
+    description: "雅思阅读 · 真题文章与学术词汇",
+    route: "/v2/ielts",
+    articles: ieltsList,
   },
 ];
 
-function SkeletonGrid() {
+function ArticleTitleLink({ article, route }: { article: ArticleListItem; route: string }) {
   return (
-    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-4">
-      {/* row 1: col-span-2 */}
-      <div className="md:col-span-2 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
+    <Link
+      href={`${route}?article=${article.id}`}
+      className="relative z-0 inline-flex max-w-full isolate before:pointer-events-none before:absolute before:inset-x-[-0.55rem] before:inset-y-[-0.2rem] before:-z-10 before:rounded-md before:bg-slate-100 before:opacity-0 before:scale-[0.85] before:transition-[opacity,transform] before:duration-150 before:ease-out hover:before:scale-100 hover:before:opacity-100 focus-visible:outline-none focus-visible:before:scale-100 focus-visible:before:opacity-100 dark:before:bg-slate-800"
+    >
+      <span className="min-w-0 font-medium leading-[1.45] tracking-wide text-foreground/85 transition-colors hover:text-[#337ea9] dark:hover:text-[#9cd8fc]">
+        {article.title}
+        {article.titleCn && (
+          <span className="ms-2 font-normal text-muted-foreground">
+            {article.titleCn}
+          </span>
+        )}
+      </span>
+    </Link>
+  );
+}
+
+function ArticleRow({ article, route }: { article: ArticleListItem; route: string }) {
+  return (
+    <li className="grid gap-1 sm:grid-cols-[5rem_minmax(0,1fr)]">
+      <span className="pt-0.5 text-xs font-medium tracking-wide text-muted-foreground/75 tabular-nums">
+        Lesson {String(article.lesson).padStart(2, "0")}
+      </span>
+      <div className="min-w-0">
+        <ArticleTitleLink article={article} route={route} />
       </div>
-      {/* row 1: col-span-1 */}
-      <div className="col-span-1 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
-      </div>
-      {/* row 2: col-span-1 */}
-      <div className="col-span-1 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
-      </div>
-      {/* row 2: col-span-2 */}
-      <div className="md:col-span-2 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
-      </div>
-      {/* row 3: col-span-1 */}
-      <div className="col-span-1 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
-      </div>
-      {/* row 3: col-span-1 */}
-      <div className="col-span-1 rounded-xl overflow-hidden bg-gray-100">
-        <Skeleton className="w-full aspect-[4/3]" />
-      </div>
-    </div>
+    </li>
+  );
+}
+
+function ArticleGroupSection({ group }: { group: ArticleGroup }) {
+  return (
+    <section className="mt-10" aria-labelledby={`${group.id}-heading`}>
+      <header className="mb-3 flex items-baseline gap-3">
+        <h2 id={`${group.id}-heading`} className="text-xl font-semibold tracking-wide text-[#337ea9] dark:text-[#9cd8fc]">
+          <Link href={group.route} className="hover:underline underline-offset-4">
+            {group.label}
+          </Link>
+        </h2>
+        <span className="text-xs tracking-wide text-muted-foreground/70">
+          {group.articles.length} articles
+        </span>
+      </header>
+      <p className="mb-4 text-sm leading-7 tracking-wide text-muted-foreground">
+        {group.description}
+      </p>
+      <ul className="space-y-3" role="list">
+        {group.articles.slice(0, 5).map((article) => (
+          <ArticleRow key={article.id} article={article} route={group.route} />
+        ))}
+        <li className="pt-2">
+          <Link
+            href={group.route}
+            className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-4"
+          >
+            查看全部 {group.articles.length} 篇文章 →
+          </Link>
+        </li>
+      </ul>
+    </section>
   );
 }
 
 export function HomeClient() {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setReady(true), 800);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
-    <div className="flex flex-col gap-6">
-      <div className="h-[900px] rounded-md pl-4 pt-4 pb-4 pr-[56px]">
-        {ready ? <LayoutGrid cards={cards} /> : <SkeletonGrid />}
-      </div>
+    <div className="mx-auto w-full max-w-[43.25rem] pb-16">
+      <section>
+        <h1 className="mb-6 text-xl font-semibold tracking-wide text-foreground">
+          NCE IELTS
+        </h1>
+        <p className="mb-6 max-w-2xl leading-7 tracking-wide text-muted-foreground">
+          新概念英语与雅思阅读文章索引。选择一篇课文，开始阅读、听力、词汇和语法学习。
+        </p>
+      </section>
+
+      {articleGroups.map((group) => (
+        <ArticleGroupSection key={group.id} group={group} />
+      ))}
     </div>
   );
 }
