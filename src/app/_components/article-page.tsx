@@ -512,8 +512,8 @@ function ArticleReader({ article }: { article: Article }) {
   const [lastAction, setLastAction] = useState("No selection action yet.");
   const [highlightsHidden, setHighlightsHidden] = useState(false);
   /* ---- audio sync for NCE4 ---- */
-  const isNce3 = article.level === "NCE3";
   const isNce4 = article.level === "NCE4";
+  const showContextualSidebar = false;
   const readerStore = useReaderStore();
 
   const sentenceCount = useMemo(() => {
@@ -804,24 +804,12 @@ function ArticleReader({ article }: { article: Article }) {
   }, []);
 
   return (
-  <div
-    className={`mx-auto flex flex-none gap-6 transition-transform duration-300 ${
-      isNce3
-        ? "w-full min-w-0 max-w-[728px]"
-        : "w-[1022px] min-w-[1022px]"
-    }`}
-  >
+  <div className="mx-auto flex w-full min-w-0 max-w-[728px] flex-none gap-6 transition-transform duration-300">
       {showNotebook ? (
         <NotebookPlaceholder article={article} onBackToArticle={() => setShowNotebook(false)} />
       ) : (
         <>
-          <section
-            className={`shrink-0 rounded-md px-6 pb-6 pt-6 ${
-              isNce3
-                ? "w-full min-w-0 max-w-[728px]"
-                : "w-[728px] min-w-[728px] max-w-[728px]"
-            }`}
-          >
+          <section className="w-full min-w-0 max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
             <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-4">
 
               {/* Title Header */}
@@ -1203,7 +1191,7 @@ function ArticleReader({ article }: { article: Article }) {
             </ContextMenu>
           </section>
 
-          {!isNce3 && (
+          {showContextualSidebar && (
           <aside className="article-outline w-[270px] min-w-[270px] max-w-[270px] shrink-0 overflow-hidden flex flex-col gap-6 rounded-md px-4 pb-4 pt-14">
             <div className="flex min-w-0 max-w-full gap-5 overflow-hidden text-sm font-medium border-b border-transparent pb-1 mt-4">
               <button

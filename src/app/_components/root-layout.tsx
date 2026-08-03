@@ -28,9 +28,8 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const searchParams = useSearchParams();
   const isArticlePage = searchParams.has("article");
-  const isNce3Article = isArticlePage && article?.level === "NCE3";
   const shouldShowNotesPanel = isArticlePage && isPanelOpen;
-  const panelSize = isNce3Article ? 45 : isArticlePage ? 30 : 0;
+  const panelSize = isArticlePage ? 45 : 0;
   const togglePanel = useReaderStore((s) => s.togglePanel);
   const scrollToBlock = useReaderStore((s) => s.scrollToBlock);
 
@@ -50,7 +49,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
 
   const openedArticleRef = useRef<string | null>(null);
   useEffect(() => {
-    if (!isArticlePage || !isNce3Article) {
+    if (!isArticlePage) {
       openedArticleRef.current = null;
       return;
     }
@@ -58,8 +57,8 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
     if (openedArticleRef.current === null) {
       useReaderStore.setState({ isPanelOpen: true });
     }
-    openedArticleRef.current = article?.id ?? "nce3";
-  }, [article?.id, isArticlePage, isNce3Article]);
+    openedArticleRef.current = article?.id ?? "article";
+  }, [article?.id, isArticlePage]);
 
   // 笔记面板：Tab+Q / top-nav 打开时，滚动到上次激活的 block
   useEffect(() => {
