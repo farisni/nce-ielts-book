@@ -1,5 +1,0 @@
-interface:
-  display_name: "NCE 课文抓取"
-  short_description: "从 ncego.com 抓取课文数据 · 安全合并保留译文"
-  brand_color: "#3B82F6"
-  default_prompt: "用 $nce-scraper 抓取 https://www.ncego.com/lessons/236"
