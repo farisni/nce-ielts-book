@@ -489,9 +489,14 @@ function ArticleReader({ article }: { article: Article }) {
   const grammarSummaryRef = useRef<HTMLDivElement>(null);
   const [selectionState, setSelectionState] = useState<ArticleSelectionState | null>(null);
   const highlightsByArticleId = useArticleSettings((s) => s.highlightsByArticleId);
+  const hasHydratedArticleSettings = useArticleSettings((s) => s.hasHydrated);
   const addHighlight = useArticleSettings((s) => s.addHighlight);
   const clearHighlights = useArticleSettings((s) => s.clearHighlights);
   const showGrammarHighlights = useArticleSettings((s) => s.showGrammarHighlights);
+
+  useEffect(() => {
+    void useArticleSettings.persist?.rehydrate();
+  }, []);
 
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
@@ -625,7 +630,9 @@ function ArticleReader({ article }: { article: Article }) {
     ? activeGrammarMoreKey
     : "";
   const selection = selectionState?.articleId === article.id ? selectionState.selection : null;
-  const highlights = highlightsByArticleId[article.id] ?? [];
+  const highlights = hasHydratedArticleSettings
+    ? highlightsByArticleId[article.id] ?? []
+    : [];
   const hasSelection = selection !== null;
   const selectionPreview = hasSelection
     ? selection.text.length > 72

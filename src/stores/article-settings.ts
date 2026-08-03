@@ -10,6 +10,7 @@ type HighlightRange = {
 
 interface ArticleSettingsState {
   highlightsByArticleId: Record<string, HighlightRange[]>;
+  hasHydrated: boolean;
   showNotes: boolean;
   showGrammarHighlights: boolean;  citationStyle: string;
 
@@ -18,7 +19,9 @@ interface ArticleSettingsState {
   clearHighlights: (articleId: string) => void;
   setShowNotes: (show: boolean) => void;
   setCitationStyle: (style: string) => void;
-  toggleGrammarHighlights: () => void;}
+  markHydrated: () => void;
+  toggleGrammarHighlights: () => void;
+}
 
 function mergeHighlights(highlights: HighlightRange[]) {
   return highlights
@@ -39,6 +42,7 @@ export const useArticleSettings = create<ArticleSettingsState>()(
   persist(
     (set) => ({
       highlightsByArticleId: {},
+      hasHydrated: false,
       showNotes: true,
       showGrammarHighlights: true,      citationStyle: "mla",
 
@@ -74,9 +78,20 @@ export const useArticleSettings = create<ArticleSettingsState>()(
       setShowNotes: (show) => set({ showNotes: show }),
       setCitationStyle: (style) => set({ citationStyle: style }),
 
+      markHydrated: () => set({ hasHydrated: true }),
       toggleGrammarHighlights: () => set((state) => ({ showGrammarHighlights: !state.showGrammarHighlights })),    }),
     {
       name: "nce-article-settings",
+      skipHydration: true,
+      partialize: (state) => ({
+        highlightsByArticleId: state.highlightsByArticleId,
+        showNotes: state.showNotes,
+        showGrammarHighlights: state.showGrammarHighlights,
+        citationStyle: state.citationStyle,
+      }),
+      onRehydrateStorage: () => (state) => {
+        state?.markHydrated();
+      },
     }
   )
 );
