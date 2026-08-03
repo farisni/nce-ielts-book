@@ -15,7 +15,6 @@ import { Badge } from "@/components/reui/badge";
 import { Tooltip } from "@/components/ui/tooltip";
 import { WheelPicker } from "@/components/motion/wheel-picker";
 import { cn } from "@/lib/utils";
-import { LineHoverLink } from "@/components/ui/line-hover-link";
 import { VerbFormTable } from "./verb-form-table";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/motion/popover";
 
@@ -75,7 +74,6 @@ const FORM_COLOR: Record<string, string> = {
   "分词": "border-lime-300 bg-lime-50 text-lime-700",
   "动词": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
-  "动词 / 动词短语": "border-[#c4623d] bg-[#c4623d]/15 text-[#c4623d]",
   "动名词": "border-cyan-300 bg-cyan-50 text-cyan-700",
   "名词性从句": "border-stone-300 bg-stone-50 text-stone-600",
   "定语从句": "border-amber-300 bg-amber-50 text-amber-700",
@@ -92,7 +90,6 @@ const FORM_UNDERLINE: Record<string, string> = {
   "分词": "decoration-lime-400",
   "动词": "decoration-[#c4623d]",
   "动词短语": "decoration-[#c4623d]",
-  "动词 / 动词短语": "decoration-[#c4623d]",
   "从句": "decoration-neutral-400",
 };
 
@@ -108,7 +105,8 @@ const MATRIX_ROWS: [string, string[]][] = [
   ["不定式", ["主语","宾语","表语","定语","状语","宾语补足语"]],
   ["分词", ["定语","表语","状语","宾语补足语"]],
   ["从句", ["主语","宾语","宾语补足语","表语","定语","状语","同位语"]],
-  ["动词 / 动词短语", ["谓语"]],
+  ["动词", ["谓语"]],
+  ["动词短语", ["谓语"]],
 ];
 
 const TEXT_HIGHLIGHT: Record<string, string> = {
@@ -127,7 +125,6 @@ const EXAMPLE_SENTENCES: Record<string, string> = {
   // 谓语
   "动词::谓语": "She runs fast. 她跑得很快。",
   "动词短语::谓语": "She is looking after the baby. 她在照看宝宝。",
-  "动词 / 动词短语::谓语": "She runs fast. 她跑得很快。",
   // 宾语
   "分词::宾语": "She loves dancing in the rain. 她喜欢在雨中跳舞。",
   "名词::宾语": "He reads books. 他读书。",
@@ -213,8 +210,7 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "who / whom / which / that": "Who will win is still unknown.",
     "when / where": "When he arrives is uncertain.",
     "why / how": "Why she left remains a mystery.",
-    "what": "What he said surprised everyone.",
-    "whether": "Whether he will come is uncertain.",
+    "what / whether": "What he said surprised everyone.",
     "whatever": "Whatever you decide is fine with me.",
     "whoever / whichever": "Whoever wants to join is welcome.",
   },
@@ -223,8 +219,7 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "when / where": "She asked when the meeting starts.",
     "why / how": "He explained how the system works.",
     "if": "I wonder if she will come.",
-    "what": "Do you know what he wants?",
-    "whether": "I wonder whether she will come.",
+    "what / whether": "Do you know what he wants?",
     "whatever": "Take whatever you need.",
     "whoever / whichever": "Invite whoever you like.",
     "because / since": "I know that because it's obvious.",
@@ -233,8 +228,7 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "who / whom / which / that": "The question is who will lead.",
     "when / where": "The issue is when we should start.",
     "why / how": "The mystery is why she left.",
-    "what": "That's what I wanted to say.",
-    "whether": "The question is whether we should go.",
+    "what / whether": "That's what I wanted to say.",
     "whatever": "This is whatever you make of it.",
     "whoever / whichever": "It's whoever arrives first.",
     "because / since": "The reason is because he forgot.",
@@ -251,7 +245,7 @@ const CLAUSE_EXAMPLES: Record<string, Record<string, string>> = {
     "where": "Stay where you are.",
     "why / how": "I don't know how to fix this.",
     "if": "If it rains, we'll stay home.",
-    "whether": "Whether you like it or not, it's happening.",
+    "what / whether": "Whether you like it or not, it's happening.",
     "whatever": "Whatever happens, don't panic.",
     "as": "As time goes by, things change.",
     "because / since": "He left because he was tired.",
@@ -263,12 +257,11 @@ const clauseLabels = ["主语从句", "宾语从句", "表语从句", "定语从
 
 const CLAUSE_RELATIVES: [string, boolean, boolean, boolean, boolean, boolean][] = [
   ["who / whom / which / that", true, true, true, true, false],
-  ["what", true, true, true, false, false],
   ["whose", false, false, false, true, false],
   ["when / where", true, true, true, true, true],
   ["why / how", true, true, true, false, true],
   ["if", false, true, false, false, true],
-  ["whether", true, true, true, false, false],
+  ["what / whether", true, true, true, false, false],
   ["whatever", true, true, true, false, true],
   ["whoever / whichever", true, true, true, false, false],
   ["as", false, false, false, true, true],
@@ -289,7 +282,7 @@ export default function GrammarCorePage() {
   const [hoveredRole, setHoveredRole] = useState<string | null>(null);
   const [expandedLeft, setExpandedLeft] = useState<string | null>(null);
   const [expandedRight, setExpandedRight] = useState<string | null>(null);
-  const [expandedClause, setExpandedClause] = useState<string | null>(null);  const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
+  const [hoveredMatrix, setHoveredMatrix] = useState<{row: number; col: number} | null>(null);
   const [expandedMatrix, setExpandedMatrix] = useState<Set<string>>(new Set());
   const [selectedMatrixForm, setSelectedMatrixForm] = useState<string | null>(null);
   const [selectedMatrixRole, setSelectedMatrixRole] = useState<string | null>(null);
@@ -393,14 +386,14 @@ export default function GrammarCorePage() {
         <div className="mt-4 overflow-x-auto scrollbar-ghost">
           <div className="inline-block min-w-full">
             <div className="grid rounded-md"
-                 style={{ gridTemplateColumns: '6.5rem repeat(9, 1fr) 2rem' }}>
+                 style={{ gridTemplateColumns: '5rem repeat(9, 1fr) 2rem' }}>
               <div className="p-2 text-xs font-medium text-muted-foreground border-b border-dashed border-border"></div>
               {(() => {
                 const expandedColumns = new Set(MATRIX_ROWS.filter(([r]) => expandedMatrix.has(r)).flatMap(([, forms]) => forms));
                 const anyExpanded = expandedMatrix.size > 0;
                 const hoveredRowForms = activeMatrix?.col === -1 ? MATRIX_ROWS[activeMatrix.row]?.[1] : null;
                 return MATRIX_FORMS.map((f, ci) => {
-                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语（又称主语补语）", "宾语补足语": "宾语补足语 → 说明宾语 · tip: 使役动词", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
+                const tipMap: Record<string, string> = { "表语": "表语 → 说明主语", "宾语补足语": "宾语补足语 → 说明宾语", "间接宾语": "间接宾语由名词性承担", "同位语": "同位语具有名词性" };
                 const tooltipText = tipMap[f];
                 const header = (
                   <div
@@ -489,16 +482,14 @@ export default function GrammarCorePage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[18%]">性质</TableHead>
-                <TableHead className="w-[22%]">修饰</TableHead>
-                <TableHead className="w-[35%]">常见对应成分</TableHead>
-                <TableHead className="w-[25%]">结构形式（常见充当）</TableHead>
+                <TableHead className="w-[22%]">性质</TableHead>
+                <TableHead className="w-[48%]">常见对应成分</TableHead>
+                <TableHead className="w-[30%]">结构形式（常见充当）</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
                 <TableCell className="font-semibold text-emerald-700">名词性<br /><span className="text-xs font-normal text-muted-foreground">Nominal</span></TableCell>
-                <TableCell className="text-xs text-muted-foreground">—</TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-emerald-300 text-emerald-700">主语 S</Badge>
@@ -520,7 +511,6 @@ export default function GrammarCorePage() {
               </TableRow>
               <TableRow>
                 <TableCell className="font-semibold text-yellow-700">形容词性<br /><span className="text-xs font-normal text-muted-foreground">Adjectival</span></TableCell>
-                <TableCell className="text-xs">修饰 <span className="font-medium">名词</span></TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-yellow-300 text-yellow-700">定语</Badge>
@@ -540,7 +530,6 @@ export default function GrammarCorePage() {
               </TableRow>
               <TableRow>
                 <TableCell className="font-semibold text-rose-700">副词性<br /><span className="text-xs font-normal text-muted-foreground">Adverbial</span></TableCell>
-                <TableCell className="text-xs">修饰 <span className="font-medium">动词 · 形容词 · 副词 · 名词 · 整句</span></TableCell>
                 <TableCell className="text-sm">
                   <div className="flex flex-wrap gap-1">
                     <Badge variant="outline" className="text-xs border-pink-300 text-pink-700">状语</Badge>
@@ -741,35 +730,25 @@ export default function GrammarCorePage() {
 
         {/* 从句关系词矩阵 */}
         <h3 className="text-lg font-medium text-foreground mb-3 mt-8">从句关系词</h3>
-        <Table className="w-full table-fixed text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
+        <div className="overflow-x-auto">
+          <Table className="min-w-[680px] text-xs [&_th]:h-8 [&_tr]:border-dashed" containerClassName="overflow-visible">
             <TableHeader>
               <TableRow className="bg-muted/30 hover:bg-muted/30">
-                <TableHead className="w-64" rowSpan={2} />
-                <TableHead colSpan={3} className="text-center text-muted-foreground font-medium">名词性从句</TableHead>
-                <TableHead colSpan={1} className="text-center text-muted-foreground font-medium">形容词性从句</TableHead>
-                <Tooltip content={<span className="text-xs">修饰 动词 · 形容词 · 副词 · 名词 · 整句</span>}><TableHead colSpan={1} className="text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default !text-muted-foreground font-medium">副词性从句</LineHoverLink></TableHead></Tooltip>
+                <TableHead className="w-28" rowSpan={2} />
+                <TableHead colSpan={3} className="text-center">名词性从句</TableHead>
               </TableRow>
               <TableRow className="bg-muted/20 hover:bg-muted/20">
-                <TableHead className="w-16 text-center">主语从句</TableHead>
-                <TableHead className="w-16 text-center">宾语从句</TableHead>
-                <TableHead className="w-16 text-center">表语从句</TableHead>
+                <TableHead className="w-24 text-center">主语从句</TableHead>
+                <TableHead className="w-24 text-center">宾语从句</TableHead>
+                <TableHead className="w-24 text-center">表语从句</TableHead>
                 <TableHead className="w-16 border-l border-border text-center">定语从句</TableHead>
-                <Tooltip content={<span className="text-xs">方式 · 程度 · 地点 · 时间 · 频率 · 疑问 · 连接 · 关系</span>}><TableHead className="w-16 text-center"><LineHoverLink variant="slide" href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="cursor-default">状语从句</LineHoverLink></TableHead></Tooltip>
+                <TableHead className="w-24 text-center">状语从句</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {CLAUSE_RELATIVES.map(([word, ...cols]) => {
-                const isExpanded = expandedClause === word;
-                const allExamples = clauseLabels
-                  .map((label, i) => {
-                    if (!cols[i]) return null;
-                    const ex = CLAUSE_EXAMPLES[label]?.[word];
-                    return ex ? { clause: label, example: ex } : null;
-                  })
-                  .filter(Boolean) as { clause: string; example: string }[];
-                return (
+              {CLAUSE_RELATIVES.map(([word, ...cols]) => (
                 <React.Fragment key={`group-${word}`}>
-                  {(word.startsWith("who /")) && (
+                  {word.startsWith("who /") && (
                     <TableRow className="h-8">
                       <TableCell colSpan={6} className="py-1">
                         <span className="inline-flex items-center rounded-sm bg-emerald-600 px-2 py-0.5 text-[10px] font-bold text-white">关系代词</span>
@@ -783,7 +762,7 @@ export default function GrammarCorePage() {
                       </TableCell>
                     </TableRow>
                   )}
-                  {word === "whether" && (
+                  {word === "what / whether" && (
                     <TableRow className="h-8">
                       <TableCell colSpan={6} className="py-1">
                         <span className="inline-flex items-center rounded-sm bg-violet-600 px-2 py-0.5 text-[10px] font-bold text-white">复合连接词</span>
@@ -797,56 +776,19 @@ export default function GrammarCorePage() {
                       </TableCell>
                     </TableRow>
                   )}
-                  <TableRow
-                    key={word}
-                    className={`h-8 cursor-pointer ${isExpanded ? "bg-muted/20" : ""}`}
-                    onDoubleClick={() => setExpandedClause(isExpanded ? null : word)}
-                  >
-                    <TableCell className="font-semibold text-sm">{word}{word === "what" && <span className="text-xs text-muted-foreground font-normal ml-1">= the thing + that</span>}{word.includes("where") && <span className="text-xs text-muted-foreground font-normal ml-1">= in which</span>}</TableCell>
-                    {cols.map((v, i) => {
-                      const clauseType = clauseLabels[i];
-                      const example = v ? CLAUSE_EXAMPLES[clauseType]?.[word] : null;
-                      if (v && example) {
-                        return (
-                          <TableCell key={i} className={`text-center${i === 3 ? " border-l border-border" : ""}`}>
-                            <Popover trigger="hover" side="top" sideOffset={10}>
-                              <PopoverTrigger>
-                                <span className="cursor-default text-emerald-600">✓</span>
-                              </PopoverTrigger>
-                              <PopoverContent className="p-3 w-64">
-                                <p className="text-xs font-medium text-muted-foreground">{clauseType}</p>
-                                <p className="text-sm mt-0.5">{example}</p>
-                              </PopoverContent>
-                            </Popover>
-                          </TableCell>
-                        );
-                      }
-                      return (
-                        <TableCell key={i} className={`text-center${i === 3 ? " border-l border-border" : ""}`}>
-                          {v ? <span className="text-emerald-600">✓</span> : <span className="text-muted-foreground/30">—</span>}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                  {isExpanded && allExamples.length > 0 && (
-                    <TableRow className="bg-muted/20">
-                      <TableCell colSpan={6} className="py-3">
-                        <div className="space-y-1.5">
-                          {allExamples.map(({ clause, example }) => (
-                            <div key={clause} className="grid grid-cols-[5rem_1fr] gap-x-3 gap-y-0.5 text-sm">
-                              <span className="text-xs text-muted-foreground">{clause}</span>
-                              <span className="text-foreground/80 leading-relaxed">{example}</span>
-                            </div>
-                          ))}
-                        </div>
+                  <TableRow key={word} className="h-8">
+                    <TableCell className="font-semibold text-sm">{word}</TableCell>
+                    {cols.map((v, i) => (
+                      <TableCell key={i} className={`text-center${i === 3 ? " border-l border-border" : ""}`}>
+                        {v ? <span className="text-emerald-600">✓</span> : <span className="text-muted-foreground/30">—</span>}
                       </TableCell>
-                    </TableRow>
-                  )}
+                    ))}
+                  </TableRow>
                 </React.Fragment>
-                );
-              })}
+              ))}
             </TableBody>
           </Table>
+        </div>
 
       </div>
     </main>

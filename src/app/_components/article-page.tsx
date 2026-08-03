@@ -353,6 +353,8 @@ type ArticlePageProps = {
 const dotColors = ["#c9b99a", "#9aabc9", "#a9c99a", "#c9aac9", "#aac99a"];
 const pillBg = ["#eaf1eb", "#edf3ee", "#e6eee8"];
 const textNoteLabelBg = ["#eaf1eb", "#eef0f8", "#f5eeee", "#f4f1e8", "#edf3ee", "#f0eef6"];
+const ARTICLE_CARD_HOVER_BACKGROUND_ENABLED = false;
+const ARTICLE_CARD_HOVER_BACKGROUND_CLASS_NAME = "relative isolate -mx-3 rounded-md px-3 duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:scale-[0.96] before:rounded-md before:bg-[#f2f4f7] before:opacity-0 before:content-[''] before:transition-[opacity,transform] before:duration-150 before:ease-[cubic-bezier(0.4,0,0.2,1)] hover:before:scale-100 hover:before:opacity-100 dark:before:bg-[#1e293b]";
 
 function renderTitleWithDropCap(title: string) {
   const firstLetterIndex = title.search(/[A-Za-z]/);
@@ -415,7 +417,7 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                 )}
                 <Link
                   href={`${LEVEL_ROUTES[article.level] ?? "/ielts"}?article=${article.id}`}
-                  className="group flex items-center gap-5 py-5 transition-colors"
+                  className={`group flex items-center gap-5 py-5 transition-colors ${ARTICLE_CARD_HOVER_BACKGROUND_ENABLED ? ARTICLE_CARD_HOVER_BACKGROUND_CLASS_NAME : ""}`}
                 >
                   {/* cover thumbnail */}
                   {(defaultLevel === "IELTS16" || article.illustration) ? (
@@ -437,7 +439,7 @@ function IeltsArticleList({ defaultLevel, initialSearch = "" }: { defaultLevel: 
                   )}
                   <div className="min-w-0 flex flex-col gap-2.5">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <h2 className="text-lg font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
+                      <h2 className="text-lg font-medium text-foreground transition-colors duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-primary">
                         {article.title}
                       </h2>
                       <span className="text-xs text-muted-foreground">
