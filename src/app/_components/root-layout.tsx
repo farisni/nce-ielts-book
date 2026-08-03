@@ -117,11 +117,11 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
 
       <div className="min-h-0 flex-1 min-w-0 overflow-hidden">
         <PanelGroup direction="horizontal" className="h-full min-h-0 overflow-hidden">
-          <Panel defaultSize={55} minSize={40} className="min-h-0 overflow-hidden">
+          <Panel defaultSize={100} minSize={40} className="min-h-0 overflow-hidden">
             <div className="relative flex h-full min-h-0 flex-col overflow-hidden">
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
-              <main ref={mainRef} data-scroll-container data-section="main-content" className="relative min-h-0 flex-1 overflow-y-auto p-6">
+              <main ref={mainRef} data-scroll-container data-section="main-content" className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto p-6">
                 <div className="p-6 min-h-full">
                   {children}
                 </div>
@@ -134,7 +134,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
 
           <Panel
             ref={notesPanelRef}
-            defaultSize={45}
+            defaultSize={0}
             minSize={0}
             maxSize={60}
             className={transitioning ? "min-h-0 overflow-hidden transition-[flex] duration-300 ease-out" : "min-h-0 overflow-hidden"}

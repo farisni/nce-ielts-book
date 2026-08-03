@@ -804,18 +804,24 @@ function ArticleReader({ article }: { article: Article }) {
   }, []);
 
   return (
-    <div
-      className={`mx-auto flex flex-none gap-6 ${
-        isNce3
-          ? "w-[728px] min-w-[728px]"
-          : "w-[1022px] min-w-[1022px]"
-      }`}
-    >
+  <div
+    className={`mx-auto flex flex-none gap-6 transition-transform duration-300 ${
+      isNce3
+        ? "w-full min-w-0 max-w-[728px]"
+        : "w-[1022px] min-w-[1022px]"
+    }`}
+  >
       {showNotebook ? (
         <NotebookPlaceholder article={article} onBackToArticle={() => setShowNotebook(false)} />
       ) : (
         <>
-          <section className="w-[728px] min-w-[728px] max-w-[728px] shrink-0 rounded-md px-6 pb-6 pt-6">
+          <section
+            className={`shrink-0 rounded-md px-6 pb-6 pt-6 ${
+              isNce3
+                ? "w-full min-w-0 max-w-[728px]"
+                : "w-[728px] min-w-[728px] max-w-[728px]"
+            }`}
+          >
             <header className="mx-auto mb-4 mt-1 flex w-full max-w-[680px] flex-col gap-4">
 
               {/* Title Header */}

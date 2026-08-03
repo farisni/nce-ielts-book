@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <body className="antialiased min-h-svh min-w-[1440px] bg-background text-foreground">
+      <body className="min-h-svh overflow-hidden bg-background text-foreground antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <RootLayoutShell>{children}</RootLayoutShell>
           <Toaster richColors />
