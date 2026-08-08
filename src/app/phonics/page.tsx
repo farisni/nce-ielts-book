@@ -125,9 +125,9 @@ function GraphemeCard({
         {renderExample(cell.ex, cell.hl)}
       </span>
 
-      {/* 底部色条：整条全宽色条 + 色条上的教学单元标注（同原版） */}
+      {/* 底部色条：整条全宽色条 + 色条上的教学单元标注（同原版）；mt-auto 保证始终贴底 */}
       <span
-        className="flex w-full items-center justify-center px-1 text-center text-[9px] font-medium leading-tight"
+        className="mt-auto flex w-full items-center justify-center px-1 text-center text-[9px] font-medium leading-tight"
         style={{
           backgroundColor: cell.color ?? "transparent",
           color: cell.color ? "#eee" : "transparent",
