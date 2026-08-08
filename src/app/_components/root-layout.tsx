@@ -29,6 +29,7 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const isSpellerPage = pathname?.startsWith("/speller");
+  const isPhonicsPage = pathname?.startsWith("/phonics");
   const isArticlePage = searchParams.has("article");
   const shouldShowNotesPanel = isArticlePage && isPanelOpen;
   const panelSize = isArticlePage ? 45 : 0;
@@ -122,8 +123,8 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             <div className="relative flex h-full min-h-0 flex-col overflow-hidden">
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
-              <main ref={mainRef} data-scroll-container data-section="main-content" className={`relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto ${isSpellerPage ? "pt-5" : "p-6"}`}>
-                <div className={isSpellerPage ? "h-full flex flex-col" : "p-6 min-h-full"}>
+              <main ref={mainRef} data-scroll-container data-section="main-content" className={`relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto ${isSpellerPage || isPhonicsPage ? "pt-5" : "p-6"}`}>
+                <div className={isSpellerPage ? "h-full flex flex-col" : isPhonicsPage ? "min-h-full" : "p-6 min-h-full"}>
                   {children}
                 </div>
               </main>
