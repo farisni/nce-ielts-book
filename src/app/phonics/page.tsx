@@ -59,7 +59,7 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className={`group relative flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card pt-1.5 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+      className={`group relative flex min-w-0 flex-col overflow-hidden bg-card pt-1.5 transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         cell.rowspan > 1 ? "row-span-2" : ""
       }`}
       style={{ fontFamily: PHONICS_FONT }}
@@ -96,7 +96,6 @@ function GraphemeCard({
         className="flex w-full items-center justify-center px-1 text-center text-[9px] font-medium leading-tight"
         style={{
           backgroundColor: cell.color ?? "transparent",
-          borderTop: cell.color ? "none" : "1px solid var(--border)",
           color: cell.color ? "#eee" : "transparent",
         }}
       >
@@ -168,19 +167,19 @@ export default function PhonicsPage() {
         </p>
       </header>
 
-      {/* 音素代码表 */}
-      <div className="mt-6 space-y-2">
+      {/* 音素代码表：gap-px + bg-border 画表格线，无圆角无缝隙（同原版 table） */}
+      <div className="mt-6 grid gap-px bg-border">
         {PHONICS_ROWS.map((row) => (
           <div
             key={row.phoneme}
-            className="grid grid-cols-[64px_1fr] items-stretch gap-2 sm:grid-cols-[88px_1fr]"
+            className="grid grid-cols-[64px_1fr] gap-px sm:grid-cols-[88px_1fr]"
           >
             {/* 音素格：原版黄色背景 + 26px 字号 */}
             <button
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex h-full flex-col items-center justify-center gap-1 rounded-lg border border-border bg-[#fffa94] px-1 py-2 transition-colors hover:border-ring/60 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
+              className="flex h-full flex-col items-center justify-center gap-1 bg-[#fffa94] px-1 py-2 transition-colors hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
               <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
@@ -199,7 +198,7 @@ export default function PhonicsPage() {
             </button>
 
             {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行（同原版） */}
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+            <div className="grid grid-cols-3 gap-px bg-border sm:grid-cols-6">
               {row.cells.map((cell, i) => {
                 const cid = `${row.phoneme}-${i}`;
                 return (
