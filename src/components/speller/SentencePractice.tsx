@@ -823,7 +823,7 @@ export default function SentencePractice({
                       setShowSentences(false)
                       onJumpToSentence?.(i)
                     }}
-                    className="flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-muted/60"
+                    className="flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-blue-50 dark:hover:bg-blue-950/40"
                   >
                     <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
                       {i + 1}
