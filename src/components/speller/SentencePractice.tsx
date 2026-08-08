@@ -303,25 +303,6 @@ export default function SentencePractice({
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
 
-  // ESC：抽屉打开时先关闭抽屉，否则退出练习（任何阶段可用）
-  useEffect(() => {
-    if (phase === "idle") return
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.preventDefault()
-        if (showSentences) {
-          setShowSentences(false)
-          return
-        }
-        stop()
-        if (onExit) onExit()
-        else setPhase("idle")
-      }
-    }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
-  }, [phase, onExit, stop, showSentences])
-
   // 点击左上角 logo → 回到首页（重置到 idle，停止语音与计时）
   useEffect(() => {
     const onGoHome = () => {
