@@ -21,6 +21,10 @@ export default function VideoSpellerPage() {
   const [currentIdx, setCurrentIdx] = useState(-1);
   const [subtitle, setSubtitle] = useState<string | null>(null);
   const stopAtRef = useRef<number | null>(null);
+  // 自定义控制条状态：是否播放 + 当前时间 + 总时长
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   // 加载 SRT 字幕
   useEffect(() => {
@@ -83,19 +87,51 @@ export default function VideoSpellerPage() {
     setCurrentIdx(courseIndex)
   }, [])
 
-  // 播放到句段结束自动暂停
+  // 播放到句段结束自动暂停 + 同步自定义进度条状态
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     const onTimeUpdate = () => {
+      setCurrentTime(v.currentTime)
       if (stopAtRef.current !== null && v.currentTime >= stopAtRef.current) {
         v.pause()
         stopAtRef.current = null
       }
     }
+    const onPlay = () => setIsPlaying(true)
+    const onPause = () => setIsPlaying(false)
+    const onLoaded = () => {
+      if (!isNaN(v.duration)) setDuration(v.duration)
+    }
     v.addEventListener("timeupdate", onTimeUpdate)
-    return () => v.removeEventListener("timeupdate", onTimeUpdate)
+    v.addEventListener("play", onPlay)
+    v.addEventListener("pause", onPause)
+    v.addEventListener("loadedmetadata", onLoaded)
+    return () => {
+      v.removeEventListener("timeupdate", onTimeUpdate)
+      v.removeEventListener("play", onPlay)
+      v.removeEventListener("pause", onPause)
+      v.removeEventListener("loadedmetadata", onLoaded)
+    }
   }, [cues])
+
+  // 点击视频画面切换播放/暂停（空格仍留给拼写）
+  const toggleVideo = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    if (v.paused) {
+      v.play().catch(() => {})
+    } else {
+      v.pause()
+    }
+  }, [])
+
+  const formatTime = (s: number) => {
+    if (!isFinite(s) || s <= 0) return "0:00"
+    const m = Math.floor(s / 60)
+    const sec = Math.floor(s % 60)
+    return `${m}:${String(sec).padStart(2, "0")}`
+  }
 
   if (!course) {
     return (
@@ -115,18 +151,40 @@ export default function VideoSpellerPage() {
         {/* 左：视频播放（垂直居中） */}
         <div className="flex w-full flex-col justify-center gap-3 lg:w-[42%] lg:shrink-0">
           <div className="overflow-hidden rounded-xl border border-border bg-black">
+            {/* 视频：无原生控件（禁止空格控制/拖动进度条），点击画面切换播放 */}
             <video
               ref={videoRef}
               src={course.video}
-              controls
               playsInline
               preload="metadata"
-              className="aspect-video w-full"
-              onKeyDown={(e) => {
-                // 空格留给拼写（跳词），视频播放用反引号 ` 触发
-                if (e.code === "Space") e.preventDefault()
-              }}
+              className="aspect-video w-full cursor-pointer"
+              onClick={toggleVideo}
             />
+            {/* 自定义只读进度条 + 播放控制 */}
+            <div className="flex items-center gap-3 border-t border-white/10 bg-black/60 px-3 py-2">
+              <button
+                type="button"
+                onClick={toggleVideo}
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25"
+                aria-label={isPlaying ? "暂停" : "播放"}
+              >
+                {isPlaying ? (
+                  <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><rect x="1" width="3" height="12" rx="1"/><rect x="6" width="3" height="12" rx="1"/></svg>
+                ) : (
+                  <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M1 1l8 5-8 5V1z"/></svg>
+                )}
+              </button>
+              {/* 只读进度条：不可拖动 */}
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/15">
+                <div
+                  className="h-full rounded-full bg-white/70"
+                  style={{ width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%` }}
+                />
+              </div>
+              <span className="shrink-0 text-[11px] tabular-nums text-white/70">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+            </div>
           </div>
 
           {/* 字幕区：显示当前句字幕或占位 */}
