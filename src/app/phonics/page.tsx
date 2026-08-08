@@ -111,7 +111,7 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className={`group relative flex min-w-0 flex-col overflow-hidden border-b border-r border-black/70 bg-white pt-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+      className={`group relative flex min-w-0 flex-col overflow-hidden border-b border-r border-black/70 bg-white pt-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         cell.rowspan > 1 ? "row-span-2" : ""
       }`}
       style={{ fontFamily: PHONICS_FONT }}
