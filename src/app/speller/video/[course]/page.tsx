@@ -163,15 +163,39 @@ export default function VideoSpellerPage() {
     return `${m}:${String(sec).padStart(2, "0")}`
   }
 
-  // 静音/取消静音切换
+  // ── 音量持久化（按课程保存）──
+  const volumeKey = `speller-video-volume-${courseId}`
+  // 进入页面时恢复该课程上次保存的音量
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    try {
+      const saved = window.localStorage.getItem(volumeKey)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (typeof parsed.volume === "number" && Number.isFinite(parsed.volume)) {
+          v.volume = Math.max(0, Math.min(1, parsed.volume))
+          setVolume(v.volume)
+        }
+        if (typeof parsed.muted === "boolean") {
+          v.muted = parsed.muted
+          setMuted(parsed.muted)
+        }
+      }
+    } catch { /* ignore */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // 静音/取消静音切换（并保存）
   const toggleMute = useCallback(() => {
     const v = videoRef.current
     if (!v) return
     v.muted = !v.muted
     setMuted(v.muted)
-  }, [])
+    try { window.localStorage.setItem(volumeKey, JSON.stringify({ volume: v.volume, muted: v.muted })) } catch { /* ignore */ }
+  }, [volumeKey])
 
-  // 设置音量（同时取消静音）
+  // 设置音量（同时取消静音，并保存）
   const handleVolume = useCallback((val: number) => {
     const v = videoRef.current
     if (!v) return
@@ -180,19 +204,21 @@ export default function VideoSpellerPage() {
     v.muted = next === 0
     setVolume(next)
     setMuted(next === 0)
-  }, [])
+    try { window.localStorage.setItem(volumeKey, JSON.stringify({ volume: next, muted: next === 0 })) } catch { /* ignore */ }
+  }, [volumeKey])
 
-  // 同步视频音量状态变化（如键盘快捷键改变时）
+  // 同步视频音量状态变化（如键盘快捷键改变时，同时保存）
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     const onVolumeChange = () => {
       setVolume(v.volume)
       setMuted(v.muted)
+      try { window.localStorage.setItem(volumeKey, JSON.stringify({ volume: v.volume, muted: v.muted })) } catch { /* ignore */ }
     }
     v.addEventListener("volumechange", onVolumeChange)
     return () => v.removeEventListener("volumechange", onVolumeChange)
-  }, [])
+  }, [volumeKey])
 
   if (!course) {
     return (
