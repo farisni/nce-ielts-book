@@ -9,6 +9,24 @@ import { PHONICS_ROWS, type GraphemeCell } from "@/lib/phonics-code";
 const PHONICS_FONT = "'Sassoon Primary', 'SassoonPrimary', 'Chalkboard SE', 'Chalkboard', 'Comic Sans MS', cursive";
 
 /**
+ * 根据背景色亮度自动选择色条文字颜色（同原版：深底浅字 #eee / 浅底深字 #666）。
+ * hex 或 oklch 都转成相对亮度，阈值取 0.5。
+ */
+function colorContrast(hex: string | null): string {
+  if (!hex) return "transparent";
+  const m = hex.replace("#", "");
+  if (/^[0-9a-fA-F]{6}$/.test(m)) {
+    const r = parseInt(m.slice(0, 2), 16) / 255;
+    const g = parseInt(m.slice(2, 4), 16) / 255;
+    const b = parseInt(m.slice(4, 6), 16) / 255;
+    const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return lum > 0.55 ? "#444" : "#eee";
+  }
+  // 非 hex（如 oklch）默认深底浅字
+  return "#eee";
+}
+
+/**
  * 计算音素行在 6 列网格中需要补多少个空位格（同原版：空白处也是带边框的空格子）。
  * 用稀疏自动放置模拟 CSS grid：rowspan=2 的格占当前行 + 下一行同列。
  */
@@ -130,7 +148,7 @@ function GraphemeCard({
         className="mt-auto flex w-full items-center justify-center px-1.5 py-1 text-center text-[10px] font-medium leading-tight"
         style={{
           backgroundColor: cell.color ?? "transparent",
-          color: cell.color ? "#eee" : "transparent",
+          color: colorContrast(cell.color),
         }}
       >
         {cell.unit || " "}
