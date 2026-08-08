@@ -1,9 +1,9 @@
 "use client"
 
 /**
- * 听写练习进度存储（localStorage）
- * - 按课程 id 保存：完成句子数、已掌握、生词、错误提交、总练习次数
- * - 所有读写在客户端，键名 speller-progress
+ * 听写练习进度存取（客户端封装，读写服务端 SQLite）
+ * - 通过 /api/speller/progress 读写
+ * - 首次使用迁移旧 localStorage 数据
  */
 
 export interface CourseProgress {
@@ -23,9 +23,7 @@ export interface CourseProgress {
   lastAt: number | null
 }
 
-const STORAGE_KEY = "speller-progress"
-
-type ProgressMap = Record<string, CourseProgress>
+const LEGACY_KEY = "speller-progress"
 
 const EMPTY: Omit<CourseProgress, "courseId"> = {
   passed: 0,
@@ -36,10 +34,11 @@ const EMPTY: Omit<CourseProgress, "courseId"> = {
   lastAt: null,
 }
 
-function readAll(): ProgressMap {
+/** 从旧 localStorage 读取进度（迁移用） */
+function readLegacy(): Record<string, CourseProgress> {
   if (typeof window === "undefined") return {}
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY)
+    const raw = window.localStorage.getItem(LEGACY_KEY)
     if (!raw) return {}
     const parsed = JSON.parse(raw)
     return typeof parsed === "object" && parsed !== null ? parsed : {}
@@ -48,45 +47,137 @@ function readAll(): ProgressMap {
   }
 }
 
-function writeAll(map: ProgressMap) {
+/** 清理旧 localStorage 数据 */
+function clearLegacy() {
   if (typeof window === "undefined") return
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(map))
+    window.localStorage.removeItem(LEGACY_KEY)
   } catch {
-    // localStorage 不可用时静默失败
+    // ignore
+  }
+}
+
+function rowToProgress(courseId: string, row: Record<string, unknown>): CourseProgress {
+  return {
+    courseId,
+    passed: Number(row.passed ?? 0) || 0,
+    mastered: Number(row.mastered ?? 0) || 0,
+    newWords: Number(row.new_words ?? row.newWords ?? 0) || 0,
+    errors: Number(row.errors ?? 0) || 0,
+    completed: Number(row.completed ?? 0) || 0,
+    lastAt: typeof row.last_at === "number" ? row.last_at : null,
   }
 }
 
 /** 读取某课程进度 */
-export function getProgress(courseId: string): CourseProgress {
-  const map = readAll()
-  return { ...EMPTY, ...(map[courseId] ?? {}), courseId }
+export async function getProgress(courseId: string): Promise<CourseProgress> {
+  try {
+    const res = await fetch(`/api/speller/progress?course=${encodeURIComponent(courseId)}`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    return rowToProgress(courseId, data)
+  } catch {
+    // 服务不可用（如离线）时回退到 localStorage 旧数据
+    const legacy = readLegacy()
+    return { ...EMPTY, ...(legacy[courseId] ?? {}), courseId }
+  }
+}
+
+/** 读取全部课程进度 */
+export async function getAllProgress(): Promise<Record<string, CourseProgress>> {
+  try {
+    const res = await fetch(`/api/speller/progress?all=1`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    const map: Record<string, CourseProgress> = {}
+    for (const row of data.courses ?? []) {
+      map[row.course_id] = rowToProgress(row.course_id, row)
+    }
+    return map
+  } catch {
+    const legacy = readLegacy()
+    return legacy
+  }
 }
 
 /** 更新某课程进度（数字字段按增量累加） */
-export function updateProgress(
+export async function updateProgress(
   courseId: string,
   patch: Partial<Omit<CourseProgress, "courseId" | "lastAt">>,
-): CourseProgress {
-  const map = readAll()
-  const current: CourseProgress = { ...EMPTY, ...(map[courseId] ?? {}), courseId }
-  const next: CourseProgress = {
-    passed: (current.passed ?? 0) + (patch.passed ?? 0),
-    mastered: (current.mastered ?? 0) + (patch.mastered ?? 0),
-    newWords: (current.newWords ?? 0) + (patch.newWords ?? 0),
-    errors: (current.errors ?? 0) + (patch.errors ?? 0),
-    completed: (current.completed ?? 0) + (patch.completed ?? 0),
-    courseId,
-    lastAt: Date.now(),
+): Promise<CourseProgress> {
+  try {
+    const res = await fetch("/api/speller/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        course: courseId,
+        passed: patch.passed ?? 0,
+        mastered: patch.mastered ?? 0,
+        newWords: patch.newWords ?? 0,
+        errors: patch.errors ?? 0,
+        completed: patch.completed ?? 0,
+      }),
+    })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    return rowToProgress(courseId, data.row ?? {})
+  } catch {
+    // 服务不可用时回退到 localStorage 累加
+    const legacy = readLegacy()
+    const current: CourseProgress = { ...EMPTY, ...(legacy[courseId] ?? {}), courseId }
+    const next: CourseProgress = {
+      passed: (current.passed ?? 0) + (patch.passed ?? 0),
+      mastered: (current.mastered ?? 0) + (patch.mastered ?? 0),
+      newWords: (current.newWords ?? 0) + (patch.newWords ?? 0),
+      errors: (current.errors ?? 0) + (patch.errors ?? 0),
+      completed: (current.completed ?? 0) + (patch.completed ?? 0),
+      courseId,
+      lastAt: Date.now(),
+    }
+    legacy[courseId] = next
+    try {
+      window.localStorage.setItem(LEGACY_KEY, JSON.stringify(legacy))
+    } catch {
+      // ignore
+    }
+    return next
   }
-  map[courseId] = next
-  writeAll(map)
-  return next
 }
 
 /** 重置某课程进度 */
-export function resetProgress(courseId: string) {
-  const map = readAll()
-  delete map[courseId]
-  writeAll(map)
+export async function resetProgress(courseId: string): Promise<void> {
+  try {
+    await fetch(`/api/speller/progress?course=${encodeURIComponent(courseId)}`, { method: "DELETE" })
+  } catch {
+    // ignore
+  }
+}
+
+/**
+ * 迁移旧 localStorage 进度到服务端 SQLite。
+ * 调用时机：客户端首次读取到 SQLite 为空、但 localStorage 有数据时。
+ */
+export async function migrateLegacyProgress(): Promise<void> {
+  const legacy = readLegacy()
+  const keys = Object.keys(legacy)
+  if (keys.length === 0) return
+  // 逐个课程累加到服务端
+  for (const courseId of keys) {
+    const p = legacy[courseId]
+    if (!p || (p.passed === 0 && p.mastered === 0 && p.newWords === 0 && p.errors === 0 && p.completed === 0)) {
+      continue
+    }
+    try {
+      await updateProgress(courseId, {
+        passed: p.passed ?? 0,
+        mastered: p.mastered ?? 0,
+        newWords: p.newWords ?? 0,
+        errors: p.errors ?? 0,
+        completed: p.completed ?? 0,
+      })
+    } catch {
+      // ignore
+    }
+  }
+  clearLegacy()
 }

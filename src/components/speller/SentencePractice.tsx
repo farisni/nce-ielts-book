@@ -305,7 +305,7 @@ export default function SentencePractice({
       newWords,
       errors: errorCount,
       completed: 1,
-    })
+    }).catch(() => {})
   }, [phase, course, passedCount, masteredCount, newWords, errorCount])
 
   // ── 进入下一句 ──

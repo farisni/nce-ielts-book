@@ -44,3 +44,9 @@ scripts/html_cache/
 _cache/
 _output/
 .github/skills/nce-scraper/html_cache/
+
+# sqlite 数据库
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm

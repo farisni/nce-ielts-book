@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BookOpen, Keyboard } from "lucide-react";
 import { COURSES } from "@/lib/speller/courses";
-import { getProgress, type CourseProgress } from "@/lib/speller/progress";
+import { getAllProgress, migrateLegacyProgress, type CourseProgress } from "@/lib/speller/progress";
 
 /**
  * Speller · 听写打字练习
@@ -13,13 +13,17 @@ import { getProgress, type CourseProgress } from "@/lib/speller/progress";
 export default function SpellerPage() {
   const [progress, setProgress] = useState<Record<string, CourseProgress>>({});
 
-  // 读取所有课程进度（客户端）
+  // 读取所有课程进度（客户端），并迁移旧 localStorage 数据
   useEffect(() => {
-    const map: Record<string, CourseProgress> = {};
-    for (const c of COURSES) {
-      map[c.id] = getProgress(c.id);
-    }
-    setProgress(map);
+    let cancelled = false;
+    (async () => {
+      await migrateLegacyProgress().catch(() => {});
+      const map = await getAllProgress().catch(() => ({}));
+      if (!cancelled) setProgress(map);
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
