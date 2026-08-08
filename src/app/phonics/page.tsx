@@ -205,7 +205,7 @@ export default function PhonicsPage() {
         {PHONICS_ROWS.map((row) => (
           <div
             key={row.phoneme}
-            className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr]"
+            className="grid grid-cols-[100px_1fr] sm:grid-cols-[128px_1fr]"
           >
             {/* 音素格：原版黄色背景 + 26px 字号 */}
             <button
