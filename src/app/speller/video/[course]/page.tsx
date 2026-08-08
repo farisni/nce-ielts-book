@@ -39,36 +39,10 @@ export default function VideoSpellerPage() {
     return -1
   }, [cues, currentTime])
 
-  // ── 视频进度持久化（localStorage 按课程保存播放位置）──
-  const videoPosKey = `speller-video-pos-${courseId}`
-  // 进入页面时恢复上次播放位置
+  // 清除旧的视频进度数据（改为跟随当前练习句定位，不再保存进度）
   useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    try {
-      const saved = parseFloat(window.localStorage.getItem(videoPosKey) ?? "")
-      if (Number.isFinite(saved) && saved > 0 && (!v.duration || saved < v.duration)) {
-        v.currentTime = saved
-        setCurrentTime(saved)
-      }
-    } catch { /* ignore */ }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  // 播放过程中定期保存位置（节流，避免频繁写 localStorage）
-  useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    let lastSave = 0
-    const onTimeUpdate = () => {
-      const t = v.currentTime
-      if (t - lastSave >= 2) {
-        lastSave = t
-        try { window.localStorage.setItem(videoPosKey, String(t)) } catch { /* ignore */ }
-      }
-    }
-    v.addEventListener("timeupdate", onTimeUpdate)
-    return () => v.removeEventListener("timeupdate", onTimeUpdate)
-  }, [videoPosKey])
+    try { window.localStorage.removeItem(`speller-video-pos-${courseId}`) } catch { /* ignore */ }
+  }, [courseId])
 
 
   // 加载 SRT 字幕
@@ -125,6 +99,21 @@ export default function VideoSpellerPage() {
   const jumpToSentence = useCallback((courseIndex: number) => {
     setCurrentIdx(courseIndex)
   }, [])
+
+  // 当前练习句变化（含页面加载后首次同步）→ 视频定位到该句 SRT 起点，保持暂停
+  useEffect(() => {
+    if (currentIdx < 0) return
+    const v = videoRef.current
+    if (!v) return
+    const cue = cues[currentIdx]
+    if (cue) {
+      const start = cue.startMs / 1000
+      stopAtRef.current = cue.endMs / 1000
+      v.currentTime = start
+      v.pause()
+      setCurrentTime(start)
+    }
+  }, [currentIdx, cues])
 
   // 播放到句段结束自动暂停 + 同步自定义进度条状态
   useEffect(() => {
