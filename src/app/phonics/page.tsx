@@ -5,7 +5,7 @@ import { Volume2, Loader2, ArrowRight as ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PHONICS_ROWS, type GraphemeCell } from "@/lib/phonics-code";
 
-/** 原版字体（Sassoon Primary，儿童书写教学体）。本机未安装时回退到系统手写体。 */
+/** 原版字体（Sassoon Primary，儿童书写教学体）。已本地化到 /fonts，缺失时回退系统手写体。 */
 const PHONICS_FONT = "'Sassoon Primary', 'SassoonPrimary', 'Chalkboard SE', 'Chalkboard', 'Comic Sans MS', cursive";
 
 /**
