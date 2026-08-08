@@ -16,6 +16,8 @@ interface CharState {
   status: CharStatus
   /** 属于当前激活单词（整词绿色下划线） */
   active?: boolean
+  /** 所属单词拼写错误（提交检查后整词下划线标红） */
+  wordWrong?: boolean
   /** 槽位宽度（em，按字母实际宽度自适应，窄字母窄、宽字母宽） */
   widthEm?: number
 }
@@ -91,6 +93,8 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     const wordTarget = tok.text.toLowerCase()
     const typed = inputs[wi] ?? ""
     const active = wi === activeIdx
+    // 单词是否拼写正确（提交检查时：整词下划线标红依据）
+    const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
     // 槽位宽度按【实际显示的字符】计算：
     // - pending/correct 显示目标字母 → 宽度稳定（输入正确不抖）
@@ -99,11 +103,11 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, widthEm: measureCharWidthEm(ch) })
+      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, widthEm: measureCharWidthEm(typed[j]) })
+      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, widthEm: measureCharWidthEm(typed[j]) })
     }
     wi++
   }
@@ -728,7 +732,7 @@ export default function SentencePractice({
                       <span className="invisible leading-none">W</span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
@@ -754,7 +758,7 @@ export default function SentencePractice({
                       </span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
@@ -762,7 +766,7 @@ export default function SentencePractice({
                   )
                 }
                 if (c.status === "wrong") {
-                  // 错误/多余字母：字母红色，下划线颜色保持不变（跟随激活状态，不因错误变色）
+                  // 错误/多余字母：字母红色，整词提交后下划线标红
                   return (
                     <span
                       key={i}
@@ -778,7 +782,7 @@ export default function SentencePractice({
                       </span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
