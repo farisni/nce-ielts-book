@@ -212,6 +212,26 @@ function renderPhoneme(phoneme: string, type: "vowel" | "consonant") {
   });
 }
 
+/** 说明格文字渲染：/X/ 片段里的字母用红色高亮（同原版 .act-red），斜杠与其余文字保持黑色 */
+function renderNote(note: string) {
+  const parts = note.split(/(\/.*?\/)/g).filter(Boolean);
+  return parts.map((part, i) => {
+    if (part.startsWith("/") && part.endsWith("/") && part.length > 2) {
+      const inner = part.slice(1, -1);
+      return (
+        <span key={i}>
+          <span className="text-foreground">/</span>
+          <span className="font-semibold" style={{ color: "#ee1d24" }}>
+            {inner}
+          </span>
+          <span className="text-foreground">/</span>
+        </span>
+      );
+    }
+    return <span key={i} className="text-foreground">{part}</span>;
+  });
+}
+
 /** 例词：hl 中的子串用主题色加粗 */
 function renderExample(example: string, highlights: string[]) {
   if (!highlights.length) return example;
@@ -312,15 +332,12 @@ export default function PhonicsPage() {
                   return (
                     <div
                       key={`note-${i}`}
-                      className="flex min-w-0 flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-2 py-2 text-center"
+                      className="flex min-w-0 flex-col items-center justify-center gap-1.5 border-b border-r border-black/70 bg-[#fffa94] px-2 py-2 text-center"
+                      style={{ fontFamily: PHONICS_FONT }}
                     >
                       <ArrowRightIcon className="size-6 shrink-0 text-foreground" />
-                      <span className="text-[10px] font-medium leading-tight text-foreground">
-                        {cell.note.split("\n").map((line, li) => (
-                          <span key={li} className="block">
-                            {line}
-                          </span>
-                        ))}
+                      <span className="text-[15px] leading-snug text-foreground">
+                        {renderNote(cell.note)}
                       </span>
                     </div>
                   );
