@@ -624,3 +624,33 @@ main mark {
 .font-input {
   font-family: -apple-system, BlinkMacSystemFont, "system-ui", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
+
+/* ─── Speller 视频音量滑条：小号滑块圆点 ─── */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #fff;
+  cursor: pointer;
+  border: none;
+}
+.volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #fff;
+  cursor: pointer;
+  border: none;
+}
+.volume-slider::-moz-range-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}

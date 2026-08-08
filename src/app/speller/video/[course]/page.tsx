@@ -294,7 +294,7 @@ export default function VideoSpellerPage() {
                   step={0.05}
                   value={muted ? 0 : volume}
                   onChange={(e) => handleVolume(parseFloat(e.target.value))}
-                  className="h-1 w-16 cursor-pointer appearance-none rounded-full bg-white/20 accent-white"
+                  className="volume-slider h-1 w-16 cursor-pointer"
                   aria-label="音量"
                 />
               </div>
