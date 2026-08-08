@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import {
   Sheet,
@@ -665,6 +666,21 @@ export default function SentencePractice({
 
   const progressPct = session.length > 0 ? ((index + (passed ? 1 : 0)) / session.length) * 100 : 0
 
+  // 当前句的发音评分单词级结果（由 PronunciationPractice 上报，按句子顺序与输入区单词对齐）
+  const pronWords = pronHistory[target]?.words
+  // charGroups 里每个单词组的索引 → 该单词在句子中的序号（用于把评分对齐到对应单词槽）
+  const wordSeqByGroup = useMemo(() => {
+    const m = new Map<number, number>()
+    let seq = 0
+    charGroups.forEach((g, gi) => {
+      if (g.kind === "word") {
+        m.set(gi, seq)
+        seq++
+      }
+    })
+    return m
+  }, [charGroups])
+
   // ── 进度条（渲染到页面顶部固定槽位 #progress-slot，不随内容居中）──
   const progressBar =
     phase === "playing" ? (
@@ -957,10 +973,63 @@ export default function SentencePractice({
                   )
                 }
                 // 单词：字母包进不可换行容器，flex-wrap 不会在单词中间断开
+                const wordSeq = wordSeqByGroup.get(gIndex) ?? -1
+                const pron = pronWords?.[wordSeq]
+                // 发音评测读错 → 整词下划线标红（优先级最高，优先于听写错误/激活态）
+                const pronWrong = !!pron?.wrong
                 return (
-                  <span key={gIndex} className="relative inline-flex flex-none">
+                  <span
+                    key={gIndex}
+                    className={`group/word relative inline-flex flex-none ${pron ? "flex-col items-center" : ""}`}
+                  >
+                    {/* 发音评分角标：作为单词块第一行右对齐 → 自然落在单词右上角（读错红 / 高分绿 / 中等琥珀） */}
+                    {pron && (
+                      <Badge
+                        size="sm"
+                        color={pron.wrong ? "rose" : pron.score >= 70 ? "emerald" : "amber"}
+                        className="pointer-events-none mb-1 h-5 min-w-5 self-end rounded-full px-1.5 text-xs font-bold leading-none shadow-sm"
+                        title={pron.wrong ? "发音错误" : `发音 ${Math.round(pron.score)} 分`}
+                      >
+                        {pron.wrong ? "✗" : Math.round(pron.score)}
+                      </Badge>
+                    )}
+                    {/* 字母行（横排；有评分时作为单词块第二行） */}
+                    <span className="inline-flex flex-none">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
+                      // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样），按发音质量着色
+                      if (pron) {
+                        return (
+                          <span
+                            key={idx}
+                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
+                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                          >
+                            <span className="invisible leading-none">W</span>
+                            <span
+                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
+                                pronWrong
+                                  ? "text-rose-500"
+                                  : pron.score >= 70
+                                    ? "text-emerald-500"
+                                    : "text-amber-500"
+                              }`}
+                              style={{ transform: "translateY(-0.14em)" }}
+                            >
+                              {c.ch}
+                            </span>
+                            <span
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                                pronWrong
+                                  ? "bg-rose-500"
+                                  : pron.score >= 70
+                                    ? "bg-emerald-500"
+                                    : "bg-amber-500"
+                              }`}
+                            />
+                          </span>
+                        )
+                      }
                       if (c.status === "pending") {
                         // 未输入：灰色横线；激活单词 → 绿色横线。隐形占位字符保证行高恒定
                         return (
@@ -1029,6 +1098,7 @@ export default function SentencePractice({
                       return <span key={idx}>{c.ch}</span>
                     })}
                     {endPunctMark}
+                    </span>
                   </span>
                 )
               })}
