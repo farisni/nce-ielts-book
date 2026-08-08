@@ -145,7 +145,7 @@ function GraphemeCard({
 
       {/* 底部色条：整条全宽色条 + 色条上的教学单元标注（同原版）；mt-auto 保证始终贴底 */}
       <span
-        className="mt-auto flex w-full items-center justify-center px-1.5 py-0.5 text-center text-[10px] font-medium leading-tight"
+        className="mt-auto flex w-full items-center justify-start px-1.5 py-0.5 text-left text-[10px] font-medium leading-tight"
         style={{
           backgroundColor: cell.color ?? "transparent",
           color: colorContrast(cell.color),
