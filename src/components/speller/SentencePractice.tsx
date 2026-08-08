@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import {
   Sheet,
@@ -980,20 +979,20 @@ export default function SentencePractice({
                 return (
                   <span
                     key={gIndex}
-                    className={`group/word relative inline-flex flex-none ${pron ? "flex-col items-center" : ""}`}
+                    className={`group/word relative inline-flex flex-none ${pron ? "mr-[0.6em]" : ""}`}
                   >
-                    {/* 发音评分角标：作为单词块第一行右对齐 → 自然落在单词右上角（读错红 / 高分绿 / 中等琥珀） */}
+                    {/* 发音评分：以轻量上标贴在单词右上角 */}
                     {pron && (
-                      <Badge
-                        size="sm"
-                        color={pron.wrong ? "rose" : pron.score >= 70 ? "emerald" : "amber"}
-                        className="pointer-events-none mb-1 h-5 min-w-5 self-end rounded-full px-1.5 text-xs font-bold leading-none shadow-sm"
+                      <span
+                        className={`pointer-events-none absolute bottom-[1.5em] left-full ml-[0.3em] z-10 whitespace-nowrap text-[0.4em] font-bold leading-none ${
+                          pron.wrong ? "text-rose-500" : "text-muted-foreground/70"
+                        }`}
                         title={pron.wrong ? "发音错误" : `发音 ${Math.round(pron.score)} 分`}
                       >
                         {pron.wrong ? "✗" : Math.round(pron.score)}
-                      </Badge>
+                      </span>
                     )}
-                    {/* 字母行（横排；有评分时作为单词块第二行） */}
+                    {/* 字母行 */}
                     <span className="inline-flex flex-none">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
@@ -1118,6 +1117,20 @@ export default function SentencePractice({
           )}
         </div>
 
+        {/* 发音评测：跟读录音评分
+            key=句子 → 切句时重新挂载、恢复该句历史评分；
+            onResult 上报本次评分，按句文本存入 pronHistory 并持久化到 SQLite */}
+        <PronunciationPractice
+          key={target}
+          sentence={target}
+          initialResult={pronHistory[target] ?? null}
+          onResult={(r) => {
+            setPronHistory((prev) => ({ ...prev, [target]: r }))
+            if (course) savePronScore(course.id, target, r).catch(() => {})
+          }}
+          onPlayVoice={() => (playVoice ? playVoice() : replay())}
+        />
+
         {/* 统计栏 */}
         <div className="flex justify-center gap-12 text-center text-sm text-muted-foreground">
           <div>
@@ -1137,20 +1150,6 @@ export default function SentencePractice({
             错误提交
           </div>
         </div>
-
-        {/* 发音评测：跟读录音评分
-            key=句子 → 切句时重新挂载、恢复该句历史评分；
-            onResult 上报本次评分，按句文本存入 pronHistory 并持久化到 SQLite */}
-        <PronunciationPractice
-          key={target}
-          sentence={target}
-          initialResult={pronHistory[target] ?? null}
-          onResult={(r) => {
-            setPronHistory((prev) => ({ ...prev, [target]: r }))
-            if (course) savePronScore(course.id, target, r).catch(() => {})
-          }}
-          onPlayVoice={() => (playVoice ? playVoice() : replay())}
-        />
       </div>
     </>
   )

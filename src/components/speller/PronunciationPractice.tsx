@@ -329,33 +329,6 @@ export default function PronunciationPractice({
               <div className="text-xs text-muted-foreground">完整度</div>
             </div>
           </div>
-
-          {/* 单词级详情：读错的词标红，正确的正常色 */}
-          {result.words.length > 0 && (
-            <div className="flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-lg border border-border bg-muted/20 px-4 py-2">
-              {result.words.map((w, i) => (
-                <span key={i} className="flex items-center gap-1">
-                  <span
-                    className={
-                      w.wrong
-                        ? "font-semibold text-rose-500"
-                        : w.score >= 70
-                          ? "text-emerald-500"
-                          : "text-amber-500"
-                    }
-                  >
-                    {w.word}
-                  </span>
-                  <span className="text-[10px] tabular-nums text-muted-foreground/60">
-                    {Math.round(w.score)}
-                  </span>
-                  {i < result.words.length - 1 && (
-                    <span className="text-muted-foreground/40">·</span>
-                  )}
-                </span>
-              ))}
-            </div>
-          )}
         </div>
       )}
 
