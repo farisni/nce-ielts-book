@@ -95,6 +95,19 @@ export default function VideoSpellerPage() {
     }
   }, [currentIdx, playCue])
 
+  // 点击视频画面切换播放/暂停（空格仍留给拼写）
+  // 播放时从当前句 SRT 起点开始、到句末停止；停止后再播回到句首循环当前句
+  const toggleVideo = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    if (v.paused) {
+      if (playCue(currentIdx)) return
+      v.play().catch(() => {})
+    } else {
+      v.pause()
+    }
+  }, [currentIdx, playCue])
+
   // 点击句子列表某句 → 更新当前句索引（听写模式：不自动播放，按反引号 ` 才播放）
   const jumpToSentence = useCallback((courseIndex: number) => {
     setCurrentIdx(courseIndex)
@@ -142,17 +155,6 @@ export default function VideoSpellerPage() {
       v.removeEventListener("loadedmetadata", onLoaded)
     }
   }, [cues])
-
-  // 点击视频画面切换播放/暂停（空格仍留给拼写）
-  const toggleVideo = useCallback(() => {
-    const v = videoRef.current
-    if (!v) return
-    if (v.paused) {
-      v.play().catch(() => {})
-    } else {
-      v.pause()
-    }
-  }, [])
 
   const formatTime = (s: number) => {
     if (!isFinite(s) || s <= 0) return "0:00"
