@@ -4,7 +4,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check, List, X } from "lucide-react"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet"
+import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check, List } from "lucide-react"
 import confetti from "canvas-confetti"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
 import { getProgress, updateProgress } from "@/lib/speller/progress"
@@ -669,53 +676,6 @@ export default function SentencePractice({
       ? createPortal(nextBtn, document.getElementById("next-slot")!)
       : null
 
-  // ── 句子列表侧边抽屉 ──
-  const sentenceDrawer = showSentences ? (
-    <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
-      {/* 遮罩 */}
-      <div
-        className="absolute inset-0 bg-black/30"
-        onClick={() => setShowSentences(false)}
-      />
-      {/* 抽屉主体：右侧滑入 */}
-      <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col border-l border-border bg-background shadow-xl">
-        <div className="flex items-center justify-between border-b border-border px-4 py-3">
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">
-              {course?.name ?? "课程"} · 句子列表
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              {course?.sentences.length ?? 0} 句
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => setShowSentences(false)}
-            className="flex size-8 items-center justify-center rounded-md transition-colors hover:bg-muted"
-            aria-label="关闭"
-          >
-            <X className="size-4" />
-          </button>
-        </div>
-        <div className="flex-1 overflow-y-auto px-4 py-3">
-          <ol className="space-y-3">
-            {(course?.sentences ?? []).map((s, i) => (
-              <li key={i} className="flex gap-3 text-sm leading-relaxed">
-                <span className="w-6 shrink-0 text-right tabular-nums text-muted-foreground/70">
-                  {i + 1}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-foreground">{s.en}</p>
-                  <p className="text-muted-foreground">{s.cn}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </div>
-  ) : null
-
   // ── 底部快捷键按钮组（可点击，渲染到 footer 中间槽位）──
   const Kbd = ({ children }: { children: React.ReactNode }) => (
     <kbd className="flex h-4 items-center gap-0.5 rounded border bg-muted px-1 font-mono text-[10px] font-medium leading-none text-foreground">
@@ -833,7 +793,34 @@ export default function SentencePractice({
       {prevPortal}
       {nextPortal}
       {shortcutPortal}
-      {sentenceDrawer}
+      {/* 句子列表抽屉（shadcn Sheet） */}
+      <Sheet open={showSentences} onOpenChange={setShowSentences} modal={false}>
+        <SheetContent side="right" className="w-full max-w-sm gap-0 p-0">
+          <SheetHeader className="border-b border-border px-4 py-3">
+            <SheetTitle className="text-sm font-semibold">
+              {course?.name ?? "课程"} · 句子列表
+            </SheetTitle>
+            <SheetDescription className="text-xs">
+              {course?.sentences.length ?? 0} 句
+            </SheetDescription>
+          </SheetHeader>
+          <div className="flex-1 overflow-y-auto px-4 py-3">
+            <ol className="space-y-3">
+              {(course?.sentences ?? []).map((s, i) => (
+                <li key={i} className="flex gap-3 text-sm leading-relaxed">
+                  <span className="w-6 shrink-0 text-right tabular-nums text-muted-foreground/70">
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-foreground">{s.en}</p>
+                    <p className="text-muted-foreground">{s.cn}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </SheetContent>
+      </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
         {/* 中文句子 */}
         <div key={`cn-${index}`} className="mt-[100px] text-center">
