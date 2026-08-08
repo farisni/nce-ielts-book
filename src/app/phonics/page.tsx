@@ -251,22 +251,6 @@ export default function PhonicsPage() {
           </div>
         ))}
       </div>
-
-      {/* 页脚说明 */}
-      <footer className="mt-10 border-t pt-6 text-sm leading-7 text-muted-foreground/70">
-        <p>
-          本表整理自{" "}
-          <a
-            href="https://syntheticphonics.com/the-english-alphabetic-code-with-audio/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#337ea9] underline-offset-4 hover:underline dark:text-[#9cd8fc]"
-          >
-            Synthetic Phonics — The English Alphabetic Code with Audio
-          </a>
-          ，版权归原站所有，仅供学习交流。任何拼读代码表都无法完全涵盖口音差异，部分音素在单独发音时可能采用“简化”读法。
-        </p>
-      </footer>
     </div>
   );
 }
