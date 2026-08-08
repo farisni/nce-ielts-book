@@ -861,10 +861,6 @@ export default function SentencePractice({
             <span className="flex items-center gap-2 font-medium text-emerald-500">
               <CheckCircle2 className="size-5" /> 完美！
             </span>
-          ) : revealed ? (
-            <span className="flex items-center gap-2 font-medium text-amber-500">
-              <Eye className="size-5" /> 答案已显示 · Enter 进入下一句
-            </span>
           ) : (
             // 默认（未提交、未显示答案、无错误）：不显示提示文字，仅保留高度
             <span />
