@@ -59,7 +59,7 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className={`group relative flex min-w-0 flex-col overflow-hidden bg-white pt-1.5 transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+      className={`group relative flex min-w-0 flex-col overflow-hidden bg-white pt-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         cell.rowspan > 1 ? "row-span-2" : ""
       }`}
       style={{ fontFamily: PHONICS_FONT }}
@@ -179,7 +179,7 @@ export default function PhonicsPage() {
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex h-full flex-col items-center justify-center gap-1 bg-[#fffa94] px-1 py-2 transition-colors hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
+              className="flex h-full flex-col items-center justify-center gap-1 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
               <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
