@@ -39,6 +39,38 @@ export default function VideoSpellerPage() {
     return -1
   }, [cues, currentTime])
 
+  // ── 视频进度持久化（localStorage 按课程保存播放位置）──
+  const videoPosKey = `speller-video-pos-${courseId}`
+  // 进入页面时恢复上次播放位置
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    try {
+      const saved = parseFloat(window.localStorage.getItem(videoPosKey) ?? "")
+      if (Number.isFinite(saved) && saved > 0 && (!v.duration || saved < v.duration)) {
+        v.currentTime = saved
+        setCurrentTime(saved)
+      }
+    } catch { /* ignore */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  // 播放过程中定期保存位置（节流，避免频繁写 localStorage）
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    let lastSave = 0
+    const onTimeUpdate = () => {
+      const t = v.currentTime
+      if (t - lastSave >= 2) {
+        lastSave = t
+        try { window.localStorage.setItem(videoPosKey, String(t)) } catch { /* ignore */ }
+      }
+    }
+    v.addEventListener("timeupdate", onTimeUpdate)
+    return () => v.removeEventListener("timeupdate", onTimeUpdate)
+  }, [videoPosKey])
+
+
   // 加载 SRT 字幕
   useEffect(() => {
     if (!course?.subtitle) return
