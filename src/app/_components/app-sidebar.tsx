@@ -14,7 +14,7 @@ import {
   Rows3,
   Sparkles,
   Table2,
-  Play, SquareDashed } from "lucide-react";
+  Play, SquareDashed, Keyboard } from "lucide-react";
 import { Sidebar, SidebarBody, SidebarLink, useSidebar } from "@/components/ui/sidebar";
 import { motion } from "motion/react";
 
@@ -255,6 +255,11 @@ export function AppSidebar() {
   const flattenedItems = [
     ...courseItems,
     ...ieltsItems,
+    {
+      label: "Speller 听写",
+      href: "/speller",
+      icon: <Keyboard className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+    },
   ];
 
   return (

@@ -4,7 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight } from "lucide-react";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles, mergeArticleData } from "@/app/mock";
@@ -119,6 +119,15 @@ const pageSearchItems: PageSearchItem[] = [
     group: "Navigate",
     icon: <StarIcon className="text-muted-foreground" />,
     keywords: toKeywords("首页 home root atlas 词根 主页"),
+  },
+  {
+    id: "speller",
+    label: "Speller 听写",
+    description: "听写打字练习 · 看中文，打英文",
+    href: "/speller",
+    group: "Navigate",
+    icon: <KeyboardIcon className="text-muted-foreground" />,
+    keywords: toKeywords("speller 听写 打字 拼写 practice dictation 句子 sentence 打字练习"),
   },
   {
     id: "ielts",
@@ -505,6 +514,15 @@ export default function TopNav() {
                     ))}
                   </div>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  render={<Link href="/speller" />}
+                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
+                >
+                  Speller
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>

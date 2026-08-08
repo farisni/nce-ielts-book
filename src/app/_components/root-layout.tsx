@@ -12,7 +12,7 @@ import { FloatAction } from "@/app/_components/float-action";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { useReaderStore } from "@/stores/reader-store";
 import { useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 const pillHandle =
   "relative flex items-center justify-center bg-transparent cursor-col-resize flex-shrink-0 " +
@@ -27,6 +27,8 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const isSpellerPage = pathname?.startsWith("/speller");
   const isArticlePage = searchParams.has("article");
   const shouldShowNotesPanel = isArticlePage && isPanelOpen;
   const panelSize = isArticlePage ? 45 : 0;
@@ -120,8 +122,8 @@ export function RootLayoutShell({ children }: { children: React.ReactNode }) {
             <div className="relative flex h-full min-h-0 flex-col overflow-hidden">
               <TopNav />
               <ScrollProgress containerRef={mainRef} className="top-14 -mt-6 mb-0" inline />
-              <main ref={mainRef} data-scroll-container data-section="main-content" className="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto p-6">
-                <div className="p-6 min-h-full">
+              <main ref={mainRef} data-scroll-container data-section="main-content" className={`relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto ${isSpellerPage ? "pt-5" : "p-6"}`}>
+                <div className={isSpellerPage ? "h-full flex flex-col" : "p-6 min-h-full"}>
                   {children}
                 </div>
               </main>

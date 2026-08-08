@@ -603,3 +603,8 @@ main mark {
   font-weight: 600;
   padding: 0 0.02em 0.02em;
 }
+
+/* ─── Speller 听写输入区字体：与句乐部输入框一致的系统字体栈 ─── */
+.font-input {
+  font-family: -apple-system, BlinkMacSystemFont, "system-ui", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
