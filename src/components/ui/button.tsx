@@ -46,10 +46,15 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  leadingIcon: LeadingIcon,
+  trailingIcon: TrailingIcon,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    leadingIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+    trailingIcon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
   }) {
   const Comp = asChild ? Slot.Root : "button"
 
@@ -60,7 +65,23 @@ function Button({
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {LeadingIcon && (
+        <LeadingIcon
+          className="size-4"
+          aria-hidden="true"
+          focusable="false"
+        />
+      )}
+      {children}
+      {TrailingIcon && (
+        <TrailingIcon
+          className="size-4"
+          aria-hidden="true"
+          focusable="false"
+        />
+      )}
+    </Comp>
   )
 }
 
