@@ -57,6 +57,7 @@ export default function VideoSpellerPage() {
           <SentencePractice
             course={course}
             autoStart
+            showCn={false}
             onExit={() => router.push("/speller")}
           />
         </div>

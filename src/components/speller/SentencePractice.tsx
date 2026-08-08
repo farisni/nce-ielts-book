@@ -231,6 +231,7 @@ export default function SentencePractice({
   course,
   autoStart = false,
   onExit,
+  showCn = true,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -238,6 +239,8 @@ export default function SentencePractice({
   autoStart?: boolean
   /** 退出练习时的回调（默认回到 idle 状态） */
   onExit?: () => void
+  /** 是否显示中文句提示（视频课程模式下隐藏，避免泄露答案） */
+  showCn?: boolean
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -822,10 +825,12 @@ export default function SentencePractice({
         </SheetContent>
       </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
-        {/* 中文句子 */}
-        <div key={`cn-${index}`} className="mt-[100px] text-center">
-          <h2 className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
-        </div>
+        {/* 中文句子（视频课程模式下隐藏，避免泄露答案） */}
+        {showCn && (
+          <div key={`cn-${index}`} className="mt-[100px] text-center">
+            <h2 className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
+          </div>
+        )}
 
         {/* 英文句子输入区 */}
         <div key={`en-${index}`} className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
