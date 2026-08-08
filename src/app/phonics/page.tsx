@@ -121,11 +121,11 @@ function GraphemeCard({
         {renderGrapheme(cell.g, cell.silent)}
       </span>
 
-      {/* 配图：单行格固定缩略图；跨行格用稍大的固定高度，避免图片过度放大 */}
+      {/* 配图：容器撑满（跨行格 flex-1 / 单行格固定高度），图片保持原始比例不放大 */}
       {cell.img && (
         <div
           className={`flex w-full items-center justify-center ${
-            cell.rowspan > 1 ? "h-32 py-1" : "h-20 py-1"
+            cell.rowspan > 1 ? "flex-1 py-1" : "h-20 py-1"
           }`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
