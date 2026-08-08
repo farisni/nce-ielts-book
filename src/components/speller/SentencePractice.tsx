@@ -824,7 +824,7 @@ export default function SentencePractice({
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
         {/* 中文句子 */}
         <div key={`cn-${index}`} className="mt-[100px] text-center">
-          <h2 className="text-3xl font-semibold leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
+          <h2 className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
         </div>
 
         {/* 英文句子输入区 */}
