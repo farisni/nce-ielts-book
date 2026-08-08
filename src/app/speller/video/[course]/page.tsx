@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter, useParams } from "next/navigation";
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useEffect, useMemo, useState } from "react";
 import SentencePractice from "@/components/speller/SentencePractice";
 import { getCourse } from "@/lib/speller/courses";
 import { parseSrt, type SrtCue } from "@/lib/parse-srt";
@@ -28,6 +28,16 @@ export default function VideoSpellerPage() {
   // 音量：0~1，以及是否静音
   const [volume, setVolume] = useState(1);
   const [muted, setMuted] = useState(false);
+
+  // 根据视频当前播放位置，在 SRT cues 里定位对应字幕（跟随视频进度）
+  const subtitleIdx = useMemo(() => {
+    if (cues.length === 0) return -1
+    const ms = currentTime * 1000
+    for (let i = cues.length - 1; i >= 0; i--) {
+      if (ms >= cues[i].startMs) return i
+    }
+    return -1
+  }, [cues, currentTime])
 
   // 加载 SRT 字幕
   useEffect(() => {
@@ -242,13 +252,15 @@ export default function VideoSpellerPage() {
             </div>
           </div>
 
-          {/* 字幕区：显示当前句字幕或占位 */}
+          {/* 字幕区：跟随视频播放进度显示对应句 */}
           <div className="rounded-lg border border-dashed border-border bg-muted/40 px-4 py-6 text-center text-sm text-muted-foreground">
             {cues.length > 0 ? (
               <>
-                <p className="mb-2 font-medium text-foreground/80">当前句 · {currentIdx + 1}/{cues.length}</p>
+                <p className="mb-2 font-medium text-foreground/80">
+                  当前句 · {subtitleIdx >= 0 ? subtitleIdx + 1 : "—"}/{cues.length}
+                </p>
                 <p className="text-base leading-relaxed text-foreground">
-                  {cues[currentIdx]?.text ?? "—"}
+                  {subtitleIdx >= 0 ? cues[subtitleIdx]?.text : "—"}
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground/70">
                   反引号 ` 播放当前句 · 空格跳词 · Enter 提交
