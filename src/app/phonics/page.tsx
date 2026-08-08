@@ -263,7 +263,7 @@ export default function PhonicsPage() {
           自然拼读 · 英语字母拼读代码表
         </h1>
         <p className="mb-1 max-w-2xl leading-7 text-muted-foreground">
-          英语的音素（phoneme）与拼写替代（grapheme）对照表。点击任意格子或喇叭
+          音素按「常见拼写先行」排布，没有教学分级，方便查找。点击任意格子或喇叭
           <Volume2 className="mx-0.5 inline size-3.5 align-[-2px]" />
           可听该音素/拼写的发音示范。
         </p>
