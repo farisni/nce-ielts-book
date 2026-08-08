@@ -121,6 +121,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("首页 home root atlas 词根 主页"),
   },
   {
+    id: "phonics-training",
+    label: "自然拼读 · 教学图表",
+    description: "English Alphabetic Code · Training Illustrated 教学顺序表",
+    href: "/phonics/training",
+    group: "Navigate",
+    icon: <BookOpenIcon className="text-muted-foreground" />,
+    keywords: toKeywords("phonics 自然拼读 教学图表 training illustrated 元音 vowel 辅音 consonant alphabetic code"),
+  },
+  {
     id: "phonics",
     label: "自然拼读 · 音素代码表",
     description: "English Alphabetic Code · 发音拼读对照表",
@@ -535,12 +544,21 @@ export default function TopNav() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink
-                  render={<Link href="/phonics" />}
-                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
-                >
-                  自然拼读
-                </NavigationMenuLink>
+                <NavigationMenuTrigger>自然拼读</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-56 list-none grid-cols-1 gap-1 p-0">
+                    <li>
+                      <NavigationMenuLink render={<Link href="/phonics" />}>
+                        <div className="font-medium text-foreground px-1">音素代码表</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/phonics/training" />}>
+                        <div className="font-medium text-foreground px-1">教学图表 · Training</div>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>

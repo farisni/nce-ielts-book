@@ -14,7 +14,7 @@ import {
   Rows3,
   Sparkles,
   Table2,
-  Play, SquareDashed, Keyboard, AudioLines } from "lucide-react";
+  Play, SquareDashed, Keyboard, AudioLines, GraduationCap } from "lucide-react";
 import { Sidebar, SidebarBody, SidebarLink, useSidebar } from "@/components/ui/sidebar";
 import { motion } from "motion/react";
 
@@ -264,6 +264,11 @@ export function AppSidebar() {
       label: "自然拼读",
       href: "/phonics",
       icon: <AudioLines className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
+    },
+    {
+      label: "拼读教学图表",
+      href: "/phonics/training",
+      icon: <GraduationCap className="size-5 shrink-0 text-neutral-700 dark:text-neutral-200" />,
     },
   ];
 
