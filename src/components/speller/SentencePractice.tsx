@@ -795,20 +795,20 @@ export default function SentencePractice({
       {shortcutPortal}
       {/* 句子列表抽屉（shadcn Sheet） */}
       <Sheet open={showSentences} onOpenChange={setShowSentences} modal={false}>
-        <SheetContent side="right" className="w-full max-w-md gap-0 p-0">
-          <SheetHeader className="border-b border-border px-4 py-3">
-            <SheetTitle className="text-sm font-semibold">
+        <SheetContent side="right" className="w-full max-w-2xl gap-0 p-0">
+          <SheetHeader className="border-b border-border px-5 py-4">
+            <SheetTitle className="text-lg font-semibold">
               {course?.name ?? "课程"} · 句子列表
             </SheetTitle>
-            <SheetDescription className="text-xs">
+            <SheetDescription className="text-sm">
               {course?.sentences.length ?? 0} 句
             </SheetDescription>
           </SheetHeader>
-          <div className="flex-1 overflow-y-auto px-4 py-3">
-            <ol className="space-y-3">
+          <div className="flex-1 overflow-y-auto px-5 py-4">
+            <ol className="space-y-4">
               {(course?.sentences ?? []).map((s, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed">
-                  <span className="w-6 shrink-0 text-right tabular-nums text-muted-foreground/70">
+                <li key={i} className="flex gap-4 text-base leading-relaxed">
+                  <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
                     {i + 1}
                   </span>
                   <div className="min-w-0 flex-1">
