@@ -551,7 +551,9 @@ export default function SentencePractice({
     ) : null
 
   const progressPortal =
-    typeof document !== "undefined" ? createPortal(progressBar, document.getElementById("progress-slot")!) : null
+    typeof document !== "undefined" && progressBar && document.getElementById("progress-slot")
+      ? createPortal(progressBar, document.getElementById("progress-slot")!)
+      : null
 
   // ── 底部栏左右箭头（上一句/下一句，渲染到 footer 槽位）──
   const prevBtn =
