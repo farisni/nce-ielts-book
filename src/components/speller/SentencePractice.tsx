@@ -812,8 +812,8 @@ export default function SentencePractice({
                     {i + 1}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-foreground">{s.en}</p>
-                    <p className="text-muted-foreground">{s.cn}</p>
+                    <p className="text-xl font-semibold text-foreground">{s.en}</p>
+                    <p className="text-lg text-muted-foreground">{s.cn}</p>
                   </div>
                 </li>
               ))}
