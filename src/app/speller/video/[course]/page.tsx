@@ -79,13 +79,7 @@ export default function VideoSpellerPage() {
     }
   }, [currentIdx, playCue])
 
-  // 当前句变化（首次进入、答对自动下一句、点击列表跳转）→ 自动播放对应视频片段
-  useEffect(() => {
-    if (currentIdx < 0) return
-    playCue(currentIdx)
-  }, [currentIdx, playCue])
-
-  // 点击句子列表某句 → 跳转到该句 SRT 时间点（由上述 effect 统一播放）
+  // 点击句子列表某句 → 更新当前句索引（听写模式：不自动播放，按反引号 ` 才播放）
   const jumpToSentence = useCallback((courseIndex: number) => {
     setCurrentIdx(courseIndex)
   }, [])
