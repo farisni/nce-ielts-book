@@ -138,8 +138,8 @@ function GraphemeCard({
         </div>
       )}
 
-      {/* 例词：原版 24px/600/灰色，左对齐；pb-4 给底部色条留出间距 */}
-      <span className="w-full px-2 pb-4 text-left text-[24px] font-semibold leading-none text-muted-foreground">
+      {/* 例词：原版 24px/600/灰色，左对齐；pb-2 给底部色条留出间距 */}
+      <span className="w-full px-2 pb-2 text-left text-[24px] font-semibold leading-none text-muted-foreground">
         {renderExample(cell.ex, cell.hl)}
       </span>
 
