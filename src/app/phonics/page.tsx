@@ -275,20 +275,20 @@ export default function PhonicsPage() {
 
       {/* 音素代码表：格子自身 border 画网格线，容器白底，无缝隙无圆角（同原版 table） */}
       <div className="mt-6 border-l border-t border-black/70 bg-white">
-        {/* 表头：Units of Sound / Graphemes / Simple & Complex Code */}
-        <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[128px_1fr]">
+        {/* 表头：Units of Sound / Graphemes / Simple & Complex Code（Sassoon Primary 字体） */}
+        <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[128px_1fr]" style={{ fontFamily: PHONICS_FONT }}>
           <div className="row-span-2 flex flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fff200] px-1 py-2 text-center">
-            <span className="text-xs font-semibold leading-tight text-foreground sm:text-sm">Units of Sound</span>
-            <span className="text-xs font-semibold leading-tight text-foreground sm:text-sm">Phoneme/s</span>
+            <span className="text-sm font-semibold leading-tight text-foreground sm:text-base">Units of Sound</span>
+            <span className="text-sm font-semibold leading-tight text-foreground sm:text-base">Phoneme/s</span>
           </div>
-          <div className="flex items-center justify-center border-b border-r border-black/70 bg-[#e7d970] px-3 py-2 text-center text-xs font-semibold leading-tight text-foreground sm:text-sm">
+          <div className="flex items-center justify-center border-b border-r border-black/70 bg-[#e7d970] px-3 py-2 text-center text-sm font-semibold leading-tight text-foreground sm:text-base">
             Graphemes (letters or letter groups) that are code for the sounds
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-6">
-            <div className="flex items-center justify-center border-b border-r border-black/70 bg-[#b8e8fb] px-1 py-1.5 text-center text-[11px] font-semibold text-foreground">
+            <div className="flex items-center justify-center border-b border-r border-black/70 bg-[#b8e8fb] px-1 py-1.5 text-center text-xs font-semibold text-foreground sm:text-sm">
               Simple Code
             </div>
-            <div className="col-span-2 flex items-center justify-center border-b border-r border-black/70 bg-[#c9d9dc] px-1 py-1.5 text-center text-[11px] font-semibold text-foreground sm:col-span-5">
+            <div className="col-span-2 flex items-center justify-center border-b border-r border-black/70 bg-[#c9d9dc] px-1 py-1.5 text-center text-xs font-semibold text-foreground sm:col-span-5 sm:text-sm">
               Complex Code
             </div>
           </div>
