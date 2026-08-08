@@ -81,13 +81,17 @@ function GraphemeCard({
         {renderExample(cell.ex, cell.hl)}
       </span>
 
-      {/* 底部色条（Phonics International 单元颜色） */}
-      {cell.color && (
-        <span
-          className="absolute inset-x-0 bottom-0 h-1"
-          style={{ backgroundColor: cell.color }}
-        />
-      )}
+      {/* 底部色条：整条全宽色条 + 色条上的教学单元标注（同原版） */}
+      <span
+        className="flex w-full items-center justify-center px-1 text-center text-[9px] font-medium leading-tight"
+        style={{
+          backgroundColor: cell.color ?? "transparent",
+          borderTop: cell.color ? "none" : "1px solid var(--border)",
+          color: cell.color ? "#eee" : "transparent",
+        }}
+      >
+        {cell.unit || " "}
+      </span>
 
       {/* 喇叭/加载状态 */}
       <span className="pointer-events-none absolute right-1 top-1 text-muted-foreground/0 transition-colors group-hover:text-muted-foreground/70">
