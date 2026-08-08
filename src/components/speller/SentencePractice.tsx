@@ -430,6 +430,9 @@ export default function SentencePractice({
       setErrorCount((n) => n + 1)
       savePatch({ errors: 1 })
       setFlashTick((f) => f + 1)
+      // 自动跳到第一个拼错的单词，方便直接修改
+      const firstErr = words.findIndex((w, i) => (wordInputs[i] ?? "").toLowerCase() !== w.toLowerCase())
+      if (firstErr >= 0) setActiveIdx(firstErr)
     }
   }, [sentence, submitted, revealed, words, wordInputs, savePatch])
 
