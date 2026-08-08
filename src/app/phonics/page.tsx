@@ -65,15 +65,19 @@ function GraphemeCard({
         {renderGrapheme(cell.g, cell.silent)}
       </span>
 
-      {/* 配图：固定高度缩略图 */}
+      {/* 配图：单行格固定缩略图高度；跨行格（rowspan>1）撑满剩余空间，避免下方留白 */}
       {cell.img && (
-        <div className="flex h-14 w-full items-center justify-center py-1">
+        <div
+          className={`flex w-full items-center justify-center ${
+            cell.rowspan > 1 ? "flex-1 py-1" : "h-14 py-1"
+          }`}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={cell.img}
             alt={cell.ex}
             loading="lazy"
-            className="max-h-full max-w-full object-contain"
+            className={`object-contain ${cell.rowspan > 1 ? "h-full w-full" : "max-h-full max-w-full"}`}
           />
         </div>
       )}
