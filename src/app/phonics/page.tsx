@@ -56,33 +56,35 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className="group relative flex min-w-[88px] flex-1 flex-col items-center gap-1 overflow-hidden rounded-lg border border-border bg-card px-2 py-2.5 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+      className="group relative flex h-full min-w-0 flex-col items-center overflow-hidden rounded-lg border border-border bg-card pt-2 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
     >
       {/* 拼写替代（silent 字母用空心/浅色标注） */}
-      <span className="text-lg font-semibold leading-tight text-foreground">
+      <span className="px-1 text-center text-lg font-semibold leading-tight text-foreground">
         {renderGrapheme(cell.g, cell.silent)}
       </span>
 
+      {/* 配图：撑满格子中间 */}
+      {cell.img && (
+        <div className="flex w-full flex-1 items-center justify-center py-1.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={cell.img}
+            alt={cell.ex}
+            loading="lazy"
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
+      )}
+
       {/* 例词：目标拼写高亮 */}
-      <span className="text-sm text-muted-foreground">
+      <span className="w-full px-1 pb-2 text-center text-sm text-muted-foreground">
         {renderExample(cell.ex, cell.hl)}
       </span>
-
-      {/* 配图（有则显示，小尺寸） */}
-      {cell.img && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={cell.img}
-          alt={cell.ex}
-          loading="lazy"
-          className="mt-0.5 h-9 w-9 object-contain"
-        />
-      )}
 
       {/* 底部色条（Phonics International 单元颜色） */}
       {cell.color && (
         <span
-          className="absolute inset-x-0 bottom-0 h-[3px]"
+          className="absolute inset-x-0 bottom-0 h-1"
           style={{ backgroundColor: cell.color }}
         />
       )}
@@ -164,7 +166,7 @@ export default function PhonicsPage() {
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex flex-col items-center justify-center gap-1 rounded-lg border border-border bg-muted/50 px-1 py-2 transition-colors hover:border-ring/60 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+              className="flex h-full flex-col items-center justify-center gap-1 rounded-lg border border-border bg-muted/50 px-1 py-2 transition-colors hover:border-ring/60 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
             >
               <span className="text-lg font-semibold leading-none text-foreground">{row.phoneme}</span>
               {row.audio && (
@@ -181,8 +183,8 @@ export default function PhonicsPage() {
               )}
             </button>
 
-            {/* 该音素的拼写格组 */}
-            <div className="flex flex-wrap gap-2">
+            {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行（同原版） */}
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
               {row.cells.map((cell, i) => {
                 const cid = `${row.phoneme}-${i}`;
                 return (
