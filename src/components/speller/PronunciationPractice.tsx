@@ -36,12 +36,16 @@ export default function PronunciationPractice({
   }, []);
 
   // 解析讯飞返回的 XML 评测结果，提取各维度分数
+  // 讯飞英文句子返回 <read_chapter> 节点带分；中文返回 <read_sentence> 带分
   const extractScores = (xmlText: string) => {
     const doc = new DOMParser().parseFromString(xmlText, "text/xml");
-    const root = doc.querySelector("xml_result, read_sentence");
-    const readSentence = doc.querySelector("read_sentence");
+    // 优先找带分数的节点（read_chapter 或 read_sentence），没有则取最外层
+    const scored =
+      doc.querySelector("read_chapter") ||
+      doc.querySelector("read_sentence") ||
+      doc.querySelector("xml_result");
     const getAttr = (name: string): number => {
-      const v = readSentence?.getAttribute(name);
+      const v = scored?.getAttribute(name);
       return v ? Number(v) : 0;
     };
     return {
@@ -49,7 +53,7 @@ export default function PronunciationPractice({
       accuracy: getAttr("accuracy_score"),
       fluency: getAttr("fluency_score"),
       integrity: getAttr("integrity_score"),
-      isRejected: readSentence?.getAttribute("is_rejected") === "true",
+      isRejected: scored?.getAttribute("is_rejected") === "true",
     };
   };
 
@@ -57,33 +61,24 @@ export default function PronunciationPractice({
     setError(null);
     setResult(null);
     try {
-      // 录 16kHz 16bit 单声道 PCM（讯飞要求）
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const audioCtx = new AudioContext({ sampleRate: 16000 });
+      const audioCtx = new AudioContext();
       const source = audioCtx.createMediaStreamSource(stream);
       const processor = audioCtx.createScriptProcessor(4096, 1, 1);
-      const pcmChunks: Int16Array[] = [];
+      const floatChunks: Float32Array[] = [];
 
       processor.onaudioprocess = (e) => {
-        const input = e.inputBuffer.getChannelData(0);
-        const pcm = new Int16Array(input.length);
-        for (let i = 0; i < input.length; i++) {
-          const s = Math.max(-1, Math.min(1, input[i]));
-          pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
-        }
-        pcmChunks.push(pcm);
+        floatChunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
       };
 
       source.connect(processor);
       processor.connect(audioCtx.destination);
 
-      // 使用 MediaRecorder 兜底？这里用 ScriptProcessor 收集 PCM，结束后合成
       setRecording(true);
       setRecordingSec(0);
       timerRef.current = window.setInterval(() => setRecordingSec((s) => s + 1), 1000);
 
-      // 暂存到全局，供 stop 使用
-      (window as any).__pcmChunks = pcmChunks;
+      (window as any).__floatChunks = floatChunks;
       (window as any).__audioCtx = audioCtx;
       (window as any).__pcmStream = stream;
       (window as any).__processor = processor;
@@ -97,13 +92,13 @@ export default function PronunciationPractice({
     if (timerRef.current) window.clearInterval(timerRef.current);
     setRecording(false);
 
-    const pcmChunks = (window as any).__pcmChunks as Int16Array[];
+    const floatChunks = (window as any).__floatChunks as Float32Array[];
     const audioCtx = (window as any).__audioCtx as AudioContext;
     const stream = (window as any).__pcmStream as MediaStream;
     const processor = (window as any).__processor;
     const source = (window as any).__source;
 
-    if (!pcmChunks || pcmChunks.length === 0) {
+    if (!floatChunks || floatChunks.length === 0) {
       setError("未采集到音频");
       return;
     }
@@ -113,13 +108,32 @@ export default function PronunciationPractice({
     source?.disconnect();
     processor?.disconnect();
 
-    // 合成 PCM
-    const totalLen = pcmChunks.reduce((acc, c) => acc + c.length, 0);
-    const pcm = new Int16Array(totalLen);
+    // 合成 Float32 音频
+    const totalLen = floatChunks.reduce((acc, c) => acc + c.length, 0);
+    const floatAudio = new Float32Array(totalLen);
     let offset = 0;
-    for (const c of pcmChunks) {
-      pcm.set(c, offset);
+    for (const c of floatChunks) {
+      floatAudio.set(c, offset);
       offset += c.length;
+    }
+
+    // 用 OfflineAudioContext 重采样到 16kHz（浏览器 AudioContext 忽略 sampleRate 参数）
+    const srcSampleRate = audioCtx?.sampleRate || 48000;
+    const offline = new OfflineAudioContext(1, Math.ceil((floatAudio.length / srcSampleRate) * 16000), 16000);
+    const buffer = offline.createBuffer(1, floatAudio.length, srcSampleRate);
+    buffer.getChannelData(0).set(floatAudio);
+    const srcNode = offline.createBufferSource();
+    srcNode.buffer = buffer;
+    srcNode.connect(offline.destination);
+    srcNode.start(0);
+    const rendered = await offline.startRendering();
+
+    // 转 Int16 PCM
+    const data = rendered.getChannelData(0);
+    const pcm = new Int16Array(data.length);
+    for (let i = 0; i < data.length; i++) {
+      const s = Math.max(-1, Math.min(1, data[i]));
+      pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
     }
 
     await audioCtx?.close();
