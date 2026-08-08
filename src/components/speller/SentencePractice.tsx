@@ -346,7 +346,7 @@ export default function SentencePractice({
       setPassed(true)
       setPassedCount((c) => c + 1)
       // 撒花庆祝（canvas-confetti basic cannon）+ 撒花音效
-      confetti({ particleCount: 100, spread: 70, ticks: 60, origin: { y: 0.6 } })
+      confetti({ particleCount: 100, spread: 70, ticks: 60, origin: { y: 0.7 } })
       playSuccess()
     } else {
       setSubmitted(true)
