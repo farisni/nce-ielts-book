@@ -232,6 +232,7 @@ export default function SentencePractice({
   autoStart = false,
   onExit,
   showCn = true,
+  playVoice,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -241,6 +242,8 @@ export default function SentencePractice({
   onExit?: () => void
   /** 是否显示中文句提示（视频课程模式下隐藏，避免泄露答案） */
   showCn?: boolean
+  /** 播放发音回调（视频课程模式下播放视频；不传则用 TTS） */
+  playVoice?: () => void
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -405,8 +408,12 @@ export default function SentencePractice({
   }, [autoStart, phase, startGame])
 
   const replay = useCallback(() => {
+    if (playVoice) {
+      playVoice()
+      return
+    }
     if (sentence) speak(sentence.en)
-  }, [sentence, speak])
+  }, [sentence, speak, playVoice])
 
   const submit = useCallback(() => {
     if (!sentence || submitted || revealed) return
@@ -691,9 +698,9 @@ export default function SentencePractice({
   const shortcutBar =
     phase === "playing" ? (
       <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button variant="secondary" size="sm" onClick={replay} title="播放发音" aria-label="播放发音" className="gap-1.5">
+        <Button variant="secondary" size="sm" onClick={replay} title={playVoice ? "播放视频" : "播放发音"} aria-label={playVoice ? "播放视频" : "播放发音"} className="gap-1.5">
           <Volume2 className="size-3.5" />
-          播放发音
+          {playVoice ? "播放视频" : "播放发音"}
           <Kbd>`</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">

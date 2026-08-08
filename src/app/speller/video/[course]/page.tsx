@@ -1,19 +1,32 @@
 "use client"
 
 import { useRouter, useParams } from "next/navigation";
+import { useRef, useCallback } from "react";
 import SentencePractice from "@/components/speller/SentencePractice";
 import { getCourse } from "@/lib/speller/courses";
 
 /**
  * Speller · 视频听写页
  * 左右布局：左 = 视频播放，右 = 拼写练习
- * 尚未接入 SRT 字幕时，视频独立播放，拼写用 TTS 发音
+ * 尚未接入 SRT 字幕时，视频独立播放，播放发音 = 播放视频原声
  */
 export default function VideoSpellerPage() {
   const router = useRouter();
   const params = useParams();
   const courseId = (params.course as string) ?? "nce3-l1";
   const course = getCourse(courseId);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // 播放发音 → 播放视频（反引号 ` 快捷键触发）
+  const playVoice = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return
+    if (v.paused) {
+      v.play().catch(() => {})
+    } else {
+      v.pause()
+    }
+  }, [])
 
   if (!course) {
     return (
@@ -34,11 +47,16 @@ export default function VideoSpellerPage() {
         <div className="flex w-full flex-col justify-center gap-3 lg:w-[42%] lg:shrink-0">
           <div className="overflow-hidden rounded-xl border border-border bg-black">
             <video
+              ref={videoRef}
               src={course.video}
               controls
               playsInline
               preload="metadata"
               className="aspect-video w-full"
+              onKeyDown={(e) => {
+                // 空格留给拼写（跳词），视频播放用反引号 ` 触发
+                if (e.code === "Space") e.preventDefault()
+              }}
             />
           </div>
 
@@ -58,6 +76,7 @@ export default function VideoSpellerPage() {
             course={course}
             autoStart
             showCn={false}
+            playVoice={playVoice}
             onExit={() => router.push("/speller")}
           />
         </div>
