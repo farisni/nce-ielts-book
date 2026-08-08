@@ -63,9 +63,9 @@ function GraphemeCard({
         {renderGrapheme(cell.g, cell.silent)}
       </span>
 
-      {/* 配图：撑满格子中间 */}
+      {/* 配图：固定高度缩略图 */}
       {cell.img && (
-        <div className="flex w-full flex-1 items-center justify-center py-1.5">
+        <div className="flex h-14 w-full items-center justify-center py-1">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={cell.img}
