@@ -541,17 +541,15 @@ export default function SentencePractice({
         return
       }
 
-      // 左/右方向键：左右切换激活单词
+      // 左/右方向键：切换到上一句/下一句
       if (e.key === "ArrowRight") {
         e.preventDefault()
-        if (submitted) setSubmitted(false)
-        if (activeIdx + 1 < words.length) setActiveIdx((a) => a + 1)
+        gotoNext()
         return
       }
       if (e.key === "ArrowLeft") {
         e.preventDefault()
-        if (submitted) setSubmitted(false)
-        if (activeIdx - 1 >= 0) setActiveIdx((a) => a - 1)
+        gotoPrev()
         return
       }
 
@@ -609,7 +607,7 @@ export default function SentencePractice({
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, gotoNext, playType])
+  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, gotoNext, gotoPrev, playType])
 
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
