@@ -15,6 +15,7 @@ import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, 
 import confetti from "canvas-confetti"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
 import { getProgress, updateProgress } from "@/lib/speller/progress"
+import PronunciationPractice from "@/components/speller/PronunciationPractice"
 
 type Phase = "idle" | "playing" | "done"
 type CharStatus = "correct" | "wrong" | "pending" | "punct" | "space"
@@ -1043,6 +1044,12 @@ export default function SentencePractice({
             错误提交
           </div>
         </div>
+
+        {/* 发音评测：跟读录音评分 */}
+        <PronunciationPractice
+          sentence={target}
+          onPlayVoice={() => (playVoice ? playVoice() : replay())}
+        />
       </div>
     </>
   )
