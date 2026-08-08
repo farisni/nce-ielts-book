@@ -43,41 +43,45 @@ export default function VideoSpellerPage() {
     return () => { cancelled = true }
   }, [course?.subtitle])
 
-  // 播放发音 → 播放当前句对应的视频片段（SRT 时间点驱动）
-  const playVoice = useCallback(() => {
+  // 播放指定句的视频片段（SRT 时间点驱动）
+  const playCue = useCallback((idx: number) => {
     const v = videoRef.current
     if (!v) return
-    const cue = cues[currentIdx]
+    const cue = cues[idx]
     if (cue) {
       const start = cue.startMs / 1000
       const end = cue.endMs / 1000
       stopAtRef.current = end
       v.currentTime = start
       v.play().catch(() => {})
-      return
+      return true
     }
+    return false
+  }, [cues])
+
+  // 播放发音 → 播放当前句对应的视频片段（SRT 时间点驱动）
+  const playVoice = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    if (playCue(currentIdx)) return
     // 无 SRT：整段播放/暂停
     if (v.paused) {
       v.play().catch(() => {})
     } else {
       v.pause()
     }
-  }, [cues, currentIdx])
+  }, [currentIdx, playCue])
 
-  // 点击句子列表某句 → 跳转到该句 SRT 时间点并播放
+  // 当前句变化（首次进入、答对自动下一句、点击列表跳转）→ 自动播放对应视频片段
+  useEffect(() => {
+    if (currentIdx < 0) return
+    playCue(currentIdx)
+  }, [currentIdx, playCue])
+
+  // 点击句子列表某句 → 跳转到该句 SRT 时间点（由上述 effect 统一播放）
   const jumpToSentence = useCallback((courseIndex: number) => {
-    const v = videoRef.current
-    if (!v) return
     setCurrentIdx(courseIndex)
-    const cue = cues[courseIndex]
-    if (cue) {
-      const start = cue.startMs / 1000
-      const end = cue.endMs / 1000
-      stopAtRef.current = end
-      v.currentTime = start
-      v.play().catch(() => {})
-    }
-  }, [cues])
+  }, [])
 
   // 播放到句段结束自动暂停
   useEffect(() => {
