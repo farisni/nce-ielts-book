@@ -64,6 +64,21 @@ export default function VideoSpellerPage() {
     }
   }, [cues, currentIdx])
 
+  // 点击句子列表某句 → 跳转到该句 SRT 时间点并播放
+  const jumpToSentence = useCallback((courseIndex: number) => {
+    const v = videoRef.current
+    if (!v) return
+    setCurrentIdx(courseIndex)
+    const cue = cues[courseIndex]
+    if (cue) {
+      const start = cue.startMs / 1000
+      const end = cue.endMs / 1000
+      stopAtRef.current = end
+      v.currentTime = start
+      v.play().catch(() => {})
+    }
+  }, [cues])
+
   // 播放到句段结束自动暂停
   useEffect(() => {
     const v = videoRef.current
@@ -142,6 +157,7 @@ export default function VideoSpellerPage() {
             showCn={false}
             playVoice={playVoice}
             onCurrentSentence={setCurrentIdx}
+            onJumpToSentence={jumpToSentence}
             onExit={() => router.push("/speller")}
           />
         </div>

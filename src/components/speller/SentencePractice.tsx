@@ -234,6 +234,7 @@ export default function SentencePractice({
   showCn = true,
   playVoice,
   onCurrentSentence,
+  onJumpToSentence,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -247,6 +248,8 @@ export default function SentencePractice({
   playVoice?: () => void
   /** 当前句在课程原始句子中的索引回调（视频/SRT 联动用） */
   onCurrentSentence?: (courseIndex: number) => void
+  /** 点击句子列表中的某句，跳转到对应 SRT 时间点 */
+  onJumpToSentence?: (courseIndex: number) => void
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -811,16 +814,25 @@ export default function SentencePractice({
             </SheetDescription>
           </SheetHeader>
           <div className="flex-1 overflow-y-auto px-5 py-4">
-            <ol className="space-y-4">
+            <ol className="space-y-2">
               {(course?.sentences ?? []).map((s, i) => (
-                <li key={i} className="flex gap-4 text-lg leading-relaxed">
-                  <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
-                    {i + 1}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xl font-medium text-foreground">{s.en}</p>
-                    <p className="text-lg text-muted-foreground">{s.cn}</p>
-                  </div>
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowSentences(false)
+                      onJumpToSentence?.(i)
+                    }}
+                    className="flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-muted/60"
+                  >
+                    <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
+                      {i + 1}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-xl font-medium text-foreground">{s.en}</span>
+                      <span className="block text-lg text-muted-foreground">{s.cn}</span>
+                    </span>
+                  </button>
                 </li>
               ))}
             </ol>
