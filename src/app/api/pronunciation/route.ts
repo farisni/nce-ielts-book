@@ -147,6 +147,90 @@ function evaluateAudio(
   });
 }
 
+/** 讯飞英文评测分数为 0-5 分制，归一化为 0-100 便于展示 */
+function normalizeScore(v: number): number {
+  if (v <= 0) return 0;
+  // 0-5 分制 → ×20；0-10 分制 → ×10；其余（0-100）原样
+  if (v <= 5.5) return Math.min(100, v * 20);
+  if (v <= 10.5) return Math.min(100, v * 10);
+  return Math.min(100, v);
+}
+
+/** 讯飞 except_info 拒绝原因（枚举值 → 中文描述），来自官方文档 */
+function describeExceptInfo(code: number): string {
+  const map: Record<number, string> = {
+    0x7001: "未检测到有效语音或音量过小，请靠近麦克风大声朗读",
+    0x7004: "被判定为乱读，请按句子原文清晰朗读",
+    0x7008: "环境信噪比过低，请到安静环境朗读",
+    0x7012: "音频截幅（音量过大爆音），请调低音量",
+    0x7011: "没有检测到音频输入，请检查麦克风是否可用",
+  };
+  return map[code] ?? (code > 0 ? `引擎拒绝评测（异常码 ${code}）` : "");
+}
+
+/**
+ * 用正则解析讯飞返回的 XML 评测结果，提取结构化分数（Node 无 DOMParser）
+ * 结构可能是 read_chapter / read_sentence / sentence 任一存在，取所有命中节点的最大值
+ */
+function parseIseXml(xmlText: string) {
+  const NODES = ["read_chapter", "read_sentence", "sentence"];
+
+  const collect = (name: string): number => {
+    const vals: number[] = [];
+    for (const tag of NODES) {
+      const re = new RegExp(`<${tag}\\b[^>]*\\b${name}="([^"]+)"`, "g");
+      let m: RegExpExecArray | null;
+      while ((m = re.exec(xmlText)) !== null) {
+        const v = Number(m[1]);
+        if (Number.isFinite(v)) vals.push(v);
+      }
+    }
+    return vals.length ? Math.max(...vals) : 0;
+  };
+  const collectBool = (name: string): boolean => {
+    for (const tag of NODES) {
+      const re = new RegExp(`<${tag}\\b[^>]*\\b${name}="([^"]+)"`);
+      const m = re.exec(xmlText);
+      if (m) return m[1] === "true";
+    }
+    return false;
+  };
+  const collectStr = (name: string): string => {
+    for (const tag of NODES) {
+      const re = new RegExp(`<${tag}\\b[^>]*\\b${name}="([^"]*)"`);
+      const m = re.exec(xmlText);
+      if (m) return m[1];
+    }
+    return "";
+  };
+
+  // 单词级：遍历所有 <word ...> 标签
+  const words: { word: string; score: number; wrong: boolean }[] = [];
+  const wordRe = /<word\b[^>]*>/g;
+  let wm: RegExpExecArray | null;
+  while ((wm = wordRe.exec(xmlText)) !== null) {
+    const tag = wm[0];
+    const w = /content="([^"]*)"/.exec(tag)?.[1] ?? "";
+    const sc = Number(/total_score="([^"]*)"/.exec(tag)?.[1] ?? 0);
+    const dp = Number(/dp_message="([^"]*)"/.exec(tag)?.[1] ?? 0);
+    if (w && w !== "sil" && w !== "silv" && w !== "fil") {
+      words.push({ word: w, score: sc, wrong: dp !== 0 });
+    }
+  }
+
+  const exceptCode = Number(collectStr("except_info")) || 0;
+  return {
+    total: normalizeScore(collect("total_score")),
+    accuracy: normalizeScore(collect("accuracy_score") || collect("standard_score")),
+    fluency: normalizeScore(collect("fluency_score")),
+    integrity: normalizeScore(collect("integrity_score")),
+    isRejected: collectBool("is_rejected"),
+    exceptInfo: exceptCode,
+    exceptMessage: describeExceptInfo(exceptCode),
+    words: words.map((w) => ({ ...w, score: normalizeScore(w.score) })),
+  };
+}
+
 export async function POST(request: NextRequest) {
   let audio: Buffer;
   let text: string;
@@ -172,8 +256,14 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const result = await evaluateAudio(audio, text);
-    return NextResponse.json({ success: true, result });
+    const resultXml = await evaluateAudio(audio, text);
+    const parsed = parseIseXml(resultXml);
+    // 诊断日志：被拒或得分为 0 时打印原始 XML，便于排查录音问题
+    if (parsed.isRejected || parsed.total === 0) {
+      console.warn(`[ise] text=${JSON.stringify(text)} audio=${audio.length}B exceptInfo=${parsed.exceptInfo}`);
+      console.warn(`[ise] xml=${resultXml.slice(0, 800)}`);
+    }
+    return NextResponse.json({ success: true, result: parsed });
   } catch (e) {
     return NextResponse.json(
       { success: false, error: (e as Error).message },

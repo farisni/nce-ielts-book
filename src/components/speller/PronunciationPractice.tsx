@@ -1,77 +1,122 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, Square, Loader2, Volume2 } from "lucide-react";
+import { Mic, Square, Loader2, Volume2, AlertTriangle } from "lucide-react";
+
+/**
+ * 全局复用单个 AudioContext（用于解码 webm/opus）。
+ * 避免每次评测都 new AudioContext 导致资源累积/潜在挂起。
+ * OfflineAudioContext 不受在线 context 数量影响，可放心每次新建。
+ */
+let sharedAudioCtx: AudioContext | null = null
+function getSharedCtx(): AudioContext {
+  if (!sharedAudioCtx) {
+    const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+    sharedAudioCtx = new Ctor()
+  }
+  return sharedAudioCtx
+}
+
+/**
+ * 裁剪首尾静音，只保留有效语音段。
+ * 讯飞对整段音频做语音检测，若首尾静音过长（点录音后犹豫、念完没及时停），
+ * 有效语音占比太低会被判 0x7011"没有音频输入"。这里把静音切掉只发语音段。
+ */
+function trimSilence(floatAudio: Float32Array, sampleRate: number): Float32Array {
+  const frame = Math.floor(sampleRate * 0.01) // 10ms 一帧
+  const threshold = 0.005
+  let start = 0
+  let end = floatAudio.length
+  // 找起点：跳过 RMS 低于阈值的帧
+  for (let i = 0; i < floatAudio.length; i += frame) {
+    let sum = 0
+    const jEnd = Math.min(i + frame, floatAudio.length)
+    for (let j = i; j < jEnd; j++) sum += floatAudio[j] * floatAudio[j]
+    if (Math.sqrt(sum / (jEnd - i)) >= threshold) {
+      start = i
+      break
+    }
+  }
+  // 找终点：从尾部倒着跳过静音帧
+  for (let i = floatAudio.length; i > 0; i -= frame) {
+    let sum = 0
+    const jStart = Math.max(i - frame, 0)
+    for (let j = jStart; j < i; j++) sum += floatAudio[j] * floatAudio[j]
+    if (Math.sqrt(sum / (i - jStart)) >= threshold) {
+      end = i
+      break
+    }
+  }
+  if (end - start < Math.floor(sampleRate * 0.2)) return floatAudio // 裁剪后太短则用原样
+  const out = new Float32Array(end - start)
+  out.set(floatAudio.subarray(start, end))
+  return out
+}
+
+/** 评测结果（后端已把讯飞 XML 归一化为 0-100 分） */
+export type EvalResult = {
+  total: number
+  accuracy: number
+  fluency: number
+  integrity: number
+  isRejected: boolean
+  exceptInfo: string
+  exceptMessage: string
+  words: { word: string; score: number; wrong: boolean }[]
+}
 
 /**
  * 发音评测：录音 → 上传讯飞 → 显示评分
  * - 目标句子由父组件传入（sentence.en）
  * - 录音转 16kHz 16bit 单声道 PCM 后上传
+ * - 受控组件：initialResult 恢复历史评分，onResult 上报本次结果（父组件按句保存）
  */
 export default function PronunciationPractice({
   sentence,
   onPlayVoice,
+  initialResult,
+  onResult,
 }: {
   /** 目标句子（评测文本） */
   sentence: string
   /** 播放标准发音的回调（可选） */
   onPlayVoice?: () => void
+  /** 该句的历史评分（切句回来看评分用；null 表示没有） */
+  initialResult?: EvalResult | null
+  /** 评测完成回调（父组件用于保存该句评分） */
+  onResult?: (r: EvalResult) => void
 }) {
   const [recording, setRecording] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
-  const [result, setResult] = useState<Record<string, unknown> | null>(null);
+  const [result, setResult] = useState<EvalResult | null>(initialResult ?? null);
   const [error, setError] = useState<string | null>(null);
   const [recordingSec, setRecordingSec] = useState(0);
 
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const timerRef = useRef<number | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const chunksRef = useRef<Blob[]>([])
+  const timerRef = useRef<number | null>(null)
 
   // 清理：卸载时停止录音
   useEffect(() => {
     return () => {
-      if (timerRef.current) window.clearInterval(timerRef.current);
-      mediaRecorderRef.current?.stream.getTracks().forEach((t) => t.stop());
-    };
-  }, []);
+      if (timerRef.current) window.clearInterval(timerRef.current)
+      mediaRecorderRef.current?.stream.getTracks().forEach((t) => t.stop())
+    }
+  }, [])
 
-  // 解析讯飞返回的 XML 评测结果：总分 + 各维度分 + 单词级详情
-  // 讯飞英文句子返回 <read_chapter>/<read_sentence> 节点带分；
-  // word 节点含每个词的分和 dp_message（0正常/16漏读/32增读/64回读/128替换）
-  const extractScores = (xmlText: string) => {
-    const doc = new DOMParser().parseFromString(xmlText, "text/xml");
-    // 优先找带分节点，取分数较高者
-    const chapter = doc.querySelector("read_chapter");
-    const sentence = doc.querySelector("read_sentence");
-    const scored = chapter || sentence || doc.querySelector("xml_result");
-    const pick = (node: Element | null, name: string): number => {
-      const v = node?.getAttribute(name);
-      return v ? Number(v) : 0;
-    };
-    // 总分：多个候选节点取最大，避免读到 0
-    const total = Math.max(
-      pick(chapter, "total_score"),
-      pick(sentence, "total_score"),
-      pick(scored, "total_score"),
-    );
-    const acc = Math.max(
-      pick(chapter, "accuracy_score"),
-      pick(scored, "accuracy_score"),
-    );
+  // 后端已把讯飞 XML 解析成结构化 JSON，前端直接消费
+  // result: { total, accuracy, fluency, integrity, isRejected, exceptInfo, exceptMessage, words[] }
+  const extractScores = (raw: unknown) => {
+    const r = (raw ?? {}) as Record<string, any>;
     return {
-      total,
-      accuracy: acc,
-      fluency: Math.max(pick(chapter, "fluency_score"), pick(scored, "fluency_score")),
-      integrity: Math.max(pick(chapter, "integrity_score"), pick(scored, "integrity_score")),
-      isRejected: scored?.getAttribute("is_rejected") === "true",
-      // 单词级详情：content + 每词分数 + dp_message 错误标记
-      words: Array.from(doc.querySelectorAll("word")).map((w) => ({
-        word: w.getAttribute("content") ?? "",
-        score: Number(w.getAttribute("total_score")) || 0,
-        dpMessage: Number(w.getAttribute("dp_message")) || 0,
-        // 0=正常；16=漏读；32=增读；64=回读；128=替换
-        wrong: (Number(w.getAttribute("dp_message")) || 0) !== 0,
-      })),
+      total: Number(r.total) || 0,
+      accuracy: Number(r.accuracy) || 0,
+      fluency: Number(r.fluency) || 0,
+      integrity: Number(r.integrity) || 0,
+      isRejected: !!r.isRejected,
+      exceptInfo: String(r.exceptInfo ?? ""),
+      exceptMessage: String(r.exceptMessage ?? ""),
+      words: Array.isArray(r.words) ? r.words : [],
     };
   };
 
@@ -80,6 +125,9 @@ export default function PronunciationPractice({
     setResult(null);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      // MediaRecorder 录音（浏览器原生编解码 webm/opus，稳定可靠）。
+      // 实测之前 ScriptProcessor 采集在 Chrome 下会被 AudioContext 上限/挂起影响 → 全静音。
       const mediaRecorder = new MediaRecorder(stream);
       const chunks: Blob[] = [];
       mediaRecorder.ondataavailable = (e) => {
@@ -114,6 +162,7 @@ export default function PronunciationPractice({
       mediaRecorder.stop();
     });
     mediaRecorder.stream.getTracks().forEach((t) => t.stop());
+    mediaRecorderRef.current = null;
 
     if (chunks.length === 0) {
       setError("未采集到音频");
@@ -123,14 +172,50 @@ export default function PronunciationPractice({
     // 合并录到的音频 blob（MediaRecorder 默认输出 webm/opus）
     const audioBlob = new Blob(chunks, { type: chunks[0].type || "audio/webm" });
 
-    // 解码音频（AudioContext.decodeAudioData 支持 webm/opus）
-    const audioCtx = new AudioContext();
-    const arrayBuf = await audioBlob.arrayBuffer();
-    const decoded = await audioCtx.decodeAudioData(arrayBuf);
+    // 解码：复用全局共享 AudioContext
+    const audioCtx = getSharedCtx()
+    try { audioCtx.resume?.() } catch { /* ignore */ }
+    let decoded: AudioBuffer
+    try {
+      const arrayBuf = await audioBlob.arrayBuffer();
+      decoded = await audioCtx.decodeAudioData(arrayBuf);
+    } catch {
+      setError("音频解码失败，请重试");
+      return;
+    }
     const srcSampleRate = decoded.sampleRate || 48000;
-    const floatAudio = decoded.getChannelData(0);
+    // 合并所有声道取平均——很多 USB/蓝牙麦克风录成多声道，声音可能在右声道，
+    // 只取 channel 0 会拿到全静音 → 误报"几乎没录到声音"（这就是偶发静音的根因）
+    let floatAudio: Float32Array = decoded.getChannelData(0)
+    if (decoded.numberOfChannels > 1) {
+      const merged = new Float32Array(floatAudio.length)
+      for (let ch = 0; ch < decoded.numberOfChannels; ch++) {
+        const chData = decoded.getChannelData(ch)
+        for (let i = 0; i < merged.length; i++) merged[i] += chData[i]
+      }
+      for (let i = 0; i < merged.length; i++) merged[i] /= decoded.numberOfChannels
+      floatAudio = merged
+    }
 
-    // 用 OfflineAudioContext 重采样到 16kHz
+    // 能量校验：用真正的 RMS（开平方），阈值 0.005 远低于正常语音（TTS 约 0.17），
+    // 只在真静音时拦截。合并声道后不会误判。
+    const meanSq = floatAudio.reduce((sum, v) => sum + v * v, 0) / Math.max(1, floatAudio.length);
+    const rms = Math.sqrt(meanSq);
+    const seconds = floatAudio.length / srcSampleRate;
+    if (rms < 0.005) {
+      setError("几乎没录到声音，请靠近麦克风后重试");
+      return;
+    }
+    if (seconds < 0.5) {
+      setError("录音太短，请至少朗读半秒");
+      return;
+    }
+
+    // 裁剪首尾静音：点录音后犹豫、念完没及时停会产生大段静音，
+    // 讯飞整段做语音检测，有效语音占比太低会被判 0x7011"没有音频输入"
+    floatAudio = trimSilence(floatAudio, srcSampleRate);
+
+    // 用 OfflineAudioContext 重采样到 16kHz（不受在线 AudioContext 上限限制）
     const offline = new OfflineAudioContext(1, Math.ceil((floatAudio.length / srcSampleRate) * 16000), 16000);
     const buffer = offline.createBuffer(1, floatAudio.length, srcSampleRate);
     buffer.getChannelData(0).set(floatAudio);
@@ -148,8 +233,6 @@ export default function PronunciationPractice({
       pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
     }
 
-    await audioCtx.close();
-
     // 评测
     setEvaluating(true);
     try {
@@ -161,13 +244,15 @@ export default function PronunciationPractice({
       const res = await fetch("/api/pronunciation", { method: "POST", body: formData });
       const json = await res.json();
       if (!json.success) throw new Error(json.error || "评测失败");
-      setResult(extractScores(json.result));
+      const scores = extractScores(json.result);
+      setResult(scores);
+      onResult?.(scores); // 上报父组件，按句保存历史
     } catch (e) {
       setError((e as Error).message);
     } finally {
       setEvaluating(false);
     }
-  }, [sentence]);
+  }, [sentence, onResult]);
 
   return (
     <div className="flex flex-col items-center gap-3">
@@ -216,6 +301,15 @@ export default function PronunciationPractice({
       {/* 评分结果 */}
       {result && !evaluating && (
         <div className="flex flex-col items-center gap-3">
+          {/* 被拒时优先展示原因，不再让用户看到误导性的 0 分 */}
+          {result.isRejected && (
+            <div className="flex max-w-md items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-sm text-amber-700">
+              <AlertTriangle className="size-4 shrink-0" />
+              <span>
+                {result.exceptMessage || "引擎未识别到有效发音，请靠近麦克风重新朗读"}
+              </span>
+            </div>
+          )}
           <div className="flex items-center gap-6 rounded-lg border border-border bg-muted/30 px-6 py-3">
             <div className="text-center">
               <div className="text-3xl font-bold text-emerald-500">{Math.round(Number(result.total))}</div>
@@ -237,9 +331,9 @@ export default function PronunciationPractice({
           </div>
 
           {/* 单词级详情：读错的词标红，正确的正常色 */}
-          {Array.isArray((result as any).words) && (result as any).words.length > 0 && (
+          {result.words.length > 0 && (
             <div className="flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-lg border border-border bg-muted/20 px-4 py-2">
-              {(result as any).words.map((w: any, i: number) => (
+              {result.words.map((w, i) => (
                 <span key={i} className="flex items-center gap-1">
                   <span
                     className={
@@ -253,9 +347,9 @@ export default function PronunciationPractice({
                     {w.word}
                   </span>
                   <span className="text-[10px] tabular-nums text-muted-foreground/60">
-                    {Math.round(Number(w.score))}
+                    {Math.round(w.score)}
                   </span>
-                  {i < (result as any).words.length - 1 && (
+                  {i < result.words.length - 1 && (
                     <span className="text-muted-foreground/40">·</span>
                   )}
                 </span>
