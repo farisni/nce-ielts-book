@@ -287,7 +287,7 @@ export default function PhonicsPage() {
               className="group relative flex h-full flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
-              <span className="text-[26px] leading-none">
+              <span className="text-[32px] font-bold leading-none">
                 {renderPhoneme(row.phoneme, row.type)}
               </span>
               {/* 播放图标：右上角，hover 才出现（同拼写格） */}
