@@ -162,13 +162,23 @@ function GraphemeCard({
   );
 }
 
-/** 拼写替代文本：silent 字母渲染为浅色空心样式 */function renderGrapheme(grapheme: string, silent: string[]) {
+/** 拼写替代文本：silent 字母渲染为空心描边样式（同原版 .act-outline-font，保持粗体） */
+function renderGrapheme(grapheme: string, silent: string[]) {
   if (!silent.length) return grapheme;
-  // 按字符拆分，silent 中的字符用浅色
+  // 按字符拆分，silent 中的字符用白字 + 四向黑描边空心效果
   const silentSet = new Set(silent);
   return [...grapheme].map((ch, i) =>
     silentSet.has(ch) ? (
-      <span key={i} className="font-normal text-muted-foreground/50">
+      <span
+        key={i}
+        className="font-bold text-white"
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+          marginLeft: i > 0 ? "3px" : undefined,
+          letterSpacing: "3px",
+        }}
+      >
         {ch}
       </span>
     ) : (
