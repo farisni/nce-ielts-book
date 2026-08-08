@@ -296,12 +296,12 @@ export default function SentencePractice({
     }
   }, [phase, startAt])
 
-  // 切换句子时自动发音
+  // 切换句子时自动发音（视频模式用视频原声，禁用 TTS）
   useEffect(() => {
-    if (phase !== "playing" || !sentence || !autoSpeak) return
+    if (phase !== "playing" || !sentence || !autoSpeak || playVoice) return
     const t = window.setTimeout(() => speak(sentence.en), 300)
     return () => window.clearTimeout(t)
-  }, [index, phase, sentence, autoSpeak, speak])
+  }, [index, phase, sentence, autoSpeak, speak, playVoice])
 
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
