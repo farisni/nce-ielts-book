@@ -30,8 +30,8 @@ export default function VideoSpellerPage() {
 
       {/* 左右布局 */}
       <div className="flex min-h-0 flex-1 flex-col gap-6 p-6 lg:flex-row">
-        {/* 左：视频播放 */}
-        <div className="flex w-full flex-col gap-3 lg:w-[42%] lg:shrink-0">
+        {/* 左：视频播放（垂直居中） */}
+        <div className="flex w-full flex-col justify-center gap-3 lg:w-[42%] lg:shrink-0">
           <div className="overflow-hidden rounded-xl border border-border bg-black">
             <video
               src={course.video}
