@@ -9,11 +9,20 @@ import { XIcon } from "lucide-react"
 
 type SheetSide = "top" | "right" | "bottom" | "left"
 
-const sideClasses: Record<SheetSide, string> = {
-  top: "inset-x-0 top-0 h-auto max-h-[85dvh] border-b data-open:animate-in data-open:slide-in-from-top data-closed:animate-out data-closed:slide-out-to-top",
-  right: "inset-y-0 right-0 h-full max-w-[85vw] border-l data-open:animate-in data-open:slide-in-from-right data-closed:animate-out data-closed:slide-out-to-right",
-  bottom: "inset-x-0 bottom-0 h-auto max-h-[85dvh] border-t data-open:animate-in data-open:slide-in-from-bottom data-closed:animate-out data-closed:slide-out-to-bottom",
-  left: "inset-y-0 left-0 h-full max-w-[85vw] border-r data-open:animate-in data-open:slide-in-from-left data-closed:animate-out data-closed:slide-out-to-left",
+/** Viewport：定位容器（fixed 全屏 flex），决定面板从哪一侧滑入 */
+const viewportClasses: Record<SheetSide, string> = {
+  top: "items-start justify-center",
+  right: "justify-end",
+  bottom: "items-end justify-center",
+  left: "justify-start",
+}
+
+/** Popup：实际面板，滑入动画 */
+const popupClasses: Record<SheetSide, string> = {
+  top: "h-auto max-h-[85dvh] w-full border-b data-open:animate-in data-open:slide-in-from-top data-closed:animate-out data-closed:slide-out-to-top",
+  right: "h-full w-full max-w-[85vw] border-l data-open:animate-in data-open:slide-in-from-right data-closed:animate-out data-closed:slide-out-to-right",
+  bottom: "h-auto max-h-[85dvh] w-full border-t data-open:animate-in data-open:slide-in-from-bottom data-closed:animate-out data-closed:slide-out-to-bottom",
+  left: "h-full w-full max-w-[85vw] border-r data-open:animate-in data-open:slide-in-from-left data-closed:animate-out data-closed:slide-out-to-left",
 }
 
 function Sheet({ ...props }: DrawerPrimitive.Root.Props) {
@@ -61,11 +70,18 @@ function SheetContent({
   return (
     <SheetPortal>
       <SheetOverlay />
+      <DrawerPrimitive.Viewport
+        data-slot="sheet-viewport"
+        className={cn(
+          "fixed inset-0 z-50 flex",
+          viewportClasses[side]
+        )}
+      >
       <DrawerPrimitive.Popup
         data-slot="sheet-content"
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-popover p-4 text-sm text-popover-foreground shadow-lg ring-1 ring-foreground/10 outline-none duration-100",
-          sideClasses[side],
+          "flex flex-col gap-4 bg-popover p-4 text-sm text-popover-foreground shadow-lg ring-1 ring-foreground/10 outline-none duration-100",
+          popupClasses[side],
           className
         )}
         {...props}
@@ -87,6 +103,7 @@ function SheetContent({
           </DrawerPrimitive.Close>
         )}
       </DrawerPrimitive.Popup>
+      </DrawerPrimitive.Viewport>
     </SheetPortal>
   )
 }
