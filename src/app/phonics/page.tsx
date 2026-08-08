@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useRef, useState } from "react";
-import { Volume2, Loader2 } from "lucide-react";
+import { Volume2, Loader2, ArrowRight as ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PHONICS_ROWS, type GraphemeCell } from "@/lib/phonics-code";
 
@@ -297,6 +297,24 @@ export default function PhonicsPage() {
             {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行；空位补边框空格（同原版 table） */}
             <div className="grid grid-cols-3 bg-white sm:grid-cols-6">
               {row.cells.map((cell, i) => {
+                // 说明格（无拼写、无例词，但有 note 文字）：黄底箭头说明，占据一格
+                if (cell.note && !cell.g && !cell.ex) {
+                  return (
+                    <div
+                      key={`note-${i}`}
+                      className="flex min-w-0 flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-2 py-2 text-center"
+                    >
+                      <ArrowRightIcon className="size-6 shrink-0 text-foreground" />
+                      <span className="text-[10px] font-medium leading-tight text-foreground">
+                        {cell.note.split("\n").map((line, li) => (
+                          <span key={li} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </span>
+                    </div>
+                  );
+                }
                 const cid = `${row.phoneme}-${i}`;
                 return (
                   <GraphemeCard

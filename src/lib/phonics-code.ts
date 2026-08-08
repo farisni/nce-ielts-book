@@ -19,6 +19,8 @@ export interface GraphemeCell {
   unit: string
   /** 跨行数（原版 rowspan，通常 1 或 2） */
   rowspan: number
+  /** 说明格文字（如 /ee/ 行的发音变体说明），非拼写格时存在 */
+  note: string | null
   /** 发音音频 */
   audio: string | null
 }
@@ -51,6 +53,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 2,
+    "note": null,
     "audio": "/phonics/audio/s_asin_snake.mp3"
    },
    {
@@ -64,6 +67,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#4a64b7",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_palace.mp3"
    },
    {
@@ -79,6 +83,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_cents.mp3"
    },
    {
@@ -94,6 +99,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_city.mp3"
    },
    {
@@ -109,6 +115,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_bicycle.mp3"
    },
    {
@@ -122,6 +129,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_scissors.mp3"
    },
    {
@@ -135,6 +143,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#c6e670",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_glass.mp3"
    },
    {
@@ -148,6 +157,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#4a64b7",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_house.mp3"
    },
    {
@@ -161,6 +171,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_castle.mp3"
    },
    {
@@ -174,6 +185,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/s_asin_pseudonym.mp3"
    }
   ]
@@ -194,6 +206,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/a_asin_apple.mp3"
    }
   ]
@@ -214,6 +227,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/t_asin_teddy.mp3"
    },
    {
@@ -227,6 +241,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/t_asin_letter.mp3"
    },
    {
@@ -240,6 +255,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 4",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/t_asin_ripped.mp3"
    },
    {
@@ -253,6 +269,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/t_asin_debt.mp3"
    },
    {
@@ -266,6 +283,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/t_asin_pterodactyl.mp3"
    }
   ]
@@ -286,6 +304,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/i_asin_insect.mp3"
    },
    {
@@ -299,6 +318,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/i_asin_cymbals.mp3"
    }
   ]
@@ -319,6 +339,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/p_asin_pan.mp3"
    },
    {
@@ -332,6 +353,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/p_asin_puppet.mp3"
    }
   ]
@@ -352,6 +374,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/n_asin_net.mp3"
    },
    {
@@ -365,6 +388,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/n_asin_bonnet.mp3"
    },
    {
@@ -378,6 +402,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/n_asin_knot.mp3"
    },
    {
@@ -391,6 +416,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/n_asin_gnome.mp3"
    },
    {
@@ -404,6 +430,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/n_asin_engine.mp3"
    }
   ]
@@ -424,6 +451,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_cat.mp3"
    },
    {
@@ -437,6 +465,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_kit.mp3"
    },
    {
@@ -450,6 +479,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_duck.mp3"
    },
    {
@@ -463,6 +493,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_chameleon.mp3"
    },
    {
@@ -476,6 +507,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_bouquet.mp3"
    },
    {
@@ -489,6 +521,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/k_asin_plaque.mp3"
    }
   ]
@@ -509,6 +542,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/e_asin_egg.mp3"
    },
    {
@@ -522,6 +556,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/e_asin_head.mp3"
    },
    {
@@ -537,6 +572,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/e_asin_said_again_against.mp3"
    },
    {
@@ -551,6 +587,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/e_asin_any_many.mp3"
    }
   ]
@@ -571,6 +608,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/h_asin_hat.mp3"
    },
    {
@@ -584,6 +622,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/h_asin_who.mp3"
    }
   ]
@@ -604,6 +643,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#94dbce",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/r_asin_rat.mp3"
    },
    {
@@ -617,6 +657,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/r_asin_arrow.mp3"
    },
    {
@@ -630,6 +671,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/r_asin_write.mp3"
    },
    {
@@ -643,6 +685,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/r_asin_rhinoceros.mp3"
    }
   ]
@@ -663,6 +706,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/m_asin_map.mp3"
    },
    {
@@ -676,6 +720,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/m_asin_hammer.mp3"
    },
    {
@@ -689,6 +734,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/m_asin_welcome.mp3"
    },
    {
@@ -702,6 +748,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/m_asin_thumb.mp3"
    },
    {
@@ -715,6 +762,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/m_asin_columns.mp3"
    }
   ]
@@ -735,6 +783,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/d_asin_dig.mp3"
    },
    {
@@ -748,6 +797,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/d_asin_puddle.mp3"
    },
    {
@@ -761,6 +811,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 14",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/d_asin_rained.mp3"
    }
   ]
@@ -781,6 +832,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/g_asin_girl-1.mp3"
    },
    {
@@ -794,6 +846,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/g_asin_juggle-1.mp3"
    },
    {
@@ -807,6 +860,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/g_asin_guitar-1.mp3"
    },
    {
@@ -820,6 +874,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/g_asin_gherkin-1.mp3"
    },
    {
@@ -833,6 +888,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/g_asin_catalogue-1.mp3"
    }
   ]
@@ -853,6 +909,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/o_asin_octopus.mp3"
    },
    {
@@ -869,6 +926,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/o_asin_was_watch.mp3"
    },
    {
@@ -884,6 +942,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/o_asin_qualify.mp3"
    },
    {
@@ -899,6 +958,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/o_asin_salt.mp3"
    }
   ]
@@ -919,6 +979,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/u_asin_umbrella.mp3"
    },
    {
@@ -932,6 +993,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#2aa458",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/u_asin_sun.mp3"
    },
    {
@@ -945,6 +1007,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/u_asin_touch.mp3"
    },
    {
@@ -958,6 +1021,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/u_asin_thoroughfare.mp3"
    }
   ]
@@ -978,6 +1042,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/l_asin_ladder.mp3"
    },
    {
@@ -991,6 +1056,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/l_asin_shell.mp3"
    }
   ]
@@ -1011,6 +1077,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#2aa458",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ul_asin_kettle.mp3"
    },
    {
@@ -1024,6 +1091,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ul_asin_pencil.mp3"
    },
    {
@@ -1037,6 +1105,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ul_asin_hospital.mp3"
    },
    {
@@ -1050,6 +1119,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ul_asin_camel.mp3"
    }
   ]
@@ -1070,6 +1140,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/f_asin_feathers.mp3"
    },
    {
@@ -1083,6 +1154,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/f_asin_cliff.mp3"
    },
    {
@@ -1096,6 +1168,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/f_asin_photograph.mp3"
    },
    {
@@ -1109,6 +1182,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/f_asin_laugh.mp3"
    }
   ]
@@ -1129,6 +1203,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/b_asin_bat.mp3"
    },
    {
@@ -1142,6 +1217,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/b_asin_rabbit.mp3"
    },
    {
@@ -1155,6 +1231,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/b_asin_building.mp3"
    }
   ]
@@ -1175,6 +1252,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_j_asin_jug.mp3"
    },
    {
@@ -1188,6 +1266,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#436bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_asin_cabbage.mp3"
    },
    {
@@ -1201,6 +1280,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_asin_fridge.mp3"
    },
    {
@@ -1216,6 +1296,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_asin_gerbil.mp3"
    },
    {
@@ -1231,6 +1312,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_asin_giraffe.mp3"
    },
    {
@@ -1246,6 +1328,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/j_asin_gymnast.mp3"
    }
   ]
@@ -1266,6 +1349,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#cce189",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/y_asin_yawn.mp3"
    }
   ]
@@ -1286,6 +1370,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 2,
+    "note": null,
     "audio": "/phonics/audio/ai_first_aid.mp3"
    },
    {
@@ -1299,6 +1384,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_tray.mp3"
    },
    {
@@ -1312,6 +1398,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_table.mp3"
    },
    {
@@ -1326,6 +1413,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_cake.mp3"
    },
    {
@@ -1339,6 +1427,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 6",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_sundae.mp3"
    },
    {
@@ -1352,6 +1441,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_straight.mp3"
    },
    {
@@ -1367,6 +1457,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_prey.mp3"
    },
    {
@@ -1380,6 +1471,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_break.mp3"
    },
    {
@@ -1393,6 +1485,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_bouquet.mp3"
    },
    {
@@ -1406,6 +1499,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ai_asin_eight.mp3"
    }
   ]
@@ -1426,6 +1520,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/w_asin_web.mp3"
    },
    {
@@ -1439,6 +1534,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d4bccc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/w_asin_wheel.mp3"
    },
    {
@@ -1452,6 +1548,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/w_asin_penguin.mp3"
    }
   ]
@@ -1472,6 +1569,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 2,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_oak.mp3"
    },
    {
@@ -1485,6 +1583,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_bow.mp3"
    },
    {
@@ -1498,6 +1597,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_oboe.mp3"
    },
    {
@@ -1512,6 +1612,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_rope.mp3"
    },
    {
@@ -1525,6 +1626,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_yoyo.mp3"
    },
    {
@@ -1538,6 +1640,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_dough.mp3"
    },
    {
@@ -1551,6 +1654,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_plateau.mp3"
    },
    {
@@ -1564,6 +1668,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oa_asin_shoulder.mp3"
    }
   ]
@@ -1584,6 +1689,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_tie.mp3"
    },
    {
@@ -1597,6 +1703,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_night.mp3"
    },
    {
@@ -1610,6 +1717,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_behind.mp3"
    },
    {
@@ -1623,6 +1731,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_fly.mp3"
    },
    {
@@ -1637,6 +1746,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_bike.mp3"
    },
    {
@@ -1650,6 +1760,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/igh_asin_eider_duck.mp3"
    }
   ]
@@ -1670,6 +1781,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/yoo_asin_unicorn.mp3"
    },
    {
@@ -1683,6 +1795,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#436bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/yoo_asin_statue.mp3"
    },
    {
@@ -1697,6 +1810,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b09c",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/yoo_asin_tube.mp3"
    },
    {
@@ -1710,6 +1824,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#1c8b8e",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/yoo_asin_new.mp3"
    },
    {
@@ -1723,6 +1838,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/yoo_asin_pneumatic_drill.mp3"
    }
   ]
@@ -1743,6 +1859,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#37a850",
     "unit": "",
     "rowspan": 2,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_emu.mp3"
    },
    {
@@ -1756,6 +1873,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_eel.mp3"
    },
    {
@@ -1770,6 +1888,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_concrete.mp3"
    },
    {
@@ -1783,6 +1902,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_key.mp3"
    },
    {
@@ -1796,6 +1916,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_briefcase.mp3"
    },
    {
@@ -1811,6 +1932,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/e_asin_sardines.mp3"
    },
    {
@@ -1824,7 +1946,20 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_eat.mp3"
+   },
+   {
+    "g": "",
+    "silent": [],
+    "ex": "",
+    "hl": [],
+    "img": null,
+    "color": null,
+    "unit": "",
+    "rowspan": 1,
+    "note": "Often pronounced between /i/ and /ee/",
+    "audio": null
    },
    {
     "g": "-y",
@@ -1837,6 +1972,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_sunny.mp3"
    },
    {
@@ -1850,6 +1986,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_monkey.mp3"
    },
    {
@@ -1863,6 +2000,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 9",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ee_asin_movie.mp3"
    }
   ]
@@ -1883,6 +2021,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_fork.mp3"
    },
    {
@@ -1896,6 +2035,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_snore.mp3"
    },
    {
@@ -1909,6 +2049,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_four.mp3"
    },
    {
@@ -1922,6 +2063,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_door.mp3"
    },
    {
@@ -1935,6 +2077,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_oars.mp3"
    },
    {
@@ -1950,6 +2093,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_wardrobe.mp3"
    },
    {
@@ -1963,6 +2107,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_dawn.mp3"
    },
    {
@@ -1976,6 +2121,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_sauce.mp3"
    },
    {
@@ -1989,6 +2135,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_chalk.mp3"
    },
    {
@@ -2002,6 +2149,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_caught.mp3"
    },
    {
@@ -2015,6 +2163,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_thought.mp3"
    },
    {
@@ -2030,6 +2179,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/or_asin_quarter.mp3"
    }
   ]
@@ -2050,6 +2200,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/z_asin_zebra.mp3"
    },
    {
@@ -2063,6 +2214,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/z_asin_jazz.mp3"
    },
    {
@@ -2076,6 +2228,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/z_asin_fries.mp3"
    },
    {
@@ -2089,6 +2242,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/z_asin_cheese.mp3"
    },
    {
@@ -2102,6 +2256,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#d1c0cc",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/z_asin_breeze.mp3"
    }
   ]
@@ -2122,6 +2277,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ng_asin_gong.mp3"
    },
    {
@@ -2135,6 +2291,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ng_asin_jungle.mp3"
    }
   ]
@@ -2155,6 +2312,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ngk_asin_ink.mp3"
    },
    {
@@ -2168,6 +2326,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ngk_asin_uncle.mp3"
    }
   ]
@@ -2188,6 +2347,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/v_asin_violin.mp3"
    },
    {
@@ -2201,6 +2361,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/v_asin_dove.mp3"
    }
   ]
@@ -2221,6 +2382,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/short-oo_asin_book.mp3"
    },
    {
@@ -2236,6 +2398,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/short-oo_asin_would_could_should.mp3"
    },
    {
@@ -2251,6 +2414,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/short-oo_asin_put_push_pull.mp3"
    }
   ]
@@ -2271,6 +2435,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 2,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_moon.mp3"
    },
    {
@@ -2284,6 +2449,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#436bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_blue.mp3"
    },
    {
@@ -2298,6 +2464,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_flute.mp3"
    },
    {
@@ -2311,6 +2478,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oo_asin_superb_pearl.mp3"
    },
    {
@@ -2324,6 +2492,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_fruit.mp3"
    },
    {
@@ -2337,6 +2506,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_crew.mp3"
    },
    {
@@ -2350,6 +2520,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_soup.mp3"
    },
    {
@@ -2363,6 +2534,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 10",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_move.mp3"
    },
    {
@@ -2376,6 +2548,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/long-oo_asin_through.mp3"
    }
   ]
@@ -2396,6 +2569,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ks_asin_fox.mp3"
    },
    {
@@ -2409,6 +2583,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "plural",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ks_asin_books.mp3"
    },
    {
@@ -2422,6 +2597,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "plural",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ks_asin_ducks.mp3"
    },
    {
@@ -2435,6 +2611,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "plural",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ks_asin_cakes.mp3"
    }
   ]
@@ -2455,6 +2632,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/gz_asin_exam-1.mp3"
    }
   ]
@@ -2475,6 +2653,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ch_asin_chair.mp3"
    },
    {
@@ -2488,6 +2667,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 7",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ch_asin_patch.mp3"
    }
   ]
@@ -2508,6 +2688,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/chuh_asin_picture.mp3"
    }
   ]
@@ -2528,6 +2709,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/sh_asin_sheep.mp3"
    },
    {
@@ -2541,6 +2723,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/sh_asin_chef.mp3"
    },
    {
@@ -2554,6 +2737,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/sh_asin_station.mp3"
    },
    {
@@ -2567,6 +2751,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/sh_asin_musician.mp3"
    },
    {
@@ -2580,6 +2765,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/sh_asin_admission.mp3"
    }
   ]
@@ -2600,6 +2786,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/th_asin_thistle.mp3"
    }
   ]
@@ -2620,6 +2807,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#fcd556",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/th_asin_there.mp3"
    }
   ]
@@ -2640,6 +2828,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/kw_asin_queen.mp3"
    },
    {
@@ -2653,6 +2842,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/kw_asin_awkward.mp3"
    }
   ]
@@ -2673,6 +2863,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ou_asin_ouch.mp3"
    },
    {
@@ -2686,6 +2877,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ou_asin_owl.mp3"
    },
    {
@@ -2699,6 +2891,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 11",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ou_asin_plough.mp3"
    }
   ]
@@ -2719,6 +2912,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oi_asin_ointment.mp3"
    },
    {
@@ -2732,6 +2926,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/oi_asin_toy.mp3"
    }
   ]
@@ -2752,6 +2947,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/er_asin_herbs.mp3"
    },
    {
@@ -2765,6 +2961,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/er_asin_birthday.mp3"
    },
    {
@@ -2778,6 +2975,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/er_asin_nurse.mp3"
    },
    {
@@ -2791,6 +2989,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/er_asin_earth.mp3"
    },
    {
@@ -2806,6 +3005,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/er_asin_world.mp3"
    }
   ]
@@ -2826,6 +3026,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_mixer.mp3"
    },
    {
@@ -2839,6 +3040,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_humour.mp3"
    },
    {
@@ -2852,6 +3054,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 6 & 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_theatre.mp3"
    },
    {
@@ -2865,6 +3068,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_collar.mp3"
    },
    {
@@ -2878,6 +3082,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_sailor.mp3"
    },
    {
@@ -2891,6 +3096,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/uh_asin_lava.mp3"
    }
   ]
@@ -2911,6 +3117,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#456bb2",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ar_asin_artist.mp3"
    },
    {
@@ -2924,6 +3131,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ar_asin_father.mp3"
    },
    {
@@ -2939,6 +3147,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ar_asin_palm.mp3"
    },
    {
@@ -2954,6 +3163,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ar_asin_half.mp3"
    },
    {
@@ -2970,6 +3180,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#ffffff",
     "unit": "PI Unit 12",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/ar_asin_calves.mp3"
    }
   ]
@@ -2990,6 +3201,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/air_asin_hair-1.mp3"
    },
    {
@@ -3003,6 +3215,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/air_asin_square.mp3"
    },
    {
@@ -3016,6 +3229,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/air_asin_bear.mp3"
    },
    {
@@ -3029,6 +3243,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#e7b9a5",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/air_asin_where.mp3"
    }
   ]
@@ -3049,6 +3264,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/eer_asin_deer.mp3"
    },
    {
@@ -3062,6 +3278,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/eer_asin_ears.mp3"
    },
    {
@@ -3075,6 +3292,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/eer_asin_adhere.mp3"
    },
    {
@@ -3088,6 +3306,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#b257a1",
     "unit": "",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/eer_asin_cashier.mp3"
    }
   ]
@@ -3108,6 +3327,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/zh_asin_television.mp3"
    },
    {
@@ -3121,6 +3341,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/zh_asin_treasure.mp3"
    },
    {
@@ -3134,6 +3355,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/zh_asin_collage.mp3"
    },
    {
@@ -3147,6 +3369,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/zh_asin_azure.mp3"
    },
    {
@@ -3160,6 +3383,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
     "color": "#018b8b",
     "unit": "PI Unit 8",
     "rowspan": 1,
+    "note": null,
     "audio": "/phonics/audio/zh_asin_courgette.mp3"
    }
   ]
