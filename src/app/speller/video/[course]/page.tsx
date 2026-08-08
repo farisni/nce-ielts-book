@@ -1,14 +1,15 @@
 "use client"
 
 import { useRouter, useParams } from "next/navigation";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import SentencePractice from "@/components/speller/SentencePractice";
 import { getCourse } from "@/lib/speller/courses";
+import { parseSrt, type SrtCue } from "@/lib/parse-srt";
 
 /**
  * Speller · 视频听写页
- * 左右布局：左 = 视频播放，右 = 拼写练习
- * 尚未接入 SRT 字幕时，视频独立播放，播放发音 = 播放视频原声
+ * 左右布局：左 = 视频播放 + 字幕联动，右 = 拼写练习
+ * 反引号 ` 播放当前句对应的视频片段（由 SRT 时间点驱动）
  */
 export default function VideoSpellerPage() {
   const router = useRouter();
@@ -16,17 +17,66 @@ export default function VideoSpellerPage() {
   const courseId = (params.course as string) ?? "nce3-l1";
   const course = getCourse(courseId);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [cues, setCues] = useState<SrtCue[]>([]);
+  const [currentIdx, setCurrentIdx] = useState(-1);
+  const [subtitle, setSubtitle] = useState<string | null>(null);
+  const stopAtRef = useRef<number | null>(null);
 
-  // 播放发音 → 播放视频（反引号 ` 快捷键触发）
+  // 加载 SRT 字幕
+  useEffect(() => {
+    if (!course?.subtitle) return
+    let cancelled = false
+    fetch(course.subtitle)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.text()
+      })
+      .then((text) => {
+        if (cancelled) return
+        const parsed = parseSrt(text)
+        setCues(parsed)
+        setSubtitle(text)
+      })
+      .catch(() => {
+        if (!cancelled) setCues([])
+      })
+    return () => { cancelled = true }
+  }, [course?.subtitle])
+
+  // 播放发音 → 播放当前句对应的视频片段（SRT 时间点驱动）
   const playVoice = useCallback(() => {
-    const v = videoRef.current;
+    const v = videoRef.current
     if (!v) return
+    const cue = cues[currentIdx]
+    if (cue) {
+      const start = cue.startMs / 1000
+      const end = cue.endMs / 1000
+      stopAtRef.current = end
+      v.currentTime = start
+      v.play().catch(() => {})
+      return
+    }
+    // 无 SRT：整段播放/暂停
     if (v.paused) {
       v.play().catch(() => {})
     } else {
       v.pause()
     }
-  }, [])
+  }, [cues, currentIdx])
+
+  // 播放到句段结束自动暂停
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    const onTimeUpdate = () => {
+      if (stopAtRef.current !== null && v.currentTime >= stopAtRef.current) {
+        v.pause()
+        stopAtRef.current = null
+      }
+    }
+    v.addEventListener("timeupdate", onTimeUpdate)
+    return () => v.removeEventListener("timeupdate", onTimeUpdate)
+  }, [cues])
 
   if (!course) {
     return (
@@ -60,13 +110,27 @@ export default function VideoSpellerPage() {
             />
           </div>
 
-          {/* 字幕区：尚未接入 SRT 时占位 */}
+          {/* 字幕区：显示当前句字幕或占位 */}
           <div className="rounded-lg border border-dashed border-border bg-muted/40 px-4 py-6 text-center text-sm text-muted-foreground">
-            <p className="mb-1 font-medium text-foreground/80">逐句字幕</p>
-            <p>尚未接入 SRT 字幕，视频独立播放。</p>
-            <p className="mt-1 text-xs text-muted-foreground/70">
-              接入字幕后将支持：当前句高亮 · 点句跳转 · 视频句段循环
-            </p>
+            {cues.length > 0 ? (
+              <>
+                <p className="mb-2 font-medium text-foreground/80">当前句 · {currentIdx + 1}/{cues.length}</p>
+                <p className="text-base leading-relaxed text-foreground">
+                  {cues[currentIdx]?.text ?? "—"}
+                </p>
+                <p className="mt-2 text-xs text-muted-foreground/70">
+                  反引号 ` 播放当前句 · 空格跳词 · Enter 提交
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mb-1 font-medium text-foreground/80">逐句字幕</p>
+                <p>尚未接入 SRT 字幕，视频整段播放。</p>
+                <p className="mt-1 text-xs text-muted-foreground/70">
+                  接入字幕后将支持：当前句高亮 · 点句跳转 · 视频句段循环
+                </p>
+              </>
+            )}
           </div>
         </div>
 
@@ -77,6 +141,7 @@ export default function VideoSpellerPage() {
             autoStart
             showCn={false}
             playVoice={playVoice}
+            onCurrentSentence={setCurrentIdx}
             onExit={() => router.push("/speller")}
           />
         </div>

@@ -233,6 +233,7 @@ export default function SentencePractice({
   onExit,
   showCn = true,
   playVoice,
+  onCurrentSentence,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -244,6 +245,8 @@ export default function SentencePractice({
   showCn?: boolean
   /** 播放发音回调（视频课程模式下播放视频；不传则用 TTS） */
   playVoice?: () => void
+  /** 当前句在课程原始句子中的索引回调（视频/SRT 联动用） */
+  onCurrentSentence?: (courseIndex: number) => void
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -251,6 +254,8 @@ export default function SentencePractice({
   // ── 会话状态 ──
   const [phase, setPhase] = useState<Phase>("idle")
   const [session, setSession] = useState<SentenceEntry[]>([])
+  /** session 每项对应的课程原始句子索引（视频/SRT 联动用） */
+  const [sessionSrcIdx, setSessionSrcIdx] = useState<number[]>([])
   const [index, setIndex] = useState(0)
   // 逐词独立输入：wordInputs[i] = 第 i 个单词已输入的字母串（可任意长）
   const [wordInputs, setWordInputs] = useState<string[]>([])
@@ -381,9 +386,12 @@ export default function SentencePractice({
   const startGame = useCallback(() => {
     const pool = course?.sentences ?? []
     const sessionSize = course?.sessionSize ?? 10
-    const s = shuffle(pool).slice(0, sessionSize)
+    // 洗牌同时记录课程原始索引，供视频/SRT 联动
+    const idx = shuffle(pool.map((_, i) => i)).slice(0, sessionSize)
+    const s = idx.map((i) => pool[i])
     if (s.length === 0) return
     setSession(s)
+    setSessionSrcIdx(idx)
     setIndex(0)
     setWordInputs(getWords(s[0].en).map(() => ""))
     setActiveIdx(0)
@@ -406,6 +414,13 @@ export default function SentencePractice({
       startGame()
     }
   }, [autoStart, phase, startGame])
+
+  // 当前句变化时，把课程原始索引通知视频页（SRT 联动）
+  useEffect(() => {
+    if (onCurrentSentence && sessionSrcIdx[index] !== undefined) {
+      onCurrentSentence(sessionSrcIdx[index])
+    }
+  }, [index, sessionSrcIdx, onCurrentSentence])
 
   const replay = useCallback(() => {
     if (playVoice) {
