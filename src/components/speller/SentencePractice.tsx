@@ -602,6 +602,29 @@ export default function SentencePractice({
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
   const fullyCorrect = submitted && !revealed && words.every((w, i) => (wordInputs[i] ?? "").toLowerCase() === w.toLowerCase())
 
+  // 把 chars 按单词分组：每个单词的字母包进不可换行容器，只在单词间换行（避免单词被截断）
+  const charGroups = useMemo(() => {
+    type Group = { kind: "word" | "space" | "punct"; chars: CharState[]; startIdx: number }
+    const groups: Group[] = []
+    let current: CharState[] | null = null
+    let currentStart = 0
+    for (let gi = 0; gi < chars.length; gi++) {
+      const c = chars[gi]
+      if (c.status === "space") {
+        if (current) { groups.push({ kind: "word", chars: current, startIdx: currentStart }); current = null }
+        groups.push({ kind: "space", chars: [c], startIdx: gi })
+      } else if (c.status === "punct") {
+        if (current) { groups.push({ kind: "word", chars: current, startIdx: currentStart }); current = null }
+        groups.push({ kind: "punct", chars: [c], startIdx: gi })
+      } else {
+        if (!current) { current = []; currentStart = gi }
+        current.push(c)
+      }
+    }
+    if (current) groups.push({ kind: "word", chars: current, startIdx: currentStart })
+    return groups
+  }, [chars])
+
   const progressPct = session.length > 0 ? ((index + (passed ? 1 : 0)) / session.length) * 100 : 0
 
   // ── 进度条（渲染到页面顶部固定槽位 #progress-slot，不随内容居中）──
@@ -855,15 +878,17 @@ export default function SentencePractice({
             }`}
           >
             {chars.length === 0 && <span className="text-muted-foreground">— 听发音，用键盘输入英文句子 —</span>}
-            {/* 内层行：flex wrap 保证槽位固定高度、下划线对齐，超宽自动换行
-                所有槽位统一 flex-none 固定宽度，宽字母不外溢，输入过程布局零变化 */}
+            {/* 内层行：按单词分组渲染，flex wrap 只在单词之间换行，单词内部不截断 */}
             <span className="inline-flex flex-wrap justify-center">
-              {chars.map((c, i) => {
-                // 句末标点：不占独立行，挂在前一个槽位右侧（紧跟句子末尾、永不换行）
+              {charGroups.map((group, gIndex) => {
+                // 句末标点：不占独立行，挂在最后一个单词/空格右侧
                 const endPunct = chars[chars.length - 1]
-                const isEndPunct = i === chars.length - 1 && endPunct.status === "punct"
-                const showEndPunct = endPunct.status === "punct" && i === chars.length - 2
-                if (isEndPunct) return null
+                const isEndPunct = gIndex === charGroups.length - 1 && endPunct.status === "punct"
+                // 句末标点挂在前一个槽位（若句子以空格结尾则挂在空格，否则挂在最后单词）
+                const lastGroup = charGroups[charGroups.length - 1]
+                const showEndPunct =
+                  endPunct.status === "punct" &&
+                  (group === lastGroup || (charGroups[charGroups.length - 2] === group && lastGroup.kind === "space"))
                 const endPunctMark = showEndPunct ? (
                   <span
                     className="pointer-events-none absolute inset-y-0 left-full flex items-end pl-[0.08em] text-muted-foreground"
@@ -872,96 +897,103 @@ export default function SentencePractice({
                     {endPunct.ch}
                   </span>
                 ) : null
-                if (c.status === "punct") {
+                if (isEndPunct) return null
+                if (group.kind === "punct") {
                   // 句中标点自动显示：与字母同线
                   return (
                     <span
-                      key={i}
+                      key={gIndex}
                       className="relative inline-flex h-[2.2em] flex-none items-end px-[0.08em] text-muted-foreground"
                       style={{ transform: "translateY(-0.19em)" }}
                     >
-                      {c.ch}
+                      {group.chars[0].ch}
                       {endPunctMark}
                     </span>
                   )
                 }
-                if (c.status === "space") {
+                if (group.kind === "space") {
                   // 单词之间的空格：留白；若其后紧跟句末标点，标点挂在这里
                   return (
-                    <span key={i} className="relative inline-block w-[0.45em] flex-none">
+                    <span key={gIndex} className="relative inline-block w-[0.45em] flex-none">
                       {endPunctMark}
                     </span>
                   )
                 }
-                if (c.status === "pending") {
-                  // 未输入：灰色横线；激活单词 → 绿色横线。隐形占位字符保证行高恒定
-                  return (
-                    <span
-                      key={i}
-                      className="relative inline-flex h-[2.2em] flex-none items-center justify-center"
-                      style={{ width: `${c.widthEm ?? 0.6}em` }}
-                    >
-                      <span className="invisible leading-none">W</span>
-                      <span
-                        className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
-                        }`}
-                      />
-                      {endPunctMark}
-                    </span>
-                  )
-                }
-                if (c.status === "correct") {
-                  // 写对的字母：底部对齐下划线；正常输入显示绿色，显示答案后显示浅灰色
-                  return (
-                    <span
-                      key={i}
-                      className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                      style={{ width: `${c.widthEm ?? 0.6}em` }}
-                    >
-                      <span className="invisible leading-none">W</span>
-                      <span
-                        className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
-                          revealed ? "text-muted-foreground" : "text-emerald-500"
-                        }`}
-                        style={{ transform: "translateY(-0.14em)" }}
-                      >
-                        {c.ch}
-                      </span>
-                      <span
-                        className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
-                        }`}
-                      />
-                      {endPunctMark}
-                    </span>
-                  )
-                }
-                if (c.status === "wrong") {
-                  // 错误/多余字母：字母红色，整词提交后下划线标红
-                  return (
-                    <span
-                      key={i}
-                      className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                      style={{ width: `${c.widthEm ?? 0.6}em` }}
-                    >
-                      <span className="invisible leading-none">W</span>
-                      <span
-                        className="absolute inset-x-0 bottom-0 flex justify-center leading-none text-rose-500"
-                        style={{ transform: "translateY(-0.14em)" }}
-                      >
-                        {c.ch}
-                      </span>
-                      <span
-                        className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
-                        }`}
-                      />
-                      {endPunctMark}
-                    </span>
-                  )
-                }
-                return <span key={i}>{c.ch}</span>
+                // 单词：字母包进不可换行容器，flex-wrap 不会在单词中间断开
+                return (
+                  <span key={gIndex} className="relative inline-flex flex-none">
+                    {group.chars.map((c, i) => {
+                      const idx = group.startIdx + i
+                      if (c.status === "pending") {
+                        // 未输入：灰色横线；激活单词 → 绿色横线。隐形占位字符保证行高恒定
+                        return (
+                          <span
+                            key={idx}
+                            className="relative inline-flex h-[2.2em] flex-none items-center justify-center"
+                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                          >
+                            <span className="invisible leading-none">W</span>
+                            <span
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                              }`}
+                            />
+                          </span>
+                        )
+                      }
+                      if (c.status === "correct") {
+                        // 写对的字母：底部对齐下划线；正常输入显示绿色，显示答案后显示浅灰色
+                        return (
+                          <span
+                            key={idx}
+                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
+                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                          >
+                            <span className="invisible leading-none">W</span>
+                            <span
+                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
+                                revealed ? "text-muted-foreground" : "text-emerald-500"
+                              }`}
+                              style={{ transform: "translateY(-0.14em)" }}
+                            >
+                              {c.ch}
+                            </span>
+                            <span
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                              }`}
+                            />
+                          </span>
+                        )
+                      }
+                      if (c.status === "wrong") {
+                        // 错误/多余字母：字母红色，整词提交后下划线标红
+                        return (
+                          <span
+                            key={idx}
+                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
+                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                          >
+                            <span className="invisible leading-none">W</span>
+                            <span
+                              className="absolute inset-x-0 bottom-0 flex justify-center leading-none text-rose-500"
+                              style={{ transform: "translateY(-0.14em)" }}
+                            >
+                              {c.ch}
+                            </span>
+                            <span
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                              }`}
+                            />
+                          </span>
+                        )
+                      }
+                      return <span key={idx}>{c.ch}</span>
+                    })}
+                    {endPunctMark}
+                  </span>
+                )
               })}
             </span>
           </div>
