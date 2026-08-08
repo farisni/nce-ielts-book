@@ -177,6 +177,31 @@ function GraphemeCard({
   );
 }
 
+/**
+ * 音素格渲染：斜杠保持前景色，斜杠内的音素字母按类型着色（同原版）。
+ * 原版 CSS：act-left-1（元音）字母红 #ee1d24，act-left-2（辅音）字母蓝 #3157a4；
+ * 描述文字（short/long/schwa 等）保持黑色。
+ */
+function renderPhoneme(phoneme: string, type: "vowel" | "consonant") {
+  const letterColor = type === "vowel" ? "#ee1d24" : "#3157a4";
+  const parts = phoneme.split(/(\/.*?\/)/g).filter(Boolean);
+  return parts.map((part, i) => {
+    // 形如 /s/ 的片段：斜杠黑，中间字母着色
+    if (part.startsWith("/") && part.endsWith("/")) {
+      const inner = part.slice(1, -1);
+      return (
+        <span key={i}>
+          <span className="text-foreground">/</span>
+          <span style={{ color: letterColor }}>{inner}</span>
+          <span className="text-foreground">/</span>
+        </span>
+      );
+    }
+    // 描述文字：黑色
+    return <span key={i} className="text-foreground">{part}</span>;
+  });
+}
+
 /** 例词：hl 中的子串用主题色加粗 */
 function renderExample(example: string, highlights: string[]) {
   if (!highlights.length) return example;
@@ -252,7 +277,9 @@ export default function PhonicsPage() {
               className="group relative flex h-full flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
-              <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
+              <span className="text-[26px] font-semibold leading-none">
+                {renderPhoneme(row.phoneme, row.type)}
+              </span>
               {/* 播放图标：右上角，hover 才出现（同拼写格） */}
               {row.audio && (
                 <span className="pointer-events-none absolute right-1 top-1 text-muted-foreground/0 transition-colors group-hover:text-muted-foreground/70">

@@ -26,6 +26,8 @@ export interface GraphemeCell {
 export interface PhonemeRow {
   /** 音素（IPA 记法） */
   phoneme: string
+  /** 音素类型：vowel 元音（红）/ consonant 辅音（蓝） */
+  type: 'vowel' | 'consonant'
   /** 音素本身的发音 */
   audio: string | null
   /** 该音素的所有拼写替代 */
@@ -35,6 +37,7 @@ export interface PhonemeRow {
 export const PHONICS_ROWS: PhonemeRow[] = [
  {
   "phoneme": "/s/",
+  "type": "consonant",
   "audio": "/phonics/audio/s.mp3",
   "cells": [
    {
@@ -177,6 +180,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/a/",
+  "type": "vowel",
   "audio": "/phonics/audio/a.mp3",
   "cells": [
    {
@@ -196,6 +200,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/t/",
+  "type": "consonant",
   "audio": "/phonics/audio/t.mp3",
   "cells": [
    {
@@ -267,6 +272,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/i/",
+  "type": "vowel",
   "audio": "/phonics/audio/i.mp3",
   "cells": [
    {
@@ -299,6 +305,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/p/",
+  "type": "consonant",
   "audio": "/phonics/audio/p.mp3",
   "cells": [
    {
@@ -331,6 +338,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/n/",
+  "type": "consonant",
   "audio": "/phonics/audio/n.mp3",
   "cells": [
    {
@@ -402,6 +410,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/k/",
+  "type": "consonant",
   "audio": "/phonics/audio/k.mp3",
   "cells": [
    {
@@ -486,6 +495,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/e/",
+  "type": "vowel",
   "audio": "/phonics/audio/e.mp3",
   "cells": [
    {
@@ -547,6 +557,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/h/",
+  "type": "consonant",
   "audio": "/phonics/audio/h.mp3",
   "cells": [
    {
@@ -579,6 +590,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/r/",
+  "type": "consonant",
   "audio": "/phonics/audio/r.mp3",
   "cells": [
    {
@@ -637,6 +649,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/m/",
+  "type": "consonant",
   "audio": "/phonics/audio/m.mp3",
   "cells": [
    {
@@ -708,6 +721,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/d/",
+  "type": "consonant",
   "audio": "/phonics/audio/d.mp3",
   "cells": [
    {
@@ -753,6 +767,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/g/",
+  "type": "consonant",
   "audio": "/phonics/audio/g-1.mp3",
   "cells": [
    {
@@ -824,6 +839,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/o/",
+  "type": "vowel",
   "audio": "/phonics/audio/o.mp3",
   "cells": [
    {
@@ -889,6 +905,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/u/",
+  "type": "vowel",
   "audio": "/phonics/audio/u.mp3",
   "cells": [
    {
@@ -947,6 +964,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/l/",
+  "type": "consonant",
   "audio": "/phonics/audio/l_01.mp3",
   "cells": [
    {
@@ -979,6 +997,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ul/",
+  "type": "consonant",
   "audio": "/phonics/audio/ul_01_01.mp3",
   "cells": [
    {
@@ -1037,6 +1056,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/f/",
+  "type": "consonant",
   "audio": "/phonics/audio/f_01.mp3",
   "cells": [
    {
@@ -1095,6 +1115,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/b/",
+  "type": "consonant",
   "audio": "/phonics/audio/b_01.mp3",
   "cells": [
    {
@@ -1140,6 +1161,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/j/",
+  "type": "consonant",
   "audio": "/phonics/audio/j_01.mp3",
   "cells": [
    {
@@ -1230,6 +1252,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/y/",
+  "type": "consonant",
   "audio": "/phonics/audio/y_01.mp3",
   "cells": [
    {
@@ -1249,6 +1272,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ai/",
+  "type": "vowel",
   "audio": "/phonics/audio/ai_01.mp3",
   "cells": [
    {
@@ -1388,6 +1412,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/w/",
+  "type": "consonant",
   "audio": "/phonics/audio/w_01.mp3",
   "cells": [
    {
@@ -1433,6 +1458,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/oa/",
+  "type": "vowel",
   "audio": "/phonics/audio/oa_01.mp3",
   "cells": [
    {
@@ -1544,6 +1570,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/igh/",
+  "type": "vowel",
   "audio": "/phonics/audio/igh_01.mp3",
   "cells": [
    {
@@ -1629,6 +1656,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/yoo/",
+  "type": "vowel",
   "audio": "/phonics/audio/yoo_01.mp3",
   "cells": [
    {
@@ -1701,6 +1729,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ee/",
+  "type": "vowel",
   "audio": "/phonics/audio/ee_01.mp3",
   "cells": [
    {
@@ -1840,6 +1869,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/or/ or similar sound",
+  "type": "vowel",
   "audio": "/phonics/audio/or_01.mp3",
   "cells": [
    {
@@ -2006,6 +2036,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/z/",
+  "type": "consonant",
   "audio": "/phonics/audio/z_01.mp3",
   "cells": [
    {
@@ -2077,6 +2108,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ng/",
+  "type": "consonant",
   "audio": "/phonics/audio/ng_01.mp3",
   "cells": [
    {
@@ -2109,6 +2141,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ngk/",
+  "type": "consonant",
   "audio": "/phonics/audio/ngk.mp3",
   "cells": [
    {
@@ -2141,6 +2174,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/v/",
+  "type": "consonant",
   "audio": "/phonics/audio/v_01.mp3",
   "cells": [
    {
@@ -2173,6 +2207,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/oo/ short",
+  "type": "vowel",
   "audio": "/phonics/audio/short-oo_01.mp3",
   "cells": [
    {
@@ -2222,6 +2257,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/oo/ long",
+  "type": "vowel",
   "audio": "/phonics/audio/long-oo_01.mp3",
   "cells": [
    {
@@ -2346,6 +2382,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ks/",
+  "type": "consonant",
   "audio": "/phonics/audio/ks_01.mp3",
   "cells": [
    {
@@ -2404,6 +2441,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/gz/",
+  "type": "consonant",
   "audio": "/phonics/audio/gz.mp3",
   "cells": [
    {
@@ -2423,6 +2461,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ch/",
+  "type": "consonant",
   "audio": "/phonics/audio/ch_01.mp3",
   "cells": [
    {
@@ -2455,6 +2494,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/chuh/ or / cher/",
+  "type": "consonant",
   "audio": "/phonics/audio/chuh.mp3",
   "cells": [
    {
@@ -2474,6 +2514,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/sh/",
+  "type": "consonant",
   "audio": "/phonics/audio/sh_01.mp3",
   "cells": [
    {
@@ -2545,6 +2586,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/th/ unvoiced",
+  "type": "consonant",
   "audio": "/phonics/audio/th.mp3",
   "cells": [
    {
@@ -2564,6 +2606,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/th/ voiced",
+  "type": "consonant",
   "audio": "/phonics/audio/th_voiced.mp3",
   "cells": [
    {
@@ -2583,6 +2626,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/kw/",
+  "type": "consonant",
   "audio": "/phonics/audio/kw_01.mp3",
   "cells": [
    {
@@ -2615,6 +2659,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ou/",
+  "type": "vowel",
   "audio": "/phonics/audio/ou_01.mp3",
   "cells": [
    {
@@ -2660,6 +2705,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/oi/",
+  "type": "vowel",
   "audio": "/phonics/audio/oi_01.mp3",
   "cells": [
    {
@@ -2692,6 +2738,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/er/",
+  "type": "vowel",
   "audio": "/phonics/audio/er_01.mp3",
   "cells": [
    {
@@ -2765,6 +2812,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/uh/ schwa",
+  "type": "vowel",
   "audio": "/phonics/audio/uh_01.mp3",
   "cells": [
    {
@@ -2849,6 +2897,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/ar/",
+  "type": "vowel",
   "audio": "/phonics/audio/ar_01.mp3",
   "cells": [
    {
@@ -2927,6 +2976,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/air/",
+  "type": "vowel",
   "audio": "/phonics/audio/air_01.mp3",
   "cells": [
    {
@@ -2985,6 +3035,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/eer/",
+  "type": "vowel",
   "audio": "/phonics/audio/eer_01.mp3",
   "cells": [
    {
@@ -3043,6 +3094,7 @@ export const PHONICS_ROWS: PhonemeRow[] = [
  },
  {
   "phoneme": "/zh/",
+  "type": "consonant",
   "audio": "/phonics/audio/zh_01.mp3",
   "cells": [
    {
