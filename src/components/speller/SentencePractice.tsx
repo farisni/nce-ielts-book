@@ -884,7 +884,7 @@ export default function SentencePractice({
                       <span className="invisible leading-none">W</span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-blue-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
@@ -910,7 +910,7 @@ export default function SentencePractice({
                       </span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-blue-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
@@ -934,7 +934,7 @@ export default function SentencePractice({
                       </span>
                       <span
                         className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-emerald-500" : "bg-neutral-400"
+                          c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-blue-500" : "bg-neutral-400"
                         }`}
                       />
                       {endPunctMark}
