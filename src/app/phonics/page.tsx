@@ -56,7 +56,9 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className="group relative flex h-full min-w-0 flex-col items-center overflow-hidden rounded-lg border border-border bg-card pt-2 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+      className={`group relative flex min-w-0 flex-col items-center overflow-hidden rounded-lg border border-border bg-card pt-2 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+        cell.rowspan > 1 ? "row-span-2" : ""
+      }`}
     >
       {/* 拼写替代（silent 字母用空心/浅色标注） */}
       <span className="px-1 text-center text-lg font-semibold leading-tight text-foreground">
