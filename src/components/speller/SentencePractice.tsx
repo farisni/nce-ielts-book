@@ -795,7 +795,7 @@ export default function SentencePractice({
       {shortcutPortal}
       {/* 句子列表抽屉（shadcn Sheet） */}
       <Sheet open={showSentences} onOpenChange={setShowSentences} modal={false}>
-        <SheetContent side="right" className="w-full max-w-sm gap-0 p-0">
+        <SheetContent side="right" className="w-full max-w-md gap-0 p-0">
           <SheetHeader className="border-b border-border px-4 py-3">
             <SheetTitle className="text-sm font-semibold">
               {course?.name ?? "课程"} · 句子列表
