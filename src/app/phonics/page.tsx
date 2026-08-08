@@ -59,7 +59,7 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className={`group relative flex min-w-0 flex-col overflow-hidden bg-white pt-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+      className={`group relative flex min-w-0 flex-col overflow-hidden border-b border-r border-border bg-white pt-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         cell.rowspan > 1 ? "row-span-2" : ""
       }`}
       style={{ fontFamily: PHONICS_FONT }}
@@ -167,19 +167,19 @@ export default function PhonicsPage() {
         </p>
       </header>
 
-      {/* 音素代码表：gap-px + bg-border 画表格线，无圆角无缝隙（同原版 table） */}
-      <div className="mt-6 grid gap-px bg-border">
+      {/* 音素代码表：格子自身 border 画网格线，容器白底，无缝隙无圆角（同原版 table） */}
+      <div className="mt-6 border-l border-t border-border bg-white">
         {PHONICS_ROWS.map((row) => (
           <div
             key={row.phoneme}
-            className="grid grid-cols-[64px_1fr] gap-px sm:grid-cols-[88px_1fr]"
+            className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr]"
           >
             {/* 音素格：原版黄色背景 + 26px 字号 */}
             <button
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex h-full flex-col items-center justify-center gap-1 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
+              className="flex h-full flex-col items-center justify-center gap-1 border-b border-r border-border bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
               <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
@@ -197,8 +197,8 @@ export default function PhonicsPage() {
               )}
             </button>
 
-            {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行（同原版） */}
-            <div className="grid grid-cols-3 gap-px bg-border sm:grid-cols-6">
+            {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行（同原版）；白底保证空位为白色 */}
+            <div className="grid grid-cols-3 bg-white sm:grid-cols-6">
               {row.cells.map((cell, i) => {
                 const cid = `${row.phoneme}-${i}`;
                 return (
