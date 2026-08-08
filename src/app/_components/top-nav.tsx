@@ -4,7 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon } from "lucide-react";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon, AudioLines as AudioLinesIcon } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles, mergeArticleData } from "@/app/mock";
@@ -119,6 +119,15 @@ const pageSearchItems: PageSearchItem[] = [
     group: "Navigate",
     icon: <StarIcon className="text-muted-foreground" />,
     keywords: toKeywords("首页 home root atlas 词根 主页"),
+  },
+  {
+    id: "phonics",
+    label: "自然拼读 · 音素代码表",
+    description: "English Alphabetic Code · 发音拼读对照表",
+    href: "/phonics",
+    group: "Navigate",
+    icon: <AudioLinesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("phonics 自然拼读 音素 phoneme 拼读 alphabetic code grapheme 发音 英语"),
   },
   {
     id: "speller",
@@ -522,6 +531,15 @@ export default function TopNav() {
                   className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
                 >
                   Speller
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  render={<Link href="/phonics" />}
+                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
+                >
+                  自然拼读
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
