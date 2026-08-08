@@ -125,7 +125,7 @@ function GraphemeCard({
       {cell.img && (
         <div
           className={`flex w-full items-center justify-center ${
-            cell.rowspan > 1 ? "flex-1 py-1" : "h-14 py-1"
+            cell.rowspan > 1 ? "flex-1 py-1" : "h-20 py-1"
           }`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -138,8 +138,8 @@ function GraphemeCard({
         </div>
       )}
 
-      {/* 例词：原版 24px/600/灰色，左对齐 */}
-      <span className="w-full px-2 pb-1.5 text-left text-[24px] font-semibold leading-none text-muted-foreground">
+      {/* 例词：原版 24px/600/灰色，左对齐；pb-4 给底部色条留出间距 */}
+      <span className="w-full px-2 pb-4 text-left text-[24px] font-semibold leading-none text-muted-foreground">
         {renderExample(cell.ex, cell.hl)}
       </span>
 
