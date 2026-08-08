@@ -138,7 +138,7 @@ function GraphemeCard({
 
       {/* 喇叭/加载状态 */}
       <span className="pointer-events-none absolute right-1 top-1 text-muted-foreground/0 transition-colors group-hover:text-muted-foreground/70">
-        {loading ? <Loader2 className="size-3.5 animate-spin" /> : active ? <Volume2 className="size-3.5 text-primary" /> : <Volume2 className="size-3.5" />}
+        {loading ? <Loader2 className="size-5 animate-spin" /> : active ? <Volume2 className="size-5 text-primary" /> : <Volume2 className="size-5" />}
       </span>
     </button>
   );
@@ -217,13 +217,13 @@ export default function PhonicsPage() {
             >
               <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
               {row.audio && (
-                <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
                   {loading === `ph-${row.phoneme}` ? (
-                    <Loader2 className="size-3 animate-spin" />
+                    <Loader2 className="size-4 animate-spin" />
                   ) : active === `ph-${row.phoneme}` ? (
-                    <Volume2 className="size-3 text-primary" />
+                    <Volume2 className="size-4 text-primary" />
                   ) : (
-                    <Volume2 className="size-3" />
+                    <Volume2 className="size-4" />
                   )}
                   发音
                 </span>
