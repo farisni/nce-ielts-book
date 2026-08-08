@@ -244,17 +244,18 @@ export default function PhonicsPage() {
             key={row.phoneme}
             className="grid grid-cols-[100px_1fr] sm:grid-cols-[128px_1fr]"
           >
-            {/* 音素格：原版黄色背景 + 26px 字号 */}
+            {/* 音素格：原版黄色背景 + 26px 字号；播放图标右上角 hover 显示（同拼写格） */}
             <button
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex h-full flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
+              className="group relative flex h-full flex-col items-center justify-center gap-1 border-b border-r border-black/70 bg-[#fffa94] px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
               style={{ fontFamily: PHONICS_FONT }}
             >
               <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
+              {/* 播放图标：右上角，hover 才出现（同拼写格） */}
               {row.audio && (
-                <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                <span className="pointer-events-none absolute right-1 top-1 text-muted-foreground/0 transition-colors group-hover:text-muted-foreground/70">
                   {loading === `ph-${row.phoneme}` ? (
                     <Loader2 className="size-4 animate-spin" />
                   ) : active === `ph-${row.phoneme}` ? (
@@ -262,7 +263,6 @@ export default function PhonicsPage() {
                   ) : (
                     <Volume2 className="size-4" />
                   )}
-                  发音
                 </span>
               )}
             </button>
