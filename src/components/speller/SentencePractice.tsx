@@ -522,6 +522,16 @@ export default function SentencePractice({
       if (e.key === " ") {
         e.preventDefault()
         if (submitted) setSubmitted(false)
+        // Shift+空格：反向回退激活单词，到开头则循环回最后一个单词
+        if (e.shiftKey) {
+          if (activeIdx - 1 >= 0) {
+            setActiveIdx((a) => a - 1)
+          } else {
+            setActiveIdx(words.length - 1)
+            setRevealed(false)
+          }
+          return
+        }
         if (activeIdx + 1 < words.length) {
           setActiveIdx((a) => a + 1)
         } else {
