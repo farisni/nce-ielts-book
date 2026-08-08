@@ -35,25 +35,43 @@ export default function PronunciationPractice({
     };
   }, []);
 
-  // 解析讯飞返回的 XML 评测结果，提取各维度分数
-  // 讯飞英文句子返回 <read_chapter> 节点带分；中文返回 <read_sentence> 带分
+  // 解析讯飞返回的 XML 评测结果：总分 + 各维度分 + 单词级详情
+  // 讯飞英文句子返回 <read_chapter>/<read_sentence> 节点带分；
+  // word 节点含每个词的分和 dp_message（0正常/16漏读/32增读/64回读/128替换）
   const extractScores = (xmlText: string) => {
     const doc = new DOMParser().parseFromString(xmlText, "text/xml");
-    // 优先找带分数的节点（read_chapter 或 read_sentence），没有则取最外层
-    const scored =
-      doc.querySelector("read_chapter") ||
-      doc.querySelector("read_sentence") ||
-      doc.querySelector("xml_result");
-    const getAttr = (name: string): number => {
-      const v = scored?.getAttribute(name);
+    // 优先找带分节点，取分数较高者
+    const chapter = doc.querySelector("read_chapter");
+    const sentence = doc.querySelector("read_sentence");
+    const scored = chapter || sentence || doc.querySelector("xml_result");
+    const pick = (node: Element | null, name: string): number => {
+      const v = node?.getAttribute(name);
       return v ? Number(v) : 0;
     };
+    // 总分：多个候选节点取最大，避免读到 0
+    const total = Math.max(
+      pick(chapter, "total_score"),
+      pick(sentence, "total_score"),
+      pick(scored, "total_score"),
+    );
+    const acc = Math.max(
+      pick(chapter, "accuracy_score"),
+      pick(scored, "accuracy_score"),
+    );
     return {
-      total: getAttr("total_score"),
-      accuracy: getAttr("accuracy_score"),
-      fluency: getAttr("fluency_score"),
-      integrity: getAttr("integrity_score"),
+      total,
+      accuracy: acc,
+      fluency: Math.max(pick(chapter, "fluency_score"), pick(scored, "fluency_score")),
+      integrity: Math.max(pick(chapter, "integrity_score"), pick(scored, "integrity_score")),
       isRejected: scored?.getAttribute("is_rejected") === "true",
+      // 单词级详情：content + 每词分数 + dp_message 错误标记
+      words: Array.from(doc.querySelectorAll("word")).map((w) => ({
+        word: w.getAttribute("content") ?? "",
+        score: Number(w.getAttribute("total_score")) || 0,
+        dpMessage: Number(w.getAttribute("dp_message")) || 0,
+        // 0=正常；16=漏读；32=增读；64=回读；128=替换
+        wrong: (Number(w.getAttribute("dp_message")) || 0) !== 0,
+      })),
     };
   };
 
@@ -197,24 +215,53 @@ export default function PronunciationPractice({
 
       {/* 评分结果 */}
       {result && !evaluating && (
-        <div className="flex items-center gap-6 rounded-lg border border-border bg-muted/30 px-6 py-3">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-emerald-500">{Math.round(Number(result.total))}</div>
-            <div className="mt-0.5 text-xs text-muted-foreground">总分</div>
+        <div className="flex flex-col items-center gap-3">
+          <div className="flex items-center gap-6 rounded-lg border border-border bg-muted/30 px-6 py-3">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-emerald-500">{Math.round(Number(result.total))}</div>
+              <div className="mt-0.5 text-xs text-muted-foreground">总分</div>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.accuracy))}</div>
+              <div className="text-xs text-muted-foreground">准确度</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.fluency))}</div>
+              <div className="text-xs text-muted-foreground">流利度</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.integrity))}</div>
+              <div className="text-xs text-muted-foreground">完整度</div>
+            </div>
           </div>
-          <div className="h-8 w-px bg-border" />
-          <div className="text-center">
-            <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.accuracy))}</div>
-            <div className="text-xs text-muted-foreground">准确度</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.fluency))}</div>
-            <div className="text-xs text-muted-foreground">流利度</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.integrity))}</div>
-            <div className="text-xs text-muted-foreground">完整度</div>
-          </div>
+
+          {/* 单词级详情：读错的词标红，正确的正常色 */}
+          {Array.isArray((result as any).words) && (result as any).words.length > 0 && (
+            <div className="flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-lg border border-border bg-muted/20 px-4 py-2">
+              {(result as any).words.map((w: any, i: number) => (
+                <span key={i} className="flex items-center gap-1">
+                  <span
+                    className={
+                      w.wrong
+                        ? "font-semibold text-rose-500"
+                        : w.score >= 70
+                          ? "text-emerald-500"
+                          : "text-amber-500"
+                    }
+                  >
+                    {w.word}
+                  </span>
+                  <span className="text-[10px] tabular-nums text-muted-foreground/60">
+                    {Math.round(Number(w.score))}
+                  </span>
+                  {i < (result as any).words.length - 1 && (
+                    <span className="text-muted-foreground/40">·</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
