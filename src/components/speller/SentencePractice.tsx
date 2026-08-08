@@ -235,6 +235,7 @@ export default function SentencePractice({
   playVoice,
   onCurrentSentence,
   onJumpToSentence,
+  confettiOrigin = { x: 0.5, y: 0.7 },
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -250,6 +251,8 @@ export default function SentencePractice({
   onCurrentSentence?: (courseIndex: number) => void
   /** 点击句子列表中的某句，跳转到对应 SRT 时间点 */
   onJumpToSentence?: (courseIndex: number) => void
+  /** 答对撒花的位置（canvas-confetti origin） */
+  confettiOrigin?: { x: number; y: number }
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -423,7 +426,7 @@ export default function SentencePractice({
       setPassedCount((c) => c + 1)
       savePatch({ passed: 1 })
       // 撒花庆祝（canvas-confetti basic cannon）+ 撒花音效
-      confetti({ particleCount: 100, spread: 70, ticks: 60, origin: { y: 0.7 } })
+      confetti({ particleCount: 100, spread: 70, ticks: 60, origin: confettiOrigin })
       playSuccess()
     } else {
       setSubmitted(true)
@@ -434,7 +437,7 @@ export default function SentencePractice({
       const firstErr = words.findIndex((w, i) => (wordInputs[i] ?? "").toLowerCase() !== w.toLowerCase())
       if (firstErr >= 0) setActiveIdx(firstErr)
     }
-  }, [sentence, submitted, revealed, words, wordInputs, savePatch])
+  }, [sentence, submitted, revealed, words, wordInputs, savePatch, confettiOrigin])
 
   const showAnswer = useCallback(() => {
     if (!sentence || passed) return

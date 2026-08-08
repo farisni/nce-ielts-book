@@ -336,6 +336,7 @@ export default function VideoSpellerPage() {
             playVoice={playVoice}
             onCurrentSentence={setCurrentIdx}
             onJumpToSentence={jumpToSentence}
+            confettiOrigin={{ x: 0.75, y: 0.7 }}
             onExit={() => router.push("/speller")}
           />
         </div>
