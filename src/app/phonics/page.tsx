@@ -9,6 +9,40 @@ import { PHONICS_ROWS, type GraphemeCell } from "@/lib/phonics-code";
 const PHONICS_FONT = "'Sassoon Primary', 'SassoonPrimary', 'Chalkboard SE', 'Chalkboard', 'Comic Sans MS', cursive";
 
 /**
+ * 计算音素行在 6 列网格中需要补多少个空位格（同原版：空白处也是带边框的空格子）。
+ * 用稀疏自动放置模拟 CSS grid：rowspan=2 的格占当前行 + 下一行同列。
+ */
+function countEmptyCells(cells: GraphemeCell[], cols = 6): number {
+  const occupied = new Set<number>();
+  const key = (r: number, c: number) => r * cols + c;
+  let col = 0;
+  let row = 0;
+  let maxRow = 0;
+  for (const cell of cells) {
+    while (occupied.has(key(row, col))) {
+      col++;
+      if (col >= cols) {
+        col = 0;
+        row++;
+      }
+    }
+    occupied.add(key(row, col));
+    maxRow = Math.max(maxRow, row);
+    if (cell.rowspan > 1) {
+      occupied.add(key(row + 1, col));
+      maxRow = Math.max(maxRow, row + 1);
+    }
+    col++;
+    if (col >= cols) {
+      col = 0;
+      row++;
+    }
+  }
+  const totalCells = (maxRow + 1) * cols;
+  return totalCells - occupied.size;
+}
+
+/**
  * 播放本地音频：先加载后播放，同一时刻只播一个。
  * 返回播放函数与正在加载/播放的状态。
  */
@@ -110,8 +144,7 @@ function GraphemeCard({
   );
 }
 
-/** 拼写替代文本：silent 字母渲染为浅色空心样式 */
-function renderGrapheme(grapheme: string, silent: string[]) {
+/** 拼写替代文本：silent 字母渲染为浅色空心样式 */function renderGrapheme(grapheme: string, silent: string[]) {
   if (!silent.length) return grapheme;
   // 按字符拆分，silent 中的字符用浅色
   const silentSet = new Set(silent);
@@ -197,7 +230,7 @@ export default function PhonicsPage() {
               )}
             </button>
 
-            {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行（同原版）；白底保证空位为白色 */}
+            {/* 该音素的拼写格组：固定 6 列网格，多出的格自动换行；空位补边框空格（同原版 table） */}
             <div className="grid grid-cols-3 bg-white sm:grid-cols-6">
               {row.cells.map((cell, i) => {
                 const cid = `${row.phoneme}-${i}`;
@@ -211,6 +244,9 @@ export default function PhonicsPage() {
                   />
                 );
               })}
+              {Array.from({ length: countEmptyCells(row.cells) }).map((_, i) => (
+                <div key={`empty-${i}`} className="border-b border-r border-black/70 bg-white" />
+              ))}
             </div>
           </div>
         ))}
