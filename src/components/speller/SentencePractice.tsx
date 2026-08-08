@@ -115,23 +115,37 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
 }
 
 function useSpeech() {
+  const pendingRef = useRef<number | null>(null)
   const speak = useCallback((text: string) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return
-    window.speechSynthesis.cancel()
+    const synth = window.speechSynthesis
+    // Chrome 兼容：speechSynthesis 可能处于 paused 状态，speak 前先唤醒
+    synth.resume()
+    synth.cancel()
     const u = new SpeechSynthesisUtterance(text)
     u.lang = "en-US"
     u.volume = 0.8
     u.rate = 0.85
     u.pitch = 1
-    const voices = window.speechSynthesis.getVoices()
+    // Chrome 里 getVoices 首次可能返回空数组（异步加载），延迟后重取
+    const voices = synth.getVoices()
     const voice =
       voices.find((v) => v.lang.toLowerCase().startsWith("en-us") && /female|samantha|zira|aria|jenny/i.test(v.name)) ||
       voices.find((v) => v.lang.toLowerCase().startsWith("en"))
     if (voice) u.voice = voice
-    window.speechSynthesis.speak(u)
+    // Chrome 竞态 bug：cancel 后立刻 speak 可能被吞，加微小延迟
+    if (pendingRef.current) window.clearTimeout(pendingRef.current)
+    pendingRef.current = window.setTimeout(() => {
+      pendingRef.current = null
+      synth.speak(u)
+    }, 30)
   }, [])
   const stop = useCallback(() => {
     if (typeof window === "undefined") return
+    if (pendingRef.current) {
+      window.clearTimeout(pendingRef.current)
+      pendingRef.current = null
+    }
     window.speechSynthesis.cancel()
   }, [])
   return { speak, stop }
