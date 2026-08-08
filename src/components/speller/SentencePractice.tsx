@@ -807,7 +807,7 @@ export default function SentencePractice({
           <div className="flex-1 overflow-y-auto px-5 py-4">
             <ol className="space-y-4">
               {(course?.sentences ?? []).map((s, i) => (
-                <li key={i} className="flex gap-4 text-base leading-relaxed">
+                <li key={i} className="flex gap-4 text-lg leading-relaxed">
                   <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
                     {i + 1}
                   </span>
