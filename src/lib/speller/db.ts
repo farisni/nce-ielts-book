@@ -42,6 +42,16 @@ export function getDb(): DatabaseSync {
       last_at INTEGER
     )
   `)
+  // 发音评测历史：按课程 + 句子文本 存每次评分的 JSON 结果
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS speller_pron_history (
+      course_id TEXT NOT NULL,
+      sentence TEXT NOT NULL,
+      result TEXT NOT NULL,
+      updated_at INTEGER NOT NULL,
+      PRIMARY KEY (course_id, sentence)
+    )
+  `)
   _db = db
   return db
 }
@@ -115,4 +125,36 @@ export function getAllProgressRows(): ProgressRow[] {
     .prepare("SELECT * FROM speller_progress ORDER BY course_id")
     .all() as unknown as ProgressRow[]
   return rows
+}
+
+// ── 发音评测历史 ──
+
+export interface PronHistoryRow {
+  course_id: string
+  sentence: string
+  result: string
+  updated_at: number
+}
+
+/** 读取某课程的全部评分历史，返回 { sentence → result JSON } */
+export function getPronHistory(courseId: string): Record<string, string> {
+  const db = getDb()
+  const rows = db
+    .prepare("SELECT sentence, result FROM speller_pron_history WHERE course_id = ?")
+    .all(courseId) as unknown as PronHistoryRow[]
+  const map: Record<string, string> = {}
+  for (const r of rows) map[r.sentence] = r.result
+  return map
+}
+
+/** 保存某句的评分结果（按 course_id + sentence 覆盖） */
+export function upsertPronHistory(courseId: string, sentence: string, result: string) {
+  const db = getDb()
+  db.prepare(`
+    INSERT INTO speller_pron_history (course_id, sentence, result, updated_at)
+    VALUES (?, ?, ?, ?)
+    ON CONFLICT(course_id, sentence) DO UPDATE SET
+      result = excluded.result,
+      updated_at = excluded.updated_at
+  `).run(courseId, sentence, result, Date.now())
 }

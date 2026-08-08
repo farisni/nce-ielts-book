@@ -14,8 +14,8 @@ import {
 import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check, List } from "lucide-react"
 import confetti from "canvas-confetti"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
-import { getProgress, updateProgress } from "@/lib/speller/progress"
-import PronunciationPractice from "@/components/speller/PronunciationPractice"
+import { getProgress, updateProgress, getPronHistory, savePronScore } from "@/lib/speller/progress"
+import PronunciationPractice, { type EvalResult } from "@/components/speller/PronunciationPractice"
 
 type Phase = "idle" | "playing" | "done"
 type CharStatus = "correct" | "wrong" | "pending" | "punct" | "space"
@@ -283,6 +283,8 @@ export default function SentencePractice({
   const [flashTick, setFlashTick] = useState(0)
   // 句子列表抽屉
   const [showSentences, setShowSentences] = useState(false)
+  // 发音评测历史：按句子文本保存每次录音评分（翻句/切回可见）
+  const [pronHistory, setPronHistory] = useState<Record<string, EvalResult>>({})
 
   const timerRef = useRef<number | null>(null)
   const advanceRef = useRef<number | null>(null)
@@ -327,6 +329,27 @@ export default function SentencePractice({
     },
     [course],
   )
+
+  // 挂载时从 SQLite 加载该课程历史评分（切页/刷新后仍能看到）
+  useEffect(() => {
+    if (!course) return
+    let cancelled = false
+    getPronHistory(course.id)
+      .then((hist) => {
+        if (cancelled) return
+        const map: Record<string, EvalResult> = {}
+        for (const [sentence, raw] of Object.entries(hist)) {
+          if (typeof raw === "object" && raw !== null) {
+            map[sentence] = raw as EvalResult
+          }
+        }
+        setPronHistory(map)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [course])
 
   // 本轮完成（done）时累加完成轮数
   useEffect(() => {
@@ -1045,9 +1068,17 @@ export default function SentencePractice({
           </div>
         </div>
 
-        {/* 发音评测：跟读录音评分 */}
+        {/* 发音评测：跟读录音评分
+            key=句子 → 切句时重新挂载、恢复该句历史评分；
+            onResult 上报本次评分，按句文本存入 pronHistory 并持久化到 SQLite */}
         <PronunciationPractice
+          key={target}
           sentence={target}
+          initialResult={pronHistory[target] ?? null}
+          onResult={(r) => {
+            setPronHistory((prev) => ({ ...prev, [target]: r }))
+            if (course) savePronScore(course.id, target, r).catch(() => {})
+          }}
           onPlayVoice={() => (playVoice ? playVoice() : replay())}
         />
       </div>

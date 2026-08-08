@@ -153,6 +153,44 @@ export async function resetProgress(courseId: string): Promise<void> {
   }
 }
 
+// ── 发音评测历史 ──
+
+/** 读取某课程的全部发音评分历史（sentence → 评分结果对象） */
+export async function getPronHistory(courseId: string): Promise<Record<string, unknown>> {
+  try {
+    const res = await fetch(`/api/speller/pron-history?course=${encodeURIComponent(courseId)}`)
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    const history = data.history ?? {}
+    // 反序列化：服务端存的是 JSON 字符串
+    const map: Record<string, unknown> = {}
+    for (const [sentence, raw] of Object.entries(history)) {
+      if (typeof raw !== "string") continue
+      try {
+        map[sentence] = JSON.parse(raw)
+      } catch {
+        // 跳过损坏记录
+      }
+    }
+    return map
+  } catch {
+    return {}
+  }
+}
+
+/** 保存某句的发音评分结果 */
+export async function savePronScore(courseId: string, sentence: string, result: unknown): Promise<void> {
+  try {
+    await fetch("/api/speller/pron-history", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ course: courseId, sentence, result }),
+    })
+  } catch {
+    // 服务不可用则静默失败（下次进入不丢，仅本次不保存）
+  }
+}
+
 /**
  * 迁移旧 localStorage 进度到服务端 SQLite。
  * 调用时机：客户端首次读取到 SQLite 为空、但 localStorage 有数据时。
