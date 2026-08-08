@@ -196,19 +196,19 @@ function renderPhoneme(phoneme: string, type: "vowel" | "consonant") {
   const letterColor = type === "vowel" ? "#ee1d24" : "#3157a4";
   const parts = phoneme.split(/(\/.*?\/)/g).filter(Boolean);
   return parts.map((part, i) => {
-    // 形如 /s/ 的片段：斜杠黑，中间字母着色
+    // 形如 /s/ 的片段：斜杠浅色，中间字母着色
     if (part.startsWith("/") && part.endsWith("/")) {
       const inner = part.slice(1, -1);
       return (
         <span key={i}>
-          <span className="text-foreground">/</span>
+          <span className="text-muted-foreground/60">/</span>
           <span style={{ color: letterColor }}>{inner}</span>
-          <span className="text-foreground">/</span>
+          <span className="text-muted-foreground/60">/</span>
         </span>
       );
     }
-    // 描述文字：黑色
-    return <span key={i} className="text-foreground">{part}</span>;
+    // 描述文字：深色（弱化，避免抢音素字母的视觉权重）
+    return <span key={i} className="text-muted-foreground/70">{part}</span>;
   });
 }
 
