@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check } from "lucide-react"
 import confetti from "canvas-confetti"
 import { SENTENCES, SESSION_SIZE, shuffle, type SentenceEntry } from "@/lib/speller/sentences"
 
@@ -612,6 +612,50 @@ export default function SentencePractice({
       ? createPortal(nextBtn, document.getElementById("next-slot")!)
       : null
 
+  // ── 底部快捷键按钮组（可点击，渲染到 footer 中间槽位）──
+  const Kbd = ({ children }: { children: React.ReactNode }) => (
+    <kbd className="flex h-4 items-center gap-0.5 rounded border bg-muted px-1 font-mono text-[10px] font-medium leading-none text-foreground">
+      {children}
+    </kbd>
+  )
+  const Cmd = () => (
+    <span className="flex h-4 items-center overflow-hidden text-[12px] leading-none">⌘</span>
+  )
+  const shortcutBar =
+    phase === "playing" ? (
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Button variant="secondary" size="sm" onClick={replay} title="播放发音" aria-label="播放发音" className="gap-1.5">
+          <Volume2 className="size-3.5" />
+          播放发音
+          <Kbd>`</Kbd>
+        </Button>
+        <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
+          <CheckCircle2 className="size-3.5" />
+          掌握
+          <Kbd><Cmd />M</Kbd>
+        </Button>
+        <Button variant="secondary" size="sm" onClick={markNewWord} title="生词" aria-label="生词" className="gap-1.5">
+          <BookMarked className="size-3.5" />
+          生词
+          <Kbd><Cmd />N</Kbd>
+        </Button>
+        <Button variant="secondary" size="sm" onClick={submit} title="提交" aria-label="提交" className="gap-1.5">
+          <Check className="size-3.5" />
+          提交
+          <Kbd>Enter</Kbd>
+        </Button>
+        <Button variant="secondary" size="sm" onClick={showAnswer} title="显示答案" aria-label="显示答案" className="gap-1.5">
+          <Eye className="size-3.5" />
+          显示答案
+          <Kbd>右⌘</Kbd>
+        </Button>
+      </div>
+    ) : null
+  const shortcutPortal =
+    typeof document !== "undefined" && document.getElementById("shortcut-slot")
+      ? createPortal(shortcutBar, document.getElementById("shortcut-slot")!)
+      : null
+
   // ── 开始页 ──
   if (phase === "idle") {
     return (
@@ -619,6 +663,7 @@ export default function SentencePractice({
         {progressPortal}
         {prevPortal}
         {nextPortal}
+        {shortcutPortal}
         <div className="flex h-full w-full flex-col items-center justify-center text-center">
           <p className="mb-3 text-base font-medium uppercase tracking-[0.3em] text-primary">Sentence Dictation</p>
           <h1 className="mb-5 text-5xl font-bold tracking-tight text-foreground">听写句子</h1>
@@ -643,6 +688,7 @@ export default function SentencePractice({
         {progressPortal}
         {prevPortal}
         {nextPortal}
+        {shortcutPortal}
         <div className="flex h-full w-full flex-col items-center justify-center text-center">
           <div className="mb-6 text-7xl">{accuracy >= 90 ? "🎉" : accuracy >= 60 ? "👍" : "💪"}</div>
           <h1 className="mb-3 text-4xl font-bold text-foreground">本组完成！</h1>
@@ -682,6 +728,7 @@ export default function SentencePractice({
       {progressPortal}
       {prevPortal}
       {nextPortal}
+      {shortcutPortal}
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
         {/* 中文句子 */}
         <div key={`cn-${index}`} className="mt-[100px] text-center">

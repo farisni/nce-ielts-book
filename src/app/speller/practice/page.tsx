@@ -20,41 +20,14 @@ export default function SpellerPracticePage() {
         <SentencePractice autoStart onExit={() => router.push("/speller")} />
       </div>
 
-      {/* 底部栏：左上一句 / 中快捷键 / 右下一句 */}
+      {/* 底部栏：左上一句 / 中快捷键按钮 / 右下一句 */}
       <footer className="shrink-0 border-t">
         <div className="mx-auto flex max-w-5xl items-center gap-4 px-6 py-2.5">
           {/* 左：上一句（Portal 槽位） */}
           <div id="prev-slot" className="flex w-28 flex-none items-center justify-start" />
 
-          {/* 中：快捷键提示 */}
-          <div className="flex flex-1 flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
-            <span className="flex items-center gap-2">
-              <kbd className="rounded border bg-muted px-2 py-1 font-mono text-xs text-foreground">`</kbd>
-              播放发音
-            </span>
-            <span className="flex items-center gap-2">
-              <kbd className="flex items-center gap-1 rounded border bg-muted px-2 py-1 font-mono text-xs text-foreground">
-                <span className="flex h-4 items-center overflow-hidden text-[15px] leading-none">⌘</span> M
-              </kbd>
-              掌握
-            </span>
-            <span className="flex items-center gap-2">
-              <kbd className="flex items-center gap-1 rounded border bg-muted px-2 py-1 font-mono text-xs text-foreground">
-                <span className="flex h-4 items-center overflow-hidden text-[15px] leading-none">⌘</span> N
-              </kbd>
-              生词
-            </span>
-            <span className="flex items-center gap-2">
-              <kbd className="rounded border bg-muted px-2 py-1 font-mono text-xs text-foreground">Enter</kbd>
-              提交
-            </span>
-            <span className="flex items-center gap-2">
-              <kbd className="flex items-center gap-1 rounded border bg-muted px-2 py-1 font-mono text-xs text-foreground">
-                右 <span className="flex h-4 items-center overflow-hidden text-[15px] leading-none">⌘</span>
-              </kbd>
-              显示答案
-            </span>
-          </div>
+          {/* 中：快捷键按钮（Portal 槽位，由 SentencePractice 渲染可点击按钮） */}
+          <div id="shortcut-slot" className="flex flex-1 flex-wrap items-center justify-center gap-x-2 gap-y-2" />
 
           {/* 右：下一句（Portal 槽位） */}
           <div id="next-slot" className="flex w-28 flex-none items-center justify-end" />
