@@ -895,14 +895,13 @@ export default function SentencePractice({
                 // 句末标点：不占独立行，挂在最后一个单词/空格右侧
                 const endPunct = chars[chars.length - 1]
                 const isEndPunct = gIndex === charGroups.length - 1 && endPunct.status === "punct"
-                // 句末标点挂在前一个槽位（若句子以空格结尾则挂在空格，否则挂在最后单词）
-                const lastGroup = charGroups[charGroups.length - 1]
+                // 句末标点挂在它前面那一组（单词或空格）右侧，避免自身被跳过丢失
                 const showEndPunct =
                   endPunct.status === "punct" &&
-                  (group === lastGroup || (charGroups[charGroups.length - 2] === group && lastGroup.kind === "space"))
+                  gIndex === charGroups.length - 2
                 const endPunctMark = showEndPunct ? (
                   <span
-                    className="pointer-events-none absolute inset-y-0 left-full flex items-end pl-[0.08em] text-muted-foreground"
+                    className="pointer-events-none absolute inset-y-0 left-full flex items-end pl-[0.25em] text-muted-foreground"
                     style={{ transform: "translateY(0.14em)" }}
                   >
                     {endPunct.ch}
@@ -910,11 +909,11 @@ export default function SentencePractice({
                 ) : null
                 if (isEndPunct) return null
                 if (group.kind === "punct") {
-                  // 句中标点自动显示：与字母同线
+                  // 句中标点自动显示：与字母同线，左侧留出呼吸空间
                   return (
                     <span
                       key={gIndex}
-                      className="relative inline-flex h-[2.2em] flex-none items-end px-[0.08em] text-muted-foreground"
+                      className="relative inline-flex h-[2.2em] flex-none items-end pl-[0.25em] pr-[0.08em] text-muted-foreground"
                       style={{ transform: "translateY(-0.19em)" }}
                     >
                       {group.chars[0].ch}
