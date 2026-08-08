@@ -5,6 +5,9 @@ import { Volume2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PHONICS_ROWS, type GraphemeCell } from "@/lib/phonics-code";
 
+/** 原版字体（Sassoon Primary，儿童书写教学体）。本机未安装时回退到系统手写体。 */
+const PHONICS_FONT = "'Sassoon Primary', 'SassoonPrimary', 'Chalkboard SE', 'Chalkboard', 'Comic Sans MS', cursive";
+
 /**
  * 播放本地音频：先加载后播放，同一时刻只播一个。
  * 返回播放函数与正在加载/播放的状态。
@@ -56,12 +59,13 @@ function GraphemeCard({
       type="button"
       onClick={onPlay}
       title={`${cell.g} · ${cell.ex}`}
-      className={`group relative flex min-w-0 flex-col items-center overflow-hidden rounded-lg border border-border bg-card pt-2 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+      className={`group relative flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card pt-1.5 transition-colors hover:border-ring/60 hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         cell.rowspan > 1 ? "row-span-2" : ""
       }`}
+      style={{ fontFamily: PHONICS_FONT }}
     >
-      {/* 拼写替代（silent 字母用空心/浅色标注） */}
-      <span className="px-1 text-center text-lg font-semibold leading-tight text-foreground">
+      {/* 拼写替代（silent 字母用空心/浅色标注）：原版 32px 粗体左对齐 */}
+      <span className="w-full px-2 text-left text-[32px] font-bold leading-none text-foreground">
         {renderGrapheme(cell.g, cell.silent)}
       </span>
 
@@ -82,8 +86,8 @@ function GraphemeCard({
         </div>
       )}
 
-      {/* 例词：目标拼写高亮 */}
-      <span className="w-full px-1 pb-2 text-center text-sm text-muted-foreground">
+      {/* 例词：原版 24px/600/灰色，左对齐 */}
+      <span className="w-full px-2 pb-1.5 text-left text-[24px] font-semibold leading-none text-muted-foreground">
         {renderExample(cell.ex, cell.hl)}
       </span>
 
@@ -171,14 +175,15 @@ export default function PhonicsPage() {
             key={row.phoneme}
             className="grid grid-cols-[64px_1fr] items-stretch gap-2 sm:grid-cols-[88px_1fr]"
           >
-            {/* 音素格 */}
+            {/* 音素格：原版黄色背景 + 26px 字号 */}
             <button
               type="button"
               onClick={() => row.audio && play(row.audio, `ph-${row.phoneme}`)}
               title="播放音素发音"
-              className="flex h-full flex-col items-center justify-center gap-1 rounded-lg border border-border bg-muted/50 px-1 py-2 transition-colors hover:border-ring/60 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+              className="flex h-full flex-col items-center justify-center gap-1 rounded-lg border border-border bg-[#fffa94] px-1 py-2 transition-colors hover:border-ring/60 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 dark:bg-[#3a3520]"
+              style={{ fontFamily: PHONICS_FONT }}
             >
-              <span className="text-lg font-semibold leading-none text-foreground">{row.phoneme}</span>
+              <span className="text-[26px] font-semibold leading-none text-foreground">{row.phoneme}</span>
               {row.audio && (
                 <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
                   {loading === `ph-${row.phoneme}` ? (
