@@ -35,15 +35,21 @@ export default function PronunciationPractice({
     };
   }, []);
 
-  // 提取评分字段（讯飞 ise_unite=1 返回格式）
-  const extractScores = (data: Record<string, unknown>) => {
-    const d = data as Record<string, any>;
+  // 解析讯飞返回的 XML 评测结果，提取各维度分数
+  const extractScores = (xmlText: string) => {
+    const doc = new DOMParser().parseFromString(xmlText, "text/xml");
+    const root = doc.querySelector("xml_result, read_sentence");
+    const readSentence = doc.querySelector("read_sentence");
+    const getAttr = (name: string): number => {
+      const v = readSentence?.getAttribute(name);
+      return v ? Number(v) : 0;
+    };
     return {
-      total: Number(d.total_score ?? d.score ?? 0),
-      accuracy: Number(d.accuracy_score ?? 0),
-      fluency: Number(d.fluency_score ?? 0),
-      integrity: Number(d.integrity_score ?? 0),
-      iseResult: d.ise_result ?? null,
+      total: getAttr("total_score"),
+      accuracy: getAttr("accuracy_score"),
+      fluency: getAttr("fluency_score"),
+      integrity: getAttr("integrity_score"),
+      isRejected: readSentence?.getAttribute("is_rejected") === "true",
     };
   };
 
