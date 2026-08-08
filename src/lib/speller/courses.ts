@@ -16,6 +16,10 @@ export interface Course {
   sentences: SentenceEntry[]
   /** 每组练习的句子数量 */
   sessionSize: number
+  /** 视频路径（可选）：视频听写课程，播放发音时从视频句段播放 */
+  video?: string
+  /** SRT 字幕路径（可选）：与 sentences 逐句对齐，提供句段起止时间 */
+  subtitle?: string
 }
 
 /**
@@ -74,6 +78,29 @@ export const COURSES: Course[] = [
       { cn: "我们走吧。", en: "let us go ." },
       { cn: "我同意你的看法。", en: "i agree with you ." },
       { cn: "你的英语说得很好。", en: "you speak english very well ." },
+    ],
+  },
+  {
+    id: "nce3-l1",
+    name: "NCE3 L1 · A Puma at Large",
+    description: "新概念英语第三册第一课 · 看视频，听真人朗读，打字拼写",
+    sessionSize: 13,
+    video: "/video/nce3-l1.mp4",
+    subtitle: "/video/nce3-l1.srt",
+    sentences: [
+      { cn: "美洲狮是一种体形似猫的大动物，产于美洲。", en: "Pumas are large, cat-like animals which are found in America." },
+      { cn: "当伦敦动物园接到报告说，在伦敦以南45英里处发现一只美洲狮时，这些报告并没有受到重视。", en: "When reports came into London Zoo that a wild puma had been spotted forty-five miles south of London, they were not taken seriously." },
+      { cn: "可是，随着证据越来越多，动物园的专家们感到有必要进行一番调查，因为凡是声称见到过美洲狮的人们所描述的情况竟是出奇地相似。", en: "However, as the evidence began to accumulate, experts from the Zoo felt obliged to investigate, for the descriptions given by people who claimed to have seen the puma were extraordinarily similar." },
+      { cn: "搜寻美洲狮的工作是从一座小村庄开始的，那里的一位妇女在采摘黑莓时看见“一只大猫”，离她仅5码远。", en: "The hunt for the puma began in a small village where a woman picking blackberries saw 'a large cat' only five yards away from her." },
+      { cn: "她刚看见它，它就立刻逃走了。专家证实，美洲狮非被逼得走投无路，是决不会伤人的。", en: "It immediately ran away when she saw it, and experts confirmed that a puma will not attack a human being unless it is cornered." },
+      { cn: "事实上，在发现美洲狮的地区留下的爪印与一只美洲狮的完全一致，但（美洲狮）是夜行性动物，白天是见不到的。", en: "As no pumas had been reported missing from any zoo in the country, this one must have been in the possession of a private collector and somehow managed to escape." },
+      { cn: "搜寻工作在许多地方进行了一番。", en: "The search proved difficult, for the puma was often observed at one place in the morning and at another place twenty miles away in the evening." },
+      { cn: "虽然专家们尽了最大努力，但是他们的努力没有得到回报。", en: "Wherever it went, it left behind it a trail of dead deer and small animals like rabbits." },
+      { cn: "在某些地区，美洲狮的脚印被发现了，在另外一些地区，有人声称亲眼看到过美洲狮。", en: "Paw prints were seen in a number of places and puma fur was found clinging to bushes." },
+      { cn: "几年后，这只美洲狮的踪迹在一次大搜捕中被发现。", en: "Several people complained of 'cat-like noises' at night and a businessman on a fishing trip saw the puma up a tree." },
+      { cn: "专家们最终确信，这只动物确实是一只美洲狮，而不是别的什么动物。", en: "The experts were now fully convinced that the animal was a puma, but where had it come from?" },
+      { cn: "由于没有报告说全国有哪家动物园丢失过美洲狮，因此这只美洲狮一定是一位私人收藏家饲养的，不知怎么逃了出来。", en: "As no pumas had been reported missing from any zoo in the country, this one must have been in the possession of a private collector and somehow managed to escape." },
+      { cn: "搜寻工作开始了，但事实证明它并不容易，因为美洲狮常常在早晨在一个地方被观察到，晚上又在20英里外的另一个地方被观察到。", en: "The hunt went on for several weeks, but the puma was not caught." },
     ],
   },
 ]

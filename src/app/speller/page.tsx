@@ -48,7 +48,7 @@ export default function SpellerPage() {
           return (
             <Link
               key={course.id}
-              href={`/speller/practice?course=${course.id}`}
+              href={course.video ? `/speller/video/${course.id}` : `/speller/practice?course=${course.id}`}
               className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
             >
               <div className="flex items-start justify-between gap-4">
@@ -59,6 +59,11 @@ export default function SpellerPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <h2 className="text-xl font-semibold text-foreground">{course.name}</h2>
+                      {course.video && (
+                        <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                          视频课程
+                        </span>
+                      )}
                       <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                         {course.sentences.length} 句
                       </span>
