@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { LogOut, CheckCircle2, AlertCircle, Eye, ArrowLeft, ArrowRight } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight } from "lucide-react"
 import confetti from "canvas-confetti"
 import { SENTENCES, SESSION_SIZE, shuffle, type SentenceEntry } from "@/lib/speller/sentences"
 
@@ -525,7 +525,6 @@ export default function SentencePractice({
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
   const fullyCorrect = submitted && !revealed && words.every((w, i) => (wordInputs[i] ?? "").toLowerCase() === w.toLowerCase())
-  const hasError = submitted && !fullyCorrect
 
   const progressPct = session.length > 0 ? ((index + (passed ? 1 : 0)) / session.length) * 100 : 0
 
@@ -804,10 +803,6 @@ export default function SentencePractice({
           ) : revealed ? (
             <span className="flex items-center gap-2 font-medium text-amber-500">
               <Eye className="size-5" /> 答案已显示 · Enter 进入下一句
-            </span>
-          ) : hasError ? (
-            <span className="flex items-center gap-2 font-medium text-rose-500">
-              <AlertCircle className="size-5" /> 有拼写错误，红色部分需修正（Enter 重新检查）
             </span>
           ) : (
             // 默认（未提交、未显示答案、无错误）：不显示提示文字，仅保留高度
