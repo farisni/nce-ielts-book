@@ -1,14 +1,28 @@
 "use client"
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SentencePractice from "@/components/speller/SentencePractice";
+import { getCourse } from "@/lib/speller/courses";
 
 /**
  * Speller · 听写练习页
- * 挂载即自动开始；顶部进度条与底部上一句/下一句按钮通过 Portal 渲染到本页槽位
+ * 从 URL ?course=xxx 读取课程，挂载即自动开始；
+ * 顶部进度条与底部按钮通过 Portal 渲染到本页槽位
  */
 export default function SpellerPracticePage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const courseId = searchParams.get("course") ?? "basic";
+  const course = getCourse(courseId);
+
+  // 课程不存在时回退到课程列表
+  if (!course) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
+        <p className="text-lg text-muted-foreground">课程不存在</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col">
@@ -17,7 +31,7 @@ export default function SpellerPracticePage() {
 
       {/* 主练习区：宽度撑满 + 内容上下左右居中 */}
       <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center px-6 py-6">
-        <SentencePractice autoStart onExit={() => router.push("/speller")} />
+        <SentencePractice course={course} autoStart onExit={() => router.push("/speller")} />
       </div>
 
       {/* 底部栏：左上一句 / 中快捷键按钮 / 右下一句 */}

@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check } from "lucide-react"
 import confetti from "canvas-confetti"
-import { SENTENCES, SESSION_SIZE, shuffle, type SentenceEntry } from "@/lib/speller/sentences"
+import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
+import { getProgress, updateProgress } from "@/lib/speller/progress"
 
 type Phase = "idle" | "playing" | "done"
 type CharStatus = "correct" | "wrong" | "pending" | "punct" | "space"
@@ -220,9 +221,12 @@ function formatTime(ms: number): string {
 }
 
 export default function SentencePractice({
+  course,
   autoStart = false,
   onExit,
 }: {
+  /** 课程（决定句子库与每组大小） */
+  course?: Course
   /** 挂载后自动开始（用于独立练习路由 /speller/practice） */
   autoStart?: boolean
   /** 退出练习时的回调（默认回到 idle 状态） */
@@ -289,6 +293,21 @@ export default function SentencePractice({
     return () => window.removeEventListener("speller:go-home", onGoHome)
   }, [stop])
 
+  // 本轮完成（done）时把本次统计累加到课程进度
+  const savedRef = useRef(false)
+  useEffect(() => {
+    if (phase !== "done" || !course) return
+    if (savedRef.current) return
+    savedRef.current = true
+    updateProgress(course.id, {
+      passed: passedCount,
+      mastered: masteredCount,
+      newWords,
+      errors: errorCount,
+      completed: 1,
+    })
+  }, [phase, course, passedCount, masteredCount, newWords, errorCount])
+
   // ── 进入下一句 ──
   const gotoNext = useCallback(() => {
     const next = index + 1
@@ -327,7 +346,10 @@ export default function SentencePractice({
 
   // ── 动作 ──
   const startGame = useCallback(() => {
-    const s = shuffle(SENTENCES).slice(0, SESSION_SIZE)
+    const pool = course?.sentences ?? []
+    const sessionSize = course?.sessionSize ?? 10
+    const s = shuffle(pool).slice(0, sessionSize)
+    if (s.length === 0) return
     setSession(s)
     setIndex(0)
     setWordInputs(getWords(s[0].en).map(() => ""))
@@ -343,7 +365,7 @@ export default function SentencePractice({
     setElapsed(0)
     setStartAt(Date.now())
     setPhase("playing")
-  }, [])
+  }, [course])
 
   // 独立练习路由：挂载后自动开始
   useEffect(() => {
@@ -670,7 +692,7 @@ export default function SentencePractice({
           <p className="mb-10 max-w-lg text-lg text-muted-foreground">
             看中文，听发音，用键盘打出英文句子。
             <br />
-            Enter 提交，写对标绿、写错标红。共 {SESSION_SIZE} 句。
+            Enter 提交，写对标绿、写错标红。共 {course?.sessionSize ?? 10} 句。
           </p>
           <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
             开始听写
