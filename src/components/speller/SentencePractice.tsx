@@ -293,20 +293,19 @@ export default function SentencePractice({
     return () => window.removeEventListener("speller:go-home", onGoHome)
   }, [stop])
 
-  // 本轮完成（done）时把本次统计累加到课程进度
-  const savedRef = useRef(false)
+  // ── 进度保存（每句实时累加，退出/完成都不丢）──
+  const savePatch = useCallback(
+    (patch: Parameters<typeof updateProgress>[1]) => {
+      if (course) updateProgress(course.id, patch).catch(() => {})
+    },
+    [course],
+  )
+
+  // 本轮完成（done）时累加完成轮数
   useEffect(() => {
     if (phase !== "done" || !course) return
-    if (savedRef.current) return
-    savedRef.current = true
-    updateProgress(course.id, {
-      passed: passedCount,
-      mastered: masteredCount,
-      newWords,
-      errors: errorCount,
-      completed: 1,
-    }).catch(() => {})
-  }, [phase, course, passedCount, masteredCount, newWords, errorCount])
+    savePatch({ completed: 1 })
+  }, [phase, course, savePatch])
 
   // ── 进入下一句 ──
   const gotoNext = useCallback(() => {
@@ -385,15 +384,17 @@ export default function SentencePractice({
       setSubmitted(true)
       setPassed(true)
       setPassedCount((c) => c + 1)
+      savePatch({ passed: 1 })
       // 撒花庆祝（canvas-confetti basic cannon）+ 撒花音效
       confetti({ particleCount: 100, spread: 70, ticks: 60, origin: { y: 0.7 } })
       playSuccess()
     } else {
       setSubmitted(true)
       setErrorCount((n) => n + 1)
+      savePatch({ errors: 1 })
       setFlashTick((f) => f + 1)
     }
-  }, [sentence, submitted, revealed, words, wordInputs])
+  }, [sentence, submitted, revealed, words, wordInputs, savePatch])
 
   const showAnswer = useCallback(() => {
     if (!sentence || passed) return
@@ -406,15 +407,17 @@ export default function SentencePractice({
     if (!sentence || passed) return
     setMasteredCount((c) => c + 1)
     setPassed(true)
+    savePatch({ mastered: 1 })
     gotoNext()
-  }, [sentence, passed, gotoNext])
+  }, [sentence, passed, gotoNext, savePatch])
 
   const markNewWord = useCallback(() => {
     if (!sentence || passed) return
     setNewWords((c) => c + 1)
     setPassed(true)
+    savePatch({ newWords: 1 })
     gotoNext()
-  }, [sentence, passed, gotoNext])
+  }, [sentence, passed, gotoNext, savePatch])
 
   // ── 开始页键盘监听：按 Enter 直接开始听写 ──
   useEffect(() => {
