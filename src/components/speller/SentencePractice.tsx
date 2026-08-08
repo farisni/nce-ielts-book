@@ -203,12 +203,19 @@ function useGameSounds() {
   const playBuffer = useCallback((buffer: AudioBuffer | null, volume: number) => {
     const ctx = ctxRef.current
     if (!ctx || !buffer) return
-    const src = ctx.createBufferSource()
-    src.buffer = buffer
-    const gain = ctx.createGain()
-    gain.gain.value = volume
-    src.connect(gain).connect(ctx.destination)
-    src.start()
+    const play = () => {
+      const src = ctx.createBufferSource()
+      src.buffer = buffer
+      const gain = ctx.createGain()
+      gain.gain.value = volume
+      src.connect(gain).connect(ctx.destination)
+      src.start()
+    }
+    if (ctx.state === "suspended") {
+      ctx.resume().then(play).catch(() => {})
+      return
+    }
+    play()
   }, [])
 
   const playType = useCallback(() => {
@@ -1128,6 +1135,7 @@ export default function SentencePractice({
             setPronHistory((prev) => ({ ...prev, [target]: r }))
             if (course) savePronScore(course.id, target, r).catch(() => {})
           }}
+          onEvaluationSuccess={playSuccess}
           onPlayVoice={() => (playVoice ? playVoice() : replay())}
         />
 

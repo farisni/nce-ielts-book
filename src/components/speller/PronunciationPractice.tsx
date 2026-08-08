@@ -74,6 +74,7 @@ export type EvalResult = {
 export default function PronunciationPractice({
   sentence,
   onPlayVoice,
+  onEvaluationSuccess,
   initialResult,
   onResult,
 }: {
@@ -81,6 +82,8 @@ export default function PronunciationPractice({
   sentence: string
   /** 播放标准发音的回调（可选） */
   onPlayVoice?: () => void
+  /** 评测成功完成时播放提示音（乱读等被拒结果不触发） */
+  onEvaluationSuccess?: () => void
   /** 该句的历史评分（切句回来看评分用；null 表示没有） */
   initialResult?: EvalResult | null
   /** 评测完成回调（父组件用于保存该句评分） */
@@ -247,12 +250,13 @@ export default function PronunciationPractice({
       const scores = extractScores(json.result);
       setResult(scores);
       onResult?.(scores); // 上报父组件，按句保存历史
+      if (!scores.isRejected) onEvaluationSuccess?.();
     } catch (e) {
       setError((e as Error).message);
     } finally {
       setEvaluating(false);
     }
-  }, [sentence, onResult]);
+  }, [sentence, onEvaluationSuccess, onResult]);
 
   return (
     <div className="flex flex-col items-center gap-3">
