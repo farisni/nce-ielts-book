@@ -62,27 +62,18 @@ export default function PronunciationPractice({
     setResult(null);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const audioCtx = new AudioContext();
-      const source = audioCtx.createMediaStreamSource(stream);
-      const processor = audioCtx.createScriptProcessor(4096, 1, 1);
-      const floatChunks: Float32Array[] = [];
-
-      processor.onaudioprocess = (e) => {
-        floatChunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+      const mediaRecorder = new MediaRecorder(stream);
+      const chunks: Blob[] = [];
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data);
       };
-
-      source.connect(processor);
-      processor.connect(audioCtx.destination);
+      mediaRecorder.start();
+      mediaRecorderRef.current = mediaRecorder;
+      chunksRef.current = chunks;
 
       setRecording(true);
       setRecordingSec(0);
       timerRef.current = window.setInterval(() => setRecordingSec((s) => s + 1), 1000);
-
-      (window as any).__floatChunks = floatChunks;
-      (window as any).__audioCtx = audioCtx;
-      (window as any).__pcmStream = stream;
-      (window as any).__processor = processor;
-      (window as any).__source = source;
     } catch (e) {
       setError("无法访问麦克风：" + ((e as Error).message || "请检查权限"));
     }
@@ -92,33 +83,36 @@ export default function PronunciationPractice({
     if (timerRef.current) window.clearInterval(timerRef.current);
     setRecording(false);
 
-    const floatChunks = (window as any).__floatChunks as Float32Array[];
-    const audioCtx = (window as any).__audioCtx as AudioContext;
-    const stream = (window as any).__pcmStream as MediaStream;
-    const processor = (window as any).__processor;
-    const source = (window as any).__source;
+    const mediaRecorder = mediaRecorderRef.current;
+    if (!mediaRecorder || mediaRecorder.state === "inactive") {
+      setError("未采集到音频");
+      return;
+    }
+    const chunks = chunksRef.current;
 
-    if (!floatChunks || floatChunks.length === 0) {
+    // 停止录音，并等待 onstop 事件（保证最后的 ondataavailable 已触发）
+    await new Promise<void>((resolve) => {
+      mediaRecorder.onstop = () => resolve();
+      mediaRecorder.stop();
+    });
+    mediaRecorder.stream.getTracks().forEach((t) => t.stop());
+
+    if (chunks.length === 0) {
       setError("未采集到音频");
       return;
     }
 
-    // 停止所有音轨
-    stream?.getTracks().forEach((t) => t.stop());
-    source?.disconnect();
-    processor?.disconnect();
+    // 合并录到的音频 blob（MediaRecorder 默认输出 webm/opus）
+    const audioBlob = new Blob(chunks, { type: chunks[0].type || "audio/webm" });
 
-    // 合成 Float32 音频
-    const totalLen = floatChunks.reduce((acc, c) => acc + c.length, 0);
-    const floatAudio = new Float32Array(totalLen);
-    let offset = 0;
-    for (const c of floatChunks) {
-      floatAudio.set(c, offset);
-      offset += c.length;
-    }
+    // 解码音频（AudioContext.decodeAudioData 支持 webm/opus）
+    const audioCtx = new AudioContext();
+    const arrayBuf = await audioBlob.arrayBuffer();
+    const decoded = await audioCtx.decodeAudioData(arrayBuf);
+    const srcSampleRate = decoded.sampleRate || 48000;
+    const floatAudio = decoded.getChannelData(0);
 
-    // 用 OfflineAudioContext 重采样到 16kHz（浏览器 AudioContext 忽略 sampleRate 参数）
-    const srcSampleRate = audioCtx?.sampleRate || 48000;
+    // 用 OfflineAudioContext 重采样到 16kHz
     const offline = new OfflineAudioContext(1, Math.ceil((floatAudio.length / srcSampleRate) * 16000), 16000);
     const buffer = offline.createBuffer(1, floatAudio.length, srcSampleRate);
     buffer.getChannelData(0).set(floatAudio);
@@ -136,7 +130,7 @@ export default function PronunciationPractice({
       pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
     }
 
-    await audioCtx?.close();
+    await audioCtx.close();
 
     // 评测
     setEvaluating(true);
