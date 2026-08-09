@@ -16,50 +16,35 @@ import {
  * 西班牙语 IPA 音标表
  * 复刻 speechgen.io/en/node/spanish-ipa/
  * - 5 元音 + 19 辅音音素表，每个带例词与音标
- * - 点击行内 Listen 朗读例词（浏览器 TTS es-ES）
+ * - Listen 播放原网站 speechgen 的原版音频（已本地化到 public/audio/spanish-ipa）
  * - 附带音素总表、转录示例、西班牙/拉美方言对比
  */
 
-/** 朗读西语文本：优先 es-ES 女声 */
-function speakSpanish(text: string) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  const synth = window.speechSynthesis;
-  synth.resume();
-  synth.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "es-ES";
-  u.rate = 0.85;
-  const voices = synth.getVoices();
-  const voice =
-    voices.find((v) => v.lang.toLowerCase().startsWith("es-es") && /female|monica|maria|helena|paulina|laura/i.test(v.name)) ||
-    voices.find((v) => v.lang.toLowerCase().startsWith("es"));
-  if (voice) u.voice = voice;
-  synth.speak(u);
-}
-
 export default function SpanishIpaPage() {
   const [playing, setPlaying] = useState<string | null>(null);
-  const timerRef = useRef<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.getVoices();
-  }, []);
-
-  const play = useCallback((text: string, id: string) => {
-    window.speechSynthesis.cancel();
+  /** 播放本地音频：同一时刻只播一个 */
+  const play = useCallback((audio: string, id: string) => {
+    const prev = audioRef.current;
+    if (prev) {
+      prev.pause();
+      prev.currentTime = 0;
+    }
     setPlaying(id);
-    speakSpanish(text);
-    if (timerRef.current) window.clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setPlaying(null), 2500);
+    const next = new Audio(`/audio/spanish-ipa/${audio}`);
+    next.onended = () => setPlaying(null);
+    next.onerror = () => setPlaying(null);
+    next.play().catch(() => setPlaying(null));
+    audioRef.current = next;
   }, []);
 
   /** 播放按钮：播放中高亮 */
-  const ListenBtn = ({ text, id }: { text: string; id: string }) => (
+  const ListenBtn = ({ audio, id }: { audio: string; id: string }) => (
     <button
       type="button"
-      onClick={() => play(text, id)}
-      title={`播放 ${text}`}
+      onClick={() => play(audio, id)}
+      title="播放原版发音"
       className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
     >
       <Volume2 className={cn("size-3.5", playing === id && "text-primary")} />
@@ -97,9 +82,13 @@ export default function SpanishIpaPage() {
             </span>
             {/* 音标 */}
             <span className="font-mono text-sm text-muted-foreground">{row.transcription}</span>
-            {/* Listen */}
+            {/* Listen（原版音频） */}
             <div className="text-right">
-              <ListenBtn text={row.example} id={`${idPrefix}-${row.ipa}`} />
+              {row.audio ? (
+                <ListenBtn audio={row.audio} id={`${idPrefix}-${row.ipa}`} />
+              ) : (
+                <span className="text-xs text-muted-foreground/50">—</span>
+              )}
             </div>
           </div>
         ))}
@@ -129,10 +118,10 @@ export default function SpanishIpaPage() {
         </h1>
         <p className="mb-1 max-w-2xl leading-7 text-muted-foreground">
           国际音标（IPA）为每个音素配备唯一符号。西班牙语拼写与发音高度对应，比英语规则得多。
-          全表共 <span className="font-medium text-foreground">24 个音素</span>：5 元音 + 19 辅音。点击每行的 Listen 朗读例词。
+          全表共 <span className="font-medium text-foreground">24 个音素</span>：5 元音 + 19 辅音。点击每行的 Listen 播放原版发音。
         </p>
         <p className="max-w-2xl text-sm leading-7 text-muted-foreground/80">
-          需浏览器内置西班牙语语音（Chrome/Edge/Safari 自带）。
+          发音为原网站 speechgen.io 的原版录音（卡斯蒂利亚人声 Enrique / Lucía），已本地化，无需联网。
         </p>
       </header>
 
@@ -215,7 +204,7 @@ export default function SpanishIpaPage() {
                 <div className="rounded-lg border border-border bg-muted/20 px-3 py-2">
                   <div className="mb-1 flex items-center justify-between">
                     <span className="text-xs font-medium text-muted-foreground">西班牙 · {d.spain.label}</span>
-                    <ListenBtn text={d.spain.example} id={`sp-${d.spain.example}`} />
+                    {d.spain.audio && <ListenBtn audio={d.spain.audio} id={`sp-${d.spain.example}`} />}
                   </div>
                   <span className="text-base font-medium text-foreground">{d.spain.example}</span>
                   <span className="ml-2 font-mono text-sm text-primary">{d.spain.transcription}</span>
@@ -224,7 +213,7 @@ export default function SpanishIpaPage() {
                 <div className="rounded-lg border border-border bg-muted/20 px-3 py-2">
                   <div className="mb-1 flex items-center justify-between">
                     <span className="text-xs font-medium text-muted-foreground">拉丁美洲 · {d.latam.label}</span>
-                    <ListenBtn text={d.latam.example} id={`la-${d.latam.example}`} />
+                    {d.latam.audio && <ListenBtn audio={d.latam.audio} id={`la-${d.latam.example}`} />}
                   </div>
                   <span className="text-base font-medium text-foreground">{d.latam.example}</span>
                   <span className="ml-2 font-mono text-sm text-primary">{d.latam.transcription}</span>
