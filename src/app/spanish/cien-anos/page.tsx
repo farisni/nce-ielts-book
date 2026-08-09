@@ -164,7 +164,12 @@ export default function SpanishCienAnosPage() {
                       compCount++;
                       return (
                         <Fragment key={si}>
-                          {!isFirst && <span className="align-top text-muted-foreground/40">/</span>}
+                          {!isFirst && (
+                            <span className="mx-0.5 inline-flex flex-col items-center align-top">
+                              <span className="leading-tight text-muted-foreground/40">/</span>
+                              <span className="mt-0.5 text-[10px] leading-[1.3]">&nbsp;</span>
+                            </span>
+                          )}
                           <span className="mx-0.5 inline-flex flex-col items-center align-top">
                             <span className="font-semibold leading-tight" style={{ color: seg.color }}>
                               {seg.text}
