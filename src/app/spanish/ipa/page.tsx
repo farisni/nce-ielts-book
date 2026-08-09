@@ -59,29 +59,27 @@ export default function SpanishIpaPage() {
       <p className="mb-3 text-sm text-muted-foreground">{desc}</p>
       <div className="overflow-hidden rounded-lg border border-border bg-background">
         {/* 表头 */}
-        <div className="grid grid-cols-[3.5rem_1fr_1fr_1.4fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground sm:grid-cols-[4rem_6rem_5rem_1fr_auto]">
+        <div className="grid grid-cols-[3.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground sm:grid-cols-[4rem_6rem_1fr_auto]">
           <div>IPA</div>
           <div>拼写</div>
-          <div>例词</div>
-          <div>音标</div>
+          <div>例词 · 音标</div>
           <div className="text-right">Listen</div>
         </div>
         {rows.map((row) => (
           <div
             key={row.ipa}
-            className="grid grid-cols-[3.5rem_1fr_1fr_1.4fr_auto] items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0 sm:grid-cols-[4rem_6rem_5rem_1fr_auto]"
+            className="grid grid-cols-[3.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0 sm:grid-cols-[4rem_6rem_1fr_auto]"
           >
             {/* IPA 符号 */}
-            <span className="text-lg font-semibold text-primary">{row.ipa}</span>
+            <span className="text-lg font-semibold text-blue-600">{row.ipa}</span>
             {/* 拼写 */}
             <span className="text-sm text-foreground">{row.spelling}</span>
-            {/* 例词 */}
+            {/* 例词 + 音标 + 中文（合并一列） */}
             <span className="text-sm">
               <span className="text-foreground">{row.example}</span>
-              {row.zh && <span className="ml-1 text-xs text-muted-foreground">{row.zh}</span>}
+              <span className="ml-2 font-mono text-muted-foreground">{row.transcription}</span>
+              {row.zh && <span className="ml-1.5 text-xs text-muted-foreground">{row.zh}</span>}
             </span>
-            {/* 音标 */}
-            <span className="font-mono text-sm text-muted-foreground">{row.transcription}</span>
             {/* Listen（原版音频） */}
             <div className="text-right">
               {row.audio ? (
@@ -158,18 +156,18 @@ export default function SpanishIpaPage() {
           音素是能区分意义的声音单位，不是字母。h 不发音、c 对应两个音、b/v 是同一个音素。
         </p>
         <div className="overflow-hidden rounded-lg border border-border bg-background">
-          <div className="grid grid-cols-[1fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground">
-            <div>组</div>
-            <div className="text-right">音素数</div>
+          <div className="grid grid-cols-[6rem_4rem_1fr_4rem] items-center gap-2 border-b border-border bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground">
+            <div>组名</div>
+            <div>中文</div>
+            <div>音素</div>
+            <div className="text-right">数量</div>
           </div>
           {SPANISH_PHONEME_GROUPS.map((g) => (
-            <div key={g.group} className="grid grid-cols-[1fr_auto] items-center gap-2 border-b border-border px-4 py-2.5 last:border-b-0">
-              <div className="flex items-baseline gap-2">
-                <span className="font-medium text-foreground">{g.group}</span>
-                <span className="text-xs text-muted-foreground">{g.zh}</span>
-                <span className="font-mono text-sm text-primary">{g.phonemes}</span>
-              </div>
-              <span className="tabular-nums text-sm text-foreground">{g.count}</span>
+            <div key={g.group} className="grid grid-cols-[6rem_4rem_1fr_4rem] items-center gap-2 border-b border-border px-4 py-2.5 last:border-b-0">
+              <span className="font-medium text-blue-600">{g.group}</span>
+              <span className="text-xs text-muted-foreground">{g.zh}</span>
+              <span className="font-mono text-sm text-primary">{g.phonemes}</span>
+              <span className="text-right tabular-nums text-sm text-foreground">{g.count}</span>
             </div>
           ))}
         </div>
@@ -184,7 +182,7 @@ export default function SpanishIpaPage() {
         <div className="overflow-hidden rounded-lg border border-border bg-background">
           {SPANISH_TRANSCRIPTIONS.map((t) => (
             <div key={t.spelling} className="grid grid-cols-[6rem_1fr] items-center gap-3 border-b border-border px-4 py-2.5 last:border-b-0 sm:grid-cols-[6rem_10rem_1fr]">
-              <span className="text-base font-medium text-foreground">{t.spelling}</span>
+              <span className="text-base font-medium text-blue-600">{t.spelling}</span>
               <span className="font-mono text-sm text-primary">{t.transcription}</span>
               <span className="text-xs text-muted-foreground">{t.note}</span>
             </div>
