@@ -34,6 +34,39 @@ export interface SpanishSoundGroup {
   letters: SpanishSoundLetter[]
 }
 
+/** 双元音（元元组合） */
+export interface SpanishDiphthong {
+  /** 组合（如 ai） */
+  combo: string
+  /** 例词 */
+  example: string
+  /** 例词中文 */
+  meaning: string
+  /** 音标 */
+  ipa: string
+  /** 例词音节拆分（如 familia → fa-mi-lia） */
+  exampleSyllables?: string
+  /** 原版音频（speechgen，仅部分组合有） */
+  audio?: string
+}
+
+/** 西语双元音：ai au ei eu oi 有原版音频，其余用 TTS */
+export const SPANISH_DIPHTHONGS: SpanishDiphthong[] = [
+  { combo: "ai", example: "baile", meaning: "舞蹈", ipa: "[ˈbai̯.le]", exampleSyllables: "bai-le", audio: "dip-baile.mp3" },
+  { combo: "au", example: "causa", meaning: "原因", ipa: "[ˈkau̯.sa]", exampleSyllables: "cau-sa", audio: "dip-causa.mp3" },
+  { combo: "ei", example: "reina", meaning: "女王", ipa: "[ˈrei̯.na]", exampleSyllables: "rei-na", audio: "dip-reina.mp3" },
+  { combo: "eu", example: "Europa", meaning: "欧洲", ipa: "[eu̯ˈɾo.pa]", exampleSyllables: "Eu-ro-pa", audio: "dip-europa.mp3" },
+  { combo: "oi", example: "hoy", meaning: "今天", ipa: "[oi̯]", exampleSyllables: "hoy", audio: "dip-hoy.mp3" },
+  { combo: "ia", example: "familia", meaning: "家庭", ipa: "[faˈmi.lja]", exampleSyllables: "fa-mi-lia" },
+  { combo: "ie", example: "siempre", meaning: "总是", ipa: "[ˈsjem.pɾe]", exampleSyllables: "siem-pre" },
+  { combo: "io", example: "estudio", meaning: "学习", ipa: "[esˈtu.djo]", exampleSyllables: "es-tu-dio" },
+  { combo: "iu", example: "ciudad", meaning: "城市", ipa: "[θjuˈðað]", exampleSyllables: "ciu-dad" },
+  { combo: "ua", example: "agua", meaning: "水", ipa: "[ˈa.ɣwa]", exampleSyllables: "a-gua" },
+  { combo: "ue", example: "bueno", meaning: "好的", ipa: "[ˈbwe.no]", exampleSyllables: "bue-no" },
+  { combo: "ui", example: "muy", meaning: "很", ipa: "[mui]", exampleSyllables: "muy" },
+  { combo: "uo", example: "cuota", meaning: "份额", ipa: "[ˈkwo.ta]", exampleSyllables: "cuo-ta" },
+]
+
 export const SPANISH_SOUND_GROUPS: SpanishSoundGroup[] = [
   {
     title: "唇音 · b / p / v / w",

@@ -3,7 +3,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { SPANISH_SOUND_GROUPS, type SpanishSoundLetter } from "@/lib/spanish-sounds";
+import { SPANISH_SOUND_GROUPS, SPANISH_DIPHTHONGS, type SpanishSoundLetter, type SpanishDiphthong } from "@/lib/spanish-sounds";
 
 /**
  * 西语字母表 · 音节拼读
@@ -63,6 +63,59 @@ export default function SpanishSoundsPage() {
     next.play().catch(() => setPlaying(null));
     audioRef.current = next;
   }, []);
+
+  /** 播放双元音：有原版音频（spanish-ipa 目录）用 mp3，无则 TTS */
+  const playDiph = useCallback((d: SpanishDiphthong) => {
+    const id = `dip-${d.combo}`;
+    if (d.audio) {
+      const prev = audioRef.current;
+      if (prev) {
+        prev.pause();
+        prev.currentTime = 0;
+      }
+      setPlaying(id);
+      const next = new Audio(`/audio/spanish-ipa/${d.audio}`);
+      next.onended = () => setPlaying(null);
+      next.onerror = () => setPlaying(null);
+      next.play().catch(() => setPlaying(null));
+      audioRef.current = next;
+    } else {
+      playTts(d.example, id);
+    }
+  }, []);
+
+  /** 双元音矩阵单元格：组合 + 例词 + 声音图标（紧凑单行，不溢出） */
+  const DiphthongCell = ({ dip }: { dip: SpanishDiphthong | null }) => {
+    if (!dip) return <span className="flex items-center justify-center text-muted-foreground/25">—</span>;
+    const id = `dip-${dip.combo}`;
+    const isPlaying = playing === id;
+    return (
+      <button
+        type="button"
+        onClick={() => playDiph(dip)}
+        title={`${dip.combo} · ${dip.example} ${dip.meaning}${dip.audio ? "（原版）" : ""}`}
+        className="group flex h-full w-full items-center gap-2 overflow-hidden px-1.5 py-1.5 text-left transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+      >
+        {/* 左：组合（固定宽度） */}
+        <span className="w-8 shrink-0 text-center text-xl font-bold text-blue-600">{dip.combo}</span>
+        {/* 中：例词 / 音节 / 中文（弹性收缩） */}
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-xs text-foreground">{dip.example}</span>
+          {dip.exampleSyllables && (
+            <span className="block truncate font-mono text-[10px] text-muted-foreground/70">{dip.exampleSyllables}</span>
+          )}
+          <span className="block truncate text-[10px] text-muted-foreground/70">{dip.meaning}</span>
+        </span>
+        {/* 右：声音图标 */}
+        <Volume2
+          className={cn(
+            "size-3.5 shrink-0",
+            isPlaying ? "text-primary opacity-100" : "text-muted-foreground/60 opacity-0 group-hover:opacity-100",
+          )}
+        />
+      </button>
+    );
+  };
 
   /** 可点击发音的音节文字，附带 hover 喇叭（TTS） */
   const Speakable = ({
@@ -194,6 +247,38 @@ export default function SpanishSoundsPage() {
               <LetterRow key={item.letter} item={item} idBase={item.letter} />
             ))}
           </Fragment>
+        ))}
+      </div>
+
+      {/* 双元音（元元组合）：表格展示，整行可点击播放；有原版音频用 mp3，无则 TTS */}
+      <h2 className="mb-3 mt-8 text-lg font-semibold text-foreground">
+        双元音 · Diptongos <span className="ml-1 text-sm font-normal text-muted-foreground">13 个</span>
+      </h2>
+      <p className="mb-3 text-sm text-muted-foreground">
+        两个元音在同一音节连读（如 ai、ue）。矩阵行 = 首元音、列 = 尾元音，点击有组合的格子听发音；前 5 个为 speechgen 原版录音，其余为浏览器 TTS。
+      </p>
+      {/* 矩阵表格：行=首元音，列=尾元音（列分隔线统一由尾元音列的 border-l 提供，避免重复竖线） */}
+      <div className="overflow-hidden border-t border-border bg-background">
+        {/* 表头：空角 + 尾元音列 */}
+        <div className="grid grid-cols-[4rem_repeat(5,1fr)] items-center border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground">
+          <div className="px-2 py-2 text-center text-xs">首＼尾</div>
+          {VOWELS.map((v) => (
+            <div key={v} className="border-l border-border px-2 py-2 text-center text-2xl font-semibold text-blue-600">{v}</div>
+          ))}
+        </div>
+        {/* 数据行：每行一个首元音 */}
+        {VOWELS.map((first) => (
+          <div key={first} className="grid grid-cols-[4rem_repeat(5,1fr)] items-stretch border-b border-border last:border-b-0">
+            <div className="flex items-center justify-center bg-muted/20 px-2 py-2 text-2xl font-semibold text-blue-600">{first}</div>
+            {VOWELS.map((second) => {
+              const dip = SPANISH_DIPHTHONGS.find((d) => d.combo === first + second) ?? null;
+              return (
+                <div key={second} className="min-w-0 overflow-hidden border-l border-border">
+                  <DiphthongCell dip={dip} />
+                </div>
+              );
+            })}
+          </div>
         ))}
       </div>
     </div>
