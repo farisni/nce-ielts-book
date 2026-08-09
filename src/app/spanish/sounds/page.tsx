@@ -7,11 +7,11 @@ import { SPANISH_SOUND_GROUPS, type SpanishSoundLetter } from "@/lib/spanish-sou
 
 /**
  * 西班牙语辅音发音对照表
- * 每列一个字母/组合：读音、音标、音节例词。点击任意项用 TTS 朗读（es-ES）
+ * 每列一个字母/组合：读音、音标、音节例词。
+ * 音节用浏览器 TTS 朗读（es-ES）；每列底部配一个原网站 studyspanish.com 的原版单词示例（本地 mp3）
  */
-
-/** 朗读西语文本：优先 es-ES 女声 */
-function speakSpanish(text: string) {
+/** 朗读音节文本（浏览器 TTS es-ES）；音频用于标记播放状态 */
+function playTts(text: string, id: string) {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   const synth = window.speechSynthesis;
   synth.resume();
@@ -25,26 +25,46 @@ function speakSpanish(text: string) {
     voices.find((v) => v.lang.toLowerCase().startsWith("es"));
   if (voice) u.voice = voice;
   synth.speak(u);
+  // 简易播放标记：TTS 期间短暂高亮
+  window.dispatchEvent(new CustomEvent("tts-playing", { detail: id }));
 }
 
 export default function SpanishSoundsPage() {
   const [playing, setPlaying] = useState<string | null>(null);
-  const timerRef = useRef<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsTimerRef = useRef<number | null>(null);
 
+  // 监听 TTS 播放标记，短暂高亮后清除
   useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.getVoices();
+    const onTts = (e: Event) => {
+      const id = (e as CustomEvent).detail as string;
+      setPlaying(id);
+      if (ttsTimerRef.current) window.clearTimeout(ttsTimerRef.current);
+      ttsTimerRef.current = window.setTimeout(() => setPlaying(null), 2500);
+    };
+    window.addEventListener("tts-playing", onTts);
+    return () => {
+      window.removeEventListener("tts-playing", onTts);
+      if (ttsTimerRef.current) window.clearTimeout(ttsTimerRef.current);
+    };
   }, []);
 
-  const play = useCallback((text: string, id: string) => {
-    window.speechSynthesis.cancel();
+  /** 播放原版 mp3：同一时刻只播一个 */
+  const playAudio = useCallback((audio: string, id: string) => {
+    const prev = audioRef.current;
+    if (prev) {
+      prev.pause();
+      prev.currentTime = 0;
+    }
     setPlaying(id);
-    speakSpanish(text);
-    if (timerRef.current) window.clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setPlaying(null), 2500);
+    const next = new Audio(`/audio/spanish-sounds/${audio}`);
+    next.onended = () => setPlaying(null);
+    next.onerror = () => setPlaying(null);
+    next.play().catch(() => setPlaying(null));
+    audioRef.current = next;
   }, []);
 
-  /** 可点击发音的文字，附带 hover 喇叭 */
+  /** 可点击发音的音节文字，附带 hover 喇叭（TTS） */
   const Speakable = ({
     text,
     id,
@@ -56,7 +76,7 @@ export default function SpanishSoundsPage() {
   }) => (
     <button
       type="button"
-      onClick={() => play(text, id)}
+      onClick={() => playTts(text, id)}
       title={`播放 ${text}`}
       className={cn(
         "group inline-flex items-center gap-1 rounded transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
@@ -70,7 +90,7 @@ export default function SpanishSoundsPage() {
     </button>
   );
 
-  /** 单个字母列：字母 + 读音 + 音标 + 音节 */
+  /** 单个字母列：字母 + 读音 + 音标 + 音节 + 原版单词示例 */
   const LetterCol = ({ item, idBase }: { item: SpanishSoundLetter; idBase: string }) => (
     <div className="flex min-w-0 flex-1 flex-col border-l border-border first:border-l-0">
       {/* 字母 */}
@@ -99,6 +119,25 @@ export default function SpanishSoundsPage() {
           <span className="mt-1 text-[11px] leading-tight text-muted-foreground/60">{item.note}</span>
         )}
       </div>
+      {/* 原版单词示例（底部） */}
+      {item.audio && item.example && (
+        <div className="mt-auto border-t border-dashed border-border/60 px-2 py-2.5 text-center">
+          <button
+            type="button"
+            onClick={() => playAudio(item.audio!, `${idBase}-ex`)}
+            title={`播放原版 ${item.example}`}
+            className={cn(
+              "group inline-flex items-center gap-1 rounded px-1.5 py-0.5 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
+            )}
+          >
+            <span className="text-sm font-medium text-foreground">{item.example}</span>
+            <Volume2 className={cn("size-3", playing === `${idBase}-ex` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
+          </button>
+          <div className="mt-0.5 text-[11px] text-muted-foreground/60">
+            {item.exampleMeaning}
+          </div>
+        </div>
+      )}
     </div>
   );
 
