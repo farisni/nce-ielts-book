@@ -1,7 +1,7 @@
 "use client"
 
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { Volume2 } from "lucide-react";
+import { Volume2, Mic, Loader2, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SPANISH_SOUND_GROUPS, SPANISH_DIPHTHONGS, type SpanishSoundLetter, type SpanishDiphthong } from "@/lib/spanish-sounds";
 
@@ -70,6 +70,40 @@ export default function SpanishSoundsPage() {
   const [playing, setPlaying] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const ttsTimerRef = useRef<number | null>(null);
+  // 各句跟读评分历史（key=例句文本，保留最近 5 次）
+  type PhraseScore = { total: number; accuracy: number; fluency: number; integrity: number };
+  const [scores, setScores] = useState<Record<string, PhraseScore[]>>({});
+
+  // 挂载时从 SQLite 加载该页全部例句的评分历史
+  useEffect(() => {
+    let cancelled = false
+    fetch("/api/spanish/pron-history")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status))))
+      .then((data) => {
+        if (cancelled) return
+        const hist = data.history ?? {}
+        const map: Record<string, PhraseScore[]> = {}
+        for (const [sentence, list] of Object.entries(hist)) {
+          if (Array.isArray(list) && list.length > 0) map[sentence] = list.slice(-5) as PhraseScore[]
+        }
+        setScores(map)
+      })
+      .catch(() => {}) // 服务不可用时静默，用内存态
+    return () => { cancelled = true }
+  }, [])
+
+  /** 保存某句评分：更新内存 + 持久化到 SQLite */
+  const saveScore = useCallback((sentence: string, res: PhraseScore) => {
+    setScores((prev) => {
+      const list = prev[sentence] ? [...prev[sentence], res] : [res]
+      return { ...prev, [sentence]: list.slice(-5) }
+    })
+    fetch("/api/spanish/pron-history", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sentence, result: res }),
+    }).catch(() => {})
+  }, [])
 
   // 监听 TTS 播放标记，短暂高亮后清除
   useEffect(() => {
@@ -139,6 +173,125 @@ export default function SpanishSoundsPage() {
       playTts(p.es, id);
     }
   }, []);
+
+  /** 跟读录音评分：录音 → 解码 16k PCM → 上传讯飞（西语走 suntone）→ onResult 上报评分 */
+  const PhraseRecorder = ({ text, onResult }: { text: string; onResult?: (s: { total: number; accuracy: number; fluency: number; integrity: number }) => void }) => {
+    const [recording, setRecording] = useState(false);
+    const [evaluating, setEvaluating] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [sec, setSec] = useState(0);
+    const recRef = useRef<MediaRecorder | null>(null);
+    const chunksRef = useRef<Blob[]>([]);
+    const timerRef = useRef<number | null>(null);
+
+    useEffect(() => {
+      return () => {
+        if (timerRef.current) window.clearInterval(timerRef.current);
+        recRef.current?.stream.getTracks().forEach((t) => t.stop());
+      };
+    }, []);
+
+    const start = async () => {
+      setError(null);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const mr = new MediaRecorder(stream);
+        const chunks: Blob[] = [];
+        mr.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+        mr.start();
+        recRef.current = mr;
+        chunksRef.current = chunks;
+        setRecording(true);
+        setSec(0);
+        timerRef.current = window.setInterval(() => setSec((s) => s + 1), 1000);
+      } catch (e) {
+        setError("无法访问麦克风");
+      }
+    };
+
+    const stop = async () => {
+      if (timerRef.current) window.clearInterval(timerRef.current);
+      setRecording(false);
+      const mr = recRef.current;
+      if (!mr || mr.state === "inactive") return;
+      const chunks = chunksRef.current;
+      await new Promise<void>((resolve) => { mr.onstop = () => resolve(); mr.stop(); });
+      mr.stream.getTracks().forEach((t) => t.stop());
+      recRef.current = null;
+      if (chunks.length === 0) { setError("未采集到音频"); return; }
+
+      setEvaluating(true);
+      try {
+        // 解码 webm/opus → 16k 16bit 单声道 PCM
+        const blob = new Blob(chunks, { type: chunks[0].type || "audio/webm" });
+        const ctx = new AudioContext();
+        const decoded = await ctx.decodeAudioData(await blob.arrayBuffer());
+        const srcRate = decoded.sampleRate || 48000;
+        const off = new OfflineAudioContext(1, Math.ceil((decoded.length / srcRate) * 16000), 16000);
+        const buf = off.createBuffer(1, decoded.length, srcRate);
+        buf.getChannelData(0).set(decoded.getChannelData(0));
+        const src = off.createBufferSource();
+        src.buffer = buf;
+        src.connect(off.destination);
+        src.start(0);
+        const rendered = await off.startRendering();
+        const data = rendered.getChannelData(0);
+        const pcm = new Int16Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+          const s = Math.max(-1, Math.min(1, data[i]));
+          pcm[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+        }
+        await ctx.close();
+
+        const fd = new FormData();
+        fd.append("audio", new Blob([pcm.buffer], { type: "audio/pcm" }), "recording.pcm");
+        fd.append("text", text);
+        const res = await fetch("/api/pronunciation", { method: "POST", body: fd });
+        const json = await res.json();
+        if (!json.success) throw new Error(json.error || "评测失败");
+        const s = {
+          total: Math.round(Number(json.result.total) || 0),
+          accuracy: Math.round(Number(json.result.accuracy) || 0),
+          fluency: Math.round(Number(json.result.fluency) || 0),
+          integrity: Math.round(Number(json.result.integrity) || 0),
+        };
+        onResult?.(s);
+      } catch (e) {
+        setError((e as Error).message || "评测失败");
+      } finally {
+        setEvaluating(false);
+      }
+    };
+
+    return (
+      <div className="flex shrink-0 items-center gap-2">
+        {!recording ? (
+          <button
+            type="button"
+            onClick={start}
+            disabled={evaluating}
+            title="跟读录音评分"
+            className="inline-flex w-full items-center justify-center gap-1 rounded border border-border px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted/60 disabled:opacity-50"
+          >
+            <Mic className="size-3.5" />
+            跟读
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={stop}
+            title={`停止 (${sec}s)`}
+            className="inline-flex w-full items-center justify-center gap-1 rounded border border-destructive/50 bg-destructive/10 px-2 py-1 text-xs text-destructive"
+          >
+            <Square className="size-3 fill-current" />
+            {sec}s
+          </button>
+        )}
+        {evaluating && <Loader2 className="size-3.5 animate-spin text-muted-foreground" />}
+        {!evaluating && error && <span className="text-xs text-rose-500">{error}</span>}
+      </div>
+    );
+  };
 
   /** 双元音矩阵单元格：组合 + 例词 + 声音图标（紧凑单行，不溢出） */
   const DiphthongCell = ({ dip }: { dip: SpanishDiphthong | null }) => {
@@ -351,24 +504,69 @@ export default function SpanishSoundsPage() {
             <div className="border-b border-border bg-muted/30 px-4 py-2.5">
               <span className="text-base text-foreground">{group.title}</span>
             </div>
-            {group.items.map((p, i) => (
-              <button
-                key={`${group.title}-${i}`}
-                type="button"
-                onClick={() => playPhrase(p, `phr-${group.title}-${i}`)}
-                title={`播放 ${p.es}${p.audio ? "（真人发音）" : ""}`}
-                className="group flex w-full items-center gap-3 border-b border-border px-4 py-2.5 text-left transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
-              >
-                <Volume2 className={cn("size-4 shrink-0", playing === `phr-${group.title}-${i}` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
-                <span className="min-w-0 flex-1">
-                  <span className="block text-lg text-blue-600">{p.es}</span>
-                  {p.syl && (
-                    <span className="block font-mono text-xs text-muted-foreground/70">{p.syl}</span>
-                  )}
-                </span>
-                <span className="shrink-0 text-sm text-muted-foreground">{p.zh}</span>
-              </button>
-            ))}
+            {group.items.map((p, i) => {
+              const s = scores[p.es];
+              return (
+                <div
+                  key={`${group.title}-${i}`}
+                  className="grid w-full grid-cols-[288px_1fr_175px_96px] items-center gap-3 border-b border-border px-4 py-2 transition-colors hover:bg-muted/30"
+                >
+                  {/* 例句（点击播放真人/TTS） */}
+                  <button
+                    type="button"
+                    onClick={() => playPhrase(p, `phr-${group.title}-${i}`)}
+                    title={`播放 ${p.es}${p.audio ? "（真人发音）" : ""}`}
+                    className="group flex min-w-0 items-center gap-3 rounded text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+                  >
+                    <Volume2 className={cn("size-4 shrink-0", playing === `phr-${group.title}-${i}` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
+                    <span className="min-w-0">
+                      <span className="block text-lg text-blue-600">{p.es}</span>
+                      {p.syl && (
+                        <span className="block font-mono text-xs text-muted-foreground/70">{p.syl}</span>
+                      )}
+                    </span>
+                  </button>
+                  {/* 评分列（紧跟例句，第二列）；hover 显示最近 5 次历史 */}
+                  <div
+                    className="flex shrink-0 items-center gap-1.5"
+                    title={s && s.length > 0 ? `最近 ${s.length} 次评分\n` + s.map((sc, idx) => `第${idx + 1}次 总${sc.total} 准${sc.accuracy} 流${sc.fluency} 整${sc.integrity}`).join("\n") : ""}
+                  >
+                    {s && s.length > 0 ? (
+                      [
+                        // 总分：<80 判不及格 → 橘红色；其余维度保持原有分级
+                        { label: "总", v: s[s.length - 1].total, isTotal: true },
+                        { label: "准", v: s[s.length - 1].accuracy, isTotal: false },
+                        { label: "流", v: s[s.length - 1].fluency, isTotal: false },
+                        { label: "整", v: s[s.length - 1].integrity, isTotal: false },
+                      ].map((item) => (
+                        <span key={item.label} className="flex items-center gap-0.5 text-base tabular-nums">
+                          <span className="text-muted-foreground/60">{item.label}</span>
+                          <span
+                            className={cn(
+                              "font-semibold",
+                              item.isTotal
+                                ? item.v >= 80 ? "text-emerald-500" : "text-orange-600"
+                                : item.v >= 70 ? "text-emerald-500" : item.v >= 50 ? "text-amber-500" : "text-rose-500",
+                            )}
+                          >
+                            {item.v}
+                          </span>
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-base text-muted-foreground/40">—</span>
+                    )}
+                  </div>
+                  {/* 中文释义 */}
+                  <span className="shrink-0 text-sm text-muted-foreground">{p.zh}</span>
+                  {/* 跟读录音 */}
+                  <PhraseRecorder
+                    text={p.es}
+                    onResult={(res) => saveScore(p.es, res)}
+                  />
+                </div>
+              );
+            })}
           </Fragment>
         ))}
       </div>
