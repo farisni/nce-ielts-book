@@ -64,15 +64,15 @@ export default function SpanishAlphabetPage() {
     </span>
   );
 
-  /** 一行：字母（可点）/ 名称（可点）/ 例词（可点） */
+  /** 一行：字母（可点）/ 名称（可点）/ 例词（可点）/ 音节拆分 */
   const LetterRow = ({
     item,
     old = false,
   }: {
-    item: { letter: string; name: string; nameNote?: string; example: string; meaning?: string };
+    item: { letter: string; name: string; nameNote?: string; example: string; meaning?: string; syllables?: string };
     old?: boolean;
   }) => (
-    <div className="grid grid-cols-[4.5rem_1fr_1fr] items-center border-b border-border bg-background last:border-b-0 sm:grid-cols-[6rem_10rem_1fr]">
+    <div className="grid grid-cols-[4.5rem_1fr_1fr_1fr] items-center border-b border-border bg-background last:border-b-0 sm:grid-cols-[6rem_10rem_1fr_1fr]">
       {/* 字母 */}
       <button
         type="button"
@@ -100,13 +100,17 @@ export default function SpanishAlphabetPage() {
       <button
         type="button"
         onClick={() => play(item.example, `ex-${item.letter}`)}
-        className="group flex h-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50"
+        className="group flex h-full items-center gap-2 border-r border-border px-4 py-3 text-left transition-colors hover:bg-muted/50"
         title={`${item.example} · 播放例词发音`}
       >
         <span className="text-foreground">{item.example}</span>
         {item.meaning && <span className="text-xs text-muted-foreground">{item.meaning}</span>}
         <Speaker id={`ex-${item.letter}`} />
       </button>
+      {/* 音节拆分 */}
+      <span className="px-4 py-3 font-mono text-sm text-muted-foreground">
+        {item.syllables ?? "—"}
+      </span>
     </div>
   );
 
@@ -137,10 +141,11 @@ export default function SpanishAlphabetPage() {
         西班牙语只有 5 个纯元音，且每个永远发同样的音——没有长短元音。
       </p>
       <div className="overflow-hidden rounded-lg border border-border">
-        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr_1fr]">
           <div className="px-3 py-2.5 text-center">字母</div>
           <div className="border-l border-border px-4 py-2.5">西语名称</div>
           <div className="border-l border-border px-4 py-2.5">例词</div>
+          <div className="border-l border-border px-4 py-2.5">音节拆分</div>
         </div>
         {SPANISH_ALPHABET.filter((l) => l.type === "vowel").map((item) => (
           <LetterRow key={item.letter} item={item} />
@@ -156,10 +161,11 @@ export default function SpanishAlphabetPage() {
         <span className="font-medium text-foreground">y</span>。
       </p>
       <div className="overflow-hidden rounded-lg border border-border">
-        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr_1fr]">
           <div className="px-3 py-2.5 text-center">字母</div>
           <div className="border-l border-border px-4 py-2.5">西语名称</div>
           <div className="border-l border-border px-4 py-2.5">例词</div>
+          <div className="border-l border-border px-4 py-2.5">音节拆分</div>
         </div>
         {SPANISH_ALPHABET.filter((l) => l.type !== "vowel").map((item) => (
           <LetterRow key={item.letter} item={item} />
@@ -175,10 +181,11 @@ export default function SpanishAlphabetPage() {
         <span className="font-medium text-foreground">ll</span> 从字母表移除——它们不再算作独立字母，但对应的拼写与发音仍在使用。
       </p>
       <div className="overflow-hidden rounded-lg border border-border">
-        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr_1fr]">
           <div className="px-3 py-2.5 text-center">组合</div>
           <div className="border-l border-border px-4 py-2.5">过去的名称</div>
           <div className="border-l border-border px-4 py-2.5">例词</div>
+          <div className="border-l border-border px-4 py-2.5">音节拆分</div>
         </div>
         {SPANISH_OLD_LETTERS.map((item) => (
           <LetterRow key={item.letter} item={item} old />
