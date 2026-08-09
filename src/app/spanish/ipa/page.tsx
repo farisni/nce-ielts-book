@@ -52,37 +52,56 @@ export default function SpanishIpaPage() {
     </button>
   );
 
-  /** 单个表格（含表头）：IPA | 拼写 | 例词 · 音标 | Listen */
+  /** 单个表格（含表头）：IPA | 拼写 | 例词 · 音标 | 发音图标 */
   const IpaTableBlock = ({ rows, idPrefix }: { rows: IpaRow[]; idPrefix: string }) => (
     <div className="overflow-hidden rounded-lg border border-border bg-background">
       {/* 表头 */}
-      <div className="grid grid-cols-[2.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
+      <div className="grid grid-cols-[2.5rem_1fr_1.8fr_2rem] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
         <div>IPA</div>
         <div>拼写</div>
         <div>例词 · 音标</div>
-        <div className="text-right">Listen</div>
+        <div className="text-center"><Volume2 className="mx-auto size-3.5 text-muted-foreground/50" /></div>
       </div>
       {rows.map((row) => (
         <div
           key={row.ipa}
-          className="grid grid-cols-[2.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0"
+          className="group grid grid-cols-[2.5rem_1fr_1.8fr_2rem] items-stretch gap-2 border-b border-border px-3 py-2.5 last:border-b-0"
         >
-          {/* IPA 符号 */}
-          <span className="text-lg font-semibold text-blue-600">{row.ipa}</span>
-          {/* 拼写 */}
-          <span className="text-sm text-foreground">{row.spelling}</span>
-          {/* 例词 + 音标 + 中文（合并一列） */}
-          <span className="text-sm">
-            <span className="text-foreground">{row.example}</span>
-            <span className="ml-1.5 font-mono text-muted-foreground">{row.transcription}</span>
-            {row.zh && <span className="ml-1 text-xs text-muted-foreground">{row.zh}</span>}
+          {/* IPA 符号：斜杠浅灰，中间音标蓝色，斜杠与字母留一点间距 */}
+          <span className="self-center text-lg font-semibold">
+            <span className="mr-0.5 text-muted-foreground/50">/</span>
+            <span className="text-blue-600">{row.ipa}</span>
+            <span className="ml-0.5 text-muted-foreground/50">/</span>
           </span>
-          {/* Listen（原版音频） */}
-          <div className="text-right">
+          {/* 拼写 */}
+          <span className="self-center text-lg text-foreground">{row.spelling}</span>
+          {/* 例词 + 音标 + 中文（整格可点击播放发音） */}
+          <button
+            type="button"
+            onClick={() => row.audio && play(row.audio, `${idPrefix}-${row.ipa}`)}
+            disabled={!row.audio}
+            title={row.audio ? `播放 ${row.example}` : "无音频"}
+            className={`flex w-full items-center gap-1.5 self-stretch rounded px-1.5 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
+              row.audio ? "cursor-pointer hover:bg-muted/60" : "cursor-default opacity-60"
+            }`}
+          >
+            <span className="text-foreground">{row.example}</span>
+            <span className="ml-1 font-mono text-muted-foreground">{row.transcription}</span>
+            {row.zh && <span className="ml-1 text-xs text-muted-foreground">{row.zh}</span>}
+          </button>
+          {/* 最后一列：发音图标（hover 行时显示，播放中高亮） */}
+          <div className="flex items-center justify-center">
             {row.audio ? (
-              <ListenBtn audio={row.audio} id={`${idPrefix}-${row.ipa}`} />
+              <Volume2
+                className={cn(
+                  "size-4 transition-opacity",
+                  playing === `${idPrefix}-${row.ipa}`
+                    ? "text-primary opacity-100"
+                    : "text-muted-foreground/60 opacity-0 group-hover:opacity-100",
+                )}
+              />
             ) : (
-              <span className="text-xs text-muted-foreground/50">—</span>
+              <span className="text-muted-foreground/20">·</span>
             )}
           </div>
         </div>
