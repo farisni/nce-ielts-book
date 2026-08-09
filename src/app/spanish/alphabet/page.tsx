@@ -78,7 +78,7 @@ export default function SpanishAlphabetPage() {
         type="button"
         onClick={() => play(item.letter, `letter-${item.letter}`)}
         className={`group flex h-full items-center justify-center border-r border-border py-3 text-2xl font-semibold transition-colors hover:bg-muted/50 ${
-          old ? "text-muted-foreground" : "text-foreground"
+          old ? "text-muted-foreground" : "text-blue-600"
         }`}
         title={`${item.letter} · 播放字母发音`}
       >
@@ -129,30 +129,53 @@ export default function SpanishAlphabetPage() {
         </p>
       </header>
 
-      {/* 表头 */}
-      <div className="grid grid-cols-[4.5rem_1fr_1fr] rounded-t-lg border border-b-0 border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
-        <div className="px-3 py-2.5 text-center">字母</div>
-        <div className="border-l border-border px-4 py-2.5">西语名称</div>
-        <div className="border-l border-border px-4 py-2.5">例词</div>
+      {/* 元音组 */}
+      <h2 className="mb-1 text-lg font-semibold text-foreground">
+        元音 Vowels <span className="ml-1 text-sm font-normal text-muted-foreground">5 个</span>
+      </h2>
+      <p className="mb-3 text-sm text-muted-foreground">
+        西班牙语只有 5 个纯元音，且每个永远发同样的音——没有长短元音。
+      </p>
+      <div className="overflow-hidden rounded-lg border border-border">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+          <div className="px-3 py-2.5 text-center">字母</div>
+          <div className="border-l border-border px-4 py-2.5">西语名称</div>
+          <div className="border-l border-border px-4 py-2.5">例词</div>
+        </div>
+        {SPANISH_ALPHABET.filter((l) => l.type === "vowel").map((item) => (
+          <LetterRow key={item.letter} item={item} />
+        ))}
       </div>
 
-      {/* 27 个字母 */}
-      <div className="border-x border-t border-border">
-        {SPANISH_ALPHABET.map((item) => (
+      {/* 辅音组 */}
+      <h2 className="mb-1 mt-8 text-lg font-semibold text-foreground">
+        辅音 Consonants <span className="ml-1 text-sm font-normal text-muted-foreground">22 个</span>
+      </h2>
+      <p className="mb-3 text-sm text-muted-foreground">
+        其余 22 个字母为辅音；含特殊的 <span className="font-medium text-foreground">ñ</span> 与半元音{" "}
+        <span className="font-medium text-foreground">y</span>。
+      </p>
+      <div className="overflow-hidden rounded-lg border border-border">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+          <div className="px-3 py-2.5 text-center">字母</div>
+          <div className="border-l border-border px-4 py-2.5">西语名称</div>
+          <div className="border-l border-border px-4 py-2.5">例词</div>
+        </div>
+        {SPANISH_ALPHABET.filter((l) => l.type !== "vowel").map((item) => (
           <LetterRow key={item.letter} item={item} />
         ))}
       </div>
 
       {/* 过去移除的 ch / ll */}
-      <h2 className="mb-3 mt-8 text-lg font-semibold text-foreground">
+      <h2 className="mb-1 mt-8 text-lg font-semibold text-foreground">
         已从字母表移除的组合
       </h2>
-      <p className="mb-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+      <p className="mb-3 max-w-2xl text-sm leading-7 text-muted-foreground">
         2014 年西班牙皇家学院（RAE）将 <span className="font-medium text-foreground">ch</span> 和{" "}
         <span className="font-medium text-foreground">ll</span> 从字母表移除——它们不再算作独立字母，但对应的拼写与发音仍在使用。
       </p>
-      <div className="overflow-hidden rounded-t-lg border border-border">
-        <div className="grid grid-cols-[4.5rem_1fr_1fr] rounded-t-lg border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
+      <div className="overflow-hidden rounded-lg border border-border">
+        <div className="grid grid-cols-[4.5rem_1fr_1fr] border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground sm:grid-cols-[6rem_10rem_1fr]">
           <div className="px-3 py-2.5 text-center">组合</div>
           <div className="border-l border-border px-4 py-2.5">过去的名称</div>
           <div className="border-l border-border px-4 py-2.5">例词</div>
