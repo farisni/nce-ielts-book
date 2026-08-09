@@ -8,7 +8,7 @@ import { VOWEL_A_CARDS } from "@/lib/spanish-listen-repeat";
 /**
  * 西班牙语发音听读练习 · 元音 a
  * 复刻 studyspanish.com/pronunciation/listen-and-repeat/vowel_a
- * - 卡片式单词听读：点击播放 TTS（es-ES），Continue/Previous 翻卡
+ * - 卡片式单词听读：播放原网站 studyspanish 的原版 mp3（已本地化），Continue/Previous 翻卡
  * - Repeat 重播当前卡，Start Over 回到第一张
  */
 export default function SpanishListenRepeatPage() {
@@ -17,35 +17,30 @@ export default function SpanishListenRepeatPage() {
   const [playing, setPlaying] = useState(false);
   const card = VOWEL_A_CARDS[index];
 
-  const play = useCallback((text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    const synth = window.speechSynthesis;
-    synth.resume();
-    synth.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "es-ES";
-    u.rate = 0.85;
-    const voices = synth.getVoices();
-    const voice =
-      voices.find((v) => v.lang.toLowerCase().startsWith("es-es") && /female|monica|maria|helena|paulina|laura/i.test(v.name)) ||
-      voices.find((v) => v.lang.toLowerCase().startsWith("es"));
-    if (voice) u.voice = voice;
-    u.onstart = () => setPlaying(true);
-    u.onend = () => setPlaying(false);
-    synth.speak(u);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  /** 播放本地音频：同一时刻只播一个 */
+  const play = useCallback((audio: string) => {
+    const prev = audioRef.current;
+    if (prev) {
+      prev.pause();
+      prev.currentTime = 0;
+    }
+    setPlaying(true);
+    const next = new Audio(`/audio/spanish-listen-repeat/${audio}`);
+    next.onended = () => setPlaying(false);
+    next.onerror = () => setPlaying(false);
+    next.play().catch(() => setPlaying(false));
+    audioRef.current = next;
   }, []);
 
-  // 首次加载语音
+  // 换卡后自动播放（引导卡与单词卡都有原版音频）
   useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.getVoices();
-  }, []);
-
-  // 换卡后自动朗读（单词卡）
-  useEffect(() => {
-    if (card.isWord) play(card.word);
+    if (card.audio) play(card.audio);
     else setPlaying(false);
-    return () => window.speechSynthesis?.cancel();
+    return () => {
+      if (audioRef.current) audioRef.current.pause();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
@@ -58,7 +53,7 @@ export default function SpanishListenRepeatPage() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === " ") {
         e.preventDefault();
-        if (card.isWord) play(card.word);
+        if (card.audio) play(card.audio);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         next();
@@ -94,8 +89,8 @@ export default function SpanishListenRepeatPage() {
       {/* 单词卡片 */}
       <button
         type="button"
-        onClick={() => card.isWord && play(card.word)}
-        title={card.isWord ? "点击播放" : ""}
+        onClick={() => card.audio && play(card.audio)}
+        title={card.audio ? "点击播放" : ""}
         className={cn(
           "group relative flex w-full flex-col items-center justify-center rounded-2xl border px-6 py-12 transition-colors",
           "bg-background hover:bg-muted/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
@@ -116,7 +111,7 @@ export default function SpanishListenRepeatPage() {
           </span>
         )}
         {/* 播放图标 */}
-        {card.isWord && (
+        {card.audio && (
           <span className={cn(
             "absolute right-4 top-4 rounded-full p-2 transition-colors",
             playing ? "bg-primary/10 text-primary" : "text-muted-foreground/40 group-hover:text-muted-foreground/80",
@@ -148,7 +143,7 @@ export default function SpanishListenRepeatPage() {
         </button>
         <button
           type="button"
-          onClick={() => card.isWord && play(card.word)}
+          onClick={() => card.audio && play(card.audio)}
           className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/60"
         >
           <Repeat className="size-4" />
