@@ -52,57 +52,75 @@ export default function SpanishIpaPage() {
     </button>
   );
 
-  /** 音素行：IPA | 拼写 | 例词 | 音标 | Listen */
-  const IpaTable = ({ title, desc, rows, idPrefix }: { title: string; desc: string; rows: IpaRow[]; idPrefix: string }) => (
-    <section className="mb-8">
-      <h2 className="mb-1 text-lg font-semibold text-foreground">{title}</h2>
-      <p className="mb-3 text-sm text-muted-foreground">{desc}</p>
-      <div className="overflow-hidden rounded-lg border border-border bg-background">
-        {/* 表头 */}
-        <div className="grid grid-cols-[3.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground sm:grid-cols-[4rem_6rem_1fr_auto]">
-          <div>IPA</div>
-          <div>拼写</div>
-          <div>例词 · 音标</div>
-          <div className="text-right">Listen</div>
-        </div>
-        {rows.map((row) => (
-          <div
-            key={row.ipa}
-            className="grid grid-cols-[3.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0 sm:grid-cols-[4rem_6rem_1fr_auto]"
-          >
-            {/* IPA 符号 */}
-            <span className="text-lg font-semibold text-blue-600">{row.ipa}</span>
-            {/* 拼写 */}
-            <span className="text-sm text-foreground">{row.spelling}</span>
-            {/* 例词 + 音标 + 中文（合并一列） */}
-            <span className="text-sm">
-              <span className="text-foreground">{row.example}</span>
-              <span className="ml-2 font-mono text-muted-foreground">{row.transcription}</span>
-              {row.zh && <span className="ml-1.5 text-xs text-muted-foreground">{row.zh}</span>}
-            </span>
-            {/* Listen（原版音频） */}
-            <div className="text-right">
-              {row.audio ? (
-                <ListenBtn audio={row.audio} id={`${idPrefix}-${row.ipa}`} />
-              ) : (
-                <span className="text-xs text-muted-foreground/50">—</span>
-              )}
-            </div>
-          </div>
-        ))}
+  /** 单个表格（含表头）：IPA | 拼写 | 例词 · 音标 | Listen */
+  const IpaTableBlock = ({ rows, idPrefix }: { rows: IpaRow[]; idPrefix: string }) => (
+    <div className="overflow-hidden rounded-lg border border-border bg-background">
+      {/* 表头 */}
+      <div className="grid grid-cols-[2.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
+        <div>IPA</div>
+        <div>拼写</div>
+        <div>例词 · 音标</div>
+        <div className="text-right">Listen</div>
       </div>
-      {/* 底部备注 */}
-      {rows.some((r) => r.note) && (
-        <ul className="mt-2 space-y-0.5 text-xs text-muted-foreground/80">
-          {rows.filter((r) => r.note).map((r) => (
-            <li key={r.ipa}>
-              <span className="font-medium text-foreground/70">[{r.ipa}]</span> {r.note}
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
+      {rows.map((row) => (
+        <div
+          key={row.ipa}
+          className="grid grid-cols-[2.5rem_1fr_1.8fr_auto] items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0"
+        >
+          {/* IPA 符号 */}
+          <span className="text-lg font-semibold text-blue-600">{row.ipa}</span>
+          {/* 拼写 */}
+          <span className="text-sm text-foreground">{row.spelling}</span>
+          {/* 例词 + 音标 + 中文（合并一列） */}
+          <span className="text-sm">
+            <span className="text-foreground">{row.example}</span>
+            <span className="ml-1.5 font-mono text-muted-foreground">{row.transcription}</span>
+            {row.zh && <span className="ml-1 text-xs text-muted-foreground">{row.zh}</span>}
+          </span>
+          {/* Listen（原版音频） */}
+          <div className="text-right">
+            {row.audio ? (
+              <ListenBtn audio={row.audio} id={`${idPrefix}-${row.ipa}`} />
+            ) : (
+              <span className="text-xs text-muted-foreground/50">—</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   );
+
+  /** 音素表：可单列或左右双栏（split 时拆成两个相同表头的表格） */
+  const IpaTable = ({ title, desc, rows, idPrefix, split = false }: { title: string; desc: string; rows: IpaRow[]; idPrefix: string; split?: boolean }) => {
+    const half = Math.ceil(rows.length / 2);
+    const left = split ? rows.slice(0, half) : rows;
+    const right = split ? rows.slice(half) : [];
+    const notes = rows.filter((r) => r.note);
+    return (
+      <section className="mb-8">
+        <h2 className="mb-1 text-lg font-semibold text-foreground">{title}</h2>
+        <p className="mb-3 text-sm text-muted-foreground">{desc}</p>
+        {split ? (
+          <div className="grid gap-4 lg:grid-cols-2">
+            <IpaTableBlock rows={left} idPrefix={idPrefix} />
+            <IpaTableBlock rows={right} idPrefix={idPrefix} />
+          </div>
+        ) : (
+          <IpaTableBlock rows={rows} idPrefix={idPrefix} />
+        )}
+        {/* 底部备注 */}
+        {notes.length > 0 && (
+          <ul className="mt-2 space-y-0.5 text-xs text-muted-foreground/80">
+            {notes.map((r) => (
+              <li key={r.ipa}>
+                <span className="font-medium text-foreground/70">[{r.ipa}]</span> {r.note}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    );
+  };
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 pb-16 pt-6">
@@ -137,6 +155,7 @@ export default function SpanishIpaPage() {
         desc="19 个辅音音素。[ɲ] 是 ñ，[x] 是 j/g，[θ] 是卡斯蒂利亚的 c/z，[ʎ] 是 ll；b/d/g 在元音间弱化为 [β ð ɣ]。"
         rows={SPANISH_CONSONANTS}
         idPrefix="cons"
+        split
       />
 
       {/* 双 R 说明 */}
