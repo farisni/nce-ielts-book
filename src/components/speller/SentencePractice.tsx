@@ -291,6 +291,8 @@ export default function SentencePractice({
   const [showSentences, setShowSentences] = useState(false)
   // 发音评测历史：按句子文本保存每次录音评分（翻句/切回可见）
   const [pronHistory, setPronHistory] = useState<Record<string, EvalResult>>({})
+  // 本次会话是否录过音（默认不显示历史评分角标，只有录音返回后才显示）
+  const [hasRecorded, setHasRecorded] = useState(false)
   // 听写重置计数：点「听写」+1，驱动 PronunciationPractice 重新挂载（清掉评分/答案显示）
   const [dictationTick, setDictationTick] = useState(0)
 
@@ -692,8 +694,8 @@ export default function SentencePractice({
 
   const progressPct = session.length > 0 ? ((index + (passed ? 1 : 0)) / session.length) * 100 : 0
 
-  // 当前句的发音评分单词级结果（由 PronunciationPractice 上报，按句子顺序与输入区单词对齐）
-  const pronWords = pronHistory[target]?.words
+  // 当前句的发音评分单词级结果（本次会话录音后才显示，避免默认亮出历史评分）
+  const pronWords = hasRecorded ? pronHistory[target]?.words : undefined
   // charGroups 里每个单词组的索引 → 该单词在句子中的序号（用于把评分对齐到对应单词槽）
   const wordSeqByGroup = useMemo(() => {
     const m = new Map<number, number>()
@@ -1153,6 +1155,7 @@ export default function SentencePractice({
           initialResult={pronHistory[target] ?? null}
           onResult={(r) => {
             setPronHistory((prev) => ({ ...prev, [target]: r }))
+            setHasRecorded(true)
             if (course) savePronScore(course.id, target, r).catch(() => {})
           }}
           onEvaluationSuccess={playSuccess}

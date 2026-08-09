@@ -91,7 +91,8 @@ export default function PronunciationPractice({
 }) {
   const [recording, setRecording] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
-  const [result, setResult] = useState<EvalResult | null>(initialResult ?? null);
+  // 默认不显示历史评分，只有本次录音返回时才展示（initialResult 仅作历史留存，不默认亮出）
+  const [result, setResult] = useState<EvalResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [recordingSec, setRecordingSec] = useState(0);
 
