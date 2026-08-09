@@ -1,5 +1,6 @@
 "use client"
 
+import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 
 /** 《百年孤独》开篇 · Cien años de soledad — 加西亚·马尔克斯（Gabriel García Márquez） */
@@ -146,28 +147,38 @@ export default function SpanishCienAnosPage() {
           逐句对照 <span className="ml-1 font-normal text-muted-foreground">Frase por frase</span>
         </h2>
         <p className="mb-3 text-xs leading-6 text-muted-foreground">
-          例句中成分着色加粗，角色标签紧贴在成分下方，落在行与行的缝隙里。
+          例句中成分着色加粗，角色标签在成分下方行间隙，成分间用 / 分隔。
         </p>
         <div>
           {SENTENCES.map((s, i) => (
             <div key={i} className={cn("px-6 py-5", i > 0 && "border-t border-border")}>
-              {/* 西语例句：成分着色加粗（NCE3 色板），角色标签在成分正下方 */}
+              {/* 西语例句：行间注——成分着色，角色标签紧贴成分下方，成分间用 / 分隔 */}
               <p className="text-lg leading-[2.3] text-foreground">
                 <span className="mr-2 align-top text-xs font-medium text-muted-foreground">〔{i + 1}〕</span>
-                {splitComponents(s.es, s.components).map((seg, si) =>
-                  seg.role ? (
-                    <span key={si} className="mx-0.5 inline-flex flex-col items-center align-top">
-                      <span className="font-semibold leading-tight" style={{ color: seg.color }}>
-                        {seg.text}
-                      </span>
-                      <span className="mt-0.5 text-[10px] leading-[1.3] text-muted-foreground/70">
-                        {shortRole(seg.role)}
-                      </span>
-                    </span>
-                  ) : (
-                    <span key={si}>{seg.text}</span>
-                  ),
-                )}
+                {(() => {
+                  const segs = splitComponents(s.es, s.components);
+                  let compCount = 0;
+                  return segs.map((seg, si) => {
+                    if (seg.role) {
+                      const isFirst = compCount === 0;
+                      compCount++;
+                      return (
+                        <Fragment key={si}>
+                          {!isFirst && <span className="align-top text-muted-foreground/40">/</span>}
+                          <span className="mx-0.5 inline-flex flex-col items-center align-top">
+                            <span className="font-semibold leading-tight" style={{ color: seg.color }}>
+                              {seg.text}
+                            </span>
+                            <span className="mt-0.5 text-[10px] leading-[1.3] text-muted-foreground/70">
+                              {shortRole(seg.role)}
+                            </span>
+                          </span>
+                        </Fragment>
+                      );
+                    }
+                    return <span key={si}>{seg.text}</span>;
+                  });
+                })()}
               </p>
               {/* 中文译文 */}
               <p className="mt-2 text-sm leading-[2] text-muted-foreground">{s.zh}</p>

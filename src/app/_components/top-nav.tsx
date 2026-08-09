@@ -193,6 +193,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("spanish 西班牙语 百年孤独 cien años soledad 马尔克斯 García Márquez 文学 literatura 原文 开篇"),
   },
   {
+    id: "spanish-despacito",
+    label: "西班牙语 · Despacito 歌词",
+    description: "Despacito · 歌词语法分析（逐句成分拆分）",
+    href: "/spanish/despacito",
+    group: "Navigate",
+    icon: <PlayIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 Despacito 歌词 letra 语法 grammar 句子成分 拆分 Luis Fonsi Daddy Yankee"),
+  },
+  {
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
@@ -633,6 +642,11 @@ export default function TopNav() {
                     <li>
                       <NavigationMenuLink render={<Link href="/spanish/cien-anos" />}>
                         <div className="font-medium text-foreground px-1">百年孤独开篇 · García Márquez</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/despacito" />}>
+                        <div className="font-medium text-foreground px-1">Despacito 歌词 · Letra</div>
                       </NavigationMenuLink>
                     </li>
                   </ul>
