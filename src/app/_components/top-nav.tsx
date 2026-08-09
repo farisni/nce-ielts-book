@@ -166,6 +166,24 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("spanish 西班牙语 vowel a 元音 listen repeat 听读 卡片 单词 pronunciation"),
   },
   {
+    id: "spanish-sounds",
+    label: "西班牙语 · 辅音对照",
+    description: "Spanish Consonants · 辅音发音对照表",
+    href: "/spanish/sounds",
+    group: "Navigate",
+    icon: <LanguagesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 consonant 辅音 发音 sounds b v w d t h j g gu ca qu ce 对照表"),
+  },
+  {
+    id: "spanish-ipa",
+    label: "西班牙语 · IPA 音标",
+    description: "Spanish IPA Chart · 音标发音表（元音/辅音/方言）",
+    href: "/spanish/ipa",
+    group: "Navigate",
+    icon: <LanguagesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 ipa 音标 phonetic chart 元音 vowel 辅音 consonant 转录 transcription dialect 方言"),
+  },
+  {
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
@@ -591,6 +609,16 @@ export default function TopNav() {
                     <li>
                       <NavigationMenuLink render={<Link href="/spanish/listen-repeat" />}>
                         <div className="font-medium text-foreground px-1">元音听读 · Listen & Repeat</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/sounds" />}>
+                        <div className="font-medium text-foreground px-1">辅音对照 · Consonants</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/ipa" />}>
+                        <div className="font-medium text-foreground px-1">IPA 音标 · Chart</div>
                       </NavigationMenuLink>
                     </li>
                   </ul>
