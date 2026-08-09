@@ -5,6 +5,43 @@ import { Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SPANISH_SOUND_GROUPS, SPANISH_DIPHTHONGS, type SpanishSoundLetter, type SpanishDiphthong } from "@/lib/spanish-sounds";
 
+/** 日常会话例句分组（点击西语例句播放发音） */
+const PHRASE_GROUPS = [
+  {
+    title: "问候类 · Saludos",
+    items: [
+      { es: "Hola", zh: "你好", syl: "Ho-la" },
+      { es: "Buenos días", zh: "早上好", syl: "Bue-nos dí-as" },
+      { es: "Buenas tardes", zh: "下午好", syl: "Bue-nas tar-des" },
+      { es: "Buenas noches", zh: "晚上好", syl: "Bue-nas no-ches" },
+    ],
+  },
+  {
+    title: "告别类 · Despedidas",
+    items: [
+      { es: "Adiós", zh: "再见", syl: "A-diós" },
+      { es: "Hasta luego", zh: "再见（回见）", syl: "Has-ta lue-go" },
+      { es: "Hasta mañana", zh: "明天见", syl: "Has-ta ma-ña-na" },
+      { es: "Hasta pronto", zh: "再见（很快见）", syl: "Has-ta pron-to" },
+    ],
+  },
+  {
+    title: "日常交流类 · Conversación",
+    items: [
+      { es: "¿Cómo estás?", zh: "你好吗？", syl: "¿Có-mo es-tás?" },
+      { es: "Muy bien, gracias. ¿Y tú?", zh: "我很好，谢谢，你呢？", syl: "Muy bien, gra-cias. ¿Y tú?" },
+      { es: "¿Cómo te llamas?", zh: "你叫什么名字？", syl: "¿Có-mo te lla-mas?" },
+      { es: "Me llamo Leticia.", zh: "我叫蕾蒂西亚。", syl: "Me lla-mo Le-ti-cia." },
+      { es: "¿De dónde eres?", zh: "你是从哪里来的？", syl: "¿De dón-de e-res?" },
+      { es: "Soy de Madrid.", zh: "我是从马德里来的。", syl: "Soy de Ma-drid." },
+      { es: "¿Eres chino?", zh: "你是中国人吗？", syl: "¿E-res chi-no?" },
+      { es: "Sí, soy de Mongolia Interior.", zh: "是的，我是内蒙古人。", syl: "Sí, soy de Mon-go-lia In-te-rior." },
+      { es: "Mucho tiempo sin verte.", zh: "好久不见了。", syl: "Mu-cho tiem-po sin ver-te." },
+      { es: "De nada.", zh: "不用谢", syl: "De na-da." },
+    ],
+  },
+];
+
 /**
  * 西语字母表 · 音节拼读
  * 字母 × 元音（a/e/i/o/u）拼读表：读音、音标、音节。
@@ -281,6 +318,39 @@ export default function SpanishSoundsPage() {
               );
             })}
           </div>
+        ))}
+      </div>
+
+      {/* 日常会话例句：大表格，分类标题跨整列穿插，点击西语例句播放发音 */}
+      <h2 className="mb-3 mt-8 text-xl font-semibold text-foreground">
+        日常会话 · Frases Útiles
+      </h2>
+      <div className="overflow-hidden bg-background">
+        {PHRASE_GROUPS.map((group) => (
+          <Fragment key={group.title}>
+            {/* 分类分隔行：跨整列显示组名（不加粗） */}
+            <div className="border-b border-border bg-muted/30 px-4 py-2.5">
+              <span className="text-base text-foreground">{group.title}</span>
+            </div>
+            {group.items.map((p, i) => (
+              <button
+                key={`${group.title}-${i}`}
+                type="button"
+                onClick={() => playTts(p.es, `phr-${group.title}-${i}`)}
+                title={`播放 ${p.es}`}
+                className="group flex w-full items-center gap-3 border-b border-border px-4 py-2.5 text-left transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+              >
+                <Volume2 className={cn("size-4 shrink-0", playing === `phr-${group.title}-${i}` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-lg text-blue-600">{p.es}</span>
+                  {p.syl && (
+                    <span className="block font-mono text-xs text-muted-foreground/70">{p.syl}</span>
+                  )}
+                </span>
+                <span className="shrink-0 text-sm text-muted-foreground">{p.zh}</span>
+              </button>
+            ))}
+          </Fragment>
         ))}
       </div>
     </div>
