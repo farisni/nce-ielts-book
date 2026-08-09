@@ -71,10 +71,10 @@ export const SPANISH_SOUND_GROUPS: SpanishSoundGroup[] = [
     title: "舌前音 · c / qu / k / ce",
     desc: "c 在 a/o/u 前发 /k/（ca co cu）；e/i 前发 /θ/（ce ci），拉美多读 /s/",
     letters: [
-      { letter: "ca", name: "ca", phoneme: "/k/", syllables: ["ca", "co", "cu"], example: "casa", exampleMeaning: "房子", audio: "ca.mp3" },
-      { letter: "qu", name: "cu", phoneme: "/k/", syllables: ["que", "qui"], note: "qu 只用于 e/i 前", example: "que", exampleMeaning: "那个", audio: "qu.mp3" },
+      { letter: "ca", name: "ca", phoneme: "/k/", syllables: ["ca", "", "", "co", "cu"], example: "casa", exampleMeaning: "房子", audio: "ca.mp3" },
+      { letter: "qu", name: "cu", phoneme: "/k/", syllables: ["", "que", "qui", "", ""], note: "qu 只用于 e/i 前", example: "que", exampleMeaning: "那个", audio: "qu.mp3" },
       { letter: "k", name: "ka", phoneme: "/k/", syllables: ["ka", "ke", "ki", "ko", "ku"], example: "kiosko", exampleMeaning: "报刊亭", audio: "k.mp3" },
-      { letter: "ce", name: "ce", phoneme: "/θ/", syllables: ["ce", "ci"], note: "c 在 e/i 前发 /θ/", example: "cinco", exampleMeaning: "五", audio: "ce.mp3" },
+      { letter: "ce", name: "ce", phoneme: "/θ/", syllables: ["", "ce", "ci", "", ""], note: "c 在 e/i 前发 /θ/", example: "cinco", exampleMeaning: "五", audio: "ce.mp3" },
     ],
   },
 ]

@@ -90,54 +90,50 @@ export default function SpanishSoundsPage() {
     </button>
   );
 
-  /** 单个字母列：字母 + 读音 + 音标 + 音节 + 原版单词示例 */
-  const LetterCol = ({ item, idBase }: { item: SpanishSoundLetter; idBase: string }) => (
-    <div className="flex min-w-0 flex-1 flex-col border-l border-border first:border-l-0">
+  /** 元音列序：a e i o u */
+  const VOWELS = ["a", "e", "i", "o", "u"];
+
+  /** 表格列模板（表头与数据行共用同一套固定宽度，保证严格对齐）：
+   *  字母 | 读音 | 音标 | a | e | i | o | u | 例词 */
+  const GRID_COLS = "grid-cols-[3.5rem_6.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_7rem] gap-x-2";
+
+  /** 单个字母行：字母 | 读音 | 音标 | a | e | i | o | u | 例词（行式表格） */
+  const LetterRow = ({ item, idBase }: { item: SpanishSoundLetter; idBase: string }) => (
+    <div className={`grid ${GRID_COLS} items-center border-b border-border px-3 py-2 last:border-b-0`}>
       {/* 字母 */}
-      <div className="border-b border-border px-2 py-3 text-center">
-        <Speakable text={item.letter} id={`${idBase}-letter`} className="text-2xl font-semibold text-foreground" />
-      </div>
+      <Speakable text={item.letter} id={`${idBase}-letter`} className="text-2xl font-semibold text-blue-600" />
       {/* 读音 */}
-      <div className="border-b border-border px-2 py-2 text-center">
-        <Speakable text={item.name} id={`${idBase}-name`} className="text-sm font-medium text-foreground" />
-      </div>
+      <Speakable text={item.name} id={`${idBase}-name`} className="text-sm font-medium text-foreground" />
       {/* 音标 */}
-      <div className="border-b border-border px-2 py-1.5 text-center text-sm tabular-nums text-primary">
-        {item.phoneme}
-      </div>
-      {/* 音节 */}
-      <div className="flex flex-col items-center gap-1 px-2 py-2">
-        {item.syllables.map((s) => (
-          <Speakable
-            key={s}
-            text={s}
-            id={`${idBase}-${s}`}
-            className="text-base leading-tight text-muted-foreground"
-          />
-        ))}
-        {item.note && (
-          <span className="mt-1 text-[11px] leading-tight text-muted-foreground/60">{item.note}</span>
-        )}
-      </div>
-      {/* 原版单词示例（底部） */}
-      {item.audio && item.example && (
-        <div className="mt-auto border-t border-dashed border-border/60 px-2 py-2.5 text-center">
+      <span className="text-sm tabular-nums text-primary">{item.phoneme}</span>
+      {/* 5 个元音子列：a e i o u（syllables 按该顺序，缺失为空串） */}
+      {VOWELS.map((vowel, vi) => {
+        const syl = item.syllables[vi]
+        if (!syl) return <span key={vowel} className="text-base text-muted-foreground/25">—</span>
+        return (
+          <Speakable key={vowel} text={syl} id={`${idBase}-${vowel}`} className="text-base leading-tight text-muted-foreground" />
+        )
+      })}
+      {/* 原版单词示例 + 备注 */}
+      <div className="flex flex-col items-start gap-0.5">
+        {item.audio && item.example ? (
           <button
             type="button"
             onClick={() => playAudio(item.audio!, `${idBase}-ex`)}
             title={`播放原版 ${item.example}`}
-            className={cn(
-              "group inline-flex items-center gap-1 rounded px-1.5 py-0.5 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
-            )}
+            className="group inline-flex items-center gap-1 rounded px-1.5 py-0.5 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
           >
             <span className="text-sm font-medium text-foreground">{item.example}</span>
+            <span className="text-[11px] text-muted-foreground/60">{item.exampleMeaning}</span>
             <Volume2 className={cn("size-3", playing === `${idBase}-ex` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
           </button>
-          <div className="mt-0.5 text-[11px] text-muted-foreground/60">
-            {item.exampleMeaning}
-          </div>
-        </div>
-      )}
+        ) : (
+          <span className="text-xs text-muted-foreground/40">—</span>
+        )}
+        {item.note && (
+          <span className="text-[10px] leading-tight text-muted-foreground/60">{item.note}</span>
+        )}
+      </div>
     </div>
   );
 
@@ -153,10 +149,7 @@ export default function SpanishSoundsPage() {
         </h1>
         <p className="mb-1 max-w-2xl leading-7 text-muted-foreground">
           常见易混辅音及字母组合的读音对照：唇音、齿音、喉音、舌后音、舌前音。
-          点击字母、读音或任意音节可听发音。
-        </p>
-        <p className="max-w-2xl text-sm leading-7 text-muted-foreground/80">
-          需浏览器内置西班牙语语音（Chrome/Edge/Safari 自带）。
+          点击字母、读音或任意音节可听发音；例词为原版录音。
         </p>
       </header>
 
@@ -165,9 +158,19 @@ export default function SpanishSoundsPage() {
         <section key={group.title} className="mb-8">
           <h2 className="mb-1 text-lg font-semibold text-foreground">{group.title}</h2>
           <p className="mb-3 text-sm text-muted-foreground">{group.desc}</p>
-          <div className="flex overflow-hidden rounded-lg border border-border bg-background">
+          <div className="overflow-hidden rounded-lg border border-border bg-background">
+            {/* 表头（与数据行共用 GRID_COLS，保证列严格对齐） */}
+            <div className={`grid ${GRID_COLS} items-center border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground`}>
+              <div>字母</div>
+              <div>读音</div>
+              <div>音标</div>
+              {VOWELS.map((v) => (
+                <div key={v} className="text-base font-semibold text-primary">{v}</div>
+              ))}
+              <div>例词</div>
+            </div>
             {group.letters.map((item) => (
-              <LetterCol key={item.letter} item={item} idBase={item.letter} />
+              <LetterRow key={item.letter} item={item} idBase={item.letter} />
             ))}
           </div>
         </section>
