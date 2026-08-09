@@ -233,7 +233,7 @@ export default function SpanishSoundsPage() {
           <div>读音</div>
           <div>音标</div>
           {VOWELS.map((v) => (
-            <div key={v} className="text-2xl font-semibold text-blue-600">{v}</div>
+            <div key={v} className="text-2xl font-semibold text-orange-600">{v}</div>
           ))}
           <div>例词</div>
           <div>音节拆分</div>
@@ -265,13 +265,13 @@ export default function SpanishSoundsPage() {
         <div className="grid grid-cols-[4rem_repeat(5,1fr)] items-center border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground">
           <div className="px-2 py-2 text-center text-xs">首＼尾</div>
           {VOWELS.map((v) => (
-            <div key={v} className="border-l border-border px-2 py-2 text-center text-2xl font-semibold text-blue-600">{v}</div>
+            <div key={v} className="border-l border-border px-2 py-2 text-center text-2xl font-semibold text-orange-600">{v}</div>
           ))}
         </div>
         {/* 数据行：每行一个首元音（最后一行保留 border-b 作为底部线） */}
         {VOWELS.map((first) => (
           <div key={first} className="grid grid-cols-[4rem_repeat(5,1fr)] items-stretch border-b border-border">
-            <div className="flex items-center justify-center bg-muted/20 px-2 py-2 text-2xl font-semibold text-blue-600">{first}</div>
+            <div className="flex items-center justify-center bg-muted/20 px-2 py-2 text-2xl font-semibold text-orange-600">{first}</div>
             {VOWELS.map((second) => {
               const dip = SPANISH_DIPHTHONGS.find((d) => d.combo === first + second) ?? null;
               return (
