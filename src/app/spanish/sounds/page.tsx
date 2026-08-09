@@ -94,10 +94,10 @@ export default function SpanishSoundsPage() {
   const VOWELS = ["a", "e", "i", "o", "u"];
 
   /** 表格列模板（表头与数据行共用同一套固定宽度，保证严格对齐）：
-   *  字母 | 读音 | 音标 | a | e | i | o | u | 例词 */
-  const GRID_COLS = "grid-cols-[3.5rem_6.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_9rem] gap-x-2";
+   *  字母 | 读音 | 音标 | a | e | i | o | u | 例词 | 音节拆分 */
+  const GRID_COLS = "grid-cols-[3.5rem_6.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_8rem_6rem] gap-x-2";
 
-  /** 单个字母行：字母 | 读音 | 音标 | a | e | i | o | u | 例词（行式表格） */
+  /** 单个字母行：字母 | 读音 | 音标 | a | e | i | o | u | 例词 | 音节拆分（行式表格） */
   const LetterRow = ({ item, idBase }: { item: SpanishSoundLetter; idBase: string }) => (
     <div className={`grid ${GRID_COLS} items-stretch border-b border-border px-3 py-2 last:border-b-0`}>
       {/* 字母 */}
@@ -129,26 +129,28 @@ export default function SpanishSoundsPage() {
           />
         )
       })}
-      {/* 原版单词示例 + 备注 */}
-      <div className="flex h-full w-full flex-col items-start justify-center gap-0.5 self-stretch">
+      {/* 原版单词示例 + 备注（单行内联，放不下用 title tooltip 显示完整） */}
+      <div className="flex h-full w-full items-center self-stretch overflow-hidden">
         {item.audio && item.example ? (
           <button
             type="button"
             onClick={() => playAudio(item.audio!, `${idBase}-ex`)}
-            title={`播放原版 ${item.example}`}
-            className="group flex w-full items-center gap-1 rounded px-1.5 py-1 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+            title={`${item.example} ${item.exampleMeaning ?? ""} ${item.note ? "· " + item.note : ""}`}
+            className="group flex w-full items-center gap-1 whitespace-nowrap rounded px-1.5 py-1 text-left transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
           >
             <span className="text-sm font-medium text-foreground">{item.example}</span>
             <span className="text-[11px] text-muted-foreground/60">{item.exampleMeaning}</span>
-            <Volume2 className={cn("size-3", playing === `${idBase}-ex` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
+            {item.note && <span className="truncate text-[10px] text-muted-foreground/60">· {item.note}</span>}
+            <Volume2 className={cn("size-3 shrink-0", playing === `${idBase}-ex` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
           </button>
         ) : (
           <span className="text-xs text-muted-foreground/40">—</span>
         )}
-        {item.note && (
-          <span className="text-[10px] leading-tight text-muted-foreground/60">{item.note}</span>
-        )}
       </div>
+      {/* 音节拆分（独立列） */}
+      <span className="self-center px-1 font-mono text-xs text-muted-foreground/70">
+        {item.exampleSyllables ?? "—"}
+      </span>
     </div>
   );
 
@@ -183,6 +185,7 @@ export default function SpanishSoundsPage() {
                 <div key={v} className="text-2xl font-semibold text-blue-600">{v}</div>
               ))}
               <div>例词</div>
+              <div>音节拆分</div>
             </div>
             {group.letters.map((item) => (
               <LetterRow key={item.letter} item={item} idBase={item.letter} />
