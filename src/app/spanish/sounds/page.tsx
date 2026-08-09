@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Volume2, Mic, Loader2, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Tooltip } from "@/components/ui/tooltip";
 import { SPANISH_SOUND_GROUPS, SPANISH_DIPHTHONGS, type SpanishSoundLetter, type SpanishDiphthong } from "@/lib/spanish-sounds";
 
 /** 日常会话例句分组（点击西语例句播放发音） */
@@ -468,10 +469,10 @@ export default function SpanishSoundsPage() {
       <p className="mb-3 text-sm text-muted-foreground">
         两个元音在同一音节连读（如 ai、ue）。矩阵行 = 首元音、列 = 尾元音，点击有组合的格子听发音；前 5 个为 speechgen 原版录音，其余为浏览器 TTS。
       </p>
-      {/* 矩阵表格：行=首元音，列=尾元音（外部边框 + 单元格竖线） */}
-      <div className="overflow-hidden border border-border bg-background">
-        {/* 表头：空角 + 尾元音列 */}
-        <div className="grid grid-cols-[4rem_repeat(5,1fr)] items-center border-b border-border bg-muted/40 text-sm font-medium text-muted-foreground">
+      {/* 矩阵表格：行=首元音，列=尾元音（保留左右外框 + 水平分隔线，避免底部双线） */}
+      <div className="overflow-hidden border-x border-border bg-background">
+        {/* 表头：空角 + 尾元音列（顶部线 + 底部线） */}
+        <div className="grid grid-cols-[4rem_repeat(5,1fr)] items-center border-b border-t border-border bg-muted/40 text-sm font-medium text-muted-foreground">
           <div className="px-2 py-2 text-center text-xs">首＼尾</div>
           {VOWELS.map((v) => (
             <div key={v} className="border-l border-border px-2 py-2 text-center text-2xl font-semibold text-orange-600">{v}</div>
@@ -526,37 +527,58 @@ export default function SpanishSoundsPage() {
                       )}
                     </span>
                   </button>
-                  {/* 评分列（紧跟例句，第二列）；hover 显示最近 5 次历史 */}
-                  <div
-                    className="flex shrink-0 items-center gap-1.5"
-                    title={s && s.length > 0 ? `最近 ${s.length} 次评分\n` + s.map((sc, idx) => `第${idx + 1}次 总${sc.total} 准${sc.accuracy} 流${sc.fluency} 整${sc.integrity}`).join("\n") : ""}
-                  >
-                    {s && s.length > 0 ? (
-                      [
-                        // 总分：<80 判不及格 → 橘红色；其余维度保持原有分级
-                        { label: "总", v: s[s.length - 1].total, isTotal: true },
-                        { label: "准", v: s[s.length - 1].accuracy, isTotal: false },
-                        { label: "流", v: s[s.length - 1].fluency, isTotal: false },
-                        { label: "整", v: s[s.length - 1].integrity, isTotal: false },
-                      ].map((item) => (
-                        <span key={item.label} className="flex items-center gap-0.5 text-base tabular-nums">
-                          <span className="text-muted-foreground/60">{item.label}</span>
-                          <span
-                            className={cn(
-                              "font-semibold",
-                              item.isTotal
-                                ? item.v >= 80 ? "text-emerald-500" : "text-orange-600"
-                                : item.v >= 70 ? "text-emerald-500" : item.v >= 50 ? "text-amber-500" : "text-rose-500",
-                            )}
-                          >
-                            {item.v}
-                          </span>
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-base text-muted-foreground/40">—</span>
-                    )}
-                  </div>
+                  {/* 评分列（紧跟例句，第二列）；hover 用 shadcn Tooltip 显示最近 5 次历史 */}
+                  {s && s.length > 0 ? (
+                    <Tooltip
+                      className="px-3 py-2 text-sm"
+                      content={
+                        <div className="flex flex-col gap-1.5">
+                          <span className="text-[13px] font-semibold text-background">最近 {s.length} 次评分</span>
+                          {s.map((sc, idx) => (
+                            <span key={idx} className="flex items-center gap-1.5 tabular-nums">
+                              <span className="text-background/70">第{idx + 1}次</span>
+                              <span className="text-background">总</span>
+                              <span className={sc.total >= 80 ? "text-emerald-400" : "text-orange-400"}>{sc.total}</span>
+                              <span className="text-background/70">准</span>
+                              <span className={sc.accuracy >= 70 ? "text-emerald-400" : sc.accuracy >= 50 ? "text-amber-400" : "text-rose-400"}>{sc.accuracy}</span>
+                              <span className="text-background/70">流</span>
+                              <span className={sc.fluency >= 70 ? "text-emerald-400" : sc.fluency >= 50 ? "text-amber-400" : "text-rose-400"}>{sc.fluency}</span>
+                              <span className="text-background/70">整</span>
+                              <span className={sc.integrity >= 70 ? "text-emerald-400" : sc.integrity >= 50 ? "text-amber-400" : "text-rose-400"}>{sc.integrity}</span>
+                            </span>
+                          ))}
+                        </div>
+                      }
+                    >
+                      <div className="flex shrink-0 items-center gap-1.5">
+                        {
+                          // 总分：<80 判不及格 → 橘红色；其余维度保持原有分级
+                          [
+                            { label: "总", v: s[s.length - 1].total, isTotal: true },
+                            { label: "准", v: s[s.length - 1].accuracy, isTotal: false },
+                            { label: "流", v: s[s.length - 1].fluency, isTotal: false },
+                            { label: "整", v: s[s.length - 1].integrity, isTotal: false },
+                          ].map((item) => (
+                            <span key={item.label} className="flex items-center gap-0.5 text-base tabular-nums">
+                              <span className={item.isTotal ? "text-foreground" : "text-muted-foreground/60"}>{item.label}</span>
+                              <span
+                                className={cn(
+                                  "font-semibold",
+                                  item.isTotal
+                                    ? item.v >= 80 ? "text-emerald-500" : "text-orange-600"
+                                    : item.v >= 70 ? "text-emerald-500" : item.v >= 50 ? "text-amber-500" : "text-rose-500",
+                                )}
+                              >
+                                {item.v}
+                              </span>
+                            </span>
+                          ))
+                        }
+                      </div>
+                    </Tooltip>
+                  ) : (
+                    <span className="text-base text-muted-foreground/40">—</span>
+                  )}
                   {/* 中文释义 */}
                   <span className="shrink-0 text-sm text-muted-foreground">{p.zh}</span>
                   {/* 跟读录音 */}
