@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, Square, Loader2, Volume2, AlertTriangle } from "lucide-react";
+import { Mic, Square, Loader2, PenLine, AlertTriangle } from "lucide-react";
 
 /**
  * 全局复用单个 AudioContext（用于解码 webm/opus）。
@@ -288,8 +288,8 @@ export default function PronunciationPractice({
             onClick={onPlayVoice}
             className="flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/60"
           >
-            <Volume2 className="size-4" />
-            听标准发音
+            <PenLine className="size-4" />
+            听写
           </button>
         )}
       </div>

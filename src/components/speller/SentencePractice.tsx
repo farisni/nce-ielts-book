@@ -53,13 +53,12 @@ function tokenize(target: string): Token[] {
   return tokens
 }
 
-/** 目标句子 → 单词列表（保留原大小写） */
+/** 目标句子 → 单词列表（保留原大小写）。
+ *  与 buildDisplay 的 tokenize 分词保持一致：按连续字母切分，
+ *  连字符/撇号等标点作为分隔（cat-like → ["cat","like"]），
+ *  保证空格导航的词数量与渲染槽位数一一对应。 */
 function getWords(target: string): string[] {
-  return target
-    .replace(/[^a-zA-Z\s]/g, "")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
+  return target.match(/[a-zA-Z]+/g) ?? []
 }
 
 /** 模块级 canvas 测量上下文（复用，避免重复创建） */
@@ -219,11 +218,11 @@ function useGameSounds() {
   }, [])
 
   const playType = useCallback(() => {
-    playBuffer(typeBufferRef.current, 0.45)
+    playBuffer(typeBufferRef.current, 0.8)
   }, [playBuffer])
 
   const playSuccess = useCallback(() => {
-    playBuffer(successBufferRef.current, 0.9)
+    playBuffer(successBufferRef.current, 1.0)
   }, [playBuffer])
 
   return { playType, playSuccess, soundReady: ready }
@@ -292,6 +291,8 @@ export default function SentencePractice({
   const [showSentences, setShowSentences] = useState(false)
   // 发音评测历史：按句子文本保存每次录音评分（翻句/切回可见）
   const [pronHistory, setPronHistory] = useState<Record<string, EvalResult>>({})
+  // 听写重置计数：点「听写」+1，驱动 PronunciationPractice 重新挂载（清掉评分/答案显示）
+  const [dictationTick, setDictationTick] = useState(0)
 
   const timerRef = useRef<number | null>(null)
   const advanceRef = useRef<number | null>(null)
@@ -447,6 +448,25 @@ export default function SentencePractice({
     }
     if (sentence) speak(sentence.en)
   }, [sentence, speak, playVoice])
+
+  /** 「听写」按钮：重置当前句输入状态 + 清除评分显示 + 播放发音，开始新一轮打字听写 */
+  const startDictation = useCallback(() => {
+    setWordInputs(getWords(target).map(() => ""))
+    setActiveIdx(0)
+    setSubmitted(false)
+    setRevealed(false)
+    setPassed(false)
+    // 清除当前句评分历史与角标/答案显示，让输入区回到空白听写状态
+    setPronHistory((prev) => {
+      if (!(target in prev)) return prev
+      const next = { ...prev }
+      delete next[target]
+      return next
+    })
+    setDictationTick((t) => t + 1)
+    if (playVoice) playVoice()
+    else if (sentence) speak(sentence.en)
+  }, [target, sentence, playVoice, speak])
 
   const submit = useCallback(() => {
     if (!sentence || submitted || revealed) return
@@ -1125,10 +1145,10 @@ export default function SentencePractice({
         </div>
 
         {/* 发音评测：跟读录音评分
-            key=句子 → 切句时重新挂载、恢复该句历史评分；
-            onResult 上报本次评分，按句文本存入 pronHistory 并持久化到 SQLite */}
+            key=句子+听写重置计数 → 切句/点「听写」时重新挂载；
+            重新挂载后按 initialResult 恢复（听写重置时该句历史已被清除，回到空白） */}
         <PronunciationPractice
-          key={target}
+          key={`${target}-${dictationTick}`}
           sentence={target}
           initialResult={pronHistory[target] ?? null}
           onResult={(r) => {
@@ -1136,7 +1156,7 @@ export default function SentencePractice({
             if (course) savePronScore(course.id, target, r).catch(() => {})
           }}
           onEvaluationSuccess={playSuccess}
-          onPlayVoice={() => (playVoice ? playVoice() : replay())}
+          onPlayVoice={startDictation}
         />
 
         {/* 统计栏 */}
