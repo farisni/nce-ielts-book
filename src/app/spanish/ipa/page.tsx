@@ -56,25 +56,25 @@ export default function SpanishIpaPage() {
   const IpaTableBlock = ({ rows, idPrefix }: { rows: IpaRow[]; idPrefix: string }) => (
     <div className="overflow-hidden rounded-lg border border-border bg-background">
       {/* 表头 */}
-      <div className="grid grid-cols-[2.5rem_1fr_1.8fr_2rem] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
-        <div>IPA</div>
+      <div className="grid grid-cols-[5rem_2.5rem_1.8fr_2rem] items-center gap-2 border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
         <div>拼写</div>
+        <div>IPA</div>
         <div>例词 · 音标</div>
         <div className="text-center"><Volume2 className="mx-auto size-3.5 text-muted-foreground/50" /></div>
       </div>
       {rows.map((row) => (
         <div
           key={row.ipa}
-          className="group grid grid-cols-[2.5rem_1fr_1.8fr_2rem] items-stretch gap-2 border-b border-border px-3 py-2.5 last:border-b-0"
+          className="group grid grid-cols-[5rem_2.5rem_1.8fr_2rem] items-stretch gap-2 border-b border-border px-3 py-2.5 last:border-b-0"
         >
+          {/* 拼写 */}
+          <span className="self-center text-lg font-semibold text-blue-600">{row.spelling}</span>
           {/* IPA 符号：斜杠浅灰，中间音标蓝色，斜杠与字母留一点间距 */}
-          <span className="self-center text-lg font-semibold">
+          <span className="self-center text-lg">
             <span className="mr-0.5 text-muted-foreground/50">/</span>
             <span className="text-blue-600">{row.ipa}</span>
             <span className="ml-0.5 text-muted-foreground/50">/</span>
           </span>
-          {/* 拼写 */}
-          <span className="self-center text-lg text-foreground">{row.spelling}</span>
           {/* 例词 + 音标 + 中文（整格可点击播放发音） */}
           <button
             type="button"
