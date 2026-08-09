@@ -10,9 +10,9 @@ const PHRASE_GROUPS = [
   {
     title: "问候类 · Saludos",
     items: [
-      { es: "Hola", zh: "你好", syl: "Ho-la" },
-      { es: "Buenos días", zh: "早上好", syl: "Bue-nos dí-as" },
-      { es: "Buenas tardes", zh: "下午好", syl: "Bue-nas tar-des" },
+      { es: "Hola", zh: "你好", syl: "Ho-la", audio: "hola.mp3" },
+      { es: "Buenos días", zh: "早上好", syl: "Bue-nos dí-as", audio: "buenos_dias.mp3" },
+      { es: "Buenas tardes", zh: "下午好", syl: "Bue-nas tar-des", audio: "buenas_tardes.mp3" },
       { es: "Buenas noches", zh: "晚上好", syl: "Bue-nas no-ches" },
     ],
   },
@@ -118,6 +118,25 @@ export default function SpanishSoundsPage() {
       audioRef.current = next;
     } else {
       playTts(d.example, id);
+    }
+  }, []);
+
+  /** 播放日常会话例句：有真人音频（spanish-phrases 目录）用 mp3，否则 TTS */
+  const playPhrase = useCallback((p: { es: string; audio?: string }, id: string) => {
+    if (p.audio) {
+      const prev = audioRef.current;
+      if (prev) {
+        prev.pause();
+        prev.currentTime = 0;
+      }
+      setPlaying(id);
+      const next = new Audio(`/audio/spanish-phrases/${p.audio}`);
+      next.onended = () => setPlaying(null);
+      next.onerror = () => setPlaying(null);
+      next.play().catch(() => setPlaying(null));
+      audioRef.current = next;
+    } else {
+      playTts(p.es, id);
     }
   }, []);
 
@@ -336,8 +355,8 @@ export default function SpanishSoundsPage() {
               <button
                 key={`${group.title}-${i}`}
                 type="button"
-                onClick={() => playTts(p.es, `phr-${group.title}-${i}`)}
-                title={`播放 ${p.es}`}
+                onClick={() => playPhrase(p, `phr-${group.title}-${i}`)}
+                title={`播放 ${p.es}${p.audio ? "（真人发音）" : ""}`}
                 className="group flex w-full items-center gap-3 border-b border-border px-4 py-2.5 text-left transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
               >
                 <Volume2 className={cn("size-4 shrink-0", playing === `phr-${group.title}-${i}` ? "text-primary" : "text-muted-foreground/0 group-hover:text-muted-foreground/70")} />
