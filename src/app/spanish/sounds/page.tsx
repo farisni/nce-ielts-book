@@ -95,33 +95,48 @@ export default function SpanishSoundsPage() {
 
   /** 表格列模板（表头与数据行共用同一套固定宽度，保证严格对齐）：
    *  字母 | 读音 | 音标 | a | e | i | o | u | 例词 */
-  const GRID_COLS = "grid-cols-[3.5rem_6.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_7rem] gap-x-2";
+  const GRID_COLS = "grid-cols-[3.5rem_6.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_3.5rem_9rem] gap-x-2";
 
   /** 单个字母行：字母 | 读音 | 音标 | a | e | i | o | u | 例词（行式表格） */
   const LetterRow = ({ item, idBase }: { item: SpanishSoundLetter; idBase: string }) => (
-    <div className={`grid ${GRID_COLS} items-center border-b border-border px-3 py-2 last:border-b-0`}>
+    <div className={`grid ${GRID_COLS} items-stretch border-b border-border px-3 py-2 last:border-b-0`}>
       {/* 字母 */}
-      <Speakable text={item.letter} id={`${idBase}-letter`} className="text-2xl font-semibold text-blue-600" />
+      <Speakable text={item.letter} id={`${idBase}-letter`} className="self-center text-2xl font-semibold text-blue-600" />
       {/* 读音 */}
-      <Speakable text={item.name} id={`${idBase}-name`} className="text-sm font-medium text-foreground" />
-      {/* 音标 */}
-      <span className="text-sm tabular-nums text-primary">{item.phoneme}</span>
-      {/* 5 个元音子列：a e i o u（syllables 按该顺序，缺失为空串） */}
+      <Speakable text={item.name} id={`${idBase}-name`} className="self-center text-lg font-medium text-foreground" />
+      {/* 音标：斜杠浅灰，中间音标蓝色（不发音等无斜杠文本原样显示） */}
+      <span className="self-center text-xl tabular-nums">
+        {/^\/.*\/$/.test(item.phoneme) ? (
+          <>
+            <span className="mr-0.5 text-muted-foreground/50">/</span>
+            <span className="text-blue-600">{item.phoneme.slice(1, -1)}</span>
+            <span className="ml-0.5 text-muted-foreground/50">/</span>
+          </>
+        ) : (
+          <span className="text-primary">{item.phoneme}</span>
+        )}
+      </span>
+      {/* 5 个元音子列：a e i o u（syllables 按该顺序，缺失为空串；整格可点击播放） */}
       {VOWELS.map((vowel, vi) => {
         const syl = item.syllables[vi]
-        if (!syl) return <span key={vowel} className="text-base text-muted-foreground/25">—</span>
+        if (!syl) return <span key={vowel} className="self-center text-center text-base text-muted-foreground/25">—</span>
         return (
-          <Speakable key={vowel} text={syl} id={`${idBase}-${vowel}`} className="text-base leading-tight text-foreground" />
+          <Speakable
+            key={vowel}
+            text={syl}
+            id={`${idBase}-${vowel}`}
+            className="flex h-full w-full items-center justify-center self-stretch text-xl leading-tight text-foreground"
+          />
         )
       })}
       {/* 原版单词示例 + 备注 */}
-      <div className="flex flex-col items-start gap-0.5">
+      <div className="flex h-full w-full flex-col items-start justify-center gap-0.5 self-stretch">
         {item.audio && item.example ? (
           <button
             type="button"
             onClick={() => playAudio(item.audio!, `${idBase}-ex`)}
             title={`播放原版 ${item.example}`}
-            className="group inline-flex items-center gap-1 rounded px-1.5 py-0.5 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+            className="group flex w-full items-center gap-1 rounded px-1.5 py-1 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
           >
             <span className="text-sm font-medium text-foreground">{item.example}</span>
             <span className="text-[11px] text-muted-foreground/60">{item.exampleMeaning}</span>
@@ -165,7 +180,7 @@ export default function SpanishSoundsPage() {
               <div>读音</div>
               <div>音标</div>
               {VOWELS.map((v) => (
-                <div key={v} className="text-base font-semibold text-foreground">{v}</div>
+                <div key={v} className="text-2xl font-semibold text-blue-600">{v}</div>
               ))}
               <div>例词</div>
             </div>
