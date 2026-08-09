@@ -167,12 +167,12 @@ const pageSearchItems: PageSearchItem[] = [
   },
   {
     id: "spanish-sounds",
-    label: "西班牙语 · 辅音对照",
-    description: "Spanish Consonants · 辅音发音对照表",
+    label: "西班牙语 · 音节拼读",
+    description: "西语字母表 · 音节拼读（字母×元音 + 双元音）",
     href: "/spanish/sounds",
     group: "Navigate",
     icon: <LanguagesIcon className="text-muted-foreground" />,
-    keywords: toKeywords("spanish 西班牙语 consonant 辅音 发音 sounds b v w d t h j g gu ca qu ce 对照表"),
+    keywords: toKeywords("spanish 西班牙语 音节拼读 consonant 辅音 发音 sounds b v w d t h j g gu ca qu ce 对照表 diptongo 双元音"),
   },
   {
     id: "spanish-ipa",
@@ -613,7 +613,7 @@ export default function TopNav() {
                     </li>
                     <li>
                       <NavigationMenuLink render={<Link href="/spanish/sounds" />}>
-                        <div className="font-medium text-foreground px-1">辅音对照 · Consonants</div>
+                        <div className="font-medium text-foreground px-1">音节拼读 · Sílabas</div>
                       </NavigationMenuLink>
                     </li>
                     <li>
