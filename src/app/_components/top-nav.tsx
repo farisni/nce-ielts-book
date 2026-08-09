@@ -184,6 +184,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("spanish 西班牙语 ipa 音标 phonetic chart 元音 vowel 辅音 consonant 转录 transcription dialect 方言"),
   },
   {
+    id: "spanish-cien-anos",
+    label: "西班牙语 · 百年孤独开篇",
+    description: "Cien años de soledad · 西语原文开篇 + 中译对照",
+    href: "/spanish/cien-anos",
+    group: "Navigate",
+    icon: <BookOpenIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 百年孤独 cien años soledad 马尔克斯 García Márquez 文学 literatura 原文 开篇"),
+  },
+  {
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
@@ -619,6 +628,11 @@ export default function TopNav() {
                     <li>
                       <NavigationMenuLink render={<Link href="/spanish/ipa" />}>
                         <div className="font-medium text-foreground px-1">IPA 音标 · Chart</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/cien-anos" />}>
+                        <div className="font-medium text-foreground px-1">百年孤独开篇 · García Márquez</div>
                       </NavigationMenuLink>
                     </li>
                   </ul>
