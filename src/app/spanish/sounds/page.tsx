@@ -111,7 +111,7 @@ export default function SpanishSoundsPage() {
         const syl = item.syllables[vi]
         if (!syl) return <span key={vowel} className="text-base text-muted-foreground/25">—</span>
         return (
-          <Speakable key={vowel} text={syl} id={`${idBase}-${vowel}`} className="text-base leading-tight text-muted-foreground" />
+          <Speakable key={vowel} text={syl} id={`${idBase}-${vowel}`} className="text-base leading-tight text-foreground" />
         )
       })}
       {/* 原版单词示例 + 备注 */}
@@ -165,7 +165,7 @@ export default function SpanishSoundsPage() {
               <div>读音</div>
               <div>音标</div>
               {VOWELS.map((v) => (
-                <div key={v} className="text-base font-semibold text-primary">{v}</div>
+                <div key={v} className="text-base font-semibold text-foreground">{v}</div>
               ))}
               <div>例词</div>
             </div>
