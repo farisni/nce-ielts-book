@@ -148,6 +148,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("speller 听写 打字 拼写 practice dictation 句子 sentence 打字练习"),
   },
   {
+    id: "spanish-alphabet",
+    label: "西班牙语 · 字母表",
+    description: "Spanish Alphabet · 西语字母听读表格",
+    href: "/spanish/alphabet",
+    group: "Navigate",
+    icon: <LanguagesIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 alphabet abecedario 字母表 ñ 发音 pronunciation"),
+  },
+  {
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
@@ -559,6 +568,15 @@ export default function TopNav() {
                     </li>
                   </ul>
                 </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  render={<Link href="/spanish/alphabet" />}
+                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
+                >
+                  西语字母
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
