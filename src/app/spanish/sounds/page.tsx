@@ -1,14 +1,14 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SPANISH_SOUND_GROUPS, type SpanishSoundLetter } from "@/lib/spanish-sounds";
 
 /**
- * 西班牙语辅音发音对照表
- * 每列一个字母/组合：读音、音标、音节例词。
- * 音节用浏览器 TTS 朗读（es-ES）；每列底部配一个原网站 studyspanish.com 的原版单词示例（本地 mp3）
+ * 西语字母表 · 音节拼读
+ * 字母 × 元音（a/e/i/o/u）拼读表：读音、音标、音节。
+ * 音节用浏览器 TTS 朗读（es-ES）；例词配原网站 studyspanish.com 的原版录音（本地 mp3）
  */
 /** 朗读音节文本（浏览器 TTS es-ES）；音频用于标记播放状态 */
 function playTts(text: string, id: string) {
@@ -159,40 +159,43 @@ export default function SpanishSoundsPage() {
       {/* 页头 */}
       <header className="mb-6">
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-primary">
-          Spanish · Pronunciation
+          Spanish · Alphabet · Sílabas
         </p>
         <h1 className="mb-3 text-2xl font-semibold tracking-wide text-foreground">
-          西班牙语辅音发音对照表
+          西语字母表 · 音节拼读
         </h1>
         <p className="mb-1 max-w-2xl leading-7 text-muted-foreground">
-          常见易混辅音及字母组合的读音对照：唇音、齿音、喉音、舌后音、舌前音。
+          西语字母与 5 个元音拼读（a/e/i/o/u）：唇音、齿音、喉音、舌后音、舌前音。
           点击字母、读音或任意音节可听发音；例词为原版录音。
         </p>
       </header>
 
-      {/* 各组对照表 */}
-      {SPANISH_SOUND_GROUPS.map((group) => (
-        <section key={group.title} className="mb-8">
-          <h2 className="mb-1 text-lg font-semibold text-foreground">{group.title}</h2>
-          <p className="mb-3 text-sm text-muted-foreground">{group.desc}</p>
-          <div className="overflow-hidden rounded-lg border border-border bg-background">
-            {/* 表头（与数据行共用 GRID_COLS，保证列严格对齐） */}
-            <div className={`grid ${GRID_COLS} items-center border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground`}>
-              <div>字母</div>
-              <div>读音</div>
-              <div>音标</div>
-              {VOWELS.map((v) => (
-                <div key={v} className="text-2xl font-semibold text-blue-600">{v}</div>
-              ))}
-              <div>例词</div>
-              <div>音节拆分</div>
+      {/* 大表格：分类标题跨整列穿插在各组之间 */}
+      <div className="overflow-hidden rounded-lg border border-border bg-background">
+        {/* 表头（与数据行共用 GRID_COLS，保证列严格对齐） */}
+        <div className={`grid ${GRID_COLS} items-center border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground`}>
+          <div>字母</div>
+          <div>读音</div>
+          <div>音标</div>
+          {VOWELS.map((v) => (
+            <div key={v} className="text-2xl font-semibold text-blue-600">{v}</div>
+          ))}
+          <div>例词</div>
+          <div>音节拆分</div>
+        </div>
+        {SPANISH_SOUND_GROUPS.map((group) => (
+          <Fragment key={group.title}>
+            {/* 分类分隔行：跨整列显示组名 + 说明 */}
+            <div className="border-b border-border bg-muted/30 px-4 py-2.5">
+              <span className="text-sm font-semibold text-foreground">{group.title}</span>
+              {group.desc && <span className="ml-2 text-xs text-muted-foreground">{group.desc}</span>}
             </div>
             {group.letters.map((item) => (
               <LetterRow key={item.letter} item={item} idBase={item.letter} />
             ))}
-          </div>
-        </section>
-      ))}
+          </Fragment>
+        ))}
+      </div>
     </div>
   );
 }
