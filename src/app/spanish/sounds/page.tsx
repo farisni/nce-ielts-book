@@ -170,10 +170,10 @@ export default function SpanishSoundsPage() {
         </p>
       </header>
 
-      {/* 大表格：分类标题跨整列穿插在各组之间 */}
-      <div className="overflow-hidden rounded-lg border border-border bg-background">
+      {/* 大表格：分类标题跨整列穿插在各组之间；只保留行与行的水平分隔线 */}
+      <div className="overflow-hidden bg-background">
         {/* 表头（与数据行共用 GRID_COLS，保证列严格对齐） */}
-        <div className={`grid ${GRID_COLS} items-center border-b border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground`}>
+        <div className={`grid ${GRID_COLS} items-center border-b border-t border-border bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground`}>
           <div>字母</div>
           <div>读音</div>
           <div>音标</div>
