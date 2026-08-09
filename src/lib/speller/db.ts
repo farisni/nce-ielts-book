@@ -158,3 +158,54 @@ export function upsertPronHistory(courseId: string, sentence: string, result: st
       updated_at = excluded.updated_at
   `).run(courseId, sentence, result, Date.now())
 }
+
+// ── 西语日常会话评分历史（复用 speller_pron_history，course_id="西语基础"，result 存最近 5 次数组） ──
+
+const SPANISH_COURSE_ID = "西语基础"
+
+/** 读取某例句的西语评分历史（返回 JSON 数组，最多 5 次；无则空数组） */
+export function getSpanishPronHistory(sentence: string): unknown[] {
+  const db = getDb()
+  const row = db
+    .prepare("SELECT result FROM speller_pron_history WHERE course_id = ? AND sentence = ?")
+    .get(SPANISH_COURSE_ID, sentence) as unknown as { result: string } | undefined
+  if (!row) return []
+  try {
+    const arr = JSON.parse(row.result)
+    return Array.isArray(arr) ? arr.slice(-5) : []
+  } catch {
+    return []
+  }
+}
+
+/** 追加一次西语评分（保留最近 5 次） */
+export function appendSpanishPronHistory(sentence: string, result: unknown) {
+  const db = getDb()
+  const prev = getSpanishPronHistory(sentence)
+  const next = [...prev, result].slice(-5)
+  db.prepare(`
+    INSERT INTO speller_pron_history (course_id, sentence, result, updated_at)
+    VALUES (?, ?, ?, ?)
+    ON CONFLICT(course_id, sentence) DO UPDATE SET
+      result = excluded.result,
+      updated_at = excluded.updated_at
+  `).run(SPANISH_COURSE_ID, sentence, JSON.stringify(next), Date.now())
+}
+
+/** 读取全部西语评分历史，返回 { sentence → results[] } */
+export function getAllSpanishPronHistory(): Record<string, unknown[]> {
+  const db = getDb()
+  const rows = db
+    .prepare("SELECT sentence, result FROM speller_pron_history WHERE course_id = ?")
+    .all(SPANISH_COURSE_ID) as unknown as { sentence: string; result: string }[]
+  const map: Record<string, unknown[]> = {}
+  for (const r of rows) {
+    try {
+      const arr = JSON.parse(r.result)
+      map[r.sentence] = Array.isArray(arr) ? arr.slice(-5) : []
+    } catch {
+      map[r.sentence] = []
+    }
+  }
+  return map
+}

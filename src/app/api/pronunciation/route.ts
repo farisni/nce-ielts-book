@@ -18,6 +18,18 @@ const XF_HOST = "ise-api.xfyun.cn";
 const XF_PATH = "/v2/open-ise";
 const XF_URL = `wss://${XF_HOST}${XF_PATH}`;
 
+// 讯飞「其他语种评测」suntone（西/日/韩/法/德/俄），用于西语发音评测
+const SUNTONE_HOST = "cn-east-1.ws-api.xf-yun.com";
+const SUNTONE_PATH = "/v1/private/sffc17cdb";
+const SUNTONE_URL = `wss://${SUNTONE_HOST}${SUNTONE_PATH}`;
+
+/** 检测是否西语文本（含 ñ/¿/¡ 或常见西语词尾） */
+function isSpanish(text: string): boolean {
+  if (/[ñÑ¿¡áéíóúÁÉÍÓÚ]/.test(text)) return true;
+  // 常见西语词
+  return /\b(hola|buenos|buenas|adios|adiós|gracias|hasta|dias|días|noches|tardes|como|cómo|estas|estás|llamas|madrid|chino|mucho|nada|hoy|y|de|la|el)\b/i.test(text);
+}
+
 function getCredentials(): { appId: string; apiKey: string; apiSecret: string } {
   const appId = process.env.XF_APP_ID;
   const apiKey = process.env.XF_API_KEY;
@@ -147,6 +159,136 @@ function evaluateAudio(
   });
 }
 
+/** 生成 suntone 带鉴权参数的 WebSocket URL */
+function buildSuntoneUrl(): string {
+  const { apiKey, apiSecret } = getCredentials();
+  const date = new Date().toUTCString();
+  const signatureOrigin = `host: ${SUNTONE_HOST}\ndate: ${date}\nGET ${SUNTONE_PATH} HTTP/1.1`;
+  const signature = crypto
+    .createHmac("sha256", apiSecret)
+    .update(signatureOrigin)
+    .digest("base64");
+  const authorizationOrigin = `api_key="${apiKey}", algorithm="hmac-sha256", headers="host date request-line", signature="${signature}"`;
+  const authorization = Buffer.from(authorizationOrigin, "utf8").toString("base64");
+  return `${SUNTONE_URL}?authorization=${encodeURIComponent(authorization)}&date=${encodeURIComponent(date)}&host=${encodeURIComponent(SUNTONE_HOST)}`;
+}
+
+/** 与讯飞 suntone（其他语种）交互，返回评测 JSON 字符串（西语） */
+function evaluateSuntone(
+  audioBuffer: Buffer,
+  targetText: string,
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const { appId } = getCredentials();
+    const ws = new WebSocket(buildSuntoneUrl());
+
+    let result = "";
+    let settled = false;
+
+    const done = (err?: Error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      try { ws.close(); } catch { /* ignore */ }
+      if (err) reject(err);
+    };
+
+    const timer = setTimeout(() => done(new Error("评测超时")), 20000);
+
+    ws.addEventListener("open", () => {
+      const st = {
+        lang: "sp",
+        core: "sent",
+        refText: targetText,
+        result: { encoding: "utf8", compress: "raw", format: "json" },
+      };
+      // 帧1：参数 + 全部音频（raw PCM）
+      const audioB64 = audioBuffer.toString("base64");
+      ws.send(JSON.stringify({
+        header: { app_id: appId, status: 0 },
+        parameter: { st },
+        payload: { data: { encoding: "raw", sample_rate: 16000, channels: 1, bit_depth: 16, status: 0, seq: 0, audio: audioB64, frame_size: 0 } },
+      }));
+      // 帧2：结束帧（带占位音频）
+      setTimeout(() => {
+        ws.send(JSON.stringify({
+          header: { app_id: appId, status: 2 },
+          parameter: { st },
+          payload: { data: { encoding: "raw", sample_rate: 16000, channels: 1, bit_depth: 16, status: 2, seq: 1, audio: "AAAA", frame_size: 0 } },
+        }));
+      }, 300);
+    });
+
+    ws.addEventListener("message", (event) => {
+      let msg: Record<string, any>;
+      try {
+        msg = JSON.parse(event.data as string);
+      } catch {
+        return;
+      }
+      if (msg.header?.code !== 0) {
+        done(new Error(`讯飞错误 ${msg.header.code}: ${msg.header.message}`));
+        return;
+      }
+      if (msg.header?.status === 2 && msg.payload?.result) {
+        result = Buffer.from(msg.payload.result.text || "", "base64").toString("utf8");
+        done();
+      }
+    });
+
+    ws.addEventListener("error", () => done(new Error("讯飞 WebSocket 连接失败")));
+    ws.addEventListener("close", () => {
+      if (!settled) done(new Error("连接被关闭"));
+    });
+
+    const check = setInterval(() => {
+      if (settled) {
+        clearInterval(check);
+        if (result) resolve(result);
+        else reject(new Error("讯飞未返回评测结果"));
+      }
+    }, 50);
+  });
+}
+
+/** 解析 suntone 西语评测 JSON，提取总分 + 各维度分 + 单词级分数 */
+function parseSuntoneResult(jsonText: string) {
+  try {
+    const data = JSON.parse(jsonText);
+    const r = data.result ?? {};
+    const overall = Number(r.overall) || 0;
+    // 语速（speed 是每分钟音节数，越接近自然语速越好；仅作参考不归一）
+    const speed = Number(r.speed) || 0;
+    const words = Array.isArray(r.words)
+      ? r.words.map((w: any) => ({
+          word: String(w.word ?? "").replace(/[,\s]+$/, ""),
+          // 单词总分
+          score: Number(w.scores?.overall) || 0,
+          // 发音准确度（讯飞西语单词级维度）
+          pronunciation: Number(w.scores?.pronunciation) || 0,
+          wrong: (Number(w.scores?.overall) || 0) < 60,
+        }))
+      : [];
+    // 准确度 = 各单词发音准确度的平均值
+    const pronAvg = words.length
+      ? Math.round(words.reduce((s: number, w: { pronunciation: number }) => s + (w.pronunciation || 0), 0) / words.length)
+      : overall;
+    return {
+      total: overall,
+      accuracy: pronAvg,
+      fluency: overall,
+      integrity: overall,
+      speed,
+      isRejected: false,
+      exceptInfo: "0",
+      exceptMessage: "",
+      words,
+    };
+  } catch {
+    return { total: 0, accuracy: 0, fluency: 0, integrity: 0, speed: 0, isRejected: true, exceptInfo: "-1", exceptMessage: "评测结果解析失败", words: [] };
+  }
+}
+
 /** 讯飞英文评测分数为 0-5 分制，归一化为 0-100 便于展示 */
 function normalizeScore(v: number): number {
   if (v <= 0) return 0;
@@ -256,6 +398,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    // 西语文本 → suntone（其他语种评测），否则走中英文 ISE
+    if (isSpanish(text)) {
+      const resultJson = await evaluateSuntone(audio, text);
+      const parsed = parseSuntoneResult(resultJson);
+      if (parsed.isRejected || parsed.total === 0) {
+        console.warn(`[suntone] text=${JSON.stringify(text)} audio=${audio.length}B`);
+      }
+      return NextResponse.json({ success: true, result: parsed, engine: "suntone" });
+    }
     const resultXml = await evaluateAudio(audio, text);
     const parsed = parseIseXml(resultXml);
     // 诊断日志：被拒或得分为 0 时打印原始 XML，便于排查录音问题
