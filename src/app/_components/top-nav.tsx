@@ -157,6 +157,15 @@ const pageSearchItems: PageSearchItem[] = [
     keywords: toKeywords("spanish 西班牙语 alphabet abecedario 字母表 ñ 发音 pronunciation"),
   },
   {
+    id: "spanish-listen-repeat",
+    label: "西班牙语 · 元音听读",
+    description: "Spanish Vowel A · 卡片单词听读练习",
+    href: "/spanish/listen-repeat",
+    group: "Navigate",
+    icon: <PlayIcon className="text-muted-foreground" />,
+    keywords: toKeywords("spanish 西班牙语 vowel a 元音 listen repeat 听读 卡片 单词 pronunciation"),
+  },
+  {
     id: "ielts",
     label: "IELTS 文章",
     description: "IELTS 16 article reader",
@@ -571,12 +580,21 @@ export default function TopNav() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink
-                  render={<Link href="/spanish/alphabet" />}
-                  className={navigationMenuTriggerStyle({ className: "py-0 leading-none font-semibold text-sm" })}
-                >
-                  西语字母
-                </NavigationMenuLink>
+                <NavigationMenuTrigger>西班牙语</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-56 list-none grid-cols-1 gap-1 p-0">
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/alphabet" />}>
+                        <div className="font-medium text-foreground px-1">字母表 · Alphabet</div>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink render={<Link href="/spanish/listen-repeat" />}>
+                        <div className="font-medium text-foreground px-1">元音听读 · Listen & Repeat</div>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
