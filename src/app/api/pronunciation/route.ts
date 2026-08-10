@@ -428,10 +428,12 @@ export async function POST(request: NextRequest) {
   let audio: Buffer;
   let text: string;
   let audioContentType = "";
+  let lang = "";
   try {
     const formData = await request.formData();
     const audioFile = formData.get("audio");
     const textVal = formData.get("text");
+    const langVal = formData.get("lang");
     if (!(audioFile instanceof Blob)) {
       return NextResponse.json({ error: "缺少音频文件" }, { status: 400 });
     }
@@ -442,6 +444,7 @@ export async function POST(request: NextRequest) {
     audio = Buffer.from(arrayBuf);
     text = textVal.trim();
     audioContentType = audioFile.type ?? "";
+    lang = typeof langVal === "string" ? langVal.trim() : "";
   } catch {
     return NextResponse.json({ error: "请求体解析失败，需使用 multipart/form-data" }, { status: 400 });
   }
@@ -456,8 +459,11 @@ export async function POST(request: NextRequest) {
     if (audioContentType && audioContentType !== "audio/pcm" && audioContentType !== "audio/x-pcm") {
       audio = await transcodeToPcm(audio);
     }
-    // 西语文本 → suntone（其他语种评测），否则走中英文 ISE
-    if (isSpanish(text)) {
+    // 西语评测：客户端显式传 lang=es 时强制走 suntone（避免无重音西语词
+    // 如 pelo/ojo 被文本检测误判为英文走 ISE 导致乱读低分）；
+    // 否则按文本检测（西语文本 → suntone，其他 → ISE）。
+    const useSpanish = lang === "es" || isSpanish(text);
+    if (useSpanish) {
       const resultJson = await evaluateSuntone(audio, text);
       const parsed = parseSuntoneResult(resultJson);
       if (parsed.isRejected || parsed.total === 0) {
