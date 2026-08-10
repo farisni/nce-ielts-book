@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { spawn } from "node:child_process";
+import { readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { randomUUID } from "node:crypto";
 
 /**
  * 讯飞语音评测（流式版）后端转发
@@ -28,6 +33,52 @@ function isSpanish(text: string): boolean {
   if (/[ñÑ¿¡áéíóúÁÉÍÓÚ]/.test(text)) return true;
   // 常见西语词
   return /\b(hola|buenos|buenas|adios|adiós|gracias|hasta|dias|días|noches|tardes|como|cómo|estas|estás|llamas|madrid|chino|mucho|nada|hoy|y|de|la|el)\b/i.test(text);
+}
+
+/**
+ * m4a/aac/wav 等压缩/容器音频 → 16kHz 16bit 单声道 PCM
+ *
+ * 讯飞 ISE 只接受 16k/16bit/单声道 PCM；手机端录出的 m4a 直接上传会被判
+ * 「乱读」。这里用系统 ffmpeg 转码（macOS 已验证 /opt/homebrew/bin/ffmpeg），
+ * 输入容器由 ffmpeg 自动探测，输出 s16le 裸 PCM。
+ * 成功/失败都会清理临时文件。
+ */
+function transcodeToPcm(input: Buffer): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    const inPath = join(tmpdir(), `ise-in-${randomUUID()}`);
+    const outPath = join(tmpdir(), `ise-out-${randomUUID()}`);
+    writeFileSync(inPath, input);
+    const proc = spawn("ffmpeg", [
+      "-y",
+      "-loglevel", "error",
+      "-i", inPath,
+      "-ar", "16000",
+      "-ac", "1",
+      "-sample_fmt", "s16",
+      "-f", "s16le",
+      outPath,
+    ]);
+    proc.on("error", (err) => {
+      try { unlinkSync(inPath); unlinkSync(outPath); } catch { /* 忽略清理失败 */ }
+      reject(err);
+    });
+    proc.on("close", (code) => {
+      try { unlinkSync(inPath); } catch { /* 忽略 */ }
+      if (code !== 0) {
+        try { unlinkSync(outPath); } catch { /* 忽略 */ }
+        reject(new Error(`ffmpeg 转码失败（退出码 ${code}），请确认音频文件有效`));
+        return;
+      }
+      try {
+        const pcm = readFileSync(outPath);
+        unlinkSync(outPath);
+        resolve(pcm);
+      } catch (err) {
+        try { unlinkSync(outPath); } catch { /* 忽略 */ }
+        reject(err as Error);
+      }
+    });
+  });
 }
 
 function getCredentials(): { appId: string; apiKey: string; apiSecret: string } {
@@ -376,6 +427,7 @@ function parseIseXml(xmlText: string) {
 export async function POST(request: NextRequest) {
   let audio: Buffer;
   let text: string;
+  let audioContentType = "";
   try {
     const formData = await request.formData();
     const audioFile = formData.get("audio");
@@ -389,6 +441,7 @@ export async function POST(request: NextRequest) {
     const arrayBuf = await audioFile.arrayBuffer();
     audio = Buffer.from(arrayBuf);
     text = textVal.trim();
+    audioContentType = audioFile.type ?? "";
   } catch {
     return NextResponse.json({ error: "请求体解析失败，需使用 multipart/form-data" }, { status: 400 });
   }
@@ -398,6 +451,11 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    // 非裸 PCM（如手机录的 m4a/aac）：先 ffmpeg 转成 16k/16bit/单声道 PCM，
+    // 再喂讯飞。参考项目 Web 端上传的是裸 PCM（audio/pcm），跳过转码。
+    if (audioContentType && audioContentType !== "audio/pcm" && audioContentType !== "audio/x-pcm") {
+      audio = await transcodeToPcm(audio);
+    }
     // 西语文本 → suntone（其他语种评测），否则走中英文 ISE
     if (isSpanish(text)) {
       const resultJson = await evaluateSuntone(audio, text);
