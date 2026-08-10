@@ -41,7 +41,13 @@ function splitComponents(es: string, components: { role: string; text: string }[
   return segments;
 }
 
-type Sentence = { es: string; zh: string; components: { role: string; text: string }[] };
+type Sentence = {
+  es: string;
+  zh: string;
+  components: { role: string; text: string }[];
+  /** 本句生词：西语 + 中文释义 */
+  words: { es: string; zh: string }[];
+};
 
 /** 整首歌词，按实际演唱顺序排列 */
 const SENTENCES: Sentence[] = [
@@ -53,6 +59,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "sabes" },
       { role: "宾语从句", text: "que ya llevo un rato mirándote" },
     ],
+    words: [
+      { es: "saber", zh: "知道" },
+      { es: "llevar + 时间", zh: "已经（做某事）多久" },
+      { es: "un rato", zh: "一会儿" },
+      { es: "mirar", zh: "看" },
+    ],
   },
   {
     es: "Tengo que bailar contigo hoy",
@@ -62,6 +74,12 @@ const SENTENCES: Sentence[] = [
       { role: "状语", text: "contigo" },
       { role: "时间状语", text: "hoy" },
     ],
+    words: [
+      { es: "tener que + inf.", zh: "必须、得" },
+      { es: "bailar", zh: "跳舞" },
+      { es: "contigo", zh: "和你" },
+      { es: "hoy", zh: "今天" },
+    ],
   },
   {
     es: "Vi que tu mirada ya estaba llamándome",
@@ -69,6 +87,12 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Vi" },
       { role: "宾语从句", text: "que tu mirada ya estaba llamándome" },
+    ],
+    words: [
+      { es: "ver", zh: "看见（vi 为过去时）" },
+      { es: "la mirada", zh: "目光" },
+      { es: "estar + gerundio", zh: "正在（做某事）" },
+      { es: "llamar", zh: "呼唤" },
     ],
   },
   {
@@ -78,6 +102,10 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Muéstrame" },
       { role: "宾语", text: "el camino" },
       { role: "定语从句", text: "que yo voy" },
+    ],
+    words: [
+      { es: "mostrar", zh: "展示（muéstrame = 给我展示）" },
+      { es: "el camino", zh: "路" },
     ],
   },
   /* ── 前副歌 1 ── */
@@ -93,6 +121,10 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（系动词）", text: "soy" },
       { role: "表语", text: "el metal" },
     ],
+    words: [
+      { es: "el imán", zh: "磁铁" },
+      { es: "el metal", zh: "金属" },
+    ],
   },
   {
     es: "Me voy acercando y voy armando el plan",
@@ -103,6 +135,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（进行体）", text: "voy armando" },
       { role: "宾语", text: "el plan" },
     ],
+    words: [
+      { es: "ir + gerundio", zh: "渐渐（进行体）" },
+      { es: "acercarse", zh: "靠近" },
+      { es: "armar", zh: "盘算、准备" },
+      { es: "el plan", zh: "计划" },
+    ],
   },
   {
     es: "Solo con pensarlo se acelera el pulso",
@@ -112,6 +150,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（自复被动）", text: "se acelera" },
       { role: "主语（无灵）", text: "el pulso" },
     ],
+    words: [
+      { es: "solo con + inf.", zh: "光是…就" },
+      { es: "pensar", zh: "想" },
+      { es: "acelerarse", zh: "加速" },
+      { es: "el pulso", zh: "心跳、脉搏" },
+    ],
   },
   {
     es: "Ya, ya me está gustando más de lo normal",
@@ -120,6 +164,11 @@ const SENTENCES: Sentence[] = [
       { role: "时间状语", text: "Ya" },
       { role: "谓语（进行体 estar+副动词）", text: "me está gustando" },
       { role: "比较状语", text: "más de lo normal" },
+    ],
+    words: [
+      { es: "ya", zh: "已经" },
+      { es: "gustar", zh: "使喜欢（me gusta = 我喜欢）" },
+      { es: "más de lo normal", zh: "比平常更" },
     ],
   },
   /* ── 副歌 1 ── */
@@ -131,6 +180,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（进行体）", text: "van pidiendo" },
       { role: "宾语", text: "más" },
     ],
+    words: [
+      { es: "los sentidos", zh: "感官" },
+      { es: "pedir", zh: "索求、渴求" },
+      { es: "más", zh: "更多" },
+    ],
   },
   {
     es: "Esto hay que tomarlo sin ningún apuro",
@@ -140,11 +194,17 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（无人称义务）", text: "hay que tomarlo" },
       { role: "方式状语", text: "sin ningún apuro" },
     ],
+    words: [
+      { es: "hay que + inf.", zh: "必须、得（无人称）" },
+      { es: "tomar", zh: "对待、处理" },
+      { es: "el apuro", zh: "匆忙、着急" },
+    ],
   },
   {
     es: "Despacito",
     zh: "慢慢地",
     components: [{ role: "状语", text: "Despacito" }],
+    words: [{ es: "despacito", zh: "慢慢地（-ito 小称）" }],
   },
   {
     es: "Quiero respirar tu cuello despacito",
@@ -153,6 +213,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Quiero" },
       { role: "宾语（不定式短语）", text: "respirar tu cuello" },
       { role: "状语", text: "despacito" },
+    ],
+    words: [
+      { es: "querer + inf.", zh: "想要" },
+      { es: "respirar", zh: "呼吸" },
+      { es: "el cuello", zh: "脖颈" },
     ],
   },
   {
@@ -163,6 +228,11 @@ const SENTENCES: Sentence[] = [
       { role: "宾语从句（虚拟式）", text: "que te diga cosas" },
       { role: "状语", text: "al oído" },
     ],
+    words: [
+      { es: "dejar que + subj.", zh: "让（某人做某事）" },
+      { es: "decir", zh: "说" },
+      { es: "al oído", zh: "在耳边" },
+    ],
   },
   {
     es: "Para que te acuerdes si no estás conmigo",
@@ -171,11 +241,17 @@ const SENTENCES: Sentence[] = [
       { role: "目的状语从句（Para que+虚拟式）", text: "Para que te acuerdes" },
       { role: "条件状语从句", text: "si no estás conmigo" },
     ],
+    words: [
+      { es: "para que + subj.", zh: "为了、好让（目的）" },
+      { es: "acordarse de", zh: "记得" },
+      { es: "conmigo", zh: "和我" },
+    ],
   },
   {
     es: "Despacito",
     zh: "慢慢地",
     components: [{ role: "状语", text: "Despacito" }],
+    words: [{ es: "despacito", zh: "慢慢地（-ito 小称）" }],
   },
   {
     es: "Quiero desnudarte a besos despacito",
@@ -186,6 +262,11 @@ const SENTENCES: Sentence[] = [
       { role: "方式状语", text: "a besos" },
       { role: "状语", text: "despacito" },
     ],
+    words: [
+      { es: "desnudar", zh: "脱衣、褪去衣裳" },
+      { es: "a besos", zh: "用亲吻" },
+      { es: "el beso", zh: "吻" },
+    ],
   },
   {
     es: "Firmo en las paredes de tu laberinto",
@@ -193,6 +274,11 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Firmo" },
       { role: "地点状语", text: "en las paredes de tu laberinto" },
+    ],
+    words: [
+      { es: "firmar", zh: "签署、签下" },
+      { es: "la pared", zh: "墙" },
+      { es: "el laberinto", zh: "迷宫" },
     ],
   },
   {
@@ -203,6 +289,11 @@ const SENTENCES: Sentence[] = [
       { role: "状语", text: "de tu cuerpo" },
       { role: "宾语", text: "todo un manuscrito" },
     ],
+    words: [
+      { es: "hacer de + sust.", zh: "把…变成" },
+      { es: "el cuerpo", zh: "身体" },
+      { es: "el manuscrito", zh: "手稿" },
+    ],
   },
   /* ── 主歌 2 ── */
   {
@@ -212,6 +303,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Quiero" },
       { role: "宾语（不定式短语）", text: "ver bailar tu pelo" },
     ],
+    words: [
+      { es: "ver", zh: "看" },
+      { es: "bailar", zh: "舞动" },
+      { es: "el pelo", zh: "头发" },
+    ],
   },
   {
     es: "Quiero ser tu ritmo",
@@ -219,6 +315,10 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Quiero" },
       { role: "宾语（不定式短语）", text: "ser tu ritmo" },
+    ],
+    words: [
+      { es: "ser", zh: "成为" },
+      { es: "el ritmo", zh: "节奏" },
     ],
   },
   {
@@ -229,6 +329,11 @@ const SENTENCES: Sentence[] = [
       { role: "间接宾语", text: "a mi boca" },
       { role: "直接宾语", text: "tus lugares favoritos" },
     ],
+    words: [
+      { es: "enseñar", zh: "教" },
+      { es: "la boca", zh: "嘴" },
+      { es: "el lugar favorito", zh: "最喜欢的地方" },
+    ],
   },
   {
     es: "Déjame sobrepasar tus zonas de peligro",
@@ -237,12 +342,20 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Déjame" },
       { role: "宾语（不定式短语）", text: "sobrepasar tus zonas de peligro" },
     ],
+    words: [
+      { es: "dejar + inf.", zh: "让（某人做某事）" },
+      { es: "sobrepasar", zh: "越过、超过" },
+      { es: "la zona de peligro", zh: "危险地带" },
+    ],
   },
   {
     es: "Hasta provocar tus gritos",
     zh: "直到引出你的尖叫",
-    components: [
-      { role: "目的状语（不定式）", text: "Hasta provocar tus gritos" },
+    components: [{ role: "目的状语（不定式）", text: "Hasta provocar tus gritos" }],
+    words: [
+      { es: "hasta + inf.", zh: "直到…" },
+      { es: "provocar", zh: "引发、激起" },
+      { es: "el grito", zh: "尖叫" },
     ],
   },
   {
@@ -251,6 +364,10 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语（虚拟式）", text: "olvides" },
       { role: "宾语", text: "tu apellido" },
+    ],
+    words: [
+      { es: "olvidar", zh: "忘记" },
+      { es: "el apellido", zh: "姓氏" },
     ],
   },
   /* ── 前副歌 2 ── */
@@ -262,6 +379,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "ven" },
       { role: "谓语", text: "dámelo" },
     ],
+    words: [
+      { es: "pedir", zh: "索要" },
+      { es: "el beso", zh: "吻" },
+      { es: "venir", zh: "来（ven 命令式）" },
+      { es: "dámelo", zh: "把它给我" },
+    ],
   },
   {
     es: "Yo sé que estás pensándolo",
@@ -270,6 +393,10 @@ const SENTENCES: Sentence[] = [
       { role: "主语", text: "Yo" },
       { role: "谓语", text: "sé" },
       { role: "宾语从句", text: "que estás pensándolo" },
+    ],
+    words: [
+      { es: "saber", zh: "知道（sé 为现在时）" },
+      { es: "pensar", zh: "想" },
     ],
   },
   {
@@ -280,6 +407,10 @@ const SENTENCES: Sentence[] = [
       { role: "宾语", text: "tiempo" },
       { role: "伴随状语", text: "intentándolo" },
     ],
+    words: [
+      { es: "llevar tiempo + gerundio", zh: "花了很久（做某事）" },
+      { es: "intentar", zh: "尝试" },
+    ],
   },
   {
     es: "Mami, esto es dando y dándolo",
@@ -289,6 +420,10 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（系动词）", text: "es" },
       { role: "表语（副动词）", text: "dando y dándolo" },
     ],
+    words: [
+      { es: "dar", zh: "给予" },
+      { es: "dando y dándolo", zh: "不断地给予" },
+    ],
   },
   {
     es: "Sabes que tu corazón conmigo te hace bom, bom",
@@ -297,6 +432,10 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Sabes" },
       { role: "宾语从句", text: "que tu corazón conmigo te hace bom, bom" },
     ],
+    words: [
+      { es: "el corazón", zh: "心脏" },
+      { es: "hacer bom, bom", zh: "怦怦直跳" },
+    ],
   },
   {
     es: "Sabes que esa beba está buscando de mi bom, bom",
@@ -304,6 +443,11 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Sabes" },
       { role: "宾语从句", text: "que esa beba está buscando de mi bom, bom" },
+    ],
+    words: [
+      { es: "esa", zh: "那个" },
+      { es: "la beba", zh: "女孩" },
+      { es: "buscar", zh: "寻觅" },
     ],
   },
   {
@@ -315,6 +459,11 @@ const SENTENCES: Sentence[] = [
       { role: "状语", text: "de mi boca" },
       { role: "目的状语从句", text: "para ver cómo te sabe" },
     ],
+    words: [
+      { es: "probar", zh: "品尝" },
+      { es: "la boca", zh: "嘴" },
+      { es: "saber a", zh: "尝起来有…味道" },
+    ],
   },
   {
     es: "Quiero, quiero, quiero ver cuánto amor a ti te cabe",
@@ -322,6 +471,11 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Quiero" },
       { role: "宾语从句", text: "ver cuánto amor a ti te cabe" },
+    ],
+    words: [
+      { es: "cuánto", zh: "多少" },
+      { es: "el amor", zh: "爱" },
+      { es: "caber", zh: "容纳、装得下" },
     ],
   },
   {
@@ -335,6 +489,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "me quiero dar" },
       { role: "宾语", text: "el viaje" },
     ],
+    words: [
+      { es: "tener prisa", zh: "着急" },
+      { es: "darse el viaje", zh: "好好享受旅程" },
+      { es: "el viaje", zh: "旅程" },
+    ],
   },
   {
     es: "Empecemos lento, después salvaje",
@@ -343,6 +502,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Empecemos" },
       { role: "方式状语", text: "lento" },
       { role: "时间状语", text: "después salvaje" },
+    ],
+    words: [
+      { es: "empezar", zh: "开始" },
+      { es: "lento", zh: "缓慢的" },
+      { es: "después", zh: "之后" },
+      { es: "salvaje", zh: "狂野的" },
     ],
   },
   /* ── 副歌 2 ── */
@@ -354,6 +519,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（进行体）", text: "nos vamos pegando" },
       { role: "方式状语", text: "poquito a poquito" },
     ],
+    words: [
+      { es: "pasito a pasito", zh: "一步一步" },
+      { es: "suavecito", zh: "轻轻柔柔" },
+      { es: "pegarse", zh: "贴近、黏在一起" },
+      { es: "poquito a poquito", zh: "一点一点" },
+    ],
   },
   {
     es: "Cuando tú me besas con esa destreza",
@@ -362,6 +533,11 @@ const SENTENCES: Sentence[] = [
       { role: "时间状语从句", text: "Cuando tú me besas" },
       { role: "方式状语", text: "con esa destreza" },
     ],
+    words: [
+      { es: "cuando", zh: "当…时" },
+      { es: "besar", zh: "亲吻" },
+      { es: "la destreza", zh: "娴熟、技巧" },
+    ],
   },
   {
     es: "Veo que eres malicia con delicadeza",
@@ -369,6 +545,10 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Veo" },
       { role: "宾语从句", text: "que eres malicia con delicadeza" },
+    ],
+    words: [
+      { es: "la malicia", zh: "淘气、狡黠" },
+      { es: "la delicadeza", zh: "温柔、细腻" },
     ],
   },
   {
@@ -379,6 +559,12 @@ const SENTENCES: Sentence[] = [
       { role: "谓语（进行体）", text: "nos vamos pegando" },
       { role: "方式状语", text: "poquito a poquito" },
     ],
+    words: [
+      { es: "pasito a pasito", zh: "一步一步" },
+      { es: "suavecito", zh: "轻轻柔柔" },
+      { es: "pegarse", zh: "贴近、黏在一起" },
+      { es: "poquito a poquito", zh: "一点一点" },
+    ],
   },
   {
     es: "Y es que esa belleza es un rompecabezas",
@@ -387,6 +573,10 @@ const SENTENCES: Sentence[] = [
       { role: "主语", text: "esa belleza" },
       { role: "谓语（系动词）", text: "es" },
       { role: "表语", text: "un rompecabezas" },
+    ],
+    words: [
+      { es: "la belleza", zh: "美貌" },
+      { es: "el rompecabezas", zh: "拼图、谜" },
     ],
   },
   {
@@ -398,12 +588,18 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "tengo" },
       { role: "宾语", text: "la pieza" },
     ],
+    words: [
+      { es: "pa' = para", zh: "为了" },
+      { es: "montar", zh: "拼装" },
+      { es: "la pieza", zh: "拼图块、零件" },
+    ],
   },
   /* ── 尾声（副歌再现） ── */
   {
     es: "Despacito",
     zh: "慢慢地",
     components: [{ role: "状语", text: "Despacito" }],
+    words: [{ es: "despacito", zh: "慢慢地（-ito 小称）" }],
   },
   {
     es: "Quiero respirar tu cuello despacito",
@@ -412,6 +608,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "Quiero" },
       { role: "宾语（不定式短语）", text: "respirar tu cuello" },
       { role: "状语", text: "despacito" },
+    ],
+    words: [
+      { es: "querer + inf.", zh: "想要" },
+      { es: "respirar", zh: "呼吸" },
+      { es: "el cuello", zh: "脖颈" },
     ],
   },
   {
@@ -422,6 +623,11 @@ const SENTENCES: Sentence[] = [
       { role: "宾语从句（虚拟式）", text: "que te diga cosas" },
       { role: "状语", text: "al oído" },
     ],
+    words: [
+      { es: "dejar que + subj.", zh: "让（某人做某事）" },
+      { es: "decir", zh: "说" },
+      { es: "al oído", zh: "在耳边" },
+    ],
   },
   {
     es: "Para que te acuerdes si no estás conmigo",
@@ -430,11 +636,17 @@ const SENTENCES: Sentence[] = [
       { role: "目的状语从句（Para que+虚拟式）", text: "Para que te acuerdes" },
       { role: "条件状语从句", text: "si no estás conmigo" },
     ],
+    words: [
+      { es: "para que + subj.", zh: "为了、好让（目的）" },
+      { es: "acordarse de", zh: "记得" },
+      { es: "conmigo", zh: "和我" },
+    ],
   },
   {
     es: "Despacito",
     zh: "慢慢地",
     components: [{ role: "状语", text: "Despacito" }],
+    words: [{ es: "despacito", zh: "慢慢地（-ito 小称）" }],
   },
   {
     es: "Quiero desnudarte a besos despacito",
@@ -445,6 +657,11 @@ const SENTENCES: Sentence[] = [
       { role: "方式状语", text: "a besos" },
       { role: "状语", text: "despacito" },
     ],
+    words: [
+      { es: "desnudar", zh: "脱衣、褪去衣裳" },
+      { es: "a besos", zh: "用亲吻" },
+      { es: "el beso", zh: "吻" },
+    ],
   },
   {
     es: "Firmo en las paredes de tu laberinto",
@@ -452,6 +669,11 @@ const SENTENCES: Sentence[] = [
     components: [
       { role: "谓语", text: "Firmo" },
       { role: "地点状语", text: "en las paredes de tu laberinto" },
+    ],
+    words: [
+      { es: "firmar", zh: "签署、签下" },
+      { es: "la pared", zh: "墙" },
+      { es: "el laberinto", zh: "迷宫" },
     ],
   },
   {
@@ -461,6 +683,11 @@ const SENTENCES: Sentence[] = [
       { role: "谓语", text: "hacer" },
       { role: "状语", text: "de tu cuerpo" },
       { role: "宾语", text: "todo un manuscrito" },
+    ],
+    words: [
+      { es: "hacer de + sust.", zh: "把…变成" },
+      { es: "el cuerpo", zh: "身体" },
+      { es: "el manuscrito", zh: "手稿" },
     ],
   },
 ];
@@ -521,7 +748,7 @@ export default function SpanishDespacitoPage() {
           逐句对照 <span className="ml-1 font-normal text-muted-foreground">Frase por frase</span>
         </h2>
         <p className="mb-3 text-xs leading-6 text-muted-foreground">
-          例句中成分着色加粗，角色标签在成分下方行间隙，成分间用 / 分隔。
+          例句中成分着色加粗，角色标签在成分下方行间隙，成分间用 / 分隔；每句下方附本句生词。
         </p>
         <div>
           {SENTENCES.map((s, i) => (
@@ -561,6 +788,18 @@ export default function SpanishDespacitoPage() {
               </p>
               {/* 中文译文 */}
               <p className="mt-2 text-sm leading-[2] text-muted-foreground">{s.zh}</p>
+              {/* 本句生词：西语 + 中文释义，胶囊式横排 */}
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {s.words.map((w) => (
+                  <span
+                    key={w.es}
+                    className="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-muted/40 px-3 py-1 text-[13px]"
+                  >
+                    <span className="font-medium text-blue-600">{w.es}</span>
+                    <span className="text-muted-foreground">{w.zh}</span>
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
