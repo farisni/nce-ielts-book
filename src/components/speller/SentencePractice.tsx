@@ -561,9 +561,9 @@ export default function SentencePractice({
         return
       }
 
-      // 反引号 `：播放发音（显示答案时按 → 隐藏答案，回到输入状态）
-      // 同时匹配 e.key 和 e.code（中文输入法下 e.key 可能不是 `，但物理键 Backquote 不变）
-      if (e.key === "`" || e.code === "Backquote") {
+      // Tab：播放发音（显示答案时按 → 隐藏答案，回到输入状态）
+      // Tab 默认是焦点切换，必须 preventDefault
+      if (e.key === "Tab") {
         e.preventDefault()
         if (revealed) {
           setRevealed(false)
@@ -805,7 +805,7 @@ export default function SentencePractice({
         <Button variant="secondary" size="sm" onClick={replay} title={playVoice ? "播放视频" : "播放发音"} aria-label={playVoice ? "播放视频" : "播放发音"} className="gap-1.5">
           <Volume2 className="size-3.5" />
           {playVoice ? "播放视频" : "播放发音"}
-          <Kbd>`</Kbd>
+          <Kbd>Tab</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
           <CheckCircle2 className="size-3.5" />
