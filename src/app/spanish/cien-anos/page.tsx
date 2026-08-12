@@ -85,21 +85,242 @@ const SENTENCES: { es: string; zh: string; components: { role: string; text: str
   },
 ];
 
-/** 关键词汇（供学习参考） */
-const VOCAB: { es: string; zh: string }[] = [
-  { es: "el pelotón de fusilamiento", zh: "行刑队" },
-  { es: "recordar", zh: "回想起，记起" },
-  { es: "el hielo", zh: "冰" },
-  { es: "la aldea", zh: "村落，小村庄" },
-  { es: "el barro", zh: "泥巴，黏土" },
-  { es: "la cañabrava", zh: "芦苇（大叶芦竹）" },
-  { es: "a la orilla de", zh: "在……岸边" },
-  { es: "aguas diáfanas", zh: "清澈见底的水" },
-  { es: "el lecho", zh: "河床；床" },
-  { es: "piedras pulidas", zh: "光滑的卵石" },
-  { es: "huevos prehistóricos", zh: "史前巨蛋" },
-  { es: "carecer de nombre", zh: "没有名字" },
-  { es: "señalar con el dedo", zh: "用手指指点点" },
+/**
+ * 关键词汇（供学习参考）：补充音标、词性、完整释义与真人发音。
+ * 数据源：西语助手 esdict.cn（词条由查询中心词得到，真人发音为 fs-gateway mp3）。
+ */
+type VocabEntry = {
+  /** 原文短语/词组 */
+  es: string;
+  /** 中文释义（本文语境） */
+  zh: string;
+  /** 查询用的中心词（esdict 词条） */
+  headword?: string;
+  /** 音标 */
+  phonetic?: string;
+  /** 词性 */
+  pos?: string;
+  /** 完整释义 */
+  defs?: string[];
+  /** 真人发音 mp3（可能为空） */
+  audio?: string;
+};
+
+const VOCAB: VocabEntry[] = [
+  {
+    es: "el pelotón de fusilamiento",
+    zh: "行刑队",
+    headword: "pelotón",
+    phonetic: "/pelo'ton/",
+    pos: "m.",
+    defs: ["1.（毛、发、线等）团", "2.（径赛）组", "3.【转】人群", "4.【军】小队；排"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/54aa4d3c-319f-416f-a6f6-70cf17f8d939.mp3",
+  },
+  {
+    es: "recordar",
+    zh: "回想起，记起",
+    headword: "recordar",
+    phonetic: "/rekoɾ'ðaɾ/",
+    pos: "tr.",
+    defs: ["1. 记住", "2. 记起，想起，回忆起", "3. 像，联想到"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/73d18c42-7ceb-40c3-80d3-98a2125e5db3.mp3",
+  },
+  {
+    es: "el hielo",
+    zh: "冰",
+    headword: "hielo",
+    phonetic: "/'jelo/",
+    pos: "m.",
+    defs: ["1. 冰", "2. 结冰，冰冻", "3.【转】冷漠，冷淡", "4.【转】惊愕，惊呆"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/3aaf5d5b-b39c-45c2-848d-df59999ff5b0.mp3",
+  },
+  {
+    es: "la aldea",
+    zh: "村落，小村庄",
+    headword: "aldea",
+    phonetic: "/al'dea/",
+    pos: "f.",
+    defs: ["村，村庄"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/16b2b14d-1617-4087-9304-e00c5e76fbde.mp3",
+  },
+  {
+    es: "el barro",
+    zh: "泥巴，黏土",
+    headword: "barro",
+    phonetic: "/'baro/",
+    pos: "m.",
+    defs: ["1. 泥巴，稀泥，烂泥", "2.（烧制器皿用的）黏土", "3.【转】价值不大之物", "4.【转】耻辱"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/61be2821-b910-4cb5-a1a2-f00f66a85871.mp3",
+  },
+  {
+    es: "la cañabrava",
+    zh: "芦苇（大叶芦竹）",
+    headword: "cañabrava",
+    pos: "f.",
+    defs: ["（拉丁美洲）芦苇，芦竹"],
+  },
+  {
+    es: "a la orilla de",
+    zh: "在……岸边",
+    headword: "orilla",
+    phonetic: "/o'ɾiʎa/",
+    pos: "f.",
+    defs: ["1. 边，边缘，边沿", "2. 岸边", "3.【口】靠近，挨近"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/fc2f92a7-1fcf-4b2e-96da-c347e582bbc9.mp3",
+  },
+  {
+    es: "aguas diáfanas",
+    zh: "清澈见底的水",
+    headword: "diáfano",
+    phonetic: "/'djafano/",
+    pos: "adj.",
+    defs: ["1. 透明的", "2. 清澈的，洁净的", "3.【转】光明磊落的"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/2f153d14-9972-418f-8135-ddb410d9861b.mp3",
+  },
+  {
+    es: "el lecho",
+    zh: "河床；床",
+    headword: "lecho",
+    phonetic: "/'leʧo/",
+    pos: "m.",
+    defs: ["1. 床，榻，铺", "2. 河床", "3. 湖底，海底", "4. 层；地层，岩层"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/7636c09e-cc24-4967-bd06-c6a37f57f5a1.mp3",
+  },
+  {
+    es: "piedras pulidas",
+    zh: "光滑的卵石",
+    headword: "pulido",
+    phonetic: "/pu'liðo/",
+    pos: "adj.",
+    defs: ["光滑的，光洁的，漂亮的"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/759a0064-a4bc-4175-8fb1-8048bcff446f.mp3",
+  },
+  {
+    es: "huevos prehistóricos",
+    zh: "史前巨蛋",
+    headword: "prehistórico",
+    phonetic: "/pɾejs̺'toɾiko/",
+    pos: "adj.",
+    defs: ["史前的"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/1e12b091-acf1-425d-a68b-e68e24ccf1db.mp3",
+  },
+  {
+    es: "carecer de nombre",
+    zh: "没有名字",
+    headword: "carecer",
+    pos: "intr.",
+    defs: ["«de» 欠缺，缺少，缺乏"],
+  },
+  {
+    es: "señalar con el dedo",
+    zh: "用手指指点点",
+    headword: "señalar",
+    phonetic: "/s̺eɲa'laɾ/",
+    pos: "tr.",
+    defs: ["1. 标明，指出", "2.（在某处）做记号，做标记", "3. 确定，规定"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/bdc1ee3d-ce72-43b5-8fb8-1a393f2ee938.mp3",
+  },
+];
+
+/**
+ * 开篇第一句的实词解析（虚词与专有名词略）。
+ * 与 VOCAB 重复的词（pelotón / recordar / hielo）不重复列出。
+ */
+const SENTENCE_VOCAB: VocabEntry[] = [
+  {
+    es: "mucho",
+    zh: "很多的，大量的",
+    phonetic: "/'muʧo/",
+    pos: "adj.",
+    defs: ["1. 很多的，大量的；巨大的，非常的", "2.【副】很，大量；更为，更加"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/c730b97e-fc19-43f7-b1a7-4726db7d3a80.mp3",
+  },
+  {
+    es: "año",
+    zh: "年",
+    phonetic: "/'aɲo/",
+    pos: "m.",
+    defs: ["1. 年", "2. 年度", "3. pl. 岁数，年纪"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/da6c8b40-f07c-47c0-b7b9-1da3a24c5cde.mp3",
+  },
+  {
+    es: "después",
+    zh: "之后，后来",
+    phonetic: "/des̺pu'es̺/",
+    pos: "adv.",
+    defs: ["1. 之后，后来，以后", "2. 在后面"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/7ab2daaf-317a-4734-81e6-d545ea7a215a.mp3",
+  },
+  {
+    es: "frente",
+    zh: "前面；面对",
+    phonetic: "/'fɾente/",
+    pos: "f.",
+    defs: ["1. 前面，前线", "2. 前额（f.）", "3. frente a 面对，面向"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/f296917d-99b7-47b9-860d-6d10b94d5a44.mp3",
+  },
+  {
+    es: "fusilamiento",
+    zh: "枪决，行刑",
+    phonetic: "/fus̺ila'mjento/",
+    pos: "m.",
+    defs: ["1. 枪毙，枪决"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/90d7cfe7-1d1a-4b2c-95a8-7f2eba56418f.mp3",
+  },
+  {
+    es: "coronel",
+    zh: "上校",
+    pos: "m.",
+    defs: ["1.【军】上校"],
+  },
+  {
+    es: "aquel",
+    zh: "那个（远指）",
+    phonetic: "/a'kel/",
+    pos: "adj.dem.",
+    defs: ["1. 那个，那些（指离说话双方都较远的人或物）"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/3a7b7e95-904a-432e-a367-403ffe723975.mp3",
+  },
+  {
+    es: "tarde",
+    zh: "下午，午后",
+    phonetic: "/'taɾðe/",
+    pos: "f.",
+    defs: ["1. 下午，午后", "2.【副】晚，迟"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/504520f4-6506-492f-91aa-fdcda2fbd3b1.mp3",
+  },
+  {
+    es: "remoto",
+    zh: "遥远的",
+    phonetic: "/re'moto/",
+    pos: "adj.",
+    defs: ["1. 遥远的", "2.【转】不太可能的"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/56454dfd-e91c-4860-af6f-aad2c1be5979.mp3",
+  },
+  {
+    es: "padre",
+    zh: "父亲",
+    phonetic: "/'paðɾe/",
+    pos: "m.",
+    defs: ["1. 父亲", "2. pl. 父母，双亲"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/21d72869-53bb-4c87-9671-7fd572c0efdf.mp3",
+  },
+  {
+    es: "llevar",
+    zh: "带，带去",
+    phonetic: "/ʎe'βaɾ/",
+    pos: "tr.",
+    defs: ["1. 带，带去，携带", "2. 运送，运载"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/0e3ad7d4-f3b7-4295-b757-f319bd53159a.mp3",
+  },
+  {
+    es: "conocer",
+    zh: "认识，知道",
+    phonetic: "/kono'θeɾ/",
+    pos: "tr.",
+    defs: ["1. 认识，了解，熟悉", "2. 知道"],
+    audio: "https://fs-gateway.frdic.com/buckets/main/wordmp3/534cb24a-128f-479d-ab2e-d4cb9055820d.mp3",
+  },
 ];
 
 export default function SpanishCienAnosPage() {
@@ -192,25 +413,143 @@ export default function SpanishCienAnosPage() {
         </div>
       </section>
 
+      {/* 开篇句词汇 */}
+      <section className="mb-8">
+        <h2 className="mb-1 text-sm font-medium text-foreground">
+          开篇句词汇 <span className="ml-1 font-normal text-muted-foreground">Vocabulario de la primera frase</span>
+        </h2>
+        <p className="mb-3 text-xs leading-6 text-muted-foreground">
+          第一句里的实词（虚词略）。音标、词性与释义来自西语助手，点 🔊 听真人发音。
+        </p>
+        <div>
+          {SENTENCE_VOCAB.map((v, i) => (
+            <div
+              key={i}
+              className={cn(
+                "px-6 py-3.5",
+                i > 0 && "border-t border-border",
+              )}
+            >
+              {/* 第一行：西语 + 音标 + 词性 + 发音 */}
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <button
+                  type="button"
+                  aria-label={v.audio ? `播放 ${v.es} 的发音` : `${v.es} 暂无音频`}
+                  disabled={!v.audio}
+                  onClick={() => {
+                    if (v.audio) {
+                      const el = document.getElementById(`saudio-${i}`) as HTMLAudioElement | null;
+                      if (el) {
+                        if (el.paused) void el.play();
+                        else el.pause();
+                      }
+                    }
+                  }}
+                  className={cn(
+                    "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm",
+                    v.audio
+                      ? "cursor-pointer bg-primary/10 text-primary hover:bg-primary/20"
+                      : "cursor-not-allowed text-muted-foreground/30",
+                  )}
+                >
+                  🔊
+                </button>
+                <span className="text-[15px] font-medium text-foreground">{v.es}</span>
+                {v.phonetic && (
+                  <span className="text-[13px] text-muted-foreground/80">{v.phonetic}</span>
+                )}
+                {v.pos && (
+                  <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-xs text-muted-foreground">
+                    {v.pos}
+                  </span>
+                )}
+                {v.audio && (
+                  <audio id={`saudio-${i}`} src={v.audio} preload="none" className="hidden" />
+                )}
+              </div>
+              {/* 第二行：中文 */}
+              <p className="mt-1 text-sm font-medium text-foreground/90">{v.zh}</p>
+              {/* 第三行：完整释义 */}
+              {v.defs && v.defs.length > 0 && (
+                <ul className="mt-1 list-none space-y-0.5">
+                  {v.defs.map((d, di) => (
+                    <li key={di} className="text-[13px] leading-6 text-muted-foreground">
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 关键词汇 */}
       <section>
         <h2 className="mb-1 text-sm font-medium text-foreground">
           关键词汇 <span className="ml-1 font-normal text-muted-foreground">Vocabulario clave</span>
         </h2>
         <p className="mb-3 text-xs leading-6 text-muted-foreground">
-          开篇里值得留意的高频词与短语。
+          开篇里值得留意的高频词与短语。音标、词性与释义来自西语助手，点 🔊 听真人发音。
         </p>
         <div>
           {VOCAB.map((v, i) => (
             <div
               key={i}
               className={cn(
-                "grid grid-cols-1 items-center gap-1 px-6 py-3 sm:grid-cols-2",
+                "px-6 py-3.5",
                 i > 0 && "border-t border-border",
               )}
             >
-              <span className="truncate text-[15px] font-medium text-foreground">{v.es}</span>
-              <span className="text-sm text-muted-foreground sm:text-right">{v.zh}</span>
+              {/* 第一行：西语 + 音标 + 词性 + 发音 */}
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <button
+                  type="button"
+                  aria-label={v.audio ? `播放 ${v.es} 的发音` : `${v.es} 暂无音频`}
+                  disabled={!v.audio}
+                  onClick={() => {
+                    if (v.audio) {
+                      const el = document.getElementById(`audio-${i}`) as HTMLAudioElement | null;
+                      if (el) {
+                        if (el.paused) void el.play();
+                        else el.pause();
+                      }
+                    }
+                  }}
+                  className={cn(
+                    "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm",
+                    v.audio
+                      ? "cursor-pointer bg-primary/10 text-primary hover:bg-primary/20"
+                      : "cursor-not-allowed text-muted-foreground/30",
+                  )}
+                >
+                  🔊
+                </button>
+                <span className="text-[15px] font-medium text-foreground">{v.es}</span>
+                {v.phonetic && (
+                  <span className="text-[13px] text-muted-foreground/80">{v.phonetic}</span>
+                )}
+                {v.pos && (
+                  <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-xs text-muted-foreground">
+                    {v.pos}
+                  </span>
+                )}
+                {v.audio && (
+                  <audio id={`audio-${i}`} src={v.audio} preload="none" className="hidden" />
+                )}
+              </div>
+              {/* 第二行：中文 */}
+              <p className="mt-1 text-sm font-medium text-foreground/90">{v.zh}</p>
+              {/* 第三行：完整释义 */}
+              {v.defs && v.defs.length > 0 && (
+                <ul className="mt-1 list-none space-y-0.5">
+                  {v.defs.map((d, di) => (
+                    <li key={di} className="text-[13px] leading-6 text-muted-foreground">
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
