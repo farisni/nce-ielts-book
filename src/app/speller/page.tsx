@@ -69,7 +69,37 @@ export default function SpellerPage() {
           </span>
         </Link>
 
-        {COURSES.map((course) => {
+        {/* NCE3 新概念英语第三册 · 课系列入口 */}
+        <Link
+          href="/speller/nce3"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
+                新
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">NCE3 · 新概念英语第三册</h2>
+                  <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                    视频课程
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  A Puma at Large · 看视频，听真人朗读，打字拼写
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            选择课 →
+          </span>
+        </Link>
+
+        {COURSES.filter((c) => !c.id.startsWith("nce3-")).map((course) => {
           const p = progress[course.id];
           const progressPct = course.sentences.length > 0
             ? Math.round(((p?.passed ?? 0) / course.sentences.length) * 100)
