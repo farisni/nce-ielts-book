@@ -528,33 +528,36 @@ export default function SentencePractice({
   }, [phase, course, savePatch])
 
   // ── 进入下一句 ──
+  // 显示答案状态（revealed）切句后延续：开启后后续句子/单词都直接显示答案，
+  // 再按一次「显示答案」才关闭（toggle 逻辑在 showAnswer 与 Tab/右⌘ 分支）。
+  // 延续时新句输入直接填答案（显示答案本质 = 输入区填入答案）
   const gotoNext = useCallback(() => {
     const next = index + 1
     if (next >= session.length) {
       setPhase("done")
       return
     }
+    const nextWords = getWords(session[next].en)
     inputSnapshotRef.current = null
     setIndex(next)
-    setWordInputs(getWords(session[next].en).map(() => ""))
+    setWordInputs(revealed ? nextWords.map((w) => w) : nextWords.map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
-    setRevealed(false)
     setPassed(false)
-  }, [index, session])
+  }, [index, session, revealed])
 
   // ── 回到上一句（无上句则忽略）──
   const gotoPrev = useCallback(() => {
     const prev = index - 1
     if (prev < 0) return
+    const prevWords = getWords(session[prev].en)
     inputSnapshotRef.current = null
     setIndex(prev)
-    setWordInputs(getWords(session[prev].en).map(() => ""))
+    setWordInputs(revealed ? prevWords.map((w) => w) : prevWords.map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
-    setRevealed(false)
     setPassed(false)
-  }, [index, session])
+  }, [index, session, revealed])
 
   // ── 句子列表抽屉：点击某句 → 跳到该句听写 ──
   // 该句在本组 session 中 → 直接跳转；不在 → 把当前进度位置的句子替换为点击句
@@ -711,12 +714,19 @@ export default function SentencePractice({
 
   const showAnswer = useCallback(() => {
     if (!sentence || passed) return
-    // 先保存当前输入快照（拼到一半的字符），隐藏答案时恢复
-    inputSnapshotRef.current = wordInputs
-    setRevealed(true)
-    setWordInputs(words.map((w) => w))
-    setHintCount((h) => h + 1)
-  }, [sentence, passed, words, wordInputs])
+    if (revealed) {
+      // 再次按下 → 隐藏答案：恢复显示答案前的输入（不丢拼到一半的字符）
+      setRevealed(false)
+      setWordInputs(inputSnapshotRef.current ?? words.map(() => ""))
+      inputSnapshotRef.current = null
+    } else {
+      // 显示答案：先保存当前输入快照（拼到一半的字符），隐藏答案时恢复
+      inputSnapshotRef.current = wordInputs
+      setRevealed(true)
+      setWordInputs(words.map((w) => w))
+      setHintCount((h) => h + 1)
+    }
+  }, [sentence, passed, revealed, words, wordInputs])
 
   const markMastered = useCallback(() => {
     if (!sentence || passed) return
