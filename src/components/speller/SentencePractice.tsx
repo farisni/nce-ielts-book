@@ -547,8 +547,11 @@ export default function SentencePractice({
   const startGame = useCallback(() => {
     const pool = course?.sentences ?? []
     const sessionSize = course?.sessionSize ?? 10
-    // 洗牌同时记录课程原始索引，供视频/SRT 联动
-    const idx = shuffle(pool.map((_, i) => i)).slice(0, sessionSize)
+    // 记录课程原始索引，供视频/SRT 联动。
+    // 全量课程（sessionSize ≥ 总数，如单词听写整 Unit 顺序学）不洗牌：
+    // 方向键上一个/下一个按原序切换；抽查课程（sessionSize < 总数）才洗牌
+    const poolIdx = pool.map((_, i) => i)
+    const idx = sessionSize >= pool.length ? poolIdx : shuffle(poolIdx).slice(0, sessionSize)
     const s = idx.map((i) => pool[i])
     if (s.length === 0) return
     setSession(s)
