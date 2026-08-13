@@ -93,6 +93,8 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   onResult?: (r: EvalResult) => void
   /** 录音状态上报（父组件 footer 按钮在录音/停止间切换样式） */
   onRecordingChange?: (recording: boolean, sec: number) => void
+  /** 声波图容器（父组件的播放声波图区域）：录音时接管同一区域，不另开区域 */
+  waveContainer?: { current: HTMLDivElement | null }
 }>(function PronunciationPractice({
   sentence,
   onPlayVoice,
@@ -100,6 +102,7 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   initialResult,
   onResult,
   onRecordingChange,
+  waveContainer,
 }, ref) {
   const [recording, setRecording] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
@@ -113,7 +116,8 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     onRecordingChange?.(recording, recordingSec)
   }, [recording, recordingSec, onRecordingChange])
 
-  // 录音波形：WaveSurfer + RecordPlugin（滚动实时波形，与播放声波图同一库、同一视觉）
+  // 录音波形：WaveSurfer + RecordPlugin（滚动实时波形，与播放声波图同一库、同一视觉）。
+  // 容器复用父组件的播放声波图区域（waveContainer），未提供时退回自己渲染
   const waveBoxRef = useRef<HTMLDivElement | null>(null)
   const waveSurferRef = useRef<WaveSurfer | null>(null)
   const recordPluginRef = useRef<RecordPlugin | null>(null)
@@ -235,16 +239,17 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     evaluateBlobRef.current = evaluateBlob
   }, [evaluateBlob])
 
-  // 录音启动：recording=true 后容器挂载，effect 创建 WaveSurfer + RecordPlugin
-  // （ref 在渲染后才有值，不能在 startRecording 里直接创建）
+  // 录音启动：recording=true 后创建 WaveSurfer + RecordPlugin。
+  // 容器优先用父组件的播放声波图区域（同一区域切换模式），父组件录音中已停掉播放波形；
+  // 未提供容器时退回自己渲染的区域（ref 在渲染后才有值，不能在 startRecording 里直接创建）
   useEffect(() => {
     if (!recording) return
-    const container = waveBoxRef.current
+    const container = waveContainer?.current ?? waveBoxRef.current
     if (!container) return
     let cancelled = false
     const wavesurfer = WaveSurfer.create({
       container,
-      height: 48,
+      height: 60,
       waveColor: "rgb(56 189 248 / 0.75)",
       progressColor: "rgb(14 165 233)",
       barWidth: 2,
@@ -308,9 +313,9 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
         <div className="text-sm text-rose-500">{error}</div>
       )}
 
-      {/* 录音实时波形：wavesurfer RecordPlugin 滚动波形（蓝色，区别于播放声波图的灰色） */}
-      {recording && (
-        <div ref={waveBoxRef} className="w-full max-w-sm" style={{ minHeight: 48 }} />
+      {/* 录音实时波形：复用父组件声波图区域（waveContainer），无容器时退回自己渲染 */}
+      {recording && !waveContainer && (
+        <div ref={waveBoxRef} className="w-full max-w-sm" style={{ minHeight: 60 }} />
       )}
 
       {/* 评测中 */}

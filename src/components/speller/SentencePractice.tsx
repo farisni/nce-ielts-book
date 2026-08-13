@@ -302,11 +302,14 @@ export default function SentencePractice({
   // 配置照 whalelisten：waveColor 浅灰 / progressColor 深灰 / cursor 主题色 / 2px 圆角条 / 60px 高
   const waveContainerRef = useRef<HTMLDivElement | null>(null)
   const wsRef = useRef<WaveSurfer | null>(null)
+  // 跟读录音进行中：footer 的录音按钮切换为「停止」样式，声波图区域让给录音波形
+  const [pronRecording, setPronRecording] = useState(false)
 
   useEffect(() => {
     const el = waveAudioRef?.current
     const container = waveContainerRef.current
-    if (!el || !container) return
+    // 录音时容器让给录音波形（RecordPlugin），停止后恢复播放波形
+    if (!el || !container || pronRecording) return
     // 切词（src 变化）时 effect 重跑 → 销毁重建，自动解码新词波形（whalelisten 同款做法）
     const ws = WaveSurfer.create({
       container,
@@ -335,7 +338,7 @@ export default function SentencePractice({
       ws.destroy()
       wsRef.current = null
     }
-  }, [waveAudioRef?.current, waveAudioRef?.current?.src])
+  }, [waveAudioRef?.current, waveAudioRef?.current?.src, pronRecording])
 
   // ── 会话状态 ──
   const [phase, setPhase] = useState<Phase>("idle")
@@ -370,8 +373,6 @@ export default function SentencePractice({
   const [pronHistory, setPronHistory] = useState<Record<string, EvalResult>>({})
   // 本次会话是否录过音（默认不显示历史评分角标，只有录音返回后才显示）
   const [hasRecorded, setHasRecorded] = useState(false)
-  // 跟读录音进行中：footer 的录音按钮切换为「停止」样式
-  const [pronRecording, setPronRecording] = useState(false)
   // 听写重置计数：点「听写」+1，驱动 PronunciationPractice 重新挂载（清掉评分/答案显示）
   const [dictationTick, setDictationTick] = useState(0)
 
@@ -1345,6 +1346,7 @@ export default function SentencePractice({
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
           onRecordingChange={(on) => setPronRecording(on)}
+          waveContainer={waveContainerRef}
         />
 
         {/* 声波图（whalelisten 同款）：WaveSurfer 波形，放在跟读录音下方，播放时进度从左到右读动 */}
