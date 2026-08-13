@@ -1020,11 +1020,16 @@ export default function SentencePractice({
       <Sheet open={showSentences} onOpenChange={setShowSentences} modal={false}>
         <SheetContent side="right" className="w-full max-w-xl gap-0 p-0">
           <SheetHeader className="border-b border-border px-5 py-4">
-            <SheetTitle className="text-lg font-semibold">
-              {course?.name ?? "课程"} · 句子列表
-            </SheetTitle>
-            <SheetDescription className="text-sm">
-              {course?.sentences.length ?? 0} 句
+            <SheetTitle className="text-lg font-semibold">{course?.name ?? "课程"}</SheetTitle>
+            {/* 统计信息：已通过 / 总数 / 已掌握 / 生词 / 错误提交 */}
+            <SheetDescription className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+              <span className="font-medium text-emerald-500">{passedCount} 已通过</span>
+              <span>
+                共 {courseTotal} {isWordMode ? "个" : "句"}
+              </span>
+              <span className="font-medium text-amber-500">{masteredCount} 已掌握</span>
+              <span className="font-medium text-sky-500">{newWords} 生词</span>
+              <span className="font-medium text-rose-500">{errorCount} 错误提交</span>
             </SheetDescription>
           </SheetHeader>
           <div className="flex-1 overflow-y-auto px-5 py-4">
@@ -1289,27 +1294,6 @@ export default function SentencePractice({
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
         />
-
-        {/* 统计栏 */}
-        <div className="flex justify-center gap-12 text-center text-sm text-muted-foreground">
-          <div>
-            {/* 已通过：上行通过数字，下行写总数（字体与其他标签一致，单词课程用「个」） */}
-            <div className="text-xl font-bold text-emerald-500">{passedCount}</div>
-            <div className="mt-0.5">共 {courseTotal} {isWordMode ? "个" : "句"}</div>
-          </div>
-          <div>
-            <div className="text-xl font-bold text-amber-500">{masteredCount}</div>
-            已掌握
-          </div>
-          <div>
-            <div className="text-xl font-bold text-sky-500">{newWords}</div>
-            生词
-          </div>
-          <div>
-            <div className="text-xl font-bold text-rose-500">{errorCount}</div>
-            错误提交
-          </div>
-        </div>
       </div>
     </>
   )
