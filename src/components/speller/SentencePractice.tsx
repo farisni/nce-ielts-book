@@ -242,17 +242,25 @@ function useGameSounds() {
    *  Chrome autoplay 策略要求媒体播放需用户手势，评测返回是异步回调（无手势），
    *  若不解锁会被静默拒绝 → 声音缺失/变小 */
   const unlockAudio = useCallback(() => {
-    // 成功提示音：首次手势时创建并 play 一次（立即暂停），完成解锁
+    // 成功提示音：首次手势时创建并「静音播放一次」完成解锁。
+    // 音量先归零，播放后立即暂停再恢复——解锁过程不发出任何声音，
+    // 避免停止录音时用户听到被截断的提示音、以及和评测返回播放的竞态
     if (!successAudioRef.current) {
       successAudioRef.current = new Audio("/sounds/success.mp3")
       successAudioRef.current.volume = 1
     }
     const a = successAudioRef.current
     if (a.paused) {
+      a.volume = 0
       a.currentTime = 0
       a.play()
-        .then(() => a.pause())
-        .catch(() => {})
+        .then(() => {
+          a.pause()
+          a.volume = 1
+        })
+        .catch(() => {
+          a.volume = 1
+        })
     }
     // 打字音效的 AudioContext：恢复运行状态
     const ctx = ctxRef.current
