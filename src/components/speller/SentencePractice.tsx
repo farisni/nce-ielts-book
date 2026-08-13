@@ -225,7 +225,17 @@ function useGameSounds() {
   }, [playBuffer])
 
   const playSuccess = useCallback(() => {
-    playBuffer(successBufferRef.current, 1.0)
+    const ctx = ctxRef.current
+    if (ctx && ctx.state === "running" && successBufferRef.current) {
+      // 常规路径（拼写成功等用户手势场景）：Web Audio 播放，音量 1.0
+      playBuffer(successBufferRef.current, 1.0)
+      return
+    }
+    // AudioContext 挂起/未就绪（如录音评测的异步返回回调，resume 可能被浏览器拒绝）：
+    // 用 HTMLAudioElement 兜底播放同一文件、同一音量，保证与拼写成功听感一致
+    const a = new Audio("/sounds/success.mp3")
+    a.volume = 1
+    a.play().catch(() => {})
   }, [playBuffer])
 
   /** 用户手势期间恢复 AudioContext：防止浏览器挂起后，异步回调（如录音评测返回）里 resume 被拒导致提示音变小/缺失 */
