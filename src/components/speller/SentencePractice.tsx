@@ -289,6 +289,8 @@ export default function SentencePractice({
   const [passed, setPassed] = useState(false)
 
   // ── 统计 ──
+  /** 课程总通过数（数据库维度，进度条按课程全部句子计算，而非本次随机会话） */
+  const [coursePassed, setCoursePassed] = useState(0)
   const [passedCount, setPassedCount] = useState(0)
   const [errorCount, setErrorCount] = useState(0)
   const [masteredCount, setMasteredCount] = useState(0)
@@ -309,6 +311,16 @@ export default function SentencePractice({
 
   const timerRef = useRef<number | null>(null)
   const advanceRef = useRef<number | null>(null)
+
+  // 加载课程进度（数据库已通过数，用于进度条）
+  useEffect(() => {
+    if (!course) return
+    let cancelled = false
+    getProgress(course.id)
+      .then((p) => { if (!cancelled) setCoursePassed(p?.passed ?? 0) })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [course?.id, course])
 
   const sentence = session[index]
   const target = sentence?.en ?? ""
@@ -524,6 +536,7 @@ export default function SentencePractice({
       setSubmitted(true)
       setPassed(true)
       setPassedCount((c) => c + 1)
+      setCoursePassed((c) => c + 1)
       savePatch({ passed: 1 })
       // 撒花庆祝（canvas-confetti basic cannon）+ 撒花音效
       confetti({ particleCount: 100, spread: 70, ticks: 60, origin: confettiOrigin })
@@ -747,7 +760,9 @@ export default function SentencePractice({
     return groups
   }, [chars])
 
-  const progressPct = session.length > 0 ? ((index + (passed ? 1 : 0)) / session.length) * 100 : 0
+  // 进度条按课程总句数计算（数据库已通过 / 全部句子），与句子列表一致
+  const courseTotal = course?.sentences.length ?? session.length
+  const progressPct = courseTotal > 0 ? Math.round((coursePassed / courseTotal) * 100) : 0
 
   // 当前句的发音评分单词级结果（本次会话录音后才显示，避免默认亮出历史评分）
   const pronWords = hasRecorded ? pronHistory[target]?.words : undefined
@@ -769,7 +784,7 @@ export default function SentencePractice({
     phase === "playing" ? (
       <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-6 py-2.5">
         <span className="text-sm tabular-nums text-muted-foreground">
-          {index + 1} / {session.length}
+          {coursePassed} / {courseTotal} 已通过
         </span>
         <Progress value={progressPct} className="h-1.5 flex-1" />
         <span className="text-sm tabular-nums text-muted-foreground">{formatTime(elapsed)}</span>
