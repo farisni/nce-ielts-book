@@ -1443,6 +1443,10 @@ export default function SentencePractice({
             setPronHistory((prev) => ({ ...prev, [target]: r }))
             setHasRecorded(true)
             if (course) savePronScore(course.id, target, r).catch(() => {})
+            // 录音评分 >85 分撒花庆祝（被拒结果不撒花；onEvaluationSuccess 已播提示音）
+            if (!r.isRejected && r.total > 85) {
+              confetti({ particleCount: 100, spread: 70, ticks: 60, origin: confettiOrigin })
+            }
           }}
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
