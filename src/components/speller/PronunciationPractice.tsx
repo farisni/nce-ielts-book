@@ -273,12 +273,7 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     rec.on("record-end", (blob) => { evaluateBlobRef.current(blob) })
     waveSurferRef.current = wavesurfer
     recordPluginRef.current = rec
-    rec.startRecording({
-      autoGainControl: false,
-      channelCount: 1,
-      echoCancellation: false,
-      noiseSuppression: false,
-    })
+    rec.startRecording()
       .then(() => { if (!cancelled) setRecordingSec(0) })
       .catch((e: Error) => {
         if (cancelled) return
