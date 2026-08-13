@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { BookOpen, Keyboard } from "lucide-react";
+import { BookOpen, ChevronRight, Keyboard } from "lucide-react";
 import { COURSES } from "@/lib/speller/courses";
 import { getAllProgress, migrateLegacyProgress, type CourseProgress } from "@/lib/speller/progress";
 
@@ -39,6 +39,56 @@ export default function SpellerPage() {
       </header>
 
       <div className="grid gap-4">
+        {/* 雅思真题听力 · 一个卡片涵盖全部剑雅，点击直达各册 */}
+        <div className="overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+              🎯
+            </span>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold text-foreground">雅思真题听力</h2>
+                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                  句子听写
+                </span>
+              </div>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                看中文，听原声，用键盘打出英文句子
+              </p>
+            </div>
+          </div>
+
+          {/* 剑雅各册入口 */}
+          <div className="mt-4 space-y-2">
+            <Link
+              href="/speller/ielts/09"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📕</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">剑桥雅思 9</div>
+                  <div className="text-xs text-muted-foreground">Test 1-4 · 39 段 · 731 句</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/speller/ielts/19"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📗</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">剑桥雅思 19</div>
+                  <div className="text-xs text-muted-foreground">第 27 期 · 15 句</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+
         {/* 雅思王听力 · 单词听写课程（Chapter → Test 层级） */}
         <Link
           href="/speller/whale-listening"
@@ -99,7 +149,7 @@ export default function SpellerPage() {
           </span>
         </Link>
 
-        {COURSES.filter((c) => !c.id.startsWith("nce3-")).map((course) => {
+        {COURSES.filter((c) => !c.id.startsWith("nce3-") && !c.id.startsWith("ielts")).map((course) => {
           const p = progress[course.id];
           const progressPct = course.sentences.length > 0
             ? Math.round(((p?.passed ?? 0) / course.sentences.length) * 100)

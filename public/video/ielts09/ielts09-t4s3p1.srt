@@ -1,0 +1,124 @@
+1
+00:00:00,010 --> 00:00:03,170
+Hello,Kira,how are you?
+你好，基拉，最近好吗？
+
+2
+00:00:03,180 --> 00:00:05,280
+Fine thanks,Paul,how are you?
+很好，谢谢，保罗，你最近好吗？
+
+3
+00:00:05,290 --> 00:00:07,610
+Well,thanks.It's good to see you.
+很好，谢谢，见到你很高兴。
+
+4
+00:00:07,620 --> 00:00:10,750
+It must be twelve months since you did our course?
+自从你上完我们的课程到现在已经有一年了？
+
+5
+00:00:10,760 --> 00:00:14,090
+That's right.It's nice to come back and say hello.
+没错，回来再见面的感觉很好。
+
+6
+00:00:14,100 --> 00:00:16,990
+What course did you enrol in?
+你参加的是什么课程？
+
+7
+00:00:17,000 --> 00:00:20,510
+Actually,I went straight into third year Pharmacy.
+事实上，我直接上的是三年级药剂学。
+
+8
+00:00:20,520 --> 00:00:26,020
+They credited me with two years,which probably made it more difficult for me.
+他们给了我两年的学分，这可能让我觉得更难了。
+
+9
+00:00:26,030 --> 00:00:29,240
+On the other hand,you were lucky to be granted credits.
+另一方面，你能被授予学分很走运。
+
+10
+00:00:29,250 --> 00:00:31,180
+Is that why you chose the course?
+这是你选择这门课的原因吗？
+
+11
+00:00:31,190 --> 00:00:35,690
+Yes.And,as I'd already finished a course in it in my country.
+是的，另外我已经在我的国家完成了一门课程。
+
+12
+00:00:35,700 --> 00:00:39,950
+I thought it would be easier if I studied something I already knew.
+我想如果我学一些我已知的知识会简单一些。
+
+13
+00:00:39,960 --> 00:00:42,330
+I didn't realise you went into third year.
+我不知道你上的是三年级。
+
+14
+00:00:42,340 --> 00:00:44,230
+I thought you started in first year.
+我以为你要从一年级开始学。
+
+15
+00:00:44,240 --> 00:00:45,750
+No wonder it was so hard!
+怪不得会很难！
+
+16
+00:00:45,760 --> 00:00:53,050
+And what do you think is one of the big differences between studying at a university here and studying in your country?
+你觉得在这里上大学和在你的国家上大学最大的区别之一是什么？
+
+17
+00:00:53,060 --> 00:01:00,530
+Well,I've found it very difficult to write assignments,because I wasn't familiar with that aspect of the system here.
+我发现写作业很难，因为我不熟悉这边在这方面的体系是什么。
+
+18
+00:01:00,540 --> 00:01:04,520
+The main problem is that the lecturers expect you to be critical.
+主要的问题是老师希望你具有批判性。
+
+19
+00:01:04,530 --> 00:01:07,250
+That made me feel really terrible.
+这让我觉得很糟糕。
+
+20
+00:01:07,260 --> 00:01:10,280
+I thought "How can I possibly do it?
+我想：“我怎么可能做这个？
+
+21
+00:01:10,290 --> 00:01:16,410
+How can I comment on someone else's research when they probably spent five years doing it?"
+当他们可能花了5年做一个研究的时候，我怎么能对它提意见呢？”
+
+22
+00:01:16,420 --> 00:01:22,090
+I think a lot of people who come from overseas countries have similar problems.
+我想许多留学生都和我有一样的问题，
+
+23
+00:01:22,100 --> 00:01:25,560
+But after a while it became easier for me.
+但是过了一阵时间，这对我来说就很简单了。
+
+24
+00:01:25,570 --> 00:01:29,660
+People expect you to have problems with the process of reading and writing 
+人们认为你会在读写上有问题，
+
+25
+00:01:29,670 --> 00:01:35,200
+but,in fact,it is more a question of altering your viewpoint towards academic study.
+但事实上，问题来自改变你对学术研究的观点。

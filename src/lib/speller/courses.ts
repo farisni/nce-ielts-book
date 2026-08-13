@@ -24,9 +24,13 @@ export interface Course {
   subtitle?: string
 }
 
+import { IELTS09_COURSES } from "./data/ielts09";
+
 /**
  * 听写课程库
- * - basic：日常常用英语句子（中英对照）
+ * - nce3-l1：新概念英语第三册第一课（视频课程）
+ * - ielts19-27：剑桥雅思19真题听力第27期（音频课程）
+ * - ielts09-*：剑桥雅思9真题听力 39 期（音频课程，脚本生成）
  */
 export const COURSES: Course[] = [
   {
@@ -88,6 +92,7 @@ export const COURSES: Course[] = [
       { cn: "但需要时间保持一致，所以争取做到定期训练，开始时每周跑两次就够了。", en: "but you need to be consistent, so aim to train regularly -- twice a week is enough to begin with." },
     ],
   },
+  ...IELTS09_COURSES,
 ]
 
 /** 按 id 查找课程 */

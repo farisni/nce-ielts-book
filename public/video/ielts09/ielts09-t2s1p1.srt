@@ -1,0 +1,104 @@
+1
+00:00:01,410 --> 00:00:03,470
+Good morning.Can I help you?
+早上好，需要帮忙吗？
+
+2
+00:00:03,480 --> 00:00:11,870
+Yes.I've just been accepted on a course at the university and I'd like to try and arrange accommodation in the hall of residence.
+是的，我刚入学，我想安排一间大学宿舍。
+
+3
+00:00:11,880 --> 00:00:14,420
+Yes,certainly.Please sit down.
+当然，请坐。
+
+4
+00:00:14,430 --> 00:00:20,460
+What I'll do is fill in a form with you to find out a little more about your preferences and so forth. Thank you.
+我会帮你填表，多了解一些你的喜好等等。谢谢。
+
+5
+00:00:20,470 --> 00:00:25,180
+So first of all,can I take your name? It's Anu Bhatt.
+首先，你叫什么名字？安努·巴特。
+
+6
+00:00:25,190 --> 00:00:33,350
+Could you spell your name please? Yes.A-N-U...B-H-A double T.
+请问你能拼一下吗？好的。A-N-U-B-H-A-T-T。
+
+7
+00:00:33,360 --> 00:00:39,200
+Thanks,and could I ask your date of birth? 31st March 1972.
+谢谢，我能问一下你的出生日期吗？1972年3月31日。
+
+8
+00:00:39,210 --> 00:00:42,430
+Thank you.And where are you from? India.
+谢谢。你来自哪里？-印度。
+
+9
+00:00:42,440 --> 00:00:46,130
+Oh right.And what will you be studying?
+好的。你学的是什么？
+
+10
+00:00:46,140 --> 00:00:48,130
+I'm doing a course in nursing.
+我学的是护理课。
+
+11
+00:00:48,140 --> 00:00:52,570
+Right,thank you.And how long would you want to stay in hall,do you think?
+好的，谢谢。你想在大学宿舍住多久
+
+12
+00:00:52,580 --> 00:00:59,140
+Well,it'll take three years but I'd only like to stay in hall for two.
+课程要学3年，但是我只在大学宿舍住两年。
+
+13
+00:00:59,150 --> 00:01:02,390
+I'd like to think about living outside for the third year.
+第三年我想住外面。
+
+14
+00:01:02,400 --> 00:01:05,630
+Fine.And what did you have in mind for catering?
+好的。关于饮食你是怎么考虑的？
+
+15
+00:01:05,640 --> 00:01:11,060
+Do you want to cook for yourself or have all your meals provided,that's full board?
+你是想自己做饭还是想三餐全在学校吃？
+
+16
+00:01:11,070 --> 00:01:13,130
+Is there something in between?
+有没有居中的方式？
+
+17
+00:01:13,140 --> 00:01:17,160
+Yes.You can just have evening meal provided,which is half board.
+有。你可以只在学校吃晚饭，这是半食宿制。
+
+18
+00:01:17,170 --> 00:01:18,530
+That's what I'd prefer.
+我更喜欢这样。
+
+19
+00:01:18,540 --> 00:01:21,200
+Yes,a lot of students opt for that.
+是的，很多学生这么选
+
+20
+00:01:21,210 --> 00:01:26,290
+Now,with that in mind,do you have any special diet,anything we should know about?
+现在，考虑到这一点的话，你有没有忌口，有什么是我们要了解的吗？
+
+21
+00:01:26,300 --> 00:01:31,570
+Yes,I don't take red meat. No red meat.
+是的，我不吃牛羊肉。不吃牛羊肉。
