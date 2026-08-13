@@ -365,6 +365,8 @@ export default function VideoSpellerPage() {
             onExit={() => router.push("/speller")}
             // 互斥：开始录音前暂停页面媒体播放
             onStopVoice={() => videoRef.current?.pause()}
+            // 播放按钮换状态：页面媒体播放/暂停事件驱动
+            voicePlaying={isPlaying}
           />
         </div>
       </div>

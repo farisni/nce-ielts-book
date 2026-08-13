@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause } from "lucide-react"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
@@ -125,13 +125,15 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
 
 function useSpeech() {
   const pendingRef = useRef<number | null>(null)
-  const speak = useCallback((text: string) => {
+  const speak = useCallback((text: string, onEnd?: () => void) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return
     const synth = window.speechSynthesis
     // Chrome 兼容：speechSynthesis 可能处于 paused 状态，speak 前先唤醒
     synth.resume()
     synth.cancel()
     const u = new SpeechSynthesisUtterance(text)
+    // 播放结束回调（footer 播放按钮恢复播放图标用）
+    if (onEnd) u.onend = onEnd
     u.lang = "en-US"
     u.volume = 0.8
     u.rate = 0.85
@@ -274,6 +276,7 @@ export default function SentencePractice({
   confettiOrigin = { x: 0.5, y: 0.7 },
   waveAudioRef,
   onStopVoice,
+  voicePlaying,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -297,6 +300,8 @@ export default function SentencePractice({
   waveAudioRef?: { current: HTMLAudioElement | null }
   /** 停止视频/音频页面播放的回调（开始录音前打断播放用） */
   onStopVoice?: () => void
+  /** 视频/音频页面媒体的播放状态（footer 播放按钮换状态用；不传则用内部 TTS/原声状态） */
+  voicePlaying?: boolean
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -307,6 +312,25 @@ export default function SentencePractice({
   const wsRef = useRef<WaveSurfer | null>(null)
   // 跟读录音进行中：footer 的录音按钮切换为「停止」样式，声波图区域让给录音波形
   const [pronRecording, setPronRecording] = useState(false)
+  // 播放中：footer 播放按钮切换为暂停/停止图标（TTS / 单词原声 / 视频页面媒体任一播放中）。
+  // 视频/音频页面传 voicePlaying（页面媒体事件驱动）；无则用内部状态（TTS / 单词原声）
+  const [localPlaying, setLocalPlaying] = useState(false)
+  const isPlaying = voicePlaying ?? localPlaying
+  const setIsPlaying = setLocalPlaying
+
+  // 单词课程原声（waveAudioRef）播放状态 → 播放按钮换状态
+  useEffect(() => {
+    const el = waveAudioRef?.current
+    if (!el) return
+    const onPlay = () => setIsPlaying(true)
+    const onPause = () => setIsPlaying(false)
+    el.addEventListener("play", onPlay)
+    el.addEventListener("pause", onPause)
+    return () => {
+      el.removeEventListener("play", onPlay)
+      el.removeEventListener("pause", onPause)
+    }
+  }, [waveAudioRef?.current])
 
   useEffect(() => {
     const el = waveAudioRef?.current
@@ -592,22 +616,29 @@ export default function SentencePractice({
     }
   }, [index, sessionSrcIdx, onCurrentSentence])
 
-  const replay = useCallback(() => {
-    // 互斥：录音中不播放原声/发音
-    if (pronRecording) return
-    if (playVoice) {
-      playVoice()
-      return
-    }
-    if (sentence) speak(sentence.en)
-  }, [sentence, speak, playVoice, pronRecording])
-
-  /** 停止一切播放（TTS + 单词原声 + 视频/音频页面媒体），开始录音前调用 */
+  /** 停止一切播放（TTS + 单词原声 + 视频/音频页面媒体），开始录音前/播放按钮停止时调用 */
   const stopAllPlayback = useCallback(() => {
     stop()
     waveAudioRef?.current?.pause()
     onStopVoice?.()
+    setIsPlaying(false)
   }, [stop, waveAudioRef, onStopVoice])
+
+  const replay = useCallback(() => {
+    // 互斥：录音中不播放原声/发音
+    if (pronRecording) return
+    // 播放中：按钮再点 → 停止播放（换状态后作为暂停/停止键）
+    if (isPlaying) {
+      stopAllPlayback()
+      return
+    }
+    setIsPlaying(true)
+    if (playVoice) {
+      playVoice()
+      return
+    }
+    if (sentence) speak(sentence.en, () => setIsPlaying(false))
+  }, [sentence, speak, playVoice, pronRecording, isPlaying, stopAllPlayback])
 
   /** 跟读录音入口（按钮 / F5）：开始录音前打断一切播放，保证互斥 */
   const toggleRecording = useCallback(() => {
@@ -1006,11 +1037,15 @@ export default function SentencePractice({
         <button
           type="button"
           onClick={replay}
-          title={playVoice ? "播放原声 (Tab)" : "播放发音 (Tab)"}
-          aria-label={playVoice ? "播放原声" : "播放发音"}
+          title={isPlaying ? "停止播放" : playVoice ? "播放原声 (Tab)" : "播放发音 (Tab)"}
+          aria-label={isPlaying ? "停止播放" : playVoice ? "播放原声" : "播放发音"}
           className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
         >
-          <Play className="size-4 fill-current translate-x-[1px]" />
+          {isPlaying ? (
+            <Pause className="size-4 fill-current" />
+          ) : (
+            <Play className="size-4 fill-current translate-x-[1px]" />
+          )}
         </button>
         {nextBtn}
         <span className="mx-2 h-6 w-px bg-border" />
