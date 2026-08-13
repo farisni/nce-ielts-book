@@ -1356,7 +1356,9 @@ export default function SentencePractice({
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
           onRecordingChange={(on) => setPronRecording(on)}
-          waveContainer={waveContainerRef}
+          // 只有存在播放声波图区域（waveAudioRef）时才复用该容器；
+          // 无音频的页面（如纯文本课程）传 undefined，录音组件自建容器
+          waveContainer={waveAudioRef ? waveContainerRef : undefined}
         />
 
         {/* 声波图（whalelisten 同款）：WaveSurfer 波形，放在跟读录音下方，播放时进度从左到右读动 */}
