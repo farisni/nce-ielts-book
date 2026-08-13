@@ -171,6 +171,10 @@ function useGameSounds() {
   const ctxRef = useRef<AudioContext | null>(null)
   const typeBufferRef = useRef<AudioBuffer | null>(null)
   const successBufferRef = useRef<AudioBuffer | null>(null)
+  // 成功提示音：常驻 HTMLAudioElement。
+  // Chrome 自动播放策略：无用户手势的 play() 会被拒绝（录音评测返回是异步回调，无手势）。
+  // 在用户手势时解锁（play 一次立即暂停）后，任何时机播放都不再被拦
+  const successAudioRef = useRef<HTMLAudioElement | null>(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -225,23 +229,39 @@ function useGameSounds() {
   }, [playBuffer])
 
   const playSuccess = useCallback(() => {
-    // 统一用 HTMLAudioElement 播放 success.mp3（音量 1.0）：
-    // 拼写成功与录音评测提示音共用同一实现，彻底绕开 AudioContext 挂起/手势
-    // 状态导致的音量差异（此前 Web Audio 路径在异步回调下时大时小）
-    const a = new Audio("/sounds/success.mp3")
-    a.volume = 1
+    // 成功提示音：常驻 Audio 元素播放 success.mp3（音量 1.0）。
+    // 拼写成功与录音评测提示音共用同一实现同一元素；元素已在用户手势时解锁，
+    // 评测返回（异步无手势）也能正常出声，与拼写成功完全一致
+    const a = successAudioRef.current
+    if (!a) return
+    a.currentTime = 0
     a.play().catch(() => {})
   }, [])
 
-  /** 用户手势期间恢复 AudioContext：防止浏览器挂起后，异步回调（如录音评测返回）里 resume 被拒导致提示音变小/缺失 */
-  const ensureAudio = useCallback(() => {
+  /** 用户手势期间解锁成功提示音元素 + 恢复 AudioContext：
+   *  Chrome autoplay 策略要求媒体播放需用户手势，评测返回是异步回调（无手势），
+   *  若不解锁会被静默拒绝 → 声音缺失/变小 */
+  const unlockAudio = useCallback(() => {
+    // 成功提示音：首次手势时创建并 play 一次（立即暂停），完成解锁
+    if (!successAudioRef.current) {
+      successAudioRef.current = new Audio("/sounds/success.mp3")
+      successAudioRef.current.volume = 1
+    }
+    const a = successAudioRef.current
+    if (a.paused) {
+      a.currentTime = 0
+      a.play()
+        .then(() => a.pause())
+        .catch(() => {})
+    }
+    // 打字音效的 AudioContext：恢复运行状态
     const ctx = ctxRef.current
     if (ctx && ctx.state === "suspended") {
       ctx.resume().catch(() => {})
     }
   }, [])
 
-  return { playType, playSuccess, ensureAudio, soundReady: ready }
+  return { playType, playSuccess, unlockAudio, soundReady: ready }
 }
 
 function formatTime(ms: number): string {
@@ -317,18 +337,19 @@ export default function SentencePractice({
   voicePlaying?: boolean
 }) {
   const { speak, stop } = useSpeech()
-  const { playType, playSuccess, ensureAudio } = useGameSounds()
+  const { playType, playSuccess, unlockAudio } = useGameSounds()
 
-  // 任何用户手势（点击/按键）都恢复 AudioContext，保证后续异步音效（录音评测提示音）不受浏览器挂起影响
+  // 任何用户手势（点击/按键）都解锁成功提示音元素 + 恢复 AudioContext：
+  // 让评测返回（异步无手势）的提示音与拼写成功完全一致，不被自动播放策略拦截
   useEffect(() => {
-    const onGesture = () => ensureAudio()
+    const onGesture = () => unlockAudio()
     window.addEventListener("pointerdown", onGesture)
     window.addEventListener("keydown", onGesture)
     return () => {
       window.removeEventListener("pointerdown", onGesture)
       window.removeEventListener("keydown", onGesture)
     }
-  }, [ensureAudio])
+  }, [unlockAudio])
 
   // ── 声波图（whalelisten 同款：WaveSurfer 渲染波形，media 绑定原声元素）──
   // 配置照 whalelisten：waveColor 浅灰 / progressColor 深灰 / cursor 主题色 / 2px 圆角条 / 60px 高
@@ -676,9 +697,9 @@ export default function SentencePractice({
    *  停止录音（用户手势）时恢复 AudioContext，保证评测返回的提示音与拼写成功音量一致 */
   const toggleRecording = useCallback(() => {
     if (!pronRecording) stopAllPlayback()
-    ensureAudio()
+    unlockAudio()
     pronRef.current?.toggle()
-  }, [pronRecording, stopAllPlayback, ensureAudio])
+  }, [pronRecording, stopAllPlayback, unlockAudio])
 
   /** 「听写」按钮：重置当前句输入状态 + 清除评分显示 + 播放发音，开始新一轮打字听写 */
   const startDictation = useCallback(() => {
