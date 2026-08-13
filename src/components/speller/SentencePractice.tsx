@@ -235,16 +235,16 @@ function useGameSounds() {
     const a = successAudioRef.current
     if (!a) return
     a.currentTime = 0
+    a.volume = 1 // 覆盖解锁时的静音（volume=0），保证正常音量
     a.play().catch(() => {})
   }, [])
 
   /** 用户手势期间解锁成功提示音元素 + 恢复 AudioContext：
    *  Chrome autoplay 策略要求媒体播放需用户手势，评测返回是异步回调（无手势），
-   *  若不解锁会被静默拒绝 → 声音缺失/变小 */
+   *  若不解锁会被静默拒绝 → 声音缺失/变小。
+   *  解锁 = 静音播放一次（不暂停、让它自然放完），过程中不发声；
+   *  音量在 playSuccess 时恢复为 1，无 pause 竞态（不会被截断） */
   const unlockAudio = useCallback(() => {
-    // 成功提示音：首次手势时创建并「静音播放一次」完成解锁。
-    // 音量先归零，播放后立即暂停再恢复——解锁过程不发出任何声音，
-    // 避免停止录音时用户听到被截断的提示音、以及和评测返回播放的竞态
     if (!successAudioRef.current) {
       successAudioRef.current = new Audio("/sounds/success.mp3")
       successAudioRef.current.volume = 1
@@ -253,14 +253,9 @@ function useGameSounds() {
     if (a.paused) {
       a.volume = 0
       a.currentTime = 0
-      a.play()
-        .then(() => {
-          a.pause()
-          a.volume = 1
-        })
-        .catch(() => {
-          a.volume = 1
-        })
+      a.play().catch(() => {
+        a.volume = 1
+      })
     }
     // 打字音效的 AudioContext：恢复运行状态
     const ctx = ctxRef.current
