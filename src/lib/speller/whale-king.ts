@@ -12,6 +12,8 @@ export interface WhaleWord {
   phonetic: string
   /** 中文释义 */
   meaning: string
+  /** 词性（如 "n."、"n./v."；雅思王数据补充用） */
+  pos?: string
   /** 单词原声 mp3 地址（可为空，播放时用 TTS 兜底） */
   audio: string
   /** 音节划分（如 ["in","ter","stel","lar"]），答对撒花后按音节着色用 */
