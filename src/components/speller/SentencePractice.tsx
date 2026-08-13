@@ -1276,7 +1276,7 @@ export default function SentencePractice({
               return (
                 <h2 className="mt-2 text-xl leading-relaxed text-muted-foreground/70">
                   {posMatch?.[1]}
-                  {bold && <span className="font-semibold text-foreground">{bold}</span>}
+                  {bold && <span className="font-semibold text-foreground/80">{bold}</span>}
                   {tail}
                 </h2>
               )
