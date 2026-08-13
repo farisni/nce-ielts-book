@@ -363,6 +363,8 @@ export default function VideoSpellerPage() {
             onJumpToSentence={jumpToSentence}
             confettiOrigin={{ x: 0.75, y: 0.7 }}
             onExit={() => router.push("/speller")}
+            // 互斥：开始录音前暂停页面媒体播放
+            onStopVoice={() => videoRef.current?.pause()}
           />
         </div>
       </div>

@@ -273,6 +273,7 @@ export default function SentencePractice({
   onJumpToSentence,
   confettiOrigin = { x: 0.5, y: 0.7 },
   waveAudioRef,
+  onStopVoice,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -294,6 +295,8 @@ export default function SentencePractice({
   confettiOrigin?: { x: number; y: number }
   /** 播放 mp3 原声的 audio 元素（声波图用：播放时显示完整波形，进度从左到右读动） */
   waveAudioRef?: { current: HTMLAudioElement | null }
+  /** 停止视频/音频页面播放的回调（开始录音前打断播放用） */
+  onStopVoice?: () => void
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
@@ -423,11 +426,13 @@ export default function SentencePractice({
   useEffect(() => {
     if (phase !== "playing" || !sentence || !autoSpeak) return
     const t = window.setTimeout(() => {
+      // 互斥：录音中不自动播放发音
+      if (pronRecording) return
       if (playVoice && autoPlayVoice) playVoice()
       else if (!playVoice) speak(sentence.en)
     }, 300)
     return () => window.clearTimeout(t)
-  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice])
+  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice, pronRecording])
 
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
@@ -588,12 +593,27 @@ export default function SentencePractice({
   }, [index, sessionSrcIdx, onCurrentSentence])
 
   const replay = useCallback(() => {
+    // 互斥：录音中不播放原声/发音
+    if (pronRecording) return
     if (playVoice) {
       playVoice()
       return
     }
     if (sentence) speak(sentence.en)
-  }, [sentence, speak, playVoice])
+  }, [sentence, speak, playVoice, pronRecording])
+
+  /** 停止一切播放（TTS + 单词原声 + 视频/音频页面媒体），开始录音前调用 */
+  const stopAllPlayback = useCallback(() => {
+    stop()
+    waveAudioRef?.current?.pause()
+    onStopVoice?.()
+  }, [stop, waveAudioRef, onStopVoice])
+
+  /** 跟读录音入口（按钮 / F5）：开始录音前打断一切播放，保证互斥 */
+  const toggleRecording = useCallback(() => {
+    if (!pronRecording) stopAllPlayback()
+    pronRef.current?.toggle()
+  }, [pronRecording, stopAllPlayback])
 
   /** 「听写」按钮：重置当前句输入状态 + 清除评分显示 + 播放发音，开始新一轮打字听写 */
   const startDictation = useCallback(() => {
@@ -713,7 +733,7 @@ export default function SentencePractice({
       // F5 默认是刷新页面，必须 preventDefault
       if (e.key === "F5") {
         e.preventDefault()
-        pronRef.current?.toggle()
+        toggleRecording()
         return
       }
 
@@ -721,6 +741,8 @@ export default function SentencePractice({
       // Tab 默认是焦点切换，必须 preventDefault
       if (e.key === "Tab") {
         e.preventDefault()
+        // 互斥：录音中不播放发音
+        if (pronRecording) return
         if (revealed) {
           // 隐藏答案：恢复显示答案前的输入（不丢拼到一半的字符）
           setRevealed(false)
@@ -821,7 +843,7 @@ export default function SentencePractice({
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, gotoNext, gotoPrev, playType])
+  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, gotoNext, gotoPrev, playType, pronRecording, toggleRecording])
 
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
@@ -971,7 +993,7 @@ export default function SentencePractice({
         <Button
           variant="secondary"
           size="icon"
-          onClick={() => pronRef.current?.toggle()}
+          onClick={toggleRecording}
           title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
           aria-label={pronRecording ? "停止录音" : "跟读录音"}
           className={pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : undefined}
