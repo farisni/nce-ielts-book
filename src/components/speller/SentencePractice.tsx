@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause, Volume2 } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause } from "lucide-react"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
@@ -123,23 +123,9 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
   return chars
 }
 
-/** 音色选择：男/女 × 英/美 固定 4 个（key → 地区 + 性别关键词，系统语音匹配用） */
-const VOICE_PATTERNS: Record<string, { lang: string; re: RegExp }> = {
-  "en-gb-f": { lang: "en-gb", re: /female|kate|seri|libby|sonia|tessa|moira/i },
-  "en-gb-m": { lang: "en-gb", re: /male|daniel|george|arthur|ryan|oliver/i },
-  "en-us-f": { lang: "en-us", re: /female|samantha|aria|jenny|zira|michelle|susan|ava|emma/i },
-  "en-us-m": { lang: "en-us", re: /male|alex|guy|david|mark|eric|fred|ralph|tom/i },
-}
-const VOICE_LABELS: Record<string, string> = {
-  "en-gb-f": "英音 · 女",
-  "en-gb-m": "英音 · 男",
-  "en-us-f": "美音 · 女",
-  "en-us-m": "美音 · 男",
-}
-
 function useSpeech() {
   const pendingRef = useRef<number | null>(null)
-  const speak = useCallback((text: string, onEnd?: () => void, voiceName?: string) => {
+  const speak = useCallback((text: string, onEnd?: () => void) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return
     const synth = window.speechSynthesis
     // Chrome 兼容：speechSynthesis 可能处于 paused 状态，speak 前先唤醒
@@ -154,19 +140,9 @@ function useSpeech() {
     u.pitch = 1
     // Chrome 里 getVoices 首次可能返回空数组（异步加载），延迟后重取
     const voices = synth.getVoices()
-    const voice = voiceName
-      ? // 音色选择器 key（男/女 × 英/美）：先按性别关键词匹配，退回同地区任意音色
-        (() => {
-          const p = VOICE_PATTERNS[voiceName]
-          if (!p) return undefined
-          return (
-            voices.find((v) => v.lang.toLowerCase().startsWith(p.lang) && p.re.test(v.name)) ||
-            voices.find((v) => v.lang.toLowerCase().startsWith(p.lang)) ||
-            voices.find((v) => v.lang.toLowerCase().startsWith("en"))
-          )
-        })()
-      : voices.find((v) => v.lang.toLowerCase().startsWith("en-us") && /female|samantha|zira|aria|jenny/i.test(v.name)) ||
-        voices.find((v) => v.lang.toLowerCase().startsWith("en"))
+    const voice =
+      voices.find((v) => v.lang.toLowerCase().startsWith("en-us") && /female|samantha|zira|aria|jenny/i.test(v.name)) ||
+      voices.find((v) => v.lang.toLowerCase().startsWith("en"))
     if (voice) u.voice = voice
     // Chrome 竞态 bug：cancel 后立刻 speak 可能被吞，加微小延迟
     if (pendingRef.current) window.clearTimeout(pendingRef.current)
@@ -391,19 +367,6 @@ export default function SentencePractice({
   const wsRef = useRef<WaveSurfer | null>(null)
   // 跟读录音进行中：footer 的录音按钮切换为「停止」样式，声波图区域让给录音波形
   const [pronRecording, setPronRecording] = useState(false)
-  // TTS 音色选择：空 = 默认（单词课程播原声 mp3）；选具体音色后 TTS 播放用该音色
-  const [voiceName, setVoiceName] = useState<string>(() => {
-    if (typeof window === "undefined") return ""
-    return localStorage.getItem("speller-tts-voice") ?? ""
-  })
-  const [voicePickerOpen, setVoicePickerOpen] = useState(false)
-  const pickVoice = useCallback((name: string) => {
-    setVoiceName(name)
-    try {
-      if (name) localStorage.setItem("speller-tts-voice", name)
-      else localStorage.removeItem("speller-tts-voice")
-    } catch { /* ignore */ }
-  }, [])
   // 播放中：footer 播放按钮切换为暂停/停止图标（TTS / 单词原声 / 视频页面媒体任一播放中）。
   // 视频/音频页面传 voicePlaying（页面媒体事件驱动）；无则用内部状态（TTS / 单词原声）
   const [localPlaying, setLocalPlaying] = useState(false)
@@ -566,12 +529,11 @@ export default function SentencePractice({
     const t = window.setTimeout(() => {
       // 互斥：录音中不自动播放发音
       if (pronRecordingRef.current) return
-      // 选了 TTS 音色 → 用所选音色朗读；否则走原声（playVoice）或默认 TTS
-      if (playVoice && autoPlayVoice && !voiceName) playVoice()
-      else speak(sentence.en, undefined, voiceName)
+      if (playVoice && autoPlayVoice) playVoice()
+      else if (!playVoice) speak(sentence.en)
     }, 300)
     return () => window.clearTimeout(t)
-  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice, voiceName])
+  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice])
 
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
@@ -751,13 +713,12 @@ export default function SentencePractice({
       return
     }
     setIsPlaying(true)
-    // 选了 TTS 音色 → 用所选音色朗读；否则走原声（playVoice）
-    if (playVoice && !voiceName) {
+    if (playVoice) {
       playVoice()
       return
     }
-    if (sentence) speak(sentence.en, () => setIsPlaying(false), voiceName)
-  }, [sentence, speak, playVoice, pronRecording, isPlaying, stopAllPlayback, voiceName])
+    if (sentence) speak(sentence.en, () => setIsPlaying(false))
+  }, [sentence, speak, playVoice, pronRecording, isPlaying, stopAllPlayback])
 
   /** 跟读录音入口（按钮 / F5）：开始录音前打断一切播放，保证互斥；
    *  停止录音（用户手势）时恢复 AudioContext，保证评测返回的提示音与拼写成功音量一致 */
@@ -784,10 +745,9 @@ export default function SentencePractice({
       return next
     })
     setDictationTick((t) => t + 1)
-    // 选了 TTS 音色 → 用所选音色朗读；否则走原声（playVoice）
-    if (playVoice && !voiceName) playVoice()
-    else if (sentence) speak(sentence.en, undefined, voiceName)
-  }, [target, sentence, playVoice, speak, voiceName])
+    if (playVoice) playVoice()
+    else if (sentence) speak(sentence.en)
+  }, [target, sentence, playVoice, speak])
 
   const submit = useCallback(() => {
     if (!sentence || submitted || revealed) return
@@ -1300,50 +1260,11 @@ export default function SentencePractice({
         {/* 中文句子（视频课程模式下隐藏，避免泄露答案）；单词课程在下方显示音标 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
-            {/* 音标：大字置顶；前带音色选择（原声 / 系统 TTS 英音美音） */}
+            {/* 音标：大字置顶 */}
             {sentence.phonetic && (
-              <div className="flex items-center justify-center gap-3">
-                {/* 音色选择 */}
-                <div className="group relative flex-none">
-                  <button
-                    type="button"
-                    onClick={() => setVoicePickerOpen((o) => !o)}
-                    className="flex h-8 items-center gap-1.5 rounded-full border border-border bg-background px-3 text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
-                    title="发音音色"
-                    aria-label="发音音色"
-                  >
-                    <Volume2 className="size-3.5" />
-                    {voiceName ? (VOICE_LABELS[voiceName] ?? "音色") : "原声"}
-                  </button>
-                  {voicePickerOpen && (
-                    <>
-                      <div className="fixed inset-0 z-40" onClick={() => setVoicePickerOpen(false)} />
-                      <div className="absolute left-1/2 top-full z-50 mt-2 w-44 -translate-x-1/2 rounded-lg border border-border bg-background py-1 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-                        <button
-                          type="button"
-                          onClick={() => { pickVoice(""); setVoicePickerOpen(false) }}
-                          className={`block w-full px-4 py-2 text-left text-sm hover:bg-muted ${!voiceName ? "font-medium text-foreground" : "text-muted-foreground"}`}
-                        >
-                          原声（真人录音）
-                        </button>
-                        {Object.keys(VOICE_LABELS).map((key) => (
-                          <button
-                            key={key}
-                            type="button"
-                            onClick={() => { pickVoice(key); setVoicePickerOpen(false) }}
-                            className={`block w-full px-4 py-2 text-left text-sm hover:bg-muted ${voiceName === key ? "font-medium text-foreground" : "text-muted-foreground"}`}
-                          >
-                            {VOICE_LABELS[key]}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-                <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
-                  {formatPhonetic(sentence.phonetic)}
-                </p>
-              </div>
+              <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
+                {formatPhonetic(sentence.phonetic)}
+              </p>
             )}
             {/* 中文释义：小字放音标下方；词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
             {(() => {
