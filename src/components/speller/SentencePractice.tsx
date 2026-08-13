@@ -1175,9 +1175,12 @@ export default function SentencePractice({
                 const pron = pronWords?.[wordSeq]
                 // 发音评测读错 → 整词下划线标红（优先级最高，优先于听写错误/激活态）
                 const pronWrong = !!pron?.wrong
-                // 音节着色：答对撒花后（syllableMode），单词按音节红黑相间
+                // 音节着色：答对撒花后（红黑相间）或显示答案时（灰/深灰）按音节区分
                 const wordText = group.chars.map((cc) => cc.ch).join("")
-                const syllMap = syllableMode ? wordSyllableIdx(wordText, sentence?.syllables) : null
+                const syllMap =
+                  (syllableMode || revealed) && sentence?.syllables?.length
+                    ? wordSyllableIdx(wordText, sentence.syllables)
+                    : null
                 return (
                   <span
                     key={gIndex}
@@ -1250,13 +1253,16 @@ export default function SentencePractice({
                       }
                       if (c.status === "correct") {
                         // 写对的字母：底部对齐下划线；正常输入显示绿色，显示答案后显示浅灰色
-                        // 答对撒花后（syllableMode）：按音节红黑相间
-                        const syllColor =
-                          syllMap && syllMap[i] !== undefined
-                            ? syllMap[i] % 2 === 1
-                              ? "text-red-500"
-                              : "text-foreground"
-                            : null
+                        // 音节着色：答对撒花后红黑相间；显示答案时灰/深灰交替
+                        const syllIdx =
+                          syllMap && syllMap[i] !== undefined ? syllMap[i] : null
+                        const letterColor = syllIdx !== null
+                          ? syllIdx % 2 === 1
+                            ? "text-red-500"
+                            : "text-foreground"
+                          : revealed
+                            ? "text-muted-foreground"
+                            : "text-emerald-500"
                         return (
                           <span
                             key={idx}
@@ -1265,11 +1271,7 @@ export default function SentencePractice({
                           >
                             <span className="invisible leading-none">W</span>
                             <span
-                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
-                                revealed
-                                  ? "text-muted-foreground"
-                                  : syllColor ?? "text-emerald-500"
-                              }`}
+                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${letterColor}`}
                               style={{ transform: "translateY(-0.14em)" }}
                             >
                               {c.ch}
