@@ -335,11 +335,13 @@ export default function SentencePractice({
   const sentence = session[index]
   const target = sentence?.en ?? ""
   const words = useMemo(() => getWords(target), [target])
-  // 单词课程（en 全部为单个单词）→ 文案用「单词」，句子课程用「句」
-  const isWordMode = useMemo(
-    () => (course?.sentences.length ?? 0) > 0 && course!.sentences.every((s) => !s.en.includes(" ")),
-    [course],
-  )
+  // 单词课程（绝大多数 en 为单个单词，允许少量词组）→ 文案用「单词」，句子课程用「句」
+  const isWordMode = useMemo(() => {
+    const s = course?.sentences ?? []
+    if (s.length === 0) return false
+    const singleWords = s.filter((x) => !x.en.includes(" ")).length
+    return singleWords / s.length >= 0.9
+  }, [course])
   const unitLabel = isWordMode ? "个单词" : "句"
 
   // ── 计时器 ──
@@ -804,8 +806,11 @@ export default function SentencePractice({
   const progressBar =
     phase === "playing" ? (
       <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-6 py-2.5">
-        <span className="text-sm tabular-nums text-muted-foreground">
-          {coursePassed} / {courseTotal} 已通过
+        <span
+          className="text-sm tabular-nums text-muted-foreground"
+          title={`第 ${index + 1} ${unitLabel} / 共 ${session.length}`}
+        >
+          #{index + 1} / {session.length}
         </span>
         <Progress value={progressPct} className="h-1.5 flex-1" />
         <span className="text-sm tabular-nums text-muted-foreground">{formatTime(elapsed)}</span>
@@ -1269,8 +1274,9 @@ export default function SentencePractice({
         {/* 统计栏 */}
         <div className="flex justify-center gap-12 text-center text-sm text-muted-foreground">
           <div>
+            {/* 已通过：上行通过数字，下行写总数（字体与其他标签一致，单词课程用「个」） */}
             <div className="text-xl font-bold text-emerald-500">{passedCount}</div>
-            已通过
+            <div className="mt-0.5">共 {courseTotal} {isWordMode ? "个" : "句"}</div>
           </div>
           <div>
             <div className="text-xl font-bold text-amber-500">{masteredCount}</div>
