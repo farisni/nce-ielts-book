@@ -427,6 +427,8 @@ export default function SentencePractice({
   )
 
   // 挂载时从 SQLite 加载该课程历史评分（切页/刷新后仍能看到）
+  // 依赖 course?.id 而非 course 对象：听写页每次播放发音都会重新渲染并新建 course 对象，
+  // 若依赖对象引用，会反复从数据库加载评分，覆盖「听写」按钮清除的评分显示
   useEffect(() => {
     if (!course) return
     let cancelled = false
@@ -445,7 +447,7 @@ export default function SentencePractice({
     return () => {
       cancelled = true
     }
-  }, [course])
+  }, [course?.id])
 
   // 本轮完成（done）时累加完成轮数
   useEffect(() => {
@@ -569,7 +571,8 @@ export default function SentencePractice({
     setSubmitted(false)
     setRevealed(false)
     setPassed(false)
-    // 清除当前句评分历史与角标/答案显示，让输入区回到空白听写状态
+    // 重置录音标记 + 清除当前句评分，让输入区立即回到空白听写状态（评分角标/着色消失）
+    setHasRecorded(false)
     setPronHistory((prev) => {
       if (!(target in prev)) return prev
       const next = { ...prev }
