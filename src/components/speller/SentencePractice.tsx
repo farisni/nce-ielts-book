@@ -1178,10 +1178,10 @@ export default function SentencePractice({
                 const pron = pronWords?.[wordSeq]
                 // 发音评测读错 → 整词下划线标红（优先级最高，优先于听写错误/激活态）
                 const pronWrong = !!pron?.wrong
-                // 音节着色：答对撒花后（红黑相间）或显示答案时（灰/深灰）按音节区分
+                // 音节着色：答对撒花后、显示答案时（灰/深灰）、录音评分返回后（红黑）按音节区分
                 const wordText = group.chars.map((cc) => cc.ch).join("")
                 const syllMap =
-                  (syllableMode || revealed) && sentence?.syllables?.length
+                  (syllableMode || revealed || !!pronWords) && sentence?.syllables?.length
                     ? wordSyllableIdx(wordText, sentence.syllables)
                     : null
                 return (
@@ -1204,8 +1204,27 @@ export default function SentencePractice({
                     <span className="inline-flex flex-none">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
-                      // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样），按发音质量着色
+                      // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
+                      // 有音节数据 → 按音节红黑着色（与答对撒花一致）；否则按发音质量着色
                       if (pron) {
+                        const syllIdx =
+                          syllMap && syllMap[i] !== undefined ? syllMap[i] : null
+                        const letterColor = syllIdx !== null
+                          ? syllIdx % 2 === 1
+                            ? "text-red-500"
+                            : "text-foreground"
+                          : pronWrong
+                            ? "text-rose-500"
+                            : pron.score >= 70
+                              ? "text-violet-500"
+                              : "text-amber-500"
+                        const underlineColor = pronWrong
+                          ? "bg-rose-500"
+                          : syllIdx !== null
+                            ? "bg-neutral-400" // 音节红黑模式下下划线回归中性，不干扰红黑区分
+                            : pron.score >= 70
+                              ? "bg-violet-500"
+                              : "bg-amber-500"
                         return (
                           <span
                             key={idx}
@@ -1214,25 +1233,13 @@ export default function SentencePractice({
                           >
                             <span className="invisible leading-none">W</span>
                             <span
-                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
-                                pronWrong
-                                  ? "text-rose-500"
-                                  : pron.score >= 70
-                                    ? "text-violet-500"
-                                    : "text-amber-500"
-                              }`}
+                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${letterColor}`}
                               style={{ transform: "translateY(-0.14em)" }}
                             >
                               {c.ch}
                             </span>
                             <span
-                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                pronWrong
-                                  ? "bg-rose-500"
-                                  : pron.score >= 70
-                                    ? "bg-violet-500"
-                                    : "bg-amber-500"
-                              }`}
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${underlineColor}`}
                             />
                           </span>
                         )
