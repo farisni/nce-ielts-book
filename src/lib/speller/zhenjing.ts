@@ -10,6 +10,10 @@ import type { WhaleWord } from "./whale-king"
 export interface ZhenjingUnit {
   /** 单元名，如 "Unit 1" */
   name: string
+  /** 主题 emoji */
+  emoji: string
+  /** 单元主题描述，如 "自然地理" */
+  description: string
   /** URL slug，如 "unit-1" */
   slug: string
   wordCount: number
@@ -22,7 +26,9 @@ export interface ZhenjingUnit {
 export const ZHENJING_UNITS: ZhenjingUnit[] = [
   {
     name: "Unit 1",  // 难度 5
+    description: "自然地理",
     slug: "unit-1",
+    emoji: "🌍",
     wordCount: 241,
     difficulty: 5,
     words: [
@@ -267,11 +273,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "shadow", phonetic: "\u02c8\u0283\u00e6d\u0259\u028a", meaning: "n. \u5f71\u5b50;\u9634\u5f71;\u9634\u6697\nv. \u6295\u9634\u5f71\u4e8e;\u8ddf\u8e2a", audio: "/audio/zhenjing-listening/unit-1/239_shadow.audio-en-gb-ollie.mp3" },
       { word: "intensity", phonetic: "\u026an\u02c8tens\u0259ti", meaning: "n. \u5f3a\u5ea6;\u5f3a\u70c8;\u5267\u70c8", audio: "/audio/zhenjing-listening/unit-1/240_intensity.audio-en-gb-ollie.mp3" },
       { word: "reservoir", phonetic: "\u02c8rez\u0259vw\u0251\u02d0(r)", meaning: "n. \u6c34\u5e93;\u84c4\u6c34\u6c60", audio: "/audio/zhenjing-listening/unit-1/241_reservoir.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 2",  // 难度 5
+    description: "植物研究",
     slug: "unit-2",
+    emoji: "🌿",
     wordCount: 130,
     difficulty: 5,
     words: [
@@ -405,11 +414,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "optimal", phonetic: "\u02c8\u0252pt\u026am\u0259l", meaning: "adj. \u6700\u4f73\u7684;\u6700\u7406\u60f3\u7684", audio: "/audio/zhenjing-listening/unit-2/128_optimal.audio-en-gb-ollie.mp3" },
       { word: "infringe", phonetic: "\u026an\u02c8fr\u026and\u0292", meaning: "v. \u4fb5\u72af;\u8fdd\u53cd;\u4fb5\u5bb3", audio: "/audio/zhenjing-listening/unit-2/129_infringe.audio-en-gb-ollie.mp3" },
       { word: "considerable", phonetic: "k\u0259n\u02c8s\u026ad\u0259r\u0259b(\u0259)l", meaning: "adj. \u91cd\u8981\u7684;\u76f8\u5f53\u5927\u7684;\u53ef\u89c2\u7684", audio: "/audio/zhenjing-listening/unit-2/130_considerable.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 3",  // 难度 5
+    description: "动物保护",
     slug: "unit-3",
+    emoji: "🐾",
     wordCount: 168,
     difficulty: 5,
     words: [
@@ -581,11 +593,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "vulnerable", phonetic: "\u02c8v\u028cln\u0259r\u0259bl", meaning: "adj. \u8106\u5f31\u7684;\u6613\u53d7\u4f24\u7684", audio: "/audio/zhenjing-listening/unit-3/166_vulnerable.audio-en-gb-ollie.mp3" },
       { word: "defensive", phonetic: "d\u026a\u02c8fens\u026av", meaning: "adj. \u9632\u536b\u7684;\u9632\u5fa1\u7684;\u8fa9\u62a4\u7684\nn. \u5b88\u52bf;\u8fa9\u62a4", audio: "/audio/zhenjing-listening/unit-3/167_defensive.audio-en-gb-ollie.mp3" },
       { word: "trace", phonetic: "tre\u026as", meaning: "n. \u75d5\u8ff9;\u8f68\u8ff9;\u5fae\u91cf;\u8ffd\u8e2a\nv. \u8ffd\u8e2a;\u8ffd\u6eaf;\u4ed4\u7ec6\u67e5\u627e;\u63cf\u6479", audio: "/audio/zhenjing-listening/unit-3/168_trace.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 4",  // 难度 5
+    description: "太空探索",
     slug: "unit-4",
+    emoji: "🚀",
     wordCount: 75,
     difficulty: 5,
     words: [
@@ -664,11 +679,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "discernible", phonetic: "d\u026a\u02c8s\u025c\u02d0n\u0259b(\u0259)l", meaning: "adj. \u53ef\u8fa8\u522b\u7684", audio: "/audio/zhenjing-listening/unit-4/073_discernible.audio-en-gb-ollie.mp3" },
       { word: "ultraviolet", phonetic: "\u02cc\u028cltr\u0259\u02c8va\u026a\u0259l\u0259t", meaning: "adj. \u7d2b\u5916\u7684;\u7d2b\u5916\u7ebf\u7684\nn. \u7d2b\u5916\u7ebf\u8f90\u5c04;\u7d2b\u5916\u5149", audio: "/audio/zhenjing-listening/unit-4/074_ultraviolet.audio-en-gb-ollie.mp3" },
       { word: "despair", phonetic: "d\u026a\u02c8spe\u0259(r)", meaning: "v. \u7edd\u671b\nn. \u7edd\u671b", audio: "/audio/zhenjing-listening/unit-4/075_despair.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 5",  // 难度 5
+    description: "学校教育",
     slug: "unit-5",
+    emoji: "🏫",
     wordCount: 401,
     difficulty: 5,
     words: [
@@ -1073,11 +1091,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "apply", phonetic: "\u0259\u02c8pla\u026a", meaning: "v. \u7533\u8bf7;\u5e94\u7528;\u6d82,\u6577", audio: "/audio/zhenjing-listening/unit-5/399_apply.audio-en-gb-ollie.mp3" },
       { word: "praise", phonetic: "pre\u026az", meaning: "v. \u8d5e\u7f8e;\u8d5e\u626c\nn. \u8d5e\u7f8e;\u8d5e\u626c", audio: "/audio/zhenjing-listening/unit-5/400_praise.audio-en-gb-ollie.mp3" },
       { word: "row", phonetic: "r\u0259\u028a", meaning: "n. \u6392;\u5212\u8239;\u5435\u95f9\nv. \u5212\u8239;\u5435\u67b6", audio: "/audio/zhenjing-listening/unit-5/401_row.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 6",  // 难度 5
+    description: "科技发明",
     slug: "unit-6",
+    emoji: "💡",
     wordCount: 122,
     difficulty: 5,
     words: [
@@ -1203,11 +1224,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "fault", phonetic: "f\u0254\u02d0lt", meaning: "n. \u6545\u969c;\u8fc7\u9519;\u7f3a\u9677;\u65ad\u5c42\nv. \u53d1\u73b0\u9519\u8bef;\u627e\u51fa\u7f3a\u70b9", audio: "/audio/zhenjing-listening/unit-6/120_fault.audio-en-gb-ollie.mp3" },
       { word: "flaw", phonetic: "fl\u0254\u02d0", meaning: "n. \u7455\u75b5;\u7f3a\u9677;\u88c2\u75d5\nv. \u4f7f\u6709\u88c2\u7eb9;\u4f7f\u6709\u7f3a\u9677", audio: "/audio/zhenjing-listening/unit-6/121_flaw.audio-en-gb-ollie.mp3" },
       { word: "stumble", phonetic: "\u02c8st\u028cmb(\u0259)l", meaning: "v. \u7eca\u5012;\u8e52\u8dda;\u5931\u8bef\nn. \u7eca\u5012", audio: "/audio/zhenjing-listening/unit-6/122_stumble.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 7",  // 难度 5
+    description: "文化历史",
     slug: "unit-7",
+    emoji: "🏛️",
     wordCount: 79,
     difficulty: 5,
     words: [
@@ -1290,11 +1314,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "thrive", phonetic: "\u03b8ra\u026av", meaning: "v. \u5174\u65fa;\u7e41\u8363;\u8301\u58ee\u6210\u957f", audio: "/audio/zhenjing-listening/unit-7/077_thrive.audio-en-gb-ollie.mp3" },
       { word: "setback", phonetic: "\u02c8setb\u00e6k", meaning: "n. \u9000\u6b65;\u632b\u6298", audio: "/audio/zhenjing-listening/unit-7/078_setback.audio-en-gb-ollie.mp3" },
       { word: "adversity", phonetic: "\u0259d\u02c8v\u025c\u02d0s\u0259ti", meaning: "n. \u9006\u5883;\u4e0d\u5e78", audio: "/audio/zhenjing-listening/unit-7/079_adversity.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 8",  // 难度 5
+    description: "语言演化",
     slug: "unit-8",
+    emoji: "🗣️",
     wordCount: 68,
     difficulty: 5,
     words: [
@@ -1366,11 +1393,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "compile", phonetic: "k\u0259m\u02c8pa\u026al", meaning: "v. \u6c47\u7f16;\u7f16\u5236", audio: "/audio/zhenjing-listening/unit-8/066_compile.audio-en-gb-ollie.mp3" },
       { word: "eloquence", phonetic: "\u02c8el\u0259kw\u0259ns", meaning: "n. \u96c4\u8fa9;\u53e3\u624d", audio: "/audio/zhenjing-listening/unit-8/067_eloquence.audio-en-gb-ollie.mp3" },
       { word: "communicate", phonetic: "k\u0259\u02c8mju\u02d0n\u026ake\u026at", meaning: "v. \u6c9f\u901a;\u4ea4\u6d41", audio: "/audio/zhenjing-listening/unit-8/068_communicate.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 9",  // 难度 5
+    description: "娱乐活动",
     slug: "unit-9",
+    emoji: "🎮",
     wordCount: 176,
     difficulty: 5,
     words: [
@@ -1550,11 +1580,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "excursion", phonetic: "\u026ak\u02c8sk\u025c\u02d0\u0283n", meaning: "n. \u8fdc\u8db3;\u77ed\u9014\u65c5\u884c;\u6d89\u730e\u67d0\u4e8b", audio: "/audio/zhenjing-listening/unit-9/174_excursion.audio-en-gb-ollie.mp3" },
       { word: "stride", phonetic: "stra\u026ad", meaning: "v. \u5927\u6b65\u884c\u8d70;\u8de8\u4e00\u5927\u6b65\nn. \u5927\u6b65;\u6b65\u4f10", audio: "/audio/zhenjing-listening/unit-9/175_stride.audio-en-gb-ollie.mp3" },
       { word: "linger", phonetic: "\u02c8l\u026a\u014b\u0261\u0259(r)", meaning: "v. \u5f98\u5f8a;\u9017\u7559;\u6d41\u8fde;\u78e8\u8e6d", audio: "/audio/zhenjing-listening/unit-9/176_linger.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 10",  // 难度 5
+    description: "物品材料",
     slug: "unit-10",
+    emoji: "📦",
     wordCount: 152,
     difficulty: 5,
     words: [
@@ -1710,11 +1743,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "diamond", phonetic: "\u02c8da\u026am\u0259nd; \u02c8da\u026a\u0259m\u0259nd", meaning: "n. \u94bb\u77f3;\u83f1\u5f62;\u91d1\u521a\u77f3", audio: "/audio/zhenjing-listening/unit-10/150_diamond.audio-en-gb-ollie.mp3" },
       { word: "fragile", phonetic: "\u02c8fr\u00e6d\u0292a\u026al", meaning: "adj. \u6613\u788e\u7684;\u4e0d\u7262\u56fa\u7684;\u8106\u5f31\u7684", audio: "/audio/zhenjing-listening/unit-10/151_fragile.audio-en-gb-ollie.mp3" },
       { word: "wooden", phonetic: "\u02c8w\u028adn", meaning: "adj. \u6728\u5236\u7684;\u6728\u5934\u7684;\u751f\u786c\u7b28\u62d9\u7684", audio: "/audio/zhenjing-listening/unit-10/152_wooden.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 11",  // 难度 5
+    description: "时尚潮流",
     slug: "unit-11",
+    emoji: "👗",
     wordCount: 113,
     difficulty: 5,
     words: [
@@ -1831,11 +1867,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "figure", phonetic: "\u02c8f\u026a\u0261\u0259(r)", meaning: "n. \u6570\u5b57;\u8eab\u6750;\u91cd\u8981\u6216\u6709\u540d\u7684\u4eba\u7269\nv. \u8ba1\u7b97;\u8ba4\u4e3a;\u5f04\u61c2", audio: "/audio/zhenjing-listening/unit-11/111_figure.audio-en-gb-ollie.mp3" },
       { word: "purple", phonetic: "\u02c8p\u025c\u02d0p(\u0259)l", meaning: "n. \u7d2b\u8272\nadj. \u7d2b\u8272\u7684", audio: "/audio/zhenjing-listening/unit-11/112_purple.audio-en-gb-ollie.mp3" },
       { word: "slight", phonetic: "sla\u026at", meaning: "adj. \u8f7b\u5fae\u7684;\u5fae\u5c0f\u7684;\u7ec6\u7626\u7684\nn. \u8f7b\u6162\nv. \u8f7b\u89c6", audio: "/audio/zhenjing-listening/unit-11/113_slight.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 12",  // 难度 5
+    description: "饮食健康",
     slug: "unit-12",
+    emoji: "🍎",
     wordCount: 173,
     difficulty: 5,
     words: [
@@ -2012,11 +2051,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "fry", phonetic: "fra\u026a", meaning: "v. \u6cb9\u70b8;\u6cb9\u714e", audio: "/audio/zhenjing-listening/unit-12/171_fry.audio-en-gb-ollie.mp3" },
       { word: "slice", phonetic: "sla\u026as", meaning: "n. \u5207\u7247;\u8584\u7247;\u90e8\u5206;\u7247\u6bb5\nv. \u5207\u6210\u7247", audio: "/audio/zhenjing-listening/unit-12/172_slice.audio-en-gb-ollie.mp3" },
       { word: "squeeze", phonetic: "skwi\u02d0z", meaning: "v. \u634f;\u69a8;\u6324\uff08\u8fdb\uff09\nn. \u634f;\u69a8;\u6324", audio: "/audio/zhenjing-listening/unit-12/173_squeeze.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 13",  // 难度 5
+    description: "建筑场所",
     slug: "unit-13",
+    emoji: "🏗️",
     wordCount: 134,
     difficulty: 5,
     words: [
@@ -2154,11 +2196,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "dam", phonetic: "d\u00e6m", meaning: "n. \u6c34\u575d;\u62e6\u6cb3\u575d", audio: "/audio/zhenjing-listening/unit-13/132_dam.audio-en-gb-ollie.mp3" },
       { word: "interior", phonetic: "\u026an\u02c8t\u026a\u0259ri\u0259(r)", meaning: "adj. \u5185\u90e8\u7684;\u91cc\u9762\u7684\nn. \u5185\u90e8", audio: "/audio/zhenjing-listening/unit-13/133_interior.audio-en-gb-ollie.mp3" },
       { word: "exterior", phonetic: "\u026ak\u02c8st\u026a\u0259ri\u0259(r)", meaning: "n. \u5916\u89c2;\u5916\u8868\nadj. \u5916\u9762\u7684;\u5916\u90e8\u7684", audio: "/audio/zhenjing-listening/unit-13/134_exterior.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 14",  // 难度 5
+    description: "交通旅行",
     slug: "unit-14",
+    emoji: "🚗",
     wordCount: 134,
     difficulty: 5,
     words: [
@@ -2296,11 +2341,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "transit", phonetic: "\u02c8tr\u00e6nz\u026at", meaning: "n. \u8fd0\u8f93;\u4e2d\u8f6c;\u8fd0\u9001\nv. \u901a\u8fc7;\u7ecf\u8fc7;\u4e2d\u8f6c", audio: "/audio/zhenjing-listening/unit-14/132_transit.audio-en-gb-ollie.mp3" },
       { word: "convey", phonetic: "k\u0259n\u02c8ve\u026a", meaning: "v. \u4f20\u8fbe;\u8868\u8fbe;\u8fd0\u9001;\u8f93\u9001", audio: "/audio/zhenjing-listening/unit-14/133_convey.audio-en-gb-ollie.mp3" },
       { word: "swift", phonetic: "sw\u026aft", meaning: "adj. \u5feb\u7684;\u8fc5\u901f\u7684;\u654f\u6377\u7684\nn. \u96e8\u71d5", audio: "/audio/zhenjing-listening/unit-14/134_swift.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 15",  // 难度 5
+    description: "国家政府",
     slug: "unit-15",
+    emoji: "🏛️",
     wordCount: 149,
     difficulty: 5,
     words: [
@@ -2453,11 +2501,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "spanish", phonetic: "\u02c8sp\u00e6n\u026a\u0283", meaning: "adj. \u897f\u73ed\u7259\u7684;\u897f\u73ed\u7259\u4eba\u7684;\u897f\u73ed\u7259\u8bed\u7684\nn. \u897f\u73ed\u7259\u8bed", audio: "/audio/zhenjing-listening/unit-15/147_spanish.audio-en-gb-ollie.mp3" },
       { word: "italian", phonetic: "\u026a\u02c8t\u00e6li\u0259n", meaning: "n. \u610f\u5927\u5229\u8bed;\u610f\u5927\u5229\u4eba\nadj. \u610f\u5927\u5229\u7684;\u610f\u5927\u5229\u4eba\u7684;\u610f\u5927\u5229\u8bed\u7684", audio: "/audio/zhenjing-listening/unit-15/148_italian.audio-en-gb-ollie.mp3" },
       { word: "france", phonetic: "fr\u0251\u02d0ns", meaning: "n. \u6cd5\u56fd", audio: "/audio/zhenjing-listening/unit-15/149_france.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 16",  // 难度 5
+    description: "社会经济",
     slug: "unit-16",
+    emoji: "💰",
     wordCount: 171,
     difficulty: 5,
     words: [
@@ -2632,11 +2683,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "change", phonetic: "t\u0283e\u026and\u0292", meaning: "n. \u53d8\u5316;\u53d8\u9769;\u96f6\u94b1\nv. \u53d8\u5316;\u53d8\u9769", audio: "/audio/zhenjing-listening/unit-16/169_change.audio-en-gb-ollie.mp3" },
       { word: "resign", phonetic: "r\u026a\u02c8za\u026an", meaning: "v. \u8f9e\u804c;\u4f7f\u2026\u987a\u4ece\u4e8e\uff08\u505a\uff09\u67d0\u4e8b", audio: "/audio/zhenjing-listening/unit-16/170_resign.audio-en-gb-ollie.mp3" },
       { word: "collaborate", phonetic: "k\u0259\u02c8l\u00e6b\u0259re\u026at", meaning: "v. \u5408\u4f5c;\u534f\u4f5c;\u901a\u654c", audio: "/audio/zhenjing-listening/unit-16/171_collaborate.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 17",  // 难度 5
+    description: "法律法规",
     slug: "unit-17",
+    emoji: "⚖️",
     wordCount: 117,
     difficulty: 5,
     words: [
@@ -2757,11 +2811,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "petition", phonetic: "p\u0259\u02c8t\u026a\u0283n", meaning: "v. \u8bf7\u6c42;\u8bf7\u613f;\u7948\u6c42\nn. \u8bf7\u613f\u4e66;\u7948\u6c42;\u8bc9\u72b6", audio: "/audio/zhenjing-listening/unit-17/115_petition.audio-en-gb-ollie.mp3" },
       { word: "instruct", phonetic: "\u026an\u02c8str\u028ckt", meaning: "v. \u6559\u6388;\u6559\u5bfc;\u6307\u793a;\u547d\u4ee4;\u901a\u77e5", audio: "/audio/zhenjing-listening/unit-17/116_instruct.audio-en-gb-ollie.mp3" },
       { word: "require", phonetic: "r\u026a\u02c8kwa\u026a\u0259(r)", meaning: "v. \u9700\u8981;\u8981\u6c42", audio: "/audio/zhenjing-listening/unit-17/117_require.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 18",  // 难度 5
+    description: "沙场争锋",
     slug: "unit-18",
+    emoji: "⚔️",
     wordCount: 213,
     difficulty: 5,
     words: [
@@ -2978,11 +3035,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "owe", phonetic: "\u0259\u028a", meaning: "v. \u6b20;\u5f52\u529f\u4e8e;\u6b20\u503a", audio: "/audio/zhenjing-listening/unit-18/211_owe.audio-en-gb-ollie.mp3" },
       { word: "spy", phonetic: "spa\u026a", meaning: "n. \u95f4\u8c0d;\u5bc6\u63a2\nv. \u79d8\u5bc6\u4fa6\u5bdf;\u53d1\u73b0", audio: "/audio/zhenjing-listening/unit-18/212_spy.audio-en-gb-ollie.mp3" },
       { word: "general", phonetic: "\u02c8d\u0292en(\u0259)r\u0259l", meaning: "adj. \u603b\u7684;\u666e\u904d\u7684;\u4e00\u822c\u7684;\u5927\u81f4\u7684;\u9996\u5e2d\u7684\nn. \u5c06\u519b", audio: "/audio/zhenjing-listening/unit-18/213_general.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 19",  // 难度 5
+    description: "社会角色",
     slug: "unit-19",
+    emoji: "👥",
     wordCount: 121,
     difficulty: 5,
     words: [
@@ -3107,11 +3167,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "fisherman", phonetic: "\u02c8f\u026a\u0283\u0259m\u0259n", meaning: "n. \u6e14\u592b", audio: "/audio/zhenjing-listening/unit-19/119_fisherman.audio-en-gb-ollie.mp3" },
       { word: "toil", phonetic: "t\u0254\u026al", meaning: "v. \u8d39\u529b\u5730\u505a;\u82e6\u5e72;\u8dcb\u6d89\nn. \u82e6\u5de5;\u52b3\u7d2f\u7684\u5de5\u4f5c", audio: "/audio/zhenjing-listening/unit-19/120_toil.audio-en-gb-ollie.mp3" },
       { word: "slave", phonetic: "sle\u026av", meaning: "n. \u5974\u96b6\nv. \u82e6\u5e72", audio: "/audio/zhenjing-listening/unit-19/121_slave.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 20",  // 难度 5
+    description: "行为动作",
     slug: "unit-20",
+    emoji: "🏃",
     wordCount: 268,
     difficulty: 5,
     words: [
@@ -3383,11 +3446,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "substitute", phonetic: "\u02c8s\u028cbst\u026atju\u02d0t", meaning: "v. \u66ff\u4ee3\nn. \u4ee3\u7528\u54c1;\u4ee3\u66ff\u7269", audio: "/audio/zhenjing-listening/unit-20/266_substitute.audio-en-gb-ollie.mp3" },
       { word: "repeat", phonetic: "r\u026a\u02c8pi\u02d0t", meaning: "v. \u91cd\u590d;\u91cd\u505a\nn. \u91cd\u590d;\u91cd\u505a", audio: "/audio/zhenjing-listening/unit-20/267_repeat.audio-en-gb-ollie.mp3" },
       { word: "impress", phonetic: "\u026am\u02c8pres", meaning: "v. \u4f7f\u7559\u4e0b\u6df1\u523b\u5370\u8c61;\u4f7f\u94ed\u8bb0", audio: "/audio/zhenjing-listening/unit-20/268_impress.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 21",  // 难度 5
+    description: "身心健康",
     slug: "unit-21",
+    emoji: "❤️",
     wordCount: 417,
     difficulty: 5,
     words: [
@@ -3808,11 +3874,14 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "greedy", phonetic: "\u02c8\u0261ri\u02d0di", meaning: "adj. \u8d2a\u5a6a\u7684", audio: "/audio/zhenjing-listening/unit-21/415_greedy.audio-en-gb-ollie.mp3" },
       { word: "stereotype", phonetic: "\u02c8steri\u0259ta\u026ap", meaning: "n. \u523b\u677f\u5370\u8c61;\u9648\u89c4\u8001\u5957\nv. \u5bf9\u2026\u5b58\u6709\u6210\u89c1;\u628a\u2026\u6a21\u5f0f\u5316", audio: "/audio/zhenjing-listening/unit-21/416_stereotype.audio-en-gb-ollie.mp3" },
       { word: "stubborn", phonetic: "\u02c8st\u028cb\u0259n", meaning: "adj. \u56fa\u6267\u7684;\u987d\u56fa\u7684;\u5014\u5f3a\u7684", audio: "/audio/zhenjing-listening/unit-21/417_stubborn.audio-en-gb-ollie.mp3" },
+    
     ],
   },
   {
     name: "Unit 22",  // 难度 5
+    description: "时间日期",
     slug: "unit-22",
+    emoji: "🗓️",
     wordCount: 52,
     difficulty: 5,
     words: [
@@ -3868,6 +3937,7 @@ export const ZHENJING_UNITS: ZhenjingUnit[] = [
       { word: "periodically", phonetic: "\u02ccp\u026a\u0259ri\u02c8\u0252d\u026akli", meaning: "adv. \u5468\u671f\u6027\u5730;\u5b9a\u671f\u5730", audio: "/audio/zhenjing-listening/unit-22/050_periodically.audio-en-gb-ollie.mp3" },
       { word: "duration", phonetic: "dju\u02c8re\u026a\u0283n", meaning: "n. \u6301\u7eed\u65f6\u95f4;\u671f\u95f4", audio: "/audio/zhenjing-listening/unit-22/051_duration.audio-en-gb-ollie.mp3" },
       { word: "imminent", phonetic: "\u02c8\u026am\u026an\u0259nt", meaning: "adj. \u5373\u5c06\u53d1\u751f\u7684;\u4e34\u8fd1\u7684", audio: "/audio/zhenjing-listening/unit-22/052_imminent.audio-en-gb-ollie.mp3" },
+    
     ],
   },
 ]
