@@ -119,6 +119,66 @@ export default function SpellerPage() {
           </span>
         </Link>
 
+        {/* 雅思词汇真经 · 单词听写课程（22 Unit） */}
+        <Link
+          href="/speller/zhenjing"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                📖
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">雅思词汇真经</h2>
+                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                    单词听写
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  22 个 Unit · 3674 词，听原声，打单词
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            选择 Unit →
+          </span>
+        </Link>
+
+        {/* 807 雅思词汇 · 场景单词听写课程（26 场景） */}
+        <Link
+          href="/speller/lexicon-807"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                🗂️
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">807 雅思词汇</h2>
+                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                    单词听写
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  26 个场景 · 4340 词，听原声，打单词
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            选择场景 →
+          </span>
+        </Link>
+
         {/* NCE3 新概念英语第三册 · 课系列入口 */}
         <Link
           href="/speller/nce3"
