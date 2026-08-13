@@ -113,6 +113,8 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const timerRef = useRef<number | null>(null)
+  // 当前麦克风流：录音开始时保存，供 canvas 挂载后启动声波可视化
+  const streamRef = useRef<MediaStream | null>(null)
   // 声波可视化：AnalyserNode + rAF 绘制
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const rafRef = useRef<number | null>(null)
@@ -186,6 +188,14 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     rafRef.current = requestAnimationFrame(drawWave)
   }, [drawWave])
 
+  // 实时声波可视化：canvas 随 recording=true 渲染后再启动（ref 在渲染后才有值），
+  // 用与录音相同的麦克风流绘制跳动声波
+  useEffect(() => {
+    if (recording && streamRef.current) {
+      startWave(streamRef.current)
+    }
+  }, [recording, startWave])
+
   /** 停止声波可视化（停止录音时调用） */
   const stopWave = useCallback(() => {
     if (rafRef.current) {
@@ -235,8 +245,8 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
       mediaRecorderRef.current = mediaRecorder;
       chunksRef.current = chunks;
 
-      // 启动实时声波可视化（复用同一 stream）
-      startWave(stream);
+      // 保存流：canvas 随 recording=true 渲染后，由 effect 启动声波可视化
+      streamRef.current = stream;
 
       setRecording(true);
       setRecordingSec(0);
@@ -265,6 +275,7 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     });
     mediaRecorder.stream.getTracks().forEach((t) => t.stop());
     mediaRecorderRef.current = null;
+    streamRef.current = null;
 
     if (chunks.length === 0) {
       setError("未采集到音频");
