@@ -311,6 +311,8 @@ export default function SentencePractice({
 
   const timerRef = useRef<number | null>(null)
   const advanceRef = useRef<number | null>(null)
+  /** 显示答案前保存的输入快照：隐藏答案时恢复，不丢拼到一半的字符 */
+  const inputSnapshotRef = useRef<string[] | null>(null)
 
   // 加载课程进度（数据库已通过数，用于进度条）
   useEffect(() => {
@@ -414,6 +416,7 @@ export default function SentencePractice({
       setPhase("done")
       return
     }
+    inputSnapshotRef.current = null
     setIndex(next)
     setWordInputs(getWords(session[next].en).map(() => ""))
     setActiveIdx(0)
@@ -426,6 +429,7 @@ export default function SentencePractice({
   const gotoPrev = useCallback(() => {
     const prev = index - 1
     if (prev < 0) return
+    inputSnapshotRef.current = null
     setIndex(prev)
     setWordInputs(getWords(session[prev].en).map(() => ""))
     setActiveIdx(0)
@@ -450,6 +454,7 @@ export default function SentencePractice({
         setSessionSrcIdx((prev) => prev.map((v, k) => (k === index ? courseIndex : v)))
       }
       // 重置输入状态，进入该句听写
+      inputSnapshotRef.current = null
       setWordInputs(getWords(target.en).map(() => ""))
       setActiveIdx(0)
       setSubmitted(false)
@@ -481,6 +486,7 @@ export default function SentencePractice({
     setSession(s)
     setSessionSrcIdx(idx)
     setIndex(0)
+    inputSnapshotRef.current = null
     setWordInputs(getWords(s[0].en).map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
@@ -520,6 +526,7 @@ export default function SentencePractice({
 
   /** 「听写」按钮：重置当前句输入状态 + 清除评分显示 + 播放发音，开始新一轮打字听写 */
   const startDictation = useCallback(() => {
+    inputSnapshotRef.current = null
     setWordInputs(getWords(target).map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
@@ -562,10 +569,12 @@ export default function SentencePractice({
 
   const showAnswer = useCallback(() => {
     if (!sentence || passed) return
+    // 先保存当前输入快照（拼到一半的字符），隐藏答案时恢复
+    inputSnapshotRef.current = wordInputs
     setRevealed(true)
     setWordInputs(words.map((w) => w))
     setHintCount((h) => h + 1)
-  }, [sentence, passed, words])
+  }, [sentence, passed, words, wordInputs])
 
   const markMastered = useCallback(() => {
     if (!sentence || passed) return
@@ -605,8 +614,10 @@ export default function SentencePractice({
       if (e.code === "MetaRight" && !e.repeat) {
         e.preventDefault()
         if (revealed) {
+          // 隐藏答案：恢复显示答案前的输入（不丢拼到一半的字符）
           setRevealed(false)
-          setWordInputs(words.map(() => ""))
+          setWordInputs(inputSnapshotRef.current ?? words.map(() => ""))
+          inputSnapshotRef.current = null
         } else {
           showAnswer()
         }
@@ -642,8 +653,10 @@ export default function SentencePractice({
       if (e.key === "Tab") {
         e.preventDefault()
         if (revealed) {
+          // 隐藏答案：恢复显示答案前的输入（不丢拼到一半的字符）
           setRevealed(false)
-          setWordInputs(words.map(() => ""))
+          setWordInputs(inputSnapshotRef.current ?? words.map(() => ""))
+          inputSnapshotRef.current = null
         } else {
           replay()
         }
@@ -1159,7 +1172,7 @@ export default function SentencePractice({
                             <span className="invisible leading-none">W</span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-cyan-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>
@@ -1184,7 +1197,7 @@ export default function SentencePractice({
                             </span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-cyan-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>
@@ -1207,7 +1220,7 @@ export default function SentencePractice({
                             </span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-cyan-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>
