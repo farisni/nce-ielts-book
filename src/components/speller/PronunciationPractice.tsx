@@ -275,6 +275,11 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
 
   return (
     <div className="flex flex-col items-center gap-3">
+      {/* 错误提示（如“几乎没录到声音”）：显示在录音按钮上方，便于看到后调整收音 */}
+      {error && !evaluating && (
+        <div className="text-sm text-rose-500">{error}</div>
+      )}
+
       {/* 录音按钮 */}
       <div className="flex items-center gap-3">
         {!recording ? (
@@ -352,10 +357,6 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
         </div>
       )}
 
-      {/* 错误 */}
-      {error && !evaluating && (
-        <div className="text-sm text-rose-500">{error}</div>
-      )}
     </div>
   );
 });

@@ -322,6 +322,14 @@ export default function SentencePractice({
     return () => { cancelled = true }
   }, [course?.id, course])
 
+  /** 当前听写句在课程中的原始索引（句子列表高亮联动用） */
+  const activeCourseIdx = sessionSrcIdx[index] ?? -1
+  // 高亮项自动滚动到可见区域
+  const activeItemRef = useRef<HTMLLIElement | null>(null)
+  useEffect(() => {
+    activeItemRef.current?.scrollIntoView({ block: "nearest" })
+  }, [activeCourseIdx, showSentences])
+
   const sentence = session[index]
   const target = sentence?.en ?? ""
   const words = useMemo(() => getWords(target), [target])
@@ -990,15 +998,21 @@ export default function SentencePractice({
           </SheetHeader>
           <div className="flex-1 overflow-y-auto px-5 py-4">
             <ol className="space-y-2">
-              {(course?.sentences ?? []).map((s, i) => (
-                <li key={i}>
+              {(course?.sentences ?? []).map((s, i) => {
+                const isActive = i === activeCourseIdx
+                return (
+                <li key={i} ref={isActive ? activeItemRef : null}>
                   <button
                     type="button"
                     onClick={() => {
                       setShowSentences(false)
                       jumpToCourseSentence(i)
                     }}
-                    className="flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-blue-50 dark:hover:bg-blue-950/40"
+                    className={`flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-blue-50 dark:hover:bg-blue-950/40 ${
+                      isActive
+                        ? "bg-blue-50 ring-1 ring-blue-300 dark:bg-blue-950/40 dark:ring-blue-700"
+                        : ""
+                    }`}
                   >
                     <span className="w-8 shrink-0 text-right tabular-nums text-muted-foreground/70">
                       {i + 1}
@@ -1009,7 +1023,8 @@ export default function SentencePractice({
                     </span>
                   </button>
                 </li>
-              ))}
+                )
+              })}
             </ol>
           </div>
         </SheetContent>
