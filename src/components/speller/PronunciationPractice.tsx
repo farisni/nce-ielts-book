@@ -88,12 +88,15 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   initialResult?: EvalResult | null
   /** 评测完成回调（父组件用于保存该句评分） */
   onResult?: (r: EvalResult) => void
+  /** 录音状态上报（父组件 footer 按钮在录音/停止间切换样式） */
+  onRecordingChange?: (recording: boolean, sec: number) => void
 }>(function PronunciationPractice({
   sentence,
   onPlayVoice,
   onEvaluationSuccess,
   initialResult,
   onResult,
+  onRecordingChange,
 }, ref) {
   const [recording, setRecording] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
@@ -101,6 +104,11 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   const [result, setResult] = useState<EvalResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [recordingSec, setRecordingSec] = useState(0); // 录音秒数（footer 停止按钮显示用）
+
+  // 录音状态上报：开始/停止/秒数变化都通知父组件（footer 按钮样式切换）
+  useEffect(() => {
+    onRecordingChange?.(recording, recordingSec)
+  }, [recording, recordingSec, onRecordingChange])
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])

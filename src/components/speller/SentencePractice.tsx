@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square } from "lucide-react"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
@@ -370,6 +370,8 @@ export default function SentencePractice({
   const [pronHistory, setPronHistory] = useState<Record<string, EvalResult>>({})
   // 本次会话是否录过音（默认不显示历史评分角标，只有录音返回后才显示）
   const [hasRecorded, setHasRecorded] = useState(false)
+  // 跟读录音进行中：footer 的录音按钮切换为「停止」样式
+  const [pronRecording, setPronRecording] = useState(false)
   // 听写重置计数：点「听写」+1，驱动 PronunciationPractice 重新挂载（清掉评分/答案显示）
   const [dictationTick, setDictationTick] = useState(0)
 
@@ -961,17 +963,16 @@ export default function SentencePractice({
           生词
           <Kbd><Cmd />N</Kbd>
         </Button>
+        {/* 跟读录音：icon-only；录音中切换为「录音模式」停止样式 */}
         <Button
           variant="secondary"
-          size="sm"
+          size="icon"
           onClick={() => pronRef.current?.toggle()}
-          title="跟读录音 (F5)"
-          aria-label="跟读录音"
-          className="gap-1.5"
+          title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
+          aria-label={pronRecording ? "停止录音" : "跟读录音"}
+          className={pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : undefined}
         >
-          <Mic className="size-3.5" />
-          跟读录音
-          <Kbd>F5</Kbd>
+          {pronRecording ? <Square className="size-3.5 fill-current" /> : <Mic className="size-3.5" />}
         </Button>
         <span className="mx-2 h-6 w-px bg-border" />
         {/* 播放器三连：上一句 / 播放 / 下一句（等大，居中） */}
@@ -996,10 +997,8 @@ export default function SentencePractice({
           提交
           <Kbd>Enter</Kbd>
         </Button>
-        <Button variant="secondary" size="sm" onClick={showAnswer} title="显示答案" aria-label="显示答案" className="gap-1.5">
+        <Button variant="secondary" size="icon" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案">
           <Eye className="size-3.5" />
-          显示答案
-          <Kbd>右⌘</Kbd>
         </Button>
       </div>
     ) : null
@@ -1345,6 +1344,7 @@ export default function SentencePractice({
           }}
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
+          onRecordingChange={(on) => setPronRecording(on)}
         />
 
         {/* 声波图（whalelisten 同款）：WaveSurfer 波形，放在跟读录音下方，播放时进度从左到右读动 */}
