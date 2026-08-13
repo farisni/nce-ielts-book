@@ -667,11 +667,13 @@ export default function SentencePractice({
     if (sentence) speak(sentence.en, () => setIsPlaying(false))
   }, [sentence, speak, playVoice, pronRecording, isPlaying, stopAllPlayback])
 
-  /** 跟读录音入口（按钮 / F5）：开始录音前打断一切播放，保证互斥 */
+  /** 跟读录音入口（按钮 / F5）：开始录音前打断一切播放，保证互斥；
+   *  停止录音（用户手势）时恢复 AudioContext，保证评测返回的提示音与拼写成功音量一致 */
   const toggleRecording = useCallback(() => {
     if (!pronRecording) stopAllPlayback()
+    ensureAudio()
     pronRef.current?.toggle()
-  }, [pronRecording, stopAllPlayback])
+  }, [pronRecording, stopAllPlayback, ensureAudio])
 
   /** 「听写」按钮：重置当前句输入状态 + 清除评分显示 + 播放发音，开始新一轮打字听写 */
   const startDictation = useCallback(() => {
@@ -1448,7 +1450,12 @@ export default function SentencePractice({
               confetti({ particleCount: 100, spread: 70, ticks: 60, origin: confettiOrigin })
             }
           }}
-          onEvaluationSuccess={playSuccess}
+          onEvaluationSuccess={() => {
+            // 评测返回是异步回调（非手势），播放前兜底恢复 AudioContext，
+            // 保证提示音与拼写成功的反馈音完全一致（同一 success.mp3、同一音量）
+            ensureAudio()
+            playSuccess()
+          }}
           onPlayVoice={startDictation}
           onRecordingChange={(on) => setPronRecording(on)}
           // 只有存在播放声波图区域（waveAudioRef）时才复用该容器；
