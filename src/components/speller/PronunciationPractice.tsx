@@ -1,7 +1,7 @@
 "use client"
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { Loader2, AlertTriangle } from "lucide-react";
+import { Loader2, AlertTriangle, Mic } from "lucide-react";
 import WaveSurfer from "wavesurfer.js";
 import RecordPlugin from "wavesurfer.js/plugins/record";
 
@@ -319,22 +319,23 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
         <div className="text-sm text-rose-500">{error}</div>
       )}
 
-      {/* 录音实时波形：复用父组件声波图区域（waveContainer），无容器时退回自己渲染 */}
-      {recording && !waveContainer && (
-        <div ref={waveBoxRef} className="w-full max-w-sm" style={{ minHeight: 60 }} />
-      )}
-
-      {/* 评测中 */}
-      {evaluating && (
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Loader2 className="size-4 animate-spin" />
-          正在评测发音…
-        </div>
-      )}
-
-      {/* 评分结果 */}
-      {result && !evaluating && (
-        <div className="flex flex-col items-center gap-3">
+      {/* 录音中 / 评测中 / 评分结果共用固定高度槽位：状态切换（波形→评测→评分）不引起上下区域跳动 */}
+      <div className="flex min-h-[84px] w-full items-center justify-center">
+        {/* 录音实时波形：复用父组件声波图区域（waveContainer），无容器时退回自己渲染 */}
+        {recording && !waveContainer ? (
+          <div ref={waveBoxRef} className="w-full max-w-sm" />
+        ) : recording ? (
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Mic className="size-4" />
+            正在录音 {recordingSec}s…
+          </div>
+        ) : evaluating ? (
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Loader2 className="size-4 animate-spin" />
+            正在评测发音…
+          </div>
+        ) : result ? (
+          <div className="flex flex-col items-center gap-3">
           {/* 被拒时优先展示原因，不再让用户看到误导性的 0 分 */}
           {result.isRejected && (
             <div className="flex max-w-md items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-sm text-amber-700">
@@ -344,27 +345,28 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
               </span>
             </div>
           )}
-          <div className="flex items-center gap-6 rounded-lg border border-border bg-muted/30 px-6 py-3">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-500">{Math.round(Number(result.total))}</div>
-              <div className="mt-0.5 text-xs text-muted-foreground">总分</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center">
-              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.accuracy))}</div>
-              <div className="text-xs text-muted-foreground">准确度</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.fluency))}</div>
-              <div className="text-xs text-muted-foreground">流利度</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.integrity))}</div>
-              <div className="text-xs text-muted-foreground">完整度</div>
+            <div className="flex items-center gap-6 rounded-lg border border-border bg-muted/30 px-6 py-3">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-500">{Math.round(Number(result.total))}</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">总分</div>
+              </div>
+              <div className="h-8 w-px bg-border" />
+              <div className="text-center">
+                <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.accuracy))}</div>
+                <div className="text-xs text-muted-foreground">准确度</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.fluency))}</div>
+                <div className="text-xs text-muted-foreground">流利度</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-semibold text-foreground">{Math.round(Number(result.integrity))}</div>
+                <div className="text-xs text-muted-foreground">完整度</div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        ) : null}
+      </div>
 
     </div>
   );
