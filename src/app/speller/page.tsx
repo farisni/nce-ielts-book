@@ -101,7 +101,7 @@ export default function SpellerPage() {
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">雅思王听力 · 词汇</h2>
+                  <h2 className="text-xl font-semibold text-foreground">雅思王听力</h2>
                   <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
                     单词听写
                   </span>
