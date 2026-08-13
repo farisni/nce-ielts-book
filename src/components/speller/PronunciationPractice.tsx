@@ -1,7 +1,7 @@
 "use client"
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { Mic, Square, Loader2, PenLine, AlertTriangle } from "lucide-react";
+import { Loader2, AlertTriangle } from "lucide-react";
 
 /**
  * 全局复用单个 AudioContext（用于解码 webm/opus）。
@@ -100,7 +100,7 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   // 默认不显示历史评分，只有本次录音返回时才展示（initialResult 仅作历史留存，不默认亮出）
   const [result, setResult] = useState<EvalResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [recordingSec, setRecordingSec] = useState(0);
+  const [recordingSec, setRecordingSec] = useState(0); // 录音秒数（footer 停止按钮显示用）
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
@@ -363,41 +363,6 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
       {error && !evaluating && (
         <div className="text-sm text-rose-500">{error}</div>
       )}
-
-      {/* 录音按钮 */}
-      <div className="flex items-center gap-3">
-        {!recording ? (
-          <button
-            type="button"
-            onClick={startRecording}
-            disabled={evaluating}
-            title="跟读录音 (F5)"
-            className="flex items-center gap-2 rounded-lg border border-border bg-muted/40 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/60 disabled:opacity-50"
-          >
-            <Mic className="size-4" />
-            跟读录音
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={stopRecording}
-            className="flex items-center gap-2 rounded-lg border border-destructive/50 bg-destructive/10 px-4 py-2 text-sm font-medium text-destructive transition-colors hover:bg-destructive/20"
-          >
-            <Square className="size-4 fill-current" />
-            停止 ({recordingSec}s)
-          </button>
-        )}
-        {onPlayVoice && (
-          <button
-            type="button"
-            onClick={onPlayVoice}
-            className="flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/60"
-          >
-            <PenLine className="size-4" />
-            听写
-          </button>
-        )}
-      </div>
 
       {/* 声波图：录音时实时显示音量波形 */}
       {recording && (

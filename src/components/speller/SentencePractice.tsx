@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check, List } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine } from "lucide-react"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
@@ -883,40 +883,30 @@ export default function SentencePractice({
     phase === "playing" ? (
       <Button
         variant="ghost"
-        size="sm"
+        size="icon"
         onClick={gotoPrev}
         disabled={index <= 0}
-        title="上一句"
+        title="上一句 (←)"
         aria-label="上一句"
-        className="gap-1.5"
+        className="rounded-full"
       >
-        <ArrowLeft className="size-4" />
-        上一句
+        <SkipBack className="size-5" />
       </Button>
     ) : null
   const nextBtn =
     phase === "playing" ? (
       <Button
         variant="ghost"
-        size="sm"
+        size="icon"
         onClick={gotoNext}
         disabled={index >= session.length - 1}
-        title="下一句"
+        title="下一句 (→)"
         aria-label="下一句"
-        className="gap-1.5"
+        className="rounded-full"
       >
-        下一句
-        <ArrowRight className="size-4" />
+        <SkipForward className="size-5" />
       </Button>
     ) : null
-  const prevPortal =
-    typeof document !== "undefined" && document.getElementById("prev-slot")
-      ? createPortal(prevBtn, document.getElementById("prev-slot")!)
-      : null
-  const nextPortal =
-    typeof document !== "undefined" && document.getElementById("next-slot")
-      ? createPortal(nextBtn, document.getElementById("next-slot")!)
-      : null
 
   // ── 底部快捷键按钮组（可点击，渲染到 footer 中间槽位）──
   const Kbd = ({ children }: { children: React.ReactNode }) => (
@@ -930,11 +920,6 @@ export default function SentencePractice({
   const shortcutBar =
     phase === "playing" ? (
       <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button variant="secondary" size="sm" onClick={replay} title={playVoice ? "播放原声" : "播放发音"} aria-label={playVoice ? "播放原声" : "播放发音"} className="gap-1.5">
-          <Volume2 className="size-3.5" />
-          {playVoice ? "播放原声" : "播放发音"}
-          <Kbd>Tab</Kbd>
-        </Button>
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
           <CheckCircle2 className="size-3.5" />
           掌握
@@ -944,6 +929,36 @@ export default function SentencePractice({
           <BookMarked className="size-3.5" />
           生词
           <Kbd><Cmd />N</Kbd>
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => pronRef.current?.toggle()}
+          title="跟读录音 (F5)"
+          aria-label="跟读录音"
+          className="gap-1.5"
+        >
+          <Mic className="size-3.5" />
+          跟读录音
+          <Kbd>F5</Kbd>
+        </Button>
+        <span className="mx-2 h-6 w-px bg-border" />
+        {/* 播放器三连：上一句 / 播放 / 下一句（等大，居中） */}
+        {prevBtn}
+        <button
+          type="button"
+          onClick={replay}
+          title={playVoice ? "播放原声 (Tab)" : "播放发音 (Tab)"}
+          aria-label={playVoice ? "播放原声" : "播放发音"}
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          <Play className="size-4 fill-current translate-x-[1px]" />
+        </button>
+        {nextBtn}
+        <span className="mx-2 h-6 w-px bg-border" />
+        <Button variant="secondary" size="sm" onClick={startDictation} title="听写" aria-label="听写" className="gap-1.5">
+          <PenLine className="size-3.5" />
+          听写
         </Button>
         <Button variant="secondary" size="sm" onClick={submit} title="提交" aria-label="提交" className="gap-1.5">
           <Check className="size-3.5" />
@@ -973,8 +988,6 @@ export default function SentencePractice({
     return (
       <>
         {progressPortal}
-        {prevPortal}
-        {nextPortal}
         {shortcutPortal}
         <div className="flex h-full w-full flex-col items-center justify-center text-center">
           <div className="mb-6 text-7xl">{accuracy >= 90 ? "🎉" : accuracy >= 60 ? "👍" : "💪"}</div>
@@ -1013,8 +1026,6 @@ export default function SentencePractice({
   return (
     <>
       {progressPortal}
-      {prevPortal}
-      {nextPortal}
       {shortcutPortal}
       {/* 句子列表抽屉（shadcn Sheet） */}
       <Sheet open={showSentences} onOpenChange={setShowSentences} modal={false}>
@@ -1077,10 +1088,6 @@ export default function SentencePractice({
             )}
             {/* 中文释义：小字放音标下方 */}
             <h2 className="mt-2 text-base leading-relaxed text-muted-foreground/70">{sentence.cn}</h2>
-            {/* 声波图（whalelisten 同款）：WaveSurfer 波形，播放时进度从左到右读动 */}
-            <div className="mx-auto mt-4 w-full max-w-sm overflow-hidden rounded-md bg-muted/5">
-              <div ref={waveContainerRef} className="w-full cursor-pointer" style={{ minHeight: 60 }} />
-            </div>
           </div>
         )}
 
@@ -1294,6 +1301,13 @@ export default function SentencePractice({
           onEvaluationSuccess={playSuccess}
           onPlayVoice={startDictation}
         />
+
+        {/* 声波图（whalelisten 同款）：WaveSurfer 波形，放在跟读录音下方，播放时进度从左到右读动 */}
+        {waveAudioRef && (
+          <div className="mx-auto w-full max-w-sm overflow-hidden rounded-md bg-muted/5 px-5 py-3 shadow-[0_0_12px_rgba(0,0,0,0.07)]">
+            <div ref={waveContainerRef} className="w-full cursor-pointer" style={{ minHeight: 60 }} />
+          </div>
+        )}
       </div>
     </>
   )
