@@ -1267,7 +1267,7 @@ export default function SentencePractice({
               </p>
             )}
             {/* 中文释义：小字放音标下方 */}
-            <h2 className="mt-2 text-base leading-relaxed text-muted-foreground/70">{sentence.cn}</h2>
+            <h2 className="mt-2 text-xl leading-relaxed text-muted-foreground/70">{sentence.cn}</h2>
           </div>
         )}
 
