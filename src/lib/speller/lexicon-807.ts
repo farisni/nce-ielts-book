@@ -10,6 +10,8 @@ import type { WhaleWord } from "./whale-king"
 export interface Lexicon807Unit {
   /** 场景名，如 "Test 1 学科名称" */
   name: string
+  /** 主题 emoji */
+  emoji: string
   /** URL slug，如 "test-1" */
   slug: string
   wordCount: number
@@ -23,6 +25,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 1 学科名称",  // 难度 3
     slug: "test-1",
+    emoji: "🎓",
     wordCount: 135,
     difficulty: 3,
     words: [
@@ -166,6 +169,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 2 课程",  // 难度 3
     slug: "test-2",
+    emoji: "📚",
     wordCount: 244,
     difficulty: 3,
     words: [
@@ -418,6 +422,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 3 论文词汇",  // 难度 3
     slug: "test-3",
+    emoji: "📝",
     wordCount: 160,
     difficulty: 3,
     words: [
@@ -586,6 +591,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 4 图书馆词汇",  // 难度 3
     slug: "test-4",
+    emoji: "📖",
     wordCount: 46,
     difficulty: 3,
     words: [
@@ -640,6 +646,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 5 学生种类和证书种类",  // 难度 3
     slug: "test-5",
+    emoji: "🎫",
     wordCount: 75,
     difficulty: 3,
     words: [
@@ -723,6 +730,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 6 出版物",  // 难度 3
     slug: "test-6",
+    emoji: "📰",
     wordCount: 57,
     difficulty: 3,
     words: [
@@ -788,6 +796,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 7 普通用词",  // 难度 3
     slug: "test-7",
+    emoji: "💬",
     wordCount: 758,
     difficulty: 3,
     words: [
@@ -1554,6 +1563,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 8 基础词汇1",  // 难度 3
     slug: "test-8",
+    emoji: "🔤",
     wordCount: 57,
     difficulty: 3,
     words: [
@@ -1619,6 +1629,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Text 9 基础词汇2",  // 难度 3
     slug: "test-9",
+    emoji: "🔤",
     wordCount: 672,
     difficulty: 3,
     words: [
@@ -2299,6 +2310,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 10 金融",  // 难度 3
     slug: "test-10",
+    emoji: "💰",
     wordCount: 164,
     difficulty: 3,
     words: [
@@ -2471,6 +2483,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 11 旅游",  // 难度 3
     slug: "test-11",
+    emoji: "✈️",
     wordCount: 126,
     difficulty: 3,
     words: [
@@ -2605,6 +2618,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 12 人物",  // 难度 3
     slug: "test-12",
+    emoji: "👤",
     wordCount: 30,
     difficulty: 3,
     words: [
@@ -2643,6 +2657,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 13 交通",  // 难度 3
     slug: "test-13",
+    emoji: "🚦",
     wordCount: 191,
     difficulty: 3,
     words: [
@@ -2842,6 +2857,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 14 住宿类型",  // 难度 3
     slug: "test-14",
+    emoji: "🏨",
     wordCount: 78,
     difficulty: 3,
     words: [
@@ -2928,6 +2944,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 15 家具及设施",  // 难度 3
     slug: "test-15",
+    emoji: "🛋️",
     wordCount: 165,
     difficulty: 3,
     words: [
@@ -3101,6 +3118,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 16 饮食",  // 难度 3
     slug: "test-16",
+    emoji: "🍽️",
     wordCount: 150,
     difficulty: 3,
     words: [
@@ -3259,6 +3277,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 17 休闲生活",  // 难度 3
     slug: "test-17",
+    emoji: "🎳",
     wordCount: 93,
     difficulty: 3,
     words: [
@@ -3360,6 +3379,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 18 动物",  // 难度 3
     slug: "test-18",
+    emoji: "🦁",
     wordCount: 104,
     difficulty: 3,
     words: [
@@ -3472,6 +3492,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 19 植物",  // 难度 3
     slug: "test-19",
+    emoji: "🌱",
     wordCount: 36,
     difficulty: 3,
     words: [
@@ -3516,6 +3537,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 20 公司企业",  // 难度 3
     slug: "test-20",
+    emoji: "🏢",
     wordCount: 137,
     difficulty: 3,
     words: [
@@ -3661,6 +3683,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 21 犯罪",  // 难度 3
     slug: "test-21",
+    emoji: "🚔",
     wordCount: 9,
     difficulty: 3,
     words: [
@@ -3678,6 +3701,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 22 医疗场景",  // 难度 3
     slug: "test-22",
+    emoji: "🏥",
     wordCount: 179,
     difficulty: 3,
     words: [
@@ -3865,6 +3889,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 23 环境",  // 难度 3
     slug: "test-23",
+    emoji: "🌍",
     wordCount: 59,
     difficulty: 3,
     words: [
@@ -3932,6 +3957,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 24 运动",  // 难度 3
     slug: "test-24",
+    emoji: "⚽",
     wordCount: 119,
     difficulty: 3,
     words: [
@@ -4059,6 +4085,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 25 电影",  // 难度 3
     slug: "test-25",
+    emoji: "🎬",
     wordCount: 396,
     difficulty: 3,
     words: [
@@ -4463,6 +4490,7 @@ export const LEXICON_807_UNITS: Lexicon807Unit[] = [
   {
     name: "Test 26 建筑和建设",  // 难度 3
     slug: "test-26",
+    emoji: "🏗️",
     wordCount: 100,
     difficulty: 3,
     words: [

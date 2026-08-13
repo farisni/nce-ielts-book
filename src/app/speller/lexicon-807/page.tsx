@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { ChevronRight, Keyboard } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { LEXICON_807_UNITS } from "@/lib/speller/lexicon-807";
 
 /**
@@ -17,10 +17,7 @@ export default function Lexicon807Page() {
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-primary">
           Word Dictation
         </p>
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">807 雅思词汇 · 听写</h1>
-        <p className="max-w-xl text-lg text-muted-foreground">
-          看中文，听原声，用键盘打出单词。选择一个场景开始练习。
-        </p>
+        <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">807 雅思词汇</h1>
         <p className="mt-2 text-sm text-muted-foreground/70">
           共 {LEXICON_807_UNITS.length} 个场景 · {totalWords} 个单词
         </p>
@@ -35,12 +32,13 @@ export default function Lexicon807Page() {
           >
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary text-base font-bold text-primary-foreground">
-                  {u.name.replace(/^Test\s*(\d+).*$/, "$1")}
-                </span>
+                <span className="shrink-0 text-2xl leading-none">{u.emoji}</span>
                 <div>
-                  <h2 className="text-lg font-semibold text-foreground">{u.name}</h2>
-                  <p className="mt-0.5 text-sm text-muted-foreground">
+                  <h2 className="text-lg font-normal text-foreground">
+                    <span className="text-muted-foreground">{u.name.split(" ").slice(0, 2).join(" ")}</span>
+                    <span className="ml-2">{u.name.split(" ").slice(2).join(" ")}</span>
+                  </h2>
+                  <p className="mt-0.5 text-sm text-muted-foreground/70">
                     {u.wordCount} 个单词 · 难度 {u.difficulty}/5
                   </p>
                 </div>
@@ -50,11 +48,6 @@ export default function Lexicon807Page() {
           </Link>
         ))}
       </div>
-
-      <p className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground/70">
-        <Keyboard className="size-4" />
-        进入场景后：空格跳字母 · Enter 提交 · Tab 重播原声
-      </p>
     </div>
   );
 }
