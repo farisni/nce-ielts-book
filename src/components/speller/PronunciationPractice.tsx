@@ -2,6 +2,8 @@
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { Loader2, AlertTriangle } from "lucide-react";
+import WaveSurfer from "wavesurfer.js";
+import RecordPlugin from "wavesurfer.js/plugins/record";
 
 /**
  * 全局复用单个 AudioContext（用于解码 webm/opus）。
@@ -68,7 +70,8 @@ export type EvalResult = {
 /**
  * 发音评测：录音 → 上传讯飞 → 显示评分
  * - 目标句子由父组件传入（sentence.en）
- * - 录音转 16kHz 16bit 单声道 PCM 后上传
+ * - 录音用 wavesurfer RecordPlugin：滚动实时波形（与播放声波图同一库），
+ *   停止后把 blob 转 16kHz 16bit 单声道 PCM 上传讯飞
  * - 受控组件：initialResult 恢复历史评分，onResult 上报本次结果（父组件按句保存）
  * - 通过 ref 暴露 toggle()，供父组件绑定快捷键（F5）触发录音/停止
  */
@@ -110,106 +113,18 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     onRecordingChange?.(recording, recordingSec)
   }, [recording, recordingSec, onRecordingChange])
 
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
-  const chunksRef = useRef<Blob[]>([])
-  const timerRef = useRef<number | null>(null)
-  // 当前麦克风流：录音开始时保存，供 canvas 挂载后启动声波可视化
-  const streamRef = useRef<MediaStream | null>(null)
-  // 声波可视化：AnalyserNode + rAF 绘制
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const rafRef = useRef<number | null>(null)
-  const analyserRef = useRef<AnalyserNode | null>(null)
-  const waveCtxRef = useRef<AudioContext | null>(null)
-  const waveSourceRef = useRef<MediaStreamAudioSourceNode | null>(null)
+  // 录音波形：WaveSurfer + RecordPlugin（滚动实时波形，与播放声波图同一库、同一视觉）
+  const waveBoxRef = useRef<HTMLDivElement | null>(null)
+  const waveSurferRef = useRef<WaveSurfer | null>(null)
+  const recordPluginRef = useRef<RecordPlugin | null>(null)
 
-  // 清理：卸载时停止录音与声波绘制
+  // 清理：卸载时销毁 wavesurfer（内部停流、释放麦克风）
   useEffect(() => {
     return () => {
-      if (timerRef.current) window.clearInterval(timerRef.current)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      waveSourceRef.current?.disconnect()
-      waveCtxRef.current?.close().catch(() => {})
-      mediaRecorderRef.current?.stream.getTracks().forEach((t) => t.stop())
+      waveSurferRef.current?.destroy()
+      waveSurferRef.current = null
+      recordPluginRef.current = null
     }
-  }, [])
-
-  /** 实时声波绘制：从 AnalyserNode 读时域数据，画一排随音量跳动的竖条 */
-  const drawWave = useCallback(() => {
-    const canvas = canvasRef.current
-    const analyser = analyserRef.current
-    if (!canvas || !analyser) return
-    const ctx2d = canvas.getContext("2d")
-    if (!ctx2d) return
-    const data = new Uint8Array(analyser.fftSize)
-    analyser.getByteTimeDomainData(data)
-    const W = canvas.width
-    const H = canvas.height
-    const BARS = 48
-    ctx2d.clearRect(0, 0, W, H)
-    const barW = W / BARS
-    for (let i = 0; i < BARS; i++) {
-      const start = Math.floor((i / BARS) * data.length)
-      const end = Math.floor(((i + 1) / BARS) * data.length)
-      let sum = 0
-      for (let j = start; j < end; j++) sum += Math.abs(data[j] - 128)
-      const avg = (sum / Math.max(1, end - start)) / 128 // 0~1
-      const h = Math.max(3, avg * H * 0.92)
-      const x = i * barW + barW * 0.18
-      const w = barW * 0.64
-      const y = (H - h) / 2
-      ctx2d.fillStyle = "rgb(56 189 248 / 0.75)"
-      ctx2d.beginPath()
-      ctx2d.roundRect(x, y, w, h, Math.min(w / 2, 3))
-      ctx2d.fill()
-    }
-    rafRef.current = requestAnimationFrame(drawWave)
-  }, [])
-
-  /** 开始声波可视化（录音时调用） */
-  const startWave = useCallback(async (stream: MediaStream) => {
-    const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
-    if (!Ctor || !canvasRef.current) return
-    const actx = new Ctor()
-    try { await actx.resume() } catch { /* ignore */ }
-    const source = actx.createMediaStreamSource(stream)
-    const analyser = actx.createAnalyser()
-    analyser.fftSize = 256
-    analyser.smoothingTimeConstant = 0.75
-    source.connect(analyser)
-    waveCtxRef.current = actx
-    waveSourceRef.current = source
-    analyserRef.current = analyser
-    // 匹配 canvas 实际渲染尺寸（CSS 高度固定，宽度自适应）
-    const canvas = canvasRef.current
-    const dpr = window.devicePixelRatio || 1
-    canvas.width = Math.round(canvas.clientWidth * dpr)
-    canvas.height = Math.round(canvas.clientHeight * dpr)
-    if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    rafRef.current = requestAnimationFrame(drawWave)
-  }, [drawWave])
-
-  // 实时声波可视化：canvas 随 recording=true 渲染后再启动（ref 在渲染后才有值），
-  // 用与录音相同的麦克风流绘制跳动声波
-  useEffect(() => {
-    if (recording && streamRef.current) {
-      startWave(streamRef.current)
-    }
-  }, [recording, startWave])
-
-  /** 停止声波可视化（停止录音时调用） */
-  const stopWave = useCallback(() => {
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
-    waveSourceRef.current?.disconnect()
-    waveSourceRef.current = null
-    analyserRef.current = null
-    waveCtxRef.current?.close().catch(() => {})
-    waveCtxRef.current = null
-    // 清空画布
-    const canvas = canvasRef.current
-    if (canvas) canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height)
   }, [])
 
   // 后端已把讯飞 XML 解析成结构化 JSON，前端直接消费
@@ -228,63 +143,8 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     };
   };
 
-  const startRecording = useCallback(async () => {
-    setError(null);
-    setResult(null);
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-      // MediaRecorder 录音（浏览器原生编解码 webm/opus，稳定可靠）。
-      // 实测之前 ScriptProcessor 采集在 Chrome 下会被 AudioContext 上限/挂起影响 → 全静音。
-      const mediaRecorder = new MediaRecorder(stream);
-      const chunks: Blob[] = [];
-      mediaRecorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunks.push(e.data);
-      };
-      mediaRecorder.start();
-      mediaRecorderRef.current = mediaRecorder;
-      chunksRef.current = chunks;
-
-      // 保存流：canvas 随 recording=true 渲染后，由 effect 启动声波可视化
-      streamRef.current = stream;
-
-      setRecording(true);
-      setRecordingSec(0);
-      timerRef.current = window.setInterval(() => setRecordingSec((s) => s + 1), 1000);
-    } catch (e) {
-      setError("无法访问麦克风：" + ((e as Error).message || "请检查权限"));
-    }
-  }, [startWave]);
-
-  const stopRecording = useCallback(async () => {
-    if (timerRef.current) window.clearInterval(timerRef.current);
-    stopWave();
-    setRecording(false);
-
-    const mediaRecorder = mediaRecorderRef.current;
-    if (!mediaRecorder || mediaRecorder.state === "inactive") {
-      setError("未采集到音频");
-      return;
-    }
-    const chunks = chunksRef.current;
-
-    // 停止录音，并等待 onstop 事件（保证最后的 ondataavailable 已触发）
-    await new Promise<void>((resolve) => {
-      mediaRecorder.onstop = () => resolve();
-      mediaRecorder.stop();
-    });
-    mediaRecorder.stream.getTracks().forEach((t) => t.stop());
-    mediaRecorderRef.current = null;
-    streamRef.current = null;
-
-    if (chunks.length === 0) {
-      setError("未采集到音频");
-      return;
-    }
-
-    // 合并录到的音频 blob（MediaRecorder 默认输出 webm/opus）
-    const audioBlob = new Blob(chunks, { type: chunks[0].type || "audio/webm" });
-
+  /** 评测录到的音频：解码 → 16kHz 16bit 单声道 PCM → 讯飞 */
+  const evaluateBlob = useCallback(async (audioBlob: Blob) => {
     // 解码：复用全局共享 AudioContext
     const audioCtx = getSharedCtx()
     try { audioCtx.resume?.() } catch { /* ignore */ }
@@ -366,7 +226,72 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     } finally {
       setEvaluating(false);
     }
-  }, [sentence, onEvaluationSuccess, onResult, stopWave]);
+  }, [sentence, onEvaluationSuccess, onResult]);
+
+  // 最新 evaluateBlob 引用：父组件回调（onResult 等）每次渲染都是新引用，
+  // 若直接作录音 effect 依赖会导致 effect 反复重建 wavesurfer、意外停掉录音
+  const evaluateBlobRef = useRef(evaluateBlob)
+  useEffect(() => {
+    evaluateBlobRef.current = evaluateBlob
+  }, [evaluateBlob])
+
+  // 录音启动：recording=true 后容器挂载，effect 创建 WaveSurfer + RecordPlugin
+  // （ref 在渲染后才有值，不能在 startRecording 里直接创建）
+  useEffect(() => {
+    if (!recording) return
+    const container = waveBoxRef.current
+    if (!container) return
+    let cancelled = false
+    const wavesurfer = WaveSurfer.create({
+      container,
+      height: 48,
+      waveColor: "rgb(56 189 248 / 0.75)",
+      progressColor: "rgb(14 165 233)",
+      barWidth: 2,
+      barGap: 2,
+      barRadius: 2,
+    })
+    const rec = RecordPlugin.create({
+      scrollingWaveform: true, // 滚动实时波形（当前音量 + 已录窗口）
+      renderRecordedAudio: false, // 录完不渲染成品波形，评测结果由后端给出
+      mimeType: "audio/webm",
+    })
+    wavesurfer.registerPlugin(rec)
+    // 秒数：record-progress 每帧触发，只在整数秒变化时 setState，避免多余渲染
+    rec.on("record-progress", (ms) => {
+      const s = Math.floor(ms / 1000)
+      setRecordingSec((prev) => (prev === s ? prev : s))
+    })
+    // 停止录音后拿到 blob，走评测流程（用 ref 取最新回调，effect 只依赖 recording）
+    rec.on("record-end", (blob) => { evaluateBlobRef.current(blob) })
+    waveSurferRef.current = wavesurfer
+    recordPluginRef.current = rec
+    rec.startRecording()
+      .then(() => { if (!cancelled) setRecordingSec(0) })
+      .catch((e: Error) => {
+        if (cancelled) return
+        setError("无法访问麦克风：" + (e.message.replace(/^Error accessing the microphone: /, "") || "请检查权限"))
+        setRecording(false) // cleanup 会销毁 wavesurfer
+      })
+    return () => {
+      cancelled = true
+      wavesurfer.destroy() // 内部会 stopRecording + 停流释放麦克风
+      waveSurferRef.current = null
+      recordPluginRef.current = null
+    }
+  }, [recording])
+
+  const startRecording = useCallback(() => {
+    setError(null)
+    setResult(null)
+    setRecording(true)
+  }, [])
+
+  const stopRecording = useCallback(() => {
+    // 先停录音（record-end 异步触发 → evaluateBlob），再收波形
+    recordPluginRef.current?.stopRecording()
+    setRecording(false) // cleanup 销毁 wavesurfer
+  }, [])
 
   // 对外暴露 toggle：录音中 → 停止；未录音 → 开始（供 F5 快捷键调用）
   useImperativeHandle(ref, () => ({
@@ -383,13 +308,9 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
         <div className="text-sm text-rose-500">{error}</div>
       )}
 
-      {/* 声波图：录音时实时显示音量波形 */}
+      {/* 录音实时波形：wavesurfer RecordPlugin 滚动波形（蓝色，区别于播放声波图的灰色） */}
       {recording && (
-        <canvas
-          ref={canvasRef}
-          className="h-12 w-full max-w-sm"
-          style={{ display: "block" }}
-        />
+        <div ref={waveBoxRef} className="w-full max-w-sm" style={{ minHeight: 48 }} />
       )}
 
       {/* 评测中 */}
