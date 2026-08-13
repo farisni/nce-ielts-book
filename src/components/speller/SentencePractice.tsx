@@ -15,7 +15,7 @@ import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, 
 import confetti from "canvas-confetti"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
 import { getProgress, updateProgress, getPronHistory, savePronScore } from "@/lib/speller/progress"
-import PronunciationPractice, { type EvalResult } from "@/components/speller/PronunciationPractice"
+import PronunciationPractice, { type EvalResult, type PronunciationPracticeHandle } from "@/components/speller/PronunciationPractice"
 
 type Phase = "idle" | "playing" | "done"
 type CharStatus = "correct" | "wrong" | "pending" | "punct" | "space"
@@ -266,6 +266,8 @@ export default function SentencePractice({
 
   // ── 会话状态 ──
   const [phase, setPhase] = useState<Phase>("idle")
+  /** 跟读录音组件句柄（F5 触发录音/停止） */
+  const pronRef = useRef<PronunciationPracticeHandle>(null)
   const [session, setSession] = useState<SentenceEntry[]>([])
   /** session 每项对应的课程原始句子索引（视频/SRT 联动用） */
   const [sessionSrcIdx, setSessionSrcIdx] = useState<number[]>([])
@@ -393,6 +395,33 @@ export default function SentencePractice({
     setRevealed(false)
     setPassed(false)
   }, [index, session])
+
+  // ── 句子列表抽屉：点击某句 → 跳到该句听写 ──
+  // 该句在本组 session 中 → 直接跳转；不在 → 把当前进度位置的句子替换为点击句
+  const jumpToCourseSentence = useCallback(
+    (courseIndex: number) => {
+      const target = course?.sentences[courseIndex]
+      if (!target) return
+      const j = sessionSrcIdx.indexOf(courseIndex)
+      if (j >= 0) {
+        // 本组已有该句：跳转到对应位置
+        setIndex(j)
+      } else {
+        // 本组没有：替换当前句位置（进度位置不变，句子换成点击句）
+        setSession((prev) => prev.map((item, k) => (k === index ? target : item)))
+        setSessionSrcIdx((prev) => prev.map((v, k) => (k === index ? courseIndex : v)))
+      }
+      // 重置输入状态，进入该句听写
+      setWordInputs(getWords(target.en).map(() => ""))
+      setActiveIdx(0)
+      setSubmitted(false)
+      setRevealed(false)
+      setPassed(false)
+      // 外部联动（视频页：SRT 定位该句原声）
+      onJumpToSentence?.(courseIndex)
+    },
+    [course, sessionSrcIdx, index, onJumpToSentence],
+  )
 
   // 提交通过后自动进入下一句
   useEffect(() => {
@@ -558,6 +587,14 @@ export default function SentencePractice({
           markNewWord()
           return
         }
+        return
+      }
+
+      // F5：跟读录音（录音中按 → 停止并评分）
+      // F5 默认是刷新页面，必须 preventDefault
+      if (e.key === "F5") {
+        e.preventDefault()
+        pronRef.current?.toggle()
         return
       }
 
@@ -926,7 +963,7 @@ export default function SentencePractice({
                     type="button"
                     onClick={() => {
                       setShowSentences(false)
-                      onJumpToSentence?.(i)
+                      jumpToCourseSentence(i)
                     }}
                     className="flex w-full gap-4 rounded-lg px-2 py-1.5 text-left transition-colors hover:bg-blue-50 dark:hover:bg-blue-950/40"
                   >
@@ -1151,6 +1188,7 @@ export default function SentencePractice({
             重新挂载后按 initialResult 恢复（听写重置时该句历史已被清除，回到空白） */}
         <PronunciationPractice
           key={`${target}-${dictationTick}`}
+          ref={pronRef}
           sentence={target}
           initialResult={pronHistory[target] ?? null}
           onResult={(r) => {
