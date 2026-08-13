@@ -234,8 +234,12 @@ function useGameSounds() {
     // 评测返回（异步无手势）也能正常出声，与拼写成功完全一致
     const a = successAudioRef.current
     if (!a) return
+    // 解锁阶段可能仍在静音播放；先停止该会话，再以完整音量从头播放。
+    // 两条成功路径都经过这里，避免异步评测复用静音中的播放状态。
+    a.pause()
     a.currentTime = 0
-    a.volume = 1 // 覆盖解锁时的静音（volume=0），保证正常音量
+    a.muted = false
+    a.volume = 1
     a.play().catch(() => {})
   }, [])
 
@@ -1480,8 +1484,6 @@ export default function SentencePractice({
             }
           }}
           onEvaluationSuccess={() => {
-            // 评测返回是异步回调（非手势），提示音与拼写成功共用 playSuccess：
-            // 同一实现（HTMLAudioElement 播放 success.mp3，音量 1.0），完全一致
             playSuccess()
           }}
           onPlayVoice={startDictation}
