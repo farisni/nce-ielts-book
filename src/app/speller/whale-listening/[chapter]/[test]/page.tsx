@@ -67,6 +67,7 @@ export default function WhaleDictationPage() {
 
   // 动态构造听写课程：单词 → 句子条目（en=单词, cn=释义, phonetic=音标）
   // sessionSize = 整个 Test 的词数：一次练完全部单词，进度条反映 Test 真实进度
+  // 音标：部分源数据用 ASCII 撇号 ' 表重音，转标准 IPA ˈ；// 包围由 SentencePractice 统一处理
   const course: Course = {
     id: `whale-${chapterSlug}-${testSlug}`,
     name: `${chapterSlug.replace("chapter-", "Chapter ")} · ${test.name}`,
@@ -75,7 +76,7 @@ export default function WhaleDictationPage() {
     sentences: test.words.map((w) => ({
       cn: w.meaning,
       en: w.word,
-      phonetic: w.phonetic || undefined,
+      phonetic: w.phonetic ? w.phonetic.replace(/'/g, "ˈ") : undefined,
     })),
   };
 

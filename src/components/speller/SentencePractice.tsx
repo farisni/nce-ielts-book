@@ -234,6 +234,12 @@ function formatTime(ms: number): string {
   return m > 0 ? `${m}:${String(s % 60).padStart(2, "0")}` : `${s}s`
 }
 
+/** 音标显示格式：用 / / 包围，斜杠与音标之间留极窄间距（thin space，已有包围的去重后重新包） */
+function formatPhonetic(ph: string): string {
+  const s = ph.trim().replace(/^\/+|\/+$/g, "")
+  return `/ ${s} /`
+}
+
 export default function SentencePractice({
   course,
   autoStart = false,
@@ -999,7 +1005,9 @@ export default function SentencePractice({
           <div key={`cn-${index}`} className="mt-[100px] text-center">
             <h2 className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
             {sentence.phonetic && (
-              <p className="mt-2 text-base leading-relaxed text-muted-foreground/70">{sentence.phonetic}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground/70">
+                {formatPhonetic(sentence.phonetic)}
+              </p>
             )}
           </div>
         )}
