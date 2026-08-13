@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import SentencePractice from "@/components/speller/SentencePractice";
 import { getWhaleTest } from "@/lib/speller/whale-king";
@@ -23,6 +23,8 @@ export default function WhaleDictationPage() {
   const wordIdxRef = useRef(0);
   // 复用的音频元素：切词自动停旧播新
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  // 声波图刷新信号：audio 实例创建/切词后触发渲染，让 SentencePractice 重建 WaveSurfer
+  const [, setWaveTick] = useState(0);
 
   const onSentence = useCallback((courseIndex: number) => {
     wordIdxRef.current = courseIndex;
@@ -38,6 +40,7 @@ export default function WhaleDictationPage() {
       if (a.src !== w.audio) a.src = w.audio; // 换 src 自动停止旧播放
       a.currentTime = 0;
       a.play().catch(() => {});
+      setWaveTick((t) => t + 1);
     } else {
       const synth = window.speechSynthesis;
       synth.cancel();
@@ -94,6 +97,7 @@ export default function WhaleDictationPage() {
           playVoice={playVoice}
           autoPlayVoice
           onCurrentSentence={onSentence}
+          waveAudioRef={audioRef}
           confettiOrigin={{ x: 0.5, y: 0.6 }}
           onExit={() => router.push("/speller/whale-listening")}
         />

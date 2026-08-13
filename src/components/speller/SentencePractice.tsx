@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet"
 import { LogOut, CheckCircle2, Eye, ArrowLeft, ArrowRight, Volume2, BookMarked, Check, List } from "lucide-react"
 import confetti from "canvas-confetti"
+import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
 import { getProgress, updateProgress, getPronHistory, savePronScore } from "@/lib/speller/progress"
 import PronunciationPractice, { type EvalResult, type PronunciationPracticeHandle } from "@/components/speller/PronunciationPractice"
@@ -250,6 +251,7 @@ export default function SentencePractice({
   onCurrentSentence,
   onJumpToSentence,
   confettiOrigin = { x: 0.5, y: 0.7 },
+  waveAudioRef,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -269,9 +271,50 @@ export default function SentencePractice({
   onJumpToSentence?: (courseIndex: number) => void
   /** 答对撒花的位置（canvas-confetti origin） */
   confettiOrigin?: { x: number; y: number }
+  /** 播放 mp3 原声的 audio 元素（声波图用：播放时显示完整波形，进度从左到右读动） */
+  waveAudioRef?: { current: HTMLAudioElement | null }
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess } = useGameSounds()
+
+  // ── 声波图（whalelisten 同款：WaveSurfer 渲染波形，media 绑定原声元素）──
+  // 配置照 whalelisten：waveColor 浅灰 / progressColor 深灰 / cursor 主题色 / 2px 圆角条 / 60px 高
+  const waveContainerRef = useRef<HTMLDivElement | null>(null)
+  const wsRef = useRef<WaveSurfer | null>(null)
+
+  useEffect(() => {
+    const el = waveAudioRef?.current
+    const container = waveContainerRef.current
+    if (!el || !container) return
+    // 切词（src 变化）时 effect 重跑 → 销毁重建，自动解码新词波形（whalelisten 同款做法）
+    const ws = WaveSurfer.create({
+      container,
+      media: el,
+      waveColor: "#e2e8f0",
+      progressColor: "#64748b",
+      cursorColor: "hsl(var(--primary))",
+      height: 60,
+      barWidth: 2,
+      barGap: 2,
+      barRadius: 2,
+      normalize: true,
+    })
+    wsRef.current = ws
+    // 进度校准：media 播放进度与波形偏差 >1% 时对齐（媒体元素驱动播放，波形只读展示）
+    const sync = () => {
+      const d = el.duration
+      if (d > 0) {
+        const t = el.currentTime / d
+        if (Math.abs(t - ws.getCurrentTime() / d) > 0.01) ws.seekTo(t)
+      }
+    }
+    el.addEventListener("timeupdate", sync)
+    return () => {
+      el.removeEventListener("timeupdate", sync)
+      ws.destroy()
+      wsRef.current = null
+    }
+  }, [waveAudioRef?.current, waveAudioRef?.current?.src])
 
   // ── 会话状态 ──
   const [phase, setPhase] = useState<Phase>("idle")
@@ -586,18 +629,6 @@ export default function SentencePractice({
     gotoNext()
   }, [sentence, passed, gotoNext, savePatch])
 
-  // ── 开始页键盘监听：按 Enter 直接开始听写 ──
-  useEffect(() => {
-    if (phase !== "idle") return
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        e.preventDefault()
-        startGame()
-      }
-    }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
-  }, [phase, startGame])
 
   // ── 键盘监听 ──
   useEffect(() => {
@@ -931,28 +962,9 @@ export default function SentencePractice({
       ? createPortal(shortcutBar, document.getElementById("shortcut-slot")!)
       : null
 
-  // ── 开始页 ──
+  // ── 开始前（所有页面均 autoStart，挂载后立即进入听写，不显示开始页）──
   if (phase === "idle") {
-    return (
-      <>
-        {progressPortal}
-        {prevPortal}
-        {nextPortal}
-        {shortcutPortal}
-        <div className="flex h-full w-full flex-col items-center justify-center text-center">
-          <p className="mb-3 text-base font-medium uppercase tracking-[0.3em] text-primary">Sentence Dictation</p>
-          <h1 className="mb-5 text-5xl font-bold tracking-tight text-foreground">听写句子</h1>
-          <p className="mb-10 max-w-lg text-lg text-muted-foreground">
-            看中文，听发音，用键盘打出英文句子。
-            <br />
-            Enter 提交，写对标绿、写错标红。共 {course?.sessionSize ?? 10} {unitLabel}。
-          </p>
-          <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
-            开始听写
-          </Button>
-        </div>
-      </>
-    )
+    return null
   }
 
   // ── 完成页 ──
@@ -1060,6 +1072,10 @@ export default function SentencePractice({
             )}
             {/* 中文释义：小字放音标下方 */}
             <h2 className="mt-2 text-base leading-relaxed text-muted-foreground/70">{sentence.cn}</h2>
+            {/* 声波图（whalelisten 同款）：WaveSurfer 波形，播放时进度从左到右读动 */}
+            <div className="mx-auto mt-4 w-full max-w-sm overflow-hidden rounded-md bg-muted/5">
+              <div ref={waveContainerRef} className="w-full cursor-pointer" style={{ minHeight: 60 }} />
+            </div>
           </div>
         )}
 

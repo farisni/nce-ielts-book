@@ -105,13 +105,93 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const timerRef = useRef<number | null>(null)
+  // 声波可视化：AnalyserNode + rAF 绘制
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const rafRef = useRef<number | null>(null)
+  const analyserRef = useRef<AnalyserNode | null>(null)
+  const waveCtxRef = useRef<AudioContext | null>(null)
+  const waveSourceRef = useRef<MediaStreamAudioSourceNode | null>(null)
 
-  // 清理：卸载时停止录音
+  // 清理：卸载时停止录音与声波绘制
   useEffect(() => {
     return () => {
       if (timerRef.current) window.clearInterval(timerRef.current)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      waveSourceRef.current?.disconnect()
+      waveCtxRef.current?.close().catch(() => {})
       mediaRecorderRef.current?.stream.getTracks().forEach((t) => t.stop())
     }
+  }, [])
+
+  /** 实时声波绘制：从 AnalyserNode 读时域数据，画一排随音量跳动的竖条 */
+  const drawWave = useCallback(() => {
+    const canvas = canvasRef.current
+    const analyser = analyserRef.current
+    if (!canvas || !analyser) return
+    const ctx2d = canvas.getContext("2d")
+    if (!ctx2d) return
+    const data = new Uint8Array(analyser.fftSize)
+    analyser.getByteTimeDomainData(data)
+    const W = canvas.width
+    const H = canvas.height
+    const BARS = 48
+    ctx2d.clearRect(0, 0, W, H)
+    const barW = W / BARS
+    for (let i = 0; i < BARS; i++) {
+      const start = Math.floor((i / BARS) * data.length)
+      const end = Math.floor(((i + 1) / BARS) * data.length)
+      let sum = 0
+      for (let j = start; j < end; j++) sum += Math.abs(data[j] - 128)
+      const avg = (sum / Math.max(1, end - start)) / 128 // 0~1
+      const h = Math.max(3, avg * H * 0.92)
+      const x = i * barW + barW * 0.18
+      const w = barW * 0.64
+      const y = (H - h) / 2
+      ctx2d.fillStyle = "rgb(56 189 248 / 0.75)"
+      ctx2d.beginPath()
+      ctx2d.roundRect(x, y, w, h, Math.min(w / 2, 3))
+      ctx2d.fill()
+    }
+    rafRef.current = requestAnimationFrame(drawWave)
+  }, [])
+
+  /** 开始声波可视化（录音时调用） */
+  const startWave = useCallback(async (stream: MediaStream) => {
+    const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+    if (!Ctor || !canvasRef.current) return
+    const actx = new Ctor()
+    try { await actx.resume() } catch { /* ignore */ }
+    const source = actx.createMediaStreamSource(stream)
+    const analyser = actx.createAnalyser()
+    analyser.fftSize = 256
+    analyser.smoothingTimeConstant = 0.75
+    source.connect(analyser)
+    waveCtxRef.current = actx
+    waveSourceRef.current = source
+    analyserRef.current = analyser
+    // 匹配 canvas 实际渲染尺寸（CSS 高度固定，宽度自适应）
+    const canvas = canvasRef.current
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = Math.round(canvas.clientWidth * dpr)
+    canvas.height = Math.round(canvas.clientHeight * dpr)
+    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    rafRef.current = requestAnimationFrame(drawWave)
+  }, [drawWave])
+
+  /** 停止声波可视化（停止录音时调用） */
+  const stopWave = useCallback(() => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    waveSourceRef.current?.disconnect()
+    waveSourceRef.current = null
+    analyserRef.current = null
+    waveCtxRef.current?.close().catch(() => {})
+    waveCtxRef.current = null
+    // 清空画布
+    const canvas = canvasRef.current
+    if (canvas) canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height)
   }, [])
 
   // 后端已把讯飞 XML 解析成结构化 JSON，前端直接消费
@@ -147,16 +227,20 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
       mediaRecorderRef.current = mediaRecorder;
       chunksRef.current = chunks;
 
+      // 启动实时声波可视化（复用同一 stream）
+      startWave(stream);
+
       setRecording(true);
       setRecordingSec(0);
       timerRef.current = window.setInterval(() => setRecordingSec((s) => s + 1), 1000);
     } catch (e) {
       setError("无法访问麦克风：" + ((e as Error).message || "请检查权限"));
     }
-  }, []);
+  }, [startWave]);
 
   const stopRecording = useCallback(async () => {
     if (timerRef.current) window.clearInterval(timerRef.current);
+    stopWave();
     setRecording(false);
 
     const mediaRecorder = mediaRecorderRef.current;
@@ -263,7 +347,7 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
     } finally {
       setEvaluating(false);
     }
-  }, [sentence, onEvaluationSuccess, onResult]);
+  }, [sentence, onEvaluationSuccess, onResult, stopWave]);
 
   // 对外暴露 toggle：录音中 → 停止；未录音 → 开始（供 F5 快捷键调用）
   useImperativeHandle(ref, () => ({
@@ -314,6 +398,15 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
           </button>
         )}
       </div>
+
+      {/* 声波图：录音时实时显示音量波形 */}
+      {recording && (
+        <canvas
+          ref={canvasRef}
+          className="h-12 w-full max-w-sm"
+          style={{ display: "block" }}
+        />
+      )}
 
       {/* 评测中 */}
       {evaluating && (
