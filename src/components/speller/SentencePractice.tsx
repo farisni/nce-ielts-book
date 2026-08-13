@@ -466,16 +466,21 @@ export default function SentencePractice({
   }, [phase, startAt])
 
   // 切换句子时自动发音：默认 TTS 朗读；autoPlayVoice 时调用 playVoice（单词课程自动播原声）
+  // 录音状态用 ref 实时守卫（不进 deps）：避免停止录音（pronRecording 变化）时 effect 重跑导致重复自动播放
+  const pronRecordingRef = useRef(pronRecording)
+  useEffect(() => {
+    pronRecordingRef.current = pronRecording
+  }, [pronRecording])
   useEffect(() => {
     if (phase !== "playing" || !sentence || !autoSpeak) return
     const t = window.setTimeout(() => {
       // 互斥：录音中不自动播放发音
-      if (pronRecording) return
+      if (pronRecordingRef.current) return
       if (playVoice && autoPlayVoice) playVoice()
       else if (!playVoice) speak(sentence.en)
     }, 300)
     return () => window.clearTimeout(t)
-  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice, pronRecording])
+  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice])
 
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
