@@ -125,7 +125,9 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   // 清理：卸载时销毁 wavesurfer（内部停流、释放麦克风）
   useEffect(() => {
     return () => {
-      waveSurferRef.current?.destroy()
+      // 同上：先 stopMic 取消 once 订阅，避免 destroy 时 double-close AudioContext
+      try { recordPluginRef.current?.stopMic() } catch { /* ignore */ }
+      try { waveSurferRef.current?.destroy() } catch { /* ignore */ }
       waveSurferRef.current = null
       recordPluginRef.current = null
     }
@@ -280,7 +282,11 @@ const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
       })
     return () => {
       cancelled = true
-      wavesurfer.destroy() // 内部会 stopRecording + 停流释放麦克风
+      // RecordPlugin destroy 有 double-close bug：once("destroy") 订阅与 stopMic() 都会调用
+      // onDestroy（close AudioContext），第二次 close 抛 InvalidStateError。
+      // 先手动 stopMic()（取消 once 订阅），destroy 时不再重复 close
+      try { recordPluginRef.current?.stopMic() } catch { /* ignore */ }
+      try { wavesurfer.destroy() } catch { /* ignore */ }
       waveSurferRef.current = null
       recordPluginRef.current = null
     }
