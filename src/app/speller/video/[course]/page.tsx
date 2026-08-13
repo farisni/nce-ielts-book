@@ -86,6 +86,13 @@ export default function VideoSpellerPage() {
     return false
   }, [cues])
 
+  // 当前句 SRT 片段（秒）：声波图只显示该段波形；引用稳定，切句时才变化
+  const waveSegment = useMemo(() => {
+    const cue = cues[currentIdx]
+    if (!cue) return null
+    return { start: cue.startMs / 1000, end: cue.endMs / 1000 }
+  }, [cues, currentIdx])
+
   // 播放发音 → 播放当前句对应的视频片段（SRT 时间点驱动）
   const playVoice = useCallback(() => {
     const v = videoRef.current
@@ -367,8 +374,9 @@ export default function VideoSpellerPage() {
             onStopVoice={() => videoRef.current?.pause()}
             // 播放按钮换状态：页面媒体播放/暂停事件驱动
             voicePlaying={isPlaying}
-            // 声波图：绑定页面媒体元素（音频课程为 mp3 原声，波形随播放进度读动）
+            // 声波图：绑定页面媒体元素（音频课程为 mp3 原声），只显示当前句 SRT 片段波形
             waveAudioRef={videoRef}
+            waveSegment={waveSegment}
           />
         </div>
       </div>

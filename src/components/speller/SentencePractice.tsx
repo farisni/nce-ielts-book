@@ -315,6 +315,7 @@ export default function SentencePractice({
   onJumpToSentence,
   confettiOrigin = { x: 0.5, y: 0.7 },
   waveAudioRef,
+  waveSegment,
   onStopVoice,
   voicePlaying,
 }: {
@@ -338,6 +339,8 @@ export default function SentencePractice({
   confettiOrigin?: { x: number; y: number }
   /** 播放原声的媒体元素（声波图用：播放时显示完整波形，进度从左到右读动；audio 或 video 均可） */
   waveAudioRef?: { current: HTMLMediaElement | null }
+  /** 声波图只显示该时间段（秒，如句子课程当前句的 SRT 片段）；不传显示全部 */
+  waveSegment?: { start: number; end: number } | null
   /** 停止视频/音频页面播放的回调（开始录音前打断播放用） */
   onStopVoice?: () => void
   /** 视频/音频页面媒体的播放状态（footer 播放按钮换状态用；不传则用内部 TTS/原声状态） */
@@ -389,7 +392,10 @@ export default function SentencePractice({
     const container = waveContainerRef.current
     // 录音时容器让给录音波形（RecordPlugin），停止后恢复播放波形
     if (!el || !container || pronRecording) return
-    // 切词（src 变化）时 effect 重跑 → 销毁重建，自动解码新词波形（whalelisten 同款做法）
+    // 清掉容器内残留渲染层（切句重建时旧实例可能未完全清理）
+    container.innerHTML = ""
+    // 切词（src 变化）/切句（waveSegment 变化）时 effect 重跑 → 销毁重建，
+    // 自动解码新波形（whalelisten 同款做法）。句子课程只显示当前句片段
     const ws = WaveSurfer.create({
       container,
       media: el,
@@ -403,12 +409,24 @@ export default function SentencePractice({
       normalize: true,
     })
     wsRef.current = ws
-    // 进度校准：media 播放进度与波形偏差 >1% 时对齐（媒体元素驱动播放，波形只读展示）
+    // 句子课程：解码完成后放大到「片段时长占满容器」并定位到片段起点 → 只显示当前句波形
+    ws.on("ready", () => {
+      if (waveSegment && container.clientWidth > 0) {
+        ws.zoom(container.clientWidth / Math.max(0.5, waveSegment.end - waveSegment.start))
+        ws.setTime(waveSegment.start)
+      }
+    })
+    // 进度校准：media 播放进度与波形偏差过大时对齐（媒体元素驱动播放，波形只读展示）。
+    // 片段模式校准绝对时间（波形已 zoom 到片段区间）
     const sync = () => {
       const d = el.duration
-      if (d > 0) {
+      if (d <= 0) return
+      if (waveSegment) {
+        if (Math.abs(el.currentTime - ws.getCurrentTime()) > 0.05) ws.seekTo(el.currentTime)
+      } else {
         const t = el.currentTime / d
-        if (Math.abs(t - ws.getCurrentTime() / d) > 0.01) ws.seekTo(t)
+        const dur = ws.getDuration()
+        if (dur > 0 && Math.abs(t - ws.getCurrentTime() / dur) > 0.01) ws.seekTo(t)
       }
     }
     el.addEventListener("timeupdate", sync)
@@ -416,8 +434,10 @@ export default function SentencePractice({
       el.removeEventListener("timeupdate", sync)
       ws.destroy()
       wsRef.current = null
+      // destroy 后彻底清空容器，避免旧渲染层残留累积
+      container.innerHTML = ""
     }
-  }, [waveAudioRef?.current, waveAudioRef?.current?.src, pronRecording])
+  }, [waveAudioRef?.current, waveAudioRef?.current?.src, pronRecording, waveSegment])
 
   // ── 会话状态 ──
   const [phase, setPhase] = useState<Phase>("idle")
