@@ -228,7 +228,15 @@ function useGameSounds() {
     playBuffer(successBufferRef.current, 1.0)
   }, [playBuffer])
 
-  return { playType, playSuccess, soundReady: ready }
+  /** 用户手势期间恢复 AudioContext：防止浏览器挂起后，异步回调（如录音评测返回）里 resume 被拒导致提示音变小/缺失 */
+  const ensureAudio = useCallback(() => {
+    const ctx = ctxRef.current
+    if (ctx && ctx.state === "suspended") {
+      ctx.resume().catch(() => {})
+    }
+  }, [])
+
+  return { playType, playSuccess, ensureAudio, soundReady: ready }
 }
 
 function formatTime(ms: number): string {
@@ -304,7 +312,18 @@ export default function SentencePractice({
   voicePlaying?: boolean
 }) {
   const { speak, stop } = useSpeech()
-  const { playType, playSuccess } = useGameSounds()
+  const { playType, playSuccess, ensureAudio } = useGameSounds()
+
+  // 任何用户手势（点击/按键）都恢复 AudioContext，保证后续异步音效（录音评测提示音）不受浏览器挂起影响
+  useEffect(() => {
+    const onGesture = () => ensureAudio()
+    window.addEventListener("pointerdown", onGesture)
+    window.addEventListener("keydown", onGesture)
+    return () => {
+      window.removeEventListener("pointerdown", onGesture)
+      window.removeEventListener("keydown", onGesture)
+    }
+  }, [ensureAudio])
 
   // ── 声波图（whalelisten 同款：WaveSurfer 渲染波形，media 绑定原声元素）──
   // 配置照 whalelisten：waveColor 浅灰 / progressColor 深灰 / cursor 主题色 / 2px 圆角条 / 60px 高
