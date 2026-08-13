@@ -1266,8 +1266,21 @@ export default function SentencePractice({
                 {formatPhonetic(sentence.phonetic)}
               </p>
             )}
-            {/* 中文释义：小字放音标下方 */}
-            <h2 className="mt-2 text-xl leading-relaxed text-muted-foreground/70">{sentence.cn}</h2>
+            {/* 中文释义：小字放音标下方；词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
+            {(() => {
+              const posMatch = sentence.cn.match(/^((?:[a-z]+\.\/?)+ )/)
+              const rest = posMatch ? sentence.cn.slice(posMatch[1].length) : sentence.cn
+              const m = rest.match(/^([^；;\n]+[；;\n]?)/)
+              const bold = m ? m[1] : null
+              const tail = m ? rest.slice(m[1].length) : rest
+              return (
+                <h2 className="mt-2 text-xl leading-relaxed text-muted-foreground/70">
+                  {posMatch?.[1]}
+                  {bold && <span className="font-semibold text-foreground">{bold}</span>}
+                  {tail}
+                </h2>
+              )
+            })()}
           </div>
         )}
 
