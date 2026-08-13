@@ -241,6 +241,27 @@ function formatPhonetic(ph: string): string {
   return `/ ${s} /`
 }
 
+/** 单词 → 每个字母的音节索引（如 interstellar → [0,0,0,1,1,1,2,2,2,2,3,3]）。
+ *  syllables 拼接后与单词不一致（含标点/大小写差异）返回 null，放弃着色 */
+function wordSyllableIdx(wordText: string, syllables?: string[]): number[] | null {
+  if (!syllables || syllables.length === 0) return null
+  const lower = wordText.toLowerCase()
+  let remaining = lower
+  const idxMap: number[] = []
+  let si = 0
+  for (const syll of syllables) {
+    const s = syll.toLowerCase()
+    const pos = remaining.indexOf(s)
+    if (pos < 0) return null
+    for (let i = 0; i < pos; i++) idxMap.push(si)
+    for (let i = 0; i < s.length; i++) idxMap.push(si)
+    remaining = remaining.slice(pos + s.length)
+    si++
+  }
+  if (remaining.length > 0) return null
+  return idxMap
+}
+
 export default function SentencePractice({
   course,
   autoStart = false,
@@ -512,7 +533,12 @@ export default function SentencePractice({
     [course, sessionSrcIdx, index, onJumpToSentence],
   )
 
-  // 提交通过后不自动进入下一句：停留撒花，由用户按 Enter 手动进入
+  // 提交通过后稍作停留（撒花动画），自动进入下一句
+  useEffect(() => {
+    if (!passed || phase !== "playing") return
+    const t = window.setTimeout(() => gotoNext(), 1400)
+    return () => window.clearTimeout(t)
+  }, [passed, phase, gotoNext])
 
   // ── 动作 ──
   const startGame = useCallback(() => {
@@ -794,6 +820,8 @@ export default function SentencePractice({
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
   const fullyCorrect = submitted && !revealed && words.every((w, i) => (wordInputs[i] ?? "").toLowerCase() === w.toLowerCase())
+  // 音节着色模式：答对撒花后，单词按音节红黑相间显示（有音节数据时）
+  const syllableMode = fullyCorrect && !!sentence?.syllables?.length
 
   // 把 chars 按单词分组：每个单词的字母包进不可换行容器，只在单词间换行（避免单词被截断）
   const charGroups = useMemo(() => {
@@ -1098,7 +1126,7 @@ export default function SentencePractice({
         <div key={`en-${index}`} className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
           <div
             className={`font-input flex min-h-[4.4em] w-full max-w-5xl flex-1 flex-col items-center justify-center text-center text-4xl font-medium leading-none sm:text-[2.875rem] ${
-              fullyCorrect ? "text-emerald-500" : "text-foreground"
+              fullyCorrect && !syllableMode ? "text-emerald-500" : "text-foreground"
             }`}
           >
             {chars.length === 0 && <span className="text-muted-foreground">— 听发音，用键盘输入英文句子 —</span>}
@@ -1147,6 +1175,9 @@ export default function SentencePractice({
                 const pron = pronWords?.[wordSeq]
                 // 发音评测读错 → 整词下划线标红（优先级最高，优先于听写错误/激活态）
                 const pronWrong = !!pron?.wrong
+                // 音节着色：答对撒花后（syllableMode），单词按音节红黑相间
+                const wordText = group.chars.map((cc) => cc.ch).join("")
+                const syllMap = syllableMode ? wordSyllableIdx(wordText, sentence?.syllables) : null
                 return (
                   <span
                     key={gIndex}
@@ -1219,6 +1250,13 @@ export default function SentencePractice({
                       }
                       if (c.status === "correct") {
                         // 写对的字母：底部对齐下划线；正常输入显示绿色，显示答案后显示浅灰色
+                        // 答对撒花后（syllableMode）：按音节红黑相间
+                        const syllColor =
+                          syllMap && syllMap[i] !== undefined
+                            ? syllMap[i] % 2 === 1
+                              ? "text-red-500"
+                              : "text-foreground"
+                            : null
                         return (
                           <span
                             key={idx}
@@ -1228,7 +1266,9 @@ export default function SentencePractice({
                             <span className="invisible leading-none">W</span>
                             <span
                               className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${
-                                revealed ? "text-muted-foreground" : "text-emerald-500"
+                                revealed
+                                  ? "text-muted-foreground"
+                                  : syllColor ?? "text-emerald-500"
                               }`}
                               style={{ transform: "translateY(-0.14em)" }}
                             >

@@ -14,6 +14,8 @@ export interface WhaleWord {
   meaning: string
   /** 单词原声 mp3 地址（可为空，播放时用 TTS 兜底） */
   audio: string
+  /** 音节划分（如 ["in","ter","stel","lar"]），答对撒花后按音节着色用 */
+  syllables?: string[]
 }
 
 export interface WhaleTest {

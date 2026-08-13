@@ -5,6 +5,8 @@ export interface SentenceEntry {
   en: string
   /** 音标（单词听写课程使用，显示在中文提示下方） */
   phonetic?: string
+  /** 音节划分（如 ["in","ter","stel","lar"]），答对撒花后按音节着色 */
+  syllables?: string[]
 }
 
 export interface Course {

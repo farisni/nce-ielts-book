@@ -79,6 +79,7 @@ export default function Lexicon807DictationPage() {
       cn: w.meaning,
       en: w.word,
       phonetic: w.phonetic ? w.phonetic.replace(/'/g, "ˈ") : undefined,
+      syllables: w.syllables,
     })),
   };
 
