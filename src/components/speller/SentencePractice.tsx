@@ -1125,7 +1125,7 @@ export default function SentencePractice({
         <div key={`en-${index}`} className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
           <div
             className={`font-input flex min-h-[4.4em] w-full max-w-5xl flex-1 flex-col items-center justify-center text-center text-4xl font-medium leading-none sm:text-[2.875rem] ${
-              fullyCorrect && !syllableMode ? "text-emerald-500" : "text-foreground"
+              fullyCorrect && !syllableMode ? "text-violet-500" : "text-foreground"
             }`}
           >
             {chars.length === 0 && <span className="text-muted-foreground">— 听发音，用键盘输入英文句子 —</span>}
@@ -1214,7 +1214,7 @@ export default function SentencePractice({
                                 pronWrong
                                   ? "text-rose-500"
                                   : pron.score >= 70
-                                    ? "text-emerald-500"
+                                    ? "text-violet-500"
                                     : "text-amber-500"
                               }`}
                               style={{ transform: "translateY(-0.14em)" }}
@@ -1226,7 +1226,7 @@ export default function SentencePractice({
                                 pronWrong
                                   ? "bg-rose-500"
                                   : pron.score >= 70
-                                    ? "bg-emerald-500"
+                                    ? "bg-violet-500"
                                     : "bg-amber-500"
                               }`}
                             />
@@ -1261,7 +1261,7 @@ export default function SentencePractice({
                             : "text-foreground"
                           : revealed
                             ? "text-muted-foreground"
-                            : "text-emerald-500"
+                            : "text-violet-500"
                         return (
                           <span
                             key={idx}
