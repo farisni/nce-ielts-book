@@ -46,8 +46,8 @@ export default function SpellerPage() {
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
-                雅
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                🐋
               </span>
               <div>
                 <div className="flex items-center gap-2">
@@ -76,8 +76,8 @@ export default function SpellerPage() {
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
-                新
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                📘
               </span>
               <div>
                 <div className="flex items-center gap-2">
@@ -113,8 +113,8 @@ export default function SpellerPage() {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
-                    {course.name.charAt(0)}
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                    🎧
                   </span>
                   <div>
                     <div className="flex items-center gap-2">
