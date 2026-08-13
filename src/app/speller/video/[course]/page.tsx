@@ -1,21 +1,35 @@
 "use client"
 
 import { useRouter, useParams } from "next/navigation";
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useEffect, useMemo, useState } from "react";
 import SentencePractice from "@/components/speller/SentencePractice";
 import { getCourse } from "@/lib/speller/courses";
 import { parseSrt, type SrtCue } from "@/lib/parse-srt";
+
+/** SRT 字幕可能是中英对照（英文 + 中文同一行），显示时只保留英文，避免泄露答案 */
+function englishOnly(text: string): string {
+  return text
+    .replace(/[一-鿿　-〿＀-￯“”‘’]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+}
 
 /**
  * Speller · 视频听写页
  * 左右布局：左 = 视频播放 + 字幕联动，右 = 拼写练习
  * 反引号 ` 播放当前句对应的视频片段（由 SRT 时间点驱动）
+ * 音频课程（mp3 等）：无画面，左侧显示封面播放按钮，其余逻辑相同
  */
 export default function VideoSpellerPage() {
   const router = useRouter();
   const params = useParams();
   const courseId = (params.course as string) ?? "nce3-l1";
   const course = getCourse(courseId);
+  // 音频课程（如 mp3）：video 元素仍负责播放，但视觉上隐藏，改为封面按钮
+  const isAudio = useMemo(
+    () => /\.(mp3|m4a|aac|wav|ogg)(\?|$)/i.test(course?.video ?? ""),
+    [course?.video],
+  );
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [cues, setCues] = useState<SrtCue[]>([]);
   const [currentIdx, setCurrentIdx] = useState(-1);
@@ -228,15 +242,31 @@ export default function VideoSpellerPage() {
         {/* 左：视频播放（垂直居中） */}
         <div className="flex w-full flex-col justify-center gap-3 lg:w-[42%] lg:shrink-0">
           <div className="overflow-hidden rounded-xl border border-border bg-black">
-            {/* 视频：无原生控件（禁止空格控制/拖动进度条），点击画面切换播放 */}
+            {/* 视频：无原生控件（禁止空格控制/拖动进度条），点击画面切换播放。
+                音频课程时隐藏元素（仍负责播放声音），显示封面播放按钮 */}
             <video
               ref={videoRef}
               src={course.video}
               playsInline
               preload="metadata"
-              className="aspect-video w-full cursor-pointer"
+              className={isAudio ? "hidden" : "aspect-video w-full cursor-pointer"}
               onClick={toggleVideo}
             />
+            {isAudio && (
+              <div
+                className="flex aspect-video w-full cursor-pointer flex-col items-center justify-center gap-4"
+                onClick={toggleVideo}
+              >
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25">
+                  {isPlaying ? (
+                    <svg width="16" height="18" viewBox="0 0 10 12" fill="currentColor"><rect x="1" width="3" height="12" rx="1"/><rect x="6" width="3" height="12" rx="1"/></svg>
+                  ) : (
+                    <svg width="16" height="18" viewBox="0 0 10 12" fill="currentColor"><path d="M1 1l8 5-8 5V1z"/></svg>
+                  )}
+                </span>
+                <span className="px-4 text-center text-sm text-white/70">{course.name}</span>
+              </div>
+            )}
             {/* 自定义只读进度条 + 播放控制 */}
             <div className="flex items-center gap-3 border-t border-white/10 bg-black/60 px-3 py-2">
               <button
@@ -299,7 +329,7 @@ export default function VideoSpellerPage() {
                   当前句 · {currentIdx >= 0 ? currentIdx + 1 : "—"}/{cues.length}
                 </p>
                 <p className="text-base leading-relaxed text-foreground">
-                  {currentIdx >= 0 ? cues[currentIdx]?.text : "—"}
+                  {currentIdx >= 0 ? englishOnly(cues[currentIdx]?.text ?? "") : "—"}
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground/70">
                   反引号 ` 播放当前句 · 空格跳词 · Enter 提交

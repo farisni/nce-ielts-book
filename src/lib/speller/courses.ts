@@ -114,6 +114,31 @@ export const COURSES: Course[] = [
       { cn: "想到在宁静的乡村里有一头危险的野兽继续逍遥流窜，真令人担心。", en: "It is disturbing to think that a dangerous wild animal is still at large in the quiet countryside." },
     ],
   },
+  {
+    id: "ielts19-27",
+    name: "IELTS19-27 · 听力第27期",
+    description: "剑桥雅思19真题听力第27期 · 跑步教练播客 · 听原声，看中文，打字拼写",
+    sessionSize: 10,
+    video: "/video/ielts19-27.mp3",
+    subtitle: "/video/ielts19-27.srt",
+    sentences: [
+      { cn: "我是莉兹·富勒，是康普顿公园跑步俱乐部的跑步教练。", en: "My name's Liz Fuller and I'm a running coach with Compton Park Runners Club." },
+      { cn: "欢迎来到我的播客。", en: "Welcome to my podcast." },
+      { cn: "如果你正在考虑开始跑步，那么我可以帮助你。", en: "If you're thinking about taking up running, I'm here to help." },
+      { cn: "网上有许多训练计划，目标是帮助人们逐渐进步，最后能跑5公里。", en: "There are many training programmes available online which aim to help people build up to running 5 kilometres." },
+      { cn: "其中一些计划很棒，全国各地成千上万的不同年龄段的人最后都在跑5公里。", en: "Some of them are great and thousands of people of all ages are taking part in 5-kilometre races across the country as a result." },
+      { cn: "人们喜欢这种计划，因为很容易跟着跑下来，而且不会给他们太大压力。", en: "People like them because they're easy to follow and don't push them too hard." },
+      { cn: "然而，这种计划并不适合所有人，尤其是如果你有心脏病、哮喘等疾病，因为这种计划的目标人群是具有平均健康水平和跑步能力的人。", en: "However, they don't work for everyone, especially if you suffer from something like a heart condition or asthma, because they're aimed at people with average fitness and running ability." },
+      { cn: "另一个原因是每个人都是不同的，如果你有与你的需求相关的具体问题，没有人能给你提供任何答案。", en: "Another thing is that everyone is different, and if you have any specific questions related to your needs, there's no one to provide any answers." },
+      { cn: "我总是会给新入门的跑步者提供几个小建议。", en: "I have a couple of simple tips I always give to new runners." },
+      { cn: "我想你应该听说过，在你的体力有所改善之前要跑得非常慢，嗯，我发现这样做会阻碍你进步。", en: "I expect you've been told to run very slowly until your fitness increases -- well, I find that can prevent progress." },
+      { cn: "你应该以一种感觉舒服的速度跑，但要给自己计时，并尝试每次都跑得更快一点。", en: "You should run at a speed that feels comfortable, but time yourself and try to run a bit faster each time." },
+      { cn: "听音乐可能会很有帮助，能让你的思绪从其他事情上转移，帮助你的身体进入一种节奏。", en: "Listening to music can be very helpful -- it takes your mind off things and helps your body get into a rhythm." },
+      { cn: "我想说，听音乐比和朋友一起跑步效果更好，尤其是因为大多数人都有竞争意识，而刚开始跑步的时候最好不要竞争。", en: "I'd say that is better than running with a friend -- especially as most people are competitive and that's not what you want when you're just starting." },
+      { cn: "我认为跑步的时间并不是特别重要，有些人晚上状态更好，有些人早上状态更好，", en: "I don't think the time of day is especially important -- some people are better in the evening, while others are morning people --" },
+      { cn: "但需要时间保持一致，所以争取做到定期训练，开始时每周跑两次就够了。", en: "but you need to be consistent, so aim to train regularly -- twice a week is enough to begin with." },
+    ],
+  },
 ]
 
 /** 按 id 查找课程 */
