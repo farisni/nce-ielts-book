@@ -30,6 +30,8 @@ export interface WhaleTest {
 export interface WhaleChapter {
   /** Chapter 名，如 "Chapter 3" */
   name: string
+  /** 主题 emoji */
+  emoji: string
   /** URL slug，如 "chapter-3" */
   slug: string
   description: string

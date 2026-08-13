@@ -2,6 +2,7 @@ import type { WhaleChapter } from "./whale-king"
 
 export const WHALE_CHAPTER_11: WhaleChapter = {
   name: "Chapter 11",
+  emoji: "🧩",
   slug: "chapter-11",
   description: "\u7efc\u5408\u6d4b\u8bd5",
   tests: [
