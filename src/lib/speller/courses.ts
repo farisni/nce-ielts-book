@@ -3,6 +3,8 @@ export interface SentenceEntry {
   cn: string
   /** 英文句子（听写目标） */
   en: string
+  /** 音标（单词听写课程使用，显示在中文提示下方） */
+  phonetic?: string
 }
 
 export interface Course {

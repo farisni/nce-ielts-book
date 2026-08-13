@@ -240,6 +240,7 @@ export default function SentencePractice({
   onExit,
   showCn = true,
   playVoice,
+  autoPlayVoice = false,
   onCurrentSentence,
   onJumpToSentence,
   confettiOrigin = { x: 0.5, y: 0.7 },
@@ -254,6 +255,8 @@ export default function SentencePractice({
   showCn?: boolean
   /** 播放发音回调（视频课程模式下播放视频；不传则用 TTS） */
   playVoice?: () => void
+  /** 切句时自动调用 playVoice（单词课程自动播原声用；默认不自动播，手动 Tab） */
+  autoPlayVoice?: boolean
   /** 当前句在课程原始句子中的索引回调（视频/SRT 联动用） */
   onCurrentSentence?: (courseIndex: number) => void
   /** 点击句子列表中的某句，跳转到对应 SRT 时间点 */
@@ -304,6 +307,12 @@ export default function SentencePractice({
   const sentence = session[index]
   const target = sentence?.en ?? ""
   const words = useMemo(() => getWords(target), [target])
+  // 单词课程（en 全部为单个单词）→ 文案用「单词」，句子课程用「句」
+  const isWordMode = useMemo(
+    () => (course?.sentences.length ?? 0) > 0 && course!.sentences.every((s) => !s.en.includes(" ")),
+    [course],
+  )
+  const unitLabel = isWordMode ? "个单词" : "句"
 
   // ── 计时器 ──
   useEffect(() => {
@@ -314,12 +323,15 @@ export default function SentencePractice({
     }
   }, [phase, startAt])
 
-  // 切换句子时自动发音（视频模式用视频原声，禁用 TTS）
+  // 切换句子时自动发音：默认 TTS 朗读；autoPlayVoice 时调用 playVoice（单词课程自动播原声）
   useEffect(() => {
-    if (phase !== "playing" || !sentence || !autoSpeak || playVoice) return
-    const t = window.setTimeout(() => speak(sentence.en), 300)
+    if (phase !== "playing" || !sentence || !autoSpeak) return
+    const t = window.setTimeout(() => {
+      if (playVoice && autoPlayVoice) playVoice()
+      else if (!playVoice) speak(sentence.en)
+    }, 300)
     return () => window.clearTimeout(t)
-  }, [index, phase, sentence, autoSpeak, speak, playVoice])
+  }, [index, phase, sentence, autoSpeak, speak, playVoice, autoPlayVoice])
 
   // 卸载时停止语音
   useEffect(() => () => stop(), [stop])
@@ -839,9 +851,9 @@ export default function SentencePractice({
   const shortcutBar =
     phase === "playing" ? (
       <div className="flex flex-wrap items-center justify-center gap-2">
-        <Button variant="secondary" size="sm" onClick={replay} title={playVoice ? "播放视频" : "播放发音"} aria-label={playVoice ? "播放视频" : "播放发音"} className="gap-1.5">
+        <Button variant="secondary" size="sm" onClick={replay} title={playVoice ? "播放原声" : "播放发音"} aria-label={playVoice ? "播放原声" : "播放发音"} className="gap-1.5">
           <Volume2 className="size-3.5" />
-          {playVoice ? "播放视频" : "播放发音"}
+          {playVoice ? "播放原声" : "播放发音"}
           <Kbd>Tab</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
@@ -885,7 +897,7 @@ export default function SentencePractice({
           <p className="mb-10 max-w-lg text-lg text-muted-foreground">
             看中文，听发音，用键盘打出英文句子。
             <br />
-            Enter 提交，写对标绿、写错标红。共 {course?.sessionSize ?? 10} 句。
+            Enter 提交，写对标绿、写错标红。共 {course?.sessionSize ?? 10} {unitLabel}。
           </p>
           <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
             开始听写
@@ -907,7 +919,7 @@ export default function SentencePractice({
         <div className="flex h-full w-full flex-col items-center justify-center text-center">
           <div className="mb-6 text-7xl">{accuracy >= 90 ? "🎉" : accuracy >= 60 ? "👍" : "💪"}</div>
           <h1 className="mb-3 text-4xl font-bold text-foreground">本组完成！</h1>
-          <p className="mb-8 text-base text-muted-foreground">共 {session.length} 个句子</p>
+          <p className="mb-8 text-base text-muted-foreground">共 {session.length} {unitLabel}</p>
           <div className="mb-10 grid grid-cols-2 gap-x-14 gap-y-6 text-center sm:grid-cols-4">
             <div>
               <div className="text-4xl font-bold text-emerald-500">{passedCount}</div>
@@ -982,10 +994,13 @@ export default function SentencePractice({
         </SheetContent>
       </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
-        {/* 中文句子（视频课程模式下隐藏，避免泄露答案） */}
+        {/* 中文句子（视频课程模式下隐藏，避免泄露答案）；单词课程在下方显示音标 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
             <h2 className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">{sentence.cn}</h2>
+            {sentence.phonetic && (
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground/70">{sentence.phonetic}</p>
+            )}
           </div>
         )}
 

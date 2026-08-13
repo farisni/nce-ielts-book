@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { Mic, Square, Loader2, PenLine, AlertTriangle } from "lucide-react";
 
 /**
@@ -70,14 +70,14 @@ export type EvalResult = {
  * - 目标句子由父组件传入（sentence.en）
  * - 录音转 16kHz 16bit 单声道 PCM 后上传
  * - 受控组件：initialResult 恢复历史评分，onResult 上报本次结果（父组件按句保存）
+ * - 通过 ref 暴露 toggle()，供父组件绑定快捷键（F5）触发录音/停止
  */
-export default function PronunciationPractice({
-  sentence,
-  onPlayVoice,
-  onEvaluationSuccess,
-  initialResult,
-  onResult,
-}: {
+export type PronunciationPracticeHandle = {
+  /** 切换录音状态：未录音 → 开始；录音中 → 停止并评分 */
+  toggle: () => void
+}
+
+const PronunciationPractice = forwardRef<PronunciationPracticeHandle, {
   /** 目标句子（评测文本） */
   sentence: string
   /** 播放标准发音的回调（可选） */
@@ -88,7 +88,13 @@ export default function PronunciationPractice({
   initialResult?: EvalResult | null
   /** 评测完成回调（父组件用于保存该句评分） */
   onResult?: (r: EvalResult) => void
-}) {
+}>(function PronunciationPractice({
+  sentence,
+  onPlayVoice,
+  onEvaluationSuccess,
+  initialResult,
+  onResult,
+}, ref) {
   const [recording, setRecording] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
   // 默认不显示历史评分，只有本次录音返回时才展示（initialResult 仅作历史留存，不默认亮出）
@@ -259,6 +265,14 @@ export default function PronunciationPractice({
     }
   }, [sentence, onEvaluationSuccess, onResult]);
 
+  // 对外暴露 toggle：录音中 → 停止；未录音 → 开始（供 F5 快捷键调用）
+  useImperativeHandle(ref, () => ({
+    toggle: () => {
+      if (recording) stopRecording()
+      else startRecording()
+    },
+  }), [recording, startRecording, stopRecording]);
+
   return (
     <div className="flex flex-col items-center gap-3">
       {/* 录音按钮 */}
@@ -268,6 +282,7 @@ export default function PronunciationPractice({
             type="button"
             onClick={startRecording}
             disabled={evaluating}
+            title="跟读录音 (F5)"
             className="flex items-center gap-2 rounded-lg border border-border bg-muted/40 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/60 disabled:opacity-50"
           >
             <Mic className="size-4" />
@@ -343,4 +358,6 @@ export default function PronunciationPractice({
       )}
     </div>
   );
-}
+});
+
+export default PronunciationPractice;

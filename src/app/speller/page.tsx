@@ -39,6 +39,36 @@ export default function SpellerPage() {
       </header>
 
       <div className="grid gap-4">
+        {/* 雅思王听力 · 单词听写课程（Chapter → Test 层级） */}
+        <Link
+          href="/speller/whale-listening"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
+                雅
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">雅思王听力 · 词汇</h2>
+                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                    单词听写
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  特别名词 · 按 Chapter / Test 分组，听原声，打单词
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            选择 Test →
+          </span>
+        </Link>
+
         {COURSES.map((course) => {
           const p = progress[course.id];
           const progressPct = course.sentences.length > 0
