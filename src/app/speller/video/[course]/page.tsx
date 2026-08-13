@@ -112,12 +112,17 @@ export default function VideoSpellerPage() {
     }
   }, [currentIdx, playCue])
 
-  // 点击句子列表某句 → 更新当前句索引（听写模式：不自动播放，按反引号 ` 才播放）
+  // 句子列表跳转 → 下次 currentIdx 定位时自动播放（避免被定位 effect 暂停）
+  const shouldPlayRef = useRef(false)
+
+  // 点击句子列表某句 → 更新当前句索引并自动播放该句发音
   const jumpToSentence = useCallback((courseIndex: number) => {
+    shouldPlayRef.current = true
     setCurrentIdx(courseIndex)
   }, [])
 
-  // 当前练习句变化（含页面加载后首次同步）→ 视频定位到该句 SRT 起点，保持暂停
+  // 当前练习句变化（含页面加载后首次同步）→ 视频定位到该句 SRT 起点；
+  // 句子列表跳转时自动播放，其余（自动切句/首次同步）保持暂停
   useEffect(() => {
     if (currentIdx < 0) return
     const v = videoRef.current
@@ -127,7 +132,12 @@ export default function VideoSpellerPage() {
       const start = cue.startMs / 1000
       stopAtRef.current = cue.endMs / 1000
       v.currentTime = start
-      v.pause()
+      if (shouldPlayRef.current) {
+        shouldPlayRef.current = false
+        v.play().catch(() => {})
+      } else {
+        v.pause()
+      }
       setCurrentTime(start)
     }
   }, [currentIdx, cues])
