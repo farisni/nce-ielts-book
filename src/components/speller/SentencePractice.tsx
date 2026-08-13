@@ -310,7 +310,6 @@ export default function SentencePractice({
   const [dictationTick, setDictationTick] = useState(0)
 
   const timerRef = useRef<number | null>(null)
-  const advanceRef = useRef<number | null>(null)
   /** 显示答案前保存的输入快照：隐藏答案时恢复，不丢拼到一半的字符 */
   const inputSnapshotRef = useRef<string[] | null>(null)
 
@@ -468,14 +467,7 @@ export default function SentencePractice({
     [course, sessionSrcIdx, index, onJumpToSentence],
   )
 
-  // 提交通过后自动进入下一句
-  useEffect(() => {
-    if (!passed || phase !== "playing") return
-    advanceRef.current = window.setTimeout(() => gotoNext(), 700)
-    return () => {
-      if (advanceRef.current) window.clearTimeout(advanceRef.current)
-    }
-  }, [passed, phase, gotoNext])
+  // 提交通过后不自动进入下一句：停留撒花，由用户按 Enter 手动进入
 
   // ── 动作 ──
   const startGame = useCallback(() => {
@@ -609,9 +601,18 @@ export default function SentencePractice({
 
   // ── 键盘监听 ──
   useEffect(() => {
-    if (phase !== "playing" || !sentence || passed) return
+    if (phase !== "playing" || !sentence) return
 
     const onKeyDown = (e: KeyboardEvent) => {
+      // 本句已通过：停留撒花，仅响应 Enter 进入下一句
+      if (passed) {
+        if (e.key === "Enter") {
+          e.preventDefault()
+          gotoNext()
+        }
+        return
+      }
+
       // 单独按下右 ⌘：直接切换显示/隐藏答案（按住不重复触发）
       if (e.code === "MetaRight" && !e.repeat) {
         e.preventDefault()
