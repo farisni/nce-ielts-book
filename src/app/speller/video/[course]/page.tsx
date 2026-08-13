@@ -239,34 +239,19 @@ export default function VideoSpellerPage() {
 
       {/* 左右布局 */}
       <div className="flex min-h-0 flex-1 flex-col gap-6 p-6 lg:flex-row">
-        {/* 左：视频播放（垂直居中） */}
+        {!isAudio ? (
+        /* 左：视频播放（垂直居中） */
         <div className="flex w-full flex-col justify-center gap-3 lg:w-[42%] lg:shrink-0">
           <div className="overflow-hidden rounded-xl border border-border bg-black">
-            {/* 视频：无原生控件（禁止空格控制/拖动进度条），点击画面切换播放。
-                音频课程时隐藏元素（仍负责播放声音），显示封面播放按钮 */}
+            {/* 视频：无原生控件（禁止空格控制/拖动进度条），点击画面切换播放 */}
             <video
               ref={videoRef}
               src={course.video}
               playsInline
               preload="metadata"
-              className={isAudio ? "hidden" : "aspect-video w-full cursor-pointer"}
+              className="aspect-video w-full cursor-pointer"
               onClick={toggleVideo}
             />
-            {isAudio && (
-              <div
-                className="flex aspect-video w-full cursor-pointer flex-col items-center justify-center gap-4"
-                onClick={toggleVideo}
-              >
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25">
-                  {isPlaying ? (
-                    <svg width="16" height="18" viewBox="0 0 10 12" fill="currentColor"><rect x="1" width="3" height="12" rx="1"/><rect x="6" width="3" height="12" rx="1"/></svg>
-                  ) : (
-                    <svg width="16" height="18" viewBox="0 0 10 12" fill="currentColor"><path d="M1 1l8 5-8 5V1z"/></svg>
-                  )}
-                </span>
-                <span className="px-4 text-center text-sm text-white/70">{course.name}</span>
-              </div>
-            )}
             {/* 自定义只读进度条 + 播放控制 */}
             <div className="flex items-center gap-3 border-t border-white/10 bg-black/60 px-3 py-2">
               <button
@@ -346,13 +331,23 @@ export default function VideoSpellerPage() {
             )}
           </div>
         </div>
+        ) : (
+          /* 音频课程（mp3 等）：无画面，隐藏播放器，仅保留媒体元素播放原声（Tab 播放当前句片段） */
+          <video
+            ref={videoRef}
+            src={course.video}
+            playsInline
+            preload="metadata"
+            className="hidden"
+          />
+        )}
 
-        {/* 右：拼写练习 */}
+        {/* 右：拼写练习（音频课程为全宽，等同 basic 页面模式） */}
         <div className="flex min-h-0 flex-1 flex-col items-center justify-center">
           <SentencePractice
             course={course}
             autoStart
-            showCn={false}
+            showCn={!isAudio}
             playVoice={playVoice}
             onCurrentSentence={setCurrentIdx}
             onJumpToSentence={jumpToSentence}
