@@ -1,4 +1,5 @@
 import type { Article, GrammarRelatedExample, VocabItem, SentenceData } from '@/app/mock/types';
+import { registerArticleBases, mergeArticleData } from "./article-notes";
 
 export const grammarRelatedExamples: Record<string, GrammarRelatedExample[]> = {
   asReason: [

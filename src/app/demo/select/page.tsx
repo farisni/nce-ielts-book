@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Globe, StarIcon, ClockIcon, BookOpenIcon, LifeBuoyIcon, MessageSquareIcon } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -45,10 +45,12 @@ export default function DemoSelectPage() {
         <div className="space-y-2">
           <p className="text-xs text-gray-400">Select 组件</p>
           <Select value={timezone} onValueChange={setTimezone}>
-            <SelectTrigger icon={Globe} placeholder="Select timezone…" className="w-[240px]" />
+            <SelectTrigger className="w-[240px]">
+              <SelectValue placeholder="Select timezone…" />
+            </SelectTrigger>
             <SelectContent>
               {timezones.map(([value, label], i) => (
-                <SelectItem key={value} index={i} value={value}>
+                <SelectItem key={value} value={value}>
                   {label}
                 </SelectItem>
               ))}

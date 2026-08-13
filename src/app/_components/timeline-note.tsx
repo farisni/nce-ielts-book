@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 
 // ── Types ──────────────────────────────────────────────
 
@@ -42,12 +42,12 @@ function TokenText({ text, className }: { text: string; className?: string }) {
 
 // ── Framer-motion ──────────────────────────────────────
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 8 },
   show: {
     opacity: 1,

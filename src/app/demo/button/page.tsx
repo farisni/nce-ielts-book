@@ -14,9 +14,9 @@ export default function DemoButtonPage() {
         <section>
           <h2 className="text-sm font-medium text-muted-foreground mb-4">Variants</h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary">Primary</Button>
+            <Button variant="default">Primary</Button>
             <Button variant="secondary">Secondary</Button>
-            <Button variant="tertiary">Tertiary</Button>
+            <Button variant="outline">Tertiary</Button>
             <Button variant="ghost">Ghost</Button>
           </div>
         </section>
@@ -26,7 +26,7 @@ export default function DemoButtonPage() {
           <h2 className="text-sm font-medium text-muted-foreground mb-4">Sizes</h2>
           <div className="flex flex-wrap items-center gap-4">
             <Button size="sm">Small</Button>
-            <Button size="md">Medium</Button>
+            <Button>Medium</Button>
             <Button size="lg">Large</Button>
           </div>
         </section>
@@ -45,7 +45,7 @@ export default function DemoButtonPage() {
               <span><Button variant="ghost" size="icon" className="rounded-full hover:bg-[#f0f0f0]"><Search /></Button></span>
             </Tooltip>
             <Tooltip content="Add">
-              <span><Button variant="primary" size="icon" className="rounded-full hover:bg-[#f0f0f0]"><Plus /></Button></span>
+              <span><Button variant="default" size="icon" className="rounded-full hover:bg-[#f0f0f0]"><Plus /></Button></span>
             </Tooltip>
           </div>
         </section>
@@ -54,10 +54,10 @@ export default function DemoButtonPage() {
         <section>
           <h2 className="text-sm font-medium text-muted-foreground mb-4">leadingIcon / trailingIcon</h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary" leadingIcon={ArrowLeft}>Back</Button>
-            <Button variant="primary" trailingIcon={ArrowRight}>Next</Button>
+            <Button variant="default" leadingIcon={ArrowLeft}>Back</Button>
+            <Button variant="default" trailingIcon={ArrowRight}>Next</Button>
             <Button variant="secondary" leadingIcon={Search}>Search</Button>
-            <Button variant="tertiary" trailingIcon={ArrowRight}>Continue</Button>
+            <Button variant="outline" trailingIcon={ArrowRight}>Continue</Button>
             <Button variant="ghost" leadingIcon={ArrowLeft} trailingIcon={ArrowRight}>Both</Button>
           </div>
         </section>
@@ -66,9 +66,9 @@ export default function DemoButtonPage() {
         <section>
           <h2 className="text-sm font-medium text-muted-foreground mb-4">Loading</h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary" loading>Loading</Button>
-            <Button variant="secondary" loading>Please wait</Button>
-            <Button variant="ghost" size="icon" loading><Search /></Button>
+            <Button variant="default">Loading</Button>
+            <Button variant="secondary">Please wait</Button>
+            <Button variant="ghost" size="icon"><Search /></Button>
           </div>
         </section>
 
@@ -76,9 +76,9 @@ export default function DemoButtonPage() {
         <section>
           <h2 className="text-sm font-medium text-muted-foreground mb-4">Disabled</h2>
           <div className="flex flex-wrap items-center gap-4">
-            <Button variant="primary" disabled>Primary</Button>
+            <Button variant="default" disabled>Primary</Button>
             <Button variant="secondary" disabled>Secondary</Button>
-            <Button variant="tertiary" disabled>Tertiary</Button>
+            <Button variant="outline" disabled>Tertiary</Button>
             <Button variant="ghost" disabled>Ghost</Button>
           </div>
         </section>
@@ -94,7 +94,7 @@ export default function DemoButtonPage() {
               <span><Button variant="secondary" size="icon"><Search /></Button></span>
             </Tooltip>
             <Tooltip content="Add new item" side="right">
-              <span><Button variant="primary" size="icon" className="hover:bg-[#f0f0f0]"><Plus /></Button></span>
+              <span><Button variant="default" size="icon" className="hover:bg-[#f0f0f0]"><Plus /></Button></span>
             </Tooltip>
           </div>
         </section>

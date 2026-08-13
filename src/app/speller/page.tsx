@@ -179,6 +179,36 @@ export default function SpellerPage() {
           </span>
         </Link>
 
+        {/* 自然拼读规则表 */}
+        <Link
+          href="/speller/phonics"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                🔤
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">自然拼读规则表</h2>
+                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                    规则表
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  字母发音 · 元音组合 44 · 辅音组合 50 · 元辅组合 52
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            查看规则表 →
+          </span>
+        </Link>
+
         {/* NCE3 新概念英语第三册 · 课系列入口 */}
         <Link
           href="/speller/nce3"

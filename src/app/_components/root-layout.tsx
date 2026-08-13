@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, Suspense } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import { motion } from "motion/react";
@@ -24,6 +24,15 @@ const pillHandle =
   "active:before:h-12 active:before:w-1.5 active:before:bg-primary";
 
 export function RootLayoutShell({ children }: { children: React.ReactNode }) {
+  // useSearchParams 在 prerender 时要求 Suspense 边界，否则静态页（如 /spanish/alphabet、/_not-found）构建报错
+  return (
+    <Suspense fallback={<div className="h-screen w-full" />}>
+      <RootLayoutShellInner>{children}</RootLayoutShellInner>
+    </Suspense>
+  );
+}
+
+function RootLayoutShellInner({ children }: { children: React.ReactNode }) {
   const article = useReaderStore((s) => s.article);
   const isPanelOpen = useReaderStore((s) => s.isPanelOpen);
   const searchParams = useSearchParams();
