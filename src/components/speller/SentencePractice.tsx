@@ -225,18 +225,13 @@ function useGameSounds() {
   }, [playBuffer])
 
   const playSuccess = useCallback(() => {
-    const ctx = ctxRef.current
-    if (ctx && ctx.state === "running" && successBufferRef.current) {
-      // 常规路径（拼写成功等用户手势场景）：Web Audio 播放，音量 1.0
-      playBuffer(successBufferRef.current, 1.0)
-      return
-    }
-    // AudioContext 挂起/未就绪（如录音评测的异步返回回调，resume 可能被浏览器拒绝）：
-    // 用 HTMLAudioElement 兜底播放同一文件、同一音量，保证与拼写成功听感一致
+    // 统一用 HTMLAudioElement 播放 success.mp3（音量 1.0）：
+    // 拼写成功与录音评测提示音共用同一实现，彻底绕开 AudioContext 挂起/手势
+    // 状态导致的音量差异（此前 Web Audio 路径在异步回调下时大时小）
     const a = new Audio("/sounds/success.mp3")
     a.volume = 1
     a.play().catch(() => {})
-  }, [playBuffer])
+  }, [])
 
   /** 用户手势期间恢复 AudioContext：防止浏览器挂起后，异步回调（如录音评测返回）里 resume 被拒导致提示音变小/缺失 */
   const ensureAudio = useCallback(() => {
@@ -1461,9 +1456,8 @@ export default function SentencePractice({
             }
           }}
           onEvaluationSuccess={() => {
-            // 评测返回是异步回调（非手势），播放前兜底恢复 AudioContext，
-            // 保证提示音与拼写成功的反馈音完全一致（同一 success.mp3、同一音量）
-            ensureAudio()
+            // 评测返回是异步回调（非手势），提示音与拼写成功共用 playSuccess：
+            // 同一实现（HTMLAudioElement 播放 success.mp3，音量 1.0），完全一致
             playSuccess()
           }}
           onPlayVoice={startDictation}
