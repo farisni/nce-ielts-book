@@ -336,8 +336,8 @@ export default function SentencePractice({
   onJumpToSentence?: (courseIndex: number) => void
   /** 答对撒花的位置（canvas-confetti origin） */
   confettiOrigin?: { x: number; y: number }
-  /** 播放 mp3 原声的 audio 元素（声波图用：播放时显示完整波形，进度从左到右读动） */
-  waveAudioRef?: { current: HTMLAudioElement | null }
+  /** 播放原声的媒体元素（声波图用：播放时显示完整波形，进度从左到右读动；audio 或 video 均可） */
+  waveAudioRef?: { current: HTMLMediaElement | null }
   /** 停止视频/音频页面播放的回调（开始录音前打断播放用） */
   onStopVoice?: () => void
   /** 视频/音频页面媒体的播放状态（footer 播放按钮换状态用；不传则用内部 TTS/原声状态） */

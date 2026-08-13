@@ -367,6 +367,8 @@ export default function VideoSpellerPage() {
             onStopVoice={() => videoRef.current?.pause()}
             // 播放按钮换状态：页面媒体播放/暂停事件驱动
             voicePlaying={isPlaying}
+            // 声波图：绑定页面媒体元素（音频课程为 mp3 原声，波形随播放进度读动）
+            waveAudioRef={videoRef}
           />
         </div>
       </div>
