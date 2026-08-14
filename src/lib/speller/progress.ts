@@ -19,6 +19,8 @@ export interface CourseProgress {
   errors: number
   /** 完成次数（一轮练完） */
   completed: number
+  /** 上次听写位置（0-based 句子/单词索引，0 = 从头开始） */
+  lastPos: number
   /** 上次练习时间（时间戳） */
   lastAt: number | null
 }
@@ -31,6 +33,7 @@ const EMPTY: Omit<CourseProgress, "courseId"> = {
   newWords: 0,
   errors: 0,
   completed: 0,
+  lastPos: 0,
   lastAt: null,
 }
 
@@ -65,6 +68,7 @@ function rowToProgress(courseId: string, row: Record<string, unknown>): CoursePr
     newWords: Number(row.new_words ?? row.newWords ?? 0) || 0,
     errors: Number(row.errors ?? 0) || 0,
     completed: Number(row.completed ?? 0) || 0,
+    lastPos: Number(row.last_pos ?? row.lastPos ?? 0) || 0,
     lastAt: typeof row.last_at === "number" ? row.last_at : null,
   }
 }
@@ -72,21 +76,24 @@ function rowToProgress(courseId: string, row: Record<string, unknown>): CoursePr
 /** 读取某课程进度 */
 export async function getProgress(courseId: string): Promise<CourseProgress> {
   try {
-    const res = await fetch(`/api/speller/progress?course=${encodeURIComponent(courseId)}`)
+    // no-store：进度/位置接口必须实时，禁用浏览器 HTTP 缓存（否则可能读到旧位置）
+    const res = await fetch(`/api/speller/progress?course=${encodeURIComponent(courseId)}`, { cache: "no-store" })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = await res.json()
-    return rowToProgress(courseId, data)
+    // 注意：rowToProgress 接收的是行对象（data.row），不是整个响应
+    return rowToProgress(courseId, data.row ?? data)
   } catch {
-    // 服务不可用（如离线）时回退到 localStorage 旧数据
+    // 服务不可用（如离线/瞬时失败）时回退到 localStorage 旧数据；
+    // lastPos 标记为 -1（未知）：调用方不得把它当 0 覆盖数据库中的上次位置
     const legacy = readLegacy()
-    return { ...EMPTY, ...(legacy[courseId] ?? {}), courseId }
+    return { ...EMPTY, ...(legacy[courseId] ?? {}), courseId, lastPos: -1 }
   }
 }
 
 /** 读取全部课程进度 */
 export async function getAllProgress(): Promise<Record<string, CourseProgress>> {
   try {
-    const res = await fetch(`/api/speller/progress?all=1`)
+    const res = await fetch(`/api/speller/progress?all=1`, { cache: "no-store" })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = await res.json()
     const map: Record<string, CourseProgress> = {}
@@ -100,23 +107,27 @@ export async function getAllProgress(): Promise<Record<string, CourseProgress>> 
   }
 }
 
-/** 更新某课程进度（数字字段按增量累加） */
+/** 更新某课程进度（数字字段按增量累加；lastPos 覆盖式写入） */
 export async function updateProgress(
   courseId: string,
   patch: Partial<Omit<CourseProgress, "courseId" | "lastAt">>,
 ): Promise<CourseProgress> {
   try {
+    const body: Record<string, unknown> = {
+      course: courseId,
+      passed: patch.passed ?? 0,
+      mastered: patch.mastered ?? 0,
+      newWords: patch.newWords ?? 0,
+      errors: patch.errors ?? 0,
+      completed: patch.completed ?? 0,
+    }
+    // 位置字段：仅当显式传入时提交，避免 0 覆盖数据库中的上次位置
+    if (patch.lastPos !== undefined) body.pos = patch.lastPos
     const res = await fetch("/api/speller/progress", {
       method: "POST",
+      cache: "no-store",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        course: courseId,
-        passed: patch.passed ?? 0,
-        mastered: patch.mastered ?? 0,
-        newWords: patch.newWords ?? 0,
-        errors: patch.errors ?? 0,
-        completed: patch.completed ?? 0,
-      }),
+      body: JSON.stringify(body),
     })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = await res.json()
@@ -131,6 +142,7 @@ export async function updateProgress(
       newWords: (current.newWords ?? 0) + (patch.newWords ?? 0),
       errors: (current.errors ?? 0) + (patch.errors ?? 0),
       completed: (current.completed ?? 0) + (patch.completed ?? 0),
+      lastPos: patch.lastPos ?? current.lastPos ?? 0,
       courseId,
       lastAt: Date.now(),
     }
@@ -188,6 +200,42 @@ export async function savePronScore(courseId: string, sentence: string, result: 
     })
   } catch {
     // 服务不可用则静默失败（下次进入不丢，仅本次不保存）
+  }
+}
+
+// ── 练习位置迁移（localStorage → SQLite）──
+
+let _posMigrated = false
+
+/**
+ * 把旧的 localStorage 练习位置（speller:pos:*，键名为 course id）迁移到数据库。
+ * 只执行一次；之后位置一律存数据库（跨设备/清缓存不丢）。
+ */
+export async function migratePositions(): Promise<void> {
+  if (typeof window === "undefined" || _posMigrated) return
+  _posMigrated = true
+  try {
+    const keys: string[] = []
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const k = window.localStorage.key(i)
+      if (k?.startsWith("speller:pos:")) keys.push(k)
+    }
+    if (keys.length === 0) return
+    const prefix = "speller:pos:"
+    for (const k of keys) {
+      const courseId = k.slice(prefix.length)
+      const n = Number(window.localStorage.getItem(k))
+      if (courseId && Number.isInteger(n) && n > 0) {
+        try {
+          await updateProgress(courseId, { lastPos: n }).catch(() => {})
+        } catch {
+          // ignore
+        }
+      }
+      window.localStorage.removeItem(k)
+    }
+  } catch {
+    // ignore
   }
 }
 

@@ -31,18 +31,23 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json({ error: "请求体不是有效 JSON" }, { status: 400 })
   }
-  const { course, passed, mastered, newWords, errors, completed } = (body ?? {}) as Record<string, unknown>
+  const { course, passed, mastered, newWords, errors, completed, pos } = (body ?? {}) as Record<string, unknown>
   if (typeof course !== "string" || !course) {
     return NextResponse.json({ error: "缺少 course 字段" }, { status: 400 })
   }
   const toInt = (v: unknown): number => (typeof v === "number" && Number.isFinite(v) ? Math.max(0, Math.floor(v)) : 0)
-  const row = upsertProgress(course, {
+  const patch: Parameters<typeof upsertProgress>[1] = {
     passed: toInt(passed),
     mastered: toInt(mastered),
     new_words: toInt(newWords),
     errors: toInt(errors),
     completed: toInt(completed),
-  })
+  }
+  // 位置字段：仅当显式传入时覆盖，缺省保持数据库中的上次位置
+  if (typeof pos === "number" && Number.isFinite(pos)) {
+    patch.last_pos = Math.max(0, Math.floor(pos))
+  }
+  const row = upsertProgress(course, patch)
   return NextResponse.json({ course, row })
 }
 

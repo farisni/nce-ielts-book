@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { WHALE_CHAPTERS } from "@/lib/speller/whale-king";
+import { getAllProgress } from "@/lib/speller/progress";
 
 /**
  * Speller · 雅思王听力单词听写
  * 课程 → Chapter 选择页：Chapter 卡片手风琴展开显示 Test 列表，点击进入单词听写
  * - 记住上次展开的 Chapter（localStorage）
- * - 每个 Test 显示上次听写到的位置（第 N 个单词）
+ * - 每个 Test 显示上次听写到的位置（第 N 个单词，存数据库）
  */
 export default function WhaleListeningPage() {
   // 展开的 chapter slug（默认展开上次记忆的，无记忆则第一个）
@@ -29,19 +30,22 @@ export default function WhaleListeningPage() {
       } else {
         setOpenChapter(WHALE_CHAPTERS[0]?.slug ?? null);
       }
-      // 读取每个 Test 的上次位置（SentencePractice 的 restoreKey 存档）
-      const pos: Record<string, number> = {};
-      for (const ch of WHALE_CHAPTERS) {
-        for (const t of ch.tests) {
-          const raw = window.localStorage.getItem(`speller:pos:whale-${ch.slug}-${t.slug}`);
-          const n = raw ? Number(raw) : NaN;
-          if (Number.isInteger(n) && n > 0) pos[`${ch.slug}/${t.slug}`] = n + 1; // 0-based → 第 N 词
-        }
-      }
-      setLastPos(pos);
     } catch {
       setOpenChapter(WHALE_CHAPTERS[0]?.slug ?? null);
     }
+    // 读取每个 Test 的上次位置（数据库；course id = whale-${chapter}-${test}）
+    getAllProgress()
+      .then((map) => {
+        const pos: Record<string, number> = {};
+        for (const ch of WHALE_CHAPTERS) {
+          for (const t of ch.tests) {
+            const last = map[`whale-${ch.slug}-${t.slug}`]?.lastPos ?? 0;
+            if (last > 0) pos[`${ch.slug}/${t.slug}`] = last + 1; // 0-based → 第 N 词
+          }
+        }
+        setLastPos(pos);
+      })
+      .catch(() => {});
   }, []);
 
   const toggleChapter = (slug: string, isOpen: boolean) => {

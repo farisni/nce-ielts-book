@@ -15,7 +15,7 @@ import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForwa
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
-import { getProgress, updateProgress, getPronHistory, savePronScore } from "@/lib/speller/progress"
+import { getProgress, updateProgress, getPronHistory, savePronScore, migratePositions } from "@/lib/speller/progress"
 import PronunciationPractice, { type EvalResult, type PronunciationPracticeHandle } from "@/components/speller/PronunciationPractice"
 
 type Phase = "idle" | "playing" | "done"
@@ -481,16 +481,27 @@ export default function SentencePractice({
   const timerRef = useRef<number | null>(null)
   /** 显示答案前保存的输入快照：隐藏答案时恢复，不丢拼到一半的字符 */
   const inputSnapshotRef = useRef<string[] | null>(null)
+  /** restoreKey 课程的起始位置（数据库读取完成前为 null，读取后为数字） */
+  const [restoredPos, setRestoredPos] = useState<number | null>(null)
 
-  // 加载课程进度（数据库已通过数，用于进度条）
+  // 加载课程进度（数据库已通过数 + 上次听写位置）
   useEffect(() => {
     if (!course) return
     let cancelled = false
-    getProgress(course.id)
-      .then((p) => { if (!cancelled) setCoursePassed(p?.passed ?? 0) })
-      .catch(() => {})
+    ;(async () => {
+      // 位置改存数据库：先把旧的 localStorage 位置一次性迁移过来（只执行一次）
+      if (restoreKey) {
+        await migratePositions().catch(() => {})
+      }
+      if (cancelled) return
+      const p = await getProgress(course.id).catch(() => null)
+      if (cancelled) return
+      setCoursePassed(p?.passed ?? 0)
+      // lastPos 为 -1 表示读取失败（未知）：从 0 开始练，但保存时跳过，避免覆盖数据库
+      setRestoredPos(p?.lastPos ?? 0)
+    })()
     return () => { cancelled = true }
-  }, [course?.id, course])
+  }, [course?.id, course, restoreKey])
 
   /** 当前听写句在课程中的原始索引（句子列表高亮联动用） */
   const activeCourseIdx = sessionSrcIdx[index] ?? -1
@@ -656,9 +667,15 @@ export default function SentencePractice({
   }, [passed, phase, gotoNext])
 
   // ── 动作 ──
+  // course 对象每次 render 都是新引用：用 ref 持有最新值，避免 startGame 随计时器反复重建
+  const courseRef = useRef(course)
+  useEffect(() => {
+    courseRef.current = course
+  }, [course])
   const startGame = useCallback(() => {
-    const pool = course?.sentences ?? []
-    const sessionSize = course?.sessionSize ?? 10
+    const c = courseRef.current
+    const pool = c?.sentences ?? []
+    const sessionSize = c?.sessionSize ?? 10
     // 记录课程原始索引，供视频/SRT 联动。
     // 全量课程（sessionSize ≥ 总数，如单词听写整 Unit 顺序学）不洗牌：
     // 方向键上一个/下一个按原序切换；抽查课程（sessionSize < 总数）才洗牌
@@ -666,21 +683,13 @@ export default function SentencePractice({
     const idx = sessionSize >= pool.length ? poolIdx : shuffle(poolIdx).slice(0, sessionSize)
     const s = idx.map((i) => pool[i])
     if (s.length === 0) return
-    // 位置记忆：restoreKey 课程（如单词听写）从上次听写到的位置继续，而不是重头开始
-    let start = 0
-    if (restoreKey && s.length > 1) {
-      try {
-        const saved = Number(window.localStorage.getItem(`speller:pos:${restoreKey}`))
-        if (Number.isInteger(saved) && saved > 0 && saved < s.length) start = saved
-      } catch {
-        // localStorage 不可用时忽略
-      }
-    }
+    // 位置记忆：restoreKey 课程（如单词听写）从数据库的上次位置继续，而不是重头开始
+    const start = restoreKey ? Math.max(0, Math.min(restoredPos ?? 0, s.length - 1)) : 0
     setSession(s)
     setSessionSrcIdx(idx)
     setIndex(start)
     inputSnapshotRef.current = null
-    setWordInputs(getWords(s[0].en).map(() => ""))
+    setWordInputs(getWords(s[start].en).map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
     setRevealed(false)
@@ -693,24 +702,24 @@ export default function SentencePractice({
     setElapsed(0)
     setStartAt(Date.now())
     setPhase("playing")
-  }, [course, restoreKey])
+  }, [restoreKey, restoredPos])
 
-  // 记住当前位置：切句/跳转时写入 localStorage，下次进入从该位置继续
+  // 记住当前位置：切句/跳转时写入数据库，下次进入从该位置继续。
+  // deps 只用 course.id：course 对象每次 render 都是新引用，若进 deps 会随计时器
+  // （setElapsed 每 250ms）反复触发保存，把位置覆盖回旧值
   useEffect(() => {
-    if (!restoreKey || phase !== "playing") return
-    try {
-      window.localStorage.setItem(`speller:pos:${restoreKey}`, String(index))
-    } catch {
-      // ignore
-    }
-  }, [restoreKey, phase, index])
+    if (!restoreKey || phase !== "playing" || !course) return
+    // 位置未知（读取失败）时不保存，避免把数据库中的上次位置覆盖成 0
+    if ((restoredPos ?? -1) < 0) return
+    updateProgress(course.id, { lastPos: index }).catch(() => {})
+  }, [restoreKey, phase, index, course?.id, restoredPos])
 
-  // 独立练习路由：挂载后自动开始
+  // 独立练习路由：挂载后自动开始（restoreKey 课程等待数据库位置加载完成再开始）
   useEffect(() => {
-    if (autoStart && phase === "idle") {
+    if (autoStart && phase === "idle" && (!restoreKey || restoredPos !== null)) {
       startGame()
     }
-  }, [autoStart, phase, startGame])
+  }, [autoStart, phase, startGame, restoreKey, restoredPos])
 
   // 当前句变化时，把课程原始索引通知视频页（SRT 联动）
   useEffect(() => {
@@ -1437,7 +1446,7 @@ export default function SentencePractice({
                             <span className="invisible leading-none">W</span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>
@@ -1470,7 +1479,7 @@ export default function SentencePractice({
                             </span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>
@@ -1493,7 +1502,7 @@ export default function SentencePractice({
                             </span>
                             <span
                               className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
+                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
                             />
                           </span>

@@ -22,6 +22,8 @@ export interface ProgressRow {
   new_words: number
   errors: number
   completed: number
+  /** 上次听写位置（0-based 句子/单词索引，0 = 从头开始） */
+  last_pos: number
   last_at: number | null
 }
 
@@ -39,9 +41,15 @@ export function getDb(): DatabaseSync {
       new_words INTEGER NOT NULL DEFAULT 0,
       errors INTEGER NOT NULL DEFAULT 0,
       completed INTEGER NOT NULL DEFAULT 0,
+      last_pos INTEGER NOT NULL DEFAULT 0,
       last_at INTEGER
     )
   `)
+  // 旧库迁移：补充 last_pos 列（CREATE TABLE IF NOT EXISTS 不会改已有表结构）
+  const cols = db.prepare("PRAGMA table_info(speller_progress)").all() as { name: string }[]
+  if (!cols.some((c) => c.name === "last_pos")) {
+    db.exec("ALTER TABLE speller_progress ADD COLUMN last_pos INTEGER NOT NULL DEFAULT 0")
+  }
   // 发音评测历史：按课程 + 句子文本 存每次评分的 JSON 结果
   db.exec(`
     CREATE TABLE IF NOT EXISTS speller_pron_history (
@@ -70,14 +78,15 @@ export function getProgressRow(courseId: string): ProgressRow {
     new_words: 0,
     errors: 0,
     completed: 0,
+    last_pos: 0,
     last_at: null,
   }
 }
 
-/** 累加某课程进度（数字字段按增量相加），不存在则插入 */
+/** 累加某课程进度（数字字段按增量相加；last_pos 覆盖式写入），不存在则插入 */
 export function upsertProgress(
   courseId: string,
-  patch: Partial<Pick<ProgressRow, "passed" | "mastered" | "new_words" | "errors" | "completed">>,
+  patch: Partial<Pick<ProgressRow, "passed" | "mastered" | "new_words" | "errors" | "completed" | "last_pos">>,
 ): ProgressRow {
   const db = getDb()
   const current = getProgressRow(courseId)
@@ -88,17 +97,19 @@ export function upsertProgress(
     new_words: current.new_words + (patch.new_words ?? 0),
     errors: current.errors + (patch.errors ?? 0),
     completed: current.completed + (patch.completed ?? 0),
+    last_pos: patch.last_pos ?? current.last_pos,
     last_at: Date.now(),
   }
   db.prepare(`
-    INSERT INTO speller_progress (course_id, passed, mastered, new_words, errors, completed, last_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO speller_progress (course_id, passed, mastered, new_words, errors, completed, last_pos, last_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT(course_id) DO UPDATE SET
       passed = excluded.passed,
       mastered = excluded.mastered,
       new_words = excluded.new_words,
       errors = excluded.errors,
       completed = excluded.completed,
+      last_pos = excluded.last_pos,
       last_at = excluded.last_at
   `).run(
     next.course_id,
@@ -107,6 +118,7 @@ export function upsertProgress(
     next.new_words,
     next.errors,
     next.completed,
+    next.last_pos,
     next.last_at,
   )
   return next
