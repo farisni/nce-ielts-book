@@ -281,12 +281,6 @@ function formatTime(ms: number): string {
   return m > 0 ? `${m}:${String(s % 60).padStart(2, "0")}` : `${s}s`
 }
 
-/** 音标显示格式：用 / / 包围，斜杠与音标之间留极窄间距（thin space，已有包围的去重后重新包） */
-function formatPhonetic(ph: string): string {
-  const s = ph.trim().replace(/^\/+|\/+$/g, "")
-  return `/ ${s} /`
-}
-
 /** 单词 → 每个字母的音节索引（如 interstellar → [0,0,0,1,1,1,2,2,2,2,3,3]）。
  *  syllables 拼接后与单词不一致（含标点/大小写差异）返回 null，放弃着色 */
 function wordSyllableIdx(wordText: string, syllables?: string[]): number[] | null {
@@ -1311,20 +1305,19 @@ export default function SentencePractice({
         {/* 中文句子（视频课程模式下隐藏，避免泄露答案）；单词课程在下方显示音标 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
-            {/* 音标：大字置顶；词组（多词）按词拆分渲染，词间留明显间距，不连成一段 */}
+            {/* 音标：大字置顶；词组（多词）每个词的音标独立用 /…/ 包围 */}
             {sentence.phonetic && (
               <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
-                /
-                {formatPhonetic(sentence.phonetic)
-                  .slice(2, -2)
+                {sentence.phonetic
+                  .trim()
+                  .replace(/^\/+|\/+$/g, "")
                   .split(/\s+/)
                   .filter(Boolean)
                   .map((seg, i) => (
                     <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
-                      {seg}
+                      / {seg} /
                     </span>
                   ))}
-                {' /'}
               </p>
             )}
             {/* 中文释义：小字放音标下方；词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
