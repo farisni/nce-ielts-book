@@ -105,18 +105,32 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 槽位宽度恒定按【目标字母】测量，错误字符只改颜色不改宽度：
-    // 输入错字（如 haxxx 的 x）宽度与目标字母不同会挤动下划线位置，故统一按目标字母宽
+    // 槽位宽度 = max(目标字母宽, 该槽位当前字符宽)：
+    // - 正确输入/未输入：宽度 = 目标字母宽（视觉与目标排版一致）
+    // - 输入宽错字（如 ice 槽位 i 极窄，输入 b 会溢出挤到相邻字母）：槽位自动加宽到能容纳
+    // - 连续输入时每个槽位在敲下字符的瞬间定型，之后的键不改变已有槽位宽度 → 下划线不抖
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(wordTarget[j]) })
+      chars.push({
+        ch,
+        status,
+        active,
+        wordWrong,
+        widthEm: Math.max(measureCharWidthEm(wordTarget[j]), measureCharWidthEm(ch)),
+      })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
-    // 宽度按最后一个目标字母固定，输入更多错字也不会挤动前面的下划线
+    // 宽度同样取 max，容纳任意宽度的错字
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, widthEm: measureCharWidthEm(wordTarget[wordTarget.length - 1]) })
+      chars.push({
+        ch: typed[j],
+        status: "wrong",
+        active,
+        wordWrong,
+        widthEm: Math.max(measureCharWidthEm(wordTarget[wordTarget.length - 1]), measureCharWidthEm(typed[j])),
+      })
     }
     wi++
   }
