@@ -1305,7 +1305,8 @@ export default function SentencePractice({
         {/* 中文句子（视频课程模式下隐藏，避免泄露答案）；单词课程在下方显示音标 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
-            {/* 音标：大字置顶；词组（多词）每个词的音标独立用 /…/ 包围 */}
+            {/* 音标：大字置顶；词组（多词）每个词的音标独立用 /…/ 包围。
+                段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
             {sentence.phonetic && (
               <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
                 {sentence.phonetic
@@ -1315,7 +1316,7 @@ export default function SentencePractice({
                   .filter(Boolean)
                   .map((seg, i) => (
                     <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
-                      / {seg} /
+                      / {seg.split(/[,;]/)[0].trim()} /
                     </span>
                   ))}
               </p>
