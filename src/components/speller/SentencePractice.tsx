@@ -1170,6 +1170,10 @@ export default function SentencePractice({
         </button>
         {nextBtn}
         <span className="mx-2 h-6 w-px bg-border" />
+        <Button variant="secondary" size="sm" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案" className="gap-1.5">
+          <Eye className="size-3.5" />
+          <Kbd>⌘</Kbd>
+        </Button>
         <Button variant="secondary" size="sm" onClick={startDictation} title="听写 (⌘D)" aria-label="听写" className="gap-1.5">
           听写
           <Kbd>⌘D</Kbd>
@@ -1177,10 +1181,6 @@ export default function SentencePractice({
         <Button variant="secondary" size="sm" onClick={submit} title="提交" aria-label="提交" className="gap-1.5">
           提交
           <Kbd>Enter</Kbd>
-        </Button>
-        <Button variant="secondary" size="sm" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案" className="gap-1.5">
-          <Eye className="size-3.5" />
-          <Kbd>⌘</Kbd>
         </Button>
       </div>
     ) : null
