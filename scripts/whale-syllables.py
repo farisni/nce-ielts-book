@@ -55,8 +55,15 @@ def main():
             raw_ipa = pm.group(1) if pm else ""
             ipa = unescape(raw_ipa) if raw_ipa else ""
             if ipa:
-                # 双读音音标（"ˈæbstrækt, æbˈstrækt" 逗号分隔）取第一部分，否则核数错乱拆不出
-                syll = syllabify(word, ipa.split(",")[0].strip())
+                # 多读音音标（逗号/分号分隔，如 "ˈæbstrækt, æbˈstrækt"、"…; vəʊˈkæbjələri"）
+                # 取第一部分，否则核数错乱拆不出
+                syll = syllabify(word, re.split(r"[,;]", ipa)[0].strip())
+                # syllabic 辅音（stressful → ˈstresfl 只有 1 个元音核，实际 2 音节）：
+                # IPA 拆不出但拼写明显多音节 → 拼写元音核近似兜底
+                if len(syll) <= 1:
+                    nuclei = spell_vowel_nuclei(word)
+                    if len(nuclei) > 1:
+                        syll = split_word(word, len(nuclei))
             else:
                 nuclei = spell_vowel_nuclei(word)
                 syll = split_word(word, len(nuclei)) if len(nuclei) > 1 else [word]

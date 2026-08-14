@@ -308,6 +308,25 @@ function wordSyllableIdx(wordText: string, syllables?: string[]): number[] | nul
   return idxMap
 }
 
+/** 把整句/整词组的音节数组按词边界分组（含空格的音节标记词边界，如
+ *  ["spe","cia","list"," en","gi","ne ","design"] → [["spe","cia","list"],["en","gi","ne"],["design"]]）。
+ *  每个词独立调用 wordSyllableIdx 时才不会因跨词的空格音节匹配失败。 */
+function wordSyllableGroups(syllables?: string[]): string[][] {
+  if (!syllables || syllables.length === 0) return []
+  const groups: string[][] = []
+  let cur: string[] = []
+  for (const s of syllables) {
+    cur.push(s.replace(/\s+/g, ""))
+    if (s.includes(" ")) {
+      // 含空格音节：音节本身属于当前词，空格标记词边界 → 开始新词
+      groups.push(cur)
+      cur = []
+    }
+  }
+  if (cur.length > 0) groups.push(cur)
+  return groups
+}
+
 export default function SentencePractice({
   course,
   autoStart = false,
@@ -1369,11 +1388,12 @@ export default function SentencePractice({
                 const pron = pronWords?.[wordSeq]
                 // 发音评测读错 → 整词下划线标红（优先级最高，优先于听写错误/激活态）
                 const pronWrong = !!pron?.wrong
-                // 音节着色：答对撒花后、显示答案时（灰/深灰）、录音评分返回后（红黑）按音节区分
+                // 音节着色：答对撒花后、显示答案时（灰/深灰）、录音评分返回后（红黑）按音节区分。
+                // 词组（整组音节含空格边界标记）按词分组后匹配当前词，避免跨词匹配失败
                 const wordText = group.chars.map((cc) => cc.ch).join("")
                 const syllMap =
                   (syllableMode || revealed || !!pronWords) && sentence?.syllables?.length
-                    ? wordSyllableIdx(wordText, sentence.syllables)
+                    ? wordSyllableIdx(wordText, wordSyllableGroups(sentence.syllables)[gIndex] ?? sentence.syllables)
                     : null
                 return (
                   <span
