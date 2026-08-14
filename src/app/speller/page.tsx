@@ -91,13 +91,13 @@ export default function SpellerPage() {
 
         {/* 雅思王听力 · 单词听写课程（Chapter → Test 层级） */}
         <Link
-          href="/speller/whale-listening"
+          href="/speller/wang-listening"
           className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                🐋
+                👑
               </span>
               <div>
                 <div className="flex items-center gap-2">

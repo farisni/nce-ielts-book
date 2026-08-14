@@ -68,7 +68,7 @@ export default function WhaleListeningPage() {
                     {ch.tests.map((t) => (
                       <li key={t.slug}>
                         <Link
-                          href={`/speller/whale-listening/${ch.slug}/${t.slug}`}
+                          href={`/speller/wang-listening/${ch.slug}/${t.slug}`}
                           className="group flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-muted/40"
                         >
                           <div>

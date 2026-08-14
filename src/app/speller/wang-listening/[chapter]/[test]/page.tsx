@@ -100,7 +100,7 @@ export default function WhaleDictationPage() {
           onCurrentSentence={onSentence}
           waveAudioRef={audioRef}
           confettiOrigin={{ x: 0.5, y: 0.6 }}
-          onExit={() => router.push("/speller/whale-listening")}
+          onExit={() => router.push("/speller/wang-listening")}
         />
       </div>
 
