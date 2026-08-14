@@ -882,6 +882,11 @@ export default function SentencePractice({
           markNewWord()
           return
         }
+        if (k === "d") {
+          e.preventDefault()
+          startDictation()
+          return
+        }
         return
       }
 
@@ -999,7 +1004,7 @@ export default function SentencePractice({
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, gotoNext, gotoPrev, playType, pronRecording, toggleRecording])
+  }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, startDictation, gotoNext, gotoPrev, playType, pronRecording, toggleRecording])
 
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
@@ -1138,16 +1143,19 @@ export default function SentencePractice({
           <Kbd><Command className="size-3" />N</Kbd>
         </Button>
         {/* 跟读录音：icon-only；录音中切换为「录音模式」停止样式 */}
-        <Button
-          variant="secondary"
-          size="icon"
-          onClick={toggleRecording}
-          title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
-          aria-label={pronRecording ? "停止录音" : "跟读录音"}
-          className={pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : undefined}
-        >
-          {pronRecording ? <Square className="size-3.5 fill-current" /> : <Mic className="size-3.5" />}
-        </Button>
+        <span className="flex items-center gap-1.5">
+          <Button
+            variant="secondary"
+            size="icon"
+            onClick={toggleRecording}
+            title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
+            aria-label={pronRecording ? "停止录音" : "跟读录音"}
+            className={pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : undefined}
+          >
+            {pronRecording ? <Square className="size-3.5 fill-current" /> : <Mic className="size-3.5" />}
+          </Button>
+          <Kbd>F5</Kbd>
+        </span>
         <span className="mx-2 h-6 w-px bg-border" />
         {/* 播放器三连：上一句 / 播放 / 下一句（等大，居中） */}
         {prevBtn}
@@ -1166,18 +1174,22 @@ export default function SentencePractice({
         </button>
         {nextBtn}
         <span className="mx-2 h-6 w-px bg-border" />
-        <Button variant="secondary" size="sm" onClick={startDictation} title="听写" aria-label="听写" className="gap-1.5">
+        <Button variant="secondary" size="sm" onClick={startDictation} title="听写 (⌘D)" aria-label="听写" className="gap-1.5">
           <PenLine className="size-3.5" />
           听写
+          <Kbd><Command className="size-3" />D</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={submit} title="提交" aria-label="提交" className="gap-1.5">
           <Check className="size-3.5" />
           提交
           <Kbd>Enter</Kbd>
         </Button>
-        <Button variant="secondary" size="icon" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案">
-          <Eye className="size-3.5" />
-        </Button>
+        <span className="flex items-center gap-1.5">
+          <Button variant="secondary" size="icon" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案">
+            <Eye className="size-3.5" />
+          </Button>
+          <Kbd><Command className="size-3" /></Kbd>
+        </span>
       </div>
     ) : null
   const shortcutPortal =
