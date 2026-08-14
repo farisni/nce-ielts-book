@@ -99,6 +99,7 @@ export default function Lexicon807DictationPage() {
           onCurrentSentence={onSentence}
           waveAudioRef={audioRef}
           confettiOrigin={{ x: 0.5, y: 0.6 }}
+          restoreKey={course.id}
           onExit={() => router.push("/speller/lexicon-807")}
         />
       </div>

@@ -318,6 +318,7 @@ export default function SentencePractice({
   waveSegment,
   onStopVoice,
   voicePlaying,
+  restoreKey,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -345,6 +346,8 @@ export default function SentencePractice({
   onStopVoice?: () => void
   /** 视频/音频页面媒体的播放状态（footer 播放按钮换状态用；不传则用内部 TTS/原声状态） */
   voicePlaying?: boolean
+  /** 位置记忆键（如 "wang-listening/chapter-3/test-1"）：下次进入从上次听写到的位置继续 */
+  restoreKey?: string
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess, unlockAudio } = useGameSounds()
@@ -663,9 +666,19 @@ export default function SentencePractice({
     const idx = sessionSize >= pool.length ? poolIdx : shuffle(poolIdx).slice(0, sessionSize)
     const s = idx.map((i) => pool[i])
     if (s.length === 0) return
+    // 位置记忆：restoreKey 课程（如单词听写）从上次听写到的位置继续，而不是重头开始
+    let start = 0
+    if (restoreKey && s.length > 1) {
+      try {
+        const saved = Number(window.localStorage.getItem(`speller:pos:${restoreKey}`))
+        if (Number.isInteger(saved) && saved > 0 && saved < s.length) start = saved
+      } catch {
+        // localStorage 不可用时忽略
+      }
+    }
     setSession(s)
     setSessionSrcIdx(idx)
-    setIndex(0)
+    setIndex(start)
     inputSnapshotRef.current = null
     setWordInputs(getWords(s[0].en).map(() => ""))
     setActiveIdx(0)
@@ -680,7 +693,17 @@ export default function SentencePractice({
     setElapsed(0)
     setStartAt(Date.now())
     setPhase("playing")
-  }, [course])
+  }, [course, restoreKey])
+
+  // 记住当前位置：切句/跳转时写入 localStorage，下次进入从该位置继续
+  useEffect(() => {
+    if (!restoreKey || phase !== "playing") return
+    try {
+      window.localStorage.setItem(`speller:pos:${restoreKey}`, String(index))
+    } catch {
+      // ignore
+    }
+  }, [restoreKey, phase, index])
 
   // 独立练习路由：挂载后自动开始
   useEffect(() => {
