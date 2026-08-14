@@ -11,7 +11,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause, Command } from "lucide-react"
+import { Kbd } from "@/components/ui/kbd"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
 import { shuffle, type SentenceEntry, type Course } from "@/lib/speller/courses"
@@ -1123,26 +1124,18 @@ export default function SentencePractice({
     ) : null
 
   // ── 底部快捷键按钮组（可点击，渲染到 footer 中间槽位）──
-  const Kbd = ({ children }: { children: React.ReactNode }) => (
-    <kbd className="flex h-4 items-center gap-0.5 rounded border bg-muted px-1 font-mono text-[10px] font-medium leading-none text-foreground">
-      {children}
-    </kbd>
-  )
-  const Cmd = () => (
-    <span className="flex h-4 items-center overflow-hidden text-[12px] leading-none">⌘</span>
-  )
   const shortcutBar =
     phase === "playing" ? (
       <div className="flex flex-wrap items-center justify-center gap-2">
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
           <CheckCircle2 className="size-3.5" />
           掌握
-          <Kbd><Cmd />M</Kbd>
+          <Kbd><Command className="size-3" />M</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={markNewWord} title="生词" aria-label="生词" className="gap-1.5">
           <BookMarked className="size-3.5" />
           生词
-          <Kbd><Cmd />N</Kbd>
+          <Kbd><Command className="size-3" />N</Kbd>
         </Button>
         {/* 跟读录音：icon-only；录音中切换为「录音模式」停止样式 */}
         <Button
