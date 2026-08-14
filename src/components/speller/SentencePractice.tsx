@@ -105,32 +105,18 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 槽位宽度 = max(目标字母宽, 该槽位当前字符宽)：
-    // - 正确输入/未输入：宽度 = 目标字母宽（视觉与目标排版一致）
-    // - 输入宽错字（如 ice 槽位 i 极窄，输入 b 会溢出挤到相邻字母）：槽位自动加宽到能容纳
-    // - 连续输入时每个槽位在敲下字符的瞬间定型，之后的键不改变已有槽位宽度 → 下划线不抖
+    // 槽位宽度 = 实际显示字符的宽度（错字按输入字符宽，字母间零空隙、紧贴排版）。
+    // 宽度变化用 CSS transition 平滑过渡（渲染处），下划线滑动而非跳动；
+    // 槽位一旦定型后不再变，后续输入不挤动已有槽位
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({
-        ch,
-        status,
-        active,
-        wordWrong,
-        widthEm: Math.max(measureCharWidthEm(wordTarget[j]), measureCharWidthEm(ch)),
-      })
+      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
     }
-    // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
-    // 宽度同样取 max，容纳任意宽度的错字
+    // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({
-        ch: typed[j],
-        status: "wrong",
-        active,
-        wordWrong,
-        widthEm: Math.max(measureCharWidthEm(wordTarget[wordTarget.length - 1]), measureCharWidthEm(typed[j])),
-      })
+      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, widthEm: measureCharWidthEm(typed[j]) })
     }
     wi++
   }
@@ -1434,7 +1420,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
                           >
                             <span className="invisible leading-none">W</span>
                             <span
@@ -1455,7 +1441,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-center justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
                           >
                             <span className="invisible leading-none">W</span>
                             <span
@@ -1482,7 +1468,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
                           >
                             <span className="invisible leading-none">W</span>
                             <span
@@ -1505,7 +1491,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em` }}
+                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
                           >
                             <span className="invisible leading-none">W</span>
                             <span
