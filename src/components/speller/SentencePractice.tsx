@@ -1142,20 +1142,18 @@ export default function SentencePractice({
           生词
           <Kbd>⌘N</Kbd>
         </Button>
-        {/* 跟读录音：icon-only；录音中切换为「录音模式」停止样式 */}
-        <span className="flex items-center gap-1.5">
-          <Button
-            variant="secondary"
-            size="icon"
-            onClick={toggleRecording}
-            title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
-            aria-label={pronRecording ? "停止录音" : "跟读录音"}
-            className={pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : undefined}
-          >
-            {pronRecording ? <Square className="size-3.5 fill-current" /> : <Mic className="size-3.5" />}
-          </Button>
+        {/* 跟读录音：录音中切换为「录音模式」停止样式 */}
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={toggleRecording}
+          title={pronRecording ? "停止录音 (F5)" : "跟读录音 (F5)"}
+          aria-label={pronRecording ? "停止录音" : "跟读录音"}
+          className={`gap-1.5 ${pronRecording ? "border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/15 hover:text-destructive" : ""}`}
+        >
+          {pronRecording ? <Square className="size-3.5 fill-current" /> : <Mic className="size-3.5" />}
           <Kbd>F5</Kbd>
-        </span>
+        </Button>
         <span className="mx-2 h-6 w-px bg-border" />
         {/* 播放器三连：上一句 / 播放 / 下一句（等大，居中） */}
         {prevBtn}
@@ -1184,12 +1182,10 @@ export default function SentencePractice({
           提交
           <Kbd>Enter</Kbd>
         </Button>
-        <span className="flex items-center gap-1.5">
-          <Button variant="secondary" size="icon" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案">
-            <Eye className="size-3.5" />
-          </Button>
+        <Button variant="secondary" size="sm" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案" className="gap-1.5">
+          <Eye className="size-3.5" />
           <Kbd>⌘</Kbd>
-        </span>
+        </Button>
       </div>
     ) : null
   const shortcutPortal =
