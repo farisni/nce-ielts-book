@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
-import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause, Command } from "lucide-react"
+import { LogOut, CheckCircle2, Eye, BookMarked, Check, List, SkipBack, SkipForward, Play, Mic, PenLine, Square, Pause } from "lucide-react"
 import { Kbd } from "@/components/ui/kbd"
 import confetti from "canvas-confetti"
 import WaveSurfer from "wavesurfer.js"
@@ -1135,12 +1135,12 @@ export default function SentencePractice({
         <Button variant="secondary" size="sm" onClick={markMastered} title="掌握" aria-label="掌握" className="gap-1.5">
           <CheckCircle2 className="size-3.5" />
           掌握
-          <Kbd><Command className="size-3" />M</Kbd>
+          <Kbd>⌘M</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={markNewWord} title="生词" aria-label="生词" className="gap-1.5">
           <BookMarked className="size-3.5" />
           生词
-          <Kbd><Command className="size-3" />N</Kbd>
+          <Kbd>⌘N</Kbd>
         </Button>
         {/* 跟读录音：icon-only；录音中切换为「录音模式」停止样式 */}
         <span className="flex items-center gap-1.5">
@@ -1177,7 +1177,7 @@ export default function SentencePractice({
         <Button variant="secondary" size="sm" onClick={startDictation} title="听写 (⌘D)" aria-label="听写" className="gap-1.5">
           <PenLine className="size-3.5" />
           听写
-          <Kbd><Command className="size-3" />D</Kbd>
+          <Kbd>⌘D</Kbd>
         </Button>
         <Button variant="secondary" size="sm" onClick={submit} title="提交" aria-label="提交" className="gap-1.5">
           <Check className="size-3.5" />
@@ -1188,7 +1188,7 @@ export default function SentencePractice({
           <Button variant="secondary" size="icon" onClick={showAnswer} title="显示答案 (右⌘)" aria-label="显示答案">
             <Eye className="size-3.5" />
           </Button>
-          <Kbd><Command className="size-3" /></Kbd>
+          <Kbd>⌘</Kbd>
         </span>
       </div>
     ) : null
