@@ -89,7 +89,7 @@ export const WHALE_CHAPTER_3: WhaleChapter = {
         { word: "battery", phonetic: "\u02c8b\u00e6t\u0259ri", meaning: "n. \u7535\u6c60", audio: "/audio/wang-listening/chapter-3/test-1/075_battery.mp3" , pos: "n.", syllables: ["bat", "te", "ry"]},
         { word: "beauty", phonetic: "\u02c8bju\u02d0ti", meaning: "n. \u7f8e\u5973", audio: "/audio/wang-listening/chapter-3/test-1/076_beauty.mp3" , pos: "n.", syllables: ["beau", "ty"]},
         { word: "bed", phonetic: "bed", meaning: "n. \u5e8a", audio: "/audio/wang-listening/chapter-3/test-1/077_bed.mp3" , pos: "n."},
-        { word: "bed sheet", phonetic: "\u02c8b\u025bd \u0283i\u02d0t", meaning: "\u5e8a\u5355", audio: "" },
+        { word: "bed sheet", phonetic: "\u02c8b\u025bd \u0283i\u02d0t", meaning: "n. \u5e8a\u5355", audio: "" , pos: "n."},
         { word: "beats", phonetic: "bi\u02d0ts", meaning: "n. \u8df3\u52a8\u7684\u6b21\u6570", audio: "/audio/wang-listening/chapter-3/test-1/079_beats.mp3" , pos: "n."},
         { word: "bedroom", phonetic: "\u02c8bedru\u02d0m", meaning: "n. \u5367\u5ba4", audio: "/audio/wang-listening/chapter-3/test-1/080_bedroom.mp3" , pos: "n.", syllables: ["be", "droom"]},
         { word: "beverage", phonetic: "\u02c8bev\u0259r\u026ad\u0292", meaning: "n. \u8f6f\u996e\u6599", audio: "/audio/wang-listening/chapter-3/test-1/081_beverage.mp3" , pos: "n.", syllables: ["be", "ve", "rage"]},
