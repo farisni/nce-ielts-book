@@ -30,6 +30,8 @@ interface CharState {
   wordWrong?: boolean
   /** 槽位宽度（em，按字母实际宽度自适应，窄字母窄、宽字母宽） */
   widthEm?: number
+  /** 多余输入槽位（超出单词长度的尾部扩展），挂载时播放展开动画 */
+  overflow?: boolean
 }
 
 interface Token {
@@ -114,9 +116,10 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
       const ch = t ?? wordTarget[j]
       chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
     }
-    // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词
+    // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
+    // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, widthEm: measureCharWidthEm(typed[j]) })
+      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: measureCharWidthEm(typed[j]) })
     }
     wi++
   }
@@ -1486,12 +1489,17 @@ export default function SentencePractice({
                         )
                       }
                       if (c.status === "wrong") {
-                        // 错误/多余字母：字母红色，整词提交后下划线标红
+                        // 错误/多余字母：字母红色，整词提交后下划线标红；
+                        // overflow（多余输入）槽位挂载时从 0 宽展开，与宽度过渡一致的平滑感
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
+                            className={`relative inline-flex h-[2.2em] flex-none items-end justify-center ${c.overflow ? "animate-slot-grow" : ""}`}
+                            style={{
+                              width: `${c.widthEm ?? 0.6}em`,
+                              transition: "width 120ms ease",
+                              ...(c.overflow ? ({ "--slot-w": `${c.widthEm ?? 0.6}em` } as React.CSSProperties) : {}),
+                            }}
                           >
                             <span className="invisible leading-none">W</span>
                             <span
