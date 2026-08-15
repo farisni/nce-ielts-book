@@ -108,14 +108,14 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 槽位宽度 = 实际显示字符的宽度（错字按输入字符宽，字母间零空隙、紧贴排版）。
-    // 宽度变化用 CSS transition 平滑过渡（渲染处），下划线滑动而非跳动；
-    // 槽位一旦定型后不再变，后续输入不挤动已有槽位
+    // 槽位宽度恒定 = max(目标字母宽, 0.5em 下限)：写错字母不伸缩，同时保持
+    // 字母自然宽窄差异（i/l/t 槽位窄、m/w 槽位宽，非等宽排版）。
+    // 只有【写多】（超出单词长度的超长槽位）才展开伸缩（挂载展开动画）
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
+      chars.push({ ch, status, active, wordWrong, widthEm: Math.max(measureCharWidthEm(wordTarget[j]), 0.5) })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
     // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
