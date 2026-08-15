@@ -1541,8 +1541,9 @@ export default function SentencePractice({
                     })}
                     {endPunctMark}
                     {/* 词级连续下划线（整体一条，与字母分离）：
-                        宽度 = Σ 目标字母自然宽 + 两端 0.12em 余量，写错字母不伸缩；
-                        超长槽位（输入字母数 > 正确个数）时随展开平滑加长 */}
+                        宽度 = max(Σ 目标字母宽, Σ 输入字母宽) + 两端 0.12em 余量——
+                        窄错字（i）不变（不缩），宽错字（m/w）自动加长到覆盖字母，
+                        超长槽位随展开平滑加长 */}
                     {!pron && (
                       <span
                         className={`pointer-events-none absolute bottom-0 h-[3px] rounded-full ${
@@ -1556,7 +1557,10 @@ export default function SentencePractice({
                         }`}
                         style={{
                           left: "-0.12em",
-                          width: `calc(${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)}em + 0.24em)`,
+                          width: `${Math.max(
+                            group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0),
+                            group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0),
+                          ) + 0.24}em`,
                           transition: "width 120ms ease",
                         }}
                       />
