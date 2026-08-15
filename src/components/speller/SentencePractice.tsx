@@ -1395,23 +1395,18 @@ export default function SentencePractice({
                   endPunct.status === "punct" &&
                   gIndex === charGroups.length - 2
                 const endPunctMark = showEndPunct ? (
-                  <span
-                    className="pointer-events-none absolute inset-y-0 left-full flex items-end pl-[0.25em] text-muted-foreground"
-                    style={{ transform: "translateY(0.14em)" }}
-                  >
+                  <span className="pointer-events-none absolute left-full top-0 pl-[0.25em] whitespace-nowrap text-muted-foreground">
                     {endPunct.ch}
                   </span>
                 ) : null
                 if (isEndPunct) return null
                 if (group.kind === "punct") {
-                  // 句中标点自动显示：与字母同线，左侧留出呼吸空间
+                  // 句中标点自动显示：与词容器同构（隐形层撑宽 + absolute 覆盖），
+                  // 行内基线基准一致 → 标点与字母同一基线，不会浮到下划线上方
                   return (
-                    <span
-                      key={gIndex}
-                      className="relative inline-flex flex-none items-end pl-[0.25em] pr-[0.08em] text-muted-foreground"
-                      style={{ transform: "translateY(-0.19em)" }}
-                    >
-                      {group.chars[0].ch}
+                    <span key={gIndex} className="relative inline-flex flex-none pl-[0.25em] pr-[0.08em] text-muted-foreground">
+                      <span className="invisible">{group.chars[0].ch}</span>
+                      <span className="absolute left-0 top-0 pl-[0.25em] pr-[0.08em]">{group.chars[0].ch}</span>
                       {endPunctMark}
                     </span>
                   )
