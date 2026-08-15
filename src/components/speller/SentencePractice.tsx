@@ -29,8 +29,10 @@ interface CharState {
   active?: boolean
   /** 所属单词拼写错误（提交检查后整词下划线标红） */
   wordWrong?: boolean
-  /** 槽位宽度（em，按字母实际宽度自适应，窄字母窄、宽字母宽） */
+  /** 字母宽度（em，按字符实际宽度，字母紧排用） */
   widthEm?: number
+  /** 下划线宽度（em，= max(目标字母宽, 0.5) 恒定，不随输入伸缩） */
+  underlineEm?: number
   /** 多余输入槽位（超出单词长度的尾部扩展），挂载时播放展开动画 */
   overflow?: boolean
 }
@@ -108,19 +110,34 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 槽位宽度恒定 = max(目标字母宽, 0.5em 下限)：写错字母不伸缩，同时保持
-    // 字母自然宽窄差异（i/l/t 槽位窄、m/w 槽位宽，非等宽排版）。
-    // 只有【写多】（超出单词长度的超长槽位）才展开伸缩（挂载展开动画）
+    // 「分离下划线」：字母按字符实际宽度紧排（错字间距自然，如 eye 输 eyi 的 i 紧贴 y），
+    // 下划线独立定宽 = max(目标字母宽, 0.5em) 恒定，不随输入伸缩；
+    // 只有【写多】（超出单词长度的超长槽位）下划线随展开动画伸缩
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, wordWrong, widthEm: Math.max(measureCharWidthEm(wordTarget[j]), 0.5) })
+      chars.push({
+        ch,
+        status,
+        active,
+        wordWrong,
+        widthEm: measureCharWidthEm(ch),
+        underlineEm: Math.max(measureCharWidthEm(wordTarget[j]), 0.5),
+      })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
     // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: measureCharWidthEm(typed[j]) })
+      chars.push({
+        ch: typed[j],
+        status: "wrong",
+        active,
+        wordWrong,
+        overflow: true,
+        widthEm: measureCharWidthEm(typed[j]),
+        underlineEm: Math.max(measureCharWidthEm(typed[j]), 0.5),
+      })
     }
     wi++
   }
@@ -1443,18 +1460,18 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
+                            className="relative inline-flex h-[2.2em] flex-none items-end"
+                            style={{ transition: "width 120ms ease" }}
                           >
-                            <span className="invisible leading-none">W</span>
                             <span
-                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${letterColor}`}
+                              className={`leading-none ${letterColor}`}
                               style={{ transform: "translateY(-0.14em)" }}
                             >
                               {c.ch}
                             </span>
                             <span
-                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${underlineColor}`}
+                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${underlineColor}`}
+                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
                             />
                           </span>
                         )
@@ -1464,14 +1481,16 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-center justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
+                            className="relative inline-flex h-[2.2em] flex-none items-center"
+                            style={{ transition: "width 120ms ease" }}
                           >
-                            <span className="invisible leading-none">W</span>
+                            {/* 未输入：隐形目标字母撑宽（槽位宽度 = 目标字母宽） */}
+                            <span className="invisible leading-none">{c.ch}</span>
                             <span
-                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
                                 c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
+                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
                             />
                           </span>
                         )
@@ -1491,20 +1510,20 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-end justify-center"
-                            style={{ width: `${c.widthEm ?? 0.6}em`, transition: "width 120ms ease" }}
+                            className="relative inline-flex h-[2.2em] flex-none items-end"
+                            style={{ transition: "width 120ms ease" }}
                           >
-                            <span className="invisible leading-none">W</span>
                             <span
-                              className={`absolute inset-x-0 bottom-0 flex justify-center leading-none ${letterColor}`}
+                              className={`leading-none ${letterColor}`}
                               style={{ transform: "translateY(-0.14em)" }}
                             >
                               {c.ch}
                             </span>
                             <span
-                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
                                 c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
+                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
                             />
                           </span>
                         )
@@ -1515,24 +1534,26 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className={`relative inline-flex h-[2.2em] flex-none items-end justify-center ${c.overflow ? "animate-slot-grow" : ""}`}
+                            className={`relative inline-flex h-[2.2em] flex-none items-end ${c.overflow ? "animate-slot-grow" : ""}`}
                             style={{
-                              width: `${c.widthEm ?? 0.6}em`,
                               transition: "width 120ms ease",
                               ...(c.overflow ? ({ "--slot-w": `${c.widthEm ?? 0.6}em` } as React.CSSProperties) : {}),
                             }}
                           >
-                            <span className="invisible leading-none">W</span>
                             <span
-                              className="absolute inset-x-0 bottom-0 flex justify-center leading-none text-rose-500"
+                              className="leading-none text-rose-500"
                               style={{ transform: "translateY(-0.14em)" }}
                             >
                               {c.ch}
                             </span>
                             <span
-                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${
+                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
                                 c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
                               }`}
+                              style={{
+                                width: `${c.underlineEm ?? 0.5}em`,
+                                ...(c.overflow ? ({ "--slot-w": `${c.underlineEm ?? 0.5}em`, animation: "slot-grow 120ms ease-out" } as React.CSSProperties) : {}),
+                              }}
                             />
                           </span>
                         )
