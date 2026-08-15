@@ -920,11 +920,15 @@ export default function SentencePractice({
           startDictation()
           return
         }
-        // ⌘K 下一句；⇧⌘K 上一句（隐藏快捷键，不显示在 footer 提示里）
+        // ⌘K 下一句；⌘J 上一句（隐藏快捷键，不显示在 footer 提示里）
         if (k === "k") {
           e.preventDefault()
-          if (e.shiftKey) gotoPrev()
-          else gotoNext()
+          gotoNext()
+          return
+        }
+        if (k === "j") {
+          e.preventDefault()
+          gotoPrev()
           return
         }
         return
