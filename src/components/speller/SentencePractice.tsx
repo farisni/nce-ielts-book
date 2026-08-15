@@ -33,6 +33,8 @@ interface CharState {
   widthEm?: number
   /** 下划线宽度（em：词内 = 目标字母自然宽恒定；超长槽位 = 字符宽，随写多伸缩） */
   underlineEm?: number
+  /** 目标字母（隐形目标层撑宽用：字母个数一致时下划线不随错字伸缩） */
+  target?: string
   /** 多余输入槽位（超出单词长度的尾部扩展），挂载时播放展开动画 */
   overflow?: boolean
 }
@@ -124,6 +126,7 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
         wordWrong,
         widthEm: measureCharWidthEm(ch),
         underlineEm: measureCharWidthEm(wordTarget[j]),
+        target: wordTarget[j],
       })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
@@ -1432,9 +1435,11 @@ export default function SentencePractice({
                         {pron.wrong ? "✗" : Math.round(pron.score)}
                       </span>
                     )}
-                    {/* 字母行：词级下划线比词宽两端各 0.1em（加大下划线宽度），
-                        余量小于词间空格（0.45em）不会连到下一个词 */}
+                    {/* 字母行：隐形目标词撑宽——容器宽 = max(字母层, 目标宽)，
+                        字母个数一致（写错）时下划线不随错字伸缩；
+                        词级下划线比容器宽两端各 0.1em，余量小于词间空格不连下一个词 */}
                     <span className="relative inline-flex flex-none">
+                      <span className="invisible">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
@@ -1485,8 +1490,6 @@ export default function SentencePractice({
                             className="relative inline-flex h-[2.2em] flex-none items-center"
                             style={{ transition: "width 120ms ease" }}
                           >
-                            {/* 未输入：隐形目标字母撑宽（字母层宽度 = 目标字母宽） */}
-                            <span className="invisible leading-none">{c.ch}</span>
                           </span>
                         )
                       }
@@ -1557,8 +1560,8 @@ export default function SentencePractice({
                                 : "bg-neutral-400"
                         }`}
                         style={{
-                          left: "-0.1em",
-                          width: "calc(100% + 0.2em)",
+                          left: 0,
+                          width: `${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) + 0.1}em`,
                           transition: "width 120ms ease",
                         }}
                       />
