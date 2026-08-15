@@ -1439,7 +1439,7 @@ export default function SentencePractice({
                         字母个数一致（写错）时下划线不随错字伸缩；
                         词级下划线比容器宽两端各 0.1em，余量小于词间空格不连下一个词 */}
                     <span className="relative inline-flex flex-none">
-                      <span className="invisible">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
+                      <span className="invisible absolute left-0 top-0">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
