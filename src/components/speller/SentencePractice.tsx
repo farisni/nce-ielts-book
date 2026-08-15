@@ -1448,12 +1448,15 @@ export default function SentencePractice({
                         className="absolute left-0 top-0 inline-flex"
                         style={{
                           transform: `translateX(${
-                            group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0) <=
-                            group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
-                              ? (group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) -
-                                  group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0)) /
-                                2
-                              : 0
+                            (() => {
+                              // 已输入字母层宽（排除 pending 槽位），目标宽（恒定）
+                              const typedW = group.chars
+                                .filter((cc) => cc.status !== "pending")
+                                .reduce((s, c) => s + (c.widthEm ?? 0.5), 0)
+                              const targetW = group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
+                              // 已输入字母层 ≤ 目标宽时居中（首字母从中间开始过渡）
+                              return typedW <= targetW ? (targetW - typedW) / 2 : 0
+                            })()
                           }em)`,
                           transition: "transform 120ms ease",
                         }}
