@@ -1441,8 +1441,16 @@ export default function SentencePractice({
                     <span className="relative inline-flex flex-none">
                       {/* 隐形目标词占流撑宽：词容器 = Σ目标字母宽（写错不缩，下划线不溢出连词） */}
                       <span className="invisible">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
-                      {/* 显形字母层 absolute 覆盖（从词容器左缘起，与下划线对齐） */}
-                      <span className="absolute left-0 top-0 inline-flex">
+                      {/* 显形字母层 absolute 覆盖：字母层 ≤ 目标宽时在词容器内居中
+                          （eye 正确填满、eyi 写错也居中）；超长/宽错字左对齐 */}
+                      <span
+                        className={`absolute left-0 top-0 inline-flex ${
+                          group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0) <=
+                          group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
+                            ? "w-full justify-center"
+                            : ""
+                        }`}
+                      >
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
@@ -1565,7 +1573,10 @@ export default function SentencePractice({
                         }`}
                         style={{
                           left: 0,
-                          width: `${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) + 0.1}em`,
+                          width: `${Math.max(
+                            group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0),
+                            group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0),
+                          ) + 0.1}em`,
                           transition: "width 120ms ease",
                         }}
                       />
