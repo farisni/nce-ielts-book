@@ -1439,7 +1439,10 @@ export default function SentencePractice({
                         字母个数一致（写错）时下划线不随错字伸缩；
                         词级下划线比容器宽两端各 0.1em，余量小于词间空格不连下一个词 */}
                     <span className="relative inline-flex flex-none">
-                      <span className="invisible absolute left-0 top-0">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
+                      {/* 隐形目标词占流撑宽：词容器 = Σ目标字母宽（写错不缩，下划线不溢出连词） */}
+                      <span className="invisible">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
+                      {/* 显形字母层 absolute 覆盖（从词容器左缘起，与下划线对齐） */}
+                      <span className="absolute left-0 top-0 inline-flex">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
@@ -1544,6 +1547,7 @@ export default function SentencePractice({
                       return <span key={idx}>{c.ch}</span>
                     })}
                     {endPunctMark}
+                      </span>
                     {/* 词级连续下划线（整体一条，与字母分离）：
                         宽度 = max(Σ 目标字母宽, Σ 输入字母宽) + 两端 0.12em 余量——
                         窄错字（i）不变（不缩），宽错字（m/w）自动加长到覆盖字母，
