@@ -1580,10 +1580,7 @@ export default function SentencePractice({
                         }`}
                         style={{
                           left: "-0.15em",
-                          width: `${Math.max(
-                            group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0),
-                            group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0),
-                          ) + 0.3}em`,
+                          width: `${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) + 0.3}em`,
                           transition: "width 120ms ease",
                         }}
                       />
