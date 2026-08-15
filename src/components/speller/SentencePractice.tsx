@@ -1427,7 +1427,7 @@ export default function SentencePractice({
                     {/* 发音评分：以轻量上标贴在单词右上角 */}
                     {pron && (
                       <span
-                        className={`pointer-events-none absolute bottom-[0.5em] left-full ml-[0.3em] z-10 whitespace-nowrap text-[0.4em] font-bold leading-none ${
+                        className={`pointer-events-none absolute bottom-[1.5em] left-full ml-[0.3em] z-10 whitespace-nowrap text-[0.4em] font-bold leading-none ${
                           pron.wrong ? "text-rose-500" : "text-muted-foreground/70"
                         }`}
                         title={pron.wrong ? "发音错误" : `发音 ${Math.round(pron.score)} 分`}
@@ -1449,6 +1449,8 @@ export default function SentencePractice({
                         style={{
                           transform: `translateX(${
                             (() => {
+                              // 评分（pron）时字母 = 目标字母填满容器，不做居中偏移
+                              if (pron) return 0
                               // 已输入字母层宽（排除 pending 槽位），目标宽（恒定）
                               const typedW = group.chars
                                 .filter((cc) => cc.status !== "pending")
@@ -1496,9 +1498,9 @@ export default function SentencePractice({
                             >
                               {c.ch}
                             </span>
+                            {/* 评分下划线：两侧各延伸 0.15em，相邻字母下划线重叠连续 */}
                             <span
-                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${underlineColor}`}
-                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
+                              className={`absolute inset-x-[-0.15em] bottom-0 h-[3px] rounded-[2px] ${underlineColor}`}
                             />
                           </span>
                         )
