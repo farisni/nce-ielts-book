@@ -1572,11 +1572,11 @@ export default function SentencePractice({
                                 : "bg-neutral-400"
                         }`}
                         style={{
-                          left: 0,
+                          left: "-0.15em",
                           width: `${Math.max(
                             group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0),
                             group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0),
-                          ) + 0.1}em`,
+                          ) + 0.3}em`,
                           transition: "width 120ms ease",
                         }}
                       />
