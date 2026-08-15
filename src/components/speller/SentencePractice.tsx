@@ -1582,8 +1582,8 @@ export default function SentencePractice({
                                 : "bg-neutral-400"
                         }`}
                         style={{
-                          left: "-0.15em",
-                          width: `${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) + 0.3}em`,
+                          left: "-0.2em",
+                          width: `${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) + 0.4}em`,
                           transition: "width 120ms ease",
                         }}
                       />
