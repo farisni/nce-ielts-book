@@ -1505,7 +1505,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end"
-                            style={{ width: "0.65em" }}
+                            style={{ transition: "width 120ms ease" }}
                           >
                             <span
                               className={`leading-none ${letterColor}`}
