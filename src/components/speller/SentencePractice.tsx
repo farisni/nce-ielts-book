@@ -110,19 +110,19 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 槽位宽度固定 0.65em（加大下划线宽度）：字母在槽位内排布，
-    // 写错字母（如 eye 输 eyi）不伸缩不收缩（间距均匀）；
-    // 写多（超出单词长度的超长槽位）才随展开动画增加
+    // 字母按字符实际宽度排列（非等宽，i 窄 m 宽），字母间零空隙紧排；
+    // 词级下划线 = 词宽度 + 两端余量（渲染处 calc(100% + 0.24em)），
+    // 跟随字母层伸缩，写多（超长槽位）时随展开动画加长
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, wordWrong, widthEm: 0.65, underlineEm: 0.65 })
+      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
     // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: 0.65, underlineEm: 0.65 })
+      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: measureCharWidthEm(typed[j]) })
     }
     wi++
   }
@@ -1401,8 +1401,6 @@ export default function SentencePractice({
                   (syllableMode || revealed || !!pronWords) && sentence?.syllables?.length
                     ? wordSyllableIdx(wordText, wordSyllableGroups(sentence.syllables)[gIndex] ?? sentence.syllables)
                     : null
-                // 词级连续下划线宽度 = Σ 各字母目标下划线宽（按目标恒定，写多时随超长槽位加长）
-                const underlineTotal = group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
                 return (
                   <span
                     key={gIndex}
@@ -1419,25 +1417,8 @@ export default function SentencePractice({
                         {pron.wrong ? "✗" : Math.round(pron.score)}
                       </span>
                     )}
-                    {/* 字母行 */}
+                    {/* 字母行（词级连续下划线挂在字母容器上：宽度 = 字母层宽 + 两端 0.12em 余量） */}
                     <span className="relative inline-flex flex-none">
-                      {/* 词级连续下划线：贯穿整个词，不随错字伸缩；写多（超长槽位）时平滑加长 */}
-                      {!pron && (
-                        <span
-                          className={`pointer-events-none absolute bottom-0 left-0 h-[3px] rounded-full ${
-                            group.chars[0]?.wordWrong && submitted
-                              ? "bg-rose-500"
-                              : passed
-                                ? "bg-emerald-500"
-                                : group.chars[0]?.active
-                                  ? "bg-violet-500"
-                                  : "bg-neutral-400"
-                          }`}
-                          style={{ width: `${underlineTotal}em`, transition: "width 120ms ease" }}
-                        />
-                      )}
-                    </span>
-                    <span className="inline-flex flex-none">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
@@ -1465,7 +1446,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end"
-                            style={{ width: "0.65em" }}
+                            style={{ transition: "width 120ms ease" }}
                           >
                             <span
                               className={`leading-none ${letterColor}`}
@@ -1486,8 +1467,10 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-center"
-                            style={{ width: "0.65em" }}
+                            style={{ transition: "width 120ms ease" }}
                           >
+                            {/* 未输入：隐形目标字母撑宽（字母层宽度 = 目标字母宽） */}
+                            <span className="invisible leading-none">{c.ch}</span>
                           </span>
                         )
                       }
@@ -1526,8 +1509,8 @@ export default function SentencePractice({
                             key={idx}
                             className={`relative inline-flex h-[2.2em] flex-none items-end ${c.overflow ? "animate-slot-grow" : ""}`}
                             style={{
-                              width: "0.65em",
-                              ...(c.overflow ? ({ "--slot-w": "0.65em" } as React.CSSProperties) : {}),
+                              transition: "width 120ms ease",
+                              ...(c.overflow ? ({ "--slot-w": `${c.widthEm ?? 0.6}em` } as React.CSSProperties) : {}),
                             }}
                           >
                             <span
@@ -1542,6 +1525,22 @@ export default function SentencePractice({
                       return <span key={idx}>{c.ch}</span>
                     })}
                     {endPunctMark}
+                    {/* 词级连续下划线：比字母层两端各宽 0.12em（加大下划线宽度），
+                        跟随字母层伸缩；写多（超长槽位）时平滑加长 */}
+                    {!pron && (
+                      <span
+                        className={`pointer-events-none absolute bottom-0 h-[3px] rounded-full ${
+                          group.chars[0]?.wordWrong && submitted
+                            ? "bg-rose-500"
+                            : passed
+                              ? "bg-emerald-500"
+                              : group.chars[0]?.active
+                                ? "bg-violet-500"
+                                : "bg-neutral-400"
+                        }`}
+                        style={{ left: "-0.12em", width: "calc(100% + 0.24em)", transition: "width 120ms ease" }}
+                      />
+                    )}
                     </span>
                   </span>
                 )
