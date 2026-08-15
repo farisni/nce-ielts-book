@@ -1326,36 +1326,40 @@ export default function SentencePractice({
             音标和释义默认不显示，按下「显示答案」（右⌘）才出现 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
-            {/* 音标：大字置顶；默认隐藏，显示答案时出现。
+            {/* 音标：大字置顶；默认隐藏，显示答案时出现。固定行高占位（输入区不位移）。
                 词组（多词）每个词的音标独立用 /…/ 包围；
                 段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
-            {revealed && sentence.phonetic && (
-              <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
-                {sentence.phonetic
-                  .trim()
-                  .replace(/^\/+|\/+$/g, "")
-                  .split(/\s+/)
-                  .filter(Boolean)
-                  .map((seg, i) => (
-                    <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
-                      / {seg.split(/[,;]/)[0].trim()} /
-                    </span>
-                  ))}
-              </p>
-            )}
+            <p className="h-[1.5em] text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
+              {revealed && sentence.phonetic
+                ? sentence.phonetic
+                    .trim()
+                    .replace(/^\/+|\/+$/g, "")
+                    .split(/\s+/)
+                    .filter(Boolean)
+                    .map((seg, i) => (
+                      <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
+                        / {seg.split(/[,;]/)[0].trim()} /
+                      </span>
+                    ))
+                : null}
+            </p>
             {/* 中文释义：小字放音标下方；默认隐藏，显示答案时出现。
                 词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
-            {revealed && (() => {
+            {(() => {
               const posMatch = sentence.cn.match(/^((?:[a-z]+\.\/?)+ )/)
               const rest = posMatch ? sentence.cn.slice(posMatch[1].length) : sentence.cn
               const m = rest.match(/^([^；;\n]+[；;\n]?)/)
               const bold = m ? m[1] : null
               const tail = m ? rest.slice(m[1].length) : rest
               return (
-                <h2 className="mt-2 text-xl leading-relaxed text-muted-foreground/70">
-                  {posMatch?.[1]}
-                  {bold && <span className="font-semibold text-foreground/80">{bold}</span>}
-                  {tail}
+                <h2 className="mt-2 h-[1.7em] text-xl leading-relaxed text-muted-foreground/70">
+                  {revealed ? (
+                    <>
+                      {posMatch?.[1]}
+                      {bold && <span className="font-semibold text-foreground/80">{bold}</span>}
+                      {tail}
+                    </>
+                  ) : null}
                 </h2>
               )
             })()}
