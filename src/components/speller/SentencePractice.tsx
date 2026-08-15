@@ -1391,7 +1391,7 @@ export default function SentencePractice({
                   return (
                     <span
                       key={gIndex}
-                      className="relative inline-flex h-[2.2em] flex-none items-end pl-[0.25em] pr-[0.08em] text-muted-foreground"
+                      className="relative inline-flex flex-none items-end pl-[0.25em] pr-[0.08em] text-muted-foreground"
                       style={{ transform: "translateY(-0.19em)" }}
                     >
                       {group.chars[0].ch}
@@ -1469,7 +1469,7 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-end"
+                            className="relative inline-flex flex-none items-end"
                             style={{ transition: "width 120ms ease" }}
                           >
                             <span
@@ -1490,7 +1490,7 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-center"
+                            className="relative inline-flex flex-none items-center"
                             style={{ transition: "width 120ms ease" }}
                           >
                           </span>
@@ -1511,7 +1511,7 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className="relative inline-flex h-[2.2em] flex-none items-end"
+                            className="relative inline-flex flex-none items-end"
                             style={{ transition: "width 120ms ease" }}
                           >
                             <span
@@ -1529,7 +1529,7 @@ export default function SentencePractice({
                         return (
                           <span
                             key={idx}
-                            className={`relative inline-flex h-[2.2em] flex-none items-end ${c.overflow ? "animate-slot-grow" : ""}`}
+                            className={`relative inline-flex flex-none items-end ${c.overflow ? "animate-slot-grow" : ""}`}
                             style={{
                               transition: "width 120ms ease",
                               ...(c.overflow ? ({ "--slot-w": `${c.widthEm ?? 0.6}em` } as React.CSSProperties) : {}),
