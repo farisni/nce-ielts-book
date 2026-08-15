@@ -920,6 +920,13 @@ export default function SentencePractice({
           startDictation()
           return
         }
+        // ⌘K 下一句；⇧⌘K 上一句（隐藏快捷键，不显示在 footer 提示里）
+        if (k === "k") {
+          e.preventDefault()
+          if (e.shiftKey) gotoPrev()
+          else gotoNext()
+          return
+        }
         return
       }
 
@@ -1038,7 +1045,6 @@ export default function SentencePractice({
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [phase, sentence, activeIdx, wordInputs, words, submitted, revealed, replay, submit, showAnswer, markMastered, markNewWord, startDictation, gotoNext, gotoPrev, playType, pronRecording, toggleRecording])
-
   // ── 渲染数据 ──
   const chars = useMemo(() => buildDisplay(target, wordInputs, activeIdx), [target, wordInputs, activeIdx])
   const fullyCorrect = submitted && !revealed && words.every((w, i) => (wordInputs[i] ?? "").toLowerCase() === w.toLowerCase())
