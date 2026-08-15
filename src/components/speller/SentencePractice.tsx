@@ -1330,7 +1330,7 @@ export default function SentencePractice({
                 词组（多词）每个词的音标独立用 /…/ 包围；
                 段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
             <p className="h-[1.5em] text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
-              {revealed && sentence.phonetic
+              {(revealed || passed) && sentence.phonetic
                 ? sentence.phonetic
                     .trim()
                     .replace(/^\/+|\/+$/g, "")
@@ -1353,7 +1353,7 @@ export default function SentencePractice({
               const tail = m ? rest.slice(m[1].length) : rest
               return (
                 <h2 className="mt-2 h-[1.7em] text-xl leading-relaxed text-muted-foreground/70">
-                  {revealed ? (
+                  {revealed || passed ? (
                     <>
                       {posMatch?.[1]}
                       {bold && <span className="font-semibold text-foreground/80">{bold}</span>}
