@@ -31,7 +31,7 @@ interface CharState {
   wordWrong?: boolean
   /** 字母宽度（em，按字符实际宽度，字母紧排用） */
   widthEm?: number
-  /** 下划线宽度（em，= max(目标字母宽, 0.5) 恒定，不随输入伸缩） */
+  /** 下划线宽度（em：词内 = 目标字母自然宽恒定；超长槽位 = 字符宽，随写多伸缩） */
   underlineEm?: number
   /** 多余输入槽位（超出单词长度的尾部扩展），挂载时播放展开动画 */
   overflow?: boolean
@@ -110,19 +110,34 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 字母按字符实际宽度排列（非等宽，i 窄 m 宽），字母间零空隙紧排；
-    // 词级下划线 = 词宽度 + 两端余量（渲染处 calc(100% + 0.24em)），
-    // 跟随字母层伸缩，写多（超长槽位）时随展开动画加长
+    // 「分离字母与下划线」：字母按字符实际宽度排列（非等宽，i 窄 m 宽）零空隙紧排；
+    // 词级下划线是一条整体（宽度 = Σ 目标字母自然宽 + 两端余量），写错字母不伸缩，
+    // 只有输入字母数超过正确个数（超长槽位）时才随展开加长
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({ ch, status, active, wordWrong, widthEm: measureCharWidthEm(ch) })
+      chars.push({
+        ch,
+        status,
+        active,
+        wordWrong,
+        widthEm: measureCharWidthEm(ch),
+        underlineEm: measureCharWidthEm(wordTarget[j]),
+      })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
     // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: measureCharWidthEm(typed[j]) })
+      chars.push({
+        ch: typed[j],
+        status: "wrong",
+        active,
+        wordWrong,
+        overflow: true,
+        widthEm: measureCharWidthEm(typed[j]),
+        underlineEm: measureCharWidthEm(typed[j]),
+      })
     }
     wi++
   }
@@ -1525,8 +1540,9 @@ export default function SentencePractice({
                       return <span key={idx}>{c.ch}</span>
                     })}
                     {endPunctMark}
-                    {/* 词级连续下划线：比字母层两端各宽 0.12em（加大下划线宽度），
-                        跟随字母层伸缩；写多（超长槽位）时平滑加长 */}
+                    {/* 词级连续下划线（整体一条，与字母分离）：
+                        宽度 = Σ 目标字母自然宽 + 两端 0.12em 余量，写错字母不伸缩；
+                        超长槽位（输入字母数 > 正确个数）时随展开平滑加长 */}
                     {!pron && (
                       <span
                         className={`pointer-events-none absolute bottom-0 h-[3px] rounded-full ${
@@ -1538,7 +1554,11 @@ export default function SentencePractice({
                                 ? "bg-violet-500"
                                 : "bg-neutral-400"
                         }`}
-                        style={{ left: "-0.12em", width: "calc(100% + 0.24em)", transition: "width 120ms ease" }}
+                        style={{
+                          left: "-0.12em",
+                          width: `calc(${group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)}em + 0.24em)`,
+                          transition: "width 120ms ease",
+                        }}
                       />
                     )}
                     </span>
