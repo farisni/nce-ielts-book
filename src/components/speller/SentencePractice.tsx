@@ -714,10 +714,12 @@ export default function SentencePractice({
     const pool = c?.sentences ?? []
     const sessionSize = c?.sessionSize ?? 10
     // 记录课程原始索引，供视频/SRT 联动。
-    // 全量课程（sessionSize ≥ 总数，如单词听写整 Unit 顺序学）不洗牌：
-    // 方向键上一个/下一个按原序切换；抽查课程（sessionSize < 总数）才洗牌
+    // 全量课程（sessionSize ≥ 总数，如单词听写整 Unit 顺序学）与媒体课程
+    // （有 video/subtitle，配合 SRT 定位原声）不洗牌：上一个/下一个按原序切换；
+    // 抽查课程（sessionSize < 总数）才洗牌
     const poolIdx = pool.map((_, i) => i)
-    const idx = sessionSize >= pool.length ? poolIdx : shuffle(poolIdx).slice(0, sessionSize)
+    const ordered = !!(c?.video || c?.subtitle)
+    const idx = ordered || sessionSize >= pool.length ? poolIdx : shuffle(poolIdx).slice(0, sessionSize)
     const s = idx.map((i) => pool[i])
     if (s.length === 0) return
     // 位置记忆：restoreKey 课程（如单词听写）从数据库的上次位置继续，而不是重头开始
@@ -1579,8 +1581,10 @@ export default function SentencePractice({
                       }
                       return <span key={idx}>{c.ch}</span>
                     })}
-                    {endPunctMark}
                       </span>
+                    {/* 句末标点：挂在词容器上（字母层外）——left-full 相对词容器宽
+                        （Σ目标字母宽恒定），不随字母层 translateX 偏移 */}
+                    {endPunctMark}
                     {/* 词级连续下划线（整体一条，与字母分离）：
                         宽度 = max(Σ 目标字母宽, Σ 输入字母宽) + 两端 0.12em 余量——
                         窄错字（i）不变（不缩），宽错字（m/w）自动加长到覆盖字母，
