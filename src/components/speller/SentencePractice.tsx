@@ -1441,15 +1441,22 @@ export default function SentencePractice({
                     <span className="relative inline-flex flex-none">
                       {/* 隐形目标词占流撑宽：词容器 = Σ目标字母宽（写错不缩，下划线不溢出连词） */}
                       <span className="invisible">{group.chars.map((cc) => cc.target ?? cc.ch).join("")}</span>
-                      {/* 显形字母层 absolute 覆盖：字母层 ≤ 目标宽时在词容器内居中
-                          （eye 正确填满、eyi 写错也居中）；超长/宽错字左对齐 */}
+                      {/* 显形字母层 absolute 覆盖：字母层 ≤ 目标宽时用 translateX 居中
+                          （eye 正确填满、eyi 写错也居中；transform 可平滑过渡，
+                          输入字母不跳位）；超长/宽错字左对齐 */}
                       <span
-                        className={`absolute left-0 top-0 inline-flex ${
-                          group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0) <=
-                          group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
-                            ? "w-full justify-center"
-                            : ""
-                        }`}
+                        className="absolute left-0 top-0 inline-flex"
+                        style={{
+                          transform: `translateX(${
+                            group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0) <=
+                            group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
+                              ? (group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0) -
+                                  group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0)) /
+                                2
+                              : 0
+                          }em)`,
+                          transition: "transform 120ms ease",
+                        }}
                       >
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
