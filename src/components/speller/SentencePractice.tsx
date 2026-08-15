@@ -1322,12 +1322,14 @@ export default function SentencePractice({
         </SheetContent>
       </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
-        {/* 中文句子（视频课程模式下隐藏，避免泄露答案）；单词课程在下方显示音标 */}
+        {/* 中文句子（视频课程模式下隐藏）；占位保持（输入区位置不动），
+            音标和释义默认不显示，按下「显示答案」（右⌘）才出现 */}
         {showCn && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
-            {/* 音标：大字置顶；词组（多词）每个词的音标独立用 /…/ 包围。
+            {/* 音标：大字置顶；默认隐藏，显示答案时出现。
+                词组（多词）每个词的音标独立用 /…/ 包围；
                 段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
-            {sentence.phonetic && (
+            {revealed && sentence.phonetic && (
               <p className="text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
                 {sentence.phonetic
                   .trim()
@@ -1341,8 +1343,9 @@ export default function SentencePractice({
                   ))}
               </p>
             )}
-            {/* 中文释义：小字放音标下方；词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
-            {(() => {
+            {/* 中文释义：小字放音标下方；默认隐藏，显示答案时出现。
+                词性前缀（n./v. 等）保持原样，第一个释义（分号/换行前）加粗加黑 */}
+            {revealed && (() => {
               const posMatch = sentence.cn.match(/^((?:[a-z]+\.\/?)+ )/)
               const rest = posMatch ? sentence.cn.slice(posMatch[1].length) : sentence.cn
               const m = rest.match(/^([^；;\n]+[；;\n]?)/)
