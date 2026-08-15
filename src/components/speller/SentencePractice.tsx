@@ -1416,6 +1416,8 @@ export default function SentencePractice({
                   (syllableMode || revealed || !!pronWords) && sentence?.syllables?.length
                     ? wordSyllableIdx(wordText, wordSyllableGroups(sentence.syllables)[gIndex] ?? sentence.syllables)
                     : null
+                // 词级连续下划线宽度 = Σ 各字母目标下划线宽（按目标恒定，写多时随超长槽位加长）
+                const underlineTotal = group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0)
                 return (
                   <span
                     key={gIndex}
@@ -1433,6 +1435,23 @@ export default function SentencePractice({
                       </span>
                     )}
                     {/* 字母行 */}
+                    <span className="relative inline-flex flex-none">
+                      {/* 词级连续下划线：贯穿整个词，不随错字伸缩；写多（超长槽位）时平滑加长 */}
+                      {!pron && (
+                        <span
+                          className={`pointer-events-none absolute bottom-0 left-0 h-[3px] rounded-full ${
+                            group.chars[0]?.wordWrong && submitted
+                              ? "bg-rose-500"
+                              : passed
+                                ? "bg-emerald-500"
+                                : group.chars[0]?.active
+                                  ? "bg-violet-500"
+                                  : "bg-neutral-400"
+                          }`}
+                          style={{ width: `${underlineTotal}em`, transition: "width 120ms ease" }}
+                        />
+                      )}
+                    </span>
                     <span className="inline-flex flex-none">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
@@ -1486,12 +1505,6 @@ export default function SentencePractice({
                           >
                             {/* 未输入：隐形目标字母撑宽（槽位宽度 = 目标字母宽） */}
                             <span className="invisible leading-none">{c.ch}</span>
-                            <span
-                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
-                              }`}
-                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
-                            />
                           </span>
                         )
                       }
@@ -1519,12 +1532,6 @@ export default function SentencePractice({
                             >
                               {c.ch}
                             </span>
-                            <span
-                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
-                              }`}
-                              style={{ width: `${c.underlineEm ?? 0.5}em` }}
-                            />
                           </span>
                         )
                       }
@@ -1546,15 +1553,6 @@ export default function SentencePractice({
                             >
                               {c.ch}
                             </span>
-                            <span
-                              className={`absolute bottom-0 left-0 h-[3px] rounded-[2px] ${
-                                c.wordWrong && submitted ? "bg-rose-500" : passed ? "bg-emerald-500" : c.active ? "bg-violet-500" : "bg-neutral-400"
-                              }`}
-                              style={{
-                                width: `${c.underlineEm ?? 0.5}em`,
-                                ...(c.overflow ? ({ "--slot-w": `${c.underlineEm ?? 0.5}em`, animation: "slot-grow 120ms ease-out" } as React.CSSProperties) : {}),
-                              }}
-                            />
                           </span>
                         )
                       }
