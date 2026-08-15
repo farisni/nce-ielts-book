@@ -1347,9 +1347,9 @@ export default function SentencePractice({
         </SheetContent>
       </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
-        {/* 中文句子（视频课程模式下隐藏）；占位保持（输入区位置不动），
+        {/* 中文句子（视频课程模式下隐藏，答对 passed 时显示中文）；占位保持（输入区位置不动），
             音标和释义默认不显示，按下「显示答案」（右⌘）才出现 */}
-        {showCn && (
+        {(showCn || passed) && (
           <div key={`cn-${index}`} className="mt-[100px] text-center">
             {/* 音标：大字置顶；默认隐藏，显示答案时出现。固定行高占位（输入区不位移）。
                 词组（多词）每个词的音标独立用 /…/ 包围；
