@@ -110,34 +110,19 @@ function buildDisplay(target: string, inputs: string[], activeIdx: number): Char
     // 单词是否拼写正确（提交检查时：整词下划线标红依据）
     const wordWrong = typed.toLowerCase() !== wordTarget
     // 槽位：逐个与目标字母比对（忽略大小写）。
-    // 「分离下划线」：字母按字符实际宽度紧排（错字间距自然，如 eye 输 eyi 的 i 紧贴 y），
-    // 下划线独立定宽 = max(目标字母宽, 0.5em) 恒定，不随输入伸缩；
-    // 只有【写多】（超出单词长度的超长槽位）下划线随展开动画伸缩
+    // 槽位宽度固定 0.65em（加大下划线宽度）：字母在槽位内排布，
+    // 写错字母（如 eye 输 eyi）不伸缩不收缩（间距均匀）；
+    // 写多（超出单词长度的超长槽位）才随展开动画增加
     for (let j = 0; j < wordTarget.length; j++) {
       const t = typed[j]
       const status: CharStatus = t === undefined ? "pending" : t.toLowerCase() === wordTarget[j] ? "correct" : "wrong"
       const ch = t ?? wordTarget[j]
-      chars.push({
-        ch,
-        status,
-        active,
-        wordWrong,
-        widthEm: measureCharWidthEm(ch),
-        underlineEm: Math.max(measureCharWidthEm(wordTarget[j]), 0.5),
-      })
+      chars.push({ ch, status, active, wordWrong, widthEm: 0.65, underlineEm: 0.65 })
     }
     // 多余输入：超出单词长度，显示在当前单词尾部（红色），不影响下一个单词；
     // overflow 标记：渲染时从 0 宽展开动画，与普通宽度过渡一致的平滑感
     for (let j = wordTarget.length; j < typed.length; j++) {
-      chars.push({
-        ch: typed[j],
-        status: "wrong",
-        active,
-        wordWrong,
-        overflow: true,
-        widthEm: measureCharWidthEm(typed[j]),
-        underlineEm: Math.max(measureCharWidthEm(typed[j]), 0.5),
-      })
+      chars.push({ ch: typed[j], status: "wrong", active, wordWrong, overflow: true, widthEm: 0.65, underlineEm: 0.65 })
     }
     wi++
   }
@@ -1480,7 +1465,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end"
-                            style={{ transition: "width 120ms ease" }}
+                            style={{ width: "0.65em" }}
                           >
                             <span
                               className={`leading-none ${letterColor}`}
@@ -1501,10 +1486,8 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-center"
-                            style={{ transition: "width 120ms ease" }}
+                            style={{ width: "0.65em" }}
                           >
-                            {/* 未输入：隐形目标字母撑宽（槽位宽度 = 目标字母宽） */}
-                            <span className="invisible leading-none">{c.ch}</span>
                           </span>
                         )
                       }
@@ -1524,7 +1507,7 @@ export default function SentencePractice({
                           <span
                             key={idx}
                             className="relative inline-flex h-[2.2em] flex-none items-end"
-                            style={{ transition: "width 120ms ease" }}
+                            style={{ width: "0.65em" }}
                           >
                             <span
                               className={`leading-none ${letterColor}`}
@@ -1543,8 +1526,8 @@ export default function SentencePractice({
                             key={idx}
                             className={`relative inline-flex h-[2.2em] flex-none items-end ${c.overflow ? "animate-slot-grow" : ""}`}
                             style={{
-                              transition: "width 120ms ease",
-                              ...(c.overflow ? ({ "--slot-w": `${c.widthEm ?? 0.6}em` } as React.CSSProperties) : {}),
+                              width: "0.65em",
+                              ...(c.overflow ? ({ "--slot-w": "0.65em" } as React.CSSProperties) : {}),
                             }}
                           >
                             <span
