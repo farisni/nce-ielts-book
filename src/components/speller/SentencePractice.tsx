@@ -44,16 +44,29 @@ interface Token {
   text: string
 }
 
-/** 把目标句子拆成 token（单词/空格/标点） */
+/** 把目标句子拆成 token（单词/空格/标点）。
+ *  撇号（' 与弯引号 ’）与字母相邻时并入单词（name's、I'm、girls' 整体），
+ *  否则按标点处理（引号） */
 function tokenize(target: string): Token[] {
   const tokens: Token[] = []
-  for (const ch of target) {
+  for (let i = 0; i < target.length; i++) {
+    const ch = target[i]
     if (/[a-zA-Z]/.test(ch)) {
       const last = tokens[tokens.length - 1]
       if (last && last.kind === "word") last.text += ch
       else tokens.push({ kind: "word", text: ch })
     } else if (ch === " ") {
       tokens.push({ kind: "space", text: " " })
+    } else if (ch === "'" || ch === "’") {
+      const prevIsLetter = i > 0 && /[a-zA-Z]/.test(target[i - 1])
+      const nextIsLetter = i < target.length - 1 && /[a-zA-Z]/.test(target[i + 1])
+      if (prevIsLetter || nextIsLetter) {
+        const last = tokens[tokens.length - 1]
+        if (last && last.kind === "word") last.text += ch
+        else tokens.push({ kind: "word", text: ch })
+      } else {
+        tokens.push({ kind: "punct", text: ch })
+      }
     } else {
       tokens.push({ kind: "punct", text: ch })
     }
@@ -62,11 +75,11 @@ function tokenize(target: string): Token[] {
 }
 
 /** 目标句子 → 单词列表（保留原大小写）。
- *  与 buildDisplay 的 tokenize 分词保持一致：按连续字母切分，
- *  连字符/撇号等标点作为分隔（cat-like → ["cat","like"]），
- *  保证空格导航的词数量与渲染槽位数一一对应。 */
+ *  与 buildDisplay 的 tokenize 分词保持一致：连续字母 + 相邻撇号
+ *  （name's → ["name's"]，girls' → ["girls'"]），连字符等标点仍作分隔
+ *  （cat-like → ["cat","like"]），保证空格导航的词数量与渲染槽位一一对应。 */
 function getWords(target: string): string[] {
-  return target.match(/[a-zA-Z]+/g) ?? []
+  return target.match(/[a-zA-Z]+(?:['’][a-zA-Z]*)*/g) ?? []
 }
 
 /** 模块级 canvas 测量上下文（复用，避免重复创建） */
@@ -1034,9 +1047,9 @@ export default function SentencePractice({
         return
       }
 
-      // 字母：追加到当前激活单词（数量不限，超出部分显示为红色）。
-      // 显示答案状态下禁止输入，避免误打
-      if (/^[a-zA-Z]$/.test(e.key) && !revealed) {
+      // 字母/撇号：追加到当前激活单词（数量不限，超出部分显示为红色）。
+      // 撇号用于 name's 等整体单词；显示答案状态下禁止输入，避免误打
+      if (/^[a-zA-Z'’]$/.test(e.key) && !revealed) {
         e.preventDefault()
         playType()
         if (submitted) setSubmitted(false)
