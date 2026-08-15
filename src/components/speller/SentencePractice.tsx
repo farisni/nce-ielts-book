@@ -1347,10 +1347,10 @@ export default function SentencePractice({
         </SheetContent>
       </Sheet>
       <div className="flex min-h-0 w-full flex-1 flex-col gap-6">
-        {/* 中文句子（视频课程模式下平时隐藏，答对 passed 或按下「显示答案」（右⌘/按钮）时显示，
-            与听力王位置一致——输入区上方）；占位保持（输入区位置不动） */}
-        {(showCn || passed || revealed) && (
-          <div key={`cn-${index}`} className="mt-[100px] text-center">
+        {/* 中文句子：与听力王一致——始终渲染固定行高占位（输入区不位移），
+            音标/释义内容按「显示答案（右⌘/按钮）或答对 passed」显示；
+            视频课程平时只见占位空白，内容出现时输入区不会下移 */}
+        <div key={`cn-${index}`} className="mt-[100px] text-center">
             {/* 音标：大字置顶；默认隐藏，显示答案时出现。固定行高占位（输入区不位移）。
                 词组（多词）每个词的音标独立用 /…/ 包围；
                 段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
@@ -1389,7 +1389,6 @@ export default function SentencePractice({
               )
             })()}
           </div>
-        )}
 
         {/* 英文句子输入区 */}
         <div key={`en-${index}`} className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
