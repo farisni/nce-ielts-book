@@ -1402,7 +1402,7 @@ export default function SentencePractice({
                 if (group.kind === "space") {
                   // 单词之间的空格：留白；若其后紧跟句末标点，标点挂在这里
                   return (
-                    <span key={gIndex} className="relative inline-block w-[0.45em] flex-none">
+                    <span key={gIndex} className="relative inline-block w-[0.7em] flex-none">
                       {endPunctMark}
                     </span>
                   )
