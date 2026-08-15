@@ -1384,8 +1384,9 @@ export default function SentencePractice({
             }`}
           >
             {chars.length === 0 && <span className="text-muted-foreground">— 听发音，用键盘输入英文句子 —</span>}
-            {/* 内层行：按单词分组渲染，flex wrap 只在单词之间换行，单词内部不截断 */}
-            <span className="inline-flex flex-wrap justify-center">
+            {/* 内层行：按单词分组渲染，flex wrap 只在单词之间换行，单词内部不截断；
+                多行时 gap-y 撑开行间距（行盒仍 leading-none，下划线/字母定位不变） */}
+            <span className="inline-flex flex-wrap justify-center gap-y-[0.75em]">
               {charGroups.map((group, gIndex) => {
                 // 句末标点：不占独立行，挂在最后一个单词/空格右侧
                 const endPunct = chars[chars.length - 1]
