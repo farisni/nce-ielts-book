@@ -1432,8 +1432,9 @@ export default function SentencePractice({
                         {pron.wrong ? "✗" : Math.round(pron.score)}
                       </span>
                     )}
-                    {/* 字母行（词级连续下划线挂在字母容器上：宽度 = 字母层宽 + 两端 0.12em 余量） */}
-                    <span className="relative inline-flex flex-none">
+                    {/* 字母行：overflow-hidden 裁掉超出词容器的下划线（窄错字时
+                        下划线不穿过词间空格连到下一个词） */}
+                    <span className="relative inline-flex flex-none overflow-hidden">
                     {group.chars.map((c, i) => {
                       const idx = group.startIdx + i
                       // 发音评分已反馈：直接把句子原版字母显示在槽位上（和打字一样）。
@@ -1556,7 +1557,7 @@ export default function SentencePractice({
                                 : "bg-neutral-400"
                         }`}
                         style={{
-                          left: "-0.12em",
+                          left: 0,
                           width: `${Math.max(
                             group.chars.reduce((s, c) => s + (c.underlineEm ?? 0.5), 0),
                             group.chars.reduce((s, c) => s + (c.widthEm ?? 0.5), 0),
