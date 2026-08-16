@@ -368,7 +368,9 @@ export default function VideoSpellerPage() {
             playVoice={playVoice}
             onCurrentSentence={setCurrentIdx}
             onJumpToSentence={jumpToSentence}
-            confettiOrigin={{ x: 0.75, y: 0.7 }}
+            // 视频课程（有画面，拼写区在右侧）撒花从右侧发射；
+            // 音频课程（无画面，拼写区全宽居中）撒花居中，与其他课程一致
+            confettiOrigin={isAudio ? { x: 0.5, y: 0.7 } : { x: 0.75, y: 0.7 }}
             onExit={() => router.push("/speller")}
             // 互斥：开始录音前暂停页面媒体播放
             onStopVoice={() => videoRef.current?.pause()}
