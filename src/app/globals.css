@@ -326,6 +326,9 @@
   }
   html {
     @apply font-sans;
+    /* 始终预留滚动条槽位：内容高度变化（手风琴展开/收起）时不因滚动条
+       出现/消失导致视口宽度突变、整页抖动（scrollbar-gutter stable） */
+    scrollbar-gutter: stable;
   }
 }
 
