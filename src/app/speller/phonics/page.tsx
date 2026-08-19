@@ -211,7 +211,7 @@ function VowelMnemonicTable() {
             {MNEMONIC_COLS.map((c) => {
               const entries = row.cols[c];
               return (
-                <div key={c} className="flex min-h-14 flex-col items-center justify-center gap-1 rounded-md border border-border px-1 py-1.5">
+                <div key={c} className="flex min-h-14 flex-col items-center justify-start gap-1 rounded-md border border-border px-1 py-1.5">
                   {entries && entries.length > 0 ? (
                     entries.map((e) => <MnemonicCell key={e.pattern} entry={e} />)
                   ) : (
@@ -220,7 +220,7 @@ function VowelMnemonicTable() {
                 </div>
               );
             })}
-            <div className="flex min-h-14 flex-col items-start justify-center gap-1 rounded-md border border-border px-1 py-1.5">
+            <div className="flex min-h-14 flex-col items-start justify-start gap-1 rounded-md border border-border px-1 py-1.5">
               {row.other.map((e) => (
                 <MnemonicInline key={e.pattern} entry={e} />
               ))}
