@@ -211,7 +211,7 @@ function VowelMnemonicTable() {
             {MNEMONIC_COLS.map((c) => {
               const entries = row.cols[c];
               return (
-                <div key={c} className="flex min-h-14 flex-col items-center justify-start gap-1 rounded-md border border-border px-1 py-1.5">
+                <div key={c} className="flex min-h-14 flex-col items-start justify-start gap-1 rounded-md border border-border px-1 py-1.5">
                   {entries && entries.length > 0 ? (
                     entries.map((e) => <MnemonicCell key={e.pattern} entry={e} />)
                   ) : (
@@ -272,9 +272,9 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
 function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: boolean }) {
   const p = entry.pattern;
   return (
-    <div className={`flex w-full flex-col items-center leading-tight ${small ? "" : ""}`}>
-      {/* 组合行：大 div，固定高度居中 */}
-      <div className={`flex h-6 w-full items-center justify-center font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
+    <div className={`flex w-full flex-col items-start leading-tight ${small ? "" : ""}`}>
+      {/* 组合行：大 div，固定高度左对齐 */}
+      <div className={`flex h-6 w-full items-center justify-start font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
         {p[0]}
         {entry.plain ? (
           p.slice(1)
@@ -283,9 +283,9 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
         )}
       </div>
       {/* 音标区：每个音标一行 div，行内左右分（左 [音标] 右 单词） */}
-      <div className="flex w-full flex-col items-center text-[0.65rem] text-muted-foreground">
+      <div className="flex w-full flex-col items-start text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it) => (
-          <div key={it.ph} className="flex h-4 w-full items-center justify-center leading-none">
+          <div key={it.ph} className="flex h-4 w-full items-center justify-start leading-none">
             <div className="w-8 shrink-0 text-left">[{it.ph}]</div>
             <div className="text-left text-foreground/80">{it.w}</div>
           </div>
