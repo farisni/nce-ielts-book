@@ -94,13 +94,13 @@ export default function PhoneticPage() {
                       className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
                     >
-                      {/* 音标在左，拼写组合形式在右（红紫交替，与单词高亮一致） */}
-                      <span className="flex w-full items-center justify-between gap-1">
+                      {/* 音标居中，拼写组合形式在右靠左竖排（红紫交替，与单词高亮一致） */}
+                      <span className="flex w-full items-center justify-center gap-1.5">
                         <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
                           {t.phonetics ?? t.name.replace(/.*\//, "/")}
                         </span>
                         {patterns.length > 0 && (
-                          <span className="flex flex-col items-end gap-1 text-sm font-semibold leading-tight">
+                          <span className="flex flex-col items-start gap-1 text-sm font-semibold leading-tight">
                             {patterns.map((pt) => (
                               <span key={pt} className={spellColors[pt]}>
                                 {pt}
