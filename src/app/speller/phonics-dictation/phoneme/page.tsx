@@ -109,9 +109,9 @@ export default function PhonemeListPage() {
                 <span className="text-lg font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
                   [{g.ph}]
                 </span>
-                {/* 该音标的全部拼写组合（红紫交替） */}
+                {/* 该音标的全部拼写组合（红紫交替，一行三个压低单元格） */}
                 {patterns.length > 0 && (
-                  <span className="mt-1 grid grid-cols-2 items-start gap-x-2 gap-y-1 text-sm font-semibold leading-tight">
+                  <span className="mt-1 grid grid-cols-3 items-start gap-x-2 gap-y-1 text-sm font-semibold leading-tight">
                     {patterns.map((pt) => (
                       <span key={pt} className={spellColors[pt]}>
                         {pt}
