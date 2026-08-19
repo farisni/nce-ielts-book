@@ -383,7 +383,7 @@ function PhonemeMnemonicTable() {
                   /{g.ph}/
                 </span>
                 {patterns.length > 0 && (
-                  <span className="mt-1 grid grid-cols-3 justify-items-center gap-x-1.5 gap-y-0.5 text-xs font-semibold leading-tight">
+                  <span className="mt-1 flex flex-wrap justify-center gap-x-1.5 gap-y-0.5 text-xs font-semibold leading-tight">
                     {patterns.map((pt) => (
                       <span key={pt} className={spellColors[pt]}>
                         {pt}
