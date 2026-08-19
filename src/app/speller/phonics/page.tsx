@@ -149,9 +149,9 @@ function VowelMnemonicTable() {
 }
 
 function MnemonicCell({ rule, small = false, plain = false }: { rule: PhonicsRule; small?: boolean; plain?: boolean }) {
-  // e 列同字母组合 ee：显示为 e_e（下划线分隔）；其他列保持原样
+  // e 列尾 e 不发音的组合（ee/ie/oe/ue）：显示为 e_e / i_e / o_e / u_e（下划线表静音尾 e）
   const p = rule.pattern;
-  const display = p === "ee" ? "e_e" : p;
+  const display = p.length === 2 && p[1] === "e" ? `${p[0]}_e` : p;
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
       {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；两元相遇列（plain）整体黑色 */}
