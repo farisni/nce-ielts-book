@@ -119,6 +119,36 @@ export default function SpellerPage() {
           </span>
         </Link>
 
+        {/* 英式音标轻松学 · 音标单词听写课程（48 单元） */}
+        <Link
+          href="/speller/waxue-phonetic"
+          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+                🎯
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-xl font-semibold text-foreground">英式音标轻松学</h2>
+                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                    音标听写
+                  </span>
+                </div>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  48 个音标单元 · 668 词，按音标分类逐音标练发音拼写
+                </p>
+              </div>
+            </div>
+            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+          </div>
+
+          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+            选择音标 →
+          </span>
+        </Link>
+
         {/* 雅思词汇真经 · 单词听写课程（22 Unit） */}
         <Link
           href="/speller/zhenjing"
