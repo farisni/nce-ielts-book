@@ -1,4 +1,4 @@
-// 哇学社「英式音标轻松学」音标课程数据（waxueshe.com/phoneticCourse/detail/2663）
+// 哇学社「英式音标听力」音标课程数据（waxueshe.com/phoneticCourse/detail/2663）
 // 按音标类别分 Chapter，每单元（如 前元音 /æ/）为 Test；音节取平台拆分数据
 import type { WhaleChapter, WhaleTest } from "./whale-king"
 

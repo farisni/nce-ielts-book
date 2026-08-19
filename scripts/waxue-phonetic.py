@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-爬取哇学社「英式音标轻松学」（lesson 4）全部 48 个音标单元与单词数据，
+爬取哇学社「英式音标听力」（lesson 4）全部 48 个音标单元与单词数据，
 生成 src/lib/speller/phonetic.ts（WhaleChapter[] 结构，按音标类别分 Chapter）。
 
 - 数据源：api.waxueshe.com/api/v2/phonetic/lesson_details + chapter_details
@@ -163,7 +163,7 @@ def main():
 
     # 生成 TS
     lines = [
-        '// 哇学社「英式音标轻松学」音标课程数据（waxueshe.com/phoneticCourse/detail/2663）',
+        '// 哇学社「英式音标听力」音标课程数据（waxueshe.com/phoneticCourse/detail/2663）',
         "// 按音标类别分 Chapter，每单元（如 前元音 /æ/）为 Test；音节取平台拆分数据",
         'import type { WhaleChapter, WhaleTest } from "./whale-king"',
         "",

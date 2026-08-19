@@ -119,7 +119,7 @@ export default function SpellerPage() {
           </span>
         </Link>
 
-        {/* 英式音标轻松学 · 音标单词听写课程（48 单元） */}
+        {/* 英式音标听力 · 音标单词听写课程（48 单元） */}
         <Link
           href="/speller/phonetic"
           className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
@@ -131,7 +131,7 @@ export default function SpellerPage() {
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">英式音标轻松学</h2>
+                  <h2 className="text-xl font-semibold text-foreground">英式音标听力</h2>
                   <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
                     音标听写
                   </span>

@@ -7,7 +7,7 @@ import { WAXUE_CHAPTERS } from "@/lib/speller/phonetic";
 import { getAllProgress } from "@/lib/speller/progress";
 
 /**
- * Speller · 英式音标轻松学音标听写
+ * Speller · 英式音标听力音标听写
  * 课程 → Chapter 选择页：Chapter 卡片手风琴展开显示 Test 列表，点击进入单词听写
  * - 记住上次展开的 Chapter（localStorage）
  * - 每个 Test 显示上次听写到的位置（第 N 个单词，存数据库）
@@ -63,7 +63,7 @@ export default function WhaleListeningPage() {
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-primary">
           Word Dictation
         </p>
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">英式音标轻松学</h1>
+        <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">英式音标听力</h1>
         <p className="mt-2 text-sm text-muted-foreground/70">
           共 {WAXUE_CHAPTERS.length} 个 Chapter · {totalWords} 个单词
         </p>

@@ -7,7 +7,7 @@ import { getWaxueTest } from "@/lib/speller/phonetic";
 import type { Course } from "@/lib/speller/courses";
 
 /**
- * Speller · 英式音标轻松学音标听写页
+ * Speller · 英式音标听力音标听写页
  * basic 样式布局：看中文，听原声，用键盘打出单词
  * - 切词自动播放该词 mp3 原声（autoPlayVoice），Tab 重播
  * - 无独立 mp3 的单词用浏览器 TTS 兜底
