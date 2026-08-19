@@ -31,6 +31,16 @@ def esc(s: str) -> str:
     return json.dumps(s, ensure_ascii=True)[1:-1]
 
 
+def shorten_meaning(m: str) -> str:
+    """精简释义：拼读课程关注拼读，释义取第一个义项即可"""
+    if not m:
+        return m
+    first = re.split(r"[；;]", m)[0].strip()
+    first = first.split("，")[0].strip()
+    first = re.sub(r"[（(][^）)]*[）)]", "", first).strip()
+    return first
+
+
 # ── 1. 读取 MIXED_GROUPS ──
 src = open("src/lib/speller/phonics.ts", encoding="utf-8").read()
 m = re.search(r'MIXED_GROUPS.*?= \[(.*?)\n\]', src, re.S)
@@ -115,7 +125,7 @@ for g in groups:
                 fail.append((w, r["pattern"]))
                 continue
             ipa = info["phonetic"].replace("'", "ˈ")
-            meaning = info.get("meaning") or ""
+            meaning = shorten_meaning(info.get("meaning") or "")
             syll = syllabify(key, ipa)
             if len(syll) <= 1:
                 nuclei = spell_vowel_nuclei(w)
