@@ -133,7 +133,7 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
   },
   o: {
     cols: {
-      r: [{ pattern: "or", ipa: [{ ph: "ɔː", w: "for" }] }],
+      r: [{ pattern: "or", ipa: [{ ph: "ɔː", w: "for" }, { ph: "ɜː", w: "work" }, { ph: "ə", w: "doctor" }] }],
       y: [{ pattern: "oy", ipa: [{ ph: "ɔɪ", w: "boy" }] }],
       w: [{ pattern: "ow", ipa: [{ ph: "aʊ", w: "cow" }, { ph: "əʊ", w: "snow" }] }],
       a: [{ pattern: "oa", ipa: [{ ph: "əʊ", w: "boat" }], plain: true }],
