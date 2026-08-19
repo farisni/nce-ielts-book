@@ -272,27 +272,26 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
 function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: boolean }) {
   const p = entry.pattern;
   return (
-    <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
-      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；元音列（plain）整体黑色。
-          组合行固定高度，音标从同一位置开始对齐 */}
-      <span className={`flex h-6 items-center justify-center font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
+    <div className={`flex w-full flex-col items-center leading-tight ${small ? "" : ""}`}>
+      {/* 组合行：大 div，固定高度居中 */}
+      <div className={`flex h-6 w-full items-center justify-center font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
         {p[0]}
         {entry.plain ? (
           p.slice(1)
         ) : (
           <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
         )}
-      </span>
-      {/* 多音标：一行一个，竖排；每行固定高度；音标固定宽度右对齐，示例单词列上下对齐 */}
-      <span className="flex flex-col items-center text-[0.65rem] text-muted-foreground">
+      </div>
+      {/* 音标区：每个音标一行 div，行内左右分（左 [音标] 右 单词） */}
+      <div className="flex w-full flex-col items-center text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it) => (
-          <span key={it.ph} className="flex h-4 items-center justify-center gap-1 leading-none">
-            <span className="w-8 shrink-0 text-right">[{it.ph}]</span>
-            <span className="text-left text-foreground/80">{it.w}</span>
-          </span>
+          <div key={it.ph} className="flex h-4 w-full items-center justify-center leading-none">
+            <div className="w-8 shrink-0 text-right">[{it.ph}]</div>
+            <div className="text-left text-foreground/80">{it.w}</div>
+          </div>
         ))}
-      </span>
-    </span>
+      </div>
+    </div>
   );
 }
 
