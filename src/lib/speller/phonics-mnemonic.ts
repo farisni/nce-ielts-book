@@ -51,7 +51,7 @@ export const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Part
   i: {
     cols: {
       r: [{ pattern: "ir", ipa: [{ ph: "ɜː", w: "bird" }] }],
-      a: [{ pattern: "ia", ipa: [{ ph: "aɪə", w: "piano" }], plain: true }],
+      a: [{ pattern: "ia", ipa: [{ ph: "aɪə", w: "diamond" }], plain: true }],
       e: [{ pattern: "i_e", ipa: [{ ph: "aɪ", w: "like" }], plain: true }],
     },
     other: [
@@ -76,7 +76,7 @@ export const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Part
     other: [
       { pattern: "oor", ipa: [{ ph: "ɔː", w: "door" }] },
       { pattern: "oar", ipa: [{ ph: "ɔː", w: "board" }] },
-      { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }, { ph: "uː", w: "should" }] },
+      { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }, { ph: "ʊ", w: "should" }] },
       { pattern: "our", ipa: [{ ph: "aʊə", w: "hour" }, { ph: "ɔː", w: "four" }, { ph: "ɜː", w: "journey" }] },
       { pattern: "ure", ipa: [{ ph: "jʊə", w: "cure" }] },
     ],
