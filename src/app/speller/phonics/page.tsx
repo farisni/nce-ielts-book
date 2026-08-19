@@ -70,34 +70,122 @@ export default function PhonicsPage() {
   );
 }
 
-/**
- * 元音组合 · 二级巧记表
- * 行 = 元音字母 a e i o u，列 = r y w l | a e i o u | 其他；
- * 单元格 = 该组合的发音（红 = 两元相遇，蓝 = 组合发音），数据取自 VOWEL_GROUPS
- */
+/** 巧记表单元格：组合（首字母黑、修饰蓝）+ 多个音标 */
+interface MnemonicEntry {
+  pattern: string
+  ipa: string[]
+  /** 位于元音列（a e i o u）：不区分颜色整体黑色；magic-e 结构用下划线 */
+  plain?: boolean
+}
+
+/** 元音组合 · 二级巧记表数据（参照原版巧记表）：
+ *  行 = 元音字母 a e i o u；列 = r y w l | a e i o u | 其他；
+ *  e 列 magic-e（a_e/e_e/i_e/o_e/u_e）尾 e 不发音，下划线表示 */
+const MNEMONIC_COLS = ["r", "y", "w", "l", "a", "e", "i", "o", "u"] as const;
+const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Record<(typeof MNEMONIC_COLS)[number], MnemonicEntry[]>>; other: MnemonicEntry[] }> = {
+  a: {
+    cols: {
+      r: [{ pattern: "ar", ipa: ["ɑː", "ɔː", "ə"] }],
+      y: [{ pattern: "ay", ipa: ["eɪ"] }],
+      w: [{ pattern: "aw", ipa: ["ɔː"] }],
+      l: [{ pattern: "al", ipa: ["ɔː", "ɑː"] }],
+      e: [{ pattern: "a_e", ipa: ["eɪ"], plain: true }],
+      i: [{ pattern: "ai", ipa: ["eɪ"], plain: true }],
+      u: [{ pattern: "au", ipa: ["ɔː", "ɑː"], plain: true }],
+    },
+    other: [
+      { pattern: "air", ipa: ["eə"] },
+      { pattern: "are", ipa: ["eə"] },
+      { pattern: "augh", ipa: ["ɔː"] },
+      { pattern: "an", ipa: ["æn", "ən"] },
+    ],
+  },
+  e: {
+    cols: {
+      r: [{ pattern: "er", ipa: ["ɜː"] }],
+      y: [{ pattern: "ey", ipa: ["eɪ"] }],
+      w: [{ pattern: "ew", ipa: ["juː"] }],
+      a: [{ pattern: "ea", ipa: ["iː", "e"], plain: true }],
+      e: [{ pattern: "e_e", ipa: ["iː"], plain: true }],
+      i: [{ pattern: "ei", ipa: ["iː", "eɪ"], plain: true }],
+    },
+    other: [
+      { pattern: "ear", ipa: ["ɪə", "eə", "ɜː", "ɑː"] },
+      { pattern: "eer", ipa: ["ɪə"] },
+      { pattern: "ere", ipa: ["ɪə", "eə"] },
+      { pattern: "eigh", ipa: ["eɪ"] },
+      { pattern: "en", ipa: ["ən", "en"] },
+    ],
+  },
+  i: {
+    cols: {
+      r: [{ pattern: "ir", ipa: ["ɜː"] }],
+      a: [{ pattern: "ia", ipa: ["aɪə"], plain: true }],
+      e: [{ pattern: "i_e", ipa: ["aɪ"], plain: true }],
+    },
+    other: [
+      { pattern: "ie", ipa: ["aɪ"] },
+      { pattern: "igh", ipa: ["aɪ"] },
+      { pattern: "ire", ipa: ["aɪə"] },
+      { pattern: "ign", ipa: ["aɪn"] },
+      { pattern: "in", ipa: ["ɪn"] },
+    ],
+  },
+  o: {
+    cols: {
+      r: [{ pattern: "or", ipa: ["ɔː"] }],
+      y: [{ pattern: "oy", ipa: ["ɔɪ"] }],
+      w: [{ pattern: "ow", ipa: ["aʊ", "əʊ"] }],
+      a: [{ pattern: "oa", ipa: ["əʊ"], plain: true }],
+      e: [{ pattern: "o_e", ipa: ["əʊ"], plain: true }],
+      i: [{ pattern: "oi", ipa: ["ɔɪ"], plain: true }],
+      o: [{ pattern: "oo", ipa: ["uː", "ʊ", "ʌ"], plain: true }],
+    },
+    other: [
+      { pattern: "ou", ipa: ["aʊ", "uː"] },
+      { pattern: "oor", ipa: ["ɔː"] },
+      { pattern: "oar", ipa: ["ɔː"] },
+      { pattern: "oul", ipa: ["ʊ", "uː"] },
+      { pattern: "our", ipa: ["aʊə", "ɔː", "ɜː"] },
+      { pattern: "ure", ipa: ["jʊə"] },
+    ],
+  },
+  u: {
+    cols: {
+      r: [{ pattern: "ur", ipa: ["ɜː"] }],
+      y: [{ pattern: "uy", ipa: ["aɪ"] }],
+      e: [{ pattern: "u_e", ipa: ["juː", "uː"], plain: true }],
+      i: [{ pattern: "ui", ipa: ["ɪ", "uː"], plain: true }],
+    },
+    other: [
+      { pattern: "ue", ipa: ["juː", "uː"] },
+      { pattern: "ure", ipa: ["jʊə"] },
+    ],
+  },
+};
+
+/** 底部：元音字母开音节/闭音节发音规则 */
+const SYLLABLE_RULES: { vowel: string; open: string; closed: string }[] = [
+  { vowel: "a", open: "eɪ", closed: "æ" },
+  { vowel: "e", open: "iː", closed: "e" },
+  { vowel: "i", open: "aɪ", closed: "ɪ" },
+  { vowel: "o", open: "əʊ", closed: "ɒ" },
+  { vowel: "u", open: "juː", closed: "ʌ" },
+];
+
 function VowelMnemonicTable() {
-  // 组合 → 规则映射（保持红蓝 tone）
-  const ruleMap = new Map<string, PhonicsRule>();
-  for (const g of VOWEL_GROUPS) {
-    for (const r of g.rules) {
-      if (!ruleMap.has(r.pattern)) ruleMap.set(r.pattern, r);
-    }
-  }
-  const allRules = VOWEL_GROUPS.flatMap((g) => g.rules);
-  const colsRylw = ["r", "y", "w", "l"];
-  const colsVowel = ["a", "e", "i", "o", "u"];
-  const cols = [...colsRylw, ...colsVowel];
-  const vowelRows = ["a", "e", "i", "o", "u"];
+  const colsRylw = MNEMONIC_COLS.slice(0, 4);
+  const colsVowel = MNEMONIC_COLS.slice(4);
 
   return (
     <section className="mb-8 rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
         <h2 className="text-lg font-semibold text-foreground">元音组合 · 二级巧记表</h2>
         <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-          行 a e i o u × 列 r y w l | a e i o u | 其他
+          巧记（不要死记硬背）· 行 a e i o u × 列 r y w l | a e i o u | 其他
         </span>
       </div>
-      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.6fr)] gap-1">
+      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] gap-1">
         {/* 表头 */}
         <div />
         {colsRylw.map((c) => (
@@ -115,55 +203,70 @@ function VowelMnemonicTable() {
         </div>
 
         {/* 数据行 */}
-        {vowelRows.map((v) => {
-          const used = new Set(cols.map((c) => v + c));
-          const others = allRules.filter((r) => r.pattern.startsWith(v) && !used.has(r.pattern));
-          return (
-            <Fragment key={v}>
-              <div className="flex items-center justify-center rounded-md border border-border py-2 text-base font-bold text-foreground">
-                {v}
-              </div>
-              {cols.map((c) => {
-                const r = ruleMap.get(v + c);
-                // 两元相遇列（a e i o u）：不区分颜色，整体黑色
-                const plain = colsVowel.includes(c);
-                return (
-                  <div key={c} className="flex min-h-12 items-center justify-center rounded-md border border-border px-1 py-1.5">
-                    {r ? <MnemonicCell rule={r} plain={plain} /> : <span className="text-muted-foreground/30">·</span>}
-                  </div>
-                );
-              })}
-              <div className="flex min-h-12 flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-md border border-border px-1 py-1.5">
-                {others.length > 0 ? (
-                  others.map((r) => <MnemonicCell key={r.pattern} rule={r} small />)
-                ) : (
-                  <span className="text-muted-foreground/30">·</span>
-                )}
-              </div>
-            </Fragment>
-          );
-        })}
+        {Object.entries(MNEMONIC_DATA).map(([v, row]) => (
+          <Fragment key={v}>
+            <div className="flex items-center justify-center rounded-md border border-border py-2 text-base font-bold text-foreground">
+              {v}
+            </div>
+            {MNEMONIC_COLS.map((c) => {
+              const entries = row.cols[c];
+              return (
+                <div key={c} className="flex min-h-14 flex-col items-center justify-center gap-1 rounded-md border border-border px-1 py-1.5">
+                  {entries && entries.length > 0 ? (
+                    entries.map((e) => <MnemonicCell key={e.pattern} entry={e} />)
+                  ) : (
+                    <span className="text-muted-foreground/30">·</span>
+                  )}
+                </div>
+              );
+            })}
+            <div className="flex min-h-14 flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-md border border-border px-1 py-1.5">
+              {row.other.map((e) => (
+                <MnemonicCell key={e.pattern} entry={e} small />
+              ))}
+            </div>
+          </Fragment>
+        ))}
+      </div>
+
+      {/* 底部：元音字母开音节/闭音节发音规则 */}
+      <div className="mt-4 rounded-lg border border-border p-4">
+        <h3 className="mb-3 text-sm font-semibold text-muted-foreground">元音字母 · 发音规则（开音节 / 闭音节）</h3>
+        <div className="grid grid-cols-5 gap-2">
+          {SYLLABLE_RULES.map((s) => (
+            <div key={s.vowel} className="flex flex-col items-center rounded-md border border-border px-2 py-2">
+              <span className="text-lg font-bold text-foreground">{s.vowel}</span>
+              <span className="mt-1 text-xs text-muted-foreground">
+                开 {s.open} · 闭 {s.closed}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function MnemonicCell({ rule, small = false, plain = false }: { rule: PhonicsRule; small?: boolean; plain?: boolean }) {
-  // e 列尾 e 不发音的组合（ee/ie/oe/ue）：显示为 e_e / i_e / o_e / u_e（下划线表静音尾 e）
-  const p = rule.pattern;
-  const display = p.length === 2 && p[1] === "e" ? `${p[0]}_e` : p;
+function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: boolean }) {
+  const p = entry.pattern;
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
-      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；两元相遇列（plain）整体黑色 */}
+      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；元音列（plain）整体黑色 */}
       <span className={`font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
-        {display[0]}
-        {plain ? (
-          display.slice(1)
+        {p[0]}
+        {entry.plain ? (
+          p.slice(1)
         ) : (
-          <span className="text-blue-500 dark:text-blue-400">{display.slice(1)}</span>
+          <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
         )}
       </span>
-      <span className="text-[0.65rem] text-muted-foreground">{rule.ipa}</span>
+      <span className="text-[0.65rem] text-muted-foreground">
+        {entry.ipa.map((ph, i) => (
+          <span key={ph}>
+            {i > 0 && " "}[{ph}]
+          </span>
+        ))}
+      </span>
     </span>
   );
 }
