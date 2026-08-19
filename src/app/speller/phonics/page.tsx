@@ -314,7 +314,7 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
           <span className={`text-base font-semibold leading-tight ${color}`}>{pattern}</span>
           {ipa && <span className="mt-0.5 text-xs text-muted-foreground">{ipa}</span>}
         </span>
-        <span className="text-base font-medium leading-tight text-foreground">
+        <span className="text-sm font-medium leading-tight text-foreground">
           {rule.examples.map((w, i) => (
             <span key={w} className="block">
               {w}
