@@ -380,7 +380,14 @@ function PhonemeMnemonicTable() {
                   /{g.ph}/
                 </span>
                 {patterns.length > 0 && (
-                  <span className="mt-0.5 flex flex-wrap justify-center gap-x-1 gap-y-0.5 text-[0.65rem] font-semibold leading-tight">
+                  // 组合 3 个一行（grid-cols-3）；≤3 个时 flex 居中
+                  <span
+                    className={`mt-0.5 text-[0.65rem] font-semibold leading-tight ${
+                      patterns.length > 3
+                        ? "grid grid-cols-3 justify-items-center gap-x-1 gap-y-0.5"
+                        : "flex flex-wrap justify-center gap-x-1 gap-y-0.5"
+                    }`}
+                  >
                     {patterns.map((pt) => (
                       <span key={pt} className={spellColors[pt]}>
                         {pt}
