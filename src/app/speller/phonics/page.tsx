@@ -287,7 +287,7 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
       <span className="flex flex-col items-center text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it) => (
           <span key={it.ph} className="flex h-4 items-center justify-center gap-1 leading-none">
-            <span className="w-8 shrink-0 text-right">[{it.ph}]</span>
+            <span className="w-8 shrink-0 text-left">[{it.ph}]</span>
             <span className="text-left text-foreground/80">{it.w}</span>
           </span>
         ))}
