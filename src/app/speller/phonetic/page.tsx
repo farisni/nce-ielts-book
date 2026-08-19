@@ -107,7 +107,6 @@ export default function PhoneticPage() {
                           ))}
                         </span>
                       )}
-                      <span className="mt-0.5 text-xs text-muted-foreground">{t.words.length} 词</span>
                       {pos !== undefined && (
                         <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
                           第 {pos} 词
