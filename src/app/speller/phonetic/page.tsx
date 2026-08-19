@@ -131,14 +131,17 @@ export default function PhoneticPage() {
                         )}
                       </span>
                     </button>
-                    {/* 示例单词：对应练习音素的字母红色（平台数据可能有重复词，key 加索引） */}
+                    {/* 示例单词：点击播放该词发音（原声 mp3，无则 TTS）；对应练习音素的字母高亮 */}
                     {t.words.map((w, wi) => (
-                      <span
+                      <button
                         key={`${w.word}-${wi}`}
-                        className="flex items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground"
+                        type="button"
+                        onClick={() => playPhonetic(w.word, w.audio)}
+                        title={`播放 ${w.word}`}
+                        className="flex cursor-pointer items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:border-ring/60 hover:bg-muted/40"
                       >
                         {renderHighlightWord(w.word, w.phonemeMap, focus, spellColors)}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 );
