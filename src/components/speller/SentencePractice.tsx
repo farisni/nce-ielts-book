@@ -1386,7 +1386,8 @@ export default function SentencePractice({
                     .filter(Boolean)
                     .map((seg, i) => {
                       const clean = seg.trim()
-                      const focus = sentence.phoneticFocus
+                      // focus 可能带斜杠（拼读组合数据如 "/bl/"），去掉后才能在音标串中定位
+                      const focus = sentence.phoneticFocus?.replace(/\//g, "")
                       const fi = focus ? clean.indexOf(focus) : -1
                       return (
                         <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
