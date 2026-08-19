@@ -220,7 +220,7 @@ function VowelMnemonicTable() {
                 </div>
               );
             })}
-            <div className="flex min-h-14 flex-col items-center justify-center gap-1 rounded-md border border-border px-1 py-1.5">
+            <div className="grid min-h-14 content-center items-start gap-x-1 gap-y-1 rounded-md border border-border px-2 py-1.5">
               {row.other.map((e) => (
                 <MnemonicInline key={e.pattern} entry={e} />
               ))}
@@ -247,23 +247,23 @@ function VowelMnemonicTable() {
   );
 }
 
-/** 其他列条目：组合固定宽度 + 音标同行（ou [aʊ] [uː]） */
+/** 其他列条目：grid 两列（组合列 / 音标列），所有条目组合与音标分别对齐 */
 function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
   return (
-    <span className="inline-flex items-baseline leading-tight">
-      <span className="w-10 shrink-0 text-left text-sm font-semibold text-foreground">
+    <>
+      <span className="text-left text-sm font-semibold leading-tight text-foreground">
         {p[0]}
         <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
       </span>
-      <span className="ml-1 text-[0.65rem] text-muted-foreground">
+      <span className="text-left text-[0.65rem] leading-tight text-muted-foreground">
         {entry.ipa.map((ph, i) => (
           <span key={ph}>
             {i > 0 && " "}[{ph}]
           </span>
         ))}
       </span>
-    </span>
+    </>
   );
 }
 
