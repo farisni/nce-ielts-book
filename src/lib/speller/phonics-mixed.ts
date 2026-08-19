@@ -15,7 +15,7 @@ const T: WhaleChapter[] = [
         slug: "-ass",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "class", phonetic: "kl\u0251\u02d0s", meaning: "n.班级", audio: "/audio/mixed/mixed-a/class.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
+          { word: "class", phonetic: "kl\u0251\u02d0s", meaning: "n. 班级", audio: "/audio/mixed/mixed-a/class.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
         ],
       },
       {
@@ -23,7 +23,7 @@ const T: WhaleChapter[] = [
         slug: "-ass",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "glass", phonetic: "\u0261l\u0251\u02d0s", meaning: "n. 玻璃、玻璃杯", audio: "/audio/mixed/mixed-a/glass.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
+          { word: "glass", phonetic: "\u0261l\u0251\u02d0s", meaning: "n. 玻璃", audio: "/audio/mixed/mixed-a/glass.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
         ],
       },
       {
@@ -31,7 +31,7 @@ const T: WhaleChapter[] = [
         slug: "-ass",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "pass", phonetic: "p\u0251\u02d0s", meaning: "v. 经过", audio: "/audio/mixed/mixed-a/pass.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
+          { word: "pass", phonetic: "p\u0251\u02d0s", meaning: "v. 通过", audio: "/audio/mixed/mixed-a/pass.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0s/", spelling: "ass" }] },
         ],
       },
       {
@@ -47,7 +47,7 @@ const T: WhaleChapter[] = [
         slug: "-ask",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "mask", phonetic: "m\u0251\u02d0sk", meaning: "面具", audio: "/audio/mixed/mixed-a/mask.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sk/", spelling: "ask" }] },
+          { word: "mask", phonetic: "m\u0251\u02d0sk", meaning: "n. 口罩", audio: "/audio/mixed/mixed-a/mask.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sk/", spelling: "ask" }] },
         ],
       },
       {
@@ -55,7 +55,7 @@ const T: WhaleChapter[] = [
         slug: "-ask",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "task", phonetic: "t\u0251\u02d0sk", meaning: "n. 工作", audio: "/audio/mixed/mixed-a/task.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sk/", spelling: "ask" }] },
+          { word: "task", phonetic: "t\u0251\u02d0sk", meaning: "n. 任务", audio: "/audio/mixed/mixed-a/task.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sk/", spelling: "ask" }] },
         ],
       },
       {
@@ -103,7 +103,7 @@ const T: WhaleChapter[] = [
         slug: "-asp",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "clasp", phonetic: "kl\u0251\u02d0sp", meaning: "n./v. 搭扣", audio: "/audio/mixed/mixed-a/clasp.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sp/", spelling: "asp" }] },
+          { word: "clasp", phonetic: "kl\u0251\u02d0sp", meaning: "v. 扣住", audio: "/audio/mixed/mixed-a/clasp.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sp/", spelling: "asp" }] },
         ],
       },
       {
@@ -119,7 +119,7 @@ const T: WhaleChapter[] = [
         slug: "-asp",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "grasp", phonetic: "\u0261r\u0251\u02d0sp", meaning: "v. 抓牢", audio: "/audio/mixed/mixed-a/grasp.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sp/", spelling: "asp" }] },
+          { word: "grasp", phonetic: "\u0261r\u0251\u02d0sp", meaning: "v. 抓住", audio: "/audio/mixed/mixed-a/grasp.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0sp/", spelling: "asp" }] },
         ],
       },
       {
@@ -127,7 +127,7 @@ const T: WhaleChapter[] = [
         slug: "-aff",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "staff", phonetic: "st\u0251\u02d0f", meaning: "n.职员", audio: "/audio/mixed/mixed-a/staff.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "aff" }] },
+          { word: "staff", phonetic: "st\u0251\u02d0f", meaning: "n. 职员", audio: "/audio/mixed/mixed-a/staff.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "aff" }] },
         ],
       },
       {
@@ -135,7 +135,7 @@ const T: WhaleChapter[] = [
         slug: "-aff",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "chaff", phonetic: "t\u0283\u00e6f; t\u0283\u0251\u02d0f", meaning: "n. 糠", audio: "/audio/mixed/mixed-a/chaff.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "aff" }] },
+          { word: "chaff", phonetic: "t\u0283\u00e6f; t\u0283\u0251\u02d0f", meaning: "n. 谷壳", audio: "/audio/mixed/mixed-a/chaff.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "aff" }] },
         ],
       },
       {
@@ -159,7 +159,7 @@ const T: WhaleChapter[] = [
         slug: "-alf",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "calf", phonetic: "k\u0251\u02d0f", meaning: "n. 幼兽", audio: "/audio/mixed/mixed-a/calf.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "alf" }] },
+          { word: "calf", phonetic: "k\u0251\u02d0f", meaning: "n. 小牛", audio: "/audio/mixed/mixed-a/calf.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "alf" }] },
         ],
       },
       {
@@ -167,7 +167,7 @@ const T: WhaleChapter[] = [
         slug: "-alf",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "behalf", phonetic: "b\u026a\u02c8h\u0251\u02d0f", meaning: "n. [on ~ of sb.]代表某人", audio: "/audio/mixed/mixed-a/behalf.mp3", syllables: ["be", "half"], phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "alf" }] },
+          { word: "behalf", phonetic: "b\u026a\u02c8h\u0251\u02d0f", meaning: "n. 代表", audio: "/audio/mixed/mixed-a/behalf.mp3", syllables: ["be", "half"], phonemeMap: [{ ipa: "/\u0251\u02d0f/", spelling: "alf" }] },
         ],
       },
       {
@@ -175,7 +175,7 @@ const T: WhaleChapter[] = [
         slug: "-ant",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "plant", phonetic: "pl\u0251\u02d0nt", meaning: "n.植物", audio: "/audio/mixed/mixed-a/plant.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "ant" }] },
+          { word: "plant", phonetic: "pl\u0251\u02d0nt", meaning: "n. 植物", audio: "/audio/mixed/mixed-a/plant.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "ant" }] },
         ],
       },
       {
@@ -183,7 +183,7 @@ const T: WhaleChapter[] = [
         slug: "-ant",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "can't", phonetic: "k\u0251\u02d0nt", meaning: "contr. 不能", audio: "/audio/mixed/mixed-a/can't.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "ant" }] },
+          { word: "can't", phonetic: "k\u0251\u02d0nt", meaning: "不能", audio: "/audio/mixed/mixed-a/can't.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "ant" }] },
         ],
       },
       {
@@ -199,7 +199,7 @@ const T: WhaleChapter[] = [
         slug: "-ance",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "dance", phonetic: "d\u02c8\u00e6ns", meaning: "舞蹈", audio: "/audio/mixed/mixed-a/dance.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0ns/", spelling: "ance" }] },
+          { word: "dance", phonetic: "d\u02c8\u00e6ns", meaning: "n. 舞蹈", audio: "/audio/mixed/mixed-a/dance.mp3", phonemeMap: [{ ipa: "/\u0251\u02d0ns/", spelling: "ance" }] },
         ],
       },
       {
@@ -231,7 +231,7 @@ const T: WhaleChapter[] = [
         slug: "-aught",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "caught", phonetic: "k\u0254\u02d0t", meaning: "v. 捕捉", audio: "/audio/mixed/mixed-a/caught.mp3", syllables: ["ca", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "aught" }] },
+          { word: "caught", phonetic: "k\u0254\u02d0t", meaning: "v. 抓住", audio: "/audio/mixed/mixed-a/caught.mp3", syllables: ["ca", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "aught" }] },
         ],
       },
       {
@@ -239,7 +239,7 @@ const T: WhaleChapter[] = [
         slug: "-aught",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "taught", phonetic: "t\u0254\u02d0t", meaning: "v. 教授", audio: "/audio/mixed/mixed-a/taught.mp3", syllables: ["ta", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "aught" }] },
+          { word: "taught", phonetic: "t\u0254\u02d0t", meaning: "v. 教", audio: "/audio/mixed/mixed-a/taught.mp3", syllables: ["ta", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "aught" }] },
         ],
       },
       {
@@ -263,7 +263,7 @@ const T: WhaleChapter[] = [
         slug: "-aunt",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "flaunt", phonetic: "fl\u0254\u02d0nt", meaning: "vt. 炫耀", audio: "/audio/mixed/mixed-a/flaunt.mp3", syllables: ["fla", "unt"], phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "aunt" }] },
+          { word: "flaunt", phonetic: "fl\u0254\u02d0nt", meaning: "v. 炫耀", audio: "/audio/mixed/mixed-a/flaunt.mp3", syllables: ["fla", "unt"], phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "aunt" }] },
         ],
       },
       {
@@ -271,7 +271,7 @@ const T: WhaleChapter[] = [
         slug: "-aunt",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "jaunt", phonetic: "d\u0292\u0254\u02d0nt", meaning: "n. 远足", audio: "/audio/mixed/mixed-a/jaunt.mp3", syllables: ["ja", "unt"], phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "aunt" }] },
+          { word: "jaunt", phonetic: "d\u0292\u0254\u02d0nt", meaning: "n. 短途旅行", audio: "/audio/mixed/mixed-a/jaunt.mp3", syllables: ["ja", "unt"], phonemeMap: [{ ipa: "/\u0251\u02d0nt/", spelling: "aunt" }] },
         ],
       },
     ],
@@ -295,7 +295,7 @@ const T: WhaleChapter[] = [
         slug: "-ind",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "kind", phonetic: "ka\u026and", meaning: "n. 种类", audio: "/audio/mixed/mixed-i/kind.mp3", phonemeMap: [{ ipa: "/a\u026and/", spelling: "ind" }] },
+          { word: "kind", phonetic: "ka\u026and", meaning: "adj. 友善的", audio: "/audio/mixed/mixed-i/kind.mp3", phonemeMap: [{ ipa: "/a\u026and/", spelling: "ind" }] },
         ],
       },
       {
@@ -303,7 +303,7 @@ const T: WhaleChapter[] = [
         slug: "-ind",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "mind", phonetic: "ma\u026and", meaning: "n. 心", audio: "/audio/mixed/mixed-i/mind.mp3", phonemeMap: [{ ipa: "/a\u026and/", spelling: "ind" }] },
+          { word: "mind", phonetic: "ma\u026and", meaning: "n. 头脑", audio: "/audio/mixed/mixed-i/mind.mp3", phonemeMap: [{ ipa: "/a\u026and/", spelling: "ind" }] },
         ],
       },
       {
@@ -311,7 +311,7 @@ const T: WhaleChapter[] = [
         slug: "-ild",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "child", phonetic: "t\u0283a\u026ald", meaning: "n.儿童", audio: "/audio/mixed/mixed-i/child.mp3", phonemeMap: [{ ipa: "/a\u026ald/", spelling: "ild" }] },
+          { word: "child", phonetic: "t\u0283a\u026ald", meaning: "n. 孩子", audio: "/audio/mixed/mixed-i/child.mp3", phonemeMap: [{ ipa: "/a\u026ald/", spelling: "ild" }] },
         ],
       },
       {
@@ -319,7 +319,7 @@ const T: WhaleChapter[] = [
         slug: "-ild",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "wild", phonetic: "w\u02c8a\u026ald", meaning: "野外", audio: "/audio/mixed/mixed-i/wild.mp3", phonemeMap: [{ ipa: "/a\u026ald/", spelling: "ild" }] },
+          { word: "wild", phonetic: "w\u02c8a\u026ald", meaning: "adj. 野生的", audio: "/audio/mixed/mixed-i/wild.mp3", phonemeMap: [{ ipa: "/a\u026ald/", spelling: "ild" }] },
         ],
       },
       {
@@ -335,7 +335,7 @@ const T: WhaleChapter[] = [
         slug: "-igh",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "light", phonetic: "la\u026at", meaning: "n.光", audio: "/audio/mixed/mixed-i/light.mp3", phonemeMap: [{ ipa: "/a\u026a/", spelling: "igh" }] },
+          { word: "light", phonetic: "la\u026at", meaning: "n. 光", audio: "/audio/mixed/mixed-i/light.mp3", phonemeMap: [{ ipa: "/a\u026a/", spelling: "igh" }] },
         ],
       },
       {
@@ -359,7 +359,7 @@ const T: WhaleChapter[] = [
         slug: "-ign",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "sign", phonetic: "sa\u026an", meaning: "n./v. 符号", audio: "/audio/mixed/mixed-i/sign.mp3", phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
+          { word: "sign", phonetic: "sa\u026an", meaning: "n. 标志", audio: "/audio/mixed/mixed-i/sign.mp3", phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
         ],
       },
       {
@@ -367,7 +367,7 @@ const T: WhaleChapter[] = [
         slug: "-ign",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "design", phonetic: "d\u026a\u02c8za\u026an", meaning: "v./n. 设计", audio: "/audio/mixed/mixed-i/design.mp3", syllables: ["de", "sign"], phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
+          { word: "design", phonetic: "d\u026a\u02c8za\u026an", meaning: "n. 设计", audio: "/audio/mixed/mixed-i/design.mp3", syllables: ["de", "sign"], phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
         ],
       },
       {
@@ -375,7 +375,7 @@ const T: WhaleChapter[] = [
         slug: "-ign",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "assign", phonetic: "\u0259\u02c8sa\u026an", meaning: "v. 布置", audio: "/audio/mixed/mixed-i/assign.mp3", syllables: ["as", "sign"], phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
+          { word: "assign", phonetic: "\u0259\u02c8sa\u026an", meaning: "v. 分配", audio: "/audio/mixed/mixed-i/assign.mp3", syllables: ["as", "sign"], phonemeMap: [{ ipa: "/a\u026an/", spelling: "ign" }] },
         ],
       },
       {
@@ -383,7 +383,7 @@ const T: WhaleChapter[] = [
         slug: "-aign",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "campaign", phonetic: "k\u00e6m\u02c8pe\u026an", meaning: "n./v. 战役", audio: "/audio/mixed/mixed-i/campaign.mp3", syllables: ["cam", "paign"], phonemeMap: [{ ipa: "/e\u026an/", spelling: "aign" }] },
+          { word: "campaign", phonetic: "k\u00e6m\u02c8pe\u026an", meaning: "n. 运动", audio: "/audio/mixed/mixed-i/campaign.mp3", syllables: ["cam", "paign"], phonemeMap: [{ ipa: "/e\u026an/", spelling: "aign" }] },
         ],
       },
       {
@@ -399,7 +399,7 @@ const T: WhaleChapter[] = [
         slug: "-eigh",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "weigh", phonetic: "we\u026a", meaning: "v. 称", audio: "/audio/mixed/mixed-i/weigh.mp3", syllables: ["we", "igh"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "eigh" }] },
+          { word: "weigh", phonetic: "we\u026a", meaning: "v. 称重", audio: "/audio/mixed/mixed-i/weigh.mp3", syllables: ["we", "igh"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "eigh" }] },
         ],
       },
       {
@@ -407,7 +407,7 @@ const T: WhaleChapter[] = [
         slug: "-eigh",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "neighbour", phonetic: "n\u02c8e\u026ab\u025c", meaning: "邻居", audio: "/audio/mixed/mixed-i/neighbour.mp3", syllables: ["neigh", "bour"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "eigh" }] },
+          { word: "neighbour", phonetic: "n\u02c8e\u026ab\u025c", meaning: "n. 邻居", audio: "/audio/mixed/mixed-i/neighbour.mp3", syllables: ["neigh", "bour"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "eigh" }] },
         ],
       },
       {
@@ -415,7 +415,7 @@ const T: WhaleChapter[] = [
         slug: "-eign",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "reign", phonetic: "re\u026an", meaning: "n./v. 君主统治的时期/统治", audio: "/audio/mixed/mixed-i/reign.mp3", syllables: ["re", "ign"], phonemeMap: [{ ipa: "/e\u026an/", spelling: "eign" }] },
+          { word: "reign", phonetic: "re\u026an", meaning: "v. 统治", audio: "/audio/mixed/mixed-i/reign.mp3", syllables: ["re", "ign"], phonemeMap: [{ ipa: "/e\u026an/", spelling: "eign" }] },
         ],
       },
       {
@@ -439,7 +439,7 @@ const T: WhaleChapter[] = [
         slug: "-aigh",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "straight", phonetic: "stre\u026at", meaning: "adj./adv. 直的", audio: "/audio/mixed/mixed-i/straight.mp3", syllables: ["stra", "ight"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "aigh" }] },
+          { word: "straight", phonetic: "stre\u026at", meaning: "adj. 直的", audio: "/audio/mixed/mixed-i/straight.mp3", syllables: ["stra", "ight"], phonemeMap: [{ ipa: "/e\u026a/", spelling: "aigh" }] },
         ],
       },
     ],
@@ -471,7 +471,7 @@ const T: WhaleChapter[] = [
         slug: "c+a/o/u",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "cup", phonetic: "k\u028cp", meaning: "n.杯子", audio: "/audio/mixed/mixed-cg/cup.mp3", phonemeMap: [{ ipa: "/k/", spelling: "c" }] },
+          { word: "cup", phonetic: "k\u028cp", meaning: "n. 杯子", audio: "/audio/mixed/mixed-cg/cup.mp3", phonemeMap: [{ ipa: "/k/", spelling: "c" }] },
         ],
       },
       {
@@ -479,7 +479,7 @@ const T: WhaleChapter[] = [
         slug: "c+e/i/y",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "city", phonetic: "\u02c8s\u026ati", meaning: "n.城市", audio: "/audio/mixed/mixed-cg/city.mp3", syllables: ["ci", "ty"], phonemeMap: [{ ipa: "/s/", spelling: "c" }] },
+          { word: "city", phonetic: "\u02c8s\u026ati", meaning: "n. 城市", audio: "/audio/mixed/mixed-cg/city.mp3", syllables: ["ci", "ty"], phonemeMap: [{ ipa: "/s/", spelling: "c" }] },
         ],
       },
       {
@@ -495,7 +495,7 @@ const T: WhaleChapter[] = [
         slug: "c+e/i/y",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "cycle", phonetic: "\u02c8sa\u026ak(\u0259)l", meaning: "v./n. 骑/周期", audio: "/audio/mixed/mixed-cg/cycle.mp3", syllables: ["cyc", "le"], phonemeMap: [{ ipa: "/s/", spelling: "c" }] },
+          { word: "cycle", phonetic: "\u02c8sa\u026ak(\u0259)l", meaning: "n. 自行车", audio: "/audio/mixed/mixed-cg/cycle.mp3", syllables: ["cyc", "le"], phonemeMap: [{ ipa: "/s/", spelling: "c" }] },
         ],
       },
       {
@@ -511,7 +511,7 @@ const T: WhaleChapter[] = [
         slug: "ce",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "rice", phonetic: "ra\u026as", meaning: "n.米饭", audio: "/audio/mixed/mixed-cg/rice.mp3", phonemeMap: [{ ipa: "/s/", spelling: "ce" }] },
+          { word: "rice", phonetic: "ra\u026as", meaning: "n. 米饭", audio: "/audio/mixed/mixed-cg/rice.mp3", phonemeMap: [{ ipa: "/s/", spelling: "ce" }] },
         ],
       },
       {
@@ -519,7 +519,7 @@ const T: WhaleChapter[] = [
         slug: "ce",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "place", phonetic: "ple\u026as", meaning: "n.地方", audio: "/audio/mixed/mixed-cg/place.mp3", phonemeMap: [{ ipa: "/s/", spelling: "ce" }] },
+          { word: "place", phonetic: "ple\u026as", meaning: "n. 地方", audio: "/audio/mixed/mixed-cg/place.mp3", phonemeMap: [{ ipa: "/s/", spelling: "ce" }] },
         ],
       },
       {
@@ -535,7 +535,7 @@ const T: WhaleChapter[] = [
         slug: "g+a/o/u",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "garden", phonetic: "\u02c8\u0261\u0251\u02d0dn", meaning: "n.花园v.从事园艺", audio: "/audio/mixed/mixed-cg/garden.mp3", syllables: ["gar", "den"], phonemeMap: [{ ipa: "/\u0261/", spelling: "g" }] },
+          { word: "garden", phonetic: "\u02c8\u0261\u0251\u02d0dn", meaning: "n. 花园", audio: "/audio/mixed/mixed-cg/garden.mp3", syllables: ["gar", "den"], phonemeMap: [{ ipa: "/\u0261/", spelling: "g" }] },
         ],
       },
       {
@@ -543,7 +543,7 @@ const T: WhaleChapter[] = [
         slug: "g+a/o/u",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "gum", phonetic: "\u0261\u028cm", meaning: "n. 口香糖、树胶", audio: "/audio/mixed/mixed-cg/gum.mp3", phonemeMap: [{ ipa: "/\u0261/", spelling: "g" }] },
+          { word: "gum", phonetic: "\u0261\u028cm", meaning: "n. 口香糖", audio: "/audio/mixed/mixed-cg/gum.mp3", phonemeMap: [{ ipa: "/\u0261/", spelling: "g" }] },
         ],
       },
       {
@@ -575,7 +575,7 @@ const T: WhaleChapter[] = [
         slug: "ge",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "page", phonetic: "pe\u026ad\u0292", meaning: "n.版", audio: "/audio/mixed/mixed-cg/page.mp3", phonemeMap: [{ ipa: "/d\u0292/", spelling: "ge" }] },
+          { word: "page", phonetic: "pe\u026ad\u0292", meaning: "n. 页", audio: "/audio/mixed/mixed-cg/page.mp3", phonemeMap: [{ ipa: "/d\u0292/", spelling: "ge" }] },
         ],
       },
       {
@@ -599,7 +599,7 @@ const T: WhaleChapter[] = [
         slug: "qu",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "queen", phonetic: "kwi\u02d0n", meaning: "n. 王后", audio: "/audio/mixed/mixed-cg/queen.mp3", syllables: ["qu", "e", "en"], phonemeMap: [{ ipa: "/kw/", spelling: "qu" }] },
+          { word: "queen", phonetic: "kwi\u02d0n", meaning: "n. 女王", audio: "/audio/mixed/mixed-cg/queen.mp3", syllables: ["qu", "e", "en"], phonemeMap: [{ ipa: "/kw/", spelling: "qu" }] },
         ],
       },
       {
@@ -607,7 +607,7 @@ const T: WhaleChapter[] = [
         slug: "qu",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "quick", phonetic: "kw\u02c8\u026ak", meaning: "快的", audio: "/audio/mixed/mixed-cg/quick.mp3", syllables: ["qu", "ick"], phonemeMap: [{ ipa: "/kw/", spelling: "qu" }] },
+          { word: "quick", phonetic: "kw\u02c8\u026ak", meaning: "adj. 快的", audio: "/audio/mixed/mixed-cg/quick.mp3", syllables: ["qu", "ick"], phonemeMap: [{ ipa: "/kw/", spelling: "qu" }] },
         ],
       },
       {
@@ -631,7 +631,7 @@ const T: WhaleChapter[] = [
         slug: "-ost",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "post", phonetic: "p\u0259\u028ast", meaning: "职位", audio: "/audio/mixed/mixed-o/post.mp3", phonemeMap: [{ ipa: "/\u0259\u028ast/", spelling: "ost" }] },
+          { word: "post", phonetic: "p\u0259\u028ast", meaning: "v. 邮寄", audio: "/audio/mixed/mixed-o/post.mp3", phonemeMap: [{ ipa: "/\u0259\u028ast/", spelling: "ost" }] },
         ],
       },
       {
@@ -639,7 +639,7 @@ const T: WhaleChapter[] = [
         slug: "-ost",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "most", phonetic: "m\u0259\u028ast", meaning: "det. 最多", audio: "/audio/mixed/mixed-o/most.mp3", phonemeMap: [{ ipa: "/\u0259\u028ast/", spelling: "ost" }] },
+          { word: "most", phonetic: "m\u0259\u028ast", meaning: "adj. 最多的", audio: "/audio/mixed/mixed-o/most.mp3", phonemeMap: [{ ipa: "/\u0259\u028ast/", spelling: "ost" }] },
         ],
       },
       {
@@ -655,7 +655,7 @@ const T: WhaleChapter[] = [
         slug: "-old",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "old", phonetic: "\u0259\u028ald", meaning: "adj. ……岁的", audio: "/audio/mixed/mixed-o/old.mp3", phonemeMap: [{ ipa: "/\u0259\u028ald/", spelling: "old" }] },
+          { word: "old", phonetic: "\u0259\u028ald", meaning: "adj. 老的", audio: "/audio/mixed/mixed-o/old.mp3", phonemeMap: [{ ipa: "/\u0259\u028ald/", spelling: "old" }] },
         ],
       },
       {
@@ -671,7 +671,7 @@ const T: WhaleChapter[] = [
         slug: "-old",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "gold", phonetic: "\u0261\u0259\u028ald", meaning: "n.金", audio: "/audio/mixed/mixed-o/gold.mp3", phonemeMap: [{ ipa: "/\u0259\u028ald/", spelling: "old" }] },
+          { word: "gold", phonetic: "\u0261\u0259\u028ald", meaning: "n. 金子", audio: "/audio/mixed/mixed-o/gold.mp3", phonemeMap: [{ ipa: "/\u0259\u028ald/", spelling: "old" }] },
         ],
       },
       {
@@ -679,7 +679,7 @@ const T: WhaleChapter[] = [
         slug: "-oll",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "roll", phonetic: "r\u02c8o\u028al", meaning: "名册", audio: "/audio/mixed/mixed-o/roll.mp3", phonemeMap: [{ ipa: "/\u0259\u028al/", spelling: "oll" }] },
+          { word: "roll", phonetic: "r\u02c8o\u028al", meaning: "v. 滚动", audio: "/audio/mixed/mixed-o/roll.mp3", phonemeMap: [{ ipa: "/\u0259\u028al/", spelling: "oll" }] },
         ],
       },
       {
@@ -703,7 +703,7 @@ const T: WhaleChapter[] = [
         slug: "-ough",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "cough", phonetic: "k\u0252f", meaning: "n.咳嗽v.咳嗽", audio: "/audio/mixed/mixed-o/cough.mp3", syllables: ["co", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
+          { word: "cough", phonetic: "k\u0252f", meaning: "v. 咳嗽", audio: "/audio/mixed/mixed-o/cough.mp3", syllables: ["co", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
         ],
       },
       {
@@ -711,7 +711,7 @@ const T: WhaleChapter[] = [
         slug: "-ough",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "tough", phonetic: "t\u028cf", meaning: "adj. 强硬的", audio: "/audio/mixed/mixed-o/tough.mp3", syllables: ["to", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
+          { word: "tough", phonetic: "t\u028cf", meaning: "adj. 困难的", audio: "/audio/mixed/mixed-o/tough.mp3", syllables: ["to", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
         ],
       },
       {
@@ -719,7 +719,7 @@ const T: WhaleChapter[] = [
         slug: "-ough",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "though", phonetic: "\u00f0\u0259\u028a", meaning: "conj.  虽然", audio: "/audio/mixed/mixed-o/though.mp3", syllables: ["tho", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
+          { word: "though", phonetic: "\u00f0\u0259\u028a", meaning: "conj. 虽然", audio: "/audio/mixed/mixed-o/though.mp3", syllables: ["tho", "ugh"], phonemeMap: [{ ipa: "/\u0252f/", spelling: "ough" }] },
         ],
       },
       {
@@ -727,7 +727,7 @@ const T: WhaleChapter[] = [
         slug: "-ought",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "thought", phonetic: "\u03b8\u0254\u02d0t", meaning: "n.思想", audio: "/audio/mixed/mixed-o/thought.mp3", syllables: ["tho", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "ought" }] },
+          { word: "thought", phonetic: "\u03b8\u0254\u02d0t", meaning: "n. 想法", audio: "/audio/mixed/mixed-o/thought.mp3", syllables: ["tho", "ught"], phonemeMap: [{ ipa: "/\u0254\u02d0t/", spelling: "ought" }] },
         ],
       },
       {
@@ -759,7 +759,7 @@ const T: WhaleChapter[] = [
         slug: "-ble",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "table", phonetic: "\u02c8te\u026ab(\u0259)l", meaning: "n. 表格", audio: "/audio/mixed/mixed-ending/table.mp3", syllables: ["tab", "le"], phonemeMap: [{ ipa: "/bl/", spelling: "ble" }] },
+          { word: "table", phonetic: "\u02c8te\u026ab(\u0259)l", meaning: "n. 桌子", audio: "/audio/mixed/mixed-ending/table.mp3", syllables: ["tab", "le"], phonemeMap: [{ ipa: "/bl/", spelling: "ble" }] },
         ],
       },
       {
@@ -791,7 +791,7 @@ const T: WhaleChapter[] = [
         slug: "-dle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "middle", phonetic: "\u02c8m\u026ad(\u0259)l", meaning: "adj. 中间的", audio: "/audio/mixed/mixed-ending/middle.mp3", syllables: ["midd", "le"], phonemeMap: [{ ipa: "/dl/", spelling: "dle" }] },
+          { word: "middle", phonetic: "\u02c8m\u026ad(\u0259)l", meaning: "n. 中间", audio: "/audio/mixed/mixed-ending/middle.mp3", syllables: ["midd", "le"], phonemeMap: [{ ipa: "/dl/", spelling: "dle" }] },
         ],
       },
       {
@@ -807,7 +807,7 @@ const T: WhaleChapter[] = [
         slug: "-cle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "circle", phonetic: "\u02c8s\u025c\u02d0k(\u0259)l", meaning: "n. 圆", audio: "/audio/mixed/mixed-ending/circle.mp3", syllables: ["circ", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "cle" }] },
+          { word: "circle", phonetic: "\u02c8s\u025c\u02d0k(\u0259)l", meaning: "n. 圆圈", audio: "/audio/mixed/mixed-ending/circle.mp3", syllables: ["circ", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "cle" }] },
         ],
       },
       {
@@ -823,7 +823,7 @@ const T: WhaleChapter[] = [
         slug: "-cle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "bicycle", phonetic: "\u02c8ba\u026as\u026ak(\u0259)l", meaning: "n.自行车", audio: "/audio/mixed/mixed-ending/bicycle.mp3", syllables: ["bi", "cyc", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "cle" }] },
+          { word: "bicycle", phonetic: "\u02c8ba\u026as\u026ak(\u0259)l", meaning: "n. 自行车", audio: "/audio/mixed/mixed-ending/bicycle.mp3", syllables: ["bi", "cyc", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "cle" }] },
         ],
       },
       {
@@ -839,7 +839,7 @@ const T: WhaleChapter[] = [
         slug: "-kle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "sprinkle", phonetic: "\u02c8spr\u026a\u014bk(\u0259)l", meaning: "v./n. 撒", audio: "/audio/mixed/mixed-ending/sprinkle.mp3", syllables: ["sprink", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "kle" }] },
+          { word: "sprinkle", phonetic: "\u02c8spr\u026a\u014bk(\u0259)l", meaning: "v. 撒", audio: "/audio/mixed/mixed-ending/sprinkle.mp3", syllables: ["sprink", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "kle" }] },
         ],
       },
       {
@@ -847,7 +847,7 @@ const T: WhaleChapter[] = [
         slug: "-kle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "ankle", phonetic: "\u02c8\u00e6\u014bk(\u0259)l", meaning: "n. 踝", audio: "/audio/mixed/mixed-ending/ankle.mp3", syllables: ["ank", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "kle" }] },
+          { word: "ankle", phonetic: "\u02c8\u00e6\u014bk(\u0259)l", meaning: "n. 脚踝", audio: "/audio/mixed/mixed-ending/ankle.mp3", syllables: ["ank", "le"], phonemeMap: [{ ipa: "/kl/", spelling: "kle" }] },
         ],
       },
       {
@@ -855,7 +855,7 @@ const T: WhaleChapter[] = [
         slug: "-gle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "eagle", phonetic: "\u02c8i\u02d0\u0261(\u0259)l", meaning: "n. 雕", audio: "/audio/mixed/mixed-ending/eagle.mp3", syllables: ["e", "agle"], phonemeMap: [{ ipa: "/\u0261l/", spelling: "gle" }] },
+          { word: "eagle", phonetic: "\u02c8i\u02d0\u0261(\u0259)l", meaning: "n. 鹰", audio: "/audio/mixed/mixed-ending/eagle.mp3", syllables: ["e", "agle"], phonemeMap: [{ ipa: "/\u0261l/", spelling: "gle" }] },
         ],
       },
       {
@@ -887,7 +887,7 @@ const T: WhaleChapter[] = [
         slug: "-ple",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "people", phonetic: "\u02c8pi\u02d0p(\u0259)l", meaning: "n. 人", audio: "/audio/mixed/mixed-ending/people.mp3", syllables: ["pe", "ople"], phonemeMap: [{ ipa: "/pl/", spelling: "ple" }] },
+          { word: "people", phonetic: "\u02c8pi\u02d0p(\u0259)l", meaning: "n. 人们", audio: "/audio/mixed/mixed-ending/people.mp3", syllables: ["pe", "ople"], phonemeMap: [{ ipa: "/pl/", spelling: "ple" }] },
         ],
       },
       {
@@ -895,7 +895,7 @@ const T: WhaleChapter[] = [
         slug: "-ple",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "simple", phonetic: "\u02c8s\u026amp(\u0259)l", meaning: "adj.简单的", audio: "/audio/mixed/mixed-ending/simple.mp3", syllables: ["simp", "le"], phonemeMap: [{ ipa: "/pl/", spelling: "ple" }] },
+          { word: "simple", phonetic: "\u02c8s\u026amp(\u0259)l", meaning: "adj. 简单的", audio: "/audio/mixed/mixed-ending/simple.mp3", syllables: ["simp", "le"], phonemeMap: [{ ipa: "/pl/", spelling: "ple" }] },
         ],
       },
       {
@@ -919,7 +919,7 @@ const T: WhaleChapter[] = [
         slug: "-tle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "battle", phonetic: "\u02c8b\u00e6t(\u0259)l", meaning: "n./v. 战斗", audio: "/audio/mixed/mixed-ending/battle.mp3", syllables: ["batt", "le"], phonemeMap: [{ ipa: "/tl/", spelling: "tle" }] },
+          { word: "battle", phonetic: "\u02c8b\u00e6t(\u0259)l", meaning: "n. 战斗", audio: "/audio/mixed/mixed-ending/battle.mp3", syllables: ["batt", "le"], phonemeMap: [{ ipa: "/tl/", spelling: "tle" }] },
         ],
       },
       {
@@ -927,7 +927,7 @@ const T: WhaleChapter[] = [
         slug: "-zle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "puzzle", phonetic: "\u02c8p\u028cz(\u0259)l", meaning: "n./v. 难题", audio: "/audio/mixed/mixed-ending/puzzle.mp3", syllables: ["puzz", "le"], phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
+          { word: "puzzle", phonetic: "\u02c8p\u028cz(\u0259)l", meaning: "n. 谜题", audio: "/audio/mixed/mixed-ending/puzzle.mp3", syllables: ["puzz", "le"], phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
         ],
       },
       {
@@ -935,7 +935,7 @@ const T: WhaleChapter[] = [
         slug: "-zle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "drizzle", phonetic: "\u02c8dr\u026az(\u0259)l", meaning: "v. 下毛毛雨", audio: "/audio/mixed/mixed-ending/drizzle.mp3", syllables: ["drizz", "le"], phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
+          { word: "drizzle", phonetic: "\u02c8dr\u026az(\u0259)l", meaning: "n. 毛毛雨", audio: "/audio/mixed/mixed-ending/drizzle.mp3", syllables: ["drizz", "le"], phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
         ],
       },
       {
@@ -943,7 +943,7 @@ const T: WhaleChapter[] = [
         slug: "-zle",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "fizzle", phonetic: "\u02c8f\u026azl", meaning: "vi. 失败", audio: "/audio/mixed/mixed-ending/fizzle.mp3", phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
+          { word: "fizzle", phonetic: "\u02c8f\u026azl", meaning: "v. 失败", audio: "/audio/mixed/mixed-ending/fizzle.mp3", phonemeMap: [{ ipa: "/zl/", spelling: "zle" }] },
         ],
       },
       {
@@ -951,7 +951,7 @@ const T: WhaleChapter[] = [
         slug: "-sure",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "measure", phonetic: "\u02c8me\u0292\u0259(r)", meaning: "v./n. 测量", audio: "/audio/mixed/mixed-ending/measure.mp3", syllables: ["mea", "sure"], phonemeMap: [{ ipa: "/\u0292\u0259/", spelling: "sure" }] },
+          { word: "measure", phonetic: "\u02c8me\u0292\u0259(r)", meaning: "v. 测量", audio: "/audio/mixed/mixed-ending/measure.mp3", syllables: ["mea", "sure"], phonemeMap: [{ ipa: "/\u0292\u0259/", spelling: "sure" }] },
         ],
       },
       {
@@ -967,7 +967,7 @@ const T: WhaleChapter[] = [
         slug: "-sure",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "treasure", phonetic: "\u02c8tre\u0292\u0259(r)", meaning: "n. 金银财宝", audio: "/audio/mixed/mixed-ending/treasure.mp3", syllables: ["trea", "sure"], phonemeMap: [{ ipa: "/\u0292\u0259/", spelling: "sure" }] },
+          { word: "treasure", phonetic: "\u02c8tre\u0292\u0259(r)", meaning: "n. 财宝", audio: "/audio/mixed/mixed-ending/treasure.mp3", syllables: ["trea", "sure"], phonemeMap: [{ ipa: "/\u0292\u0259/", spelling: "sure" }] },
         ],
       },
       {
@@ -975,7 +975,7 @@ const T: WhaleChapter[] = [
         slug: "-sion",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "television", phonetic: "\u02c8tel\u026av\u026a\u0292(\u0259)n", meaning: "n.电视机", audio: "/audio/mixed/mixed-ending/television.mp3", syllables: ["te", "le", "vi", "sion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "sion" }] },
+          { word: "television", phonetic: "\u02c8tel\u026av\u026a\u0292(\u0259)n", meaning: "n. 电视机", audio: "/audio/mixed/mixed-ending/television.mp3", syllables: ["te", "le", "vi", "sion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "sion" }] },
         ],
       },
       {
@@ -983,7 +983,7 @@ const T: WhaleChapter[] = [
         slug: "-sion",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "decision", phonetic: "d\u026a\u02c8s\u026a\u0292(\u0259)n", meaning: "n.决定", audio: "/audio/mixed/mixed-ending/decision.mp3", syllables: ["de", "ci", "sion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "sion" }] },
+          { word: "decision", phonetic: "d\u026a\u02c8s\u026a\u0292(\u0259)n", meaning: "n. 决定", audio: "/audio/mixed/mixed-ending/decision.mp3", syllables: ["de", "ci", "sion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "sion" }] },
         ],
       },
       {
@@ -1007,7 +1007,7 @@ const T: WhaleChapter[] = [
         slug: "-tion",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "action", phonetic: "\u02c8\u00e6k\u0283(\u0259)n", meaning: "n.行动", audio: "/audio/mixed/mixed-ending/action.mp3", syllables: ["ac", "tion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "tion" }] },
+          { word: "action", phonetic: "\u02c8\u00e6k\u0283(\u0259)n", meaning: "n. 行动", audio: "/audio/mixed/mixed-ending/action.mp3", syllables: ["ac", "tion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "tion" }] },
         ],
       },
       {
@@ -1015,7 +1015,7 @@ const T: WhaleChapter[] = [
         slug: "-tion",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "station", phonetic: "\u02c8ste\u026a\u0283(\u0259)n", meaning: "n.车站", audio: "/audio/mixed/mixed-ending/station.mp3", syllables: ["sta", "tion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "tion" }] },
+          { word: "station", phonetic: "\u02c8ste\u026a\u0283(\u0259)n", meaning: "n. 车站", audio: "/audio/mixed/mixed-ending/station.mp3", syllables: ["sta", "tion"], phonemeMap: [{ ipa: "/\u0283\u0259n/", spelling: "tion" }] },
         ],
       },
       {
@@ -1055,7 +1055,7 @@ const T: WhaleChapter[] = [
         slug: "-tial",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "essential", phonetic: "\u026a\u02c8sen\u0283l", meaning: "adj.必需的", audio: "/audio/mixed/mixed-ending/essential.mp3", syllables: ["essen", "tial"], phonemeMap: [{ ipa: "/\u0283\u0259l/", spelling: "tial" }] },
+          { word: "essential", phonetic: "\u026a\u02c8sen\u0283l", meaning: "adj. 必需的", audio: "/audio/mixed/mixed-ending/essential.mp3", syllables: ["essen", "tial"], phonemeMap: [{ ipa: "/\u0283\u0259l/", spelling: "tial" }] },
         ],
       },
       {
@@ -1063,7 +1063,7 @@ const T: WhaleChapter[] = [
         slug: "-tial",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "initial", phonetic: "\u026a\u02c8n\u026a\u0283l", meaning: "adj.最初的", audio: "/audio/mixed/mixed-ending/initial.mp3", syllables: ["ini", "tial"], phonemeMap: [{ ipa: "/\u0283\u0259l/", spelling: "tial" }] },
+          { word: "initial", phonetic: "\u026a\u02c8n\u026a\u0283l", meaning: "adj. 最初的", audio: "/audio/mixed/mixed-ending/initial.mp3", syllables: ["ini", "tial"], phonemeMap: [{ ipa: "/\u0283\u0259l/", spelling: "tial" }] },
         ],
       },
       {
@@ -1079,7 +1079,7 @@ const T: WhaleChapter[] = [
         slug: "-tient",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "patient", phonetic: "\u02c8pe\u026a\u0283(\u0259)nt", meaning: "adj. 有耐心的\nn. 病人", audio: "/audio/mixed/mixed-ending/patient.mp3", syllables: ["pa", "tient"], phonemeMap: [{ ipa: "/\u0283\u0259nt/", spelling: "tient" }] },
+          { word: "patient", phonetic: "\u02c8pe\u026a\u0283(\u0259)nt", meaning: "adj. 有耐心的", audio: "/audio/mixed/mixed-ending/patient.mp3", syllables: ["pa", "tient"], phonemeMap: [{ ipa: "/\u0283\u0259nt/", spelling: "tient" }] },
         ],
       },
       {
@@ -1087,7 +1087,7 @@ const T: WhaleChapter[] = [
         slug: "-tient",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "quotient", phonetic: "\u02c8kw\u0259\u028a\u0283(\u0259)nt", meaning: "n. 程度", audio: "/audio/mixed/mixed-ending/quotient.mp3", syllables: ["qu", "o", "tient"], phonemeMap: [{ ipa: "/\u0283\u0259nt/", spelling: "tient" }] },
+          { word: "quotient", phonetic: "\u02c8kw\u0259\u028a\u0283(\u0259)nt", meaning: "n. 商数", audio: "/audio/mixed/mixed-ending/quotient.mp3", syllables: ["qu", "o", "tient"], phonemeMap: [{ ipa: "/\u0283\u0259nt/", spelling: "tient" }] },
         ],
       },
       {
@@ -1103,7 +1103,7 @@ const T: WhaleChapter[] = [
         slug: "-ture",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "picture", phonetic: "\u02c8p\u026akt\u0283\u0259(r)", meaning: "n.图画", audio: "/audio/mixed/mixed-ending/picture.mp3", syllables: ["pic", "ture"], phonemeMap: [{ ipa: "/t\u0283\u0259/", spelling: "ture" }] },
+          { word: "picture", phonetic: "\u02c8p\u026akt\u0283\u0259(r)", meaning: "n. 图画", audio: "/audio/mixed/mixed-ending/picture.mp3", syllables: ["pic", "ture"], phonemeMap: [{ ipa: "/t\u0283\u0259/", spelling: "ture" }] },
         ],
       },
       {
@@ -1167,7 +1167,7 @@ const T: WhaleChapter[] = [
         slug: "-tue",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "fortune", phonetic: "\u02c8f\u0254\u02d0t\u0283u\u02d0n", meaning: "n. 命运", audio: "/audio/mixed/mixed-ending/fortune.mp3", syllables: ["for", "tune"], phonemeMap: [{ ipa: "/t\u0283u\u02d0/", spelling: "tue" }] },
+          { word: "fortune", phonetic: "\u02c8f\u0254\u02d0t\u0283u\u02d0n", meaning: "n. 财富", audio: "/audio/mixed/mixed-ending/fortune.mp3", syllables: ["for", "tune"], phonemeMap: [{ ipa: "/t\u0283u\u02d0/", spelling: "tue" }] },
         ],
       },
       {
@@ -1183,7 +1183,7 @@ const T: WhaleChapter[] = [
         slug: "-ous",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "dangerous", phonetic: "\u02c8de\u026and\u0292\u0259r\u0259s", meaning: "adj.危险的", audio: "/audio/mixed/mixed-ending/dangerous.mp3", syllables: ["dan", "ge", "rous"], phonemeMap: [{ ipa: "/\u0259s/", spelling: "ous" }] },
+          { word: "dangerous", phonetic: "\u02c8de\u026and\u0292\u0259r\u0259s", meaning: "adj. 危险的", audio: "/audio/mixed/mixed-ending/dangerous.mp3", syllables: ["dan", "ge", "rous"], phonemeMap: [{ ipa: "/\u0259s/", spelling: "ous" }] },
         ],
       },
       {
@@ -1191,7 +1191,7 @@ const T: WhaleChapter[] = [
         slug: "-ous",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "serious", phonetic: "\u02c8s\u026a\u0259ri\u0259s", meaning: "adj.严肃的", audio: "/audio/mixed/mixed-ending/serious.mp3", syllables: ["se", "ri", "ous"], phonemeMap: [{ ipa: "/\u0259s/", spelling: "ous" }] },
+          { word: "serious", phonetic: "\u02c8s\u026a\u0259ri\u0259s", meaning: "adj. 严肃的", audio: "/audio/mixed/mixed-ending/serious.mp3", syllables: ["se", "ri", "ous"], phonemeMap: [{ ipa: "/\u0259s/", spelling: "ous" }] },
         ],
       },
     ],
