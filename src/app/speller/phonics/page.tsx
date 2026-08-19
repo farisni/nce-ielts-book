@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Tooltip } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -283,23 +284,42 @@ function renderExampleWord(w: string, pattern: string) {
   );
 }
 
-/** 其他列条目：组合固定宽度左对齐 + 音标同行 */
+/** 其他列条目：组合固定宽度左对齐 + 音标同行；
+ *  多音标条目（ear 等）悬停 Tooltip 显示每个音标的示例单词 */
 function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
-  return (
+  const body = (
     <span className="inline-flex items-baseline leading-tight">
       <span className="w-10 shrink-0 text-left text-sm font-semibold text-foreground">{p}</span>
       <span className="ml-1 text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it, i) => (
           <span key={it.ph}>
             {i > 0 && " "}[{it.ph}]
-            {/* 多音标条目不显示示例单词（避免拥挤），单音标保留 */}
-            {entry.ipa.length <= 1 && <span className="text-foreground/80"> {renderExampleWord(it.w, entry.pattern)}</span>}
+            {/* 单音标条目直接显示单词 */}
+            {entry.ipa.length <= 1 && <span className="text-foreground/80"> {renderExampleWord(it.w, p)}</span>}
           </span>
         ))}
       </span>
     </span>
   );
+  if (entry.ipa.length > 1) {
+    return (
+      <Tooltip
+        content={
+          <div className="flex flex-col gap-1">
+            {entry.ipa.map((it) => (
+              <span key={it.ph}>
+                [{it.ph}] <span className="font-medium text-foreground">{renderExampleWord(it.w, p)}</span>
+              </span>
+            ))}
+          </div>
+        }
+      >
+        {body}
+      </Tooltip>
+    );
+  }
+  return body;
 }
 
 function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: boolean }) {
