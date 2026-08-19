@@ -252,7 +252,7 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
   return (
     <span className="inline-flex items-baseline leading-tight">
-      <span className="w-10 shrink-0 text-right text-sm font-semibold text-foreground">
+      <span className="w-10 shrink-0 text-left text-sm font-semibold text-foreground">
         {p[0]}
         <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
       </span>
