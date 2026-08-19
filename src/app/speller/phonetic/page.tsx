@@ -100,7 +100,7 @@ export default function PhoneticPage() {
                           {t.phonetics ?? t.name.replace(/.*\//, "/")}
                         </span>
                         {patterns.length > 0 && (
-                          <span className="flex flex-wrap justify-end gap-x-1.5 text-sm font-semibold leading-tight">
+                          <span className="flex flex-col items-end gap-1 text-sm font-semibold leading-tight">
                             {patterns.map((pt) => (
                               <span key={pt} className={spellColors[pt]}>
                                 {pt}
