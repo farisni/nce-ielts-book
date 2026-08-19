@@ -94,9 +94,9 @@ export default function PhoneticPage() {
                       className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
                     >
-                      {/* 音标居中，拼写组合形式在右靠左（两列网格，组合多时两个一行） */}
+                      {/* 音标固定宽度区域（居中对齐），拼写组合形式在右靠左（两列网格） */}
                       <span className="flex w-full items-center justify-center gap-3">
-                        <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                        <span className="w-12 shrink-0 text-center text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
                           {t.phonetics ?? t.name.replace(/.*\//, "/")}
                         </span>
                         {patterns.length > 0 && (
