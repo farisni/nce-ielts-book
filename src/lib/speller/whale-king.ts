@@ -29,6 +29,8 @@ export interface WhaleTest {
   /** 难度 1~5 */
   difficulty: number
   words: WhaleWord[]
+  /** 练习音标（如 "/æ/"）：音标课程用，听写页红色高亮该音素 */
+  phonetics?: string
 }
 
 export interface WhaleChapter {

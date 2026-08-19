@@ -12,6 +12,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u524d\u5143\u97f3 /\u00e6/",
         slug: "unit-145",
+        phonetics: "/\u00e6/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "cab", phonetic: "k\u00e6b", meaning: "n. \u51fa\u79df\u8f66\nn. \u9a7e\u9a76\u5ba4\nn. (\u82f1) \u5c0f\u5c4b", audio: "", pos: "n.", syllables: ["cab"] },
@@ -33,6 +34,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u524d\u5143\u97f3 /e/",
         slug: "unit-146",
+        phonetics: "/e/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "bed", phonetic: "bed", meaning: "n. \u5e8a\nn. \u7761\u7720\u5904\u6240\nv. \u4e3a...\u63d0\u4f9b\u5e8a\u94fa\nv. \u4f7f\u8eba\u4e0b", audio: "", pos: "n.", syllables: ["bed"] },
@@ -53,6 +55,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u524d\u5143\u97f3 /i\u02d0/",
         slug: "unit-147",
+        phonetics: "/i\u02d0/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "key", phonetic: "ki\u02d0", meaning: "n. \u94a5\u5319\nn. \u7b54\u6848\uff0c\u5173\u952e\nadj. \u5173\u952e\u7684\nv. \u8f93\u5165\uff08\u6570\u636e\uff09", audio: "", pos: "n.", syllables: ["key"] },
@@ -73,6 +76,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u524d\u5143\u97f3 /\u026a/",
         slug: "unit-148",
+        phonetics: "/\u026a/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "sit", phonetic: "s\u026at", meaning: "v. \u5750\u4e0b\nv. \u4f4d\u4e8e\nn. \u5c31\u5ea7", audio: "", pos: "v.", syllables: ["sit"] },
@@ -101,6 +105,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u4e2d\u5143\u97f3 /\u025c\u02d0/",
         slug: "unit-149",
+        phonetics: "/\u025c\u02d0/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "turn", phonetic: "t\u025c\u02d0n", meaning: "v. \u8f6c\u52a8\nn. \u8f6c\u5f2f\nn. \u987a\u5e8f\nv. \u53d8\u6210", audio: "", pos: "v.", syllables: ["turn"] },
@@ -123,6 +128,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u4e2d\u5143\u97f3 /\u0259/",
         slug: "unit-150",
+        phonetics: "/\u0259/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "hello", phonetic: "h\u0259\u02c8l\u0259\u028a", meaning: "int. \u4f60\u597d\nn. \u6253\u62db\u547c\u7528\u8bed\nv. \u8868\u793a\u95ee\u5019", audio: "", pos: "int.", syllables: ["he", "llo"] },
@@ -143,6 +149,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u4e2d\u5143\u97f3 /\u028c/",
         slug: "unit-151",
+        phonetics: "/\u028c/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "bus", phonetic: "b\u028cs", meaning: "n. \u516c\u5171\u6c7d\u8f66\nn. \u5ba2\u8f66\nv. \u7528\u516c\u5171\u6c7d\u8f66\u8fd0\u9001", audio: "", pos: "n.", syllables: ["bus"] },
@@ -172,6 +179,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u540e\u5143\u97f3 /\u0251\u02d0/",
         slug: "unit-152",
+        phonetics: "/\u0251\u02d0/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "car", phonetic: "k\u0251\u02d0", meaning: "n. \u6c7d\u8f66\nn. \u8f66\u53a2\uff08\u5982\u706b\u8f66\u8f66\u53a2\uff09\nn. \u5347\u964d\u673a\u8f7f\u53a2", audio: "", pos: "n.", syllables: ["car"] },
@@ -193,6 +201,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u540e\u5143\u97f3 /\u0254\u02d0/",
         slug: "unit-153",
+        phonetics: "/\u0254\u02d0/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "law", phonetic: "l\u0254\u02d0", meaning: "n. \u6cd5\u5f8b\nn. \u6cd5\u5219\nn. \u5f8b\u5e08\nn. \u7acb\u6cd5", audio: "", pos: "n.", syllables: ["law"] },
@@ -214,6 +223,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u540e\u5143\u97f3 /u\u02d0/",
         slug: "unit-154",
+        phonetics: "/u\u02d0/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "who", phonetic: "hu\u02d0", meaning: "pron. \u8c01", audio: "", pos: "pron.", syllables: ["who"] },
@@ -236,6 +246,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u540e\u5143\u97f3 /\u028a/",
         slug: "unit-155",
+        phonetics: "/\u028a/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "put", phonetic: "p\u028at", meaning: "v. \u653e\u7f6e\nv. \u63d0\u51fa\nn. \u770b\u8dcc\u671f\u6743", audio: "", pos: "v.", syllables: ["put"] },
@@ -256,6 +267,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u540e\u5143\u97f3 /\u0252/",
         slug: "unit-156",
+        phonetics: "/\u0252/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "box", phonetic: "b\u0252ks", meaning: "n. \u76d2\u5b50\nn. \u5305\u53a2\nv. \u88c5\u7bb1\nn. \u62f3\u51fb", audio: "", pos: "n.", syllables: ["bo", "x"] },
@@ -285,6 +297,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5408\u53e3\u53cc\u5143\u97f3 /e\u026a/",
         slug: "unit-157",
+        phonetics: "/e\u026a/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "day", phonetic: "de\u026a", meaning: "n. \u767d\u5929\nn. \u4e00\u5929\nn. \u65e5\u5b50\nadj. \u65e5\u95f4\u7684", audio: "", pos: "n.", syllables: ["day"] },
@@ -307,6 +320,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5408\u53e3\u53cc\u5143\u97f3 /a\u026a/",
         slug: "unit-158",
+        phonetics: "/a\u026a/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "my", phonetic: "ma\u026a", meaning: "pron. \u6211\u7684", audio: "", pos: "pron.", syllables: ["my"] },
@@ -329,6 +343,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5408\u53e3\u53cc\u5143\u97f3 /\u0254\u026a/",
         slug: "unit-159",
+        phonetics: "/\u0254\u026a/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "boy", phonetic: "b\u0254\u026a", meaning: "n. \u7537\u5b69\nn. \u513f\u5b50", audio: "", pos: "n.", syllables: ["boy"] },
@@ -351,6 +366,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5408\u53e3\u53cc\u5143\u97f3 /a\u028a/",
         slug: "unit-160",
+        phonetics: "/a\u028a/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "cow", phonetic: "ka\u028a", meaning: "n. \u6bcd\u725b\nn. \u5976\u725b", audio: "", pos: "n.", syllables: ["cow"] },
@@ -372,6 +388,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5408\u53e3\u53cc\u5143\u97f3 /\u0259\u028a/",
         slug: "unit-161",
+        phonetics: "/\u0259\u028a/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "no", phonetic: "n\u0259\u028a", meaning: "adv. \u4e0d\nadv. \u6ca1\u6709\nint. \u5662\uff0c\u4e0d\nn. \u5426\u5b9a", audio: "", pos: "adv.", syllables: ["no"] },
@@ -402,6 +419,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u96c6\u4e2d\u53cc\u5143\u97f3 /\u026a\u0259/",
         slug: "unit-162",
+        phonetics: "/\u026a\u0259/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "dear", phonetic: "d\u026a\u0259", meaning: "adj. \u4eb2\u7231\u7684\nadj. \u6602\u8d35\u7684\nint. \u54ce\u5440\nn. \u4eb2\u7231\u7684\u4eba", audio: "", pos: "adj.", syllables: ["dear"] },
@@ -424,6 +442,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u96c6\u4e2d\u53cc\u5143\u97f3 /e\u0259/",
         slug: "unit-163",
+        phonetics: "/e\u0259/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "air", phonetic: "e\u0259", meaning: "n. \u7a7a\u6c14\nv. \u64ad\u51fa\uff0c\u516c\u5f00\nn. \u795e\u6001\uff0c\u5916\u8868\nvi. \u900f\u6c14\uff0c\u901a\u98ce", audio: "", pos: "n.", syllables: ["air"] },
@@ -445,6 +464,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u96c6\u4e2d\u53cc\u5143\u97f3 /\u028a\u0259/",
         slug: "unit-164",
+        phonetics: "/\u028a\u0259/",
         wordCount: 6, difficulty: 2,
         words: [
           { word: "jury", phonetic: "\u02c8d\u0292\u028a\u0259ri", meaning: "n. \u966a\u5ba1\u56e2\nn. \u8bc4\u5224\u59d4\u5458\u4f1a", audio: "", pos: "n.", syllables: ["ju", "ry"] },
@@ -466,6 +486,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /p/",
         slug: "unit-165",
+        phonetics: "/p/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "pig", phonetic: "p\u026a\u0261", meaning: "n. \u732a\nn. \u8d2a\u5a6a\u7684\u4eba\nv. \u50cf\u732a\u4e00\u6837\u5403", audio: "", pos: "n.", syllables: ["pig"] },
@@ -488,6 +509,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /t/",
         slug: "unit-166",
+        phonetics: "/t/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "heart", phonetic: "h\u0251\u02d0t", meaning: "n. \u5fc3\u810f\nn. \u4e2d\u5fc3\nn. \u70ed\u5ff1\nn. \u52c7\u6c14", audio: "", pos: "n.", syllables: ["heart"] },
@@ -510,6 +532,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /k/",
         slug: "unit-167",
+        phonetics: "/k/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "talk", phonetic: "t\u0254\u02d0k", meaning: "v. \u8c08\u8bdd\nn. \u8c08\u8bdd\nn. \u6f14\u8bb2\nvi. \u8bf4\u8bdd", audio: "", pos: "v.", syllables: ["talk"] },
@@ -532,6 +555,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /b/",
         slug: "unit-168",
+        phonetics: "/b/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "bird", phonetic: "b\u025c\u02d0d", meaning: "n. \u9e1f\nn. \u79bd\u7c7b", audio: "", pos: "n.", syllables: ["bird"] },
@@ -554,6 +578,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /d/",
         slug: "unit-169",
+        phonetics: "/d/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "good", phonetic: "\u0261\u028ad", meaning: "adj. \u597d\u7684\nadj. \u826f\u597d\u7684\nn. \u597d\u5904\nadv. \u5f88", audio: "", pos: "adj.", syllables: ["good"] },
@@ -576,6 +601,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7206\u7834\u97f3 /g/",
         slug: "unit-170",
+        phonetics: "/g/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "go", phonetic: "\u0261\u0259\u028a", meaning: "v. \u53bb\nv. \u5f00\u59cb\nn. \u5c1d\u8bd5\nn. \u8fdb\u884c", audio: "", pos: "v.", syllables: ["go"] },
@@ -606,6 +632,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /f/",
         slug: "unit-171",
+        phonetics: "/f/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "four", phonetic: "f\u0254\u02d0", meaning: "num. \u56db\nn. \u56db\u4eba\u7ec4\nn. \u56db\u4e2a\u4e00\u7ec4\u7684\u4e8b\u7269", audio: "", pos: "num.", syllables: ["four"] },
@@ -627,6 +654,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /s/",
         slug: "unit-172",
+        phonetics: "/s/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "west", phonetic: "west", meaning: "n. \u897f\u65b9\nadj. \u5411\u897f\u7684\nadv. \u5411\u897f\nn. \u897f\u65b9\u56fd\u5bb6", audio: "", pos: "n.", syllables: ["west"] },
@@ -647,6 +675,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /\u0283/",
         slug: "unit-173",
+        phonetics: "/\u0283/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "she", phonetic: "\u0283i\u02d0", meaning: "pron. \u5979\npron. \u7528\u4e8e\u6307\u4ee3\u5973\u6027\npron. \u62df\u4eba\u5316\u6307\u4ee3\u56fd\u5bb6\u6216\u8239\u53ea", audio: "", pos: "pron.", syllables: ["she"] },
@@ -668,6 +697,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /\u03b8/",
         slug: "unit-174",
+        phonetics: "/\u03b8/",
         wordCount: 12, difficulty: 2,
         words: [
           { word: "math", phonetic: "m\u00e6\u03b8", meaning: "n. \u6570\u5b66", audio: "", pos: "n.", syllables: ["math"] },
@@ -687,6 +717,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /h/",
         slug: "unit-175",
+        phonetics: "/h/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "he", phonetic: "hi\u02d0", meaning: "pron. \u4ed6\npron. \u5b83\uff08\u7528\u4e8e\u52a8\u7269\u6216\u65e0\u751f\u547d\u7269\uff09", audio: "", pos: "pron.", syllables: ["he"] },
@@ -708,6 +739,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /v/",
         slug: "unit-176",
+        phonetics: "/v/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "van", phonetic: "v\u00e6n", meaning: "n. \u5c0f\u8d27\u8f66\nn. \u65c5\u884c\u8f66", audio: "", pos: "n.", syllables: ["van"] },
@@ -730,6 +762,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /z/",
         slug: "unit-177",
+        phonetics: "/z/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "zoo", phonetic: "zu\u02d0", meaning: "n. \u52a8\u7269\u56ed", audio: "", pos: "n.", syllables: ["zoo"] },
@@ -752,6 +785,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /\u0292/",
         slug: "unit-178",
+        phonetics: "/\u0292/",
         wordCount: 7, difficulty: 2,
         words: [
           { word: "genre", phonetic: "\u02c8\u0292\u0252\u014br\u0259", meaning: "n. \u7c7b\u578b\nn. \u4f53\u88c1\nn. \u98ce\u683c", audio: "", pos: "n.", syllables: ["gen", "re"] },
@@ -766,6 +800,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u6469\u64e6\u97f3 /\u00f0/",
         slug: "unit-179",
+        phonetics: "/\u00f0/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "that", phonetic: "\u00f0\u00e6t", meaning: "pron. \u90a3\uff0c\u90a3\u4e2a\nconj. \u5f15\u5bfc\u4ece\u53e5\uff0c\u8868\u793a\u9648\u8ff0\nadv. \u5982\u6b64\uff0c\u90a3\u4e48\ndet. \u90a3\u4e2a\uff08\u7528\u4e8e\u7279\u6307\uff09", audio: "", pos: "pron.", syllables: ["that"] },
@@ -796,6 +831,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u5377\u820c\u97f3 /r/",
         slug: "unit-180",
+        phonetics: "/r/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "rain", phonetic: "re\u026an", meaning: "n. \u96e8\nv. \u4e0b\u96e8", audio: "", pos: "n.", syllables: ["rain"] },
@@ -826,6 +862,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /t\u0283/",
         slug: "unit-181",
+        phonetics: "/t\u0283/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "chair", phonetic: "t\u0283e\u0259(r)", meaning: "n. \u6905\u5b50\nv. \u4e3b\u6301\nn. \u4e3b\u5e2d\u804c\u4f4d", audio: "", pos: "n.", syllables: ["chair"] },
@@ -848,6 +885,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /tr/",
         slug: "unit-182",
+        phonetics: "/tr/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "try", phonetic: "tra\u026a", meaning: "v. \u5c1d\u8bd5\nv. \u5ba1\u5224\nn. \u5c1d\u8bd5\nn. \u52aa\u529b", audio: "", pos: "v.", syllables: ["try"] },
@@ -870,6 +908,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /ts/",
         slug: "unit-183",
+        phonetics: "/ts/",
         wordCount: 12, difficulty: 2,
         words: [
           { word: "puts", phonetic: "p\u028ats", meaning: "3rd pers. sing. of put\nv. \u653e\u7f6e\uff08\u7b2c\u4e09\u4eba\u79f0\u5355\u6570\uff09", audio: "", syllables: ["puts"] },
@@ -889,6 +928,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /d\u0292/",
         slug: "unit-184",
+        phonetics: "/d\u0292/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "age", phonetic: "e\u026ad\u0292", meaning: "n. \u5e74\u9f84\nn. \u65f6\u4ee3\nv. \u53d8\u8001\nv. \u4f7f\u6210\u719f", audio: "", pos: "n.", syllables: ["age"] },
@@ -910,6 +950,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /dr/",
         slug: "unit-185",
+        phonetics: "/dr/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "dry", phonetic: "dra\u026a", meaning: "adj. \u5e72\u7684\uff0c\u5e72\u71e5\u7684\nv. \u4f7f\u53d8\u5e72\nadv. \u5e72\u6db8\u5730", audio: "", pos: "adj.", syllables: ["dry"] },
@@ -932,6 +973,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u7834\u64e6\u97f3 /dz/",
         slug: "unit-186",
+        phonetics: "/dz/",
         wordCount: 14, difficulty: 2,
         words: [
           { word: "beds", phonetic: "bedz", meaning: "n. \u5e8a\uff08\u590d\u6570\uff09\nn. \u74dc\u7530\uff1b\u679c\u56ed", audio: "", pos: "n.", syllables: ["beds"] },
@@ -961,6 +1003,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u9f3b\u97f3 /m/",
         slug: "unit-187",
+        phonetics: "/m/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "make", phonetic: "me\u026ak", meaning: "v. \u5236\u9020\uff1b\u505a\nv. \u4f7f\u5f97\uff1b\u8feb\u4f7f\nn. \u54c1\u724c\uff08\u5c24\u6307\u6c7d\u8f66\uff09\nn. \u5916\u8868\uff0c\u5f62\u6001", audio: "", pos: "v.", syllables: ["make"] },
@@ -983,6 +1026,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u9f3b\u97f3 /n/",
         slug: "unit-188",
+        phonetics: "/n/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "nine", phonetic: "na\u026an", meaning: "num. \u4e5d", audio: "", pos: "num.", syllables: ["nine"] },
@@ -1005,6 +1049,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u9f3b\u97f3 /\u014b/",
         slug: "unit-189",
+        phonetics: "/\u014b/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "king", phonetic: "k\u026a\u014b", meaning: "n. \u56fd\u738b\nn. \u541b\u4e3b\nn. \u6700\u91cd\u8981\u7684\u4eba\nn. \u68cb\u7c7b\u4e2d\u7684\u738b", audio: "", pos: "n.", syllables: ["king"] },
@@ -1035,6 +1080,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u820c\u4fa7\u97f3 /l/",
         slug: "unit-190",
+        phonetics: "/l/",
         wordCount: 15, difficulty: 2,
         words: [
           { word: "late", phonetic: "le\u026at", meaning: "adj. \u665a\u7684\nadj. \u8fdf\u5230\u7684\nadv. \u665a\nn. \u5df2\u6545\u7684", audio: "", pos: "adj.", syllables: ["late"] },
@@ -1065,6 +1111,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u534a\u5143\u97f3 /w/",
         slug: "unit-191",
+        phonetics: "/w/",
         wordCount: 13, difficulty: 2,
         words: [
           { word: "we", phonetic: "wi\u02d0", meaning: "pron. \u6211\u4eec", audio: "", pos: "pron.", syllables: ["we"] },
@@ -1085,6 +1132,7 @@ const T: WhaleChapter[] = [
       {
         name: "\u534a\u5143\u97f3 /j/",
         slug: "unit-192",
+        phonetics: "/j/",
         wordCount: 12, difficulty: 2,
         words: [
           { word: "new", phonetic: "nju\u02d0", meaning: "adj. \u65b0\u7684\nadj. \u521a\u51fa\u73b0\u7684\nadv. \u91cd\u65b0", audio: "", pos: "adj.", syllables: ["new"] },

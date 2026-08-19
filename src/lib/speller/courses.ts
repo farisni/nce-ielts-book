@@ -7,6 +7,8 @@ export interface SentenceEntry {
   phonetic?: string
   /** 音节划分（如 ["in","ter","stel","lar"]），答对撒花后按音节着色 */
   syllables?: string[]
+  /** 练习音素（如 "æ"）：音标显示时该音素红色突出（音标课程用） */
+  phoneticFocus?: string
 }
 
 export interface Course {

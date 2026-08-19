@@ -136,6 +136,7 @@ def main():
             lines.append(f"      {{")
             lines.append(f'        name: "{esc(t["name"])}",')
             lines.append(f'        slug: "unit-{t["id"]}",')
+            lines.append(f'        phonetics: "{esc(t["phonetics"])}",')
             lines.append(f"        wordCount: {len(t['words'])}, difficulty: 2,")
             lines.append(f"        words: [")
             for w in t["words"]:

@@ -1357,7 +1357,8 @@ export default function SentencePractice({
         <div key={`cn-${index}`} className="mt-[100px] text-center">
             {/* 音标：大字置顶；默认隐藏，显示答案时出现。固定行高占位（输入区不位移）。
                 词组（多词）每个词的音标独立用 /…/ 包围；
-                段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
+                段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音；
+                phoneticFocus（音标课程练习音素）在音标内红色突出 */}
             <p className="h-[1.5em] text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
               {((revealed || passed) || alwaysShowInfo) && sentence.phonetic
                 ? sentence.phonetic
@@ -1365,11 +1366,26 @@ export default function SentencePractice({
                     .replace(/^\/+|\/+$/g, "")
                     .split(/\s+/)
                     .filter(Boolean)
-                    .map((seg, i) => (
-                      <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
-                        / {seg.split(/[,;]/)[0].trim()} /
-                      </span>
-                    ))
+                    .map((seg, i) => {
+                      const clean = seg.split(/[,;]/)[0].trim()
+                      const focus = sentence.phoneticFocus
+                      const fi = focus ? clean.indexOf(focus) : -1
+                      return (
+                        <span key={i} className={i > 0 ? "ml-[0.45em]" : ""}>
+                          /
+                          {fi >= 0 ? (
+                            <>
+                              {clean.slice(0, fi)}
+                              <span className="font-semibold text-rose-500">{focus!}</span>
+                              {clean.slice(fi + focus!.length)}
+                            </>
+                          ) : (
+                            clean
+                          )}
+                          {String.fromCharCode(0x2009)}/
+                        </span>
+                      )
+                    })
                 : null}
             </p>
             {/* 中文释义：小字放音标下方；默认隐藏，显示答案时出现。
