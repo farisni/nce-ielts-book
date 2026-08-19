@@ -70,10 +70,10 @@ export default function PhonicsPage() {
   );
 }
 
-/** 巧记表单元格：组合（首字母黑、修饰蓝）+ 多个音标 */
+/** 巧记表单元格：组合（首字母黑、修饰蓝）+ 多个音标（每个音标配示例单词） */
 interface MnemonicEntry {
   pattern: string
-  ipa: string[]
+  ipa: { ph: string; w: string }[]
   /** 位于元音列（a e i o u）：不区分颜色整体黑色；magic-e 结构用下划线 */
   plain?: boolean
 }
@@ -85,81 +85,81 @@ const MNEMONIC_COLS = ["r", "y", "w", "l", "a", "e", "i", "o", "u"] as const;
 const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Record<(typeof MNEMONIC_COLS)[number], MnemonicEntry[]>>; other: MnemonicEntry[] }> = {
   a: {
     cols: {
-      r: [{ pattern: "ar", ipa: ["ɑː", "ɔː", "ə"] }],
-      y: [{ pattern: "ay", ipa: ["eɪ"] }],
-      w: [{ pattern: "aw", ipa: ["ɔː"] }],
-      l: [{ pattern: "al", ipa: ["ɔː", "ɑː"] }],
-      e: [{ pattern: "a_e", ipa: ["eɪ"], plain: true }],
-      i: [{ pattern: "ai", ipa: ["eɪ"], plain: true }],
-      u: [{ pattern: "au", ipa: ["ɔː", "ɑː"], plain: true }],
+      r: [{ pattern: "ar", ipa: [{ ph: "ɑː", w: "are" }, { ph: "ɔː", w: "warm" }, { ph: "ə", w: "dollar" }] }],
+      y: [{ pattern: "ay", ipa: [{ ph: "eɪ", w: "day" }] }],
+      w: [{ pattern: "aw", ipa: [{ ph: "ɔː", w: "saw" }] }],
+      l: [{ pattern: "al", ipa: [{ ph: "ɔː", w: "ball" }, { ph: "ɑː", w: "half" }] }],
+      e: [{ pattern: "a_e", ipa: [{ ph: "eɪ", w: "make" }], plain: true }],
+      i: [{ pattern: "ai", ipa: [{ ph: "eɪ", w: "rain" }], plain: true }],
+      u: [{ pattern: "au", ipa: [{ ph: "ɔː", w: "sauce" }, { ph: "ɑː", w: "laugh" }], plain: true }],
     },
     other: [
-      { pattern: "air", ipa: ["eə"] },
-      { pattern: "are", ipa: ["eə"] },
-      { pattern: "augh", ipa: ["ɔː"] },
-      { pattern: "an", ipa: ["æn", "ən"] },
+      { pattern: "air", ipa: [{ ph: "eə", w: "chair" }] },
+      { pattern: "are", ipa: [{ ph: "eə", w: "care" }] },
+      { pattern: "augh", ipa: [{ ph: "ɔː", w: "caught" }] },
+      { pattern: "an", ipa: [{ ph: "æn", w: "man" }, { ph: "ən", w: "organ" }] },
     ],
   },
   e: {
     cols: {
-      r: [{ pattern: "er", ipa: ["ɜː"] }],
-      y: [{ pattern: "ey", ipa: ["eɪ"] }],
-      w: [{ pattern: "ew", ipa: ["juː"] }],
-      a: [{ pattern: "ea", ipa: ["iː", "e"], plain: true }],
-      e: [{ pattern: "e_e", ipa: ["iː"], plain: true }],
-      i: [{ pattern: "ei", ipa: ["iː", "eɪ"], plain: true }],
+      r: [{ pattern: "er", ipa: [{ ph: "ɜː", w: "her" }] }],
+      y: [{ pattern: "ey", ipa: [{ ph: "eɪ", w: "they" }] }],
+      w: [{ pattern: "ew", ipa: [{ ph: "juː", w: "new" }] }],
+      a: [{ pattern: "ea", ipa: [{ ph: "iː", w: "tea" }, { ph: "e", w: "bread" }], plain: true }],
+      e: [{ pattern: "e_e", ipa: [{ ph: "iː", w: "these" }], plain: true }],
+      i: [{ pattern: "ei", ipa: [{ ph: "iː", w: "receive" }, { ph: "eɪ", w: "vein" }], plain: true }],
     },
     other: [
-      { pattern: "ear", ipa: ["ɪə", "eə", "ɜː", "ɑː"] },
-      { pattern: "eer", ipa: ["ɪə"] },
-      { pattern: "ere", ipa: ["ɪə", "eə"] },
-      { pattern: "eigh", ipa: ["eɪ"] },
-      { pattern: "en", ipa: ["ən", "en"] },
+      { pattern: "ear", ipa: [{ ph: "ɪə", w: "hear" }, { ph: "eə", w: "bear" }, { ph: "ɜː", w: "earth" }, { ph: "ɑː", w: "heart" }] },
+      { pattern: "eer", ipa: [{ ph: "ɪə", w: "deer" }] },
+      { pattern: "ere", ipa: [{ ph: "ɪə", w: "here" }, { ph: "eə", w: "there" }] },
+      { pattern: "eigh", ipa: [{ ph: "eɪ", w: "eight" }] },
+      { pattern: "en", ipa: [{ ph: "ən", w: "open" }, { ph: "en", w: "hen" }] },
     ],
   },
   i: {
     cols: {
-      r: [{ pattern: "ir", ipa: ["ɜː"] }],
-      a: [{ pattern: "ia", ipa: ["aɪə"], plain: true }],
-      e: [{ pattern: "i_e", ipa: ["aɪ"], plain: true }],
+      r: [{ pattern: "ir", ipa: [{ ph: "ɜː", w: "bird" }] }],
+      a: [{ pattern: "ia", ipa: [{ ph: "aɪə", w: "piano" }], plain: true }],
+      e: [{ pattern: "i_e", ipa: [{ ph: "aɪ", w: "like" }], plain: true }],
     },
     other: [
-      { pattern: "ie", ipa: ["aɪ"] },
-      { pattern: "igh", ipa: ["aɪ"] },
-      { pattern: "ire", ipa: ["aɪə"] },
-      { pattern: "ign", ipa: ["aɪn"] },
-      { pattern: "in", ipa: ["ɪn"] },
+      { pattern: "ie", ipa: [{ ph: "aɪ", w: "pie" }] },
+      { pattern: "igh", ipa: [{ ph: "aɪ", w: "light" }] },
+      { pattern: "ire", ipa: [{ ph: "aɪə", w: "fire" }] },
+      { pattern: "ign", ipa: [{ ph: "aɪn", w: "sign" }] },
+      { pattern: "in", ipa: [{ ph: "ɪn", w: "pin" }] },
     ],
   },
   o: {
     cols: {
-      r: [{ pattern: "or", ipa: ["ɔː"] }],
-      y: [{ pattern: "oy", ipa: ["ɔɪ"] }],
-      w: [{ pattern: "ow", ipa: ["aʊ", "əʊ"] }],
-      a: [{ pattern: "oa", ipa: ["əʊ"], plain: true }],
-      e: [{ pattern: "o_e", ipa: ["əʊ"], plain: true }],
-      i: [{ pattern: "oi", ipa: ["ɔɪ"], plain: true }],
-      o: [{ pattern: "oo", ipa: ["uː", "ʊ", "ʌ"], plain: true }],
+      r: [{ pattern: "or", ipa: [{ ph: "ɔː", w: "for" }] }],
+      y: [{ pattern: "oy", ipa: [{ ph: "ɔɪ", w: "boy" }] }],
+      w: [{ pattern: "ow", ipa: [{ ph: "aʊ", w: "cow" }, { ph: "əʊ", w: "snow" }] }],
+      a: [{ pattern: "oa", ipa: [{ ph: "əʊ", w: "boat" }], plain: true }],
+      e: [{ pattern: "o_e", ipa: [{ ph: "əʊ", w: "home" }], plain: true }],
+      i: [{ pattern: "oi", ipa: [{ ph: "ɔɪ", w: "coin" }], plain: true }],
+      o: [{ pattern: "oo", ipa: [{ ph: "uː", w: "moon" }, { ph: "ʊ", w: "book" }, { ph: "ʌ", w: "blood" }], plain: true }],
     },
     other: [
-      { pattern: "ou", ipa: ["aʊ", "uː"] },
-      { pattern: "oor", ipa: ["ɔː"] },
-      { pattern: "oar", ipa: ["ɔː"] },
-      { pattern: "oul", ipa: ["ʊ", "uː"] },
-      { pattern: "our", ipa: ["aʊə", "ɔː", "ɜː"] },
-      { pattern: "ure", ipa: ["jʊə"] },
+      { pattern: "ou", ipa: [{ ph: "aʊ", w: "house" }, { ph: "uː", w: "you" }] },
+      { pattern: "oor", ipa: [{ ph: "ɔː", w: "door" }] },
+      { pattern: "oar", ipa: [{ ph: "ɔː", w: "board" }] },
+      { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }, { ph: "uː", w: "should" }] },
+      { pattern: "our", ipa: [{ ph: "aʊə", w: "hour" }, { ph: "ɔː", w: "four" }, { ph: "ɜː", w: "journey" }] },
+      { pattern: "ure", ipa: [{ ph: "jʊə", w: "cure" }] },
     ],
   },
   u: {
     cols: {
-      r: [{ pattern: "ur", ipa: ["ɜː"] }],
-      y: [{ pattern: "uy", ipa: ["aɪ"] }],
-      e: [{ pattern: "u_e", ipa: ["juː", "uː"], plain: true }],
-      i: [{ pattern: "ui", ipa: ["ɪ", "uː"], plain: true }],
+      r: [{ pattern: "ur", ipa: [{ ph: "ɜː", w: "fur" }] }],
+      y: [{ pattern: "uy", ipa: [{ ph: "aɪ", w: "buy" }] }],
+      e: [{ pattern: "u_e", ipa: [{ ph: "juː", w: "use" }, { ph: "uː", w: "rule" }], plain: true }],
+      i: [{ pattern: "ui", ipa: [{ ph: "ɪ", w: "build" }, { ph: "uː", w: "fruit" }], plain: true }],
     },
     other: [
-      { pattern: "ue", ipa: ["juː", "uː"] },
-      { pattern: "ure", ipa: ["jʊə"] },
+      { pattern: "ue", ipa: [{ ph: "juː", w: "cue" }, { ph: "uː", w: "blue" }] },
+      { pattern: "ure", ipa: [{ ph: "jʊə", w: "sure" }] },
     ],
   },
 };
@@ -257,9 +257,9 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
         <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
       </span>
       <span className="ml-1 text-[0.65rem] text-muted-foreground">
-        {entry.ipa.map((ph, i) => (
-          <span key={ph}>
-            {i > 0 && " "}[{ph}]
+        {entry.ipa.map((it, i) => (
+          <span key={it.ph}>
+            {i > 0 && " "}[{it.ph}] <span className="text-foreground/80">{it.w}</span>
           </span>
         ))}
       </span>
@@ -281,11 +281,11 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
           <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
         )}
       </span>
-      {/* 多音标：一行一个，竖排；每行固定高度 */}
+      {/* 多音标：一行一个，竖排；每行固定高度；音标同行紧跟示例单词 */}
       <span className="flex flex-col items-center text-[0.65rem] text-muted-foreground">
-        {entry.ipa.map((ph) => (
-          <span key={ph} className="flex h-4 items-center leading-none">
-            [{ph}]
+        {entry.ipa.map((it) => (
+          <span key={it.ph} className="flex h-4 items-center leading-none">
+            [{it.ph}] <span className="ml-0.5 text-foreground/80">{it.w}</span>
           </span>
         ))}
       </span>
