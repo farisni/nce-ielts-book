@@ -365,3 +365,26 @@ export function getPhonicsVowelTest(chapterSlug: string, testSlug: string): Whal
   const ch = T.find((c) => c.slug === chapterSlug)
   return ch?.tests.find((t) => t.slug === testSlug)
 }
+
+/** 按音标分组：发同一音（phonemeMap[0].ipa）的词归一组（如 ɜː → work/bird/her…） */
+export interface PhonemeGroup {
+  /** 音标（如 "ɜː"） */
+  ph: string
+  /** 发该音的词（含所属组合的 phonemeMap，答对后组合字母标红） */
+  words: (typeof T)[number]["tests"][number]["words"][number][]
+}
+
+export function getPhonemeGroups(): PhonemeGroup[] {
+  const map = new Map<string, PhonemeGroup["words"]>()
+  for (const ch of T) {
+    for (const t of ch.tests) {
+      for (const w of t.words) {
+        const ph = w.phonemeMap?.[0]?.ipa
+        if (!ph) continue
+        if (!map.has(ph)) map.set(ph, [])
+        map.get(ph)!.push(w)
+      }
+    }
+  }
+  return [...map.entries()].map(([ph, words]) => ({ ph, words }))
+}

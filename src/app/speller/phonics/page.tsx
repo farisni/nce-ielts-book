@@ -70,6 +70,19 @@ function VowelMnemonicTable() {
         >
           进入拼写 →
         </Link>
+        <span className="text-sm text-muted-foreground/60">模式：</span>
+        <Link
+          href="/speller/phonics-dictation/vowel-a"
+          className="rounded-md border border-border px-2 py-0.5 text-xs font-medium text-foreground transition-colors hover:border-ring/60"
+        >
+          按组合
+        </Link>
+        <Link
+          href="/speller/phonics-dictation/phoneme"
+          className="rounded-md border border-border px-2 py-0.5 text-xs font-medium text-foreground transition-colors hover:border-ring/60"
+        >
+          按音标
+        </Link>
       </div>
       <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] border-l border-t border-border">
         {/* 表头 */}
