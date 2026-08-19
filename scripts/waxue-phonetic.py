@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 爬取哇学社「英式音标轻松学」（lesson 4）全部 48 个音标单元与单词数据，
-生成 src/lib/speller/waxue-phonetic.ts（WhaleChapter[] 结构，按音标类别分 Chapter）。
+生成 src/lib/speller/phonetic.ts（WhaleChapter[] 结构，按音标类别分 Chapter）。
 
 - 数据源：api.waxueshe.com/api/v2/phonetic/lesson_details + chapter_details
 - 需登录 token（从 /tmp/waxue-token.txt 读，或用 --token 传入）
@@ -17,7 +17,7 @@ import urllib.request
 
 API = "https://api.waxueshe.com/api/v2/phonetic/{}"
 LESSON_ID = 4
-OUT = "src/lib/speller/waxue-phonetic.ts"
+OUT = "src/lib/speller/phonetic.ts"
 
 
 def get_token() -> str:

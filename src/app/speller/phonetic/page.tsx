@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { WAXUE_CHAPTERS } from "@/lib/speller/waxue-phonetic";
+import { WAXUE_CHAPTERS } from "@/lib/speller/phonetic";
 import { getAllProgress } from "@/lib/speller/progress";
 
 /**
@@ -24,7 +24,7 @@ export default function WhaleListeningPage() {
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("speller:waxue-chapter");
+      const saved = window.localStorage.getItem("speller:phonetic-chapter");
       if (saved && WAXUE_CHAPTERS.some((c) => c.slug === saved)) {
         setOpenChapter(saved);
       } else {
@@ -39,7 +39,7 @@ export default function WhaleListeningPage() {
         const pos: Record<string, number> = {};
         for (const ch of WAXUE_CHAPTERS) {
           for (const t of ch.tests) {
-            const last = map[`waxue-${ch.slug}-${t.slug}`]?.lastPos ?? 0;
+            const last = map[`phonetic-${ch.slug}-${t.slug}`]?.lastPos ?? 0;
             if (last > 0) pos[`${ch.slug}/${t.slug}`] = last + 1; // 0-based → 第 N 词
           }
         }
@@ -51,7 +51,7 @@ export default function WhaleListeningPage() {
   const toggleChapter = (slug: string, isOpen: boolean) => {
     setOpenChapter(isOpen ? null : slug);
     try {
-      window.localStorage.setItem("speller:waxue-chapter", slug);
+      window.localStorage.setItem("speller:phonetic-chapter", slug);
     } catch {
       // ignore
     }
@@ -110,7 +110,7 @@ export default function WhaleListeningPage() {
                       return (
                         <li key={t.slug}>
                           <Link
-                            href={`/speller/waxue-phonetic/${ch.slug}/${t.slug}`}
+                            href={`/speller/phonetic/${ch.slug}/${t.slug}`}
                             className="group flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-muted/40"
                           >
                             <div>

@@ -121,7 +121,7 @@ export default function SpellerPage() {
 
         {/* 英式音标轻松学 · 音标单词听写课程（48 单元） */}
         <Link
-          href="/speller/waxue-phonetic"
+          href="/speller/phonetic"
           className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
         >
           <div className="flex items-start justify-between gap-4">

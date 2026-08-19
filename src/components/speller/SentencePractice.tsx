@@ -369,6 +369,7 @@ export default function SentencePractice({
   onStopVoice,
   voicePlaying,
   restoreKey,
+  initialRevealed = false,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -398,6 +399,9 @@ export default function SentencePractice({
   voicePlaying?: boolean
   /** 位置记忆键（如 "wang-listening/chapter-3/test-1"）：下次进入从上次听写到的位置继续 */
   restoreKey?: string
+  /** 默认显示答案：进入即显示音标/释义（如音标课程直接展示发音，省去每次按右⌘）；
+   *  切句后延续（与 revealed 状态一致） */
+  initialRevealed?: boolean
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess, unlockAudio } = useGameSounds()
@@ -696,17 +700,17 @@ export default function SentencePractice({
         setSession((prev) => prev.map((item, k) => (k === index ? target : item)))
         setSessionSrcIdx((prev) => prev.map((v, k) => (k === index ? courseIndex : v)))
       }
-      // 重置输入状态，进入该句听写
+      // 重置输入状态，进入该句听写（默认显示答案课程保持 initialRevealed）
       inputSnapshotRef.current = null
-      setWordInputs(getWords(target.en).map(() => ""))
+      setWordInputs(initialRevealed ? getWords(target.en) : getWords(target.en).map(() => ""))
       setActiveIdx(0)
       setSubmitted(false)
-      setRevealed(false)
+      setRevealed(initialRevealed)
       setPassed(false)
       // 外部联动（视频页：SRT 定位该句原声）
       onJumpToSentence?.(courseIndex)
     },
-    [course, sessionSrcIdx, index, onJumpToSentence],
+    [course, sessionSrcIdx, index, onJumpToSentence, initialRevealed],
   )
 
   // 提交通过后稍作停留（撒花动画），自动进入下一句
@@ -741,10 +745,10 @@ export default function SentencePractice({
     setSessionSrcIdx(idx)
     setIndex(start)
     inputSnapshotRef.current = null
-    setWordInputs(getWords(s[start].en).map(() => ""))
+    setWordInputs(initialRevealed ? getWords(s[start].en).map((w) => w) : getWords(s[start].en).map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
-    setRevealed(false)
+    setRevealed(initialRevealed)
     setPassed(false)
     setPassedCount(0)
     setErrorCount(0)
@@ -754,7 +758,7 @@ export default function SentencePractice({
     setElapsed(0)
     setStartAt(Date.now())
     setPhase("playing")
-  }, [restoreKey, restoredPos])
+  }, [restoreKey, restoredPos, initialRevealed])
 
   // 记住当前位置：切句/跳转时写入数据库，下次进入从该位置继续。
   // deps 只用 course.id：course 对象每次 render 都是新引用，若进 deps 会随计时器

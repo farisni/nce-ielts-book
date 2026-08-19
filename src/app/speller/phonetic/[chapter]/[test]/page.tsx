@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import SentencePractice from "@/components/speller/SentencePractice";
-import { getWaxueTest } from "@/lib/speller/waxue-phonetic";
+import { getWaxueTest } from "@/lib/speller/phonetic";
 import type { Course } from "@/lib/speller/courses";
 
 /**
@@ -72,7 +72,7 @@ export default function WhaleDictationPage() {
   // sessionSize = 整个 Test 的词数：一次练完全部单词，进度条反映 Test 真实进度
   // 音标：部分源数据用 ASCII 撇号 ' 表重音，转标准 IPA ˈ；// 包围由 SentencePractice 统一处理
   const course: Course = {
-    id: `waxue-${chapterSlug}-${testSlug}`,
+    id: `phonetic-${chapterSlug}-${testSlug}`,
     name: `${chapterSlug.replace("chapter-", "Chapter ")} · ${test.name}`,
     description: `英式音标 · ${test.words.length} 词`,
     sessionSize: test.words.length,
@@ -101,7 +101,8 @@ export default function WhaleDictationPage() {
           waveAudioRef={audioRef}
           confettiOrigin={{ x: 0.5, y: 0.6 }}
           restoreKey={course.id}
-          onExit={() => router.push("/speller/waxue-phonetic")}
+          initialRevealed
+          onExit={() => router.push("/speller/phonetic")}
         />
       </div>
 
