@@ -261,10 +261,12 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
           <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
         )}
       </span>
-      {/* 多音标：一行一个，竖排 */}
-      <span className="flex flex-col items-center text-[0.65rem] leading-tight text-muted-foreground">
+      {/* 多音标：一行一个，竖排；每行固定高度 */}
+      <span className="flex flex-col items-center text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((ph) => (
-          <span key={ph}>[{ph}]</span>
+          <span key={ph} className="flex h-4 items-center leading-none">
+            [{ph}]
+          </span>
         ))}
       </span>
     </span>
