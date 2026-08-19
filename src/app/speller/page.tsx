@@ -89,35 +89,68 @@ export default function SpellerPage() {
           </div>
         </div>
 
-        {/* 雅思王听力 · 单词听写课程（Chapter → Test 层级） */}
-        <Link
-          href="/speller/wang-listening"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                👑
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">雅思王听力</h2>
-                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-                    单词听写
-                  </span>
-                </div>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  特别名词 · 按 Chapter / Test 分组，听原声，打单词
-                </p>
+        {/* 雅思单词听力 · 一个卡片涵盖全部词汇听写，点击直达各课程 */}
+        <div className="overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+              📚
+            </span>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold text-foreground">雅思单词听力</h2>
+                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                  单词听写
+                </span>
               </div>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                王听力 · 807 · 词汇真经，听原声，打单词
+              </p>
             </div>
-            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
           </div>
 
-          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
-            选择 Test →
-          </span>
-        </Link>
+          {/* 各词汇课程入口 */}
+          <div className="mt-4 space-y-2">
+            <Link
+              href="/speller/wang-listening"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">👑</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">雅思王听力</div>
+                  <div className="text-xs text-muted-foreground">特别名词 · 按 Chapter / Test 分组</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/speller/lexicon-807"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">🗂️</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">807 雅思词汇</div>
+                  <div className="text-xs text-muted-foreground">26 个场景 · 4340 词</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/speller/zhenjing"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📖</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">雅思词汇真经</div>
+                  <div className="text-xs text-muted-foreground">22 个 Unit · 3674 词</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
 
         {/* 英式音标听力 · 音标单词听写课程（48 单元） */}
         <Link
@@ -149,66 +182,6 @@ export default function SpellerPage() {
           </span>
         </Link>
 
-
-        {/* 雅思词汇真经 · 单词听写课程（22 Unit） */}
-        <Link
-          href="/speller/zhenjing"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                📖
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">雅思词汇真经</h2>
-                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-                    单词听写
-                  </span>
-                </div>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  22 个 Unit · 3674 词，听原声，打单词
-                </p>
-              </div>
-            </div>
-            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
-          </div>
-
-          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
-            选择 Unit →
-          </span>
-        </Link>
-
-        {/* 807 雅思词汇 · 场景单词听写课程（26 场景） */}
-        <Link
-          href="/speller/lexicon-807"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                🗂️
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">807 雅思词汇</h2>
-                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-                    单词听写
-                  </span>
-                </div>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  26 个场景 · 4340 词，听原声，打单词
-                </p>
-              </div>
-            </div>
-            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
-          </div>
-
-          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
-            选择场景 →
-          </span>
-        </Link>
 
         {/* 自然拼读规则表 */}
         <Link
