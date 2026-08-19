@@ -251,8 +251,9 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
   const p = entry.pattern;
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
-      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；元音列（plain）整体黑色 */}
-      <span className={`font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
+      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；元音列（plain）整体黑色。
+          组合行固定高度，音标从同一位置开始对齐 */}
+      <span className={`flex h-6 items-center justify-center font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
         {p[0]}
         {entry.plain ? (
           p.slice(1)
