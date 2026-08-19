@@ -97,6 +97,16 @@ export default function PhoneticPage() {
                       <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
                         {t.phonetics ?? t.name.replace(/.*\//, "/")}
                       </span>
+                      {/* 摘要：该音标的所有拼写组合形式（红紫交替，与单词高亮一致） */}
+                      {patterns.length > 0 && (
+                        <span className="mt-1 flex flex-wrap justify-center gap-x-1.5 text-sm font-semibold leading-tight">
+                          {patterns.map((pt) => (
+                            <span key={pt} className={spellColors[pt]}>
+                              {pt}
+                            </span>
+                          ))}
+                        </span>
+                      )}
                       <span className="mt-0.5 text-xs text-muted-foreground">{t.words.length} 词</span>
                       {pos !== undefined && (
                         <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
