@@ -15,15 +15,10 @@ export default function PhoneticPage() {
   // 各类别的上次听写位置：{ chapterSlug: 单词序号（从 1 起，类别整体进度） }
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
 
-  // 播放音素标准发音（/audio/phonetic/ipa/{音素}.aac；个别音素为 mp3 时自动兜底）
+  // 播放音素标准发音（/audio/phonetic/ipa/{音素}.aac）
   const playIpa = (phonetics: string) => {
     const ph = phonetics.replace(/\//g, "");
-    const a = new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.aac`);
-    a.onerror = () => {
-      const b = new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.mp3`);
-      b.play().catch(() => {});
-    };
-    a.play().catch(() => {});
+    new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.aac`).play().catch(() => {});
   };
 
   // 播放单词原声（有 mp3 播原声，无则 TTS）
