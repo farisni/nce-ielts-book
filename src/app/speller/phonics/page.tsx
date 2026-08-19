@@ -70,6 +70,7 @@ export default function PhonicsPage() {
         title="辅音组合"
         count={CONSONANT_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
         groups={CONSONANT_GROUPS}
+        enterHref="/speller/phonics-consonant-dictation/consonant-begin"
       />
 
       {/* 表 3 · 元辅组合 */}
