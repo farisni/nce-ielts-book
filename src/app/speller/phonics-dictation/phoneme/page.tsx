@@ -102,12 +102,12 @@ export default function PhonemeListPage() {
                 key={`${g.ph}-ipa`}
                 type="button"
                 onClick={() => playIpa(g.ph)}
-                title={`播放 [${g.ph}] 发音`}
+                title={`播放 /${g.ph}/ 发音`}
                 className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-2 py-3 transition-colors hover:bg-muted/40"
                 style={{ gridColumn: 1, gridRow: `${startRow} / span ${rows}` }}
               >
                 <span className="text-lg font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
-                  [{g.ph}]
+                  /{g.ph}/
                 </span>
                 {/* 该音标的全部拼写组合（红紫交替，一行三个压低单元格） */}
                 {patterns.length > 0 && (

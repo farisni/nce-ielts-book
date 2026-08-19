@@ -49,8 +49,8 @@ export default function PhonemeDictationPage() {
 
   const course: Course = {
     id: `phonics-phoneme-${ph}`,
-    name: `[${ph}] · 元音组合听写`,
-    description: `音标 [${ph}] · ${group.words.length} 词`,
+    name: `/${ph}/ · 元音组合听写`,
+    description: `音标 /${ph}/ · ${group.words.length} 词`,
     sessionSize: group.words.length,
     sentences: group.words.map((w) => ({
       cn: w.meaning,
