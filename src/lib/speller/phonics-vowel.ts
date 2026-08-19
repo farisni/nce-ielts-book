@@ -15,8 +15,8 @@ const T: WhaleChapter[] = [
         wordCount: 3, difficulty: 2,
         words: [
           { word: "are", phonetic: "\u0251\u02d0(r); \u0259(r)", meaning: "v. \u662f\uff08be \u7684\u590d\u6570\u5f62\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-a/are.mp3", syllables: ["ar", "e"], phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "ar" }] },
-          { word: "warm", phonetic: "w\u0254\u02d0m", meaning: "adj. \u6e29\u6696\u7684\uff1b\u70ed\u60c5\u7684", audio: "/audio/phonics-vowel/vowel-a/warm.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "ar" }] },
-          { word: "dollar", phonetic: "\u02c8d\u0252l\u0259(r)", meaning: "n. \u7f8e\u5143\uff1b\u5143", audio: "/audio/phonics-vowel/vowel-a/dollar.mp3", syllables: ["dol", "lar"], phonemeMap: [{ ipa: "\u0259", spelling: "ar" }] },
+          { word: "warm", phonetic: "w\u0254\u02d0m", meaning: "adj. \u6e29\u6696\u7684", audio: "/audio/phonics-vowel/vowel-a/warm.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "ar" }] },
+          { word: "dollar", phonetic: "\u02c8d\u0252l\u0259(r)", meaning: "n. \u7f8e\u5143", audio: "/audio/phonics-vowel/vowel-a/dollar.mp3", syllables: ["dol", "lar"], phonemeMap: [{ ipa: "\u0259", spelling: "ar" }] },
         ],
       },
       {
@@ -24,7 +24,7 @@ const T: WhaleChapter[] = [
         slug: "ay",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "day", phonetic: "de\u026a", meaning: "n. \u5929\uff1b\u767d\u5929", audio: "/audio/phonics-vowel/vowel-a/day.mp3", syllables: ["da", "y"], phonemeMap: [{ ipa: "e\u026a", spelling: "ay" }] },
+          { word: "day", phonetic: "de\u026a", meaning: "n. \u5929", audio: "/audio/phonics-vowel/vowel-a/day.mp3", syllables: ["da", "y"], phonemeMap: [{ ipa: "e\u026a", spelling: "ay" }] },
         ],
       },
       {
@@ -32,7 +32,7 @@ const T: WhaleChapter[] = [
         slug: "aw",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "saw", phonetic: "s\u0254\u02d0", meaning: "n. \u952f\uff1bv. \u770b\u89c1\uff08see \u7684\u8fc7\u53bb\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-a/saw.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "aw" }] },
+          { word: "saw", phonetic: "s\u0254\u02d0", meaning: "v. \u770b\u89c1\uff08see \u7684\u8fc7\u53bb\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-a/saw.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "aw" }] },
         ],
       },
       {
@@ -40,8 +40,8 @@ const T: WhaleChapter[] = [
         slug: "al",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "ball", phonetic: "b\u02c8\u0254l", meaning: "n. \u7403\uff1b\u821e\u4f1a", audio: "/audio/phonics-vowel/vowel-a/ball.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "al" }] },
-          { word: "half", phonetic: "h\u0251\u02d0f", meaning: "n. \u4e00\u534a\uff1badj. \u4e00\u534a\u7684", audio: "/audio/phonics-vowel/vowel-a/half.mp3", phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "al" }] },
+          { word: "ball", phonetic: "b\u02c8\u0254l", meaning: "n. \u7403", audio: "/audio/phonics-vowel/vowel-a/ball.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "al" }] },
+          { word: "half", phonetic: "h\u0251\u02d0f", meaning: "n. \u4e00\u534a", audio: "/audio/phonics-vowel/vowel-a/half.mp3", phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "al" }] },
         ],
       },
       {
@@ -49,7 +49,7 @@ const T: WhaleChapter[] = [
         slug: "a_e",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "make", phonetic: "me\u026ak", meaning: "v. \u5236\u4f5c\uff1b\u4f7f", audio: "/audio/phonics-vowel/vowel-a/make.mp3", phonemeMap: [{ ipa: "e\u026a", spelling: "a" }, { ipa: "e\u026a", spelling: "e" }] },
+          { word: "make", phonetic: "me\u026ak", meaning: "v. \u5236\u4f5c", audio: "/audio/phonics-vowel/vowel-a/make.mp3", phonemeMap: [{ ipa: "e\u026a", spelling: "a" }, { ipa: "e\u026a", spelling: "e" }] },
         ],
       },
       {
@@ -57,7 +57,7 @@ const T: WhaleChapter[] = [
         slug: "ai",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "rain", phonetic: "re\u026an", meaning: "n. \u96e8\uff1bv. \u4e0b\u96e8", audio: "/audio/phonics-vowel/vowel-a/rain.mp3", syllables: ["ra", "in"], phonemeMap: [{ ipa: "e\u026a", spelling: "ai" }] },
+          { word: "rain", phonetic: "re\u026an", meaning: "n. \u96e8", audio: "/audio/phonics-vowel/vowel-a/rain.mp3", syllables: ["ra", "in"], phonemeMap: [{ ipa: "e\u026a", spelling: "ai" }] },
         ],
       },
       {
@@ -65,8 +65,8 @@ const T: WhaleChapter[] = [
         slug: "au",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "sauce", phonetic: "s\u0254\u02d0s", meaning: "n. \u9171\uff1b\u8c03\u5473\u6c41", audio: "/audio/phonics-vowel/vowel-a/sauce.mp3", syllables: ["sa", "uce"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "au" }] },
-          { word: "laugh", phonetic: "l\u0251\u02d0f", meaning: "v. \u7b11\uff1bn. \u7b11\u58f0", audio: "/audio/phonics-vowel/vowel-a/laugh.mp3", syllables: ["la", "ugh"], phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "au" }] },
+          { word: "sauce", phonetic: "s\u0254\u02d0s", meaning: "n. \u9171", audio: "/audio/phonics-vowel/vowel-a/sauce.mp3", syllables: ["sa", "uce"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "au" }] },
+          { word: "laugh", phonetic: "l\u0251\u02d0f", meaning: "v. \u7b11", audio: "/audio/phonics-vowel/vowel-a/laugh.mp3", syllables: ["la", "ugh"], phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "au" }] },
         ],
       },
       {
@@ -74,11 +74,11 @@ const T: WhaleChapter[] = [
         slug: "air|an|are|augh",
         wordCount: 5, difficulty: 2,
         words: [
-          { word: "chair", phonetic: "t\u0283e\u0259(r)", meaning: "n. \u6905\u5b50\uff1b\u4e3b\u5e2d", audio: "/audio/phonics-vowel/vowel-a/chair.mp3", syllables: ["cha", "ir"], phonemeMap: [{ ipa: "e\u0259", spelling: "air" }] },
-          { word: "care", phonetic: "ke\u0259(r)", meaning: "v. \u5173\u5fc3\uff1b\u5728\u610f\uff1bn. \u7167\u987e", audio: "/audio/phonics-vowel/vowel-a/care.mp3", phonemeMap: [{ ipa: "e\u0259", spelling: "are" }] },
+          { word: "chair", phonetic: "t\u0283e\u0259(r)", meaning: "n. \u6905\u5b50", audio: "/audio/phonics-vowel/vowel-a/chair.mp3", syllables: ["cha", "ir"], phonemeMap: [{ ipa: "e\u0259", spelling: "air" }] },
+          { word: "care", phonetic: "ke\u0259(r)", meaning: "v. \u5173\u5fc3", audio: "/audio/phonics-vowel/vowel-a/care.mp3", phonemeMap: [{ ipa: "e\u0259", spelling: "are" }] },
           { word: "caught", phonetic: "k\u0254\u02d0t", meaning: "v. \u6293\u4f4f\uff08catch \u7684\u8fc7\u53bb\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-a/caught.mp3", syllables: ["ca", "ught"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "augh" }] },
-          { word: "man", phonetic: "m\u00e6n", meaning: "n. \u7537\u4eba\uff1b\u4eba", audio: "/audio/phonics-vowel/vowel-a/man.mp3", phonemeMap: [{ ipa: "\u00e6n", spelling: "an" }] },
-          { word: "organ", phonetic: "\u02c8\u0254\u02d0\u0261\u0259n", meaning: "n. \u5668\u5b98\uff1b\u98ce\u7434", audio: "/audio/phonics-vowel/vowel-a/organ.mp3", syllables: ["or", "gan"], phonemeMap: [{ ipa: "\u0259n", spelling: "an" }] },
+          { word: "man", phonetic: "m\u00e6n", meaning: "n. \u7537\u4eba", audio: "/audio/phonics-vowel/vowel-a/man.mp3", phonemeMap: [{ ipa: "\u00e6n", spelling: "an" }] },
+          { word: "organ", phonetic: "\u02c8\u0254\u02d0\u0261\u0259n", meaning: "n. \u5668\u5b98", audio: "/audio/phonics-vowel/vowel-a/organ.mp3", syllables: ["or", "gan"], phonemeMap: [{ ipa: "\u0259n", spelling: "an" }] },
         ],
       },
     ],
@@ -94,7 +94,7 @@ const T: WhaleChapter[] = [
         slug: "er",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "her", phonetic: "h\u025c\u02d0(r); h\u0259(r)", meaning: "pron. \u5979\uff1b\u5979\u7684", audio: "/audio/phonics-vowel/vowel-e/her.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "er" }] },
+          { word: "her", phonetic: "h\u025c\u02d0(r); h\u0259(r)", meaning: "pron. \u5979", audio: "/audio/phonics-vowel/vowel-e/her.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "er" }] },
           { word: "teacher", phonetic: "\u02c8ti\u02d0t\u0283\u0259(r)", meaning: "n. \u8001\u5e08", audio: "/audio/phonics-vowel/vowel-e/teacher.mp3", syllables: ["tea", "cher"], phonemeMap: [{ ipa: "\u0259", spelling: "er" }] },
         ],
       },
@@ -103,8 +103,8 @@ const T: WhaleChapter[] = [
         slug: "ey",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "they", phonetic: "\u00f0e\u026a", meaning: "pron. \u4ed6\u4eec\uff1b\u5979\u4eec\uff1b\u5b83\u4eec", audio: "/audio/phonics-vowel/vowel-e/they.mp3", syllables: ["the", "y"], phonemeMap: [{ ipa: "e\u026a", spelling: "ey" }] },
-          { word: "key", phonetic: "ki\u02d0", meaning: "n. \u94a5\u5319\uff1b\u5173\u952e", audio: "/audio/phonics-vowel/vowel-e/key.mp3", syllables: ["ke", "y"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ey" }] },
+          { word: "they", phonetic: "\u00f0e\u026a", meaning: "pron. \u4ed6\u4eec", audio: "/audio/phonics-vowel/vowel-e/they.mp3", syllables: ["the", "y"], phonemeMap: [{ ipa: "e\u026a", spelling: "ey" }] },
+          { word: "key", phonetic: "ki\u02d0", meaning: "n. \u94a5\u5319", audio: "/audio/phonics-vowel/vowel-e/key.mp3", syllables: ["ke", "y"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ey" }] },
         ],
       },
       {
@@ -123,7 +123,7 @@ const T: WhaleChapter[] = [
         words: [
           { word: "tea", phonetic: "ti\u02d0", meaning: "n. \u8336", audio: "/audio/phonics-vowel/vowel-e/tea.mp3", syllables: ["te", "a"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ea" }] },
           { word: "bread", phonetic: "bred", meaning: "n. \u9762\u5305", audio: "/audio/phonics-vowel/vowel-e/bread.mp3", syllables: ["bre", "ad"], phonemeMap: [{ ipa: "e", spelling: "ea" }] },
-          { word: "break", phonetic: "bre\u026ak", meaning: "v. \u6253\u7834\uff1bn. \u4f11\u606f", audio: "/audio/phonics-vowel/vowel-e/break.mp3", syllables: ["bre", "ak"], phonemeMap: [{ ipa: "e\u026a", spelling: "ea" }] },
+          { word: "break", phonetic: "bre\u026ak", meaning: "v. \u6253\u7834", audio: "/audio/phonics-vowel/vowel-e/break.mp3", syllables: ["bre", "ak"], phonemeMap: [{ ipa: "e\u026a", spelling: "ea" }] },
           { word: "theatre", phonetic: "\u02c8\u03b8\u026a\u0259t\u0259(r)", meaning: "n. \u5267\u9662", audio: "/audio/phonics-vowel/vowel-e/theatre.mp3", syllables: ["the", "atre"], phonemeMap: [{ ipa: "\u026a\u0259", spelling: "ea" }] },
         ],
       },
@@ -133,7 +133,7 @@ const T: WhaleChapter[] = [
         wordCount: 2, difficulty: 2,
         words: [
           { word: "these", phonetic: "\u00f0i\u02d0z", meaning: "pron. \u8fd9\u4e9b", audio: "/audio/phonics-vowel/vowel-e/these.mp3", phonemeMap: [{ ipa: "i\u02d0", spelling: "e" }, { ipa: "i\u02d0", spelling: "e" }] },
-          { word: "see", phonetic: "si\u02d0", meaning: "v. \u770b\u89c1\uff1b\u660e\u767d", audio: "/audio/phonics-vowel/vowel-e/see.mp3", phonemeMap: [{ ipa: "i\u02d0", spelling: "ee" }] },
+          { word: "see", phonetic: "si\u02d0", meaning: "v. \u770b\u89c1", audio: "/audio/phonics-vowel/vowel-e/see.mp3", phonemeMap: [{ ipa: "i\u02d0", spelling: "ee" }] },
         ],
       },
       {
@@ -141,8 +141,8 @@ const T: WhaleChapter[] = [
         slug: "ei",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "receive", phonetic: "r\u026a\u02c8si\u02d0v", meaning: "v. \u6536\u5230\uff1b\u63a5\u53d7", audio: "/audio/phonics-vowel/vowel-e/receive.mp3", syllables: ["rece", "ive"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ei" }] },
-          { word: "vein", phonetic: "ve\u026an", meaning: "n. \u9759\u8109\uff1b\u53f6\u8109", audio: "/audio/phonics-vowel/vowel-e/vein.mp3", syllables: ["ve", "in"], phonemeMap: [{ ipa: "e\u026a", spelling: "ei" }] },
+          { word: "receive", phonetic: "r\u026a\u02c8si\u02d0v", meaning: "v. \u6536\u5230", audio: "/audio/phonics-vowel/vowel-e/receive.mp3", syllables: ["rece", "ive"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ei" }] },
+          { word: "vein", phonetic: "ve\u026an", meaning: "n. \u9759\u8109", audio: "/audio/phonics-vowel/vowel-e/vein.mp3", syllables: ["ve", "in"], phonemeMap: [{ ipa: "e\u026a", spelling: "ei" }] },
         ],
       },
       {
@@ -150,15 +150,15 @@ const T: WhaleChapter[] = [
         slug: "ear|eer|eigh|en|ere",
         wordCount: 10, difficulty: 2,
         words: [
-          { word: "hear", phonetic: "h\u026a\u0259(r)", meaning: "v. \u542c\u89c1\uff1b\u542c\u8bf4", audio: "/audio/phonics-vowel/vowel-e/hear.mp3", syllables: ["he", "ar"], phonemeMap: [{ ipa: "\u026a\u0259", spelling: "ear" }] },
-          { word: "bear", phonetic: "be\u0259(r)", meaning: "n. \u718a\uff1bv. \u5fcd\u53d7", audio: "/audio/phonics-vowel/vowel-e/bear.mp3", syllables: ["be", "ar"], phonemeMap: [{ ipa: "e\u0259", spelling: "ear" }] },
-          { word: "earth", phonetic: "\u02c8\u025c\u03b8", meaning: "n. \u5730\u7403\uff1b\u6ce5\u571f", audio: "/audio/phonics-vowel/vowel-e/earth.mp3", syllables: ["e", "arth"], phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "ear" }] },
-          { word: "heart", phonetic: "h\u0251\u02d0t", meaning: "n. \u5fc3\u810f\uff1b\u5fc3", audio: "/audio/phonics-vowel/vowel-e/heart.mp3", syllables: ["he", "art"], phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "ear" }] },
+          { word: "hear", phonetic: "h\u026a\u0259(r)", meaning: "v. \u542c\u89c1", audio: "/audio/phonics-vowel/vowel-e/hear.mp3", syllables: ["he", "ar"], phonemeMap: [{ ipa: "\u026a\u0259", spelling: "ear" }] },
+          { word: "bear", phonetic: "be\u0259(r)", meaning: "n. \u718a", audio: "/audio/phonics-vowel/vowel-e/bear.mp3", syllables: ["be", "ar"], phonemeMap: [{ ipa: "e\u0259", spelling: "ear" }] },
+          { word: "earth", phonetic: "\u02c8\u025c\u03b8", meaning: "n. \u5730\u7403", audio: "/audio/phonics-vowel/vowel-e/earth.mp3", syllables: ["e", "arth"], phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "ear" }] },
+          { word: "heart", phonetic: "h\u0251\u02d0t", meaning: "n. \u5fc3\u810f", audio: "/audio/phonics-vowel/vowel-e/heart.mp3", syllables: ["he", "art"], phonemeMap: [{ ipa: "\u0251\u02d0", spelling: "ear" }] },
           { word: "deer", phonetic: "d\u026a\u0259(r)", meaning: "n. \u9e7f", audio: "/audio/phonics-vowel/vowel-e/deer.mp3", syllables: ["de", "er"], phonemeMap: [{ ipa: "\u026a\u0259", spelling: "eer" }] },
           { word: "here", phonetic: "h\u026a\u0259(r)", meaning: "adv. \u8fd9\u91cc", audio: "/audio/phonics-vowel/vowel-e/here.mp3", phonemeMap: [{ ipa: "\u026a\u0259", spelling: "ere" }] },
           { word: "there", phonetic: "\u00f0e\u0259(r)", meaning: "adv. \u90a3\u91cc", audio: "/audio/phonics-vowel/vowel-e/there.mp3", phonemeMap: [{ ipa: "e\u0259", spelling: "ere" }] },
           { word: "eight", phonetic: "e\u026at", meaning: "num. \u516b", audio: "/audio/phonics-vowel/vowel-e/eight.mp3", syllables: ["e", "ight"], phonemeMap: [{ ipa: "e\u026a", spelling: "eigh" }] },
-          { word: "open", phonetic: "\u02c8\u0259\u028ap\u0259n", meaning: "v. \u6253\u5f00\uff1badj. \u5f00\u7740\u7684", audio: "/audio/phonics-vowel/vowel-e/open.mp3", syllables: ["o", "pen"], phonemeMap: [{ ipa: "\u0259n", spelling: "en" }] },
+          { word: "open", phonetic: "\u02c8\u0259\u028ap\u0259n", meaning: "v. \u6253\u5f00", audio: "/audio/phonics-vowel/vowel-e/open.mp3", syllables: ["o", "pen"], phonemeMap: [{ ipa: "\u0259n", spelling: "en" }] },
           { word: "hen", phonetic: "hen", meaning: "n. \u6bcd\u9e21", audio: "/audio/phonics-vowel/vowel-e/hen.mp3", phonemeMap: [{ ipa: "en", spelling: "en" }] },
         ],
       },
@@ -191,9 +191,9 @@ const T: WhaleChapter[] = [
         slug: "i_e|ie",
         wordCount: 3, difficulty: 2,
         words: [
-          { word: "like", phonetic: "la\u026ak", meaning: "v. \u559c\u6b22\uff1bprep. \u50cf", audio: "/audio/phonics-vowel/vowel-i/like.mp3", phonemeMap: [{ ipa: "a\u026a", spelling: "i" }, { ipa: "a\u026a", spelling: "e" }] },
+          { word: "like", phonetic: "la\u026ak", meaning: "v. \u559c\u6b22", audio: "/audio/phonics-vowel/vowel-i/like.mp3", phonemeMap: [{ ipa: "a\u026a", spelling: "i" }, { ipa: "a\u026a", spelling: "e" }] },
           { word: "pie", phonetic: "pa\u026a", meaning: "n. \u9985\u997c", audio: "/audio/phonics-vowel/vowel-i/pie.mp3", phonemeMap: [{ ipa: "a\u026a", spelling: "ie" }] },
-          { word: "field", phonetic: "fi\u02d0ld", meaning: "n. \u7530\u91ce\uff1b\u573a\u5730\uff1b\u9886\u57df", audio: "/audio/phonics-vowel/vowel-i/field.mp3", syllables: ["fi", "eld"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ie" }] },
+          { word: "field", phonetic: "fi\u02d0ld", meaning: "n. \u7530\u91ce", audio: "/audio/phonics-vowel/vowel-i/field.mp3", syllables: ["fi", "eld"], phonemeMap: [{ ipa: "i\u02d0", spelling: "ie" }] },
         ],
       },
       {
@@ -201,10 +201,10 @@ const T: WhaleChapter[] = [
         slug: "igh|ign|in|ire",
         wordCount: 4, difficulty: 2,
         words: [
-          { word: "light", phonetic: "la\u026at", meaning: "n. \u5149\uff1b\u706f\uff1badj. \u8f7b\u7684", audio: "/audio/phonics-vowel/vowel-i/light.mp3", phonemeMap: [{ ipa: "a\u026a", spelling: "igh" }] },
-          { word: "fire", phonetic: "\u02c8fa\u026a\u0259(r)", meaning: "n. \u706b\uff1b\u706b\u707e\uff1bv. \u89e3\u96c7", audio: "/audio/phonics-vowel/vowel-i/fire.mp3", syllables: ["fir", "e"], phonemeMap: [{ ipa: "a\u026a\u0259", spelling: "ire" }] },
-          { word: "sign", phonetic: "sa\u026an", meaning: "n. \u6807\u5fd7\uff1b\u7b26\u53f7\uff1bv. \u7b7e\u540d", audio: "/audio/phonics-vowel/vowel-i/sign.mp3", phonemeMap: [{ ipa: "a\u026an", spelling: "ign" }] },
-          { word: "pin", phonetic: "p\u026an", meaning: "n. \u522b\u9488\uff1b\u5927\u5934\u9488", audio: "/audio/phonics-vowel/vowel-i/pin.mp3", phonemeMap: [{ ipa: "\u026an", spelling: "in" }] },
+          { word: "light", phonetic: "la\u026at", meaning: "n. \u5149", audio: "/audio/phonics-vowel/vowel-i/light.mp3", phonemeMap: [{ ipa: "a\u026a", spelling: "igh" }] },
+          { word: "fire", phonetic: "\u02c8fa\u026a\u0259(r)", meaning: "n. \u706b", audio: "/audio/phonics-vowel/vowel-i/fire.mp3", syllables: ["fir", "e"], phonemeMap: [{ ipa: "a\u026a\u0259", spelling: "ire" }] },
+          { word: "sign", phonetic: "sa\u026an", meaning: "n. \u6807\u5fd7", audio: "/audio/phonics-vowel/vowel-i/sign.mp3", phonemeMap: [{ ipa: "a\u026an", spelling: "ign" }] },
+          { word: "pin", phonetic: "p\u026an", meaning: "n. \u522b\u9488", audio: "/audio/phonics-vowel/vowel-i/pin.mp3", phonemeMap: [{ ipa: "\u026an", spelling: "in" }] },
         ],
       },
     ],
@@ -220,9 +220,9 @@ const T: WhaleChapter[] = [
         slug: "or",
         wordCount: 3, difficulty: 2,
         words: [
-          { word: "for", phonetic: "f\u0254\u02d0(r); f\u0259(r)", meaning: "prep. \u4e3a\u4e86\uff1b\u7ed9\uff1b\u5bf9\u4e8e", audio: "/audio/phonics-vowel/vowel-o/for.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "or" }] },
-          { word: "work", phonetic: "w\u025c\u02d0k", meaning: "v. \u5de5\u4f5c\uff1bn. \u5de5\u4f5c", audio: "/audio/phonics-vowel/vowel-o/work.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "or" }] },
-          { word: "doctor", phonetic: "\u02c8d\u0252kt\u0259(r)", meaning: "n. \u533b\u751f\uff1b\u535a\u58eb", audio: "/audio/phonics-vowel/vowel-o/doctor.mp3", syllables: ["doc", "tor"], phonemeMap: [{ ipa: "\u0259", spelling: "or" }] },
+          { word: "for", phonetic: "f\u0254\u02d0(r); f\u0259(r)", meaning: "prep. \u4e3a\u4e86", audio: "/audio/phonics-vowel/vowel-o/for.mp3", phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "or" }] },
+          { word: "work", phonetic: "w\u025c\u02d0k", meaning: "v. \u5de5\u4f5c", audio: "/audio/phonics-vowel/vowel-o/work.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "or" }] },
+          { word: "doctor", phonetic: "\u02c8d\u0252kt\u0259(r)", meaning: "n. \u533b\u751f", audio: "/audio/phonics-vowel/vowel-o/doctor.mp3", syllables: ["doc", "tor"], phonemeMap: [{ ipa: "\u0259", spelling: "or" }] },
         ],
       },
       {
@@ -238,8 +238,8 @@ const T: WhaleChapter[] = [
         slug: "ow",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "cow", phonetic: "ka\u028a", meaning: "n. \u5976\u725b\uff1b\u6bcd\u725b", audio: "/audio/phonics-vowel/vowel-o/cow.mp3", phonemeMap: [{ ipa: "a\u028a", spelling: "ow" }] },
-          { word: "snow", phonetic: "sn\u0259\u028a", meaning: "n. \u96ea\uff1bv. \u4e0b\u96ea", audio: "/audio/phonics-vowel/vowel-o/snow.mp3", phonemeMap: [{ ipa: "\u0259\u028a", spelling: "ow" }] },
+          { word: "cow", phonetic: "ka\u028a", meaning: "n. \u5976\u725b", audio: "/audio/phonics-vowel/vowel-o/cow.mp3", phonemeMap: [{ ipa: "a\u028a", spelling: "ow" }] },
+          { word: "snow", phonetic: "sn\u0259\u028a", meaning: "n. \u96ea", audio: "/audio/phonics-vowel/vowel-o/snow.mp3", phonemeMap: [{ ipa: "\u0259\u028a", spelling: "ow" }] },
         ],
       },
       {
@@ -255,7 +255,7 @@ const T: WhaleChapter[] = [
         slug: "o_e",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "home", phonetic: "h\u0259\u028am", meaning: "n. \u5bb6\uff1badv. \u5728\u5bb6", audio: "/audio/phonics-vowel/vowel-o/home.mp3", syllables: ["hom", "e"], phonemeMap: [{ ipa: "\u0259\u028a", spelling: "o" }, { ipa: "\u0259\u028a", spelling: "e" }] },
+          { word: "home", phonetic: "h\u0259\u028am", meaning: "n. \u5bb6", audio: "/audio/phonics-vowel/vowel-o/home.mp3", syllables: ["hom", "e"], phonemeMap: [{ ipa: "\u0259\u028a", spelling: "o" }, { ipa: "\u0259\u028a", spelling: "e" }] },
         ],
       },
       {
@@ -272,8 +272,8 @@ const T: WhaleChapter[] = [
         wordCount: 3, difficulty: 2,
         words: [
           { word: "moon", phonetic: "mu\u02d0n", meaning: "n. \u6708\u4eae", audio: "/audio/phonics-vowel/vowel-o/moon.mp3", syllables: ["mo", "on"], phonemeMap: [{ ipa: "u\u02d0", spelling: "oo" }] },
-          { word: "book", phonetic: "b\u028ak", meaning: "n. \u4e66\uff1bv. \u9884\u8ba2", audio: "/audio/phonics-vowel/vowel-o/book.mp3", syllables: ["bo", "ok"], phonemeMap: [{ ipa: "\u028a", spelling: "oo" }] },
-          { word: "blood", phonetic: "bl\u028cd", meaning: "n. \u8840\uff1b\u8840\u6db2", audio: "/audio/phonics-vowel/vowel-o/blood.mp3", syllables: ["blo", "od"], phonemeMap: [{ ipa: "\u028c", spelling: "oo" }] },
+          { word: "book", phonetic: "b\u028ak", meaning: "n. \u4e66", audio: "/audio/phonics-vowel/vowel-o/book.mp3", syllables: ["bo", "ok"], phonemeMap: [{ ipa: "\u028a", spelling: "oo" }] },
+          { word: "blood", phonetic: "bl\u028cd", meaning: "n. \u8840", audio: "/audio/phonics-vowel/vowel-o/blood.mp3", syllables: ["blo", "od"], phonemeMap: [{ ipa: "\u028c", spelling: "oo" }] },
         ],
       },
       {
@@ -282,8 +282,8 @@ const T: WhaleChapter[] = [
         wordCount: 3, difficulty: 2,
         words: [
           { word: "house", phonetic: "ha\u028as", meaning: "n. \u623f\u5b50", audio: "/audio/phonics-vowel/vowel-o/house.mp3", syllables: ["ho", "use"], phonemeMap: [{ ipa: "a\u028a", spelling: "ou" }] },
-          { word: "you", phonetic: "ju\u02d0; j\u028a", meaning: "pron. \u4f60\uff1b\u4f60\u4eec", audio: "/audio/phonics-vowel/vowel-o/you.mp3", syllables: ["y", "ou"], phonemeMap: [{ ipa: "u\u02d0", spelling: "ou" }] },
-          { word: "though", phonetic: "\u00f0\u0259\u028a", meaning: "conj. \u867d\u7136\uff1b\u5c3d\u7ba1", audio: "/audio/phonics-vowel/vowel-o/though.mp3", syllables: ["tho", "ugh"], phonemeMap: [{ ipa: "\u0259\u028a", spelling: "ou" }] },
+          { word: "you", phonetic: "ju\u02d0; j\u028a", meaning: "pron. \u4f60", audio: "/audio/phonics-vowel/vowel-o/you.mp3", syllables: ["y", "ou"], phonemeMap: [{ ipa: "u\u02d0", spelling: "ou" }] },
+          { word: "though", phonetic: "\u00f0\u0259\u028a", meaning: "conj. \u867d\u7136", audio: "/audio/phonics-vowel/vowel-o/though.mp3", syllables: ["tho", "ugh"], phonemeMap: [{ ipa: "\u0259\u028a", spelling: "ou" }] },
         ],
       },
       {
@@ -292,13 +292,13 @@ const T: WhaleChapter[] = [
         wordCount: 8, difficulty: 2,
         words: [
           { word: "door", phonetic: "d\u0254\u02d0(r)", meaning: "n. \u95e8", audio: "/audio/phonics-vowel/vowel-o/door.mp3", syllables: ["do", "or"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "oor" }] },
-          { word: "board", phonetic: "b\u0254\u02d0d", meaning: "n. \u6728\u677f\uff1bv. \u767b\u673a", audio: "/audio/phonics-vowel/vowel-o/board.mp3", syllables: ["bo", "ard"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "oar" }] },
-          { word: "could", phonetic: "k\u028ad; k\u0259d", meaning: "aux. \u80fd\uff1b\u53ef\u4ee5\uff08can \u7684\u8fc7\u53bb\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-o/could.mp3", syllables: ["co", "uld"], phonemeMap: [{ ipa: "\u028a", spelling: "oul" }] },
+          { word: "board", phonetic: "b\u0254\u02d0d", meaning: "n. \u6728\u677f", audio: "/audio/phonics-vowel/vowel-o/board.mp3", syllables: ["bo", "ard"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "oar" }] },
+          { word: "could", phonetic: "k\u028ad; k\u0259d", meaning: "aux. \u80fd\uff08can \u7684\u8fc7\u53bb\u5f0f\uff09", audio: "/audio/phonics-vowel/vowel-o/could.mp3", syllables: ["co", "uld"], phonemeMap: [{ ipa: "\u028a", spelling: "oul" }] },
           { word: "should", phonetic: "\u0283\u028ad; \u0283\u0259d", meaning: "aux. \u5e94\u8be5", audio: "/audio/phonics-vowel/vowel-o/should.mp3", syllables: ["sho", "uld"], phonemeMap: [{ ipa: "u\u02d0", spelling: "oul" }] },
           { word: "hour", phonetic: "\u02c8a\u028a\u0259(r)", meaning: "n. \u5c0f\u65f6", audio: "/audio/phonics-vowel/vowel-o/hour.mp3", syllables: ["ho", "ur"], phonemeMap: [{ ipa: "a\u028a\u0259", spelling: "our" }] },
           { word: "four", phonetic: "f\u0254\u02d0(r)", meaning: "num. \u56db", audio: "/audio/phonics-vowel/vowel-o/four.mp3", syllables: ["fo", "ur"], phonemeMap: [{ ipa: "\u0254\u02d0", spelling: "our" }] },
-          { word: "journey", phonetic: "\u02c8d\u0292\u025c\u02d0ni", meaning: "n. \u65c5\u884c\uff1b\u65c5\u7a0b", audio: "/audio/phonics-vowel/vowel-o/journey.mp3", syllables: ["jour", "ney"], phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "our" }] },
-          { word: "cure", phonetic: "kj\u028a\u0259(r)", meaning: "v. \u6cbb\u6108\uff1bn. \u7597\u6cd5", audio: "/audio/phonics-vowel/vowel-o/cure.mp3", syllables: ["cur", "e"], phonemeMap: [{ ipa: "j\u028a\u0259", spelling: "ure" }] },
+          { word: "journey", phonetic: "\u02c8d\u0292\u025c\u02d0ni", meaning: "n. \u65c5\u884c", audio: "/audio/phonics-vowel/vowel-o/journey.mp3", syllables: ["jour", "ney"], phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "our" }] },
+          { word: "cure", phonetic: "kj\u028a\u0259(r)", meaning: "v. \u6cbb\u6108", audio: "/audio/phonics-vowel/vowel-o/cure.mp3", syllables: ["cur", "e"], phonemeMap: [{ ipa: "j\u028a\u0259", spelling: "ure" }] },
         ],
       },
     ],
@@ -314,8 +314,8 @@ const T: WhaleChapter[] = [
         slug: "ur",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "fur", phonetic: "f\u025c\u02d0(r)", meaning: "n. \u6bdb\u76ae\uff1b\u8f6f\u6bdb", audio: "/audio/phonics-vowel/vowel-u/fur.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "ur" }] },
-          { word: "surprise", phonetic: "s\u0259\u02c8pra\u026az", meaning: "n. \u60ca\u8bb6\uff1bv. \u4f7f\u60ca\u8bb6", audio: "/audio/phonics-vowel/vowel-u/surprise.mp3", syllables: ["sur", "prise"], phonemeMap: [{ ipa: "\u0259", spelling: "ur" }] },
+          { word: "fur", phonetic: "f\u025c\u02d0(r)", meaning: "n. \u6bdb\u76ae", audio: "/audio/phonics-vowel/vowel-u/fur.mp3", phonemeMap: [{ ipa: "\u025c\u02d0", spelling: "ur" }] },
+          { word: "surprise", phonetic: "s\u0259\u02c8pra\u026az", meaning: "n. \u60ca\u8bb6", audio: "/audio/phonics-vowel/vowel-u/surprise.mp3", syllables: ["sur", "prise"], phonemeMap: [{ ipa: "\u0259", spelling: "ur" }] },
         ],
       },
       {
@@ -331,10 +331,10 @@ const T: WhaleChapter[] = [
         slug: "u_e|ue",
         wordCount: 4, difficulty: 2,
         words: [
-          { word: "use", phonetic: "ju\u02d0z", meaning: "v. \u4f7f\u7528\uff1bn. \u7528\u9014", audio: "/audio/phonics-vowel/vowel-u/use.mp3", phonemeMap: [{ ipa: "ju\u02d0", spelling: "u" }, { ipa: "ju\u02d0", spelling: "e" }] },
-          { word: "rule", phonetic: "ru\u02d0l", meaning: "n. \u89c4\u5219\uff1bv. \u7edf\u6cbb", audio: "/audio/phonics-vowel/vowel-u/rule.mp3", phonemeMap: [{ ipa: "u\u02d0", spelling: "u" }, { ipa: "u\u02d0", spelling: "e" }] },
-          { word: "cue", phonetic: "kju\u02d0", meaning: "n. \u63d0\u793a\uff1b\u6697\u793a", audio: "/audio/phonics-vowel/vowel-u/cue.mp3", phonemeMap: [{ ipa: "ju\u02d0", spelling: "ue" }] },
-          { word: "blue", phonetic: "blu\u02d0", meaning: "adj. \u84dd\u8272\u7684\uff1b\u5fe7\u90c1\u7684", audio: "/audio/phonics-vowel/vowel-u/blue.mp3", phonemeMap: [{ ipa: "u\u02d0", spelling: "ue" }] },
+          { word: "use", phonetic: "ju\u02d0z", meaning: "v. \u4f7f\u7528", audio: "/audio/phonics-vowel/vowel-u/use.mp3", phonemeMap: [{ ipa: "ju\u02d0", spelling: "u" }, { ipa: "ju\u02d0", spelling: "e" }] },
+          { word: "rule", phonetic: "ru\u02d0l", meaning: "n. \u89c4\u5219", audio: "/audio/phonics-vowel/vowel-u/rule.mp3", phonemeMap: [{ ipa: "u\u02d0", spelling: "u" }, { ipa: "u\u02d0", spelling: "e" }] },
+          { word: "cue", phonetic: "kju\u02d0", meaning: "n. \u63d0\u793a", audio: "/audio/phonics-vowel/vowel-u/cue.mp3", phonemeMap: [{ ipa: "ju\u02d0", spelling: "ue" }] },
+          { word: "blue", phonetic: "blu\u02d0", meaning: "adj. \u84dd\u8272\u7684", audio: "/audio/phonics-vowel/vowel-u/blue.mp3", phonemeMap: [{ ipa: "u\u02d0", spelling: "ue" }] },
         ],
       },
       {
@@ -342,7 +342,7 @@ const T: WhaleChapter[] = [
         slug: "ui",
         wordCount: 2, difficulty: 2,
         words: [
-          { word: "build", phonetic: "b\u026ald", meaning: "v. \u5efa\u9020\uff1b\u5efa\u7acb", audio: "/audio/phonics-vowel/vowel-u/build.mp3", syllables: ["bu", "ild"], phonemeMap: [{ ipa: "\u026a", spelling: "ui" }] },
+          { word: "build", phonetic: "b\u026ald", meaning: "v. \u5efa\u9020", audio: "/audio/phonics-vowel/vowel-u/build.mp3", syllables: ["bu", "ild"], phonemeMap: [{ ipa: "\u026a", spelling: "ui" }] },
           { word: "fruit", phonetic: "fru\u02d0t", meaning: "n. \u6c34\u679c", audio: "/audio/phonics-vowel/vowel-u/fruit.mp3", syllables: ["fru", "it"], phonemeMap: [{ ipa: "u\u02d0", spelling: "ui" }] },
         ],
       },
@@ -351,7 +351,7 @@ const T: WhaleChapter[] = [
         slug: "ure",
         wordCount: 1, difficulty: 2,
         words: [
-          { word: "sure", phonetic: "\u0283\u028a\u0259(r); \u0283\u0254\u02d0(r)", meaning: "adj. \u786e\u4fe1\u7684\uff1b\u4e00\u5b9a\u7684", audio: "/audio/phonics-vowel/vowel-u/sure.mp3", syllables: ["sur", "e"], phonemeMap: [{ ipa: "j\u028a\u0259", spelling: "ure" }] },
+          { word: "sure", phonetic: "\u0283\u028a\u0259(r); \u0283\u0254\u02d0(r)", meaning: "adj. \u786e\u4fe1\u7684", audio: "/audio/phonics-vowel/vowel-u/sure.mp3", syllables: ["sur", "e"], phonemeMap: [{ ipa: "j\u028a\u0259", spelling: "ure" }] },
         ],
       },
     ],
