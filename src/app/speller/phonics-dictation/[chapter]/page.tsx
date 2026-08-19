@@ -103,7 +103,13 @@ export default function PhoneticDictationPage() {
           confettiOrigin={{ x: 0.5, y: 0.6 }}
           restoreKey={course.id}
           alwaysShowInfo
-          onExit={() => router.push("/speller/phonics-dictation")}
+          onNextGroup={() => {
+            // 刷完一组 → 下一元音行（a → e → i → o → u，最后一组回到 a）
+            const slugs = PHONICS_VOWEL_CHAPTERS.map((c) => c.slug);
+            const next = slugs[(slugs.indexOf(chapterSlug) + 1) % slugs.length];
+            router.push(`/speller/phonics-dictation/${next}`);
+          }}
+          onExit={() => router.push("/speller/phonics")}
         />
       </div>
 

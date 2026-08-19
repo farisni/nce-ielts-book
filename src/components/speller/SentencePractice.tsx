@@ -370,6 +370,7 @@ export default function SentencePractice({
   voicePlaying,
   restoreKey,
   alwaysShowInfo = false,
+  onNextGroup,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -402,6 +403,8 @@ export default function SentencePractice({
   /** 恒显示音标/释义（如音标课程直接展示发音做参考），但输入区保持空白可输入；
    *  与 revealed（显示答案=输入区填答案）分离 */
   alwaysShowInfo?: boolean
+  /** 完成后的「下一组」回调（如元音组合听写：vowel-a → vowel-e）；不传则不显示该按钮 */
+  onNextGroup?: () => void
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess, unlockAudio } = useGameSounds()
@@ -1288,9 +1291,16 @@ export default function SentencePractice({
           <div className="mb-8 text-base text-muted-foreground">
             用时 {formatTime(elapsed)} · 提示 {hintCount} 次 · 正确率 {accuracy}%
           </div>
-          <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
-            再来一组
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
+              再来一组
+            </Button>
+            {onNextGroup && (
+              <Button onClick={onNextGroup} variant="secondary" size="lg" className="h-12 px-12 text-lg">
+                下一组 →
+              </Button>
+            )}
+          </div>
         </div>
       </>
     )
