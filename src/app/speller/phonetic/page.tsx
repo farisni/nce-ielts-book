@@ -136,9 +136,9 @@ export default function PhoneticPage() {
                           </span>
                         )}
                       </span>
-                      {/* 组合形式超过 4 个：贴卡片底部边框的高亮线 */}
+                      {/* 组合形式超过 4 个：贴卡片底部边框的黄色高亮线 */}
                       {patterns.length > 4 && (
-                        <span className="pointer-events-none absolute inset-x-2 bottom-0 h-1 rounded-t-full bg-primary/70" />
+                        <span className="pointer-events-none absolute inset-x-2 bottom-0 h-1 rounded-t-full bg-yellow-400" />
                       )}
                     </button>
                     {/* 示例单词：点击播放该词发音（原声 mp3，无则 TTS）；对应练习音素的字母高亮 */}
