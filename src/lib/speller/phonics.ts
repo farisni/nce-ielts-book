@@ -162,7 +162,7 @@ export const CONSONANT_GROUPS: PhonicsGroup[] = [
       { pattern: "ch", ipa: "/tʃ/ /k/ /ʃ/", tone: "blue", examples: ["chair", "school", "chef"] },
       { pattern: "th", ipa: "/θ/ /ð/", tone: "blue", examples: ["three", "this", "think"] },
       { pattern: "ph", ipa: "/f/", tone: "blue", examples: ["phone", "photo", "elephant"] },
-      { pattern: "wh", ipa: "/w/ /h/", tone: "blue", examples: ["what", "white", "when"] },
+      { pattern: "wh", ipa: "/w/ /h/", tone: "blue", examples: ["what", "when", "who"] },
       { pattern: "wr-", ipa: "/r/", tone: "blue", examples: ["write", "wrong", "wrist"] },
       { pattern: "kn-", ipa: "/n/", tone: "blue", examples: ["knife", "knee", "knock"] },
       { pattern: "-mb", ipa: "/m/", tone: "blue", examples: ["lamb", "comb", "climb"] },
