@@ -101,7 +101,7 @@ export default function WhaleDictationPage() {
           waveAudioRef={audioRef}
           confettiOrigin={{ x: 0.5, y: 0.6 }}
           restoreKey={course.id}
-          initialRevealed
+          alwaysShowInfo
           onExit={() => router.push("/speller/phonetic")}
         />
       </div>

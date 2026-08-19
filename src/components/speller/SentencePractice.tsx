@@ -369,7 +369,7 @@ export default function SentencePractice({
   onStopVoice,
   voicePlaying,
   restoreKey,
-  initialRevealed = false,
+  alwaysShowInfo = false,
 }: {
   /** 课程（决定句子库与每组大小） */
   course?: Course
@@ -399,9 +399,9 @@ export default function SentencePractice({
   voicePlaying?: boolean
   /** 位置记忆键（如 "wang-listening/chapter-3/test-1"）：下次进入从上次听写到的位置继续 */
   restoreKey?: string
-  /** 默认显示答案：进入即显示音标/释义（如音标课程直接展示发音，省去每次按右⌘）；
-   *  切句后延续（与 revealed 状态一致） */
-  initialRevealed?: boolean
+  /** 恒显示音标/释义（如音标课程直接展示发音做参考），但输入区保持空白可输入；
+   *  与 revealed（显示答案=输入区填答案）分离 */
+  alwaysShowInfo?: boolean
 }) {
   const { speak, stop } = useSpeech()
   const { playType, playSuccess, unlockAudio } = useGameSounds()
@@ -700,17 +700,17 @@ export default function SentencePractice({
         setSession((prev) => prev.map((item, k) => (k === index ? target : item)))
         setSessionSrcIdx((prev) => prev.map((v, k) => (k === index ? courseIndex : v)))
       }
-      // 重置输入状态，进入该句听写（默认显示答案课程保持 initialRevealed）
+      // 重置输入状态，进入该句听写
       inputSnapshotRef.current = null
-      setWordInputs(initialRevealed ? getWords(target.en) : getWords(target.en).map(() => ""))
+      setWordInputs(getWords(target.en).map(() => ""))
       setActiveIdx(0)
       setSubmitted(false)
-      setRevealed(initialRevealed)
+      setRevealed(false)
       setPassed(false)
       // 外部联动（视频页：SRT 定位该句原声）
       onJumpToSentence?.(courseIndex)
     },
-    [course, sessionSrcIdx, index, onJumpToSentence, initialRevealed],
+    [course, sessionSrcIdx, index, onJumpToSentence],
   )
 
   // 提交通过后稍作停留（撒花动画），自动进入下一句
@@ -745,10 +745,10 @@ export default function SentencePractice({
     setSessionSrcIdx(idx)
     setIndex(start)
     inputSnapshotRef.current = null
-    setWordInputs(initialRevealed ? getWords(s[start].en).map((w) => w) : getWords(s[start].en).map(() => ""))
+    setWordInputs(getWords(s[start].en).map(() => ""))
     setActiveIdx(0)
     setSubmitted(false)
-    setRevealed(initialRevealed)
+    setRevealed(false)
     setPassed(false)
     setPassedCount(0)
     setErrorCount(0)
@@ -758,7 +758,7 @@ export default function SentencePractice({
     setElapsed(0)
     setStartAt(Date.now())
     setPhase("playing")
-  }, [restoreKey, restoredPos, initialRevealed])
+  }, [restoreKey, restoredPos])
 
   // 记住当前位置：切句/跳转时写入数据库，下次进入从该位置继续。
   // deps 只用 course.id：course 对象每次 render 都是新引用，若进 deps 会随计时器
@@ -1359,7 +1359,7 @@ export default function SentencePractice({
                 词组（多词）每个词的音标独立用 /…/ 包围；
                 段内逗号/分号是多读音分隔（如 "ˈprɒdʒekt; prəˈdʒekt"），只取第一个读音 */}
             <p className="h-[1.5em] text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
-              {(revealed || passed) && sentence.phonetic
+              {((revealed || passed) || alwaysShowInfo) && sentence.phonetic
                 ? sentence.phonetic
                     .trim()
                     .replace(/^\/+|\/+$/g, "")
@@ -1382,7 +1382,7 @@ export default function SentencePractice({
               const tail = m ? rest.slice(m[1].length) : rest
               return (
                 <h2 className="mt-2 h-[1.7em] text-xl leading-relaxed text-muted-foreground/70">
-                  {revealed || passed ? (
+                  {revealed || passed || alwaysShowInfo ? (
                     <>
                       {posMatch?.[1]}
                       {bold && <span className="font-semibold text-foreground/80">{bold}</span>}
