@@ -34,22 +34,6 @@ export default function PhonicsPage() {
         </p>
       </header>
 
-      {/* 图例 */}
-      <div className="mb-8 flex flex-wrap items-center gap-x-8 gap-y-2 rounded-xl border border-border bg-card px-5 py-4 text-sm">
-        <span className="flex items-center gap-2 text-foreground">
-          <span className="font-semibold text-foreground">A</span>
-          <span>
-            主体元音 <span className="text-muted-foreground">（行元音字母，黑色）</span>
-          </span>
-        </span>
-        <span className="flex items-center gap-2 text-foreground">
-          <span className="font-semibold text-blue-500">r</span>
-          <span>
-            修饰字母 <span className="text-muted-foreground">（r y w l 或后续元音，蓝色）</span>
-          </span>
-        </span>
-      </div>
-
       {/* 表 1 · 元音组合（二级巧记表：行 a e i o u × 列 r y w l | a e i o u | 其他） */}
       <VowelMnemonicTable />
 
