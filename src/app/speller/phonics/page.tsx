@@ -152,7 +152,7 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
   },
   u: {
     cols: {
-      r: [{ pattern: "ur", ipa: [{ ph: "ɜː", w: "fur" }] }],
+      r: [{ pattern: "ur", ipa: [{ ph: "ɜː", w: "fur" }, { ph: "ə", w: "surprise" }] }],
       y: [{ pattern: "uy", ipa: [{ ph: "aɪ", w: "buy" }] }],
       e: [{ pattern: "u_e", ipa: [{ ph: "juː", w: "use" }, { ph: "uː", w: "rule" }], plain: true }],
       i: [{ pattern: "ui", ipa: [{ ph: "ɪ", w: "build" }, { ph: "uː", w: "fruit" }], plain: true }],
