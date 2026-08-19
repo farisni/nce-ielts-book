@@ -37,15 +37,15 @@ export default function PhonicsPage() {
       {/* 图例 */}
       <div className="mb-8 flex flex-wrap items-center gap-x-8 gap-y-2 rounded-xl border border-border bg-card px-5 py-4 text-sm">
         <span className="flex items-center gap-2 text-foreground">
-          <span className="inline-block size-2.5 rounded-full bg-red-500" />
+          <span className="font-semibold text-foreground">A</span>
           <span>
-            两元相遇 <span className="text-muted-foreground">（两个元音字母相遇，发第一个字母的字母音）</span>
+            主体元音 <span className="text-muted-foreground">（行元音字母，黑色）</span>
           </span>
         </span>
         <span className="flex items-center gap-2 text-foreground">
-          <span className="inline-block size-2.5 rounded-full bg-blue-500" />
+          <span className="font-semibold text-blue-500">r</span>
           <span>
-            组合发音 <span className="text-muted-foreground">（字母组合整体的固定发音）</span>
+            修饰字母 <span className="text-muted-foreground">（r y w l 或后续元音，蓝色）</span>
           </span>
         </span>
       </div>
@@ -147,10 +147,13 @@ function VowelMnemonicTable() {
 }
 
 function MnemonicCell({ rule, small = false }: { rule: PhonicsRule; small?: boolean }) {
-  const color = rule.tone === "red" ? "text-red-500 dark:text-red-400" : "text-blue-500 dark:text-blue-400";
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
-      <span className={`font-semibold ${small ? "text-sm" : "text-base"} ${color}`}>{rule.pattern}</span>
+      {/* 行元音字母黑色（主体），后续字母蓝色（修饰） */}
+      <span className={`font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
+        {rule.pattern[0]}
+        <span className="text-blue-500 dark:text-blue-400">{rule.pattern.slice(1)}</span>
+      </span>
       <span className="text-[0.65rem] text-muted-foreground">{rule.ipa}</span>
     </span>
   );
