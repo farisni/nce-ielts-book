@@ -12,6 +12,8 @@ export interface PhonicsRule {
   ipa?: string
   /** red = 两元相遇规则；blue = 组合发音 */
   tone: "red" | "blue"
+  /** 示例单词（开头辅音群等用：左右布局右侧展示） */
+  examples?: string[]
 }
 
 export interface PhonicsGroup {
@@ -128,29 +130,29 @@ export const CONSONANT_GROUPS: PhonicsGroup[] = [
   {
     name: "开头辅音群",
     rules: [
-      { pattern: "bl-", ipa: "/bl/", tone: "blue" },
-      { pattern: "br-", ipa: "/br/", tone: "blue" },
-      { pattern: "cl-", ipa: "/kl/", tone: "blue" },
-      { pattern: "cr-", ipa: "/kr/", tone: "blue" },
-      { pattern: "dr-", ipa: "/dr/", tone: "blue" },
-      { pattern: "fl-", ipa: "/fl/", tone: "blue" },
-      { pattern: "fr-", ipa: "/fr/", tone: "blue" },
-      { pattern: "gl-", ipa: "/ɡl/", tone: "blue" },
-      { pattern: "gr-", ipa: "/ɡr/", tone: "blue" },
-      { pattern: "pl-", ipa: "/pl/", tone: "blue" },
-      { pattern: "pr-", ipa: "/pr/", tone: "blue" },
-      { pattern: "tr-", ipa: "/tr/", tone: "blue" },
-      { pattern: "tw-", ipa: "/tw/", tone: "blue" },
-      { pattern: "sm-", ipa: "/sm/", tone: "blue" },
-      { pattern: "sn-", ipa: "/sn/", tone: "blue" },
-      { pattern: "sp-", ipa: "/sp/", tone: "blue" },
-      { pattern: "spr-", ipa: "/spr/", tone: "blue" },
-      { pattern: "sw-", ipa: "/sw/", tone: "blue" },
-      { pattern: "sk-", ipa: "/sk/", tone: "blue" },
-      { pattern: "sc-", ipa: "/sk/ /s/", tone: "blue" },
-      { pattern: "squ-", ipa: "/skw/", tone: "blue" },
-      { pattern: "st-", ipa: "/st/", tone: "blue" },
-      { pattern: "str-", ipa: "/str/", tone: "blue" },
+      { pattern: "bl-", ipa: "/bl/", tone: "blue", examples: ["blue", "black", "blow"] },
+      { pattern: "br-", ipa: "/br/", tone: "blue", examples: ["bread", "brown", "bridge"] },
+      { pattern: "cl-", ipa: "/kl/", tone: "blue", examples: ["clock", "class", "clean"] },
+      { pattern: "cr-", ipa: "/kr/", tone: "blue", examples: ["cream", "cry", "cross"] },
+      { pattern: "dr-", ipa: "/dr/", tone: "blue", examples: ["dream", "drink", "dress"] },
+      { pattern: "fl-", ipa: "/fl/", tone: "blue", examples: ["flower", "fly", "floor"] },
+      { pattern: "fr-", ipa: "/fr/", tone: "blue", examples: ["friend", "fruit", "frog"] },
+      { pattern: "gl-", ipa: "/ɡl/", tone: "blue", examples: ["glass", "glad", "globe"] },
+      { pattern: "gr-", ipa: "/ɡr/", tone: "blue", examples: ["green", "grass", "grow"] },
+      { pattern: "pl-", ipa: "/pl/", tone: "blue", examples: ["play", "plane", "please"] },
+      { pattern: "pr-", ipa: "/pr/", tone: "blue", examples: ["price", "present", "proud"] },
+      { pattern: "tr-", ipa: "/tr/", tone: "blue", examples: ["tree", "train", "try"] },
+      { pattern: "tw-", ipa: "/tw/", tone: "blue", examples: ["two", "twelve", "twin"] },
+      { pattern: "sm-", ipa: "/sm/", tone: "blue", examples: ["smile", "small", "smell"] },
+      { pattern: "sn-", ipa: "/sn/", tone: "blue", examples: ["snow", "snake", "snail"] },
+      { pattern: "sp-", ipa: "/sp/", tone: "blue", examples: ["speak", "space", "sport"] },
+      { pattern: "spr-", ipa: "/spr/", tone: "blue", examples: ["spring", "spray", "spread"] },
+      { pattern: "sw-", ipa: "/sw/", tone: "blue", examples: ["swim", "sweet", "swing"] },
+      { pattern: "sk-", ipa: "/sk/", tone: "blue", examples: ["sky", "skip", "skate"] },
+      { pattern: "sc-", ipa: "/sk/ /s/", tone: "blue", examples: ["school", "scarf", "score"] },
+      { pattern: "squ-", ipa: "/skw/", tone: "blue", examples: ["square", "squid", "squirrel"] },
+      { pattern: "st-", ipa: "/st/", tone: "blue", examples: ["star", "stop", "stand"] },
+      { pattern: "str-", ipa: "/str/", tone: "blue", examples: ["street", "strong", "string"] },
     ],
   },
   {

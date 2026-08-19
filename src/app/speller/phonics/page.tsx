@@ -288,11 +288,19 @@ function PhonicsSection({
         {groups.map((g) => (
           <div key={g.name} className="rounded-lg border border-border p-4">
             <h3 className="mb-3 text-sm font-semibold text-muted-foreground">{g.name}</h3>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
-              {g.rules.map((r) => (
-                <RuleCell key={r.pattern} rule={r} />
-              ))}
-            </div>
+            {g.rules.every((r) => r.examples) ? (
+              <div className="space-y-1.5">
+                {g.rules.map((r) => (
+                  <RuleCell key={r.pattern} rule={r} />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+                {g.rules.map((r) => (
+                  <RuleCell key={r.pattern} rule={r} />
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -306,6 +314,18 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
     tone === "red"
       ? "text-red-500 dark:text-red-400"
       : "text-blue-500 dark:text-blue-400";
+  // 有示例单词（开头辅音群）：左右布局——左组合+音标，右单词案例，一行一个
+  if (rule.examples && rule.examples.length > 0) {
+    return (
+      <div className="flex items-center gap-4 rounded-lg border border-border px-3 py-1.5">
+        <span className="flex w-24 shrink-0 items-baseline gap-1.5">
+          <span className={`text-base font-semibold leading-tight ${color}`}>{pattern}</span>
+          {ipa && <span className="text-xs text-muted-foreground">{ipa}</span>}
+        </span>
+        <span className="text-base font-medium text-foreground">{rule.examples.join(" · ")}</span>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3">
       <span className={`text-base font-semibold leading-tight ${color}`}>{pattern}</span>
