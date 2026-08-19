@@ -310,7 +310,7 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
         <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-1 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-background px-2 py-1.5 text-xs shadow-sm group-hover:block">
           {entry.ipa.map((it) => (
             <span key={it.ph} className="block text-muted-foreground">
-              [{it.ph}] <span className="font-medium text-foreground">{it.w}</span>
+              [{it.ph}] <span className="font-medium text-foreground">{renderExampleWord(it.w, p)}</span>
             </span>
           ))}
         </span>
