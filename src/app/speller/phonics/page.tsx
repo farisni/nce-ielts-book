@@ -77,6 +77,7 @@ export default function PhonicsPage() {
         title="元辅组合"
         count={MIXED_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
         groups={MIXED_GROUPS}
+        enterHref="/speller/phonics-mixed-dictation/mixed-a"
       />
     </div>
   );
@@ -286,16 +287,26 @@ function PhonicsSection({
   title,
   count,
   groups,
+  enterHref,
 }: {
   title: string
   count: number
   groups: PhonicsGroup[]
+  enterHref?: string
 }) {
   return (
     <section className="mb-8 rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
         <h2 className="text-lg font-semibold text-foreground">{title}</h2>
         <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">{count} 个</span>
+        {enterHref && (
+          <Link
+            href={enterHref}
+            className="ml-1 text-sm font-medium text-[#337ea9] transition-transform hover:translate-x-0.5 dark:text-[#9cd8fc]"
+          >
+            进入拼写 →
+          </Link>
+        )}
       </div>
       <div className="space-y-3">
         {groups.map((g) => (
