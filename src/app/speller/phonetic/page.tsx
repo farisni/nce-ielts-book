@@ -94,7 +94,7 @@ export default function PhoneticPage() {
                     {t.words.map((w) => (
                       <span
                         key={w.word}
-                        className="flex items-center justify-center rounded-lg border border-border px-2 py-3 text-lg font-medium text-foreground"
+                        className="flex items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground"
                       >
                         {renderHighlightWord(w.word, w.phonemeMap, focus)}
                       </span>
