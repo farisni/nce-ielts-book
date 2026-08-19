@@ -106,7 +106,10 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
       y: [{ pattern: "ey", ipa: [{ ph: "eɪ", w: "they" }] }],
       w: [{ pattern: "ew", ipa: [{ ph: "juː", w: "new" }] }],
       a: [{ pattern: "ea", ipa: [{ ph: "iː", w: "tea" }, { ph: "e", w: "bread" }], plain: true }],
-      e: [{ pattern: "e_e", ipa: [{ ph: "iː", w: "these" }], plain: true }],
+      e: [
+        { pattern: "e_e", ipa: [{ ph: "iː", w: "these" }], plain: true },
+        { pattern: "ee", ipa: [{ ph: "iː", w: "see" }], plain: true },
+      ],
       i: [{ pattern: "ei", ipa: [{ ph: "iː", w: "receive" }, { ph: "eɪ", w: "vein" }], plain: true }],
     },
     other: [
@@ -154,11 +157,13 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
     cols: {
       r: [{ pattern: "ur", ipa: [{ ph: "ɜː", w: "fur" }, { ph: "ə", w: "surprise" }] }],
       y: [{ pattern: "uy", ipa: [{ ph: "aɪ", w: "buy" }] }],
-      e: [{ pattern: "u_e", ipa: [{ ph: "juː", w: "use" }, { ph: "uː", w: "rule" }], plain: true }],
+      e: [
+        { pattern: "u_e", ipa: [{ ph: "juː", w: "use" }, { ph: "uː", w: "rule" }], plain: true },
+        { pattern: "ue", ipa: [{ ph: "juː", w: "cue" }, { ph: "uː", w: "blue" }], plain: true },
+      ],
       i: [{ pattern: "ui", ipa: [{ ph: "ɪ", w: "build" }, { ph: "uː", w: "fruit" }], plain: true }],
     },
     other: [
-      { pattern: "ue", ipa: [{ ph: "juː", w: "cue" }, { ph: "uː", w: "blue" }] },
       { pattern: "ure", ipa: [{ ph: "jʊə", w: "sure" }] },
     ],
   },
