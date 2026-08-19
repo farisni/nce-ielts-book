@@ -89,7 +89,7 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
       r: [{ pattern: "er", ipa: [{ ph: "ɜː", w: "her" }, { ph: "ə", w: "teacher" }] }],
       y: [{ pattern: "ey", ipa: [{ ph: "eɪ", w: "they" }, { ph: "iː", w: "key" }] }],
       w: [{ pattern: "ew", ipa: [{ ph: "juː", w: "new" }, { ph: "uː", w: "blew" }] }],
-      a: [{ pattern: "ea", ipa: [{ ph: "iː", w: "tea" }, { ph: "e", w: "bread" }], plain: true }],
+      a: [{ pattern: "ea", ipa: [{ ph: "iː", w: "tea" }, { ph: "e", w: "bread" }, { ph: "eɪ", w: "break" }, { ph: "ɪə", w: "theatre" }], plain: true }],
       e: [
         { pattern: "e_e", ipa: [{ ph: "iː", w: "these" }], plain: true },
         { pattern: "ee", ipa: [{ ph: "iː", w: "see" }], plain: true },
@@ -111,7 +111,7 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
       e: [{ pattern: "i_e", ipa: [{ ph: "aɪ", w: "like" }], plain: true }],
     },
     other: [
-      { pattern: "ie", ipa: [{ ph: "aɪ", w: "pie" }] },
+      { pattern: "ie", ipa: [{ ph: "aɪ", w: "pie" }, { ph: "iː", w: "field" }] },
       { pattern: "igh", ipa: [{ ph: "aɪ", w: "light" }] },
       { pattern: "ire", ipa: [{ ph: "aɪə", w: "fire" }] },
       { pattern: "ign", ipa: [{ ph: "aɪn", w: "sign" }] },
