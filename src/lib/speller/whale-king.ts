@@ -18,6 +18,9 @@ export interface WhaleWord {
   audio: string
   /** 音节划分（如 ["in","ter","stel","lar"]），答对撒花后按音节着色用 */
   syllables?: string[]
+  /** 音素级拆分：音素 → 拼写字母映射（如 [{ipa:"æ",spelling:"a"}]），
+   *  音标课程答对后突出练习音素对应的字母 */
+  phonemeMap?: { ipa: string; spelling: string }[]
 }
 
 export interface WhaleTest {

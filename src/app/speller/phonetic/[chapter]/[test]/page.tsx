@@ -84,6 +84,7 @@ export default function WhaleDictationPage() {
       phonetic: w.phonetic ? w.phonetic.replace(/'/g, "ˈ") : undefined,
       syllables: w.syllables,
       phoneticFocus: focus || undefined,
+      phonemeMap: w.phonemeMap,
     })),
   };
 

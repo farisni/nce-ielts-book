@@ -1566,15 +1566,31 @@ export default function SentencePractice({
                       if (c.status === "correct") {
                         // 写对的字母：底部对齐下划线；正常输入显示绿色，显示答案后显示浅灰色
                         // 音节着色：答对撒花后红黑相间；显示答案时灰/深灰交替
+                        // 音素突出（音标课程）：答对后练习音素（phoneticFocus）对应的字母红色，
+                        // 其余字母保持音节着色/默认（红色优先于音节红黑，突出练习音）
                         const syllIdx =
                           syllMap && syllMap[i] !== undefined ? syllMap[i] : null
-                        const letterColor = syllIdx !== null
-                          ? syllIdx % 2 === 1
-                            ? "text-red-500"
-                            : "text-foreground"
-                          : revealed
-                            ? "text-muted-foreground"
-                            : "text-violet-500"
+                        const focusHit = !!sentence.phoneticFocus && (() => {
+                          // 第 i 个字母所属音素（phonemeMap 按 spelling 长度展开）是否就是练习音素
+                          const map = sentence.phonemeMap
+                          if (!map) return false
+                          let gi = 0
+                          for (const p of map) {
+                            const len = p.spelling.length
+                            if (gi <= i && i < gi + len) return p.ipa === sentence.phoneticFocus
+                            gi += len
+                          }
+                          return false
+                        })()
+                        const letterColor = focusHit
+                          ? "text-rose-500"
+                          : syllIdx !== null
+                            ? syllIdx % 2 === 1
+                              ? "text-red-500"
+                              : "text-foreground"
+                            : revealed
+                              ? "text-muted-foreground"
+                              : "text-violet-500"
                         return (
                           <span
                             key={idx}

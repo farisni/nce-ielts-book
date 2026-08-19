@@ -9,6 +9,8 @@ export interface SentenceEntry {
   syllables?: string[]
   /** 练习音素（如 "æ"）：音标显示时该音素红色突出（音标课程用） */
   phoneticFocus?: string
+  /** 音素 → 拼写字母映射：答对后单词中对应练习音素的字母红色突出 */
+  phonemeMap?: { ipa: string; spelling: string }[]
 }
 
 export interface Course {

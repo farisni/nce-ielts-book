@@ -85,6 +85,7 @@ def main():
             ipa = clean_ipa(di.get("ipa_uk") or "")
             trans = (di.get("translation") or "").replace("\r\n", "\n").replace("\r", "\n").strip()
             syll = None
+            pmap = None
             ps = di.get("phonetic_split") or {}
             if isinstance(ps, dict):
                 ss = ps.get("syllable_split")
@@ -95,10 +96,20 @@ def main():
                     syll = [s for s in syll if s]
                 elif isinstance(ss, list) and len(ss) > 1:
                     syll = [str(x) for x in ss if str(x).strip()]
+                # 音素级拆分（phonetic_split.uk）：音素 → 拼写字母映射，答对后突出练习音素对应字母
+                fp = ps.get("phonetic_split")
+                if isinstance(fp, dict):
+                    fl = fp.get("uk") or fp.get("us") or []
+                    pmap = [
+                        {"ipa": str(x.get("ipa", "")).strip().lstrip("ˈˌ"), "spelling": str(x.get("spelling", "")).strip()}
+                        for x in fl
+                        if isinstance(x, dict) and (x.get("spelling") or "").strip()
+                    ]
+                    pmap = [m for m in pmap if m["ipa"] and m["spelling"]]
             if not trans:
                 print(f"  ⚠ {word} 无释义，跳过")
                 continue
-            entries.append({"word": word, "ipa": ipa, "trans": trans, "syll": syll})
+            entries.append({"word": word, "ipa": ipa, "trans": trans, "syll": syll, "pmap": pmap})
         if not entries:
             print(f"  ⚠ 单元 {c['name']} 无单词，跳过")
             continue
@@ -143,9 +154,17 @@ def main():
                 syll = f', syllables: [{", ".join(json.dumps(s, ensure_ascii=True) for s in w["syll"])}]' if w["syll"] else ""
                 pos = extract_pos(w["trans"])
                 pos_f = f', pos: "{esc(pos)}"' if pos else ""
+                if w["pmap"]:
+                    inner = ", ".join(
+                        '{{ ipa: "{0}", spelling: "{1}" }}'.format(esc(m["ipa"]), esc(m["spelling"]))
+                        for m in w["pmap"]
+                    )
+                    pmap = f", phonemeMap: [{inner}]"
+                else:
+                    pmap = ""
                 lines.append(
                     f'          {{ word: "{esc(w["word"])}", phonetic: "{esc(w["ipa"])}", '
-                    f'meaning: "{esc(w["trans"])}", audio: ""{pos_f}{syll} }},'
+                    f'meaning: "{esc(w["trans"])}", audio: ""{pos_f}{syll}{pmap} }},'
                 )
             lines.append(f"        ],")
             lines.append(f"      }},")
