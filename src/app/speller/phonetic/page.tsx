@@ -90,10 +90,10 @@ export default function PhoneticPage() {
                         </span>
                       )}
                     </Link>
-                    {/* 示例单词：对应练习音素的字母红色 */}
-                    {t.words.map((w) => (
+                    {/* 示例单词：对应练习音素的字母红色（平台数据可能有重复词，key 加索引） */}
+                    {t.words.map((w, wi) => (
                       <span
-                        key={w.word}
+                        key={`${w.word}-${wi}`}
                         className="flex items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground"
                       >
                         {renderHighlightWord(w.word, w.phonemeMap, focus)}
