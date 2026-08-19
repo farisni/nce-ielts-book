@@ -303,20 +303,18 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
     </span>
   );
   if (entry.ipa.length > 1) {
+    // 多音标条目：hover 显示自绘 tooltip（页面内渲染，无需 portal）
     return (
-      <Tooltip
-        content={
-          <div className="flex flex-col gap-1">
-            {entry.ipa.map((it) => (
-              <span key={it.ph}>
-                [{it.ph}] <span className="font-medium text-foreground">{it.w}</span>
-              </span>
-            ))}
-          </div>
-        }
-      >
+      <span className="group relative inline-flex items-baseline leading-tight">
         {body}
-      </Tooltip>
+        <span className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden whitespace-nowrap rounded-md border border-border bg-background px-2 py-1.5 text-xs shadow-sm group-hover:block">
+          {entry.ipa.map((it) => (
+            <span key={it.ph} className="block text-muted-foreground">
+              [{it.ph}] <span className="font-medium text-foreground">{it.w}</span>
+            </span>
+          ))}
+        </span>
+      </span>
     );
   }
   return body;
