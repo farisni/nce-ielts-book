@@ -1582,8 +1582,13 @@ export default function SentencePractice({
                           }
                           return false
                         })()
-                        const letterColor = focusHit
-                          ? "text-rose-500"
+                        // 音标课程（有 phoneticFocus）：只突出练习音素字母（红色），
+                        // 其余字母保持黑色，不做音节红黑着色；
+                        // 其他课程：答对撒花后音节红黑相间，显示答案时灰/深灰交替
+                        const letterColor = sentence.phoneticFocus
+                          ? focusHit
+                            ? "text-rose-500"
+                            : "text-foreground"
                           : syllIdx !== null
                             ? syllIdx % 2 === 1
                               ? "text-red-500"
