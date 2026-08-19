@@ -328,9 +328,6 @@ function PhonemeMnemonicTable() {
     acc += r;
   }
 
-  const playIpa = (ph: string) => {
-    new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.aac`).play().catch(() => {});
-  };
   const playWord = (word: string, audio?: string) => {
     if (audio) {
       new Audio(audio).play().catch(() => {});
@@ -372,11 +369,10 @@ function PhonemeMnemonicTable() {
           });
           return (
             <Fragment key={g.ph}>
-              {/* 音标列：点击播放音素发音，跨 rows 行 */}
-              <button
-                type="button"
-                onClick={() => playIpa(g.ph)}
-                title={`播放 /${g.ph}/ 发音`}
+              {/* 音标列：整格点击进入听写（内容精简：音标 + 组合，不撑高单元格） */}
+              <Link
+                href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(g.ph)}`}
+                title={`进入 /${g.ph}/ 听写`}
                 className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-1.5 py-2 transition-colors hover:bg-muted/40"
                 style={{ gridColumn: 1, gridRow: `${startRow} / span ${rows}` }}
               >
@@ -384,7 +380,7 @@ function PhonemeMnemonicTable() {
                   /{g.ph}/
                 </span>
                 {patterns.length > 0 && (
-                  <span className="mt-1 flex flex-wrap justify-center gap-x-1.5 gap-y-0.5 text-xs font-semibold leading-tight">
+                  <span className="mt-0.5 flex flex-wrap justify-center gap-x-1.5 gap-y-0.5 text-[0.68rem] font-semibold leading-tight">
                     {patterns.map((pt) => (
                       <span key={pt} className={spellColors[pt]}>
                         {pt}
@@ -392,14 +388,7 @@ function PhonemeMnemonicTable() {
                     ))}
                   </span>
                 )}
-                <Link
-                  href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(g.ph)}`}
-                  className="mt-1.5 rounded-md border border-border px-1.5 py-0.5 text-[0.7rem] font-medium text-[#337ea9] transition-colors hover:border-ring/60 dark:text-[#9cd8fc]"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {g.words.length} 词 · 听写 →
-                </Link>
-              </button>
+              </Link>
               {/* 示例单词：每行固定 5 格（行尾空格留空占位）；点击播放原声 */}
               {Array.from({ length: rows * 5 }).map((_, k) => {
                 const w = g.words[k];
