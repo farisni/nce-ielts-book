@@ -110,7 +110,7 @@ export default function PhoneticPage() {
                         )}
                       </span>
                       {pos !== undefined && (
-                        <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
+                        <span className="mt-4 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
                           第 {pos} 词
                         </span>
                       )}
