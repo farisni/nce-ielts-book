@@ -273,8 +273,8 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
   const p = entry.pattern;
   return (
     <div className={`flex w-full flex-col items-start leading-tight ${small ? "" : ""}`}>
-      {/* 组合行：大 div，固定高度左对齐 */}
-      <div className={`flex h-6 w-full items-center justify-start font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
+      {/* 组合行：大 div，固定高度居中（音标行保持左对齐） */}
+      <div className={`flex h-6 w-full items-center justify-center font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
         {p[0]}
         {entry.plain ? (
           p.slice(1)
