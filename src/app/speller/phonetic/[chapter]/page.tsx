@@ -1,25 +1,33 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import SentencePractice from "@/components/speller/SentencePractice";
-import { getWaxueTest } from "@/lib/speller/phonetic";
+import { WAXUE_CHAPTERS } from "@/lib/speller/phonetic";
 import type { Course } from "@/lib/speller/courses";
 
 /**
- * Speller · 英式音标听力音标听写页
- * basic 样式布局：看中文，听原声，用键盘打出单词
- * - 切词自动播放该词 mp3 原声（autoPlayVoice），Tab 重播
- * - 无独立 mp3 的单词用浏览器 TTS 兜底
+ * Speller · 英式音标听力听写页
+ * 按音标类别整体学习（如「前元音」4 个音标单元全部单词一次练完），
+ * 进度按类别记忆（phonetic-chapter-N）；每个单词带所属单元的音标（phoneticFocus），
+ * 显示音标+释义，答对后对应音素字母红色突出
  */
-export default function WhaleDictationPage() {
+export default function PhoneticDictationPage() {
   const router = useRouter();
   const params = useParams();
-  const chapterSlug = (params.chapter as string) ?? "chapter-3";
-  const testSlug = (params.test as string) ?? "test-1";
-  const test = getWaxueTest(chapterSlug, testSlug);
+  const chapterSlug = (params.chapter as string) ?? "chapter-1";
+  const chapter = WAXUE_CHAPTERS.find((c) => c.slug === chapterSlug);
 
-  // 当前词在课程原始句子中的索引（SentencePractice 回调更新，playVoice 读取）
+  // 合并类别全部单词，每个词带所属单元的练习音标（phoneticFocus）
+  const words = useMemo(() => {
+    if (!chapter) return [];
+    return chapter.tests.flatMap((t) => {
+      const focus = (t.phonetics ?? "").replace(/\//g, "");
+      return t.words.map((w) => ({ ...w, focus }));
+    });
+  }, [chapter]);
+
+  // 当前词在合并单词列表中的索引（SentencePractice 回调更新，playVoice 读取）
   const wordIdxRef = useRef(0);
   // 复用的音频元素：切词自动停旧播新
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -30,26 +38,17 @@ export default function WhaleDictationPage() {
     wordIdxRef.current = courseIndex;
   }, []);
 
-  // 播放当前单词原声：有 mp3 播 mp3，无则 TTS 兜底
+  // 播放当前单词原声：无 mp3 用 TTS 兜底
   const playVoice = useCallback(() => {
-    const w = test?.words[wordIdxRef.current];
+    const w = words[wordIdxRef.current];
     if (!w) return;
-    if (w.audio) {
-      if (!audioRef.current) audioRef.current = new Audio();
-      const a = audioRef.current;
-      if (a.src !== w.audio) a.src = w.audio; // 换 src 自动停止旧播放
-      a.currentTime = 0;
-      a.play().catch(() => {});
-      setWaveTick((t) => t + 1);
-    } else {
-      const synth = window.speechSynthesis;
-      synth.cancel();
-      const u = new SpeechSynthesisUtterance(w.word);
-      u.lang = "en-US";
-      u.rate = 0.85;
-      synth.speak(u);
-    }
-  }, [test]);
+    const synth = window.speechSynthesis;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(w.word);
+    u.lang = "en-US";
+    u.rate = 0.85;
+    synth.speak(u);
+  }, [words]);
 
   // 卸载时停止播放
   useEffect(
@@ -60,30 +59,28 @@ export default function WhaleDictationPage() {
     [],
   );
 
-  if (!test) {
+  if (!chapter) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
-        <p className="text-lg text-muted-foreground">Test 不存在</p>
+        <p className="text-lg text-muted-foreground">类别不存在</p>
       </div>
     );
   }
 
   // 动态构造听写课程：单词 → 句子条目（en=单词, cn=释义, phonetic=音标）
-  // sessionSize = 整个 Test 的词数：一次练完全部单词，进度条反映 Test 真实进度
-  // 音标：部分源数据用 ASCII 撇号 ' 表重音，转标准 IPA ˈ；// 包围由 SentencePractice 统一处理
-  // phoneticFocus：本单元练习的音标（如 "æ"），音标显示时红色突出
-  const focus = (test.phonetics ?? "").replace(/\//g, "");
+  // sessionSize = 整个类别的词数：一次练完全部单词，进度条反映类别真实进度；
+  // 进度记忆按类别（restoreKey = phonetic-${chapter}）
   const course: Course = {
-    id: `phonetic-${chapterSlug}-${testSlug}`,
-    name: `${chapterSlug.replace("chapter-", "Chapter ")} · ${test.name}`,
-    description: `英式音标 · ${test.words.length} 词`,
-    sessionSize: test.words.length,
-    sentences: test.words.map((w) => ({
+    id: `phonetic-${chapterSlug}`,
+    name: `${chapterSlug.replace("chapter-", "Chapter ")} · ${chapter.name}`,
+    description: `英式音标 · ${chapter.tests.length} 个音标 · ${words.length} 词`,
+    sessionSize: words.length,
+    sentences: words.map((w) => ({
       cn: w.meaning,
       en: w.word,
       phonetic: w.phonetic ? w.phonetic.replace(/'/g, "ˈ") : undefined,
       syllables: w.syllables,
-      phoneticFocus: focus || undefined,
+      phoneticFocus: w.focus || undefined,
       phonemeMap: w.phonemeMap,
     })),
   };

@@ -12,23 +12,31 @@ import { getAllProgress } from "@/lib/speller/progress";
  * 每个音标单元是可点击的单元格（音标 + 词数 + 上次听写位置），点击进入单词听写
  */
 export default function PhoneticPage() {
-  // 各 Test 的上次听写位置：{ `chapterSlug/testSlug`: 单词序号（从 1 起） }
+  // 各类别的上次听写位置：{ chapterSlug: 单词序号（从 1 起，类别整体进度） }
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
+
+  // 点击音标 → 播放该音标发音（TTS 读示例单词，示范该音在单词中的发音）
+  const playPhonetic = (word: string) => {
+    const synth = window.speechSynthesis;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US";
+    u.rate = 0.85;
+    synth.speak(u);
+  };
   const totalWords = WAXUE_CHAPTERS.reduce(
     (sum, ch) => sum + ch.tests.reduce((s, t) => s + t.words.length, 0),
     0,
   );
 
   useEffect(() => {
-    // 读取每个 Test 的上次位置（数据库；course id = phonetic-${chapter}-${unit}）
+    // 读取每个类别的上次位置（数据库；course id = phonetic-${chapter}，类别整体进度）
     getAllProgress()
       .then((map) => {
         const pos: Record<string, number> = {};
         for (const ch of WAXUE_CHAPTERS) {
-          for (const t of ch.tests) {
-            const last = map[`phonetic-${ch.slug}-${t.slug}`]?.lastPos ?? 0;
-            if (last > 0) pos[`${ch.slug}/${t.slug}`] = last + 1; // 0-based → 第 N 词
-          }
+          const last = map[`phonetic-${ch.slug}`]?.lastPos ?? 0;
+          if (last > 0) pos[ch.slug] = last + 1; // 0-based → 第 N 词
         }
         setLastPos(pos);
       })
@@ -58,6 +66,7 @@ export default function PhoneticPage() {
       {/* 音标类别区块 */}
       {WAXUE_CHAPTERS.map((ch) => {
         const chapterWords = ch.tests.reduce((s, t) => s + t.words.length, 0);
+        const chapterPos = lastPos[ch.slug];
         return (
           <section key={ch.slug} className="group mb-8 rounded-xl border border-border bg-card p-6">
             <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -65,13 +74,19 @@ export default function PhoneticPage() {
               <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                 {ch.tests.length} 个音标 · {chapterWords} 词
               </span>
-              <span className="text-xs font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
+              {chapterPos !== undefined && (
+                <span className="text-xs font-medium text-[#337ea9] dark:text-[#9cd8fc]">第 {chapterPos} 词</span>
+              )}
+              {/* 点击进入该类别的整体听写 */}
+              <Link
+                href={`/speller/phonetic/${ch.slug}`}
+                className="text-xs font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]"
+              >
                 点击音标进入听写 →
-              </span>
+              </Link>
             </div>
             <div className="space-y-3">
               {ch.tests.map((t) => {
-                const pos = lastPos[`${ch.slug}/${t.slug}`];
                 // 表格：第 1 列音标（跨行），第 2-6 列示例单词（每行 5 个）
                 const rows = Math.max(1, Math.ceil(t.words.length / 5));
                 const focus = (t.phonetics ?? "").replace(/\//g, "");
@@ -88,15 +103,17 @@ export default function PhoneticPage() {
                 });
                 return (
                   <div key={t.slug} className="grid grid-cols-6 gap-2">
-                    {/* 音标列：垂直居中跨 rows 行 */}
-                    <Link
-                      href={`/speller/phonetic/${ch.slug}/${t.slug}`}
-                      className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+                    {/* 音标列：点击播放该音标发音（TTS 读示例单词），垂直居中跨 rows 行 */}
+                    <button
+                      type="button"
+                      onClick={() => playPhonetic(t.words[0]?.word ?? "")}
+                      title={`播放 ${t.phonetics ?? ""} 发音`}
+                      className="group/ipa flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
                     >
                       {/* 音标固定宽度区域（居中对齐），拼写组合形式在右靠左（两列网格） */}
                       <span className="flex w-full items-center justify-center gap-3">
-                        <span className="w-12 shrink-0 text-center text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                        <span className="w-12 shrink-0 text-center text-lg font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
                           {t.phonetics ?? t.name.replace(/.*\//, "/")}
                         </span>
                         {patterns.length > 0 && (
@@ -109,12 +126,7 @@ export default function PhoneticPage() {
                           </span>
                         )}
                       </span>
-                      {pos !== undefined && (
-                        <span className="mt-4 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
-                          第 {pos} 词
-                        </span>
-                      )}
-                    </Link>
+                    </button>
                     {/* 示例单词：对应练习音素的字母红色（平台数据可能有重复词，key 加索引） */}
                     {t.words.map((w, wi) => (
                       <span
