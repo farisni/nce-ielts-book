@@ -224,7 +224,7 @@ function VowelMnemonicTable() {
                 </div>
               );
             })}
-            <div className="flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border px-1 py-1.5">
+            <div className="flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border bg-rose-50/50 px-1 py-1.5 dark:bg-rose-900/15">
               {row.other.map((e) => (
                 <MnemonicInline key={e.pattern} entry={e} />
               ))}
