@@ -405,7 +405,7 @@ function PhonemeMnemonicTable() {
                     type="button"
                     onClick={() => playWord(w.word, w.audio)}
                     title={`播放 ${w.word}`}
-                    className="flex cursor-pointer items-center justify-center border-b border-r border-border px-1.5 py-1 text-sm font-medium text-foreground transition-colors hover:bg-muted/40"
+                    className="flex cursor-pointer items-center justify-center border-b border-r border-border px-1.5 py-0.5 text-base font-medium text-foreground transition-colors hover:bg-muted/40"
                   >
                     {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
                   </button>
