@@ -119,17 +119,16 @@ export default function PhonemeListPage() {
                     ))}
                   </span>
                 )}
-                <span className="mt-1 text-xs text-muted-foreground">{g.words.length} 词</span>
                 {pos !== undefined && (
                   <span className="mt-1 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">第 {pos} 词</span>
                 )}
-                {/* 进入听写链接 */}
+                {/* 进入听写链接（词数在箭头左侧） */}
                 <Link
                   href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(g.ph)}`}
                   className="mt-2 rounded-md border border-border px-2 py-0.5 text-xs font-medium text-[#337ea9] transition-colors hover:border-ring/60 dark:text-[#9cd8fc]"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  听写 →
+                  {g.words.length} 词 · 听写 →
                 </Link>
               </button>
               {/* 示例单词：每行固定 5 格（组内行尾空格留空占位，不补下一组）；点击播放原声 */}
