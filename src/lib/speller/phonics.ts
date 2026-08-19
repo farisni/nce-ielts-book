@@ -159,7 +159,7 @@ export const CONSONANT_GROUPS: PhonicsGroup[] = [
     name: "双字母组合",
     rules: [
       { pattern: "sh", ipa: "/ʃ/", tone: "blue", examples: ["ship", "fish", "shoe"] },
-      { pattern: "ch", ipa: "/tʃ/", tone: "blue", examples: ["chair", "chicken", "cheese"] },
+      { pattern: "ch", ipa: "/tʃ/ /k/ /ʃ/", tone: "blue", examples: ["chair", "school", "chef"] },
       { pattern: "th", ipa: "/θ/ /ð/", tone: "blue", examples: ["three", "this", "think"] },
       { pattern: "ph", ipa: "/f/", tone: "blue", examples: ["phone", "photo", "elephant"] },
       { pattern: "wh", ipa: "/w/ /h/", tone: "blue", examples: ["what", "white", "when"] },
