@@ -1571,14 +1571,15 @@ export default function SentencePractice({
                         const syllIdx =
                           syllMap && syllMap[i] !== undefined ? syllMap[i] : null
                         const focusHit = !!sentence.phoneticFocus && (() => {
-                          // 第 i 个字母所属音素（phonemeMap 按 spelling 长度展开）是否就是练习音素
+                          // 该词中练习音素（phoneticFocus）对应拼写字母的位置：
+                          // phonemeMap 每条目在单词中按 spelling 实际定位（piano 的 ia 在位置 1，不从 0 起）
                           const map = sentence.phonemeMap
                           if (!map) return false
-                          let gi = 0
+                          const wordText = group.chars.map((cc) => cc.target ?? cc.ch).join("").toLowerCase()
                           for (const p of map) {
-                            const len = p.spelling.length
-                            if (gi <= i && i < gi + len) return p.ipa === sentence.phoneticFocus
-                            gi += len
+                            if (p.ipa !== sentence.phoneticFocus) continue
+                            const idx = wordText.indexOf(p.spelling.toLowerCase())
+                            if (idx >= 0 && idx <= i && i < idx + p.spelling.length) return true
                           }
                           return false
                         })()
