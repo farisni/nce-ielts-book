@@ -15,8 +15,14 @@ export default function PhoneticPage() {
   // 各类别的上次听写位置：{ chapterSlug: 单词序号（从 1 起，类别整体进度） }
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
 
-  // 点击音标 → 播放该音标发音（有原声 mp3 播原声，无则 TTS 读示例单词）
-  const playPhonetic = (word: string, audio?: string) => {
+  // 播放音素标准发音（Edge TTS SSML 合成的 /audio/phonetic/ipa/{音素}.mp3）
+  const playIpa = (phonetics: string) => {
+    const ph = phonetics.replace(/\//g, "");
+    new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.mp3`).play().catch(() => {});
+  };
+
+  // 播放单词原声（有 mp3 播原声，无则 TTS）
+  const playWord = (word: string, audio?: string) => {
     if (audio) {
       new Audio(audio).play().catch(() => {});
       return;
@@ -110,7 +116,7 @@ export default function PhoneticPage() {
                     {/* 音标列：点击播放该音标发音（TTS 读示例单词），垂直居中跨 rows 行 */}
                     <button
                       type="button"
-                      onClick={() => playPhonetic(t.words[0]?.word ?? "", t.words[0]?.audio)}
+                      onClick={() => playIpa(t.phonetics ?? "")}
                       title={`播放 ${t.phonetics ?? ""} 发音`}
                       className="group/ipa flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
@@ -136,7 +142,7 @@ export default function PhoneticPage() {
                       <button
                         key={`${w.word}-${wi}`}
                         type="button"
-                        onClick={() => playPhonetic(w.word, w.audio)}
+                        onClick={() => playWord(w.word, w.audio)}
                         title={`播放 ${w.word}`}
                         className="flex cursor-pointer items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:border-ring/60 hover:bg-muted/40"
                       >
