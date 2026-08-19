@@ -2,20 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { WAXUE_CHAPTERS } from "@/lib/speller/phonetic";
 import { getAllProgress } from "@/lib/speller/progress";
 
 /**
- * Speller · 英式音标听力音标听写
- * 课程 → Chapter 选择页：Chapter 卡片手风琴展开显示 Test 列表，点击进入单词听写
- * - 记住上次展开的 Chapter（localStorage）
- * - 每个 Test 显示上次听写到的位置（第 N 个单词，存数据库）
+ * Speller · 英式音标听力
+ * 48 个音标单元表格化展示（phonics 风格）：按音标类别分卡片区块，
+ * 每个音标单元是可点击的单元格（音标 + 词数 + 上次听写位置），点击进入单词听写
  */
-export default function WhaleListeningPage() {
-  // 展开的 chapter slug（默认展开上次记忆的，无记忆则第一个）
-  const [openChapter, setOpenChapter] = useState<string | null>(null);
-  // 各 Test 的上次听写位置：{ `${chapterSlug}/${testSlug}`: 单词序号（从 1 起） }
+export default function PhoneticPage() {
+  // 各 Test 的上次听写位置：{ `chapterSlug/testSlug`: 单词序号（从 1 起） }
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
   const totalWords = WAXUE_CHAPTERS.reduce(
     (sum, ch) => sum + ch.tests.reduce((s, t) => s + t.words.length, 0),
@@ -23,17 +20,7 @@ export default function WhaleListeningPage() {
   );
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("speller:phonetic-chapter");
-      if (saved && WAXUE_CHAPTERS.some((c) => c.slug === saved)) {
-        setOpenChapter(saved);
-      } else {
-        setOpenChapter(WAXUE_CHAPTERS[0]?.slug ?? null);
-      }
-    } catch {
-      setOpenChapter(WAXUE_CHAPTERS[0]?.slug ?? null);
-    }
-    // 读取每个 Test 的上次位置（数据库；course id = whale-${chapter}-${test}）
+    // 读取每个 Test 的上次位置（数据库；course id = phonetic-${chapter}-${unit}）
     getAllProgress()
       .then((map) => {
         const pos: Record<string, number> = {};
@@ -48,94 +35,62 @@ export default function WhaleListeningPage() {
       .catch(() => {});
   }, []);
 
-  const toggleChapter = (slug: string, isOpen: boolean) => {
-    setOpenChapter(isOpen ? null : slug);
-    try {
-      window.localStorage.setItem("speller:phonetic-chapter", slug);
-    } catch {
-      // ignore
-    }
-  };
-
   return (
-    <div className="mx-auto w-full max-w-3xl pb-16 pt-10">
+    <div className="mx-auto w-full max-w-4xl pb-16 pt-10">
       <header className="mb-8">
+        <Link
+          href="/speller"
+          className="mb-4 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <ArrowLeft className="size-4" />
+          返回 Speller
+        </Link>
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-primary">
-          Word Dictation
+          IPA Dictation
         </p>
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">英式音标听力</h1>
-        <p className="mt-2 text-sm text-muted-foreground/70">
-          共 {WAXUE_CHAPTERS.length} 个 Chapter · {totalWords} 个单词
+        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          {WAXUE_CHAPTERS.length} 类 · {WAXUE_CHAPTERS.reduce((s, c) => s + c.tests.length, 0)} 个音标单元 ·{" "}
+          {totalWords} 个单词。点击音标进入该音的单词听写，练习发音与拼写。
         </p>
       </header>
 
-      <div className="space-y-3">
-        {WAXUE_CHAPTERS.map((ch) => {
-          const isOpen = openChapter === ch.slug;
-          const chapterWords = ch.tests.reduce((s, t) => s + t.words.length, 0);
-          return (
-            <div
-              key={ch.slug}
-              className="overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-ring/60"
-            >
-              {/* Chapter 头部：点击展开/收起 */}
-              <button
-                type="button"
-                onClick={() => toggleChapter(ch.slug, isOpen)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-muted/40"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="shrink-0 text-2xl leading-none">{ch.emoji}</span>
-                  <div>
-                    <h2 className="text-lg font-normal text-foreground">
-                      <span className="text-muted-foreground">{ch.name}</span>
-                      <span className="ml-2">{ch.description}</span>
-                    </h2>
-                    <p className="mt-0.5 text-sm text-muted-foreground/70">
-                      {ch.tests.length} 个 Test · 共 {chapterWords} 词
-                    </p>
-                  </div>
-                </div>
-                <ChevronDown
-                  className={`size-5 shrink-0 text-muted-foreground/60 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {/* Test 列表（展开时显示） */}
-              {isOpen && (
-                <div className="border-t border-border">
-                  <ul className="divide-y divide-border">
-                    {ch.tests.map((t) => {
-                      const pos = lastPos[`${ch.slug}/${t.slug}`];
-                      return (
-                        <li key={t.slug}>
-                          <Link
-                            href={`/speller/phonetic/${ch.slug}/${t.slug}`}
-                            className="group flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-muted/40"
-                          >
-                            <div>
-                              <p className="text-lg font-normal text-foreground">{t.name}</p>
-                              <p className="mt-0.5 text-sm text-muted-foreground/70">
-                                {t.wordCount} 个单词 · 难度 {t.difficulty}/5
-                                {pos !== undefined && (
-                                  <span className="ml-2 text-[#337ea9] dark:text-[#9cd8fc]">
-                                    上次听到第 {pos} 词
-                                  </span>
-                                )}
-                              </p>
-                            </div>
-                            <ChevronRight className="size-5 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-1" />
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
+      {/* 音标类别区块 */}
+      {WAXUE_CHAPTERS.map((ch) => {
+        const chapterWords = ch.tests.reduce((s, t) => s + t.words.length, 0);
+        return (
+          <section key={ch.slug} className="mb-8 rounded-xl border border-border bg-card p-6">
+            <div className="mb-4 flex items-center gap-2">
+              <h2 className="text-lg font-semibold text-foreground">{ch.name}</h2>
+              <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                {ch.tests.length} 个音标 · {chapterWords} 词
+              </span>
             </div>
-          );
-        })}
-      </div>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+              {ch.tests.map((t) => {
+                const pos = lastPos[`${ch.slug}/${t.slug}`];
+                return (
+                  <Link
+                    key={t.slug}
+                    href={`/speller/phonetic/${ch.slug}/${t.slug}`}
+                    className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+                  >
+                    <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                      {t.phonetics ?? t.name.replace(/.*\//, "/")}
+                    </span>
+                    <span className="mt-0.5 text-xs text-muted-foreground">{t.words.length} 词</span>
+                    {pos !== undefined && (
+                      <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
+                        第 {pos} 词
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
