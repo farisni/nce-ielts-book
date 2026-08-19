@@ -177,6 +177,18 @@ function VowelMnemonicTable() {
   );
 }
 
+/** 辅音群单词：开头组合字母标红（blue 中 bl 红） */
+function renderConsonantWord(w: string, stem: string) {
+  const idx = w.toLowerCase().indexOf(stem.toLowerCase());
+  if (idx < 0) return w;
+  return (
+    <>
+      <span className="text-rose-500">{w.slice(0, idx + stem.length)}</span>
+      {w.slice(idx + stem.length)}
+    </>
+  );
+}
+
 /** 示例单词中对应组合的字母标红（magic-e 结构标首尾两个字母，如 a_e → make 的 a 和 e） */
 function renderExampleWord(w: string, pattern: string) {
   if (pattern.includes("_")) {
@@ -306,18 +318,19 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
     tone === "red"
       ? "text-red-500 dark:text-red-400"
       : "text-blue-500 dark:text-blue-400";
-  // 有示例单词（开头辅音群）：小方格内左右布局——左组合+音标，右单词案例
+  // 有示例单词（开头辅音群）：小方格内左右布局——左组合+音标，右单词案例（对应部分标红）
   if (rule.examples && rule.examples.length > 0) {
+    const stem = pattern.replace(/-$/, ""); // bl- → bl
     return (
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border px-2 py-2">
         <span className="flex shrink-0 flex-col items-center">
-          <span className={`text-base font-semibold leading-tight ${color}`}>{pattern}</span>
+          <span className={`text-lg font-semibold leading-tight ${color}`}>{pattern}</span>
           {ipa && <span className="mt-0.5 text-xs text-muted-foreground">{ipa}</span>}
         </span>
         <span className="text-sm font-medium leading-tight text-foreground">
-          {rule.examples.map((w, i) => (
+          {rule.examples.map((w) => (
             <span key={w} className="block">
-              {w}
+              {renderConsonantWord(w, stem)}
             </span>
           ))}
         </span>
