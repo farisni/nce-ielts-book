@@ -101,7 +101,7 @@ function VowelMnemonicTable() {
         {/* 表头 */}
         <div />
         {colsRylw.map((c) => (
-          <div key={c} className="flex items-center justify-center rounded-md bg-muted py-1 text-sm font-semibold text-foreground">
+          <div key={c} className="flex items-center justify-center rounded-md bg-muted py-1 text-sm font-semibold text-blue-500 dark:text-blue-400">
             {c}
           </div>
         ))}
