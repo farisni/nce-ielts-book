@@ -309,7 +309,7 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
           <div className="flex flex-col gap-1">
             {entry.ipa.map((it) => (
               <span key={it.ph}>
-                [{it.ph}] <span className="font-medium text-foreground">{renderExampleWord(it.w, p)}</span>
+                [{it.ph}] <span className="font-medium text-foreground">{it.w}</span>
               </span>
             ))}
           </div>
