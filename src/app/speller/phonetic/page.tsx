@@ -136,6 +136,10 @@ export default function PhoneticPage() {
                           </span>
                         )}
                       </span>
+                      {/* 组合形式超过 4 个：卡片底部高亮线提示 */}
+                      {patterns.length > 4 && (
+                        <span className="mt-3 h-1 w-10 shrink-0 rounded-full bg-primary/70" />
+                      )}
                     </button>
                     {/* 示例单词：点击播放该词发音（原声 mp3，无则 TTS）；对应练习音素的字母高亮 */}
                     {t.words.map((w, wi) => (
