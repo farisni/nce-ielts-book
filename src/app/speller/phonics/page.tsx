@@ -319,7 +319,16 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
  *  单词中发该音的组合字母红紫交替；「听写 →」进入音标听写 */
 function PhonemeMnemonicTable() {
   const groups = getPhonemeGroups().sort((a, b) => b.words.length - a.words.length);
-  const groupRows = groups.map((g) => Math.max(1, Math.ceil(g.words.length / 5)));
+  // 跨行 = max(单词行数, 组合行数)：组合多（ɔː/eɪ）跨行给空间，词少组合少（ʊə）不跨行
+  const groupRows = groups.map((g) => {
+    const patterns = new Set<string>();
+    for (const w of g.words) {
+      for (const p of w.phonemeMap ?? []) {
+        if (p.ipa === g.ph) patterns.add(p.spelling);
+      }
+    }
+    return Math.max(1, Math.ceil(g.words.length / 5), Math.ceil(patterns.size / 3));
+  });
   const groupStarts: number[] = [];
   let acc = 1;
   for (const r of groupRows) {
