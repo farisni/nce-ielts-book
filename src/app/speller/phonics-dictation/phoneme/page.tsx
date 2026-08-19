@@ -86,9 +86,10 @@ export default function PhonemeListPage() {
             spellColors[pt] = i % 2 === 0 ? "text-rose-500" : "text-violet-500";
           });
           return (
-            <div key={g.ph} className="grid grid-cols-6 gap-2">
+            <>
               {/* 音标列：点击播放音素发音，跨 rows 行 */}
               <button
+                key={`${g.ph}-ipa`}
                 type="button"
                 onClick={() => playIpa(g.ph)}
                 title={`播放 [${g.ph}] 发音`}
@@ -133,7 +134,7 @@ export default function PhonemeListPage() {
                   {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
                 </button>
               ))}
-            </div>
+            </>
           );
         })}
       </div>
