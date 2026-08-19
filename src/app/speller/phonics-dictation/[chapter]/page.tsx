@@ -39,23 +39,22 @@ export default function PhoneticDictationPage() {
     wordIdxRef.current = courseIndex;
   }, []);
 
-  // 播放当前单词原声：无 mp3 用 TTS 兜底
+  // 播放当前单词原声：一律用 Edge TTS 音频（en-GB-SoniaNeural），不用浏览器系统 TTS
   const playVoice = useCallback(() => {
     const w = words[wordIdxRef.current];
-    if (!w) return;
-    const synth = window.speechSynthesis;
-    synth.cancel();
-    const u = new SpeechSynthesisUtterance(w.word);
-    u.lang = "en-US";
-    u.rate = 0.85;
-    synth.speak(u);
+    if (!w || !w.audio) return;
+    if (!audioRef.current) audioRef.current = new Audio();
+    const a = audioRef.current;
+    if (a.src !== w.audio) a.src = w.audio; // 换 src 自动停止旧播放
+    a.currentTime = 0;
+    a.play().catch(() => {});
+    setWaveTick((t) => t + 1);
   }, [words]);
 
   // 卸载时停止播放
   useEffect(
     () => () => {
       audioRef.current?.pause();
-      window.speechSynthesis?.cancel();
     },
     [],
   );
