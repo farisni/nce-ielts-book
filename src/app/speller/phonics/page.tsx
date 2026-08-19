@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import {
-  PHONICS_LETTERS,
   VOWEL_GROUPS,
   CONSONANT_GROUPS,
   MIXED_GROUPS,
@@ -11,7 +10,7 @@ import {
 
 /**
  * 自然拼读规则表
- * 表 1 字母发音 · 表 2 元音组合（44）· 表 3 辅音组合（50）· 表 4 元辅组合（52）
+ * 表 1 元音组合（44）· 表 2 辅音组合（50）· 表 3 元辅组合（52）
  * 红 = 两元相遇（两个元音字母相遇，发第一个元音字母的字母音）；蓝 = 组合发音
  */
 export default function PhonicsPage() {
@@ -30,7 +29,7 @@ export default function PhonicsPage() {
         </p>
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-foreground">自然拼读规则表</h1>
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          字母发音 · 元音组合 · 辅音组合 · 元辅组合。红色按「两元相遇」方法发音，蓝色按「组合发音」。
+          元音组合 · 辅音组合 · 元辅组合。红色按「两元相遇」方法发音，蓝色按「组合发音」。
         </p>
       </header>
 
@@ -50,40 +49,21 @@ export default function PhonicsPage() {
         </span>
       </div>
 
-      {/* 表 1 · 字母发音 */}
-      <section className="mb-8 rounded-xl border border-border bg-card p-6">
-        <div className="mb-4 flex items-center gap-2">
-          <h2 className="text-lg font-semibold text-foreground">字母发音</h2>
-          <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">26 个</span>
-        </div>
-        <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">
-          {PHONICS_LETTERS.map(({ letter, ipa }) => (
-            <div
-              key={letter}
-              className="flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3"
-            >
-              <span className="text-lg font-semibold leading-tight text-foreground">{letter}</span>
-              <span className="mt-0.5 text-xs text-muted-foreground">{ipa}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 表 2 · 元音组合 */}
+      {/* 表 1 · 元音组合 */}
       <PhonicsSection
         title="元音组合"
         count={VOWEL_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
         groups={VOWEL_GROUPS}
       />
 
-      {/* 表 3 · 辅音组合 */}
+      {/* 表 2 · 辅音组合 */}
       <PhonicsSection
         title="辅音组合"
         count={CONSONANT_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
         groups={CONSONANT_GROUPS}
       />
 
-      {/* 表 4 · 元辅组合 */}
+      {/* 表 3 · 元辅组合 */}
       <PhonicsSection
         title="元辅组合"
         count={MIXED_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
