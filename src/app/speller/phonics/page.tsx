@@ -1,6 +1,9 @@
-import { Fragment } from "react";
+"use client"
+
+import { Fragment, useState } from "react";
 import { Tooltip } from "@/components/ui/tooltip";
 import { MNEMONIC_DATA, MNEMONIC_COLS, SYLLABLE_RULES, type MnemonicEntry } from "@/lib/speller/phonics-mnemonic";
+import { getPhonemeGroups } from "@/lib/speller/phonics-vowel";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -17,6 +20,9 @@ import {
  * 红 = 两元相遇（两个元音字母相遇，发第一个元音字母的字母音）；蓝 = 组合发音
  */
 export default function PhonicsPage() {
+  // tab：按组合（巧记表）/ 按音标（音标模式表格）
+  const [tab, setTab] = useState<"group" | "phoneme">("group");
+
   return (
     <div className="mx-auto w-full max-w-4xl pb-16 pt-10">
       <header className="mb-8">
@@ -36,8 +42,28 @@ export default function PhonicsPage() {
         </p>
       </header>
 
-      {/* 表 1 · 元音组合（二级巧记表：行 a e i o u × 列 r y w l | a e i o u | 其他） */}
-      <VowelMnemonicTable />
+      {/* 表 1 · 元音组合：tab 切换（按组合巧记表 / 按音标表格） */}
+      <div className="mb-4 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setTab("group")}
+          className={`rounded-md border px-3 py-1 text-sm font-medium transition-colors ${
+            tab === "group" ? "border-ring/60 bg-muted text-foreground" : "border-border text-muted-foreground hover:border-ring/60"
+          }`}
+        >
+          按组合
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab("phoneme")}
+          className={`rounded-md border px-3 py-1 text-sm font-medium transition-colors ${
+            tab === "phoneme" ? "border-ring/60 bg-muted text-foreground" : "border-border text-muted-foreground hover:border-ring/60"
+          }`}
+        >
+          按音标
+        </button>
+      </div>
+      {tab === "group" ? <VowelMnemonicTable /> : <PhonemeMnemonicTable />}
 
       {/* 表 2 · 辅音组合 */}
       <PhonicsSection
@@ -69,19 +95,6 @@ function VowelMnemonicTable() {
           className="ml-1 text-sm font-medium text-[#337ea9] transition-transform hover:translate-x-0.5 dark:text-[#9cd8fc]"
         >
           进入拼写 →
-        </Link>
-        <span className="text-sm text-muted-foreground/60">模式：</span>
-        <Link
-          href="/speller/phonics-dictation/vowel-a"
-          className="rounded-md border border-border px-2 py-0.5 text-xs font-medium text-foreground transition-colors hover:border-ring/60"
-        >
-          按组合
-        </Link>
-        <Link
-          href="/speller/phonics-dictation/phoneme"
-          className="rounded-md border border-border px-2 py-0.5 text-xs font-medium text-foreground transition-colors hover:border-ring/60"
-        >
-          按音标
         </Link>
       </div>
       <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] border-l border-t border-border">
@@ -298,5 +311,143 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
       <span className={`text-base font-semibold leading-tight ${color}`}>{pattern}</span>
       {ipa && <span className="mt-0.5 text-xs text-muted-foreground">{ipa}</span>}
     </div>
+  );
+}
+
+/** 音标模式表格（内嵌于自然拼读页，同巧记表比例缩小）：
+ *  第 1 列音标（跨行，点击播放音素发音），第 2-6 列示例单词（点击播放原声），
+ *  单词中发该音的组合字母红紫交替；「听写 →」进入音标听写 */
+function PhonemeMnemonicTable() {
+  const groups = getPhonemeGroups().sort((a, b) => b.words.length - a.words.length);
+  const groupRows = groups.map((g) => Math.max(1, Math.ceil(g.words.length / 5)));
+  const groupStarts: number[] = [];
+  let acc = 1;
+  for (const r of groupRows) {
+    groupStarts.push(acc);
+    acc += r;
+  }
+
+  const playIpa = (ph: string) => {
+    new Audio(`/audio/phonetic/ipa/${encodeURIComponent(ph)}.aac`).play().catch(() => {});
+  };
+  const playWord = (word: string, audio?: string) => {
+    if (audio) {
+      new Audio(audio).play().catch(() => {});
+      return;
+    }
+    const synth = window.speechSynthesis;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US";
+    u.rate = 0.85;
+    synth.speak(u);
+  };
+
+  return (
+    <section className="mb-8 rounded-xl border border-border bg-card p-6">
+      <div className="mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold text-foreground">元音组合 · 音标模式</h2>
+        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+          发同一音的词一起练 · {groups.length} 个音标
+        </span>
+      </div>
+      <div className="grid grid-cols-6 border-l border-t border-border">
+        {groups.map((g, gi) => {
+          const rows = groupRows[gi];
+          const startRow = groupStarts[gi];
+          const patterns: string[] = [];
+          for (const w of g.words) {
+            for (const p of w.phonemeMap ?? []) {
+              if (p.ipa === g.ph && !patterns.includes(p.spelling)) patterns.push(p.spelling);
+            }
+          }
+          const spellColors: Record<string, string> = {};
+          patterns.forEach((pt, i) => {
+            spellColors[pt] = i % 2 === 0 ? "text-rose-500" : "text-violet-500";
+          });
+          return (
+            <Fragment key={g.ph}>
+              {/* 音标列：点击播放音素发音，跨 rows 行 */}
+              <button
+                type="button"
+                onClick={() => playIpa(g.ph)}
+                title={`播放 /${g.ph}/ 发音`}
+                className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-1.5 py-2 transition-colors hover:bg-muted/40"
+                style={{ gridColumn: 1, gridRow: `${startRow} / span ${rows}` }}
+              >
+                <span className="text-base font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
+                  /{g.ph}/
+                </span>
+                {patterns.length > 0 && (
+                  <span className="mt-1 grid grid-cols-3 items-start gap-x-1.5 gap-y-0.5 text-xs font-semibold leading-tight">
+                    {patterns.map((pt) => (
+                      <span key={pt} className={spellColors[pt]}>
+                        {pt}
+                      </span>
+                    ))}
+                  </span>
+                )}
+                <Link
+                  href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(g.ph)}`}
+                  className="mt-1.5 rounded-md border border-border px-1.5 py-0.5 text-[0.7rem] font-medium text-[#337ea9] transition-colors hover:border-ring/60 dark:text-[#9cd8fc]"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {g.words.length} 词 · 听写 →
+                </Link>
+              </button>
+              {/* 示例单词：每行固定 5 格（行尾空格留空占位）；点击播放原声 */}
+              {Array.from({ length: rows * 5 }).map((_, k) => {
+                const w = g.words[k];
+                if (!w) return <div key={`${g.ph}-empty-${k}`} className="border-b border-r border-border" />;
+                return (
+                  <button
+                    key={`${w.word}-${k}`}
+                    type="button"
+                    onClick={() => playWord(w.word, w.audio)}
+                    title={`播放 ${w.word}`}
+                    className="flex cursor-pointer items-center justify-center border-b border-r border-border px-1.5 py-1 text-sm font-medium text-foreground transition-colors hover:bg-muted/40"
+                  >
+                    {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
+                  </button>
+                );
+              })}
+            </Fragment>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+/** 单词中发该音（phonemeMap.ipa === ph）的组合字母标红（红紫交替按组合） */
+function renderHighlightWord(
+  word: string,
+  map: { ipa: string; spelling: string }[] | undefined,
+  ph: string,
+  spellColors: Record<string, string>,
+) {
+  if (!map) return word;
+  const letterColors: (string | null)[] = [];
+  for (let i = 0; i < word.length; i++) letterColors.push(null);
+  for (const p of map) {
+    if (p.ipa !== ph) continue;
+    const idx = word.toLowerCase().indexOf(p.spelling.toLowerCase());
+    if (idx < 0) continue;
+    const color = spellColors[p.spelling] ?? "text-rose-500";
+    for (let k = 0; k < p.spelling.length; k++) letterColors[idx + k] = color;
+  }
+  if (letterColors.every((c) => c === null)) return word;
+  return (
+    <>
+      {word.split("").map((c, i) =>
+        letterColors[i] ? (
+          <span key={i} className={letterColors[i]!}>
+            {c}
+          </span>
+        ) : (
+          c
+        ),
+      )}
+    </>
   );
 }
