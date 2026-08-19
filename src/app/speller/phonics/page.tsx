@@ -247,6 +247,35 @@ function VowelMnemonicTable() {
   );
 }
 
+/** 示例单词中对应组合的字母标红（magic-e 结构标首尾两个字母，如 a_e → make 的 a 和 e） */
+function renderExampleWord(w: string, pattern: string) {
+  if (pattern.includes("_")) {
+    const [first, last] = pattern.split("_");
+    const low = w.toLowerCase();
+    const fi = low.indexOf(first);
+    const li = low.lastIndexOf(last);
+    if (fi < 0 || li < 0 || li <= fi) return w;
+    return (
+      <>
+        {w.slice(0, fi)}
+        <span className="text-rose-500">{w.slice(fi, fi + first.length)}</span>
+        {w.slice(fi + first.length, li)}
+        <span className="text-rose-500">{w.slice(li, li + last.length)}</span>
+        {w.slice(li + last.length)}
+      </>
+    );
+  }
+  const idx = w.toLowerCase().indexOf(pattern.toLowerCase());
+  if (idx < 0) return w;
+  return (
+    <>
+      {w.slice(0, idx)}
+      <span className="text-rose-500">{w.slice(idx, idx + pattern.length)}</span>
+      {w.slice(idx + pattern.length)}
+    </>
+  );
+}
+
 /** 其他列条目：组合固定宽度左对齐 + 音标同行 */
 function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
@@ -261,7 +290,7 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
           <span key={it.ph}>
             {i > 0 && " "}[{it.ph}]
             {/* 多音标条目不显示示例单词（避免拥挤），单音标保留 */}
-            {entry.ipa.length <= 1 && <span className="text-foreground/80"> {it.w}</span>}
+            {entry.ipa.length <= 1 && <span className="text-foreground/80"> {renderExampleWord(it.w, entry.pattern)}</span>}
           </span>
         ))}
       </span>
@@ -287,7 +316,7 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
         {entry.ipa.map((it) => (
           <div key={it.ph} className="flex h-4 w-full items-center justify-start leading-none">
             <div className="w-7 shrink-0 text-left">[{it.ph}]</div>
-            <div className="text-left text-foreground/80">{it.w}</div>
+            <div className="text-left text-foreground/80">{renderExampleWord(it.w, entry.pattern)}</div>
           </div>
         ))}
       </div>
