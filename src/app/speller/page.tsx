@@ -152,66 +152,55 @@ export default function SpellerPage() {
           </div>
         </div>
 
-        {/* 英式音标听力 · 音标单词听写课程（48 单元） */}
-        <Link
-          href="/speller/phonetic"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                🎯
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">英式音标听力</h2>
-                  <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-                    音标听写
-                  </span>
-                </div>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  48 个音标单元 · 668 词，按音标分类逐音标练发音拼写
-                </p>
+        {/* 自然拼读 · 一个卡片涵盖音标听力与规则表，点击直达各课程 */}
+        <div className="overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
+              🔤
+            </span>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold text-foreground">自然拼读</h2>
+                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                  音标 · 规则
+                </span>
               </div>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                音标听力 · 拼读规则表，听音标练发音，查组合规则
+              </p>
             </div>
-            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
           </div>
 
-          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
-            选择音标 →
-          </span>
-        </Link>
-
-
-        {/* 自然拼读规则表 */}
-        <Link
-          href="/speller/phonics"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
-                🔤
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-semibold text-foreground">自然拼读规则表</h2>
-                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
-                    规则表
-                  </span>
+          {/* 音标听力 / 规则表入口 */}
+          <div className="mt-4 space-y-2">
+            <Link
+              href="/speller/phonetic"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">🎯</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">英式音标听力</div>
+                  <div className="text-xs text-muted-foreground">48 个音标单元 · 668 词，按音标分类逐音标练发音拼写</div>
                 </div>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  字母发音 · 元音组合 44 · 辅音组合 50 · 元辅组合 52
-                </p>
               </div>
-            </div>
-            <Keyboard className="size-5 shrink-0 text-muted-foreground/50" />
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/speller/phonics"
+              className="group flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-lg">📋</span>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">自然拼读规则表</div>
+                  <div className="text-xs text-muted-foreground">元音组合 44 · 辅音组合 50 · 元辅组合 52</div>
+                </div>
+              </div>
+              <ChevronRight className="size-4 shrink-0 text-muted-foreground/40 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
-
-          <span className="mt-4 inline-block text-sm font-medium text-[#337ea9] transition-transform group-hover:translate-x-1 dark:text-[#9cd8fc]">
-            查看规则表 →
-          </span>
-        </Link>
+        </div>
 
         {/* NCE3 新概念英语第三册 · 课系列入口 */}
         <Link
