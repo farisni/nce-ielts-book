@@ -53,3 +53,4 @@ data/*.db-shm
 
 # playwright-cli 本地测试产物
 /.playwright-cli/
+data/
