@@ -1598,16 +1598,15 @@ export default function SentencePractice({
                           return false
                         })()
                         // 音标课程（有 phoneticFocus）：输入过程中保持紫色，
-                        // 答对撒花后/显示答案时只突出练习音素字母（红色）、其余黑色，
-                        // 不做音节红黑着色；其他课程：答对撒花后音节红黑相间，显示答案时灰/深灰交替
+                        // 答对撒花后（fullyCorrect，不依赖音节数据）/显示答案时只突出练习音素字母
+                        // （红色）、其余黑色，不做音节红黑着色；
+                        // 其他课程：答对撒花后音节红黑相间，显示答案时灰/深灰交替
                         const letterColor = sentence.phoneticFocus
-                          ? syllIdx !== null
+                          ? fullyCorrect || revealed
                             ? focusHit
                               ? "text-rose-500"
                               : "text-foreground"
-                            : revealed
-                              ? "text-muted-foreground"
-                              : "text-violet-500"
+                            : "text-violet-500"
                           : syllIdx !== null
                             ? syllIdx % 2 === 1
                               ? "text-red-500"
