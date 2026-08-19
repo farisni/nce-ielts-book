@@ -149,15 +149,19 @@ function VowelMnemonicTable() {
 }
 
 function MnemonicCell({ rule, small = false, plain = false }: { rule: PhonicsRule; small?: boolean; plain?: boolean }) {
+  // 同字母组合（ee/oo）：显示为 e_e / o_o（下划线分隔两个相同元音）
+  const p = rule.pattern;
+  const display =
+    p.length === 2 && p[0] === p[1] ? `${p[0]}_${p[0]}` : p;
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
       {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；两元相遇列（plain）整体黑色 */}
       <span className={`font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
-        {rule.pattern[0]}
+        {display[0]}
         {plain ? (
-          rule.pattern.slice(1)
+          display.slice(1)
         ) : (
-          <span className="text-blue-500 dark:text-blue-400">{rule.pattern.slice(1)}</span>
+          <span className="text-blue-500 dark:text-blue-400">{display.slice(1)}</span>
         )}
       </span>
       <span className="text-[0.65rem] text-muted-foreground">{rule.ipa}</span>
