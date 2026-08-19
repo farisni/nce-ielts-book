@@ -664,6 +664,10 @@ export default function SentencePractice({
     const next = index + 1
     if (next >= session.length) {
       setPhase("done")
+      // 本组刷完：进度归零，下次进入从头开始（而非停在完成页/末尾）
+      if (restoreKey && courseRef.current) {
+        updateProgress(courseRef.current.id, { lastPos: 0 }).catch(() => {})
+      }
       return
     }
     const nextWords = getWords(session[next].en)
