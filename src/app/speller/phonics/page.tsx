@@ -210,10 +210,12 @@ function VowelMnemonicTable() {
             </div>
             {MNEMONIC_COLS.map((c) => {
               const entries = row.cols[c];
-              // r y w l 列数据单元格：微黄色背景（与表头蓝色呼应修饰列）
-              const yellow = colsRylw.includes(c) ? "bg-yellow-50/60 dark:bg-yellow-900/15" : "";
+              // r y w l 列数据单元格：微黄色；a e i o u 列：淡绿色
+              const bg = colsRylw.includes(c)
+                ? "bg-yellow-50/60 dark:bg-yellow-900/15"
+                : "bg-emerald-50/50 dark:bg-emerald-900/15";
               return (
-                <div key={c} className={`flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border px-1 py-1.5 ${yellow}`}>
+                <div key={c} className={`flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border px-1 py-1.5 ${bg}`}>
                   {entries && entries.length > 0 ? (
                     entries.map((e) => <MnemonicCell key={e.pattern} entry={e} />)
                   ) : (
