@@ -196,7 +196,7 @@ export default function SpellerPage() {
         {/* NCE3 新概念英语第三册 · 课系列入口 */}
         <Link
           href="/speller/nce3"
-          className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60 hover:bg-muted/40"
+          className="group relative overflow-hidden rounded-xl bg-card p-6 shadow-[0_0_10px_rgba(0,0,0,0.035)] transition-shadow hover:shadow-[0_0_14px_rgba(0,0,0,0.06)]"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-4">
