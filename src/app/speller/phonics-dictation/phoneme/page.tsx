@@ -69,8 +69,8 @@ export default function PhonemeListPage() {
         </p>
       </header>
 
-      {/* 音标分组区块 */}
-      <div className="space-y-3">
+      {/* 音标分组区块：连续普通表格（无圆角无间隙） */}
+      <div className="grid grid-cols-6 border-l border-t border-border">
         {groups.map((g) => {
           const pos = lastPos[g.ph];
           const rows = Math.max(1, Math.ceil(g.words.length / 5));
@@ -92,7 +92,7 @@ export default function PhonemeListPage() {
                 type="button"
                 onClick={() => playIpa(g.ph)}
                 title={`播放 [${g.ph}] 发音`}
-                className="group/ipa relative flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+                className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-2 py-3 transition-colors hover:bg-muted/40"
                 style={{ gridRow: `span ${rows}` }}
               >
                 <span className="text-lg font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
@@ -128,7 +128,7 @@ export default function PhonemeListPage() {
                   type="button"
                   onClick={() => playWord(w.word, w.audio)}
                   title={`播放 ${w.word}`}
-                  className="flex cursor-pointer items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:border-ring/60 hover:bg-muted/40"
+                  className="flex cursor-pointer items-center justify-center border-b border-r border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:bg-muted/40"
                 >
                   {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
                 </button>
