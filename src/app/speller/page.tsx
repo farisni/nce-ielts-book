@@ -89,7 +89,7 @@ export default function SpellerPage() {
           </div>
         </div>
 
-        {/* 雅思单词听力 · 一个卡片涵盖全部词汇听写，点击直达各课程 */}
+        {/* 雅思辅助材料 · 一个卡片涵盖全部词汇听写，点击直达各课程 */}
         <div className="overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors hover:border-ring/60">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
@@ -97,7 +97,7 @@ export default function SpellerPage() {
             </span>
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-semibold text-foreground">雅思单词听力</h2>
+                <h2 className="text-xl font-semibold text-foreground">雅思辅助材料</h2>
                 <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
                   单词听写
                 </span>
