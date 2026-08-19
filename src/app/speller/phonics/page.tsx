@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -49,12 +50,8 @@ export default function PhonicsPage() {
         </span>
       </div>
 
-      {/* 表 1 · 元音组合 */}
-      <PhonicsSection
-        title="元音组合"
-        count={VOWEL_GROUPS.reduce((n, g) => n + g.rules.length, 0)}
-        groups={VOWEL_GROUPS}
-      />
+      {/* 表 1 · 元音组合（二级巧记表：行 a e i o u × 列 r y w l | a e i o u | 其他） */}
+      <VowelMnemonicTable />
 
       {/* 表 2 · 辅音组合 */}
       <PhonicsSection
@@ -70,6 +67,92 @@ export default function PhonicsPage() {
         groups={MIXED_GROUPS}
       />
     </div>
+  );
+}
+
+/**
+ * 元音组合 · 二级巧记表
+ * 行 = 元音字母 a e i o u，列 = r y w l | a e i o u | 其他；
+ * 单元格 = 该组合的发音（红 = 两元相遇，蓝 = 组合发音），数据取自 VOWEL_GROUPS
+ */
+function VowelMnemonicTable() {
+  // 组合 → 规则映射（保持红蓝 tone）
+  const ruleMap = new Map<string, PhonicsRule>();
+  for (const g of VOWEL_GROUPS) {
+    for (const r of g.rules) {
+      if (!ruleMap.has(r.pattern)) ruleMap.set(r.pattern, r);
+    }
+  }
+  const allRules = VOWEL_GROUPS.flatMap((g) => g.rules);
+  const colsRylw = ["r", "y", "w", "l"];
+  const colsVowel = ["a", "e", "i", "o", "u"];
+  const cols = [...colsRylw, ...colsVowel];
+  const vowelRows = ["a", "e", "i", "o", "u"];
+
+  return (
+    <section className="mb-8 rounded-xl border border-border bg-card p-6">
+      <div className="mb-4 flex items-center gap-2">
+        <h2 className="text-lg font-semibold text-foreground">元音组合 · 二级巧记表</h2>
+        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+          行 a e i o u × 列 r y w l | a e i o u | 其他
+        </span>
+      </div>
+      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.6fr)] gap-1">
+        {/* 表头 */}
+        <div />
+        {colsRylw.map((c) => (
+          <div key={c} className="flex items-center justify-center rounded-md bg-muted py-1 text-sm font-semibold text-foreground">
+            {c}
+          </div>
+        ))}
+        {colsVowel.map((c) => (
+          <div key={c} className="flex items-center justify-center rounded-md bg-muted/60 py-1 text-sm font-semibold text-foreground">
+            {c}
+          </div>
+        ))}
+        <div className="flex items-center justify-center rounded-md bg-muted/40 py-1 text-sm font-semibold text-muted-foreground">
+          其他
+        </div>
+
+        {/* 数据行 */}
+        {vowelRows.map((v) => {
+          const used = new Set(cols.map((c) => v + c));
+          const others = allRules.filter((r) => r.pattern.startsWith(v) && !used.has(r.pattern));
+          return (
+            <Fragment key={v}>
+              <div className="flex items-center justify-center rounded-md border border-border py-2 text-base font-bold text-foreground">
+                {v}
+              </div>
+              {cols.map((c) => {
+                const r = ruleMap.get(v + c);
+                return (
+                  <div key={c} className="flex min-h-12 items-center justify-center rounded-md border border-border px-1 py-1.5">
+                    {r ? <MnemonicCell rule={r} /> : <span className="text-muted-foreground/30">·</span>}
+                  </div>
+                );
+              })}
+              <div className="flex min-h-12 flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-md border border-border px-1 py-1.5">
+                {others.length > 0 ? (
+                  others.map((r) => <MnemonicCell key={r.pattern} rule={r} small />)
+                ) : (
+                  <span className="text-muted-foreground/30">·</span>
+                )}
+              </div>
+            </Fragment>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function MnemonicCell({ rule, small = false }: { rule: PhonicsRule; small?: boolean }) {
+  const color = rule.tone === "red" ? "text-red-500 dark:text-red-400" : "text-blue-500 dark:text-blue-400";
+  return (
+    <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
+      <span className={`font-semibold ${small ? "text-sm" : "text-base"} ${color}`}>{rule.pattern}</span>
+      <span className="text-[0.65rem] text-muted-foreground">{rule.ipa}</span>
+    </span>
   );
 }
 
