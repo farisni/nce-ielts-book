@@ -247,16 +247,16 @@ function VowelMnemonicTable() {
   );
 }
 
-/** 其他列条目：组合与音标同行横排（ar [ɑː] [ɔː] [ə]） */
+/** 其他列条目：组合固定宽度 + 音标同行（ou [aʊ] [uː]） */
 function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
   return (
-    <span className="inline-flex items-baseline gap-1 leading-tight">
-      <span className="text-sm font-semibold text-foreground">
+    <span className="inline-flex items-baseline leading-tight">
+      <span className="w-10 shrink-0 text-right text-sm font-semibold text-foreground">
         {p[0]}
         <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
       </span>
-      <span className="text-[0.65rem] text-muted-foreground">
+      <span className="ml-1 text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((ph, i) => (
           <span key={ph}>
             {i > 0 && " "}[{ph}]
