@@ -16,7 +16,7 @@ import {
  */
 export default function PhonicsPage() {
   return (
-    <div className="mx-auto w-full max-w-4xl pb-16 pt-10">
+    <div className="mx-auto w-full max-w-6xl pb-16 pt-10">
       <header className="mb-8">
         <Link
           href="/speller"
@@ -185,7 +185,7 @@ function VowelMnemonicTable() {
           巧记（不要死记硬背）· 行 a e i o u × 列 r y w l | a e i o u | 其他
         </span>
       </div>
-      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] gap-1">
+      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(4.5rem,1fr))_minmax(0,2fr)] gap-1">
         {/* 表头 */}
         <div />
         {colsRylw.map((c) => (
@@ -288,7 +288,7 @@ function MnemonicCell({ entry, small = false }: { entry: MnemonicEntry; small?: 
         {entry.ipa.map((it) => (
           <span key={it.ph} className="flex h-4 items-center justify-center gap-1 leading-none">
             <span className="w-8 shrink-0 text-left">[{it.ph}]</span>
-            <span className="text-left text-foreground/80">{it.w}</span>
+            <span className="w-10 shrink-0 text-left text-foreground/80">{it.w}</span>
           </span>
         ))}
       </span>
