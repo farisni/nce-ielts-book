@@ -18,6 +18,13 @@ export default function PhonemeDictationPage() {
   const allGroups = useMemo(() => getPhonemeGroups().sort((a, b) => b.words.length - a.words.length), []);
   const group = useMemo(() => allGroups.find((g) => g.ph === ph), [ph, allGroups]);
 
+  // 单组合音标组（组合≤1）收拢为一个合集课：这些组的词合并一起练（每词带自己的 focus）
+  const singleGroups = useMemo(
+    () => allGroups.filter((g) => g.words.every((w) => (w.phonemeMap ?? []).filter((p) => p.ipa === g.ph).length <= 1)),
+    [allGroups],
+  );
+  const isSingle = group ? singleGroups.includes(group) : false;
+
   const wordIdxRef = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [, setWaveTick] = useState(0);
@@ -26,9 +33,15 @@ export default function PhonemeDictationPage() {
     wordIdxRef.current = courseIndex;
   }, []);
 
+  // 合并词表：单组合组 → 全部单组合组的词；多组合组 → 本组词
+  const words = useMemo(() => {
+    if (isSingle) return singleGroups.flatMap((g) => g.words.map((w) => ({ ...w, focus: w.phonemeMap?.[0]?.ipa ?? "" })));
+    return group?.words.map((w) => ({ ...w, focus: ph })) ?? [];
+  }, [isSingle, singleGroups, group, ph]);
+
   // 播放当前词：Edge TTS 音频（en-GB-SoniaNeural），不用浏览器系统 TTS
   const playVoice = useCallback(() => {
-    const w = group?.words[wordIdxRef.current];
+    const w = words[wordIdxRef.current];
     if (!w || !w.audio) return;
     if (!audioRef.current) audioRef.current = new Audio();
     const a = audioRef.current;
@@ -36,7 +49,7 @@ export default function PhonemeDictationPage() {
     a.currentTime = 0;
     a.play().catch(() => {});
     setWaveTick((t) => t + 1);
-  }, [group]);
+  }, [words]);
 
   useMemo(() => () => audioRef.current?.pause(), []);
 
@@ -49,16 +62,16 @@ export default function PhonemeDictationPage() {
   }
 
   const course: Course = {
-    id: `phonics-phoneme-${ph}`,
-    name: `/${ph}/ · 元音组合听写`,
-    description: `音标 /${ph}/ · ${group.words.length} 词`,
-    sessionSize: group.words.length,
-    sentences: group.words.map((w) => ({
+    id: `phonics-phoneme-${isSingle ? "_single" : ph}`,
+    name: isSingle ? `单组合合集 · 元音组合听写` : `/${ph}/ · 元音组合听写`,
+    description: isSingle ? `单组合音标合集 · ${words.length} 词` : `音标 /${ph}/ · ${words.length} 词`,
+    sessionSize: words.length,
+    sentences: words.map((w) => ({
       cn: w.meaning,
       en: w.word,
       phonetic: w.phonetic ? w.phonetic.replace(/'/g, "ˈ") : undefined,
       syllables: w.syllables,
-      phoneticFocus: ph,
+      phoneticFocus: w.focus || undefined,
       phonemeMap: w.phonemeMap,
     })),
   };
