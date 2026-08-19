@@ -185,33 +185,33 @@ function VowelMnemonicTable() {
           巧记（不要死记硬背）· 行 a e i o u × 列 r y w l | a e i o u | 其他
         </span>
       </div>
-      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] gap-1">
+      <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] border-l border-t border-border">
         {/* 表头 */}
         <div />
         {colsRylw.map((c) => (
-          <div key={c} className="flex items-center justify-center rounded-md bg-muted py-1 text-sm font-semibold text-blue-500 dark:text-blue-400">
+          <div key={c} className="flex items-center justify-center border-b border-r border-border bg-muted py-1 text-sm font-semibold text-blue-500 dark:text-blue-400">
             {c}
           </div>
         ))}
         {colsVowel.map((c) => (
-          <div key={c} className="flex items-center justify-center rounded-md bg-muted/60 py-1 text-sm font-semibold text-foreground">
+          <div key={c} className="flex items-center justify-center border-b border-r border-border bg-muted/60 py-1 text-sm font-semibold text-foreground">
             {c}
           </div>
         ))}
-        <div className="flex items-center justify-center rounded-md bg-muted/40 py-1 text-sm font-semibold text-muted-foreground">
+        <div className="flex items-center justify-center border-b border-r border-border bg-muted/40 py-1 text-sm font-semibold text-muted-foreground">
           其他
         </div>
 
         {/* 数据行 */}
         {Object.entries(MNEMONIC_DATA).map(([v, row]) => (
           <Fragment key={v}>
-            <div className="flex items-center justify-center rounded-md border border-border py-2 text-base font-bold text-foreground">
+            <div className="flex items-center justify-center border-b border-r border-border py-2 text-base font-bold text-foreground">
               {v}
             </div>
             {MNEMONIC_COLS.map((c) => {
               const entries = row.cols[c];
               return (
-                <div key={c} className="flex min-h-14 flex-col items-start justify-start gap-1 rounded-md border border-border px-1 py-1.5">
+                <div key={c} className="flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border px-1 py-1.5">
                   {entries && entries.length > 0 ? (
                     entries.map((e) => <MnemonicCell key={e.pattern} entry={e} />)
                   ) : (
@@ -220,7 +220,7 @@ function VowelMnemonicTable() {
                 </div>
               );
             })}
-            <div className="flex min-h-14 flex-col items-start justify-start gap-1 rounded-md border border-border px-1 py-1.5">
+            <div className="flex min-h-14 flex-col items-start justify-start gap-1 border-b border-r border-border px-1 py-1.5">
               {row.other.map((e) => (
                 <MnemonicInline key={e.pattern} entry={e} />
               ))}
