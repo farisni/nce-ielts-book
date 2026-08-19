@@ -729,7 +729,7 @@ export default function SentencePractice({
   useEffect(() => {
     courseRef.current = course
   }, [course])
-  const startGame = useCallback(() => {
+  const startGame = useCallback((restart = false) => {
     const c = courseRef.current
     const pool = c?.sentences ?? []
     const sessionSize = c?.sessionSize ?? 10
@@ -743,7 +743,8 @@ export default function SentencePractice({
     const s = idx.map((i) => pool[i])
     if (s.length === 0) return
     // 位置记忆：restoreKey 课程（如单词听写）从数据库的上次位置继续，而不是重头开始
-    const start = restoreKey ? Math.max(0, Math.min(restoredPos ?? 0, s.length - 1)) : 0
+    // 「再来一组」（restart）从头开始；首次进入/自动启动恢复上次位置
+    const start = restart || !restoreKey ? 0 : Math.max(0, Math.min(restoredPos ?? 0, s.length - 1))
     setSession(s)
     setSessionSrcIdx(idx)
     setIndex(start)
@@ -1292,7 +1293,7 @@ export default function SentencePractice({
             用时 {formatTime(elapsed)} · 提示 {hintCount} 次 · 正确率 {accuracy}%
           </div>
           <div className="flex items-center gap-3">
-            <Button onClick={startGame} size="lg" className="h-12 px-12 text-lg">
+            <Button onClick={() => startGame(true)} size="lg" className="h-12 px-12 text-lg">
               再来一组
             </Button>
             {onNextGroup && (
