@@ -16,6 +16,14 @@ export default function PhonemeListPage() {
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
   const groups = getPhonemeGroups().sort((a, b) => b.words.length - a.words.length);
   const totalWords = groups.reduce((s, g) => s + g.words.length, 0);
+  // 每组音标 cell 的起始行（跨行表格：累积前组行数）
+  const groupRows = groups.map((g) => Math.max(1, Math.ceil(g.words.length / 5)));
+  const groupStarts: number[] = [];
+  let acc = 1;
+  for (const r of groupRows) {
+    groupStarts.push(acc);
+    acc += r;
+  }
 
   useEffect(() => {
     getAllProgress()
@@ -69,11 +77,13 @@ export default function PhonemeListPage() {
         </p>
       </header>
 
-      {/* 音标分组区块：连续普通表格（无圆角无间隙） */}
+      {/* 音标分组区块：连续普通表格（无圆角无间隙）。
+          每组音标 cell 显式占第 1 列并指定起始行（跨 rows），避免 auto-placement 插入空隙 */}
       <div className="grid grid-cols-6 border-l border-t border-border">
-        {groups.map((g) => {
-          const pos = lastPos[g.ph];
-          const rows = Math.max(1, Math.ceil(g.words.length / 5));
+        {groups.map((g, gi) => {
+          const pos = lastPos[g.ph]
+          const rows = groupRows[gi]
+          const startRow = groupStarts[gi]
           // 该音标对应的不同拼写组合（如 ɜː → er/ir/or/ur…）：红紫交替着色
           const patterns: string[] = [];
           for (const w of g.words) {
@@ -94,7 +104,7 @@ export default function PhonemeListPage() {
                 onClick={() => playIpa(g.ph)}
                 title={`播放 [${g.ph}] 发音`}
                 className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-2 py-3 transition-colors hover:bg-muted/40"
-                style={{ gridRow: `span ${rows}` }}
+                style={{ gridColumn: 1, gridRow: `${startRow} / span ${rows}` }}
               >
                 <span className="text-lg font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
                   [{g.ph}]
@@ -135,7 +145,7 @@ export default function PhonemeListPage() {
                 </button>
               ))}
             </>
-          );
+          )
         })}
       </div>
     </div>
