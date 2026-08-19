@@ -118,7 +118,7 @@ export default function PhoneticPage() {
                       type="button"
                       onClick={() => playIpa(t.phonetics ?? "")}
                       title={`播放 ${t.phonetics ?? ""} 发音`}
-                      className="group/ipa flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+                      className="group/ipa relative flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
                     >
                       {/* 音标固定宽度区域（居中对齐），拼写组合形式在右靠左（两列网格） */}
@@ -136,9 +136,9 @@ export default function PhoneticPage() {
                           </span>
                         )}
                       </span>
-                      {/* 组合形式超过 4 个：卡片底部高亮线提示 */}
+                      {/* 组合形式超过 4 个：贴卡片底部边框的高亮线 */}
                       {patterns.length > 4 && (
-                        <span className="mt-3 h-1 w-10 shrink-0 rounded-full bg-primary/70" />
+                        <span className="pointer-events-none absolute inset-x-2 bottom-0 h-1 rounded-t-full bg-primary/70" />
                       )}
                     </button>
                     {/* 示例单词：点击播放该词发音（原声 mp3，无则 TTS）；对应练习音素的字母高亮 */}
