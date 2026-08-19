@@ -177,13 +177,14 @@ function VowelMnemonicTable() {
   );
 }
 
-/** 辅音群单词：开头组合字母标红（blue 中 bl 红） */
+/** 辅音群单词：只标红组合对应的字母（blue 中 bl 红、black 中 ck 红、hand 中 nd 红） */
 function renderConsonantWord(w: string, stem: string) {
   const idx = w.toLowerCase().indexOf(stem.toLowerCase());
   if (idx < 0) return w;
   return (
     <>
-      <span className="text-rose-500">{w.slice(0, idx + stem.length)}</span>
+      {w.slice(0, idx)}
+      <span className="text-rose-500">{w.slice(idx, idx + stem.length)}</span>
       {w.slice(idx + stem.length)}
     </>
   );
