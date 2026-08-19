@@ -259,7 +259,9 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
       <span className="ml-1 text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it, i) => (
           <span key={it.ph}>
-            {i > 0 && " "}[{it.ph}] <span className="text-foreground/80">{it.w}</span>
+            {i > 0 && " "}[{it.ph}]
+            {/* 多音标条目不显示示例单词（避免拥挤），单音标保留 */}
+            {entry.ipa.length <= 1 && <span className="text-foreground/80"> {it.w}</span>}
           </span>
         ))}
       </span>
