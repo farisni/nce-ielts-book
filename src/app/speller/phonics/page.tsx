@@ -70,9 +70,6 @@ function VowelMnemonicTable() {
         >
           进入拼写 →
         </Link>
-        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-          巧记（不要死记硬背）· 行 a e i o u × 列 r y w l | a e i o u | 其他
-        </span>
       </div>
       <div className="grid grid-cols-[3.5rem_repeat(9,minmax(0,1fr))_minmax(0,1.8fr)] border-l border-t border-border">
         {/* 表头 */}
