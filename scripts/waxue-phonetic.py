@@ -59,6 +59,41 @@ def extract_pos(translation: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def clean_trans(trans: str) -> str:
+    """整理释义：只保留 1~2 个主要义项（分号连接）。
+    - 第一个义项必留
+    - 第二个义项：优先取不同词性的第一个义项（词性多样更有用）；
+      全同词性则取第二个义项
+    - 同词性义项合并词性前缀（n. 猫；猫科动物），不同词性各带前缀（n. 猫；v. 起锚）"""
+    lines = [l.strip() for l in trans.split("\n") if l.strip()]
+    if not lines:
+        return ""
+    pos_re = re.compile(r"^((?:[a-z]+\.\s*)+)\s*(.+)$")
+
+    def split(l: str):
+        m = pos_re.match(l)
+        if m:
+            return m.group(1).strip(), m.group(2).strip()
+        return "", l.strip()
+
+    pos1, def1 = split(lines[0])
+    second = None
+    second_pos = pos1
+    for l in lines[1:]:
+        p, d = split(l)
+        if p != pos1:
+            second, second_pos = (l, p) if d else (second, second_pos)
+            break
+    if second is None and len(lines) > 1:
+        second, second_pos = lines[1], split(lines[1])[0]
+    if second is None:
+        return lines[0]
+    if second_pos == pos1:
+        # 同词性：合并词性前缀
+        return f"{pos1} {def1}；{split(second)[1]}"
+    return f"{lines[0]}；{second}"
+
+
 def main():
     token = get_token()
     details = fetch("lesson_details", {"id": LESSON_ID}, token)
@@ -83,7 +118,7 @@ def main():
             di = (w.get("dict_infos") or [{}])[0]
             word = di.get("word") or w.get("word") or ""
             ipa = clean_ipa(di.get("ipa_uk") or "")
-            trans = (di.get("translation") or "").replace("\r\n", "\n").replace("\r", "\n").strip()
+            trans = clean_trans((di.get("translation") or "").replace("\r\n", "\n").replace("\r", "\n"))
             syll = None
             pmap = None
             ps = di.get("phonetic_split") or {}
