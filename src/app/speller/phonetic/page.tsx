@@ -15,8 +15,12 @@ export default function PhoneticPage() {
   // 各类别的上次听写位置：{ chapterSlug: 单词序号（从 1 起，类别整体进度） }
   const [lastPos, setLastPos] = useState<Record<string, number>>({});
 
-  // 点击音标 → 播放该音标发音（TTS 读示例单词，示范该音在单词中的发音）
-  const playPhonetic = (word: string) => {
+  // 点击音标 → 播放该音标发音（有原声 mp3 播原声，无则 TTS 读示例单词）
+  const playPhonetic = (word: string, audio?: string) => {
+    if (audio) {
+      new Audio(audio).play().catch(() => {});
+      return;
+    }
     const synth = window.speechSynthesis;
     synth.cancel();
     const u = new SpeechSynthesisUtterance(word);
@@ -106,7 +110,7 @@ export default function PhoneticPage() {
                     {/* 音标列：点击播放该音标发音（TTS 读示例单词），垂直居中跨 rows 行 */}
                     <button
                       type="button"
-                      onClick={() => playPhonetic(t.words[0]?.word ?? "")}
+                      onClick={() => playPhonetic(t.words[0]?.word ?? "", t.words[0]?.audio)}
                       title={`播放 ${t.phonetics ?? ""} 发音`}
                       className="group/ipa flex cursor-pointer flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
