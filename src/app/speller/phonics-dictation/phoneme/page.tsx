@@ -132,18 +132,22 @@ export default function PhonemeListPage() {
                   听写 →
                 </Link>
               </button>
-              {/* 示例单词：点击播放原声；发该音的组合字母高亮 */}
-              {g.words.map((w, wi) => (
-                <button
-                  key={`${w.word}-${wi}`}
-                  type="button"
-                  onClick={() => playWord(w.word, w.audio)}
-                  title={`播放 ${w.word}`}
-                  className="flex cursor-pointer items-center justify-center border-b border-r border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:bg-muted/40"
-                >
-                  {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
-                </button>
-              ))}
+              {/* 示例单词：每行固定 5 格（组内行尾空格留空占位，不补下一组）；点击播放原声 */}
+              {Array.from({ length: rows * 5 }).map((_, k) => {
+                const w = g.words[k];
+                if (!w) return <div key={`${g.ph}-empty-${k}`} className="border-b border-r border-border" />;
+                return (
+                  <button
+                    key={`${w.word}-${k}`}
+                    type="button"
+                    onClick={() => playWord(w.word, w.audio)}
+                    title={`播放 ${w.word}`}
+                    className="flex cursor-pointer items-center justify-center border-b border-r border-border px-2 py-1 text-lg font-medium text-foreground transition-colors hover:bg-muted/40"
+                  >
+                    {renderHighlightWord(w.word, w.phonemeMap, g.ph, spellColors)}
+                  </button>
+                );
+              })}
             </>
           )
         })}
