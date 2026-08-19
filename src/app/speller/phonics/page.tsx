@@ -89,7 +89,7 @@ function VowelMnemonicTable() {
   return (
     <section className="mb-8 rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
-        <h2 className="text-lg font-semibold text-foreground">元音组合 · 二级巧记表</h2>
+        <h2 className="text-lg font-semibold text-foreground">自然拼读 · 组合模式</h2>
         <Link
           href="/speller/phonics-dictation/vowel-a"
           className="ml-1 text-sm font-medium text-[#337ea9] transition-transform hover:translate-x-0.5 dark:text-[#9cd8fc]"
@@ -346,7 +346,7 @@ function PhonemeMnemonicTable() {
   return (
     <section className="mb-8 rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
-        <h2 className="text-lg font-semibold text-foreground">元音组合 · 音标模式</h2>
+        <h2 className="text-lg font-semibold text-foreground">自然拼读 · 音标模式</h2>
         <Link
           href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(groups[0]?.ph ?? "ɔː")}`}
           className="ml-1 text-sm font-medium text-[#337ea9] transition-transform hover:translate-x-0.5 dark:text-[#9cd8fc]"
