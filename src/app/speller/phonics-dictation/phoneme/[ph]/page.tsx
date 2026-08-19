@@ -15,7 +15,8 @@ export default function PhonemeDictationPage() {
   const router = useRouter();
   const params = useParams();
   const ph = decodeURIComponent((params.ph as string) ?? "");
-  const group = useMemo(() => getPhonemeGroups().find((g) => g.ph === ph), [ph]);
+  const allGroups = useMemo(() => getPhonemeGroups().sort((a, b) => b.words.length - a.words.length), []);
+  const group = useMemo(() => allGroups.find((g) => g.ph === ph), [ph, allGroups]);
 
   const wordIdxRef = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -77,7 +78,13 @@ export default function PhonemeDictationPage() {
           confettiOrigin={{ x: 0.5, y: 0.6 }}
           restoreKey={course.id}
           alwaysShowInfo
-          onExit={() => router.push("/speller/phonics-dictation/phoneme")}
+          onNextGroup={() => {
+            // 刷完一组 → 下一音标组（按词数排序循环）
+            const idx = allGroups.findIndex((g) => g.ph === ph);
+            const next = allGroups[(idx + 1) % allGroups.length];
+            router.push(`/speller/phonics-dictation/phoneme/${encodeURIComponent(next.ph)}`);
+          }}
+          onExit={() => router.push("/speller/phonics")}
         />
       </div>
       <footer className="shrink-0 border-t">
