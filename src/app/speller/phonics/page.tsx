@@ -320,7 +320,7 @@ function RuleCell({ rule }: { rule: PhonicsRule }) {
       : "text-blue-500 dark:text-blue-400";
   // 有示例单词（开头辅音群）：小方格内左右布局——左组合+音标，右单词案例（对应部分标红）
   if (rule.examples && rule.examples.length > 0) {
-    const stem = pattern.replace(/-$/, ""); // bl- → bl
+    const stem = pattern.replace(/^-|-$/g, ""); // bl- → bl、-mb → mb
     return (
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border px-2 py-2">
         <span className="flex shrink-0 flex-col items-center">
