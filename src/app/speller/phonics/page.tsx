@@ -233,16 +233,30 @@ function VowelMnemonicTable() {
         ))}
       </div>
 
-      {/* 底部：元音字母开音节/闭音节发音规则 */}
-      <div className="mt-4 rounded-lg border border-border p-4">
+      {/* 底部：元音字母开音节/闭音节发音规则（三行表格：表头 aeiou / 开音节 / 闭音节） */}
+      <div className="mt-4">
         <h3 className="mb-3 text-sm font-semibold text-muted-foreground">元音字母 · 发音规则（开音节 / 闭音节）</h3>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-[3.5rem_repeat(5,minmax(0,1fr))] border-l border-t border-border">
+          <div className="flex items-center justify-center border-b border-r border-border bg-muted/40 py-1.5 text-sm font-semibold text-muted-foreground" />
           {SYLLABLE_RULES.map((s) => (
-            <div key={s.vowel} className="flex flex-col items-center rounded-md border border-border px-2 py-2">
-              <span className="text-lg font-bold text-foreground">{s.vowel}</span>
-              <span className="mt-1 text-xs text-muted-foreground">
-                开 {s.open} · 闭 {s.closed}
-              </span>
+            <div key={s.vowel} className="flex items-center justify-center border-b border-r border-border bg-muted/60 py-1.5 text-sm font-semibold text-foreground">
+              {s.vowel}
+            </div>
+          ))}
+          <div className="flex items-center justify-center border-b border-r border-border bg-muted/40 py-2 text-xs font-medium text-muted-foreground">
+            开音节
+          </div>
+          {SYLLABLE_RULES.map((s) => (
+            <div key={s.vowel} className="flex items-center justify-center border-b border-r border-border py-2 text-sm text-foreground">
+              {s.open}
+            </div>
+          ))}
+          <div className="flex items-center justify-center border-b border-r border-border bg-muted/40 py-2 text-xs font-medium text-muted-foreground">
+            闭音节
+          </div>
+          {SYLLABLE_RULES.map((s) => (
+            <div key={s.vowel} className="flex items-center justify-center border-b border-r border-border py-2 text-sm text-muted-foreground">
+              {s.closed}
             </div>
           ))}
         </div>
