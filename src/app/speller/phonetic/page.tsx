@@ -66,25 +66,40 @@ export default function PhoneticPage() {
                 {ch.tests.length} 个音标 · {chapterWords} 词
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+            <div className="space-y-3">
               {ch.tests.map((t) => {
                 const pos = lastPos[`${ch.slug}/${t.slug}`];
+                // 表格：第 1 列音标（跨行），第 2-6 列示例单词（每行 5 个）
+                const rows = Math.max(1, Math.ceil(t.words.length / 5));
+                const focus = (t.phonetics ?? "").replace(/\//g, "");
                 return (
-                  <Link
-                    key={t.slug}
-                    href={`/speller/phonetic/${ch.slug}/${t.slug}`}
-                    className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
-                  >
-                    <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
-                      {t.phonetics ?? t.name.replace(/.*\//, "/")}
-                    </span>
-                    <span className="mt-0.5 text-xs text-muted-foreground">{t.words.length} 词</span>
-                    {pos !== undefined && (
-                      <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
-                        第 {pos} 词
+                  <div key={t.slug} className="grid grid-cols-6 gap-2">
+                    {/* 音标列：垂直居中跨 rows 行 */}
+                    <Link
+                      href={`/speller/phonetic/${ch.slug}/${t.slug}`}
+                      className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
+                      style={{ gridRow: `span ${rows}` }}
+                    >
+                      <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                        {t.phonetics ?? t.name.replace(/.*\//, "/")}
                       </span>
-                    )}
-                  </Link>
+                      <span className="mt-0.5 text-xs text-muted-foreground">{t.words.length} 词</span>
+                      {pos !== undefined && (
+                        <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
+                          第 {pos} 词
+                        </span>
+                      )}
+                    </Link>
+                    {/* 示例单词：对应练习音素的字母红色 */}
+                    {t.words.map((w) => (
+                      <span
+                        key={w.word}
+                        className="flex items-center justify-center rounded-lg border border-border px-2 py-3 text-sm font-medium text-foreground"
+                      >
+                        {renderHighlightWord(w.word, w.phonemeMap, focus)}
+                      </span>
+                    ))}
+                  </div>
                 );
               })}
             </div>
@@ -92,5 +107,38 @@ export default function PhoneticPage() {
         );
       })}
     </div>
+  );
+}
+
+/** 单词中对应练习音素（phonemeMap.ipa === focus）的拼写字母标红 */
+function renderHighlightWord(
+  word: string,
+  map: { ipa: string; spelling: string }[] | undefined,
+  focus: string,
+) {
+  if (!map || !focus) return word;
+  // 按 spelling 展开字母 → 所属音素索引
+  const redIdx = new Set<number>();
+  let gi = 0;
+  for (const p of map) {
+    const len = p.spelling.length;
+    if (p.ipa === focus) {
+      for (let k = 0; k < len; k++) redIdx.add(gi + k);
+    }
+    gi += len;
+  }
+  if (redIdx.size === 0) return word;
+  return (
+    <>
+      {word.split("").map((c, i) =>
+        redIdx.has(i) ? (
+          <span key={i} className="text-rose-500">
+            {c}
+          </span>
+        ) : (
+          c
+        ),
+      )}
+    </>
   );
 }
