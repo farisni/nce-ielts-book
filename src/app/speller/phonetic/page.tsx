@@ -94,21 +94,23 @@ export default function PhoneticPage() {
                       className="group flex flex-col items-center justify-center rounded-lg border border-border px-2 py-3 transition-colors hover:border-ring/60 hover:bg-muted/40"
                       style={{ gridRow: `span ${rows}` }}
                     >
-                      <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
-                        {t.phonetics ?? t.name.replace(/.*\//, "/")}
-                      </span>
-                      {/* 摘要：该音标的所有拼写组合形式（红紫交替，与单词高亮一致） */}
-                      {patterns.length > 0 && (
-                        <span className="mt-1 flex flex-wrap justify-center gap-x-1.5 text-sm font-semibold leading-tight">
-                          {patterns.map((pt) => (
-                            <span key={pt} className={spellColors[pt]}>
-                              {pt}
-                            </span>
-                          ))}
+                      {/* 音标在左，拼写组合形式在右（红紫交替，与单词高亮一致） */}
+                      <span className="flex w-full items-center justify-between gap-1">
+                        <span className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">
+                          {t.phonetics ?? t.name.replace(/.*\//, "/")}
                         </span>
-                      )}
+                        {patterns.length > 0 && (
+                          <span className="flex flex-wrap justify-end gap-x-1.5 text-sm font-semibold leading-tight">
+                            {patterns.map((pt) => (
+                              <span key={pt} className={spellColors[pt]}>
+                                {pt}
+                              </span>
+                            ))}
+                          </span>
+                        )}
+                      </span>
                       {pos !== undefined && (
-                        <span className="mt-0.5 text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
+                        <span className="mt-0.5 self-start text-[0.7rem] text-[#337ea9] dark:text-[#9cd8fc]">
                           第 {pos} 词
                         </span>
                       )}
