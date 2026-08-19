@@ -347,6 +347,12 @@ function PhonemeMnemonicTable() {
     <section className="mb-8 rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex items-center gap-2">
         <h2 className="text-lg font-semibold text-foreground">元音组合 · 音标模式</h2>
+        <Link
+          href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(groups[0]?.ph ?? "ɔː")}`}
+          className="ml-1 text-sm font-medium text-[#337ea9] transition-transform hover:translate-x-0.5 dark:text-[#9cd8fc]"
+        >
+          进入听写 →
+        </Link>
         <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
           发同一音的词一起练 · {groups.length} 个音标
         </span>
