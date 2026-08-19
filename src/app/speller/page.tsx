@@ -40,7 +40,7 @@ export default function SpellerPage() {
 
       <div className="grid gap-4">
         {/* 雅思真题听力 · 一个卡片涵盖全部剑雅，点击直达各册 */}
-        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-sm transition-shadow hover:shadow">
+        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-[0_0_10px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_0_16px_rgba(0,0,0,0.1)]">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
               🎯
@@ -90,7 +90,7 @@ export default function SpellerPage() {
         </div>
 
         {/* 雅思辅助材料 · 一个卡片涵盖全部词汇听写，点击直达各课程 */}
-        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-sm transition-shadow hover:shadow">
+        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-[0_0_10px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_0_16px_rgba(0,0,0,0.1)]">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
               📚
@@ -153,7 +153,7 @@ export default function SpellerPage() {
         </div>
 
         {/* 听读底层逻辑 · 一个卡片涵盖音标听力与规则表，点击直达各课程 */}
-        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-sm transition-shadow hover:shadow">
+        <div className="overflow-hidden rounded-xl bg-card p-6 shadow-[0_0_10px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_0_16px_rgba(0,0,0,0.1)]">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-2xl">
               🔤
