@@ -1372,13 +1372,16 @@ export default function SentencePractice({
                 phoneticFocus（音标课程练习音素）在音标内红色突出 */}
             <p className="h-[1.5em] text-3xl font-normal leading-snug text-muted-foreground sm:text-4xl">
               {((revealed || passed) || alwaysShowInfo) && sentence.phonetic
-                ? sentence.phonetic
+                ? // 先按分号/逗号取第一个读音（多读音如 "ɑː(r); ə(r)" 只显示重读），再按空格分词组
+                  sentence.phonetic
                     .trim()
                     .replace(/^\/+|\/+$/g, "")
+                    .split(/[,;]/)[0]
+                    .trim()
                     .split(/\s+/)
                     .filter(Boolean)
                     .map((seg, i) => {
-                      const clean = seg.split(/[,;]/)[0].trim()
+                      const clean = seg.trim()
                       const focus = sentence.phoneticFocus
                       const fi = focus ? clean.indexOf(focus) : -1
                       return (
