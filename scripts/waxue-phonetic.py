@@ -94,6 +94,17 @@ def clean_trans(trans: str) -> str:
     return f"{lines[0]}；{second}"
 
 
+# 音素 → 类别分组：元音按 长/短/双元音（与 yyybabc 维度一致）；
+# 辅音不映射，保持原分类（爆破音/摩擦音/破擦音/鼻音…）
+PHONEME_CLASS = {}
+for ph in ["iː", "ɜː", "ɑː", "ɔː", "uː"]:
+    PHONEME_CLASS[ph] = "长元音"
+for ph in ["ɪ", "e", "æ", "ə", "ʌ", "ɒ", "ʊ"]:
+    PHONEME_CLASS[ph] = "短元音"
+for ph in ["eɪ", "aɪ", "ɔɪ", "aʊ", "əʊ", "ɪə", "eə", "ʊə"]:
+    PHONEME_CLASS[ph] = "双元音"
+
+
 def main():
     token = get_token()
     details = fetch("lesson_details", {"id": LESSON_ID}, token)
@@ -101,7 +112,7 @@ def main():
     courses = lesson["lesson_courses"]
     print(f"课程「{lesson['name']}」共 {len(courses)} 个音标单元")
 
-    # 音标类别 → Chapter 分组（按 describe.type）
+    # 音素 → Chapter 分组（长/短/双元音 + 清/浊辅音）
     chapters: dict[str, list] = {}
 
     def chapter_for(ctype: str) -> list:
@@ -148,16 +159,18 @@ def main():
         if not entries:
             print(f"  ⚠ 单元 {c['name']} 无单词，跳过")
             continue
-        chapter_for(c["describe"]["type"]).append(
+        ph = (c["describe"].get("display_phonetics") or "").strip().strip("/")
+        cls = PHONEME_CLASS.get(ph, c["describe"]["type"])
+        chapter_for(cls).append(
             {"id": c["id"], "name": c["name"], "phonetics": c["describe"].get("display_phonetics") or "",
              "method": c["describe"].get("learning_method") or [], "words": entries}
         )
         total_words += len(entries)
-        print(f"  ✓ {c['name']}（{c['describe']['type']}）{len(entries)} 词")
+        print(f"  ✓ {c['name']} → {cls}")
         time.sleep(0.4)
 
-    # 类别排序：元音在前，辅音在后
-    order = ["前元音", "中元音", "后元音", "合口双元音", "集中双元音", "辅音"]
+    # 类别排序：长元音 → 短元音 → 双元音 → 辅音（保持原分类）
+    order = ["长元音", "短元音", "双元音", "爆破音", "摩擦音", "卷舌音", "破擦音", "鼻音", "舌侧音", "半元音"]
     ordered = [k for k in order if k in chapters] + [k for k in chapters if k not in order]
     print(f"\n分组: {[f'{k}×{len(chapters[k])}' for k in ordered]}，共 {total_words} 词")
 

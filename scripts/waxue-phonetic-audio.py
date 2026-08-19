@@ -110,13 +110,16 @@ def main():
                 print(f"  ✗ {word}（下载失败）")
                 continue
             ok += 1
-        # 写入 audio 字段（行内已有 audio: 则跳过；用 os.path 相对 URL）
+        # 写入 audio 字段（行内 audio: "" 空值 → 替换为路径；已带路径则跳过）
         audio_url = f"/audio/phonetic/{prefix}/{safe}.mp3"
-        if "audio:" not in line:
+        if 'audio: ""' in line:
             # 在 phonetic: "..." 后插入 audio: "..."（保持与 whale 数据风格一致）
             pm = re.search(r'(phonetic: "[^"]*")', line)
             if pm:
-                new_line = line.replace(pm.group(1), pm.group(1) + f', audio: "{esc(audio_url)}"', 1)
+                # 替换空 audio: "" 为真实路径（无则插入）
+                new_line = line.replace('audio: ""', f'audio: "{esc(audio_url)}"', 1)
+                if new_line == line:
+                    new_line = line.replace(pm.group(1), pm.group(1) + f', audio: "{esc(audio_url)}"', 1)
                 lines[lineno] = new_line
         time.sleep(0.3)
         if (idx + 1) % 50 == 0:
