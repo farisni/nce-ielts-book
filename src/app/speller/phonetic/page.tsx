@@ -60,11 +60,12 @@ export default function PhoneticPage() {
         const chapterWords = ch.tests.reduce((s, t) => s + t.words.length, 0);
         return (
           <section key={ch.slug} className="mb-8 rounded-xl border border-border bg-card p-6">
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-4 flex flex-wrap items-center gap-2">
               <h2 className="text-lg font-semibold text-foreground">{ch.name}</h2>
               <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                 {ch.tests.length} 个音标 · {chapterWords} 词
               </span>
+              <span className="text-xs text-muted-foreground/70">点击音标 → 进入单词听写</span>
             </div>
             <div className="space-y-3">
               {ch.tests.map((t) => {
