@@ -125,9 +125,11 @@ function VowelMnemonicTable() {
               </div>
               {cols.map((c) => {
                 const r = ruleMap.get(v + c);
+                // 两元相遇列（a e i o u）：不区分颜色，整体黑色
+                const plain = colsVowel.includes(c);
                 return (
                   <div key={c} className="flex min-h-12 items-center justify-center rounded-md border border-border px-1 py-1.5">
-                    {r ? <MnemonicCell rule={r} /> : <span className="text-muted-foreground/30">·</span>}
+                    {r ? <MnemonicCell rule={r} plain={plain} /> : <span className="text-muted-foreground/30">·</span>}
                   </div>
                 );
               })}
@@ -146,13 +148,17 @@ function VowelMnemonicTable() {
   );
 }
 
-function MnemonicCell({ rule, small = false }: { rule: PhonicsRule; small?: boolean }) {
+function MnemonicCell({ rule, small = false, plain = false }: { rule: PhonicsRule; small?: boolean; plain?: boolean }) {
   return (
     <span className={`inline-flex flex-col items-center leading-tight ${small ? "" : ""}`}>
-      {/* 行元音字母黑色（主体），后续字母蓝色（修饰） */}
+      {/* 行元音字母黑色（主体），后续字母蓝色（修饰）；两元相遇列（plain）整体黑色 */}
       <span className={`font-semibold ${small ? "text-sm" : "text-base"} text-foreground`}>
         {rule.pattern[0]}
-        <span className="text-blue-500 dark:text-blue-400">{rule.pattern.slice(1)}</span>
+        {plain ? (
+          rule.pattern.slice(1)
+        ) : (
+          <span className="text-blue-500 dark:text-blue-400">{rule.pattern.slice(1)}</span>
+        )}
       </span>
       <span className="text-[0.65rem] text-muted-foreground">{rule.ipa}</span>
     </span>
