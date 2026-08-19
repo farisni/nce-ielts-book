@@ -353,9 +353,7 @@ function PhonemeMnemonicTable() {
         >
           进入听写 →
         </Link>
-        <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-          发同一音的词一起练 · {groups.length} 个音标
-        </span>
+
       </div>
       <div className="grid grid-cols-6 border-l border-t border-border">
         {groups.map((g, gi) => {
