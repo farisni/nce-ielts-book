@@ -369,18 +369,18 @@ function PhonemeMnemonicTable() {
           });
           return (
             <Fragment key={g.ph}>
-              {/* 音标列：整格点击进入听写（内容精简：音标 + 组合，不撑高单元格） */}
+              {/* 音标列：点击进听写；组合紧凑单行（不撑高单元格） */}
               <Link
                 href={`/speller/phonics-dictation/phoneme/${encodeURIComponent(g.ph)}`}
                 title={`进入 /${g.ph}/ 听写`}
-                className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-1.5 py-2 transition-colors hover:bg-muted/40"
+                className="group/ipa relative flex cursor-pointer flex-col items-center justify-center border-b border-r border-border px-1 py-1.5 transition-colors hover:bg-muted/40"
                 style={{ gridColumn: 1, gridRow: `${startRow} / span ${rows}` }}
               >
                 <span className="text-base font-semibold leading-tight text-foreground group-hover/ipa:text-primary">
                   /{g.ph}/
                 </span>
                 {patterns.length > 0 && (
-                  <span className="mt-0.5 flex flex-wrap justify-center gap-x-1.5 gap-y-0.5 text-[0.68rem] font-semibold leading-tight">
+                  <span className="mt-0.5 flex flex-wrap justify-center gap-x-1 gap-y-0.5 text-[0.65rem] font-semibold leading-tight">
                     {patterns.map((pt) => (
                       <span key={pt} className={spellColors[pt]}>
                         {pt}
@@ -388,6 +388,9 @@ function PhonemeMnemonicTable() {
                     ))}
                   </span>
                 )}
+                <span className="mt-1 text-[0.65rem] font-medium text-[#337ea9] dark:text-[#9cd8fc]">
+                  {g.words.length} 词 · 听写 →
+                </span>
               </Link>
               {/* 示例单词：每行固定 5 格（行尾空格留空占位）；点击播放原声 */}
               {Array.from({ length: rows * 5 }).map((_, k) => {
