@@ -127,9 +127,9 @@ const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Partial<Rec
       e: [{ pattern: "o_e", ipa: [{ ph: "əʊ", w: "home" }], plain: true }],
       i: [{ pattern: "oi", ipa: [{ ph: "ɔɪ", w: "coin" }], plain: true }],
       o: [{ pattern: "oo", ipa: [{ ph: "uː", w: "moon" }, { ph: "ʊ", w: "book" }, { ph: "ʌ", w: "blood" }], plain: true }],
+      u: [{ pattern: "ou", ipa: [{ ph: "aʊ", w: "house" }, { ph: "uː", w: "you" }, { ph: "əʊ", w: "though" }], plain: true }],
     },
     other: [
-      { pattern: "ou", ipa: [{ ph: "aʊ", w: "house" }, { ph: "uː", w: "you" }] },
       { pattern: "oor", ipa: [{ ph: "ɔː", w: "door" }] },
       { pattern: "oar", ipa: [{ ph: "ɔː", w: "board" }] },
       { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }, { ph: "uː", w: "should" }] },
