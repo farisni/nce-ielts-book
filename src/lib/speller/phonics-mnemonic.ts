@@ -76,7 +76,7 @@ export const MNEMONIC_DATA: Record<string, { plain?: MnemonicEntry[]; cols: Part
     other: [
       { pattern: "oor", ipa: [{ ph: "ɔː", w: "door" }] },
       { pattern: "oar", ipa: [{ ph: "ɔː", w: "board" }] },
-      { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }, { ph: "ʊ", w: "should" }] },
+      { pattern: "oul", ipa: [{ ph: "ʊ", w: "could" }] },
       { pattern: "our", ipa: [{ ph: "aʊə", w: "hour" }, { ph: "ɔː", w: "four" }, { ph: "ɜː", w: "journey" }] },
       { pattern: "ure", ipa: [{ ph: "jʊə", w: "cure" }] },
     ],
