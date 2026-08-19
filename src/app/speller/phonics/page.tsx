@@ -281,10 +281,7 @@ function MnemonicInline({ entry }: { entry: MnemonicEntry }) {
   const p = entry.pattern;
   return (
     <span className="inline-flex items-baseline leading-tight">
-      <span className="w-10 shrink-0 text-left text-sm font-semibold text-foreground">
-        {p[0]}
-        <span className="text-blue-500 dark:text-blue-400">{p.slice(1)}</span>
-      </span>
+      <span className="w-10 shrink-0 text-left text-sm font-semibold text-foreground">{p}</span>
       <span className="ml-1 text-[0.65rem] text-muted-foreground">
         {entry.ipa.map((it, i) => (
           <span key={it.ph}>
