@@ -136,8 +136,8 @@ export default function PhoneticPage() {
                           </span>
                         )}
                       </span>
-                      {/* 组合形式超过 4 个：贴卡片底部边框的黄色高亮线 */}
-                      {patterns.length > 4 && (
+                      {/* 组合形式 4 个及以上：贴卡片底部边框的黄色高亮线 */}
+                      {patterns.length >= 4 && (
                         <span className="pointer-events-none absolute inset-x-2 bottom-0 h-1 rounded-t-full bg-yellow-400" />
                       )}
                     </button>
