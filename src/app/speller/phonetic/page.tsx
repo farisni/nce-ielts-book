@@ -75,6 +75,17 @@ export default function PhoneticPage() {
                 // 表格：第 1 列音标（跨行），第 2-6 列示例单词（每行 5 个）
                 const rows = Math.max(1, Math.ceil(t.words.length / 5));
                 const focus = (t.phonetics ?? "").replace(/\//g, "");
+                // 该音标对应的不同拼写组合（如 /iː/ → ey/ee/ea…）：红紫交替着色
+                const patterns: string[] = [];
+                for (const w of t.words) {
+                  for (const p of w.phonemeMap ?? []) {
+                    if (p.ipa === focus && !patterns.includes(p.spelling)) patterns.push(p.spelling);
+                  }
+                }
+                const spellColors: Record<string, string> = {};
+                patterns.forEach((pt, i) => {
+                  spellColors[pt] = i % 2 === 0 ? "text-rose-500" : "text-violet-500";
+                });
                 return (
                   <div key={t.slug} className="grid grid-cols-6 gap-2">
                     {/* 音标列：垂直居中跨 rows 行 */}
@@ -99,7 +110,7 @@ export default function PhoneticPage() {
                         key={`${w.word}-${wi}`}
                         className="flex items-center justify-center rounded-lg border border-border px-2 py-1 text-lg font-medium text-foreground"
                       >
-                        {renderHighlightWord(w.word, w.phonemeMap, focus)}
+                        {renderHighlightWord(w.word, w.phonemeMap, focus, spellColors)}
                       </span>
                     ))}
                   </div>
@@ -113,29 +124,30 @@ export default function PhoneticPage() {
   );
 }
 
-/** 单词中对应练习音素（phonemeMap.ipa === focus）的拼写字母标红 */
+/** 单词中对应练习音素（phonemeMap.ipa === focus）的拼写字母高亮：
+ *  不同拼写组合（ey/ee/ea…）按 spellColors 交替着色（红紫交替） */
 function renderHighlightWord(
   word: string,
   map: { ipa: string; spelling: string }[] | undefined,
   focus: string,
+  spellColors: Record<string, string>,
 ) {
   if (!map || !focus) return word;
-  // 按 spelling 展开字母 → 所属音素索引
-  const redIdx = new Set<number>();
+  // 按 spelling 展开字母 → 所属拼写组合的颜色
+  const letterColors: (string | null)[] = [];
   let gi = 0;
   for (const p of map) {
     const len = p.spelling.length;
-    if (p.ipa === focus) {
-      for (let k = 0; k < len; k++) redIdx.add(gi + k);
-    }
+    const color = p.ipa === focus ? (spellColors[p.spelling] ?? "text-rose-500") : null;
+    for (let k = 0; k < len; k++) letterColors[gi + k] = color;
     gi += len;
   }
-  if (redIdx.size === 0) return word;
+  if (letterColors.every((c) => c === null)) return word;
   return (
     <>
       {word.split("").map((c, i) =>
-        redIdx.has(i) ? (
-          <span key={i} className="text-rose-500">
+        letterColors[i] ? (
+          <span key={i} className={letterColors[i]!}>
             {c}
           </span>
         ) : (
