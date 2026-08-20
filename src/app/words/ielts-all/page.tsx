@@ -135,9 +135,9 @@ export default function VocabularyPage() {
         <p className="text-sm text-muted-foreground">{activeChapter?.title} · {chapterWords.length} words</p>
       </div>
 
-      <div ref={scrollRef} className="scrollbar-ghost rounded-md border border-border" style={{ height: "calc(100vh - 320px)" }}>
+      <div ref={scrollRef} className="scrollbar-ghost rounded-md" style={{ height: "calc(100vh - 320px)" }}>
         <div style={{ minWidth: TABLE_CONTENT_WIDTH }}>
-          <div className="sticky top-0 z-40 flex bg-background border-b border-border/50">
+          <div className="sticky top-0 z-40 flex bg-background border-b border-border/50" style={{ height: 44 }}>
             <div className="flex min-w-0 flex-none" style={{ width: TABLE_CONTENT_WIDTH - SEARCH_HEADER_WIDTH }}>
               {table.getHeaderGroups().map((hg) =>
                 hg.headers.map((header) => (
@@ -174,11 +174,9 @@ export default function VocabularyPage() {
               if (!row) return null;
               const word = row.original;
               const isExpanded = expandedRows.has(word.id);
-              const COLORS = ["var(--vocab-color-0)","var(--vocab-color-1)","var(--vocab-color-2)","var(--vocab-color-3)","var(--vocab-color-4)"];
-              const borderColor = COLORS[(word.colorIndex ?? 0) % COLORS.length];
 
               return (
-                <div key={row.id} ref={rowVirtualizer.measureElement} data-index={vRow.index} style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${vRow.start}px)`, boxShadow: `inset 4px 0 0 ${borderColor}, inset 0 -1px 0 rgba(0,0,0,0.06)` }}>
+                <div key={row.id} ref={rowVirtualizer.measureElement} data-index={vRow.index} style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${vRow.start}px)`, boxShadow: "inset 0 -1px 0 rgba(0,0,0,0.06)" }}>
                   <div
                     onDoubleClick={() => toggleRow(word.id)}
                     className={`flex cursor-pointer transition-colors ${isExpanded ? "bg-muted/30" : "hover:bg-muted/30"}`}
