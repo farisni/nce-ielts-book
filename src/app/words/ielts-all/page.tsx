@@ -83,7 +83,7 @@ export default function VocabularyPage() {
             <span className="text-sm text-muted-foreground/30">—</span>
           );
         },
-        size: 130,
+        size: 150,
         enableSorting: false,
       }),
       columnHelper.accessor("chinese", {
@@ -106,7 +106,7 @@ export default function VocabularyPage() {
             </span>
           );
         },
-        size: 352,
+        size: 332,
         enableSorting: false,
       }),
       columnHelper.accessor("phonicRule", {
@@ -119,7 +119,7 @@ export default function VocabularyPage() {
             <span className="text-sm text-muted-foreground/30">—</span>
           );
         },
-        size: 280,
+        size: 300,
         enableSorting: false,
       }),
     ],
