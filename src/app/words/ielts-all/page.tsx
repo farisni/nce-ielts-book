@@ -98,7 +98,7 @@ export default function VocabularyPage() {
                 <span className="font-semibold text-foreground">{parts[0].trim()}</span>
               ) : null}
               {parts.length > 1 ? (
-                <span className="text-muted-foreground">{parts.slice(1).join("；")}</span>
+                <span className="text-muted-foreground">{`；${parts.slice(1).join("；")}`}</span>
               ) : null}
             </span>
           );
