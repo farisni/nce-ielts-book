@@ -323,7 +323,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 32,
           "word": "gust",
           "partOfSpeech": "n.",
-          "chinese": "一整狂风；（情感的）迸发",
+          "chinese": "一阵狂风；迸发",
           "example": "A gust of wind blew the leaves off the trees",
           "wordGroup": "group_9",
           "colorIndex": 3, phonetic: "\u0261\u028cst", stress: "gust"
@@ -399,7 +399,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 40,
           "word": "erupt",
           "partOfSpeech": "v.",
-          "chinese": "爆发；喷发；（斑疹等）突然出现",
+          "chinese": "爆发；喷发",
           "example": "Hot lava erupted from the crust",
           "wordGroup": "group_11",
           "colorIndex": 5, phonetic: "\u026a\u02c8r\u028cpt", stress: "e RUPT"
@@ -437,7 +437,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 44,
           "word": "fume",
           "partOfSpeech": "n./v.",
-          "chinese": "（难闻有害的）烟，气体；发怒，愤怒",
+          "chinese": "烟；发怒",
           "example": "Petrol fumes from cars are poisoning the atmosphere",
           "wordGroup": "group_12",
           "colorIndex": 0, phonetic: "fju\u02d0m", stress: "fume"
@@ -676,7 +676,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 69,
           "word": "pole",
           "partOfSpeech": "n.",
-          "chinese": "（地）极；截然相反的两极之一",
+          "chinese": "极；两极",
           "example": "English is spoken from pole to pole",
           "wordGroup": "group_19",
           "colorIndex": 1, phonetic: "p\u0259\u028al", stress: "pole"
@@ -839,7 +839,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 86,
           "word": "shore",
           "partOfSpeech": "n.",
-          "chinese": "（海、湖等大水域的）岸；滨",
+          "chinese": "岸；滨",
           "example": "His ship pulled in to the shore at midnight",
           "wordGroup": "group_24",
           "colorIndex": 0, phonetic: "\u0283\u0254\u02d0(r)", stress: "shore"
@@ -1085,7 +1085,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 112,
           "word": "warm",
           "partOfSpeech": "adj./v.",
-          "chinese": "温暖的/（使）变暖",
+          "chinese": "温暖的；变暖",
           "example": "The blood of a warm-blooded animal remains around the same temperature both on warm and cold days",
           "wordGroup": "group_30",
           "colorIndex": 0, phonetic: "w\u0254\u02d0m", stress: "warm"
@@ -1257,7 +1257,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 130,
           "word": "stormy",
           "partOfSpeech": "adj.",
-          "chinese": "有暴风雨的；争吵激烈的；（大海）波涛汹涌的",
+          "chinese": "有暴风雨的；激烈的",
           "example": "Our ship was tossed about on the stormy sea",
           "wordGroup": "group_35",
           "colorIndex": 5, phonetic: "\u02c8st\u0254\u02d0mi", stress: "STOR my"
@@ -1449,7 +1449,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 150,
           "word": "oriental",
           "partOfSpeech": "adj.",
-          "chinese": "东方的（尤其指中日）",
+          "chinese": "东方的",
           "example": "She has studied the cultures of oriental countries",
           "wordGroup": "group_41",
           "colorIndex": 5, phonetic: "\u02cc\u0254\u02d0ri\u02c8ent(\u0259)l", stress: "o ri EN tal"
@@ -1947,7 +1947,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 202,
           "word": "shade",
           "partOfSpeech": "n./v.",
-          "chinese": "阴影部分；背阴处；给...遮挡（光线）",
+          "chinese": "阴凉处；遮蔽",
           "example": "He tried the shade his house with thick trees",
           "wordGroup": "group_56",
           "colorIndex": 2, phonetic: "\u0283e\u026ad", stress: "shade"
@@ -2070,7 +2070,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 215,
           "word": "drip",
           "partOfSpeech": "v.",
-          "chinese": "滴出（液体）；滴下",
+          "chinese": "滴下",
           "example": "Be careful. Your paintbrush is dripping",
           "wordGroup": "group_59",
           "colorIndex": 5, phonetic: "dr\u026ap", stress: "drip"
@@ -2099,7 +2099,7 @@ export const vocabChapters: VocabChapter[] = [
           "id": 218,
           "word": "puff",
           "partOfSpeech": "v./n.",
-          "chinese": "喷出；喘息；（吹出的）一股；一缕",
+          "chinese": "喷出；喘息",
           "example": "Don't puff cigarette smoke in my face",
           "wordGroup": "group_60",
           "colorIndex": 0, phonetic: "p\u028cf", stress: "puff"
