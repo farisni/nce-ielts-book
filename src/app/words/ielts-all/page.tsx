@@ -70,7 +70,7 @@ export default function VocabularyPage() {
             <span className="text-sm text-muted-foreground/30">—</span>
           );
         },
-        size: 300,
+        size: 180,
         enableSorting: false,
       }),
       columnHelper.accessor("stress", {
@@ -89,7 +89,7 @@ export default function VocabularyPage() {
       columnHelper.accessor("chinese", {
         header: "释义",
         cell: (info) => <span className="text-muted-foreground"><span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span> {info.getValue()}</span>,
-        size: 434,
+        size: 554,
         enableSorting: false,
       }),
     ],
