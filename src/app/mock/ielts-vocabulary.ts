@@ -145,7 +145,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "地平线；[~s]眼界；见识",
           "example": "I could see a ship on the horizon",
           "wordGroup": "group_3",
-          "colorIndex": 3, phonetic: "h\u0259\u02c8ra\u026az(\u0259)n", stress: "ho RI zon", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "h\u0259\u02c8ra\u026az(\u0259)n", stress: "ho RI zon", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 14,
@@ -489,7 +489,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "激流；洪流",
           "example": "A torrent of water poured down the mountain",
           "wordGroup": "group_13",
-          "colorIndex": 1, phonetic: "\u02c8t\u0252r\u0259nt", stress: "TOR rent", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8t\u0252r\u0259nt", stress: "TOR rent", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -652,7 +652,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "赤道",
           "example": "The equator is an imaginary line around the middle of the earth",
           "wordGroup": "group_18",
-          "colorIndex": 0, phonetic: "\u026a\u02c8kwe\u026at\u0259(r)", stress: "e QUA tor", phonicRule: "/\u0259(r)/\uff1bqu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u026a\u02c8kwe\u026at\u0259(r)", stress: "e QUA tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bqu=/kw/"
         }
       ],
       [
@@ -690,7 +690,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "极地的；近极地的；对立的",
           "example": "In these polar regions, the balance of nature has already been disrupted",
           "wordGroup": "group_19",
-          "colorIndex": 1, phonetic: "\u02c8p\u0259\u028al\u0259(r)", stress: "PO lar", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8p\u0259\u028al\u0259(r)", stress: "PO lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 71,
@@ -710,7 +710,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "恶化；变坏",
           "example": "Relations between the two countries have deteriorated sharply in recent weeks",
           "wordGroup": "group_20",
-          "colorIndex": 2, phonetic: "d\u026a\u02c8t\u026a\u0259ri\u0259re\u026at", stress: "de TE ri o rate", phonicRule: "magic-e: a=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "d\u026a\u02c8t\u026a\u0259ri\u0259re\u026at", stress: "de TE ri o rate", phonicRule: "magic-e: a=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 73,
@@ -795,7 +795,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "海洋的；海生的；海事的/水兵",
           "example": "It is true that a lot of people like marine plants as their food",
           "wordGroup": "group_22",
-          "colorIndex": 4, phonetic: "m\u0259\u02c8ri\u02d0n", stress: "ma RINE", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "m\u0259\u02c8ri\u02d0n", stress: "ma RINE", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 82,
@@ -985,7 +985,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "平行线；相似之处/平行的/与...相似；比得上",
           "example": "There are few parallels between American football and European football",
           "wordGroup": "group_27",
-          "colorIndex": 3, phonetic: "\u02c8p\u00e6r\u0259lel", stress: "PA ral lel", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8p\u00e6r\u0259lel", stress: "PA ral lel", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 102,
@@ -994,7 +994,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "狭窄的；有极限的",
           "example": "The only access to the garden is by a narrow path at the side of the house",
           "wordGroup": "group_27",
-          "colorIndex": 3, phonetic: "\u02c8n\u00e6r\u0259\u028a", stress: "NAR row", phonicRule: "ow=/\u0259\u028a/"
+          "colorIndex": 3, phonetic: "\u02c8n\u00e6r\u0259\u028a", stress: "NAR row", phonicRule: "ow=/\u0259\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -1052,7 +1052,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "气象学",
           "example": "Nowadays few people like to study meteorology",
           "wordGroup": "group_29",
-          "colorIndex": 5, phonetic: "\u02ccmi\u02d0ti\u0259\u02c8r\u0252l\u0259d\u0292i", stress: "me te o RO lo gy", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02ccmi\u02d0ti\u0259\u02c8r\u0252l\u0259d\u0292i", stress: "me te o RO lo gy", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -1483,7 +1483,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "不规则地；不合常规地",
           "example": "The patient is breathing irregularly",
           "wordGroup": "group_42",
-          "colorIndex": 0, phonetic: "\u026a\u02c8re\u0261j\u0259l\u0259li", stress: "ir RE gu lar ly", phonicRule: "/li/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u026a\u02c8re\u0261j\u0259l\u0259li", stress: "ir RE gu lar ly", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/li/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 154,
@@ -1827,7 +1827,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "贫瘠的；荒芜的；不结果实的",
           "example": "That remote barren land has blossomed into rich granaries",
           "wordGroup": "group_52",
-          "colorIndex": 4, phonetic: "\u02c8b\u00e6r\u0259n", stress: "BAR ren", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8b\u00e6r\u0259n", stress: "BAR ren", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 190,
@@ -1856,7 +1856,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "太阳的；日光的",
           "example": "This toy is operated by solar energy",
           "wordGroup": "group_53",
-          "colorIndex": 5, phonetic: "\u02c8s\u0259\u028al\u0259(r)", stress: "SO lar", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8s\u0259\u028al\u0259(r)", stress: "SO lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 193,
@@ -1865,7 +1865,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "月亮的；月球的",
           "example": "All traditional Chinese festivals are lunar callendar festivals",
           "wordGroup": "group_53",
-          "colorIndex": 5, phonetic: "\u02c8lu\u02d0n\u0259(r)", stress: "LU nar", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8lu\u02d0n\u0259(r)", stress: "LU nar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 194,
@@ -1874,7 +1874,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "日历；历法",
           "example": "The Islamic calendar has fewer days than the Gregorian calendar",
           "wordGroup": "group_53",
-          "colorIndex": 5, phonetic: "\u02c8k\u00e6l\u026and\u0259(r)", stress: "CA len dar", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8k\u00e6l\u026and\u0259(r)", stress: "CA len dar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -1932,7 +1932,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "天堂；乐园；福地",
           "example": "This club is a sportsman's paradise",
           "wordGroup": "group_55",
-          "colorIndex": 1, phonetic: "\u02c8p\u00e6r\u0259da\u026as", stress: "PA ra dise", phonicRule: "magic-e: i=/a\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8p\u00e6r\u0259da\u026as", stress: "PA ra dise", phonicRule: "magic-e: i=/a\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -1981,7 +1981,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "使蒸发；消失",
           "example": "The pool of water on the playground evaporated in the sun",
           "wordGroup": "group_57",
-          "colorIndex": 3, phonetic: "\u026a\u02c8v\u00e6p\u0259re\u026at", stress: "e VA po rate", phonicRule: "magic-e: a=/e\u026a/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u026a\u02c8v\u00e6p\u0259re\u026at", stress: "e VA po rate", phonicRule: "magic-e: a=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 206,
@@ -2435,7 +2435,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "变种；变异",
           "example": "Variation among dogs is limited to the possible permutations of their genes",
           "wordGroup": "group_69",
-          "colorIndex": 3, phonetic: "\u02ccve\u0259r\u026a\u02c8e\u026a\u0283n\u0329", stress: "va ria TION", phonicRule: "/\u0283\u0259n/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
+          "colorIndex": 3, phonetic: "\u02ccve\u0259r\u026a\u02c8e\u026a\u0283n\u0329", stress: "va ria TION", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0283\u0259n/"
         },
         {
           "id": 253,
@@ -2567,7 +2567,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "培养；抚养；饲养；后部",
           "example": "Most farmers in this area rear sheep",
           "wordGroup": "group_72",
-          "colorIndex": 0, phonetic: "r\u026a\u0259(r)", stress: "rear", phonicRule: "ear=/\u026a\u0259/"
+          "colorIndex": 0, phonetic: "r\u026a\u0259(r)", stress: "rear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 267,
@@ -2576,7 +2576,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "适合耕种的",
           "example": "This area changed quickly from arable land to desert",
           "wordGroup": "group_72",
-          "colorIndex": 0, phonetic: "\u02c8\u00e6r\u0259b(\u0259)l", stress: "A rab le", phonicRule: "/l/\uff08\u6210\u97f3\u8282\uff09\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8\u00e6r\u0259b(\u0259)l", stress: "A rab le", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/l/\uff08\u6210\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -2793,7 +2793,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "芳香的",
           "example": "Aromatic plants are often used in cooking",
           "wordGroup": "group_77",
-          "colorIndex": 5, phonetic: "\u02cc\u00e6r\u0259\u02c8m\u00e6t\u026ak", stress: "a ro MA tic", phonicRule: "/\u026ak/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02cc\u00e6r\u0259\u02c8m\u00e6t\u026ak", stress: "a ro MA tic", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u026ak/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -3772,7 +3772,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "发源；来自；创始",
           "example": "The use of the computer has originated many other societal reforms",
           "wordGroup": "group_104",
-          "colorIndex": 2, phonetic: "\u0259\u02c8r\u026ad\u0292\u026ane\u026at", stress: "o RI gi nate", phonicRule: "magic-e: a=/e\u026a/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u0259\u02c8r\u026ad\u0292\u026ane\u026at", stress: "o RI gi nate", phonicRule: "magic-e: a=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 393,
@@ -3801,7 +3801,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "祖宗；祖先",
           "example": "Lions and house cats evolved from a common ancestor",
           "wordGroup": "group_105",
-          "colorIndex": 3, phonetic: "\u02c8\u00e6nsest\u0259(r)", stress: "AN ce stor", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8\u00e6nsest\u0259(r)", stress: "AN ce stor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 396,
@@ -4096,7 +4096,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "寄生虫",
           "example": "The life of the parasite is maintained by new blood-sucking mosquitoes",
           "wordGroup": "group_113",
-          "colorIndex": 5, phonetic: "\u02c8p\u00e6r\u0259sa\u026at", stress: "PA ra site", phonicRule: "magic-e: i=/a\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8p\u00e6r\u0259sa\u026at", stress: "PA ra site", phonicRule: "magic-e: i=/a\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -4192,7 +4192,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "袋鼠",
           "example": "The kangaroo is native to Australia",
           "wordGroup": "group_116",
-          "colorIndex": 2, phonetic: "\u02cck\u00e6\u014b\u0261\u0259\u02c8ru\u02d0", stress: "kan ga ROO", phonicRule: "oo=/u\u02d0/\uff1bng=/\u014b/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cck\u00e6\u014b\u0261\u0259\u02c8ru\u02d0", stress: "kan ga ROO", phonicRule: "oo=/u\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bng=/\u014b/"
         },
         {
           "id": 437,
@@ -4239,7 +4239,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "象牙",
           "example": "The professor lived in an ivory tower",
           "wordGroup": "group_117",
-          "colorIndex": 3, phonetic: "\u02c8a\u026av\u0259ri", stress: "I vo ry", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8a\u026av\u0259ri", stress: "I vo ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 442,
@@ -4259,7 +4259,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "熊",
           "example": "The bear is a large heavy animal with thick fur",
           "wordGroup": "group_118",
-          "colorIndex": 4, phonetic: "be\u0259(r)", stress: "bear", phonicRule: ""
+          "colorIndex": 4, phonetic: "be\u0259(r)", stress: "bear", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 444,
@@ -4465,7 +4465,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "麻雀",
           "example": "A sparrow is very alert in its movement",
           "wordGroup": "group_122",
-          "colorIndex": 2, phonetic: "\u02c8sp\u00e6r\u0259\u028a", stress: "SPAR row", phonicRule: "ow=/\u0259\u028a/"
+          "colorIndex": 2, phonetic: "\u02c8sp\u00e6r\u0259\u028a", stress: "SPAR row", phonicRule: "ow=/\u0259\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 466,
@@ -4550,7 +4550,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "野兔",
           "example": "The hunter watched for the hare to come out of the burrow",
           "wordGroup": "group_124",
-          "colorIndex": 4, phonetic: "he\u0259(r)", stress: "hare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 4, phonetic: "he\u0259(r)", stress: "hare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 475,
@@ -4720,7 +4720,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "障碍",
           "example": "Lack of confidence is the biggest barrier to the improvement of your English",
           "wordGroup": "group_128",
-          "colorIndex": 2, phonetic: "\u02c8b\u00e6ri\u0259r", stress: "BAR ri er", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8b\u00e6ri\u0259r", stress: "BAR ri er", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 493,
@@ -5017,7 +5017,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "掠夺者；捕食性动物",
           "example": "These predators of the African grasslands live on mice and rabbits",
           "wordGroup": "group_137",
-          "colorIndex": 5, phonetic: "\u02c8pred\u0259t\u0259(r)", stress: "PRE da tor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8pred\u0259t\u0259(r)", stress: "PRE da tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 524,
@@ -5174,7 +5174,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "星际的",
           "example": "These elements become a part of the interstellar gas and dust",
           "wordGroup": "group_140",
-          "colorIndex": 2, phonetic: "\u02cc\u026ant\u0259\u02c8stel\u0259(r)", stress: "in ter STEL lar", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cc\u026ant\u0259\u02c8stel\u0259(r)", stress: "in ter STEL lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -5241,7 +5241,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "陨石",
           "example": "He discovered an unusual meteorite",
           "wordGroup": "group_142",
-          "colorIndex": 4, phonetic: "\u02c8mi\u02d0ti\u0259ra\u026at", stress: "ME te o rite", phonicRule: "magic-e: i=/a\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8mi\u02d0ti\u0259ra\u026at", stress: "ME te o rite", phonicRule: "magic-e: i=/a\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 547,
@@ -5404,7 +5404,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "探索",
           "example": "The Elizabethan age was an time of exploration and discovery",
           "wordGroup": "group_147",
-          "colorIndex": 3, phonetic: "\u02ccekspl\u0259\u02c8re\u026a\u0283(\u0259)n", stress: "ex plo RA tion", phonicRule: "/\u0283\u0259n/\uff1bx=/ks/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
+          "colorIndex": 3, phonetic: "\u02ccekspl\u0259\u02c8re\u026a\u0283(\u0259)n", stress: "ex plo RA tion", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0283\u0259n/\uff1bx=/ks/"
         },
         {
           "id": 564,
@@ -5433,7 +5433,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "天文台",
           "example": "According to the observatory, there will be a total solar eclipse tomorrow",
           "wordGroup": "group_148",
-          "colorIndex": 4, phonetic: "\u0259b\u02c8z\u025c\u02d0v\u0259tri", stress: "ob SER va tory", phonicRule: "er=/\u025c\u02d0(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u0259b\u02c8z\u025c\u02d0v\u0259tri", stress: "ob SER va tory", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 567,
@@ -5876,7 +5876,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "初级的；主要的",
           "example": "The primary cause of his failure was his underestimation of the enemy",
           "wordGroup": "group_159",
-          "colorIndex": 3, phonetic: "\u02c8pra\u026am\u0259ri", stress: "PRI ma ry", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8pra\u026am\u0259ri", stress: "PRI ma ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 613,
@@ -5885,7 +5885,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "中级的；次要的",
           "example": "The most important factor is price. Location is a secondary issue",
           "wordGroup": "group_159",
-          "colorIndex": 3, phonetic: "\u02c8sek\u0259nd(\u0259)ri", stress: "SE con da ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8sek\u0259nd(\u0259)ri", stress: "SE con da ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -6508,7 +6508,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "教授",
           "example": "Our professor is learned man with great insight",
           "wordGroup": "group_178",
-          "colorIndex": 4, phonetic: "pr\u0259\u02c8fes\u0259(r)", stress: "pro FES sor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "pr\u0259\u02c8fes\u0259(r)", stress: "pro FES sor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 679,
@@ -6544,7 +6544,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "家庭教师；（英国大学或者学院的）导师",
           "example": "She was my personal tutor at university",
           "wordGroup": "group_178",
-          "colorIndex": 4, phonetic: "\u02c8tju\u02d0t\u0259(r)", stress: "TU tor", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8tju\u02d0t\u0259(r)", stress: "TU tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -6649,7 +6649,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "大使",
           "example": "He was appointed ambassador to France",
           "wordGroup": "group_181",
-          "colorIndex": 1, phonetic: "\u00e6m\u02c8b\u00e6s\u0259d\u0259(r)", stress: "am BAS sa dor", phonicRule: "/\u0259(r)/\uff1b-mb \u4e0d\u53d1\u97f3 b\uff1ba=/\u00e6/"
+          "colorIndex": 1, phonetic: "\u00e6m\u02c8b\u00e6s\u0259d\u0259(r)", stress: "am BAS sa dor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b-mb \u4e0d\u53d1\u97f3 b"
         }
       ],
       [
@@ -6689,7 +6689,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "学士；单身汉",
           "example": "To do the job you must have at least a bachelor's degree in engineering",
           "wordGroup": "group_183",
-          "colorIndex": 3, phonetic: "\u02c8b\u00e6t\u0283\u0259l\u0259(r)", stress: "BA che lor", phonicRule: "/\u0259(r)/\uff1bch=/t\u0283/\uff1ba=/\u00e6/"
+          "colorIndex": 3, phonetic: "\u02c8b\u00e6t\u0283\u0259l\u0259(r)", stress: "BA che lor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bch=/t\u0283/"
         },
         {
           "id": 698,
@@ -6707,7 +6707,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "博士；医生",
           "example": "He is a doctor of philosophy",
           "wordGroup": "group_183",
-          "colorIndex": 3, phonetic: "\u02c8d\u0252kt\u0259(r)", stress: "DOC tor", phonicRule: "/\u0259(r)/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8d\u0252kt\u0259(r)", stress: "DOC tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -6736,7 +6736,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "[美]（大学或高中）三年级学生；较年幼者。青少年的；级别（或地位）较低的",
           "example": "At that time, I was a sophomore and Miss Yang was a junior",
           "wordGroup": "group_184",
-          "colorIndex": 4, phonetic: "\u02c8d\u0292u\u02d0ni\u0259(r)", stress: "JU ni or", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8d\u0292u\u02d0ni\u0259(r)", stress: "JU ni or", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 703,
@@ -6745,7 +6745,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "[美]（大学或高中）毕业班学士；较年长者。成人的；资深的",
           "example": "The seniors defeated the juniors by 4-2",
           "wordGroup": "group_184",
-          "colorIndex": 4, phonetic: "\u02c8si\u02d0ni\u0259(r)", stress: "SE ni or", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8si\u02d0ni\u0259(r)", stress: "SE ni or", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 704,
@@ -6926,7 +6926,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "图书馆；个人收藏",
           "example": "I went to the library and return your books for you",
           "wordGroup": "group_189",
-          "colorIndex": 3, phonetic: "\u02c8la\u026abr\u0259ri; \u02c8la\u026abri", stress: "", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8la\u026abr\u0259ri; \u02c8la\u026abri", stress: "", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 723,
@@ -6991,7 +6991,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "日记；日记簿",
           "example": "Her diary is full of entries about him",
           "wordGroup": "group_190",
-          "colorIndex": 4, phonetic: "\u02c8da\u026a\u0259ri", stress: "DI a ry", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09"
+          "colorIndex": 4, phonetic: "\u02c8da\u026a\u0259ri", stress: "DI a ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -7181,7 +7181,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "种类；类别；范畴",
           "example": "There are different categories of books in the library",
           "wordGroup": "group_195",
-          "colorIndex": 3, phonetic: "\u02c8k\u00e6t\u0259\u0261\u0259ri", stress: "CA te go ry", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8k\u00e6t\u0259\u0261\u0259ri", stress: "CA te go ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -7192,7 +7192,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "库存；详细目录",
           "example": "We made an inventory of everything in the old museum",
           "wordGroup": "group_196",
-          "colorIndex": 4, phonetic: "\u02c8\u026anv\u0259ntri", stress: "IN ven tory", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8\u026anv\u0259ntri", stress: "IN ven tory", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 751,
@@ -7277,7 +7277,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "[美]主修科目；专业。主修。主要的",
           "example": "She majored in international economy at university",
           "wordGroup": "group_198",
-          "colorIndex": 0, phonetic: "\u02c8me\u026ad\u0292\u0259r", stress: "MA jor", phonicRule: "/\u0259(r)/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8me\u026ad\u0292\u0259r", stress: "MA jor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 760,
@@ -7286,7 +7286,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "[美]辅修科目。不严重的",
           "example": "My major is English, but I also have a minor in history.",
           "wordGroup": "group_198",
-          "colorIndex": 0, phonetic: "\u02c8ma\u026an\u0259(r)", stress: "MI nor", phonicRule: "/\u0259(r)/\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8ma\u026an\u0259(r)", stress: "MI nor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -7449,7 +7449,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "历史；历史学",
           "example": "China is a oriental country with a long history",
           "wordGroup": "group_203",
-          "colorIndex": 5, phonetic: "\u02c8h\u026ast(\u0259)ri", stress: "HI sto ry", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8h\u026ast(\u0259)ri", stress: "HI sto ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -7498,7 +7498,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "算数",
           "example": "Arab brought arithmetic and algebra to the fore once again and placed it almost on a par with geometry",
           "wordGroup": "group_205",
-          "colorIndex": 1, phonetic: "\u0259\u02c8r\u026a\u03b8m\u0259t\u026ak", stress: "a RITH me tic", phonicRule: "/\u026ak/\uff1bth=/\u03b8/\uff1bi=/\u026a/"
+          "colorIndex": 1, phonetic: "\u0259\u02c8r\u026a\u03b8m\u0259t\u026ak", stress: "a RITH me tic", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u026ak/\uff1bth=/\u03b8/"
         },
         {
           "id": 783,
@@ -7661,7 +7661,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "参数；起限定作用的因素",
           "example": "Political descent is a parameter of modern life",
           "wordGroup": "group_210",
-          "colorIndex": 0, phonetic: "p\u0259\u02c8r\u00e6m\u026at\u0259(r)", stress: "pa RA me ter", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "p\u0259\u02c8r\u00e6m\u026at\u0259(r)", stress: "pa RA me ter", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 800,
@@ -7670,7 +7670,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "变量；可变因素。易变的",
           "example": "There are some variables that can change our plan",
           "wordGroup": "group_210",
-          "colorIndex": 0, phonetic: "\u02c8ve\u0259r\u026a\u0259bl\u0329", stress: "VARI able", phonicRule: "/l/\uff08\u6210\u97f3\u8282\uff09"
+          "colorIndex": 0, phonetic: "\u02c8ve\u0259r\u026a\u0259bl\u0329", stress: "VARI able", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/l/\uff08\u6210\u97f3\u8282\uff09"
         },
         {
           "id": 801,
@@ -8097,7 +8097,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "透明的；易看穿的",
           "example": "Not all glass is transparent",
           "wordGroup": "group_221",
-          "colorIndex": 5, phonetic: "tr\u00e6ns\u02c8p\u00e6r\u0259nt", stress: "tran SPA rent", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "tr\u00e6ns\u02c8p\u00e6r\u0259nt", stress: "tran SPA rent", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 846,
@@ -8316,7 +8316,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "理论；学说",
           "example": "There are many theories about the origin of the universe",
           "wordGroup": "group_227",
-          "colorIndex": 5, phonetic: "\u02c8\u03b8\u026a\u0259ri", stress: "THEO ry", phonicRule: "th=/\u03b8/"
+          "colorIndex": 5, phonetic: "\u02c8\u03b8\u026a\u0259ri", stress: "THEO ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bth=/\u03b8/"
         },
         {
           "id": 869,
@@ -8486,7 +8486,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "基本的；粗浅的",
           "example": "He only has a rudimentary knowledge of the dinosaurs",
           "wordGroup": "group_231",
-          "colorIndex": 3, phonetic: "\u02ccru\u02d0d\u026a\u02c8ment(\u0259)ri", stress: "ru di MEN ta ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02ccru\u02d0d\u026a\u02c8ment(\u0259)ri", stress: "ru di MEN ta ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 887,
@@ -8553,7 +8553,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "强制的",
           "example": "Britain did not introduce compulsory primary education until 1880",
           "wordGroup": "group_233",
-          "colorIndex": 5, phonetic: "k\u0259m\u02c8p\u028cls\u0259ri", stress: "com PUL so ry", phonicRule: "u=/\u028c/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "k\u0259m\u02c8p\u028cls\u0259ri", stress: "com PUL so ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 894,
@@ -8942,7 +8942,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "摘要；概要",
           "example": "The professor asked the students to make a summary of the reading material",
           "wordGroup": "group_243",
-          "colorIndex": 3, phonetic: "\u02c8s\u028cm\u0259ri", stress: "SUM ma ry", phonicRule: "u=/\u028c/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8s\u028cm\u0259ri", stress: "SUM ma ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -9210,7 +9210,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "比较；把...比作；比得上",
           "example": "Your knowledge cannot yet compare with his",
           "wordGroup": "group_251",
-          "colorIndex": 5, phonetic: "k\u0259m\u02c8pe\u0259(r)", stress: "com PARE", phonicRule: "are=/e\u0259/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "k\u0259m\u02c8pe\u0259(r)", stress: "com PARE", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 963,
@@ -9306,7 +9306,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "彻底的；详尽的",
           "example": "A thorough brushing helps to protect your teeth and gums",
           "wordGroup": "group_254",
-          "colorIndex": 2, phonetic: "\u02c8\u03b8\u028cr\u0259", stress: "THO rough", phonicRule: "ough\uff08\u4e0d\u900f\u660e\uff0c\u9700\u8bb0\uff09\uff1bth=/\u03b8/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8\u03b8\u028cr\u0259", stress: "THO rough", phonicRule: "ough\uff08\u4e0d\u900f\u660e\uff0c\u9700\u8bb0\uff09\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bth=/\u03b8/"
         },
         {
           "id": 973,
@@ -9641,7 +9641,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "奖学金；学问；学识",
           "example": "For a few, scholarships were their main source of support",
           "wordGroup": "group_264",
-          "colorIndex": 0, phonetic: "\u02c8sk\u0252l\u0259\u0283\u026ap", stress: "SCHO lar ship", phonicRule: "sc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09\uff1bsh=/\u0283/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09"
+          "colorIndex": 0, phonetic: "\u02c8sk\u0252l\u0259\u0283\u026ap", stress: "SCHO lar ship", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bsc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09\uff1bsh=/\u0283/"
         },
         {
           "id": 1008,
@@ -9661,7 +9661,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "奖；奖品",
           "example": "The novice writer is especially thrilled with this award",
           "wordGroup": "group_265",
-          "colorIndex": 1, phonetic: "\u0259\u02c8w\u0254\u02d0d", stress: "a WARD", phonicRule: "aw=/\u0254\u02d0/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u0259\u02c8w\u0254\u02d0d", stress: "a WARD", phonicRule: "aw=/\u0254\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1010,
@@ -10098,7 +10098,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "附件；配件",
           "example": "Car accessories include the roof rack and radio",
           "wordGroup": "group_273",
-          "colorIndex": 3, phonetic: "\u0259k\u02c8ses\u0259ri", stress: "ac CES so ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u0259k\u02c8ses\u0259ri", stress: "ac CES so ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1056,
@@ -10116,7 +10116,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "辅助的；协助的；备用的",
           "example": "When there is a power shortage, they count on the auxiliary power supply",
           "wordGroup": "group_273",
-          "colorIndex": 3, phonetic: "\u0254\u02d0\u0261\u02c8z\u026ali\u0259ri", stress: "a U xi lia ry", phonicRule: "au=/\u0254\u02d0/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u0254\u02d0\u0261\u02c8z\u026ali\u0259ri", stress: "a U xi lia ry", phonicRule: "au=/\u0254\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1058,
@@ -10241,7 +10241,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "传感器",
           "example": "Place the sensor on a flat surface and rotate it slowly through 360 degress",
           "wordGroup": "group_277",
-          "colorIndex": 1, phonetic: "\u02c8sens\u0259(r)", stress: "SEN sor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8sens\u0259(r)", stress: "SEN sor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -10308,7 +10308,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "软件",
           "example": "This is a computer software shop",
           "wordGroup": "group_279",
-          "colorIndex": 3, phonetic: "\u02c8s\u0252ftwe\u0259(r)", stress: "SOF tware", phonicRule: "are=/e\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8s\u0252ftwe\u0259(r)", stress: "SOF tware", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -10377,7 +10377,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "二进制的；二元的",
           "example": "The machine does binary calculations",
           "wordGroup": "group_282",
-          "colorIndex": 0, phonetic: "\u02c8ba\u026an\u0259ri", stress: "BI na ry", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8ba\u026an\u0259ri", stress: "BI na ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1085,
@@ -10462,7 +10462,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "发电机",
           "example": "A new type of wind generator may offer an answer to that problem",
           "wordGroup": "group_284",
-          "colorIndex": 2, phonetic: "\u02c8d\u0292en\u0259re\u026at\u0259(r)", stress: "GE ne ra tor", phonicRule: "/\u0259(r)/\uff1bge=/d\u0292/\uff1be=/e/"
+          "colorIndex": 2, phonetic: "\u02c8d\u0292en\u0259re\u026at\u0259(r)", stress: "GE ne ra tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bge=/d\u0292/"
         },
         {
           "id": 1094,
@@ -10471,7 +10471,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "齿轮；传动装置；使适合",
           "example": "Education should be geared to children's needs",
           "wordGroup": "group_284",
-          "colorIndex": 2, phonetic: "\u0261\u026a\u0259(r)", stress: "gear", phonicRule: "ear=/\u026a\u0259/"
+          "colorIndex": 2, phonetic: "\u0261\u026a\u0259(r)", stress: "gear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 1095,
@@ -10764,7 +10764,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "正确的",
           "example": "The correct answers can be found at the bottom of page eight",
           "wordGroup": "group_291",
-          "colorIndex": 3, phonetic: "k\u0259\u02c8rekt", stress: "cor RECT", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "k\u0259\u02c8rekt", stress: "cor RECT", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -10775,7 +10775,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "错误；过失",
           "example": "The accident was caused by human error",
           "wordGroup": "group_292",
-          "colorIndex": 4, phonetic: "\u02c8er\u0259(r)", stress: "ER ror", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8er\u0259(r)", stress: "ER ror", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1127,
@@ -10959,7 +10959,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "道德上的；有道德的；morals 道德",
           "example": "The old gentleman claimed himself to be a moral man, who had never told a lie in his life",
           "wordGroup": "group_295",
-          "colorIndex": 1, phonetic: "\u02c8m\u0252r\u0259l", stress: "MO ral", phonicRule: "/\u0259l/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8m\u0252r\u0259l", stress: "MO ral", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259l/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -10979,7 +10979,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "Aboriginal 澳大利亚土人/本土原有的；土著的",
           "example": "Many Aboriginals do not like the idea of a day to celebrate the British landing. 许多澳大利亚土著并不喜欢庆祝英国人登陆的日子",
           "wordGroup": "group_296",
-          "colorIndex": 2, phonetic: "\u02cc\u00e6b\u0259\u02c8r\u026ad\u0292\u0259n(\u0259)l", stress: "a bo RI gi nal", phonicRule: "/\u0259l/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cc\u00e6b\u0259\u02c8r\u026ad\u0292\u0259n(\u0259)l", stress: "a bo RI gi nal", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259l/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1148,
@@ -11026,7 +11026,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "外国人",
           "example": "Some foreigners assimilate easily into our way of life",
           "wordGroup": "group_297",
-          "colorIndex": 3, phonetic: "\u02c8f\u0252r\u0259n\u0259(r)", stress: "FO rei gner", phonicRule: "/\u0259(r)/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8f\u0252r\u0259n\u0259(r)", stress: "FO rei gner", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1153,
@@ -11053,7 +11053,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "人道主义者；人道主义的；博爱的",
           "example": "Hepburn is known as a great humanitarian",
           "wordGroup": "group_297",
-          "colorIndex": 3, phonetic: "hju\u02d0\u02ccm\u00e6n\u026a\u02c8te\u0259ri\u0259n", stress: "hu ma ni TA ri an", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "hju\u02d0\u02ccm\u00e6n\u026a\u02c8te\u0259ri\u0259n", stress: "hu ma ni TA ri an", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -11140,7 +11140,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "装饰",
           "example": "Using extremely different decorating schemes in adjoining rooms may result in lack of unity in style. 相邻的房间用悬殊太大的装修方案会导致风格不统一",
           "wordGroup": "group_300",
-          "colorIndex": 0, phonetic: "\u02c8dek\u0259re\u026at", stress: "DE co rate", phonicRule: "magic-e: a=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8dek\u0259re\u026at", stress: "DE co rate", phonicRule: "magic-e: a=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -11256,7 +11256,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "传教士",
           "example": "The missionary was sent to India last year",
           "wordGroup": "group_304",
-          "colorIndex": 4, phonetic: "\u02c8m\u026a\u0283\u0259n(\u0259)ri", stress: "MIS sio na ry", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8m\u026a\u0283\u0259n(\u0259)ri", stress: "MIS sio na ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1177,
@@ -11390,7 +11390,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "皇帝",
           "example": "The emperor unified the country by the sword",
           "wordGroup": "group_308",
-          "colorIndex": 2, phonetic: "\u02c8emp\u0259r\u0259(r)", stress: "EM pe ror", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8emp\u0259r\u0259(r)", stress: "EM pe ror", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1191,
@@ -11719,7 +11719,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "语法；语法书",
           "example": "He was known for his poor grammar and punctuation",
           "wordGroup": "group_316",
-          "colorIndex": 4, phonetic: "\u02c8\u0261r\u00e6m\u0259(r)", stress: "GRAM mar", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8\u0261r\u00e6m\u0259(r)", stress: "GRAM mar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -11871,7 +11871,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "词汇",
           "example": "His vocabulary was sound and his grammer was excellent",
           "wordGroup": "group_320",
-          "colorIndex": 2, phonetic: "v\u0259\u02c8k\u00e6bj\u0259l\u0259ri", stress: "vo CA bu la ry", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "v\u0259\u02c8k\u00e6bj\u0259l\u0259ri", stress: "vo CA bu la ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1241,
@@ -11880,7 +11880,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "词典；字典",
           "example": "The dictionary is a vast treasure trove of information",
           "wordGroup": "group_320",
-          "colorIndex": 2, phonetic: "\u02c8d\u026ak\u0283\u0259n(\u0259)ri", stress: "DIC tio na ry", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8d\u026ak\u0283\u0259n(\u0259)ri", stress: "DIC tio na ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -12005,7 +12005,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "单数；非凡的；单数的",
           "example": "The young man has a singular ear for music",
           "wordGroup": "group_324",
-          "colorIndex": 0, phonetic: "\u02c8s\u026a\u014b\u0261j\u0259l\u0259(r)", stress: "SIN gu lar", phonicRule: "ng=/\u014b/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8s\u026a\u014b\u0261j\u0259l\u0259(r)", stress: "SIN gu lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bng=/\u014b/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1255,
@@ -12139,7 +12139,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "意译；改述",
           "example": "The teacher asked his students to paraphrase the long sentence",
           "wordGroup": "group_328",
-          "colorIndex": 4, phonetic: "\u02c8p\u00e6r\u0259fre\u026az", stress: "PA ra phrase", phonicRule: "magic-e: a=/e\u026a/\uff1bph=/f/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8p\u00e6r\u0259fre\u026az", stress: "PA ra phrase", phonicRule: "magic-e: a=/e\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bph=/f/"
         }
       ],
       [
@@ -12159,7 +12159,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "讲（故事）；叙述",
           "example": "The sailer narrated his life story to me in the tavern",
           "wordGroup": "group_329",
-          "colorIndex": 5, phonetic: "n\u0259\u02c8re\u026at", stress: "nar RATE", phonicRule: "magic-e: a=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "n\u0259\u02c8re\u026at", stress: "nar RATE", phonicRule: "magic-e: a=/e\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -12237,7 +12237,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "评论；批评；实况报道",
           "example": "The conclusion of the commentary really hit the bull's eye",
           "wordGroup": "group_332",
-          "colorIndex": 2, phonetic: "\u02c8k\u0252m\u0259nt(\u0259)ri", stress: "COM men ta ry", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8k\u0252m\u0259nt(\u0259)ri", stress: "COM men ta ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1279,
@@ -12309,7 +12309,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "评论员；实况解说员",
           "example": "I enjoy the sport's commentator's commentaries very much",
           "wordGroup": "group_333",
-          "colorIndex": 3, phonetic: "\u02c8k\u0252m\u0259nte\u026at\u0259(r)", stress: "COM men ta tor", phonicRule: "/\u0259(r)/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8k\u0252m\u0259nte\u026at\u0259(r)", stress: "COM men ta tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1286,
@@ -12338,7 +12338,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "通信者；通讯员；记者",
           "example": "That war correspondent proudly outgunned the army sharp shooters",
           "wordGroup": "group_334",
-          "colorIndex": 4, phonetic: "\u02cck\u0252r\u0259\u02c8sp\u0252nd\u0259nt", stress: "cor re SPON dent", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02cck\u0252r\u0259\u02c8sp\u0252nd\u0259nt", stress: "cor re SPON dent", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1289,
@@ -12356,7 +12356,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "编辑；校订者",
           "example": "She gave the editor a dishonest account of this event",
           "wordGroup": "group_334",
-          "colorIndex": 4, phonetic: "\u02c8ed\u026at\u0259(r)", stress: "E di tor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8ed\u026at\u0259(r)", stress: "E di tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1291,
@@ -13187,7 +13187,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "发起人；主办人；赞助人。发起；主办；赞助",
           "example": "The company has sponsored the football match",
           "wordGroup": "group_358",
-          "colorIndex": 4, phonetic: "\u02c8sp\u0252ns\u0259(r)", stress: "SPON sor", phonicRule: "/\u0259(r)/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8sp\u0252ns\u0259(r)", stress: "SPON sor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1378,
@@ -13225,7 +13225,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "观众",
           "example": "The match attracted over 40, 000 spectators",
           "wordGroup": "group_359",
-          "colorIndex": 5, phonetic: "spek\u02c8te\u026at\u0259(r)", stress: "spec TA tor", phonicRule: "/\u0259(r)/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "spek\u02c8te\u026at\u0259(r)", stress: "spec TA tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1382,
@@ -13272,7 +13272,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "充满活力的；活跃的；积极的",
           "example": "Our attack was very vigorous and the enemy retreated back to the riverbank",
           "wordGroup": "group_360",
-          "colorIndex": 0, phonetic: "\u02c8v\u026a\u0261\u0259r\u0259s", stress: "VI go rous", phonicRule: "/\u0259s/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8v\u026a\u0261\u0259r\u0259s", stress: "VI go rous", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259s/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -13437,7 +13437,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "台球",
           "example": "He spent a whole afternoon playing billiards",
           "wordGroup": "group_366",
-          "colorIndex": 0, phonetic: "\u02c8b\u026alj\u0259dz", stress: "BIL liards", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8b\u026alj\u0259dz", stress: "BIL liards", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1404,
@@ -13770,7 +13770,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "马拉松",
           "example": "Gallard completed the marathon in less than 3 hours",
           "wordGroup": "group_375",
-          "colorIndex": 3, phonetic: "\u02c8m\u00e6r\u0259\u03b8\u0259n", stress: "MA ra thon", phonicRule: "th=/\u03b8/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8m\u00e6r\u0259\u03b8\u0259n", stress: "MA ra thon", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bth=/\u03b8/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1439,
@@ -14406,7 +14406,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "剃刀；（用剃刀）剃",
           "example": "He razored his face, clean off the beard",
           "wordGroup": "group_388",
-          "colorIndex": 4, phonetic: "\u02c8re\u026az\u0259(r)", stress: "RA zor", phonicRule: "/\u0259(r)/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8re\u026az\u0259(r)", stress: "RA zor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1506,
@@ -14558,7 +14558,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "备忘录；建议书；=memo",
           "example": "They agreed on the memorandum",
           "wordGroup": "group_392",
-          "colorIndex": 2, phonetic: "\u02ccmem\u0259\u02c8r\u00e6nd\u0259m", stress: "me mo RAN dum", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02ccmem\u0259\u02c8r\u00e6nd\u0259m", stress: "me mo RAN dum", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1522,
@@ -14605,7 +14605,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "剪刀",
           "example": "It is rumored that Leonardo da Vinci invented the scissors",
           "wordGroup": "group_393",
-          "colorIndex": 3, phonetic: "\u02c8s\u026az\u0259z", stress: "SCIS sors", phonicRule: "sc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8s\u026az\u0259z", stress: "SCIS sors", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bsc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -14616,7 +14616,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "shears（尤指修篱笆用的）大剪刀；剪",
           "example": "With a few quick snips of the shears, he pruned the bush",
           "wordGroup": "group_394",
-          "colorIndex": 4, phonetic: "\u0283\u026a\u0259(r)", stress: "shear", phonicRule: "ear=/\u026a\u0259/\uff1bsh=/\u0283/"
+          "colorIndex": 4, phonetic: "\u0283\u026a\u0259(r)", stress: "shear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bsh=/\u0283/"
         },
         {
           "id": 1528,
@@ -14654,7 +14654,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "因素；要素",
           "example": "Her friendly manner is an important factor in her rapid success",
           "wordGroup": "group_395",
-          "colorIndex": 5, phonetic: "\u02c8f\u00e6kt\u0259(r)", stress: "FAC tor", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8f\u00e6kt\u0259(r)", stress: "FAC tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1532,
@@ -14779,7 +14779,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "桶",
           "example": "The wine is aged in oak barrels",
           "wordGroup": "group_399",
-          "colorIndex": 3, phonetic: "\u02c8b\u00e6r\u0259l", stress: "BAR rel", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8b\u00e6r\u0259l", stress: "BAR rel", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1545,
@@ -14884,7 +14884,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "冰箱",
           "example": "My refrigerator suddenly broke down yesterday evening",
           "wordGroup": "group_402",
-          "colorIndex": 0, phonetic: "r\u026a\u02c8fr\u026ad\u0292\u0259re\u026at\u0259(r)", stress: "re FRI ge ra tor", phonicRule: "/\u0259(r)/\uff1bge=/d\u0292/\uff1bi=/\u026a/"
+          "colorIndex": 0, phonetic: "r\u026a\u02c8fr\u026ad\u0292\u0259re\u026at\u0259(r)", stress: "re FRI ge ra tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bge=/d\u0292/"
         },
         {
           "id": 1556,
@@ -15335,7 +15335,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "差的；下级的；低等的；级别/地位低的人；次品",
           "example": "I grudge paying so much for such inferior goods",
           "wordGroup": "group_416",
-          "colorIndex": 2, phonetic: "\u026an\u02c8f\u026a\u0259ri\u0259(r)", stress: "in FE ri or", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u026an\u02c8f\u026a\u0259ri\u0259(r)", stress: "in FE ri or", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1603,
@@ -15454,7 +15454,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "流行",
           "example": "That record made the singer's popularity boom 那张唱片捧红了这位歌手",
           "wordGroup": "group_418",
-          "colorIndex": 4, phonetic: "\u02ccp\u0252pju\u02c8l\u00e6r\u0259ti", stress: "po pu LA ri ty", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02ccp\u0252pju\u02c8l\u00e6r\u0259ti", stress: "po pu LA ri ty", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1615,
@@ -15724,7 +15724,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "外貌；出现",
           "example": "Don't judge by appearances",
           "wordGroup": "group_427",
-          "colorIndex": 1, phonetic: "\u0259\u02c8p\u026a\u0259r\u0259ns", stress: "ap PEA rance", phonicRule: "ear=/\u026a\u0259/\uff1b/\u0259ns/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u0259\u02c8p\u026a\u0259r\u0259ns", stress: "ap PEA rance", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259ns/"
         },
         {
           "id": 1643,
@@ -15847,7 +15847,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "衣柜；（某人的）全部服装",
           "example": "Can you hang this in the wardrobe please?",
           "wordGroup": "group_430",
-          "colorIndex": 4, phonetic: "\u02c8w\u0254\u02d0dr\u0259\u028ab", stress: "WAR drobe", phonicRule: "magic-e: o=/\u0259\u028a/"
+          "colorIndex": 4, phonetic: "\u02c8w\u0254\u02d0dr\u0259\u028ab", stress: "WAR drobe", phonicRule: "magic-e: o=/\u0259\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -16066,7 +16066,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "衣领；项圈",
           "example": "She turned up his coat collar against the chilly wind",
           "wordGroup": "group_436",
-          "colorIndex": 4, phonetic: "\u02c8k\u0252l\u0259(r)", stress: "COL lar", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8k\u0252l\u0259(r)", stress: "COL lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1679,
@@ -16133,7 +16133,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "裁缝；专门制作",
           "example": "The tailor can alter your new coat to fit you",
           "wordGroup": "group_438",
-          "colorIndex": 0, phonetic: "\u02c8te\u026al\u0259(r)", stress: "TAI lor", phonicRule: "ai=/e\u026a/\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8te\u026al\u0259(r)", stress: "TAI lor", phonicRule: "ai=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/"
         },
         {
           "id": 1686,
@@ -16576,7 +16576,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（学校或其他机构）食堂、餐厅",
           "example": "The meal of the school refectory is healthy and delicious",
           "wordGroup": "group_449",
-          "colorIndex": 5, phonetic: "r\u026a\u02c8fekt\u0259ri", stress: "re FEC to ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "r\u026a\u02c8fekt\u0259ri", stress: "re FEC to ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1732,
@@ -16726,7 +16726,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "素食者/素食的、无肉的",
           "example": "I've become used to a vegetarian diet",
           "wordGroup": "group_452",
-          "colorIndex": 2, phonetic: "\u02ccved\u0292\u0259\u02c8te\u0259ri\u0259n", stress: "ve ge TA ri an", phonicRule: "ge=/d\u0292/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02ccved\u0292\u0259\u02c8te\u0259ri\u0259n", stress: "ve ge TA ri an", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bge=/d\u0292/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -16994,7 +16994,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "烈性酒",
           "example": "He appears to have drunk a lot of liquor",
           "wordGroup": "group_460",
-          "colorIndex": 4, phonetic: "\u02c8l\u026ak\u0259(r)", stress: "LI quor", phonicRule: "/\u0259(r)/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8l\u026ak\u0259(r)", stress: "LI quor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1776,
@@ -17041,7 +17041,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "香烟",
           "example": "A cigarette set the dry grass on fire",
           "wordGroup": "group_461",
-          "colorIndex": 5, phonetic: "\u02ccs\u026a\u0261\u0259\u02c8ret", stress: "ci ga RETTE", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02ccs\u026a\u0261\u0259\u02c8ret", stress: "ci ga RETTE", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1781,
@@ -17157,7 +17157,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "胡萝卜",
           "example": "The dish of boiled beef and carrot tastes good",
           "wordGroup": "group_465",
-          "colorIndex": 3, phonetic: "\u02c8k\u00e6r\u0259t", stress: "CAR rot", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8k\u00e6r\u0259t", stress: "CAR rot", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1793,
@@ -17280,7 +17280,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "梨",
           "example": "Would you like a pear",
           "wordGroup": "group_468",
-          "colorIndex": 0, phonetic: "pe\u0259(r)", stress: "pear", phonicRule: ""
+          "colorIndex": 0, phonetic: "pe\u0259(r)", stress: "pear", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 1806,
@@ -17720,7 +17720,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "芥末、芥菜",
           "example": "He put some mustard into the dish",
           "wordGroup": "group_481",
-          "colorIndex": 1, phonetic: "\u02c8m\u028cst\u0259d", stress: "MU stard", phonicRule: "u=/\u028c/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8m\u028cst\u0259d", stress: "MU stard", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1852,
@@ -17778,7 +17778,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "醋",
           "example": "Vinegar has a acid taste",
           "wordGroup": "group_483",
-          "colorIndex": 3, phonetic: "\u02c8v\u026an\u026a\u0261\u0259(r)", stress: "VI ne gar", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8v\u026an\u026a\u0261\u0259(r)", stress: "VI ne gar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1858,
@@ -17796,7 +17796,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "糖",
           "example": "I bought him a packet of sugar",
           "wordGroup": "group_483",
-          "colorIndex": 3, phonetic: "\u02c8\u0283\u028a\u0261\u0259(r)", stress: "SU gar", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8\u0283\u028a\u0261\u0259(r)", stress: "SU gar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1860,
@@ -18431,7 +18431,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "地窖、地下室",
           "example": "The celler floods whenever it rains heavily",
           "wordGroup": "group_500",
-          "colorIndex": 2, phonetic: "\u02c8sel\u0259(r)", stress: "CEL lar", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8sel\u0259(r)", stress: "CEL lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1926,
@@ -18574,7 +18574,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "[美]电梯",
           "example": "Her job is to operate an elevator",
           "wordGroup": "group_504",
-          "colorIndex": 0, phonetic: "\u02c8el\u026ave\u026at\u0259(r)", stress: "E le va tor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8el\u026ave\u026at\u0259(r)", stress: "E le va tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1941,
@@ -18583,7 +18583,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "自动扶梯、滚梯",
           "example": "I could never find the escalators or the door I came in",
           "wordGroup": "group_504",
-          "colorIndex": 0, phonetic: "\u02c8esk\u0259le\u026at\u0259(r)", stress: "ES ca la tor", phonicRule: "/\u0259(r)/\uff1bsc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09\uff1be=/e/"
+          "colorIndex": 0, phonetic: "\u02c8esk\u0259le\u026at\u0259(r)", stress: "ES ca la tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bsc=/s/\uff08c \u4e0d\u53d1\u97f3\uff09"
         },
         {
           "id": 1942,
@@ -18603,7 +18603,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "柱子、中坚、栋梁",
           "example": "The robber tied him to a pillar",
           "wordGroup": "group_505",
-          "colorIndex": 1, phonetic: "\u02c8p\u026al\u0259(r)", stress: "PIL lar", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8p\u026al\u0259(r)", stress: "PIL lar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1944,
@@ -18726,7 +18726,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "暖气设备",
           "example": "He tossed his coat on the chair and warmed his hands at a radiator",
           "wordGroup": "group_508",
-          "colorIndex": 4, phonetic: "\u02c8re\u026adie\u026at\u0259(r)", stress: "RA di a tor", phonicRule: "/\u0259(r)/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8re\u026adie\u026at\u0259(r)", stress: "RA di a tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1957,
@@ -18784,7 +18784,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "盥洗室、厕所",
           "example": "The use of the lavatory is suspended during takeoff",
           "wordGroup": "group_510",
-          "colorIndex": 0, phonetic: "\u02c8l\u00e6v\u0259tri", stress: "LA va tory", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8l\u00e6v\u0259tri", stress: "LA va tory", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1963,
@@ -19097,7 +19097,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "机械；装置",
           "example": "A new piece of apparatus was used in the experiment",
           "wordGroup": "group_518",
-          "colorIndex": 2, phonetic: "\u02cc\u00e6p\u0259\u02c8re\u026at\u0259s", stress: "ap pa RA tus", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cc\u00e6p\u0259\u02c8re\u026at\u0259s", stress: "ap pa RA tus", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 1996,
@@ -19356,7 +19356,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "向外的/向外",
           "example": "Frost consists of tiny crystals of ice, which grow outward from a solid surface",
           "wordGroup": "group_526",
-          "colorIndex": 4, phonetic: "\u02c8a\u028atw\u0259d", stress: "OU tward", phonicRule: "ou=/a\u028a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8a\u028atw\u0259d", stress: "OU tward", phonicRule: "ou=/a\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2023,
@@ -19365,7 +19365,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "外部；外观/外部的",
           "example": "The designer gives a design for the exterior of the container",
           "wordGroup": "group_526",
-          "colorIndex": 4, phonetic: "\u026ak\u02c8st\u026a\u0259ri\u0259(r)", stress: "ex TE ri or", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u026ak\u02c8st\u026a\u0259ri\u0259(r)", stress: "ex TE ri or", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2024,
@@ -19394,7 +19394,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "内部/内部的",
           "example": "Interior design is a very promising industry nowadays",
           "wordGroup": "group_527",
-          "colorIndex": 5, phonetic: "\u026an\u02c8t\u026a\u0259ri\u0259(r)", stress: "in TE ri or", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u026an\u02c8t\u026a\u0259ri\u0259(r)", stress: "in TE ri or", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2027,
@@ -19403,7 +19403,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "向内的；内心的/向内",
           "example": "The expedition discovered an inward passage",
           "wordGroup": "group_527",
-          "colorIndex": 5, phonetic: "\u02c8\u026anw\u0259d", stress: "IN ward", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8\u026anw\u0259d", stress: "IN ward", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2028,
@@ -19484,7 +19484,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "游行；炫耀/庆祝游行；列队进行；炫耀",
           "example": "The sports meeting began with a parade for all the competing teams",
           "wordGroup": "group_528",
-          "colorIndex": 0, phonetic: "p\u0259\u02c8re\u026ad", stress: "pa RADE", phonicRule: "magic-e: a=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "p\u0259\u02c8re\u026ad", stress: "pa RADE", phonicRule: "magic-e: a=/e\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2036,
@@ -19598,7 +19598,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "降落伞",
           "example": "The parachutes in the air look like colorful mushrooms",
           "wordGroup": "group_531",
-          "colorIndex": 3, phonetic: "\u02c8p\u00e6r\u0259\u0283u\u02d0t", stress: "PA ra chute", phonicRule: "magic-e: u=/u\u02d0/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8p\u00e6r\u0259\u0283u\u02d0t", stress: "PA ra chute", phonicRule: "magic-e: u=/u\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -19694,7 +19694,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "车费；路费",
           "example": "He didn't have enough money for the railway fare",
           "wordGroup": "group_534",
-          "colorIndex": 0, phonetic: "fe\u0259(r)", stress: "fare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 0, phonetic: "fe\u0259(r)", stress: "fare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -19723,7 +19723,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "路线；行程",
           "example": "We have some more places to visit on our itinerary",
           "wordGroup": "group_535",
-          "colorIndex": 1, phonetic: "a\u026a\u02c8t\u026an\u0259r\u0259ri", stress: "i TI ne ra ry", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "a\u026a\u02c8t\u026an\u0259r\u0259ri", stress: "i TI ne ra ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -19944,7 +19944,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "拖拉机；牵引力",
           "example": "The tractor has been demaged owing to rough usage",
           "wordGroup": "group_542",
-          "colorIndex": 2, phonetic: "\u02c8tr\u00e6kt\u0259(r)", stress: "TRAC tor", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8tr\u00e6kt\u0259(r)", stress: "TRAC tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2084,
@@ -19991,7 +19991,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "发动机/机动的",
           "example": "If the battery is dead, the motor won't be started",
           "wordGroup": "group_543",
-          "colorIndex": 3, phonetic: "\u02c8m\u0259\u028at\u0259(r)", stress: "MO tor", phonicRule: "/\u0259(r)/\uff1bo=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8m\u0259\u028at\u0259(r)", stress: "MO tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2089,
@@ -20067,7 +20067,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "男乘务员；管家",
           "example": "He is a steward of that great mansion",
           "wordGroup": "group_545",
-          "colorIndex": 5, phonetic: "\u02c8stju\u02d0\u0259d", stress: "STE ward", phonicRule: "ew=/ju\u02d0/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8stju\u02d0\u0259d", stress: "STE ward", phonicRule: "ew=/ju\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -20134,7 +20134,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "失踪；消失",
           "example": "He has disappeared for three years",
           "wordGroup": "group_547",
-          "colorIndex": 1, phonetic: "\u02ccd\u026as\u0259\u02c8p\u026a\u0259(r)", stress: "di sap PEAR", phonicRule: "ear=/\u026a\u0259/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02ccd\u026as\u0259\u02c8p\u026a\u0259(r)", stress: "di sap PEAR", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2104,
@@ -20143,7 +20143,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "危险/使冒风险",
           "example": "There are many hazards in a journey across the Arctic",
           "wordGroup": "group_547",
-          "colorIndex": 1, phonetic: "\u02c8h\u00e6z\u0259d", stress: "HA zard", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8h\u00e6z\u0259d", stress: "HA zard", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -20172,7 +20172,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "锚",
           "example": "We raised the anchor and set sail during the night",
           "wordGroup": "group_548",
-          "colorIndex": 2, phonetic: "\u02c8\u00e6\u014bk\u0259(r)", stress: "AN chor", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8\u00e6\u014bk\u0259(r)", stress: "AN chor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -20192,7 +20192,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "水手；海员",
           "example": "A sailor is at the mercy of the weather",
           "wordGroup": "group_549",
-          "colorIndex": 3, phonetic: "\u02c8se\u026al\u0259(r)", stress: "SAI lor", phonicRule: "ai=/e\u026a/\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8se\u026al\u0259(r)", stress: "SAI lor", phonicRule: "ai=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/"
         },
         {
           "id": 2110,
@@ -20212,7 +20212,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "航空母舰；运输工具",
           "example": "The missile is launched from the aircraft carrier",
           "wordGroup": "group_550",
-          "colorIndex": 4, phonetic: "\u02c8k\u00e6ri\u0259(r)", stress: "CAR ri er", phonicRule: "/\u0259(r)/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8k\u00e6ri\u0259(r)", stress: "CAR ri er", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2112,
@@ -20337,7 +20337,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "在（船、飞机等）上",
           "example": "All passengers aboard fell into the river",
           "wordGroup": "group_554",
-          "colorIndex": 2, phonetic: "\u0259\u02c8b\u0254\u02d0d", stress: "a BOARD", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u0259\u02c8b\u0254\u02d0d", stress: "a BOARD", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2125,
@@ -20462,7 +20462,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "到达；取得成功",
           "example": "You must arrive at the airport at least two hours in advance",
           "wordGroup": "group_558",
-          "colorIndex": 0, phonetic: "\u0259\u02c8ra\u026av", stress: "ar RIVE", phonicRule: "magic-e: i=/a\u026a/\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u0259\u02c8ra\u026av", stress: "ar RIVE", phonicRule: "magic-e: i=/a\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2138,
@@ -20820,7 +20820,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "平等主义的/平等主义者",
           "example": "Clearly, the egalitarian society remains a dream",
           "wordGroup": "group_567",
-          "colorIndex": 3, phonetic: "i\u02cc\u0261\u00e6l\u026a\u02c8te\u0259ri\u0259n", stress: "e ga li TA ri an", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "i\u02cc\u0261\u00e6l\u026a\u02c8te\u0259ri\u0259n", stress: "e ga li TA ri an", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2175,
@@ -20916,7 +20916,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "竞技场、运动场；舞台、活动领域",
           "example": "He withdrew from the political arena",
           "wordGroup": "group_570",
-          "colorIndex": 0, phonetic: "\u0259\u02c8ri\u02d0n\u0259", stress: "a RE na", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u0259\u02c8ri\u02d0n\u0259", stress: "a RE na", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2185,
@@ -20972,7 +20972,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "秘书、书记员、大臣",
           "example": "The new secretary is being lectured for the poor quality of her work",
           "wordGroup": "group_571",
-          "colorIndex": 1, phonetic: "\u02c8sekr\u0259t(\u0259)ri", stress: "SE cre ta ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8sekr\u0259t(\u0259)ri", stress: "SE cre ta ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -21021,7 +21021,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "总部，总公司；司令部",
           "example": "The company's headquarters is in Paris",
           "wordGroup": "group_573",
-          "colorIndex": 3, phonetic: "\u02cched\u02c8kw\u0254\u02d0t\u0259z", stress: "head QUAR ters", phonicRule: "qu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02cched\u02c8kw\u0254\u02d0t\u0259z", stress: "head QUAR ters", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bqu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2196,
@@ -21068,7 +21068,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "市长",
           "example": "The mayor is determined to clean up the city",
           "wordGroup": "group_574",
-          "colorIndex": 4, phonetic: "me\u0259(r)", stress: "mayor", phonicRule: "/\u0259(r)/"
+          "colorIndex": 4, phonetic: "me\u0259(r)", stress: "mayor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/"
         }
       ],
       [
@@ -21318,7 +21318,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "外国的；外来的；外交的",
           "example": "The new policy helped us to attract a lot of foreign investment",
           "wordGroup": "group_582",
-          "colorIndex": 0, phonetic: "\u02c8f\u0252r\u0259n", stress: "FO reign", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8f\u0252r\u0259n", stress: "FO reign", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2227,
@@ -21662,7 +21662,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "健康；幸福",
           "example": "In making this decision, the court's main concern is for the welfare of the children",
           "wordGroup": "group_592",
-          "colorIndex": 4, phonetic: "\u02c8welfe\u0259(r)", stress: "WEL fare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8welfe\u0259(r)", stress: "WEL fare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2263,
@@ -21823,7 +21823,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "宣布，宣告，宣称，声称",
           "example": "He declared that he would never come back again",
           "wordGroup": "group_596",
-          "colorIndex": 2, phonetic: "d\u026a\u02c8kle\u0259(r)", stress: "de CLARE", phonicRule: "are=/e\u0259/"
+          "colorIndex": 2, phonetic: "d\u026a\u02c8kle\u0259(r)", stress: "de CLARE", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2280,
@@ -21879,7 +21879,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "澄清，阐明",
           "example": "The government has clarified its position on equal pay for women",
           "wordGroup": "group_597",
-          "colorIndex": 3, phonetic: "\u02c8kl\u00e6r\u0259fa\u026a", stress: "CLA ri fy", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8kl\u00e6r\u0259fa\u026a", stress: "CLA ri fy", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -21928,7 +21928,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "监视；监听/监控器，监视器，班长",
           "example": "The agents are monitoring the enemy's radio broadcasts to try to find out their secret plans",
           "wordGroup": "group_599",
-          "colorIndex": 5, phonetic: "\u02c8m\u0252n\u026at\u0259(r)", stress: "MO ni tor", phonicRule: "/\u0259(r)/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8m\u0252n\u026at\u0259(r)", stress: "MO ni tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2291,
@@ -21984,7 +21984,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "阿拉伯的",
           "example": "Arabian Nights and Treasure Island are famous romances",
           "wordGroup": "group_600",
-          "colorIndex": 0, phonetic: "\u0259\u02c8re\u026abi\u0259n", stress: "a RA bi an", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u0259\u02c8re\u026abi\u0259n", stress: "a RA bi an", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -22746,7 +22746,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "多余的；空闲的/剩余",
           "example": "If you have a spare bed, may I stay tonight?",
           "wordGroup": "group_622",
-          "colorIndex": 4, phonetic: "spe\u0259(r)", stress: "spare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 4, phonetic: "spe\u0259(r)", stress: "spare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2376,
@@ -22898,7 +22898,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "担保；确保/保证；保修单；担保金；担保物",
           "example": "They offer a two-year guarantee on all their household appliances",
           "wordGroup": "group_626",
-          "colorIndex": 2, phonetic: "\u02cc\u0261\u00e6r\u0259n\u02c8ti\u02d0", stress: "gua ran TEE", phonicRule: "ee=/i\u02d0/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cc\u0261\u00e6r\u0259n\u02c8ti\u02d0", stress: "gua ran TEE", phonicRule: "ee=/i\u02d0/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2392,
@@ -23052,7 +23052,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "股份，股票；一份/分享；共享；分担",
           "example": "He has put all his money in stocks and shares",
           "wordGroup": "group_631",
-          "colorIndex": 1, phonetic: "\u0283e\u0259(r)", stress: "share", phonicRule: "are=/e\u0259/\uff1bsh=/\u0283/"
+          "colorIndex": 1, phonetic: "\u0283e\u0259(r)", stress: "share", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bsh=/\u0283/"
         },
         {
           "id": 2408,
@@ -23291,7 +23291,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "工资；（按月领的）薪水",
           "example": "She was employed with a salary of three thousand dollars a month",
           "wordGroup": "group_638",
-          "colorIndex": 2, phonetic: "\u02c8s\u00e6l\u0259ri", stress: "SA la ry", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8s\u00e6l\u0259ri", stress: "SA la ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2433,
@@ -23396,7 +23396,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "职业；事业；职业生涯",
           "example": "After the accident, she realized that her acting career was over",
           "wordGroup": "group_641",
-          "colorIndex": 5, phonetic: "k\u0259\u02c8r\u026a\u0259(r)", stress: "ca REER", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "k\u0259\u02c8r\u026a\u0259(r)", stress: "ca REER", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2444,
@@ -23463,7 +23463,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "工作狂",
           "example": "I do not want to become a workaholic",
           "wordGroup": "group_643",
-          "colorIndex": 1, phonetic: "\u02ccw\u025c\u02d0k\u0259\u02c8h\u0252l\u026ak", stress: "wor ka HO lic", phonicRule: "/\u026ak/\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02ccw\u025c\u02d0k\u0259\u02c8h\u0252l\u026ak", stress: "wor ka HO lic", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u026ak/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2451,
@@ -23644,7 +23644,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "机会；时机",
           "example": "I'd like to take this opportunity to thank everyone for their hard work on this project",
           "wordGroup": "group_648",
-          "colorIndex": 0, phonetic: "\u02cc\u0252p\u0259\u02c8tju\u02d0n\u0259ti", stress: "op por TU ni ty", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02cc\u0252p\u0259\u02c8tju\u02d0n\u0259ti", stress: "op por TU ni ty", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2470,
@@ -23767,7 +23767,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "合作",
           "example": "We would like to ask you to collaborate with us",
           "wordGroup": "group_651",
-          "colorIndex": 3, phonetic: "k\u0259\u02c8l\u00e6b\u0259re\u026at", stress: "col LA bo rate", phonicRule: "magic-e: a=/e\u026a/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "k\u0259\u02c8l\u00e6b\u0259re\u026at", stress: "col LA bo rate", phonicRule: "magic-e: a=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ]
     ]
@@ -23895,7 +23895,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "标准",
           "example": "This piece of work does not come up to your usual standard",
           "wordGroup": "group_653",
-          "colorIndex": 5, phonetic: "\u02c8st\u00e6nd\u0259d", stress: "STAN dard", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8st\u00e6nd\u0259d", stress: "STAN dard", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2496,
@@ -23989,7 +23989,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "法定的；强制的",
           "example": "A reply to this letter is mandatory",
           "wordGroup": "group_655",
-          "colorIndex": 1, phonetic: "\u02c8m\u00e6nd\u0259t\u0259ri", stress: "MAN da to ry", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8m\u00e6nd\u0259t\u0259ri", stress: "MAN da to ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2506,
@@ -24378,7 +24378,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "逮捕；吸引（注意）/逮捕",
           "example": "You shouldn't arrest him without an arrest warrant",
           "wordGroup": "group_665",
-          "colorIndex": 5, phonetic: "\u0259\u02c8rest", stress: "ar REST", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u0259\u02c8rest", stress: "ar REST", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2547,
@@ -24586,7 +24586,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "说谎的人",
           "example": "Why did they call him a liar",
           "wordGroup": "group_670",
-          "colorIndex": 4, phonetic: "\u02c8la\u026a\u0259(r)", stress: "LI ar", phonicRule: "i=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09"
+          "colorIndex": 4, phonetic: "\u02c8la\u026a\u0259(r)", stress: "LI ar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -25145,7 +25145,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（闪耀的）火光；闪光信号灯/闪耀",
           "example": "The flare of the match lit up the little girl's face",
           "wordGroup": "group_685",
-          "colorIndex": 1, phonetic: "fle\u0259(r)", stress: "flare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 1, phonetic: "fle\u0259(r)", stress: "flare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2627,
@@ -25221,7 +25221,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "箭头，箭",
           "example": "The arrow pierced her shoulder",
           "wordGroup": "group_687",
-          "colorIndex": 3, phonetic: "\u02c8\u00e6r\u0259\u028a", stress: "AR row", phonicRule: "ow=/\u0259\u028a/"
+          "colorIndex": 3, phonetic: "\u02c8\u00e6r\u0259\u028a", stress: "AR row", phonicRule: "ow=/\u0259\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2635,
@@ -25230,7 +25230,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "矛；标枪/用尖物刺穿",
           "example": "The athlete is trying to launch a spear",
           "wordGroup": "group_687",
-          "colorIndex": 3, phonetic: "sp\u026a\u0259(r)", stress: "spear", phonicRule: "ear=/\u026a\u0259/"
+          "colorIndex": 3, phonetic: "sp\u026a\u0259(r)", stress: "spear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2636,
@@ -25268,7 +25268,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "使预备好，为...做准备",
           "example": "The defence lawyer asked for another week to prepare for their case",
           "wordGroup": "group_688",
-          "colorIndex": 4, phonetic: "pr\u026a\u02c8pe\u0259(r)", stress: "pre PARE", phonicRule: "are=/e\u0259/"
+          "colorIndex": 4, phonetic: "pr\u026a\u02c8pe\u0259(r)", stress: "pre PARE", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2640,
@@ -25643,7 +25643,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "禁止；阻止",
           "example": "Lack of time forbids any further discussion on this issue",
           "wordGroup": "group_700",
-          "colorIndex": 4, phonetic: "f\u0259\u02c8b\u026ad", stress: "for BID", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "f\u0259\u02c8b\u026ad", stress: "for BID", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2679,
@@ -25710,7 +25710,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "叛徒，卖国贼",
           "example": "He stuck a knife into the traitor's heart",
           "wordGroup": "group_702",
-          "colorIndex": 0, phonetic: "\u02c8tre\u026at\u0259(r)", stress: "TRAI tor", phonicRule: "ai=/e\u026a/\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8tre\u026at\u0259(r)", stress: "TRAI tor", phonicRule: "ai=/e\u026a/\uff1bor=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/"
         },
         {
           "id": 2686,
@@ -25768,7 +25768,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "恐惧；恐慌",
           "example": "His terror is so intense that he can't do anything",
           "wordGroup": "group_704",
-          "colorIndex": 2, phonetic: "\u02c8ter\u0259(r)", stress: "TER ror", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8ter\u0259(r)", stress: "TER ror", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2692,
@@ -25795,7 +25795,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "可怕的；恐怖的",
           "example": "There was a horrible accident here yesterday",
           "wordGroup": "group_704",
-          "colorIndex": 2, phonetic: "\u02c8h\u0252r\u0259b(\u0259)l", stress: "HOR rib le", phonicRule: "/l/\uff08\u6210\u97f3\u8282\uff09\uff1bo=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8h\u0252r\u0259b(\u0259)l", stress: "HOR rib le", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/l/\uff08\u6210\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -25949,7 +25949,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "竞争者；对手",
           "example": "That company is a strong competitor of us",
           "wordGroup": "group_709",
-          "colorIndex": 1, phonetic: "k\u0259m\u02c8pet\u026at\u0259(r)", stress: "com PE ti tor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "k\u0259m\u02c8pet\u026at\u0259(r)", stress: "com PE ti tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2711,
@@ -26112,7 +26112,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "安慰；舒适/缓和抚慰",
           "example": "A father is a treasure, a brother is a comfort, but a friend is both",
           "wordGroup": "group_714",
-          "colorIndex": 0, phonetic: "\u02c8k\u028cmf\u0259t", stress: "COM fort", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8k\u028cmf\u0259t", stress: "COM fort", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -26391,7 +26391,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "军事的，军用的",
           "example": "According to the constitution of the country, all the young men should do a year's military service",
           "wordGroup": "group_723",
-          "colorIndex": 3, phonetic: "\u02c8m\u026al\u0259tri", stress: "MI li tary", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8m\u026al\u0259tri", stress: "MI li tary", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2757,
@@ -26400,7 +26400,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "原子核的；核能的；核武器的",
           "example": "Nowadays, more and more people prefer a nuclear family to a standard family",
           "wordGroup": "group_723",
-          "colorIndex": 3, phonetic: "\u02c8nju\u02d0kli\u0259(r)", stress: "NU cle ar", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8nju\u02d0kli\u0259(r)", stress: "NU cle ar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2758,
@@ -26722,7 +26722,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "胜利，成功",
           "example": "The school football team has had three victories this month against other schools",
           "wordGroup": "group_731",
-          "colorIndex": 5, phonetic: "\u02c8v\u026akt\u0259ri", stress: "VIC to ry", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8v\u026akt\u0259ri", stress: "VIC to ry", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2792,
@@ -26971,7 +26971,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "接替者；继任者；后继的事物",
           "example": "He is the successor to the throne",
           "wordGroup": "group_735",
-          "colorIndex": 3, phonetic: "s\u0259k\u02c8ses\u0259(r)", stress: "suc CES sor", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "s\u0259k\u02c8ses\u0259(r)", stress: "suc CES sor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -27259,7 +27259,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "亲爱的/啊呀",
           "example": "Dear John, thanks for asking me to help you with the class trip",
           "wordGroup": "group_744",
-          "colorIndex": 0, phonetic: "d\u026a\u0259(r)", stress: "dear", phonicRule: "ear=/\u026a\u0259/"
+          "colorIndex": 0, phonetic: "d\u026a\u0259(r)", stress: "dear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2848,
@@ -27574,7 +27574,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "分开的，单独的/（使）分开；分局",
           "example": "The children sleep in separate beds",
           "wordGroup": "group_753",
-          "colorIndex": 3, phonetic: "\u02c8sepr\u0259t", stress: "SEPA rate", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8sepr\u0259t", stress: "SEPA rate", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2881,
@@ -27679,7 +27679,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "管理者，监督者",
           "example": "This special supervisor inspected this examination",
           "wordGroup": "group_756",
-          "colorIndex": 0, phonetic: "\u02c8su\u02d0p\u0259va\u026az\u0259(r)", stress: "SU per vi sor", phonicRule: "/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8su\u02d0p\u0259va\u026az\u0259(r)", stress: "SU per vi sor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2892,
@@ -27824,7 +27824,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（德国或奥地利的）总理；（英国）财政大臣",
           "example": "In Britain, the chancelllor of the exchequer deals with the taxes and government spending",
           "wordGroup": "group_761",
-          "colorIndex": 5, phonetic: "\u02c8t\u0283\u0251\u02d0ns\u0259l\u0259(r)", stress: "CHAN cel lor", phonicRule: "/\u0259(r)/\uff1bch=/t\u0283/\uff1ba=/\u0251\u02d0/\uff08\u82f1\u5f0f\uff09"
+          "colorIndex": 5, phonetic: "\u02c8t\u0283\u0251\u02d0ns\u0259l\u0259(r)", stress: "CHAN cel lor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1bch=/t\u0283/"
         },
         {
           "id": 2907,
@@ -27842,7 +27842,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "主管；理事；导演",
           "example": "The director cast him as a deaf and dumb man",
           "wordGroup": "group_761",
-          "colorIndex": 5, phonetic: "d\u0259\u02c8rekt\u0259(r); da\u026a\u02c8rekt\u0259(r)", stress: "", phonicRule: "/\u0259(r)/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "d\u0259\u02c8rekt\u0259(r); da\u026a\u02c8rekt\u0259(r)", stress: "", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2909,
@@ -27909,7 +27909,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "兽医的",
           "example": "Sectioning the nerves in the hoof of a limping horse is a common practice in a veterinary procedure",
           "wordGroup": "group_763",
-          "colorIndex": 1, phonetic: "\u02c8vet\u0259r\u0259n\u0259ri", stress: "VE te ri na ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8vet\u0259r\u0259n\u0259ri", stress: "VE te ri na ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -27929,7 +27929,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（英国的）诉状律师，事务律师；（美国的）法务官",
           "example": "We asked a solicitor for advice",
           "wordGroup": "group_764",
-          "colorIndex": 2, phonetic: "s\u0259\u02c8l\u026as\u026at\u0259(r)", stress: "so LI ci tor", phonicRule: "/\u0259(r)/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "s\u0259\u02c8l\u026as\u026at\u0259(r)", stress: "so LI ci tor", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259(r)/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2918,
@@ -27938,7 +27938,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（美国的）律师",
           "example": "The defense attorney's objection was overruled by the judge",
           "wordGroup": "group_764",
-          "colorIndex": 2, phonetic: "\u0259\u02c8t\u025c\u02d0ni", stress: "at TOR ney", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u0259\u02c8t\u025c\u02d0ni", stress: "at TOR ney", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2919,
@@ -28063,7 +28063,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "乞丐",
           "example": "He tossed the beggar a handful of coins",
           "wordGroup": "group_768",
-          "colorIndex": 0, phonetic: "\u02c8be\u0261\u0259(r)", stress: "BEG gar", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8be\u0261\u0259(r)", stress: "BEG gar", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2932,
@@ -28081,7 +28081,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "懦夫，胆小鬼",
           "example": "He is a liar and a coward to boot",
           "wordGroup": "group_768",
-          "colorIndex": 0, phonetic: "\u02c8ka\u028a\u0259d", stress: "CO ward", phonicRule: "ow=/a\u028a/\uff08\u9700\u8bb0\uff09"
+          "colorIndex": 0, phonetic: "\u02c8ka\u028a\u0259d", stress: "CO ward", phonicRule: "ow=/a\u028a/\uff08\u9700\u8bb0\uff09\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ]
     ]
@@ -28164,7 +28164,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "生（孩子）；容忍；承担（责任）",
           "example": "They must bear most of the blame",
           "wordGroup": "group_770",
-          "colorIndex": 2, phonetic: "be\u0259(r)", stress: "bear", phonicRule: ""
+          "colorIndex": 2, phonetic: "be\u0259(r)", stress: "bear", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2942,
@@ -28249,7 +28249,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "怒目而视；发出强光/刺眼的光；怒视",
           "example": "The glare of the oncoming headlights temporarily blinded me",
           "wordGroup": "group_772",
-          "colorIndex": 4, phonetic: "\u0261le\u0259(r)", stress: "glare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 4, phonetic: "\u0261le\u0259(r)", stress: "glare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2951,
@@ -28305,7 +28305,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "凝视，盯着看",
           "example": "He stared at the word, trying to remember what it meant",
           "wordGroup": "group_773",
-          "colorIndex": 5, phonetic: "ste\u0259(r)", stress: "stare", phonicRule: "are=/e\u0259/"
+          "colorIndex": 5, phonetic: "ste\u0259(r)", stress: "stare", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2957,
@@ -28401,7 +28401,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "吵架，争论",
           "example": "We had a quarrel about the price",
           "wordGroup": "group_776",
-          "colorIndex": 2, phonetic: "\u02c8kw\u0252r\u0259l", stress: "QUAR rel", phonicRule: "qu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8kw\u0252r\u0259l", stress: "QUAR rel", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bqu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 2967,
@@ -28486,7 +28486,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "诅咒；咒骂；发誓；保证",
           "example": "He had to swear that his story was true",
           "wordGroup": "group_778",
-          "colorIndex": 4, phonetic: "swe\u0259(r)", stress: "swear", phonicRule: ""
+          "colorIndex": 4, phonetic: "swe\u0259(r)", stress: "swear", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 2976,
@@ -28982,7 +28982,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "安排，整理，使有条理",
           "example": "Contact your local branch to arrange an appointment",
           "wordGroup": "group_792",
-          "colorIndex": 0, phonetic: "\u0259\u02c8re\u026and\u0292", stress: "ar RANGE", phonicRule: "magic-e: a=/e\u026a/\uff1bge=/d\u0292/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u0259\u02c8re\u026and\u0292", stress: "ar RANGE", phonicRule: "magic-e: a=/e\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1bge=/d\u0292/"
         },
         {
           "id": 3028,
@@ -29085,7 +29085,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "噩梦，梦魇",
           "example": "This mid-term exam is a nightmare",
           "wordGroup": "group_794",
-          "colorIndex": 2, phonetic: "\u02c8na\u026atme\u0259", stress: "NIGHT mare", phonicRule: "igh=/a\u026a/"
+          "colorIndex": 2, phonetic: "\u02c8na\u026atme\u0259", stress: "NIGHT mare", phonicRule: "igh=/a\u026a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -29210,7 +29210,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "无知，愚昧",
           "example": "Where ignorance is bliss, 'tis folly to be wise",
           "wordGroup": "group_798",
-          "colorIndex": 0, phonetic: "\u02c8\u026a\u0261n\u0259r\u0259ns", stress: "I gno rance", phonicRule: "/\u0259ns/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8\u026a\u0261n\u0259r\u0259ns", stress: "I gno rance", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b/\u0259ns/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 3052,
@@ -29644,7 +29644,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "努力；努力的成果",
           "example": "Our effects were unveiling",
           "wordGroup": "group_808",
-          "colorIndex": 4, phonetic: "\u02c8ef\u0259t", stress: "EF fort", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8ef\u0259t", stress: "EF fort", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 3098,
@@ -29805,7 +29805,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "清晰的；明显的/清除",
           "example": "It seems clear that he has no reasonable alternative",
           "wordGroup": "group_812",
-          "colorIndex": 2, phonetic: "kl\u026a\u0259(r)", stress: "clear", phonicRule: "ear=/\u026a\u0259/"
+          "colorIndex": 2, phonetic: "kl\u026a\u0259(r)", stress: "clear", phonicRule: "ear=/\u026a\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         },
         {
           "id": 3115,
@@ -30129,7 +30129,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "原谅，宽恕，饶恕",
           "example": "I'll never forgive you for what have done wrong to my friend",
           "wordGroup": "group_821",
-          "colorIndex": 5, phonetic: "f\u0259\u02c8\u0261\u026av", stress: "for GIVE", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "f\u0259\u02c8\u0261\u026av", stress: "for GIVE", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 3149,
@@ -30216,7 +30216,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "唤起；激起；引起",
           "example": "The young man's behavior aroused the suspicions of the police",
           "wordGroup": "group_824",
-          "colorIndex": 2, phonetic: "\u0259\u02c8ra\u028az", stress: "aro USE", phonicRule: "ou=/a\u028a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u0259\u02c8ra\u028az", stress: "aro USE", phonicRule: "ou=/a\u028a/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 3158,
@@ -30433,7 +30433,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "再会/告别",
           "example": "The girl had come on the pretext of bidding him farewell",
           "wordGroup": "group_829",
-          "colorIndex": 1, phonetic: "\u02ccfe\u0259\u02c8w\u025bl", stress: "fa REWELL", phonicRule: "are=/e\u0259/"
+          "colorIndex": 1, phonetic: "\u02ccfe\u0259\u02c8w\u025bl", stress: "fa REWELL", phonicRule: "are=/e\u0259/\uff1bar=/\u0259(r)/\uff08\u5f31\u5316\uff09"
         }
       ],
       [
@@ -30453,7 +30453,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "符合；相一致；通信",
           "example": "These goods don't correspond with my order",
           "wordGroup": "group_830",
-          "colorIndex": 2, phonetic: "\u02cck\u0252r\u0259\u02c8sp\u0252nd", stress: "cor re SPOND", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02cck\u0252r\u0259\u02c8sp\u0252nd", stress: "cor re SPOND", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 3183,
@@ -30709,7 +30709,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "生物节律",
           "example": "",
           "wordGroup": "group_854",
-          "colorIndex": 2, phonetic: "ba\u026a\u02c8\u0252r\u026a\u00f0\u0259m", stress: "", phonicRule: "o=/\u0252/\uff08\u82f1\u5f0f\u77ed o\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "ba\u026a\u02c8\u0252r\u026a\u00f0\u0259m", stress: "", phonicRule: "or=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [],
@@ -30905,7 +30905,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "当代的；同时代的",
           "example": "These clothes are more contemporary and wearable",
           "wordGroup": "group_946",
-          "colorIndex": 4, phonetic: "k\u0259n\u02c8temp(\u0259)r\u0259ri", stress: "con TEM po ra ry", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "k\u0259n\u02c8temp(\u0259)r\u0259ri", stress: "con TEM po ra ry", phonicRule: "ar=/\u0259(r)/\uff08\u5f31\u5316\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [],

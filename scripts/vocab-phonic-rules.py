@@ -130,12 +130,15 @@ R_VOWELS = [
 
 
 def r_vowel_label(w: str, ipa: str) -> str | None:
-    """元音 R 组合：ar/or/er/ir/ur 发 r 元音（garbage 的 ar、cord 的 or）"""
+    """元音 R 组合：ar/or/er/ir/ur 发 r 元音（garbage 的 ar、cord 的 or）；
+    弱化变体：ar/or 发 /ə(r)/（-ary/-or 后缀类，如 secondary/calendar）"""
     low = w.lower()
     for comb, sound, label in R_VOWELS:
         if comb in low:
             if sound in ipa:
                 return label
+            if comb in ("ar", "or") and "ə" in ipa:
+                return f"{comb}=/ə(r)/（弱化）"
     return None
 
 
