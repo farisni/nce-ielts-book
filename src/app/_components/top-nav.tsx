@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { getGlobalVolume, setGlobalVolume } from "@/lib/speller/global-volume";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon, AudioLines as AudioLinesIcon } from "lucide-react";
+import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon, AudioLines as AudioLinesIcon, Volume2 } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles, mergeArticleData } from "@/app/mock";
@@ -500,6 +501,8 @@ export default function TopNav() {
   const shadowOpacity = useTransform(scrollY, [0, 40], [0, 0.05]);
   const [cmdOpen, setCmdOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [volume, setVolumeState] = useState<number | null>(null);
+  const volumeValue = volume ?? getGlobalVolume();
   const trimmedSearchQuery = searchQuery.trim();
   const hasSearchQuery = trimmedSearchQuery.length > 0;
   const pageResults = useMemo(() => {
@@ -540,6 +543,13 @@ export default function TopNav() {
     setSearchQuery("");
     router.push(href);
   };
+
+  // 同步外部音量变化（其他页面修改时滑块跟随）
+  useEffect(() => {
+    const onChange = (e: Event) => setVolumeState((e as CustomEvent<number>).detail);
+    window.addEventListener("nce-volume-change", onChange);
+    return () => window.removeEventListener("nce-volume-change", onChange);
+  }, []);
 
   const boxShadow = useTransform(
     shadowOpacity,
@@ -708,6 +718,27 @@ export default function TopNav() {
               start="bottom-up"
               className="size-[18px]"
               iconClassName="size-[18px]"
+            />
+          </div>
+
+          {/* 全站声音大小滑块 */}
+          <div
+            className="group flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/60"
+            title={`声音大小 ${Math.round(volumeValue * 100)}%`}
+          >
+            <Volume2 className="size-4 shrink-0 text-muted-foreground/70 group-hover:text-muted-foreground" />
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.05}
+              value={volumeValue}
+              onChange={(e) => {
+                const v = parseFloat(e.target.value);
+                setVolumeState(v);
+                setGlobalVolume(v);
+              }}
+              className="h-1 w-16 cursor-pointer appearance-none rounded-full bg-muted accent-[#337ea9]"
             />
           </div>
 

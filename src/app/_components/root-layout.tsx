@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { AppSidebar } from "@/app/_components/app-sidebar";
 import TopNav from "@/app/_components/top-nav";
+import { installGlobalVolume } from "@/lib/speller/global-volume";
 import { NotebookTab } from "@/app/_components/reader/notebook-tab";
 import { FloatAction } from "@/app/_components/float-action";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -72,6 +73,11 @@ function RootLayoutShellInner({ children }: { children: React.ReactNode }) {
     }
     openedArticleRef.current = article?.id ?? "article";
   }, [article?.id, isArticlePage]);
+
+  // 安装全站音量 patch（Audio.play / speechSynthesis.speak 统一乘全局音量）
+  useEffect(() => {
+    installGlobalVolume();
+  }, []);
 
   // 笔记面板：Tab+Q / top-nav 打开时，滚动到上次激活的 block
   useEffect(() => {
