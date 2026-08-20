@@ -91,12 +91,15 @@ export default function VocabularyPage() {
         cell: (info) => {
           const chinese = info.getValue() ?? "";
           const parts = chinese.split(/[；;]/).filter((s) => s.trim());
+          // 重点义项：跳过括号说明（如「（海、湖等大水域的）岸」→ 括号灰 + 岸黑）
+          const first = parts[0]?.trim() ?? "";
+          const bracket = first.match(/^（[^）]*）/);
+          const core = bracket ? first.slice(bracket[0].length) : first;
           return (
             <span className="text-muted-foreground">
               <span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span>{" "}
-              {parts[0] ? (
-                <span className="font-semibold text-foreground">{parts[0].trim()}</span>
-              ) : null}
+              {bracket ? <span className="text-muted-foreground/70">{bracket[0]}</span> : null}
+              {core ? <span className="font-semibold text-foreground">{core}</span> : null}
               {parts.length > 1 ? (
                 <span className="text-muted-foreground">{`；${parts.slice(1).join("；")}`}</span>
               ) : null}
