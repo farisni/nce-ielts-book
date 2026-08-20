@@ -72,19 +72,20 @@ def stress_mark(word: str, ipa: str) -> str:
     if re.search(r"[ \s/—–\-]", w) or "'" in w or "’" in w:
         return ""
     ipa_clean = ipa.replace("ˌ", "").replace("'", "ˈ")
+    syll = syllabify(w, ipa_clean)
     if "ˈ" not in ipa_clean:
-        return ""
+        # 无重音标记（单音节词）：返回单词本身
+        return w if len(syll) == 1 else ""
     # 重音位置：数重音符号前的元音核数，即重音是第几个核（0-based）
     before = ipa_clean[:ipa_clean.index("ˈ")].replace("ˈ", "").replace("ˌ", "")
     before_n = ipa_vowel_nuclei(before)
     stressed_idx = before_n
-    syll = syllabify(w, ipa_clean)
     if len(syll) < 2 or stressed_idx >= len(syll):
         return ""
     out = []
     for i, s in enumerate(syll):
         out.append(s.upper() if i == stressed_idx else s)
-    return "".join(out)
+    return " ".join(out)
 
 
 # ── 4. 读取自然地理章节并逐词补全 ──
