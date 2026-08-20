@@ -88,21 +88,24 @@ def suffix_label(w: str, ipa: str) -> str | None:
 
 
 CONSONANTS = [
-    ("sh", "ʃ", "/ʃ/"), ("ch", "tʃ", "/tʃ/"), ("th", "θ", "/θ/"), ("ph", "f", "/f/"),
-    ("wh", "w", "/w/"), ("kn", "n", "kn- 不发音 k"), ("wr", "r", "wr- 不发音 w"),
-    ("mb", "m", "-mb 不发音 b"), ("ck", "k", "-ck=/k/"), ("ng", "ŋ", "/ŋ/"),
+    ("sh", "ʃ", "sh=/ʃ/"), ("ch", "tʃ", "ch=/tʃ/"), ("th", "θ", "th=/θ/"), ("ph", "f", "ph=/f/"),
+    ("wh", "w", "wh=/w/"), ("kn", "n", "kn- 不发音 k"), ("wr", "r", "wr- 不发音 w"),
+    ("mb", "m", "-mb 不发音 b"), ("ck", "k", "-ck=/k/"), ("ng", "ŋ", "ng=/ŋ/"),
     ("qu", "kw", "qu=/kw/"), ("sc", "s", "sc=/s/（c 不发音）"), ("x", "ks", "x=/ks/"),
 ]
 
 
-def consonant_label(w: str, ipa: str) -> str | None:
+def consonant_labels(w: str, ipa: str) -> list[str]:
+    """收集单词内所有辅音组合规律（音标验证），按词内出现顺序，最多 2 个"""
     low = w.lower()
+    found = []
     for comb, probe, label in CONSONANTS:
         if comb in low:
             p = probe.replace("ː", "")
             if p in ipa.replace("ː", ""):
-                return label
-    return None
+                found.append((low.index(comb), label))
+    found.sort()
+    return [l for _, l in found][:2]
 
 
 def weak_label(w: str, ipa: str) -> str | None:
@@ -133,7 +136,7 @@ STRESS_SOUNDS = [
 
 def first_stress_sound(after: str) -> str:
     """提取重音后第一个元音核（跳过开头辅音，含长音/双元音）"""
-    m = re.search(r'([iɪeɛæɑɔouʊəɜʌɐɒ](?:ː|[ɪəʊeɔæu])?(?:j?uː)?)', after)
+    m = re.search(r'([aiɪeɛæɑɔouʊəɜʌɐɒ](?:ː|[ɪəʊeɔæu])?(?:j?uː)?)', after)
     return m.group(1) if m else ""
 
 
@@ -158,9 +161,12 @@ def build_tags(w: str, ipa: str) -> list[str]:
     tags = []
     # 优先级：不透明 > magic-e > 元音组合 > 后缀 > 辅音组合 > 单字母元音 > 弱化
     has_vce = bool(vce_label(w, ipa))
-    for fn in (opaque_label, vce_label, vowel_pair_label, suffix_label, consonant_label):
+    for fn in (opaque_label, vce_label, vowel_pair_label, suffix_label):
         t = fn(w, ipa)
         if t and t not in tags:
+            tags.append(t)
+    for t in consonant_labels(w, ipa):
+        if t not in tags:
             tags.append(t)
     sv = single_vowel_label(w, ipa, has_vce)
     if sv and sv not in tags:
@@ -171,36 +177,41 @@ def build_tags(w: str, ipa: str) -> list[str]:
 
 
 # ── 主流程 ──
-src = open(DATA, encoding="utf-8").read()
-m = re.search(r'("title": "自然地理",)(.*?)(\n\s*\{\s*\n\s*"title": "植物研究")', src, re.S)
-if not m:
-    sys.exit("未找到自然地理章节")
-body = m.group(2)
+def main():
+    src = open(DATA, encoding="utf-8").read()
+    m = re.search(r'("title": "自然地理",)(.*?)(\n\s*\{\s*\n\s*"title": "植物研究")', src, re.S)
+    if not m:
+        sys.exit("未找到自然地理章节")
+    body = m.group(2)
 
-count = 0
-added = 0
-
-
-def fix_word(mw):
-    global count, added
-    count += 1
-    word = unescape(mw.group(1))
-    if "phonicRule:" in mw.group(2):
-        return mw.group(0)
-    pm = re.search(r'phonetic: "((?:[^"\\]|\\.)*)"', mw.group(2))
-    if not pm:
-        return mw.group(0)
-    ipa = unescape(pm.group(1)).replace("ˈ", "'").replace("'", "ˈ")
-    tags = build_tags(word, ipa)
-    rule = "；".join(tags)
-    inner = mw.group(2)
-    insert = f', phonicRule: "{esc(rule)}"'
-    if rule:
-        added += 1
-    return mw.group(0).replace(inner, inner + insert, 1)
+    count = 0
+    added = 0
 
 
-fixed = re.sub(r'\{\s*"id": \d+,\s*"word": "((?:[^"\\]|\\.)*)"(.*?)(?=\n\s*\}(?:,|\n))', fix_word, body, flags=re.S)
-src = src[:m.start(2)] + fixed + src[m.end(2):]
-open(DATA, "w", encoding="utf-8").write(src)
-print(f"处理 {count} 词，{added} 词有规律标签")
+    def fix_word(mw):
+        nonlocal count, added
+        count += 1
+        word = unescape(mw.group(1))
+        if "phonicRule:" in mw.group(2):
+            return mw.group(0)
+        pm = re.search(r'phonetic: "((?:[^"\\]|\\.)*)"', mw.group(2))
+        if not pm:
+            return mw.group(0)
+        ipa = unescape(pm.group(1)).replace("ˈ", "'").replace("'", "ˈ")
+        tags = build_tags(word, ipa)
+        rule = "；".join(tags)
+        inner = mw.group(2)
+        insert = f', phonicRule: "{esc(rule)}"'
+        if rule:
+            added += 1
+        return mw.group(0).replace(inner, inner + insert, 1)
+
+
+    fixed = re.sub(r'\{\s*"id": \d+,\s*"word": "((?:[^"\\]|\\.)*)"(.*?)(?=\n\s*\}(?:,|\n))', fix_word, body, flags=re.S)
+    src = src[:m.start(2)] + fixed + src[m.end(2):]
+    open(DATA, "w", encoding="utf-8").write(src)
+    print(f"处理 {count} 词，{added} 词有规律标签")
+
+
+if __name__ == "__main__":
+    main()
