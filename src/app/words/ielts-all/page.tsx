@@ -174,9 +174,11 @@ export default function VocabularyPage() {
               if (!row) return null;
               const word = row.original;
               const isExpanded = expandedRows.has(word.id);
+              const COLORS = ["var(--vocab-color-0)","var(--vocab-color-1)","var(--vocab-color-2)","var(--vocab-color-3)","var(--vocab-color-4)"];
+              const borderColor = COLORS[(word.colorIndex ?? 0) % COLORS.length];
 
               return (
-                <div key={row.id} ref={rowVirtualizer.measureElement} data-index={vRow.index} style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${vRow.start}px)`, boxShadow: "inset 0 -1px 0 rgba(0,0,0,0.06)" }}>
+                <div key={row.id} ref={rowVirtualizer.measureElement} data-index={vRow.index} style={{ position: "absolute", top: 0, left: 0, width: "100%", transform: `translateY(${vRow.start}px)`, boxShadow: `inset 4px 0 0 ${borderColor}, inset 0 -1px 0 rgba(0,0,0,0.06)` }}>
                   <div
                     onDoubleClick={() => toggleRow(word.id)}
                     className={`flex cursor-pointer transition-colors ${isExpanded ? "bg-muted/30" : "hover:bg-muted/30"}`}
