@@ -56,10 +56,10 @@ export default function VocabularyPage() {
       columnHelper.accessor("id", {
         header: "",
         cell: (info) => <span className="text-muted-foreground/50 text-xs">{info.row.index + 1}</span>,
-        size: 48,
+        size: 40,
         enableSorting: false,
       }),
-      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 160 }),
+      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 130 }),
       columnHelper.accessor("phonetic", {
         header: "音标",
         cell: (info) => {
@@ -70,7 +70,7 @@ export default function VocabularyPage() {
             <span className="text-sm text-muted-foreground/30">—</span>
           );
         },
-        size: 180,
+        size: 150,
         enableSorting: false,
       }),
       columnHelper.accessor("stress", {
@@ -83,7 +83,20 @@ export default function VocabularyPage() {
             <span className="text-sm text-muted-foreground/30">—</span>
           );
         },
-        size: 160,
+        size: 130,
+        enableSorting: false,
+      }),
+      columnHelper.accessor("phonicRule", {
+        header: "自然拼读规律",
+        cell: (info) => {
+          const rule = info.getValue();
+          return rule ? (
+            <span className="text-xs leading-relaxed text-muted-foreground">{rule}</span>
+          ) : (
+            <span className="text-sm text-muted-foreground/30">—</span>
+          );
+        },
+        size: 280,
         enableSorting: false,
       }),
       columnHelper.accessor("chinese", {
@@ -106,7 +119,7 @@ export default function VocabularyPage() {
             </span>
           );
         },
-        size: 554,
+        size: 352,
         enableSorting: false,
       }),
     ],
