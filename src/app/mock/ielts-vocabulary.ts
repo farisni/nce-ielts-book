@@ -1805,7 +1805,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "/ˈdez.ət/ 沙漠/ /dɪˈzɜːt/遗弃",
           "example": "The baby's mother deserted him soon after giving birth",
           "wordGroup": "group_51",
-          "colorIndex": 3, phonetic: "\u02c8dez\u0259t", stress: "DE sert"
+          "colorIndex": 3, phonetic: "\u02c8dez\u0259t / d\u026a\u02c8z\u025c\u02d0t", stress: "DE sert / de SERT"
         },
         {
           "id": 188,
