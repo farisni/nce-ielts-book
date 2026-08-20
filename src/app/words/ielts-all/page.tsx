@@ -19,7 +19,7 @@ import { InputGroup, InputField } from "@/components/ui/input-group";
 const ROW_HEIGHT = 44;
 const EXPANDED_ESTIMATE = 160;
 const SEARCH_HEADER_WIDTH = 156;
-const TABLE_CONTENT_WIDTH = 1058;
+const TABLE_CONTENT_WIDTH = 1258;
 
 const columnHelper = createColumnHelper<VocabWord>();
 
@@ -59,14 +59,14 @@ export default function VocabularyPage() {
         size: 48,
         enableSorting: false,
       }),
-      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 150 }),
+      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 180 }),
       columnHelper.accessor("chinese", {
         header: "释义",
         cell: (info) => <span className="text-muted-foreground"><span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span> {info.getValue()}</span>,
-        size: 250,
+        size: 300,
         enableSorting: false,
       }),
-      columnHelper.accessor("example", { header: "例句", cell: (info) => <span className="text-muted-foreground italic text-xs truncate block max-w-full">{info.getValue()}</span>, enableSorting: false, size: 454 }),
+      columnHelper.accessor("example", { header: "例句", cell: (info) => <span className="text-muted-foreground italic text-xs truncate block max-w-full">{info.getValue()}</span>, enableSorting: false, size: 574 }),
     ],
     []
   );
@@ -121,7 +121,7 @@ export default function VocabularyPage() {
   });
 
   return (
-    <section className="mx-auto flex w-[1022px] min-w-[1022px] flex-none flex-col min-h-0 rounded-md p-6">
+    <section className="mx-auto flex w-[1250px] min-w-[1250px] flex-none flex-col min-h-0 rounded-md p-6">
       <div className="mb-4 flex items-center gap-3">
         <h1 className="text-2xl font-bold">雅思词汇真经</h1>
         <button
