@@ -59,14 +59,39 @@ export default function VocabularyPage() {
         size: 48,
         enableSorting: false,
       }),
-      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 180 }),
-      columnHelper.accessor("chinese", {
-        header: "释义",
-        cell: (info) => <span className="text-muted-foreground"><span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span> {info.getValue()}</span>,
+      columnHelper.accessor("word", { header: "单词", cell: (info) => <span className="font-medium text-[17px]">{info.getValue()}</span>, size: 160 }),
+      columnHelper.accessor("phonetic", {
+        header: "音标",
+        cell: (info) => {
+          const p = info.getValue();
+          return p ? (
+            <span className="text-sm text-muted-foreground">/{p.replace(/^\/+|\/+$/g, "")}/</span>
+          ) : (
+            <span className="text-sm text-muted-foreground/30">—</span>
+          );
+        },
         size: 300,
         enableSorting: false,
       }),
-      columnHelper.accessor("example", { header: "例句", cell: (info) => <span className="text-muted-foreground italic text-xs truncate block max-w-full">{info.getValue()}</span>, enableSorting: false, size: 574 }),
+      columnHelper.accessor("stress", {
+        header: "重音大写",
+        cell: (info) => {
+          const s = info.getValue();
+          return s ? (
+            <span className="font-mono text-sm font-semibold tracking-wide text-foreground/80">{s}</span>
+          ) : (
+            <span className="text-sm text-muted-foreground/30">—</span>
+          );
+        },
+        size: 160,
+        enableSorting: false,
+      }),
+      columnHelper.accessor("chinese", {
+        header: "释义",
+        cell: (info) => <span className="text-muted-foreground"><span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span> {info.getValue()}</span>,
+        size: 434,
+        enableSorting: false,
+      }),
     ],
     []
   );
