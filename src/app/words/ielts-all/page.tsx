@@ -86,19 +86,6 @@ export default function VocabularyPage() {
         size: 130,
         enableSorting: false,
       }),
-      columnHelper.accessor("phonicRule", {
-        header: "自然拼读规律",
-        cell: (info) => {
-          const rule = info.getValue();
-          return rule ? (
-            <span className="text-xs leading-relaxed text-muted-foreground">{rule}</span>
-          ) : (
-            <span className="text-sm text-muted-foreground/30">—</span>
-          );
-        },
-        size: 280,
-        enableSorting: false,
-      }),
       columnHelper.accessor("chinese", {
         header: "释义",
         cell: (info) => {
@@ -120,6 +107,19 @@ export default function VocabularyPage() {
           );
         },
         size: 352,
+        enableSorting: false,
+      }),
+      columnHelper.accessor("phonicRule", {
+        header: "自然拼读规律",
+        cell: (info) => {
+          const rule = info.getValue();
+          return rule ? (
+            <span className="text-xs leading-relaxed text-muted-foreground">{rule}</span>
+          ) : (
+            <span className="text-sm text-muted-foreground/30">—</span>
+          );
+        },
+        size: 280,
         enableSorting: false,
       }),
     ],
