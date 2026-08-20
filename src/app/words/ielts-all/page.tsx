@@ -88,7 +88,21 @@ export default function VocabularyPage() {
       }),
       columnHelper.accessor("chinese", {
         header: "释义",
-        cell: (info) => <span className="text-muted-foreground"><span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span> {info.getValue()}</span>,
+        cell: (info) => {
+          const chinese = info.getValue() ?? "";
+          const parts = chinese.split(/[；;]/).filter((s) => s.trim());
+          return (
+            <span className="text-muted-foreground">
+              <span className="text-muted-foreground/60">{info.row.original.partOfSpeech}</span>{" "}
+              {parts[0] ? (
+                <span className="font-semibold text-foreground">{parts[0].trim()}</span>
+              ) : null}
+              {parts.length > 1 ? (
+                <span className="text-muted-foreground">{parts.slice(1).join("；")}</span>
+              ) : null}
+            </span>
+          );
+        },
         size: 554,
         enableSorting: false,
       }),
