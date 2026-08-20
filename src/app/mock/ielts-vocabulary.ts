@@ -40,7 +40,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "水圈；大气中的水汽",
           "example": "All the water of the earth's surface is included in the hydrosphere",
           "wordGroup": "group_0",
-          "colorIndex": 0, phonetic: "\u02c8ha\u026adr\u0259\u028asf\u026a\u0259(r)", stress: "HY dro sphere", phonicRule: "magic-e: o=/\u0259\u028a/\uff1bph=/f/\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09"
+          "colorIndex": 0, phonetic: "\u02c8ha\u026adr\u0259\u028asf\u026a\u0259(r)", stress: "HY dro sphere", phonicRule: "magic-e: o=/\u0259\u028a/\uff1bph=/f/"
         },
         {
           "id": 3,
@@ -87,7 +87,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "氢气",
           "example": "Two parts hydrogen, one part oxygen, you'll get water everytime",
           "wordGroup": "group_1",
-          "colorIndex": 1, phonetic: "\u02c8ha\u026adr\u0259d\u0292\u0259n", stress: "HY dro gen", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8ha\u026adr\u0259d\u0292\u0259n", stress: "HY dro gen", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -232,7 +232,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "厄尔尼诺现象",
           "example": "What changed the equation that year was El Nino",
           "wordGroup": "group_6",
-          "colorIndex": 0, phonetic: "\u02ccel \u02c8ni\u02d0nj\u0259\u028a", stress: "", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02ccel \u02c8ni\u02d0nj\u0259\u028a", stress: "", phonicRule: ""
         },
         {
           "id": 23,
@@ -355,7 +355,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "大风",
           "example": "We got our roof blown off in a gale last night",
           "wordGroup": "group_9",
-          "colorIndex": 3, phonetic: "\u0261e\u026al", stress: "gale", phonicRule: "magic-e: a=/e\u026a/\uff1b/l/\uff08\u6210\u97f3\u8282\uff09"
+          "colorIndex": 3, phonetic: "\u0261e\u026al", stress: "gale", phonicRule: "magic-e: a=/e\u026a/"
         }
       ],
       [
@@ -375,7 +375,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "龙卷风",
           "example": "When a tornado touches the ground, it does a lot of damage",
           "wordGroup": "group_10",
-          "colorIndex": 4, phonetic: "t\u0254\u02d0\u02c8ne\u026ad\u0259\u028a", stress: "tor NA do", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "t\u0254\u02d0\u02c8ne\u026ad\u0259\u028a", stress: "tor NA do", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
         },
         {
           "id": 38,
@@ -395,7 +395,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "火山",
           "example": "The valcano erupted and two small towns were buried under meters of hot ash, mud and bits of molten rock",
           "wordGroup": "group_11",
-          "colorIndex": 5, phonetic: "v\u0252l\u02c8ke\u026an\u0259\u028a", stress: "vol CA no", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "v\u0252l\u02c8ke\u026an\u0259\u028a", stress: "vol CA no", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
         },
         {
           "id": 40,
@@ -471,7 +471,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "干旱；旱灾",
           "example": "Many areas in Africa have suffered severe drought this year",
           "wordGroup": "group_13",
-          "colorIndex": 1, phonetic: "\u02c8dra\u028at", stress: "", phonicRule: "ough\uff08\u4e0d\u900f\u660e\uff0c\u9700\u8bb0\uff09\uff1bou=/a\u028a/"
+          "colorIndex": 1, phonetic: "\u02c8dra\u028at", stress: "", phonicRule: "ough\uff08\u4e0d\u900f\u660e\uff0c\u9700\u8bb0\uff09"
         },
         {
           "id": 48,
@@ -480,7 +480,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "洪水泛滥",
           "example": "Since the flooding began last month, seventeen people have died state wide",
           "wordGroup": "group_13",
-          "colorIndex": 1, phonetic: "\u02c8fl\u028cd\u026a\u014b", stress: "FLOO ding", phonicRule: "ng=/\u014b/\uff1bu=/\u028c/"
+          "colorIndex": 1, phonetic: "\u02c8fl\u028cd\u026a\u014b", stress: "FLOO ding", phonicRule: "ng=/\u014b/"
         },
         {
           "id": 49,
@@ -509,7 +509,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "地震的；地震引起的",
           "example": "The discovery of seismic activity suggests geological activity could provide large amounts of heat and minerals",
           "wordGroup": "group_14",
-          "colorIndex": 2, phonetic: "\u02c8sa\u026azm\u026ak", stress: "SEI smic", phonicRule: "/\u026ak/\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09"
+          "colorIndex": 2, phonetic: "\u02c8sa\u026azm\u026ak", stress: "SEI smic", phonicRule: "/\u026ak/"
         },
         {
           "id": 52,
@@ -529,7 +529,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "地形",
           "example": "He climbed a tree to view the surrounding terrain",
           "wordGroup": "group_15",
-          "colorIndex": 3, phonetic: "t\u0259\u02c8re\u026an", stress: "ter RAIN", phonicRule: "ai=/e\u026a/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "t\u0259\u02c8re\u026an", stress: "ter RAIN", phonicRule: "ai=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 54,
@@ -614,7 +614,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "高原",
           "example": "The atmosphere is thin on the plateau",
           "wordGroup": "group_17",
-          "colorIndex": 5, phonetic: "\u02c8pl\u00e6t\u0259\u028a", stress: "PLA teau", phonicRule: "a=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02c8pl\u00e6t\u0259\u028a", stress: "PLA teau", phonicRule: "a=/\u00e6/"
         },
         {
           "id": 63,
@@ -623,7 +623,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "绿洲；宜人之地",
           "example": "Oasis symbolizes a hope in desert areas",
           "wordGroup": "group_17",
-          "colorIndex": 5, phonetic: "\u0259\u028a\u02c8e\u026as\u026as", stress: "o A sis", phonicRule: "oa=/\u0259\u028a/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u0259\u028a\u02c8e\u026as\u026as", stress: "o A sis", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -643,7 +643,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "半球",
           "example": "In the northern hemisphere, you can hardly see the Magellanic Clouds",
           "wordGroup": "group_18",
-          "colorIndex": 0, phonetic: "\u02c8hem\u026asf\u026a\u0259(r)", stress: "HE mi sphere", phonicRule: "ph=/f/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8hem\u026asf\u026a\u0259(r)", stress: "HE mi sphere", phonicRule: "ph=/f/\uff1be=/e/"
         },
         {
           "id": 66,
@@ -652,7 +652,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "赤道",
           "example": "The equator is an imaginary line around the middle of the earth",
           "wordGroup": "group_18",
-          "colorIndex": 0, phonetic: "\u026a\u02c8kwe\u026at\u0259(r)", stress: "e QUA tor", phonicRule: "/\u0259(r)/\uff1bqu=/kw/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
+          "colorIndex": 0, phonetic: "\u026a\u02c8kwe\u026at\u0259(r)", stress: "e QUA tor", phonicRule: "/\u0259(r)/\uff1bqu=/kw/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -681,7 +681,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "（地）极；截然相反的两极之一",
           "example": "English is spoken from pole to pole",
           "wordGroup": "group_19",
-          "colorIndex": 1, phonetic: "p\u0259\u028al", stress: "pole", phonicRule: "magic-e: o=/\u0259\u028a/\uff1b/l/\uff08\u6210\u97f3\u8282\uff09"
+          "colorIndex": 1, phonetic: "p\u0259\u028al", stress: "pole", phonicRule: "magic-e: o=/\u0259\u028a/"
         },
         {
           "id": 70,
@@ -746,7 +746,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "侵蚀；腐蚀",
           "example": "The waves erode the rocks on the shore",
           "wordGroup": "group_20",
-          "colorIndex": 2, phonetic: "\u026a\u02c8r\u0259\u028ad", stress: "e RODE", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u026a\u02c8r\u0259\u028ad", stress: "e RODE", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09"
         }
       ],
       [
@@ -757,7 +757,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "地中海的；地中海地区的；地中海；地中海地区",
           "example": "This dish is a cross between Asian and Mediterranean food",
           "wordGroup": "group_21",
-          "colorIndex": 3, phonetic: "\u02ccmed\u026at\u0259\u02c8re\u026ani\u0259n", stress: "me di ter RA ne an", phonicRule: "ea=/i\u02d0/\uff08\u9700\u8bb0\uff09\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02ccmed\u026at\u0259\u02c8re\u026ani\u0259n", stress: "me di ter RA ne an", phonicRule: "e=/e\u026a/\uff08\u9700\u8bb0\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 78,
@@ -804,7 +804,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "航海；航行",
           "example": "Navigation is a game for brave people",
           "wordGroup": "group_22",
-          "colorIndex": 4, phonetic: "\u02ccn\u00e6v\u026a\u02c8\u0261e\u026a\u0283(\u0259)n", stress: "na vi GA tion", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02ccn\u00e6v\u026a\u02c8\u0261e\u026a\u0283(\u0259)n", stress: "na vi GA tion", phonicRule: "/\u0283\u0259n/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -900,7 +900,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "浅的；肤浅的；浅薄的",
           "example": "The sea is shallow here",
           "wordGroup": "group_25",
-          "colorIndex": 1, phonetic: "\u02c8\u0283\u00e6l\u0259\u028a", stress: "SHAL low", phonicRule: "ow=/\u0259\u028a/\uff1bsh=/\u0283/\uff1ba=/\u00e6/"
+          "colorIndex": 1, phonetic: "\u02c8\u0283\u00e6l\u0259\u028a", stress: "SHAL low", phonicRule: "ow=/\u0259\u028a/\uff1bsh=/\u0283/"
         }
       ],
       [
@@ -911,7 +911,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "表皮的；表层的",
           "example": "Superficial scratches can be easily removed",
           "wordGroup": "group_26",
-          "colorIndex": 2, phonetic: "\u02ccsu\u02d0p\u0259\u02c8f\u026a\u0283(\u0259)l", stress: "su per FI cial", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02ccsu\u02d0p\u0259\u02c8f\u026a\u0283(\u0259)l", stress: "su per FI cial", phonicRule: "/\u0259l/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 94,
@@ -956,7 +956,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "石头的；多石的",
           "example": "The ground in this part of the country is poor and stony",
           "wordGroup": "group_26",
-          "colorIndex": 2, phonetic: "\u02c8st\u0259\u028ani", stress: "STO ny", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 2, phonetic: "\u02c8st\u0259\u028ani", stress: "STO ny", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09"
         }
       ],
       [
@@ -967,7 +967,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "垂直的；直立的",
           "example": "In some places, the cliff is almost vertical and too dangerous to climb",
           "wordGroup": "group_27",
-          "colorIndex": 3, phonetic: "\u02c8v\u025c\u02d0t\u026ak(\u0259)l", stress: "VER ti cal", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8v\u025c\u02d0t\u026ak(\u0259)l", stress: "VER ti cal", phonicRule: "/\u0259l/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 100,
@@ -994,7 +994,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "狭窄的；有极限的",
           "example": "The only access to the garden is by a narrow path at the side of the house",
           "wordGroup": "group_27",
-          "colorIndex": 3, phonetic: "\u02c8n\u00e6r\u0259\u028a", stress: "NAR row", phonicRule: "ow=/\u0259\u028a/\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8n\u00e6r\u0259\u028a", stress: "NAR row", phonicRule: "ow=/\u0259\u028a/"
         }
       ],
       [
@@ -1005,7 +1005,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "大洋洲",
           "example": "Oceania is a separate landmass, but it is separated from Asia by very shallow water",
           "wordGroup": "group_28",
-          "colorIndex": 4, phonetic: "\u02cc\u0259\u028asi\u02c8\u0251\u02d0ni\u0259", stress: "o ce A ni a", phonicRule: "ea=/i\u02d0/\uff08\u9700\u8bb0\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02cc\u0259\u028asi\u02c8\u0251\u02d0ni\u0259", stress: "o ce A ni a", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 104,
@@ -1014,7 +1014,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "大陆，本土",
           "example": "Hawaii and Alaska are not on the mainland of the United States",
           "wordGroup": "group_28",
-          "colorIndex": 4, phonetic: "\u02c8me\u026anl\u0259nd", stress: "MAIN land", phonicRule: "ai=/e\u026a/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8me\u026anl\u0259nd", stress: "MAIN land", phonicRule: "ai=/e\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 105,
@@ -1101,7 +1101,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "热量的",
           "example": "The thermal energy has become more and more important",
           "wordGroup": "group_31",
-          "colorIndex": 1, phonetic: "\u02c8\u03b8\u025c\u02d0m(\u0259)l", stress: "THER mal", phonicRule: "th=/\u03b8/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8\u03b8\u025c\u02d0m(\u0259)l", stress: "THER mal", phonicRule: "/\u0259l/\uff1bth=/\u03b8/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 114,
@@ -1159,7 +1159,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "下雪多的；被雪覆盖的",
           "example": "The snowy weather lasted the whole time we were there",
           "wordGroup": "group_33",
-          "colorIndex": 3, phonetic: "\u02c8sn\u0259\u028ai", stress: "SNO wy", phonicRule: "ow=/\u0259\u028a/\uff1bo=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02c8sn\u0259\u028ai", stress: "SNO wy", phonicRule: "ow=/\u0259\u028a/"
         },
         {
           "id": 120,
@@ -1253,7 +1253,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "闪电/闪电般的，极快的",
           "example": "During the storm, flashes of lightning appeared in the sky",
           "wordGroup": "group_35",
-          "colorIndex": 5, phonetic: "\u02c8la\u026atn\u026a\u014b", stress: "LIGHT ning", phonicRule: "igh=/a\u026a/\uff1bng=/\u014b/\uff1bi=/a\u026a/\uff08\u5f00\u97f3\u8282\u503e\u5411\uff09"
+          "colorIndex": 5, phonetic: "\u02c8la\u026atn\u026a\u014b", stress: "LIGHT ning", phonicRule: "igh=/a\u026a/\uff1bng=/\u014b/"
         },
         {
           "id": 130,
@@ -1282,7 +1282,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "降雨量",
           "example": "There have been four years of below-average rainfall",
           "wordGroup": "group_36",
-          "colorIndex": 0, phonetic: "\u02c8re\u026anf\u0254\u02d0l", stress: "RAIN fall", phonicRule: "ai=/e\u026a/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09"
+          "colorIndex": 0, phonetic: "\u02c8re\u026anf\u0254\u02d0l", stress: "RAIN fall", phonicRule: "ai=/e\u026a/"
         },
         {
           "id": 133,
@@ -1300,7 +1300,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "彩虹",
           "example": "A rainbow is usually seen after a heavy rain",
           "wordGroup": "group_36",
-          "colorIndex": 0, phonetic: "\u02c8re\u026anb\u0259\u028a", stress: "RAIN bow", phonicRule: "ai=/e\u026a/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8re\u026anb\u0259\u028a", stress: "RAIN bow", phonicRule: "ai=/e\u026a/"
         },
         {
           "id": 135,
@@ -1309,7 +1309,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "阵；阵雨；淋浴",
           "example": "The weatherman predicts showers this afternoon",
           "wordGroup": "group_36",
-          "colorIndex": 0, phonetic: "\u02c8\u0283a\u028a\u0259(r)", stress: "SHO wer", phonicRule: "/\u0259(r)/\uff1bsh=/\u0283/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 0, phonetic: "\u02c8\u0283a\u028a\u0259(r)", stress: "SHO wer", phonicRule: "/\u0259(r)/\uff1bsh=/\u0283/"
         }
       ],
       [
@@ -1434,7 +1434,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "南方的",
           "example": "Only in the southern part of Taiwan have I seen such scenery",
           "wordGroup": "group_40",
-          "colorIndex": 4, phonetic: "\u02c8s\u028c\u00f0\u0259n", stress: "SOU thern", phonicRule: "u=/\u028c/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8s\u028c\u00f0\u0259n", stress: "SOU thern", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -1454,7 +1454,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "东方的（尤其指中日）",
           "example": "She has studied the cultures of oriental countries",
           "wordGroup": "group_41",
-          "colorIndex": 5, phonetic: "\u02cc\u0254\u02d0ri\u02c8ent(\u0259)l", stress: "o ri EN tal", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 5, phonetic: "\u02cc\u0254\u02d0ri\u02c8ent(\u0259)l", stress: "o ri EN tal", phonicRule: "/\u0259l/\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [
@@ -1588,7 +1588,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "遥远的；偏僻的；疏远的",
           "example": "She came from a remote village",
           "wordGroup": "group_45",
-          "colorIndex": 3, phonetic: "r\u026a\u02c8m\u0259\u028at", stress: "re MOTE", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "r\u026a\u02c8m\u0259\u028at", stress: "re MOTE", phonicRule: "o=/\u0259\u028a/\uff08\u5f00\u97f3\u8282\uff09"
         },
         {
           "id": 165,
@@ -1635,7 +1635,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "污染",
           "example": "Wastewater from the factory is the main cause of pollution in local rivers",
           "wordGroup": "group_46",
-          "colorIndex": 4, phonetic: "p\u0259\u02c8lu\u02d0\u0283(\u0259)n", stress: "pol LU tion", phonicRule: "\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "p\u0259\u02c8lu\u02d0\u0283(\u0259)n", stress: "pol LU tion", phonicRule: "/\u0283\u0259n/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 170,
@@ -1827,7 +1827,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "贫瘠的；荒芜的；不结果实的",
           "example": "That remote barren land has blossomed into rich granaries",
           "wordGroup": "group_52",
-          "colorIndex": 4, phonetic: "\u02c8b\u00e6r\u0259n", stress: "BAR ren", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1ba=/\u00e6/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 4, phonetic: "\u02c8b\u00e6r\u0259n", stress: "BAR ren", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1ba=/\u00e6/"
         },
         {
           "id": 190,
@@ -1836,7 +1836,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "富饶的；肥沃的",
           "example": "There's enough to ransform barrel coral atolls into fertile groves",
           "wordGroup": "group_52",
-          "colorIndex": 4, phonetic: "\u02c8f\u025c\u02d0ta\u026al", stress: "FER tile", phonicRule: "/l/\uff08\u6210\u97f3\u8282\uff09"
+          "colorIndex": 4, phonetic: "\u02c8f\u025c\u02d0ta\u026al", stress: "FER tile", phonicRule: ""
         },
         {
           "id": 191,
@@ -1923,7 +1923,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "天堂；极乐之地",
           "example": "A week on the tropical island was heaven",
           "wordGroup": "group_55",
-          "colorIndex": 1, phonetic: "\u02c8hev(\u0259)n", stress: "HEA ven", phonicRule: "e=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 1, phonetic: "\u02c8hev(\u0259)n", stress: "HEA ven", phonicRule: "/\u0259n/\uff08\u5f31\u8bfb\uff09\uff1be=/e/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 200,
@@ -1961,7 +1961,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "影子",
           "example": "The willow's shadow falls on the lake",
           "wordGroup": "group_56",
-          "colorIndex": 2, phonetic: "\u02c8\u0283\u00e6d\u0259\u028a", stress: "SHA dow", phonicRule: "ow=/\u0259\u028a/\uff1bsh=/\u0283/\uff1ba=/\u00e6/"
+          "colorIndex": 2, phonetic: "\u02c8\u0283\u00e6d\u0259\u028a", stress: "SHA dow", phonicRule: "ow=/\u0259\u028a/\uff1bsh=/\u0283/"
         }
       ],
       [
@@ -2200,7 +2200,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "条件；情况；状态",
           "example": "I had almost decided to accept their conditions at that time",
           "wordGroup": "group_63",
-          "colorIndex": 3, phonetic: "k\u0259n\u02c8d\u026a\u0283n", stress: "con DITION", phonicRule: "i=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "k\u0259n\u02c8d\u026a\u0283n", stress: "con DITION", phonicRule: "/\u0283\u0259n/\uff1bi=/\u026a/\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         },
         {
           "id": 229,
@@ -2209,7 +2209,7 @@ export const vocabChapters: VocabChapter[] = [
           "chinese": "状况；形势",
           "example": "Due to poor management, they finally got into a difficult financial situation",
           "wordGroup": "group_63",
-          "colorIndex": 3, phonetic: "\u02ccs\u026at\u0283u\u02c8e\u026a\u0283(\u0259)n", stress: "si tu A tion", phonicRule: "a=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
+          "colorIndex": 3, phonetic: "\u02ccs\u026at\u0283u\u02c8e\u026a\u0283(\u0259)n", stress: "si tu A tion", phonicRule: "/\u0283\u0259n/\uff1ba=/e\u026a/\uff08\u5f00\u97f3\u8282\uff09\uff1b\u975e\u91cd\u8bfb\u5f31\u5316 /\u0259/"
         }
       ],
       [

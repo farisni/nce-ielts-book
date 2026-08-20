@@ -11,6 +11,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from syllables_ipa import ipa_vowel_nuclei, spell_vowel_nuclei  # noqa: E402
+
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src/app/mock/ielts-vocabulary.ts")
 
 
@@ -59,9 +62,8 @@ def vowel_pair_label(w: str, ipa: str) -> str | None:
     low = w.lower()
     for pair, sound in VOWEL_PAIRS:
         if pair in low:
-            s = sound.replace("ː", "")
-            # 音标验证：该读音出现在音标中（音标多为英式，长音带 ː）
-            if s in ipa.replace("ː", ""):
+            # 长音必须带 ː 完整匹配（如 iː/uː），双元音子串匹配
+            if sound in ipa:
                 note = "（需记）" if pair in ("ui", "ei", "ea", "ie") and pair not in ("ee", "ai", "ay", "oa", "oi", "oy") else ""
                 return f"{pair}=/{sound}/{note}"
     return None
@@ -70,19 +72,30 @@ def vowel_pair_label(w: str, ipa: str) -> str | None:
 SUFFIXES = [
     ("-tion", "ʃən", "/ʃən/"), ("-sion", "ʃən", "/ʃən/"), ("-ous", "əs", "/əs/"),
     ("-ic", "ɪk", "/ɪk/"), ("-al", "əl", "/əl/"), ("-en", "ən", "/ən/（弱读）"),
-    ("-er", "ə", "/ə(r)/"), ("-or", "ə", "/ə(r)/"), ("-le", "l", "/l/（成音节）"),
+    ("-er", "ə", "/ə(r)/"), ("-or", "ə", "/ə(r)/"),
+    ("-ble", "l", "/l/（成音节）"), ("-dle", "l", "/l/（成音节）"), ("-cle", "l", "/l/（成音节）"),
+    ("-gle", "l", "/l/（成音节）"), ("-kle", "l", "/l/（成音节）"), ("-ple", "l", "/l/（成音节）"),
+    ("-tle", "l", "/l/（成音节）"), ("-zle", "l", "/l/（成音节）"), ("-fle", "l", "/l/（成音节）"),
     ("-ance", "əns", "/əns/"), ("-ence", "əns", "/əns/"), ("-ment", "mənt", "/mənt/"),
     ("-ful", "fl", "/fl/"), ("-ness", "nəs", "/nəs/"), ("-ture", "tʃə", "/tʃə(r)/"),
     ("-able", "əbl", "/əbl/"), ("-ible", "ɪbl", "/ɪbl/"), ("-ly", "li", "/li/"),
 ]
 
 
+def probe_hit(probe: str, ipa: str) -> bool:
+    """音标子串验证：支持 (ə) 括号变体与 ə 省略（-tion 读 ʃn 或 ʃən）"""
+    ipa2 = ipa.replace("(", "").replace(")", "")
+    if probe in ipa2:
+        return True
+    cand = probe.replace("ə", "")
+    return len(cand) >= 2 and cand in ipa2
+
+
 def suffix_label(w: str, ipa: str) -> str | None:
     low = w.lower()
     for suf, probe, label in SUFFIXES:
         if low.endswith(suf.lstrip("-")):
-            p = probe.replace("ː", "")
-            if p in ipa.replace("ː", ""):
+            if probe_hit(probe, ipa):
                 return label
     return None
 
@@ -109,11 +122,11 @@ def consonant_labels(w: str, ipa: str) -> list[str]:
 
 
 def weak_label(w: str, ipa: str) -> str | None:
-    """非重读弱化：多音节词中非重读音节元音发 /ə/（或 /ɪ/）"""
-    if "ˈ" not in ipa or "ə" not in ipa:
+    """非重读弱化：多音节词中非重读音节元音发 /ə/（排除双元音 əʊ/ɪə/eə/ʊə 内的 ə）"""
+    if "ˈ" not in ipa:
         return None
-    # 弱化元音在非重音位置：重音符号后出现 ə 或重音前出现 ə
-    if "ə" in ipa:
+    rest = ipa.replace("əʊ", "").replace("ɪə", "").replace("eə", "").replace("ʊə", "").replace("(", "").replace(")", "")
+    if "ə" in rest:
         return "非重读弱化 /ə/"
     return None
 
@@ -141,14 +154,27 @@ def first_stress_sound(after: str) -> str:
 
 
 def single_vowel_label(w: str, ipa: str, has_vce: bool) -> str | None:
-    """重读单字母元音规律（闭音节短音 / 开音节字母音），按重音后读音匹配"""
+    """重读单字母元音规律（闭音节短音 / 开音节字母音）：
+    重音核序号 → 拼写对应元音字母 → 验证与读音匹配"""
     if "ˈ" not in ipa:
         return None
+    # 元音组合已命中（重读多为组合音，如 rain/light/snow）→ 不再标单字母
+    if vowel_pair_label(w, ipa):
+        return None
+    # 重读音节序号（重音符号前的核数）
+    before = ipa[:ipa.index("ˈ")].replace("ˈ", "").replace("ˌ", "")
+    stressed_idx = ipa_vowel_nuclei(before)
+    nuclei = spell_vowel_nuclei(w)
+    if stressed_idx >= len(nuclei):
+        return None
+    v_letter = w[nuclei[stressed_idx][0]].lower()
     after = ipa[ipa.index("ˈ") + 1:]
     sound = first_stress_sound(after)
     for s, label in STRESS_SOUNDS:
         if sound == s or sound.startswith(s.rstrip("ː") + "ː"):
-            # magic-e 已标过的元音字母不重复
+            # 标签元音字母必须等于拼写重读元音字母
+            if not label.startswith(v_letter + "="):
+                continue
             if has_vce:
                 vce_v = re.search(r'([aeiou])[a-z]+e$', w.lower())
                 if vce_v and label.startswith(vce_v.group(1) + "="):
