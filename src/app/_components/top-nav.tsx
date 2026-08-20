@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { Search, StarIcon, PlayIcon, BookOpenIcon, FileTextIcon, TableIcon, BracesIcon, PaletteIcon, CommandIcon, SquareDashedIcon, LanguagesIcon, PanelRight, Keyboard as KeyboardIcon, AudioLines as AudioLinesIcon, Volume2 } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
+import { Slider } from "@/components/ui/slider";
 import { MagneticButton } from "@/components/motion/button/magnetic";
 import { allArticles, mergeArticleData } from "@/app/mock";
 import { useReaderStore } from "@/stores/reader-store";
@@ -721,24 +722,23 @@ export default function TopNav() {
             />
           </div>
 
-          {/* 全站声音大小滑块 */}
+          {/* 全站声音大小滑块（shadcn Slider） */}
           <div
             className="group flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/60"
             title={`声音大小 ${Math.round(volumeValue * 100)}%`}
           >
             <Volume2 className="size-4 shrink-0 text-muted-foreground/70 group-hover:text-muted-foreground" />
-            <input
-              type="range"
+            <Slider
+              className="w-16"
               min={0}
               max={1}
               step={0.05}
-              value={volumeValue}
-              onChange={(e) => {
-                const v = parseFloat(e.target.value);
+              value={[volumeValue]}
+              onValueChange={([v]) => {
+                if (v === undefined) return;
                 setVolumeState(v);
                 setGlobalVolume(v);
               }}
-              className="h-1 w-16 cursor-pointer appearance-none rounded-full bg-muted accent-[#337ea9]"
             />
           </div>
 
