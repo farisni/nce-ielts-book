@@ -37,6 +37,9 @@ def vce_label(w: str, ipa: str) -> str | None:
     low = w.lower()
     if not low.endswith("e"):
         return None
+    # ge/dge 结尾且发 dʒ：e 属于辅音组合（garbage/forge/edge），不是 magic-e
+    if re.search(r'(?:[ds]ge)$', low) and "dʒ" in ipa.replace("ː", ""):
+        return None
     # 取词尾的 magic-e：从末尾 e 往前找最后一个元音（microphone → phone 的 o_e）
     vowels = re.findall(r'[aeiou]', low[:-1])
     if not vowels:
@@ -45,13 +48,15 @@ def vce_label(w: str, ipa: str) -> str | None:
     # e 不发音：音标不以 /ɪ/ /e/ /ə/ 结尾且无尾元音
     if re.search(r'[ieəʊuːɪ]$', ipa):
         return None
-    # 元音发字母音：音标含该元音字母音
-    letter_sound = {"a": "eɪ", "i": "aɪ", "o": "əʊ", "u": "juː"}
+    # 元音发字母音：音标含该元音字母音（u 在 r/l 后发 uː，如 crude/rule）
+    letter_sound = {"a": ["eɪ"], "i": ["aɪ"], "o": ["əʊ"], "u": ["juː", "uː"]}
     if v not in letter_sound:
         return None
-    if letter_sound[v] not in ipa.replace("ː", ""):
-        return None
-    return f"magic-e: {v}=/{letter_sound[v]}/"
+    ipa_n = ipa.replace("ː", "")
+    for sound in letter_sound[v]:
+        if sound.replace("ː", "") in ipa_n:
+            return f"magic-e: {v}=/{sound}/"
+    return None
 
 
 VOWEL_PAIRS = [
@@ -66,6 +71,19 @@ def vowel_pair_label(w: str, ipa: str) -> str | None:
     low = w.lower()
     for pair, sound in VOWEL_PAIRS:
         if pair in low:
+            # ow/oo 双音：əʊ 或 aʊ / uː 或 ʊ
+            if pair == "ow":
+                if "əʊ" in ipa:
+                    return "ow=/əʊ/"
+                if "aʊ" in ipa:
+                    return "ow=/aʊ/（需记）"
+                continue
+            if pair == "oo":
+                if "uː" in ipa:
+                    return "oo=/uː/"
+                if "ʊ" in ipa:
+                    return "oo=/ʊ/（需记）"
+                continue
             # 长音必须带 ː 完整匹配（如 iː/uː），双元音子串匹配
             if sound in ipa:
                 note = "（需记）" if pair in ("ui", "ei", "ea", "ie") and pair not in ("ee", "ai", "ay", "oa", "oi", "oy") else ""
@@ -105,11 +123,28 @@ def suffix_label(w: str, ipa: str) -> str | None:
     return None
 
 
+R_VOWELS = [
+    ("ar", "ɑː", "ar=/ɑː(r)/"), ("or", "ɔː", "or=/ɔː(r)/"),
+    ("er", "ɜː", "er=/ɜː(r)/"), ("ir", "ɜː", "ir=/ɜː(r)/"), ("ur", "ɜː", "ur=/ɜː(r)/"),
+]
+
+
+def r_vowel_label(w: str, ipa: str) -> str | None:
+    """元音 R 组合：ar/or/er/ir/ur 发 r 元音（garbage 的 ar、cord 的 or）"""
+    low = w.lower()
+    for comb, sound, label in R_VOWELS:
+        if comb in low:
+            if sound in ipa:
+                return label
+    return None
+
+
 CONSONANTS = [
     ("sh", "ʃ", "sh=/ʃ/"), ("ch", "tʃ", "ch=/tʃ/"), ("th", "θ", "th=/θ/"), ("ph", "f", "ph=/f/"),
     ("wh", "w", "wh=/w/"), ("kn", "n", "kn- 不发音 k"), ("wr", "r", "wr- 不发音 w"),
     ("mb", "m", "-mb 不发音 b"), ("ck", "k", "-ck=/k/"), ("ng", "ŋ", "ng=/ŋ/"),
     ("qu", "kw", "qu=/kw/"), ("sc", "s", "sc=/s/（c 不发音）"), ("x", "ks", "x=/ks/"),
+    ("dge", "dʒ", "-dge=/dʒ/"), ("ge", "dʒ", "ge=/dʒ/"),
 ]
 
 
@@ -149,6 +184,8 @@ STRESS_SOUNDS = [
     ("æ", "a=/æ/"), ("ɒ", "o=/ɒ/（英式短 o）"), ("eɪ", "a=/eɪ/（开音节）"),
     ("aɪ", "i=/aɪ/（开音节倾向）"), ("ɪ", "i=/ɪ/"), ("e", "e=/e/"),
     ("ʌ", "u=/ʌ/"), ("əʊ", "o=/əʊ/（开音节）"), ("juː", "u=/juː/（开音节）"),
+    ("ɑː", "a=/ɑː/（英式）"),
+    ("aɪ", "y=/aɪ/（重读）"),
 ]
 
 
@@ -161,20 +198,26 @@ def first_stress_sound(after: str) -> str:
 def single_vowel_label(w: str, ipa: str, has_vce: bool) -> str | None:
     """重读单字母元音规律（闭音节短音 / 开音节字母音）：
     重音核序号 → 拼写对应元音字母 → 验证与读音匹配"""
-    if "ˈ" not in ipa:
-        return None
     # 元音组合已命中（重读多为组合音，如 rain/light/snow）→ 不再标单字母
-    if vowel_pair_label(w, ipa):
+    if vowel_pair_label(w, ipa) or r_vowel_label(w, ipa):
         return None
-    # 重读音节序号（重音符号前的核数）
-    before = ipa[:ipa.index("ˈ")].replace("ˈ", "").replace("ˌ", "")
-    stressed_idx = ipa_vowel_nuclei(before)
-    nuclei = spell_vowel_nuclei(w)
-    if stressed_idx >= len(nuclei):
-        return None
-    v_letter = w[nuclei[stressed_idx][0]].lower()
-    after = ipa[ipa.index("ˈ") + 1:]
-    sound = first_stress_sound(after)
+    if "ˈ" not in ipa:
+        # 单音节词：唯一元音即重读
+        sound = first_stress_sound(ipa)
+        vowels = re.findall(r'[aeiou]', w.lower())
+        if not vowels:
+            return None
+        v_letter = vowels[0]
+    else:
+        # 重读音节序号（重音符号前的核数）
+        before = ipa[:ipa.index("ˈ")].replace("ˈ", "").replace("ˌ", "")
+        stressed_idx = ipa_vowel_nuclei(before)
+        nuclei = spell_vowel_nuclei(w)
+        if stressed_idx >= len(nuclei):
+            return None
+        v_letter = w[nuclei[stressed_idx][0]].lower()
+        after = ipa[ipa.index("ˈ") + 1:]
+        sound = first_stress_sound(after)
     for s, label in STRESS_SOUNDS:
         if sound == s or sound.startswith(s.rstrip("ː") + "ː"):
             # 标签元音字母必须等于拼写重读元音字母
@@ -192,7 +235,7 @@ def build_tags(w: str, ipa: str) -> list[str]:
     tags = []
     # 优先级：不透明 > magic-e > 元音组合 > 后缀 > 辅音组合 > 单字母元音 > 弱化
     has_vce = bool(vce_label(w, ipa))
-    for fn in (opaque_label, vce_label, vowel_pair_label, suffix_label):
+    for fn in (opaque_label, vce_label, vowel_pair_label, r_vowel_label, suffix_label):
         t = fn(w, ipa)
         if t and t not in tags:
             tags.append(t)
@@ -228,7 +271,7 @@ def main():
         pm = re.search(r'phonetic: "((?:[^"\\]|\\.)*)"', mw.group(2))
         if not pm:
             return mw.group(0)
-        ipa = unescape(pm.group(1)).replace("ˈ", "'").replace("'", "ˈ")
+        ipa = unescape(pm.group(1)).replace("ˈ", "'").replace("'", "ˈ").replace(":", "ː")
         tags = build_tags(word, ipa)
         rule = "；".join(tags)
         inner = mw.group(2)
