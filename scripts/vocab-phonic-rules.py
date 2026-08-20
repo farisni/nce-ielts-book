@@ -34,10 +34,14 @@ def esc(s: str) -> str:
 
 def vce_label(w: str, ipa: str) -> str | None:
     """V-Ce magic-e：元音+辅音+e 结尾，e 不发音，元音发字母音"""
-    m = re.search(r'([aeiou])[a-z]+e$', w.lower())
-    if not m:
+    low = w.lower()
+    if not low.endswith("e"):
         return None
-    v = m.group(1)
+    # 取词尾的 magic-e：从末尾 e 往前找最后一个元音（microphone → phone 的 o_e）
+    vowels = re.findall(r'[aeiou]', low[:-1])
+    if not vowels:
+        return None
+    v = vowels[-1]
     # e 不发音：音标不以 /ɪ/ /e/ /ə/ 结尾且无尾元音
     if re.search(r'[ieəʊuːɪ]$', ipa):
         return None
@@ -77,6 +81,7 @@ SUFFIXES = [
     ("-gle", "l", "/l/（成音节）"), ("-kle", "l", "/l/（成音节）"), ("-ple", "l", "/l/（成音节）"),
     ("-tle", "l", "/l/（成音节）"), ("-zle", "l", "/l/（成音节）"), ("-fle", "l", "/l/（成音节）"),
     ("-ance", "əns", "/əns/"), ("-ence", "əns", "/əns/"), ("-ment", "mənt", "/mənt/"),
+    ("-sure", "ʒə", "/ʒə(r)/"),
     ("-ful", "fl", "/fl/"), ("-ness", "nəs", "/nəs/"), ("-ture", "tʃə", "/tʃə(r)/"),
     ("-able", "əbl", "/əbl/"), ("-ible", "ɪbl", "/ɪbl/"), ("-ly", "li", "/li/"),
 ]
@@ -205,9 +210,9 @@ def build_tags(w: str, ipa: str) -> list[str]:
 # ── 主流程 ──
 def main():
     src = open(DATA, encoding="utf-8").read()
-    m = re.search(r'("title": "自然地理",)(.*?)(\n\s*\{\s*\n\s*"title": "植物研究")', src, re.S)
+    m = re.search(r'(export const vocabChapters: VocabChapter\[\] = \[)(.*?)(\n\];\s*$)', src, re.S)
     if not m:
-        sys.exit("未找到自然地理章节")
+        sys.exit("未找到词汇数据")
     body = m.group(2)
 
     count = 0

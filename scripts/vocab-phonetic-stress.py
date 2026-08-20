@@ -95,9 +95,9 @@ def main():
     global DATA
     DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", DATA)
     src = open(DATA, encoding="utf-8").read()
-    m = re.search(r'("title": "自然地理",)(.*?)(\n\s*\{\s*\n\s*"title": "植物研究")', src, re.S)
+    m = re.search(r'(export const vocabChapters: VocabChapter\[\] = \[)(.*?)(\n\];\s*$)', src, re.S)
     if not m:
-        sys.exit("未找到自然地理章节")
+        sys.exit("未找到词汇数据")
 
     def fix_word(mw):
         word = unescape(mw.group(1))
